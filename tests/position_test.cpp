@@ -1,4 +1,6 @@
 #include "caissa/position.hpp"
+#include "caissa/reference.hpp"
+#include <algorithm>
 #include <iostream>
 #include <random>
 #include <stdexcept>
@@ -19,6 +21,9 @@ int main() {
         std::mt19937 rng(1729);std::vector<Undo> stack;std::vector<std::string> fens;
         for(int i=0;i<5000;++i) {
             auto moves=p.legal();if(moves.empty()||stack.size()>200) {while(!stack.empty()){p.unmake(stack.back());stack.pop_back();fens.pop_back();}moves=p.legal();}
+            auto slow=reference::legal(p);auto fast=moves;
+            auto sorter=[](Move a,Move b){return a.packed()<b.packed();};
+            std::sort(slow.begin(),slow.end(),sorter);std::sort(fast.begin(),fast.end(),sorter);check(slow==fast,"independent mailbox mismatch");
             auto before=p.fen();auto key=p.key();auto history=p.history().size();auto m=moves[rng()%moves.size()];
             auto u=p.make(m);check(p.coherent(),"state incoherent after make");p.unmake(u);
             check(p.fen()==before&&p.key()==key&&p.history().size()==history,"unmake restoration");
