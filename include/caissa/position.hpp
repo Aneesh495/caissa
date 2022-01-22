@@ -63,6 +63,7 @@ private:
     Key key_=0;
     bool chess960_=false;
     std::vector<Key> history_;
+    Key metadata_key() const;
     void put(Square s, Piece p);
     void save_square(Undo& u, Square s);
     Undo save_state() const;
