@@ -1,6 +1,8 @@
 #include "caissa/version.hpp"
+#include "caissa/uci.hpp"
 #include "caissa/position.hpp"
 #include "caissa/reference.hpp"
+#include "caissa/search.hpp"
 #include <algorithm>
 #include <charconv>
 #include <iostream>
@@ -23,12 +25,22 @@ void inspect(std::string_view text) {
 }
 int main(int argc,char** argv) {
     try {
+        if(argc==1)return uci_loop(std::cin,std::cout);
         if(argc==2&&std::string_view(argv[1])=="--version") {std::cout<<version()<<'\n';return 0;}
         if(argc>=3&&(std::string_view(argv[1])=="--perft"||std::string_view(argv[1])=="--divide")) {
             int d=parse_depth(argv[2]);auto p=Position::from_fen(argc>3?argv[3]:start_fen,argc>4&&std::string_view(argv[4])=="960");
             if(std::string_view(argv[1])=="--perft") std::cout<<perft(p,d)<<'\n';
             else for(auto& [move,n]:divide(p,d)) std::cout<<move<<' '<<n<<'\n';
             return 0;
+        }
+        if(argc>=3&&std::string_view(argv[1])=="--search") {
+            auto p=Position::from_fen(argc>3?argv[3]:start_fen);Limits limits;limits.depth=parse_depth(argv[2]);
+            SearchOptions options;if(argc>4)options.threads=parse_depth(argv[4]);
+            Search search(std::make_shared<TranspositionTable>(32));
+            auto r=search.run(p,limits,options,std::make_shared<SearchControl>());
+            std::cout<<"{\"bestmove\":\""<<p.uci(r.best)<<"\",\"score\":"<<r.score<<",\"depth\":"<<r.info.depth<<",\"nodes\":"<<r.info.nodes<<",\"milliseconds\":"<<r.info.elapsed_ms<<",\"pv\":[";
+            bool first=true;for(auto m:r.pv){if(!first)std::cout<<',';first=false;std::cout<<'"'<<p.uci(m)<<'"';p.make(m);}
+            std::cout<<"]}\n";return 0;
         }
         if(argc==2&&std::string_view(argv[1])=="--inspect") {
             std::string line;
