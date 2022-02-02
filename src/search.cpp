@@ -22,16 +22,21 @@ SearchStats& SearchStats::operator+=(const SearchStats& r) {
 namespace {
 struct Abort {};
 struct Guard {
-    Position& p;Undo undo;
-    Guard(Position& pos,Move move):p(pos),undo(p.make(move)){}
-    explicit Guard(Position& pos):p(pos),undo(p.make_null()){}
-    ~Guard(){p.unmake(undo);}
+    Position& p;Undo undo;Accumulator* accumulator;Accumulator saved;
+    Guard(Position& pos,Move move,const Network* net,Accumulator* acc):p(pos),undo(p.make(move)),accumulator(acc) {
+        if(net){saved=*acc;net->update(p,undo,*acc);}
+    }
+    Guard(Position& pos,const Network* net,Accumulator* acc):p(pos),undo(p.make_null()),accumulator(acc) {
+        if(net){saved=*acc;net->update(p,undo,*acc);}
+    }
+    ~Guard(){p.unmake(undo);if(accumulator)*accumulator=saved;}
     Guard(const Guard&)=delete;Guard& operator=(const Guard&)=delete;
 };
 class Worker {
 public:
     Worker(TranspositionTable& table,SearchControl& control,const SearchOptions& options):table_(table),control_(control),options_(options){}
     SearchStats stats;
+    void reset(const Position& p){if(options_.network)accumulator_=options_.network->refresh(p);}
     int visit(Position& p,int depth,int alpha,int beta,int ply,bool allow_null,Move previous,Moves& pv) {
         touch(ply);pv.clear();
         if(ply>=max_ply-1) return evaluate(p);
@@ -60,7 +65,7 @@ public:
         bool non_pawn=(p.occupied(p.side())&~p.pieces(p.side(),Kind::pawn)&~p.pieces(p.side(),Kind::king))!=0;
         if(options_.null_move&&allow_null&&!pv_node&&!check&&!claim&&depth>=3&&non_pawn&&p.halfmove()<90&&evaluation>=beta&&std::abs(beta)<mate_threshold) {
             int reduction=2+depth/5;Moves ignored;int score;
-            {Guard guard(p);score=-visit(p,std::max(0,depth-1-reduction),-beta,-beta+1,ply+1,false,{},ignored);}
+            {Guard guard(p,options_.network.get(),options_.network?&accumulator_:nullptr);score=-visit(p,std::max(0,depth-1-reduction),-beta,-beta+1,ply+1,false,{},ignored);}
             if(score>=beta) {
                 if(depth>=7) {score=visit(p,depth-reduction,beta-1,beta,ply,false,previous,ignored);}
                 if(score>=beta) {++stats.null_cutoffs;return std::min(score,mate_threshold-1);}
@@ -71,10 +76,10 @@ public:
         for(auto move:moves) {
             bool capture=is_capture(p,move),promotion=move.promotion!=Kind::none;
             if(options_.futility&&!pv_node&&!check&&!claim&&depth<=2&&searched>0&&!capture&&!promotion&&evaluation+110*depth<=alpha&&std::abs(alpha)<mate_threshold) {
-                Guard guard(p,move);if(!p.in_check(p.side())) {++stats.futility_skips;continue;}
+                Guard guard(p,move,options_.network.get(),options_.network?&accumulator_:nullptr);if(!p.in_check(p.side())) {++stats.futility_skips;continue;}
             }
             int score;Moves child;bool gives_check;
-            {Guard guard(p,move);gives_check=p.in_check(p.side());
+            {Guard guard(p,move,options_.network.get(),options_.network?&accumulator_:nullptr);gives_check=p.in_check(p.side());
                 int extension=options_.extensions&&check&&ply<16&&depth>1?1:0;
                 int next_depth=depth-1+extension;
                 int reduction=0;
@@ -111,7 +116,7 @@ private:
     std::array<std::array<Move,2>,max_ply> killers_{};
     std::array<std::array<Move,64>,64> counters_{};
     std::array<std::array<std::array<int,64>,64>,2> history_{};
-    std::uint64_t local_nodes_=0;
+    std::uint64_t local_nodes_=0;Accumulator accumulator_;
     void touch(int ply) {
         if(control_.stop.load(std::memory_order_relaxed)) throw Abort{};
         auto ticket=control_.nodes.fetch_add(1,std::memory_order_relaxed);
@@ -120,7 +125,7 @@ private:
         stats.seldepth=std::max(stats.seldepth,ply);
     }
     int evaluate(const Position& p) {
-        auto begin=monotonic_ns();int score=classical(p);++stats.evaluator_calls;
+        auto begin=monotonic_ns();int score=options_.network?options_.network->evaluate(p,accumulator_,options_.scalar_network):classical(p);++stats.evaluator_calls;
         stats.evaluator_ns+=static_cast<std::uint64_t>(monotonic_ns()-begin);return score;
     }
     bool is_capture(const Position& p,Move m) const {return m.flag==MoveFlag::en_passant||(m.flag!=MoveFlag::castle&&p.at(m.to));}
@@ -159,7 +164,7 @@ private:
         for(auto m:moves) {
             if(!check&&!is_capture(p,m)&&m.promotion==Kind::none)continue;
             Moves child;int score;
-            {Guard guard(p,m);touch(ply+1);auto replies=p.legal();auto state=rules(p,replies);
+            {Guard guard(p,m,options_.network.get(),options_.network?&accumulator_:nullptr);touch(ply+1);auto replies=p.legal();auto state=rules(p,replies);
                 if(state.ended()) score=state.terminal==Termination::checkmate?mate_score-ply-1:0;
                 else score=-quiet(p,-beta,-alpha,ply+1,qply+1,state.claimable(),std::move(replies),child);
             }
@@ -178,7 +183,7 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
     auto state=rules(root,legal);if(state.ended()) {result.score=state.terminal==Termination::checkmate?-mate_score:0;return result;}
     if(!limits.root_moves.empty()) std::erase_if(legal,[&](Move m){return std::find(limits.root_moves.begin(),limits.root_moves.end(),m)==limits.root_moves.end();});
     if(legal.empty()) throw InputError("searchmoves contains no legal move");
-    result.best=legal[0];result.score=classical(root);result.pv={result.best};
+    result.best=legal[0];result.score=options.network?options.network->evaluate(root,options.network->refresh(root),options.scalar_network):classical(root);result.pv={result.best};
     table_->new_search();std::vector<std::unique_ptr<Worker>> workers;
     for(int i=0;i<options.threads;++i)workers.push_back(std::make_unique<Worker>(*table_,*control,options));
     std::vector<PrincipalLine> prior;
@@ -189,7 +194,7 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
             auto& worker=*workers[static_cast<std::size_t>(id)];
             while(!control->stop.load(std::memory_order_relaxed)) {
                 auto i=next.fetch_add(1,std::memory_order_relaxed);if(i>=current.size())break;
-                auto move=current[i].move;Position position=root;auto undo=position.make(move);(void)undo;
+                auto move=current[i].move;Position position=root;auto undo=position.make(move);(void)undo;worker.reset(position);
                 try {
                     int alpha=-infinity,beta=infinity,window=25;
                     if(options.aspiration&&depth>=4) {alpha=std::max(-infinity,prior[i].score-window);beta=std::min(infinity,prior[i].score+window);}

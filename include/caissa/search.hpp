@@ -1,5 +1,6 @@
 #pragma once
 #include "caissa/evaluation.hpp"
+#include "caissa/network.hpp"
 #include "caissa/rules.hpp"
 #include "caissa/table.hpp"
 #include <chrono>
@@ -11,6 +12,8 @@ struct SearchOptions {
     bool null_move=true, lmr=true, extensions=true, history=true, see=true;
     bool futility=true;
     int threads=1, multipv=1;
+    std::shared_ptr<const Network> network;
+    bool scalar_network=false;
 };
 struct Limits {
     int depth=64;

@@ -32,6 +32,7 @@ public:
             emit("option name Move Overhead type spin default 20 min 0 max 1000");
             emit("option name UCI_Chess960 type check default false");emit("option name Ponder type check default false");
             for(auto name:{"Null Move","LMR","Extensions","PVS","Aspiration","Quiescence","History","SEE","Futility","Use Table"})emit(std::string("option name ")+name+" type check default true");
+            emit("option name EvalFile type string default <empty>");emit("option name Use Neural type check default false");emit("option name Scalar Neural type check default false");
             emit("option name Clear Hash type button");emit("uciok");
         } else if(cmd=="isready") emit("readyok");
         else if(cmd=="stop") stop();
@@ -51,7 +52,7 @@ private:
     std::ostream& output_;std::mutex output_mutex_;Position position_;
     std::shared_ptr<TranspositionTable> table_;SearchOptions options_;
     std::shared_ptr<SearchControl> control_;std::jthread worker_;
-    int overhead_=20;bool chess960_=false;
+    int overhead_=20;bool chess960_=false;std::shared_ptr<const Network> loaded_network_;
     void emit(const std::string& text){std::lock_guard lock(output_mutex_);output_<<text<<'\n'<<std::flush;}
     void stop(){if(control_)control_->stop.store(true);if(worker_.joinable())worker_.join();control_.reset();}
     void option(const std::vector<std::string>& t) {
@@ -61,7 +62,10 @@ private:
         if(i<t.size()) for(++i;i<t.size();++i){if(!value.empty())value+=' ';value+=t[i];}
         stop();
         if(name=="Clear Hash"){table_->clear();return;}
-        if(name=="Hash")table_=std::make_shared<TranspositionTable>(static_cast<std::size_t>(number(value,1024)));
+        if(name=="EvalFile") {loaded_network_=Network::load(value);if(options_.network)options_.network=loaded_network_;emit("info string network "+loaded_network_->identity());}
+        else if(name=="Use Neural") {bool use=boolean(value);if(use&&!loaded_network_)throw InputError("load EvalFile before enabling neural evaluation");options_.network=use?loaded_network_:nullptr;}
+        else if(name=="Scalar Neural") options_.scalar_network=boolean(value);
+        else if(name=="Hash")table_=std::make_shared<TranspositionTable>(static_cast<std::size_t>(number(value,1024)));
         else if(name=="Threads"){auto n=number(value,8);if(n==0)throw InputError("Threads must be positive");options_.threads=static_cast<int>(n);}
         else if(name=="MultiPV"){auto n=number(value,32);if(n==0)throw InputError("MultiPV must be positive");options_.multipv=static_cast<int>(n);}
         else if(name=="Move Overhead")overhead_=static_cast<int>(number(value,1000));
