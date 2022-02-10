@@ -1,0 +1,17 @@
+{
+  "provenance": "Manually specified common legal opening sequences; no game dataset imported",
+  "openings": [
+    {"id":"open-e4-e5","moves":["e2e4","e7e5"]},
+    {"id":"sicilian","moves":["e2e4","c7c5","g1f3","d7d6"]},
+    {"id":"french","moves":["e2e4","e7e6","d2d4","d7d5"]},
+    {"id":"caro-kann","moves":["e2e4","c7c6","d2d4","d7d5"]},
+    {"id":"queen-pawn","moves":["d2d4","d7d5","c2c4","e7e6"]},
+    {"id":"indian","moves":["d2d4","g8f6","c2c4","e7e6"]},
+    {"id":"english","moves":["c2c4","e7e5","b1c3","g8f6"]},
+    {"id":"reti","moves":["g1f3","d7d5","c2c4","c7c6"]},
+    {"id":"italian","moves":["e2e4","e7e5","g1f3","b8c6","f1c4","f8c5"]},
+    {"id":"scotch","moves":["e2e4","e7e5","g1f3","b8c6","d2d4","e5d4"]},
+    {"id":"slav","moves":["d2d4","d7d5","c2c4","c7c6"]},
+    {"id":"kings-indian","moves":["d2d4","g8f6","c2c4","g7g6","b1c3","f8g7"]}
+  ]
+}
