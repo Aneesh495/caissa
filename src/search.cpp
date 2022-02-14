@@ -189,24 +189,33 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
     std::vector<PrincipalLine> prior;
     for(auto m:legal)prior.push_back({m,0,{m},Bound::exact});
     for(int depth=1;depth<=limits.depth;++depth) {
-        std::vector<PrincipalLine> current=prior;std::vector<unsigned char> completed(current.size(),0);std::atomic<std::size_t> next{0};
+        std::vector<PrincipalLine> current=prior;std::vector<unsigned char> completed(current.size(),0);std::atomic<std::size_t> next{0};std::atomic<int> root_alpha{-infinity};
         auto work=[&](int id) {
             auto& worker=*workers[static_cast<std::size_t>(id)];
             while(!control->stop.load(std::memory_order_relaxed)) {
                 auto i=next.fetch_add(1,std::memory_order_relaxed);if(i>=current.size())break;
                 auto move=current[i].move;Position position=root;auto undo=position.make(move);(void)undo;worker.reset(position);
                 try {
-                    int alpha=-infinity,beta=infinity,window=25;
-                    if(options.aspiration&&depth>=4) {alpha=std::max(-infinity,prior[i].score-window);beta=std::min(infinity,prior[i].score+window);}
-                    int score;Moves child;
-                    for(;;) {
-                        score=-worker.visit(position,depth-1,-beta,-alpha,1,true,move,child);
-                        if(score>alpha&&score<beta)break;
-                        if(alpha==-infinity&&beta==infinity)break;
-                        window*=2;alpha=std::max(-infinity,score-window);beta=std::min(infinity,score+window);
-                        if(window>16000){alpha=-infinity;beta=infinity;}
+                    int alpha=-infinity,beta=infinity,window=25;Bound root_bound=Bound::exact;
+                    int shared_alpha=root_alpha.load(std::memory_order_relaxed);int score=-infinity;Moves child;
+                    bool screened=options.multipv==1&&options.pvs&&shared_alpha>-infinity;
+                    if(screened) {
+                        score=-worker.visit(position,depth-1,-shared_alpha-1,-shared_alpha,1,true,move,child);
+                        if(score<=shared_alpha)root_bound=Bound::upper;
                     }
-                    current[i]={move,score,{move},Bound::exact};current[i].pv.insert(current[i].pv.end(),child.begin(),child.end());completed[i]=1;
+                    if(!screened||score>shared_alpha) {
+                        if(options.aspiration&&depth>=4) {alpha=std::max(-infinity,prior[i].score-window);beta=std::min(infinity,prior[i].score+window);}
+                        for(;;) {
+                            score=-worker.visit(position,depth-1,-beta,-alpha,1,true,move,child);
+                            if(score>alpha&&score<beta)break;
+                            if(alpha==-infinity&&beta==infinity)break;
+                            window*=2;alpha=std::max(-infinity,score-window);beta=std::min(infinity,score+window);
+                            if(window>16000){alpha=-infinity;beta=infinity;}
+                        }
+                        int old=root_alpha.load(std::memory_order_relaxed);
+                        while(old<score&&!root_alpha.compare_exchange_weak(old,score,std::memory_order_relaxed)){}
+                    }
+                    current[i]={move,score,{move},root_bound};current[i].pv.insert(current[i].pv.end(),child.begin(),child.end());completed[i]=1;
                 }catch(const Abort&) {break;}
             }
         };
@@ -214,7 +223,7 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
         else {std::vector<std::jthread> pool;for(int id=0;id<options.threads;++id)pool.emplace_back(work,id);}
         bool complete=std::all_of(completed.begin(),completed.end(),[](auto v){return v!=0;});
         if(!complete) {result.interrupted=true;break;}
-        std::stable_sort(current.begin(),current.end(),[](const auto& a,const auto& b){return a.score>b.score;});prior=current;
+        std::stable_sort(current.begin(),current.end(),[](const auto& a,const auto& b){return a.score!=b.score?a.score>b.score:a.bound==Bound::exact&&b.bound!=Bound::exact;});prior=current;
         result.best=current[0].move;result.score=state.claimable()?std::max(0,current[0].score):current[0].score;result.pv=current[0].pv;
         SearchInfo info;info.depth=depth;info.nodes=control->nodes.load();info.elapsed_ms=(monotonic_ns()-start)/1000000;info.hashfull=table_->hashfull();
         for(auto& worker:workers)info.stats+=worker->stats;

@@ -11,8 +11,8 @@ def main():
     if not 1<=a.probes<=1000000:ap.error('probe count out of bounds')
     a.output.mkdir(parents=True,exist_ok=False);torch.set_num_threads(2)
     if a.checkpoint:
-        state=torch.load(a.checkpoint,map_location='cpu',weights_only=False);model=CaissaNet();model.load_state_dict(state['model'])
-    elif a.untrained_seed is not None:torch.manual_seed(a.untrained_seed);model=CaissaNet()
+        state=torch.load(a.checkpoint,map_location='cpu',weights_only=False);model=CaissaNet(version=2 if state["config"].get("network_contract","").startswith("v2") else 1);model.load_state_dict(state['model'])
+    elif a.untrained_seed is not None:torch.manual_seed(a.untrained_seed);model=CaissaNet(version=int.from_bytes(a.network.read_bytes()[8:12],"little"))
     else:ap.error('provide saved checkpoint or explicitly labeled untrained seed')
     model.eval();rng=random.Random(67867967);b=chess.Board();fens=[]
     for i in range(a.probes):

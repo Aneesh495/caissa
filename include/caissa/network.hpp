@@ -38,6 +38,7 @@ private:
     std::int32_t bias3_=0;
     std::string identity_;
     std::uint32_t checksum_=0;
+    int scale_=64,clip_=127;
     void add(std::array<std::int32_t,transformer_width>& accumulator,int feature,int sign)const;
 };
 std::int64_t dot_scalar(const std::int16_t* a,const std::int16_t* b,std::size_t count);

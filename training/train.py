@@ -25,7 +25,7 @@ def main():
     manifest=json.loads((a.dataset/'DATASET.json').read_text())
     for filename,sha in manifest['files'].items():
         if digest(a.dataset/filename)!=sha:raise ValueError('dataset bytes changed')
-    dataset_id=digest(a.dataset/'DATASET.json');config={k:v for k,v in vars(a).items() if k not in ['resume','output','dataset']};config.update({'dataset_sha256':dataset_id,'schema':'caissa-train-config-v1','torch':torch.__version__})
+    dataset_id=digest(a.dataset/'DATASET.json');config={k:v for k,v in vars(a).items() if k not in ['resume','output','dataset']};config.update({'dataset_sha256':dataset_id,'schema':'caissa-train-config-v1','torch':torch.__version__,'network_contract':'v2-q1024-clip2047-64-32-16'})
     a.output.mkdir(parents=True,exist_ok=True);cfg=a.output/'CONFIG.json'
     if cfg.exists() and json.loads(cfg.read_text())!=config:raise ValueError('resume configuration differs')
     atomic_json(cfg,config)

@@ -3,7 +3,8 @@
 namespace caissa {
 std::string json_quote(std::string_view text) {
     constexpr char hex[]="0123456789abcdef";std::string out="\"";
-    for(unsigned char c:text) {
+    for(char raw:text) {
+        auto c=static_cast<unsigned char>(raw);
         if(c=='"'||c=='\\'){out+='\\';out+=static_cast<char>(c);}
         else if(c=='\n')out+="\\n";else if(c=='\r')out+="\\r";else if(c=='\t')out+="\\t";
         else if(c<32){out+="\\u00";out+=hex[c>>4];out+=hex[c&15];}
