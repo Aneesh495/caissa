@@ -15,6 +15,7 @@ struct Undo {
     Key key=0;
     std::size_t history_size=0;
     Color side=Color::white;
+    int synthetic_depth=0;
 };
 class Position {
 public:
@@ -32,6 +33,7 @@ public:
     std::uint32_t halfmove() const { return halfmove_; }
     std::uint32_t fullmove() const { return fullmove_; }
     bool chess960() const { return chess960_; }
+    bool synthetic_search_path() const {return synthetic_depth_>0;}
     Key key() const { return key_; }
     Key recompute_key() const;
     Key repetition_key() const;
@@ -62,6 +64,7 @@ private:
     std::uint32_t halfmove_=0, fullmove_=1;
     Key key_=0;
     bool chess960_=false;
+    int synthetic_depth_=0;
     std::vector<Key> history_;
     Key metadata_key() const;
     void put(Square s, Piece p);

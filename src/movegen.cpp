@@ -107,7 +107,7 @@ Moves Position::legal() {
 }
 Undo Position::save_state() const {
     Undo u;u.castling=castling_;u.ep=ep_;u.halfmove=halfmove_;u.fullmove=fullmove_;
-    u.key=key_;u.history_size=history_.size();u.side=side_;return u;
+    u.key=key_;u.history_size=history_.size();u.side=side_;u.synthetic_depth=synthetic_depth_;return u;
 }
 void Position::save_square(Undo& u, Square s) {
     for(std::uint8_t i=0;i<u.count;++i) if(u.squares[i]==s) return;
@@ -144,7 +144,7 @@ Undo Position::make(Move m) {
     return u;
 }
 Undo Position::make_null() {
-    auto u=save_state();key_^=metadata_key();ep_=no_square;side_=opposite(side_);key_^=metadata_key();
+    auto u=save_state();++synthetic_depth_;key_^=metadata_key();ep_=no_square;side_=opposite(side_);key_^=metadata_key();
     // Null moves are search artifacts and never enter game repetition history.
     return u;
 }
@@ -152,7 +152,7 @@ void Position::unmake(const Undo& u) {
     for(std::uint8_t i=0;i<u.count;++i) put(u.squares[i],0);
     for(std::uint8_t i=0;i<u.count;++i) put(u.squares[i],u.pieces[i]);
     castling_=u.castling;ep_=u.ep;halfmove_=u.halfmove;fullmove_=u.fullmove;
-    key_=u.key;side_=u.side;history_.resize(u.history_size);
+    key_=u.key;side_=u.side;synthetic_depth_=u.synthetic_depth;history_.resize(u.history_size);
 }
 std::string Position::uci(Move m) const {
     if(!m.valid()) return "0000";
