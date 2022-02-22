@@ -1,0 +1,7 @@
+# Original selfplay and replay
+
+`src/selfplay.cpp` creates legal random openings, then uses the original search and classical evaluator. Every saved sample separates the side-to-move search score from the eventual white-perspective result. Early near-best sampling is seeded and bounded to a 30 cp window. It supplies move diversity without asking another engine for labels. A game ending during the opening can legitimately have zero training samples. The corpus runner initially rejected that case; the correction retains the completed game and contributes zero positions.
+
+`training/corpus.py` journals a complete color-reversed pair with an atomic file replacement and directory fsync. Existing pairs are not replayed during restart. Configuration and executable hashes must match. `training/prepare.py` uses python-chess only as an isolated legal replay oracle. It reconstructs every sample FEN, checks the actual terminal or current claim, and rejects swapped result colors. A 512-ply resource exhaustion stays unfinished, with no manufactured draw label.
+
+The 400-game pilot produced 28534 samples and 16998 distinct usable identities. This is insufficient for full learning acceptance. The larger campaign uses a frozen older teacher executable, whose source identity is separate from later candidate improvements. Improving candidate search does not retroactively improve historical labels. The full distinct-training count must come from replay and deduplication, not from generated file counts or repeated epochs.

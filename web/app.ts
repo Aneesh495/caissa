@@ -128,7 +128,7 @@ function drawLines(): void {
     score.textContent = line.scoreType === 'mate' ? `#${value}` : `${value >= 0 ? '+' : ''}${(value / 100).toFixed(2)}`;
     const path = document.createElement('span'); path.className = 'pv-path'; path.textContent = `${rank}. ${(line.pv ?? []).join(' ')}${line.bound ? ' (' + line.bound + ')' : ''}`;
     const play = document.createElement('button'); play.textContent = 'Play line'; play.title = 'Add this principal variation to the game';
-    const captured = [...(line.pv ?? [])]; play.addEventListener('click', () => safe(async () => { const identity = ++playing; for (const move of captured) { if (playing !== identity) break; const before = current; await appendMove(move, identity); if (current === before) break; } }));
+    const captured = [...(line.pv ?? [])]; play.addEventListener('click', () => safe(async () => { const identity = ++playing; for (const move of captured) { if (playing !== identity) break; const before = current; await appendMove(move, identity); if (current === before) break; await new Promise((resolve) => window.setTimeout(resolve, 100)); } }));
     row.append(score, path, play); target.append(row);
   }
 }

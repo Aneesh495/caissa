@@ -41,6 +41,7 @@ public:
     bool attacked(Square s, Color by, Bitboard occupancy) const;
     bool attacked(Square s, Color by) const { return attacked(s,by,occupied()); }
     bool in_check(Color c) const { return attacked(king(c),opposite(c)); }
+    Bitboard attackers_to(Square target,Color by) const;
     Bitboard checkers(Color c) const;
     Bitboard pinned(Color c) const;
     bool can_castle(int wing) const;
