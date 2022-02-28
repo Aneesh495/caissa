@@ -1,0 +1,21 @@
+digraph caissa {
+  graph [rankdir=TB, bgcolor="white", label="Search bound contract", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  root [label="Root tasks + shared alpha"];
+  terminal [label="Legal moves then terminal rules"];
+  tt [label="Context-tagged table probe"];
+  null [label="Guarded null / verified reduction"];
+  order [label="SEE / hash / history ordering"];
+  child [label="Negated reversed window"];
+  quiet [label="In-check aware quiescence"];
+  bound [label="Exact / lower / upper store"];
+  root -> terminal [label="one owned position"];
+  terminal -> tt [label="depth > 0"];
+  terminal -> quiet [label="depth <= 0"];
+  tt -> null [label="no safe cutoff"];
+  null -> order [label="not pruned"];
+  order -> child [label="scoped make"];
+  child -> terminal [label="recursive visit"];
+  child -> bound [label="completed score only"];
+}

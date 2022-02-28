@@ -1,0 +1,22 @@
+digraph caissa {
+  graph [rankdir=LR, bgcolor="white", label="Legal generation", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  fen [label="Structurally checked FEN"];
+  pseudo [label="Pseudo-legal targets"];
+  checks [label="Checkers + absolute pins"];
+  king [label="King destination attack test"];
+  ep [label="En passant make/check/undo"];
+  castle [label="Vacancy + transit + final attacks"];
+  legal [label="Legal move set"];
+  mailbox [label="Independent 10x12 mailbox"];
+  fen -> pseudo [label="piece / side masks"];
+  pseudo -> checks [label="check evasion mask"];
+  checks -> king [label="king moves"];
+  checks -> ep [label="special occupancy"];
+  pseudo -> castle [label="rook-origin rights"];
+  king -> legal [label="safe square"];
+  ep -> legal [label="king preserved"];
+  castle -> legal [label="all conditions"];
+  legal -> mailbox [label="differential diagnostic"];
+}

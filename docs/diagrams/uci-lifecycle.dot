@@ -1,0 +1,22 @@
+digraph caissa {
+  graph [rankdir=TB, bgcolor="white", label="Protocol thread ownership", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  idle [label="Idle position / table"];
+  parse [label="Bounded command parse"];
+  run [label="Owned coordinator thread"];
+  workers [label="Bounded search workers"];
+  stop [label="Atomic stop / deadline / nodes"];
+  join [label="Join before state mutation"];
+  best [label="Exactly one legal fallback / bestmove"];
+  quit [label="Teardown on quit or EOF"];
+  idle -> parse [label="input"];
+  parse -> run [label="go"];
+  run -> workers [label="root work"];
+  parse -> stop [label="stop / repeated go"];
+  stop -> join [label="cooperative unwind"];
+  workers -> join [label="depth / budget completion"];
+  join -> best [label="completed iteration or fallback"];
+  best -> idle [label="repeated session"];
+  join -> quit [label="quit / EOF"];
+}

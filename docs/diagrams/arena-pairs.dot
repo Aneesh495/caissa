@@ -1,0 +1,19 @@
+digraph caissa {
+  graph [rankdir=TB, bgcolor="white", label="Recoverable paired execution", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  opening [label="Frozen opening bytes"];
+  white [label="Candidate white game"];
+  black [label="Candidate black game"];
+  single [label="Atomic per-game records + PGNs"];
+  pair [label="Atomic complete pair record"];
+  stats [label="Opening-cluster bootstrap"];
+  verify [label="Independent terminal replay / recomputation"];
+  opening -> white [label="same initial moves"];
+  opening -> black [label="colors reversed"];
+  white -> single [label="retain crashes / time losses"];
+  black -> single [label="resume missing second game"];
+  single -> pair [label="both games present"];
+  pair -> stats [label="no exclusion of losses"];
+  stats -> verify [label="raw records, not pass flags"];
+}

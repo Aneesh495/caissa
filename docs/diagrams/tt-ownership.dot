@@ -1,0 +1,19 @@
+digraph caissa {
+  graph [rankdir=LR, bgcolor="white", label="Data-race-free table access", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  workers [label="At most eight workers"];
+  key [label="Board + clock + reversible context"];
+  stripe [label="One of 512 mutex stripes"];
+  bucket [label="Four tagged entries"];
+  copy [label="Return a value copy"];
+  replace [label="Depth + age replacement"];
+  cutoff [label="Caller checks depth / bound / mate ply"];
+  workers -> key [label="local position"];
+  key -> stripe [label="bucket address"];
+  stripe -> bucket [label="exclusive payload access"];
+  bucket -> copy [label="probe"];
+  bucket -> replace [label="store"];
+  copy -> cutoff [label="lock released"];
+  replace -> stripe [label="release"];
+}

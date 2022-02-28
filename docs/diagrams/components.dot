@@ -1,0 +1,19 @@
+digraph caissa {
+  graph [rankdir=LR, bgcolor="white", label="Typed component boundaries", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  position [label="Position + Undo"];
+  attacks [label="Bitboard rays"];
+  rules [label="Claims + terminal rules"];
+  search [label="PVS workers"];
+  table [label="Locked table"];
+  net [label="Two-perspective network"];
+  notation [label="SAN / variation tree"];
+  position -> attacks [label="geometry"];
+  rules -> position [label="known history"];
+  search -> position [label="scoped moves"];
+  search -> rules [label="terminal precedence"];
+  search -> table [label="context key / bounds"];
+  search -> net [label="owned accumulator"];
+  notation -> position [label="native legal replay"];
+}

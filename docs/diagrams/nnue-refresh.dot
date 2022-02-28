@@ -1,0 +1,19 @@
+digraph caissa {
+  graph [rankdir=TB, bgcolor="white", label="Two-perspective incremental evaluation", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  undo [label="Touched old pieces + prior key"];
+  bucket [label="New oriented king bucket"];
+  delta [label="Subtract old / add new rows"];
+  refresh [label="Bias + all active piece rows"];
+  clip [label="Clip each perspective"];
+  dense [label="32-wide then 16-wide nonlinear stages"];
+  output [label="Integer output / stored scale"];
+  undo -> bucket [label="compare per perspective"];
+  bucket -> delta [label="same bucket"];
+  bucket -> refresh [label="changed bucket"];
+  delta -> clip [label="accumulator owned by new key"];
+  refresh -> clip [label="full recomputation"];
+  clip -> dense [label="side-to-move perspective first"];
+  dense -> output [label="int64 reductions"];
+}

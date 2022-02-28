@@ -1,0 +1,20 @@
+digraph caissa {
+  graph [rankdir=TB, bgcolor="white", label="Game lineage and deduplication", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  pair [label="Original opening pair"];
+  journal [label="Atomic paired game journal"];
+  replay [label="Independent legality / outcome replay"];
+  family [label="Opening-family split"];
+  identity [label="Canonical transposition screening"];
+  arrays [label="Disjoint train / validation / test"];
+  train [label="Three independent seed runs"];
+  select [label="Validation-only model selection"];
+  pair -> journal [label="two colors"];
+  journal -> replay [label="completed outcomes only"];
+  replay -> family [label="retain game identity"];
+  family -> identity [label="global identity index"];
+  identity -> arrays [label="quarantine cross-split duplicates"];
+  arrays -> train [label="train identities only"];
+  train -> select [label="test remains untouched"];
+}

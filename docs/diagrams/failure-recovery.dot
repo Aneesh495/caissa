@@ -1,0 +1,21 @@
+digraph caissa {
+  graph [rankdir=TB, bgcolor="white", label="Interrupted work and restart", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  work [label="Bounded active game / training step"];
+  temporary [label="Temporary file"];
+  flush [label="Flush / fsync"];
+  atomic [label="Atomic committed record"];
+  restart [label="Inspect existing identities"];
+  match [label="Verify configuration + executable + splits"];
+  resume [label="Resume missing work only"];
+  reject [label="Reject incompatible restart"];
+  work -> temporary [label="in-progress bytes"];
+  temporary -> flush [label="complete useful record"];
+  flush -> atomic [label="replace"];
+  atomic -> restart [label="process interruption"];
+  restart -> match [label="never trust partial files"];
+  match -> resume [label="identity equal"];
+  match -> reject [label="identity changed"];
+  resume -> work [label="next missing pair / checkpoint step"];
+}
