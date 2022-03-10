@@ -1,0 +1,30 @@
+{
+  "profile": "diagnostic-warm",
+  "candidate": {
+    "name": "Caissa classical",
+    "command": [
+      "runs/frozen-candidate-current/caissa"
+    ],
+    "options": {
+      "Threads": 1,
+      "Hash": 16
+    }
+  },
+  "opponent": {
+    "name": "sf19-skill0",
+    "command": [
+      "/opt/homebrew/bin/stockfish"
+    ],
+    "options": {
+      "Threads": 1,
+      "Hash": 16,
+      "Skill Level": 0
+    }
+  },
+  "openings": "config/openings.json",
+  "pairs": 24,
+  "milliseconds": 20,
+  "transport_allowance_ms": 100,
+  "max_plies": 512,
+  "warmup_nodes": 1
+}

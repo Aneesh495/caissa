@@ -1,0 +1,1 @@
+{"profile":"synthetic-integration","candidate":{"name":"Caissa","command":["build/caissa"],"options":{"Threads":1,"Hash":1}},"opponent":{"name":"Caissa table-off control","command":["build/caissa"],"options":{"Threads":1,"Hash":1,"Use Table":false}},"openings":"config/ci-openings.json","pairs":2,"nodes":1000,"max_plies":64,"warmup_nodes":1}

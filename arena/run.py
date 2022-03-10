@@ -27,7 +27,7 @@ def game(config,opening,pair,reverse,root):
     clients=[];observations=[];termination='ply-limit';result='*';culprit=None
     try:
         for color,actor in enumerate(actors):
-            try:clients.append(UciClient(actor['command'],actor['options']))
+            try:clients.append(UciClient(actor['command'],actor['options'],warmup_nodes=config.get('warmup_nodes',0)))
             except EngineFailure as e:
                 culprit='white' if color==0 else 'black';termination='crash';result='0-1' if color==0 else '1-0';observations.append({'startup_failure':str(e),'color':culprit});break
         if len(clients)==2:
@@ -49,7 +49,7 @@ def game(config,opening,pair,reverse,root):
                     observations.append({'ply':len(moves),'failure':str(e)});culprit='white' if color==0 else 'black';termination='protocol-failure';result='0-1' if color==0 else '1-0';break
     finally:
         for client in clients:client.close()
-    record={'schema':'caissa-arena-game-v1','pair':pair,'reverse':reverse,'opening_id':opening['id'],'candidate_color':'white' if candidate_white else 'black','initial':initial,'opening_plies':len(opening['moves']),'moves':moves,'result':result,'termination':termination,'culprit':culprit,'observations':observations}
+    record={'schema':'caissa-arena-game-v1','pair':pair,'reverse':reverse,'opening_id':opening['id'],'candidate_color':'white' if candidate_white else 'black','initial':initial,'opening_plies':len(opening['moves']),'moves':moves,'result':result,'termination':termination,'culprit':culprit,'observations':observations,'warmup_ms':[c.warmup_ms for c in clients]}
     atomic_json(path,record)
     pgn=chess.pgn.Game();pgn.setup(chess.Board(initial));pgn.headers.update({'Event':'Caissa diagnostic arena','White':actors[0]['name'],'Black':actors[1]['name'],'Result':result,'Termination':termination,'OpeningId':opening['id']});node=pgn
     for text in moves:node=node.add_variation(chess.Move.from_uci(text))

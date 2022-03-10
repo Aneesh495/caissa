@@ -31,7 +31,11 @@ def summarize(records,resamples=20000,seed=104729):
     for offset in range(0,resamples,256):
         n=min(256,resamples-offset);indices=rng.integers(0,len(units),size=(n,len(units)));draws_by_cluster=units[indices].sum(axis=1);means[offset:offset+n]=draws_by_cluster[:,0]/draws_by_cluster[:,1]
     lo,hi=np.quantile(means,[.025,.975]);mean=float(values.mean())
-    return {'schema':'caissa-strength-v1','complete_pairs':len(pairs),'independent_opening_clusters':len(units),'games':wins+draws+losses,'wins':int(wins),'draws':int(draws),'losses':int(losses),'unfinished_games':unfinished,'score':mean,'score_95':[float(lo),float(hi)],'elo_difference':elo(mean),'elo_95':[elo(float(lo)),elo(float(hi))],'bootstrap':{'unit':'opening family containing color-reversed pairs','resamples':resamples,'seed':seed},'failures':failures,'complete_sample':unfinished==0}
+    boundary_guard=mean==0. or mean==1.
+    if boundary_guard:
+        weights=units[:,1]/units[:,1].sum();radius=math.sqrt(math.log(40.)*float((weights*weights).sum())/2)
+        lo=min(float(lo),max(0.,mean-radius));hi=max(float(hi),min(1.,mean+radius))
+    return {'schema':'caissa-strength-v1','complete_pairs':len(pairs),'independent_opening_clusters':len(units),'games':wins+draws+losses,'wins':int(wins),'draws':int(draws),'losses':int(losses),'unfinished_games':unfinished,'score':mean,'score_95':[float(lo),float(hi)],'elo_difference':elo(mean),'elo_95':[elo(float(lo)),elo(float(hi))],'statistics_version':2,'boundary_guard':boundary_guard,'bootstrap':{'unit':'opening family containing color-reversed pairs','resamples':resamples,'seed':seed},'failures':failures,'complete_sample':unfinished==0}
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('campaign',type=Path);a=ap.parse_args();records=[json.loads(p.read_text()) for p in sorted(a.campaign.glob('pairs/*.json'))];result=summarize(records);result['profile']=json.loads((a.campaign/'CONFIG.json').read_text())['config'].get('profile','unclassified');print(json.dumps(result,indent=2));(a.campaign/'SUMMARY.json').write_text(json.dumps(result,indent=2)+'\n')
