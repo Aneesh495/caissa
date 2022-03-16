@@ -56,7 +56,9 @@ def main():
                     if m not in board.legal_moves:raise RuntimeError('illegal bestmove '+best)
                     legal=list(board.legal_moves);board.push(rng.choice(legal))
                 if (i+1)%1000==0:print(f'{i+1} sequences complete',flush=True)
-            send('go ponder depth 1');time.sleep(.01);send('ponderhit');until('bestmove')
+            send('position startpos')
+            for _ in range(100):
+                send('go ponder depth 1');send('ponderhit');until('bestmove',timeout=1)
             send('X'*9000);send('isready');until('readyok');send('quit');p.wait(timeout=5)
         finally:
             if p.poll() is None:p.kill();p.wait()

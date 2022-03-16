@@ -28,7 +28,10 @@ struct SearchControl {
     std::atomic<std::uint64_t> nodes{0};
     std::atomic<std::int64_t> deadline_ns{INT64_MAX};
     std::uint64_t node_limit=0;
-    std::int64_t ponder_budget_ms=0;
+    std::atomic<std::int64_t> ponder_budget_ms{0};
+    std::atomic<bool> ponder_hit_requested{false};
+    std::once_flag initialize_once;
+    void initialize(const Limits& limits);
     void ponderhit();
 };
 struct SearchStats {

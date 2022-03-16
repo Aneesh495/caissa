@@ -8,6 +8,7 @@ def infer(path,fen):
     raw=Path(path).read_bytes()
     if len(raw)<120:raise ValueError('truncated independent network input')
     version,feature,nf,width,h1,h2,scale,clip=struct.unpack('<8I',raw[8:40])
+    if raw[:8]!=f'CAISSAN{version}'.encode():raise ValueError('network magic/version mismatch')
     if raw[:8] not in [b'CAISSAN1',b'CAISSAN2'] or (feature,nf,h1,h2)!=(1,12288,32,16) or width not in [32,64,128]:raise ValueError('unsupported independent network layout')
     if (version,scale,clip) not in [(1,64,127),(2,1024,2047)]:raise ValueError('unsupported numerical contract')
     length,checksum,reserved=struct.unpack('<QII',raw[104:120])
