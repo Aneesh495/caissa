@@ -74,7 +74,7 @@ def independent_statistics(records):
     for _ in range(20000):
         chosen=clusters[rng.integers(len(clusters),size=len(clusters))];samples.append(float(chosen[:,0].sum()/chosen[:,1].sum()))
     lo,hi=np.quantile(samples,[.025,.975]);mean=sum(values)/len(values)
-    if mean in (0.,1.):
+    if abs(float(hi)-float(lo))<1e-15:
         total=float(clusters[:,1].sum());squared_weights=sum((float(row[1])/total)**2 for row in clusters)
         radius=math.sqrt(math.log(2/.05)*squared_weights/2)
         lo=min(float(lo),max(0.,mean-radius));hi=max(float(hi),min(1.,mean+radius))
@@ -124,6 +124,8 @@ def verify(bundle,checkout,expected,profile):
         saved=summary.get(key)
         if isinstance(value,float):
             if not isinstance(saved,(int,float)) or abs(saved-value)>1e-12:raise Rejection('independent match statistic mismatch: '+key)
+        elif isinstance(value,list):
+            if not isinstance(saved,list) or len(saved)!=len(value) or any(abs(float(a)-float(b))>1e-12 for a,b in zip(saved,value)):raise Rejection('independent match interval mismatch: '+key)
         elif saved!=value:raise Rejection('independent match statistic mismatch: '+key)
     checks=load(bundle/'draw-probes.json')
     for game in checks:replay_game(game)

@@ -15,9 +15,18 @@ def finish_reason(board):
     if board.halfmove_clock>=100:return 'fifty-move-claim','1/2-1/2'
     return None
 
+def write_pgn(record,actors,path):
+    pgn=chess.pgn.Game();pgn.setup(chess.Board(record['initial']))
+    pgn.headers.update({'Event':'Caissa '+record.get('profile','diagnostic')+' arena','White':actors[0]['name'],'Black':actors[1]['name'],'Result':record['result'],'Termination':record['termination'],'OpeningId':record['opening_id']});node=pgn
+    for text in record['moves']:node=node.add_variation(chess.Move.from_uci(text))
+    temp=path.with_suffix('.pgn.tmp');temp.write_text(str(pgn)+'\n');temp.replace(path.with_suffix('.pgn'))
+
 def game(config,opening,pair,reverse,root):
     path=root/'games'/f'{pair:06d}-{reverse}.json'
-    if path.exists():return json.loads(path.read_text())
+    if path.exists():
+        record=json.loads(path.read_text());actors=[config['candidate'],config['opponent']] if reverse==0 else [config['opponent'],config['candidate']]
+        if not path.with_suffix('.pgn').exists():write_pgn(record,actors,path)
+        return record
     board=chess.Board(opening.get('fen',chess.STARTING_FEN));initial=board.fen(en_passant='fen');moves=[]
     for text in opening['moves']:
         move=chess.Move.from_uci(text)
@@ -49,11 +58,9 @@ def game(config,opening,pair,reverse,root):
                     observations.append({'ply':len(moves),'failure':str(e)});culprit='white' if color==0 else 'black';termination='protocol-failure';result='0-1' if color==0 else '1-0';break
     finally:
         for client in clients:client.close()
-    record={'schema':'caissa-arena-game-v1','pair':pair,'reverse':reverse,'opening_id':opening['id'],'candidate_color':'white' if candidate_white else 'black','initial':initial,'opening_plies':len(opening['moves']),'moves':moves,'result':result,'termination':termination,'culprit':culprit,'observations':observations,'warmup_ms':[c.warmup_ms for c in clients]}
+    record={'profile':config.get('profile','unclassified'),'schema':'caissa-arena-game-v1','pair':pair,'reverse':reverse,'opening_id':opening['id'],'candidate_color':'white' if candidate_white else 'black','initial':initial,'opening_plies':len(opening['moves']),'moves':moves,'result':result,'termination':termination,'culprit':culprit,'observations':observations,'warmup_ms':[c.warmup_ms for c in clients]}
     atomic_json(path,record)
-    pgn=chess.pgn.Game();pgn.setup(chess.Board(initial));pgn.headers.update({'Event':'Caissa diagnostic arena','White':actors[0]['name'],'Black':actors[1]['name'],'Result':result,'Termination':termination,'OpeningId':opening['id']});node=pgn
-    for text in moves:node=node.add_variation(chess.Move.from_uci(text))
-    temp=path.with_suffix('.pgn.tmp');temp.write_text(str(pgn)+'\n');temp.replace(path.with_suffix('.pgn'));return record
+    write_pgn(record,actors,path);return record
 
 def pair(config,opening,identity,root):
     path=root/'pairs'/f'{identity:06d}.json'
