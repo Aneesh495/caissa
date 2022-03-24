@@ -33,6 +33,7 @@ public:
             emit("option name UCI_Chess960 type check default false");emit("option name Ponder type check default false");
             for(auto name:{"Null Move","LMR","Extensions","PVS","Aspiration","Quiescence","History","SEE","Futility","Use Table"})emit(std::string("option name ")+name+" type check default true");
             emit("option name EvalFile type string default <empty>");emit("option name Use Neural type check default false");emit("option name Scalar Neural type check default false");
+            emit("option name Search Stats type check default false");emit("option name Trace Samples type spin default 0 min 0 max 64");
             emit("option name Clear Hash type button");emit("uciok");
         } else if(cmd=="isready") emit("readyok");
         else if(cmd=="stop") stop();
@@ -52,7 +53,7 @@ private:
     std::ostream& output_;std::mutex output_mutex_;Position position_;
     std::shared_ptr<TranspositionTable> table_;SearchOptions options_;
     std::shared_ptr<SearchControl> control_;std::jthread worker_;
-    int overhead_=20;bool chess960_=false;std::shared_ptr<const Network> loaded_network_;
+    int overhead_=20;bool chess960_=false,inspect_stats_=false;std::shared_ptr<const Network> loaded_network_;
     void emit(const std::string& text){std::lock_guard lock(output_mutex_);output_<<text<<'\n'<<std::flush;}
     void stop(){if(control_)control_->stop.store(true);if(worker_.joinable())worker_.join();control_.reset();}
     void option(const std::vector<std::string>& t) {
@@ -68,6 +69,8 @@ private:
         else if(name=="Hash")table_=std::make_shared<TranspositionTable>(static_cast<std::size_t>(number(value,1024)));
         else if(name=="Threads"){auto n=number(value,8);if(n==0)throw InputError("Threads must be positive");options_.threads=static_cast<int>(n);}
         else if(name=="MultiPV"){auto n=number(value,32);if(n==0)throw InputError("MultiPV must be positive");options_.multipv=static_cast<int>(n);}
+        else if(name=="Search Stats")inspect_stats_=boolean(value);
+        else if(name=="Trace Samples")options_.trace_limit=static_cast<int>(number(value,64));
         else if(name=="Move Overhead")overhead_=static_cast<int>(number(value,1000));
         else if(name=="UCI_Chess960")chess960_=boolean(value);
         else if(name=="Ponder") {(void)boolean(value);}
@@ -133,11 +136,18 @@ private:
             limits.milliseconds=time_budget(static_cast<std::int64_t>(remaining),static_cast<std::int64_t>(increment),moves_to_go,overhead_);
             limits.milliseconds=std::min<std::int64_t>(limits.milliseconds,600000);
         } else if(!have_clock&&!have_limit)limits.milliseconds=1000;
-        stop();control_=std::make_shared<SearchControl>();control_->initialize(limits);auto control=control_;auto root=position_;auto options=options_;auto table=table_;
-        worker_=std::jthread([this,control,root,options,table,limits] {
+        stop();control_=std::make_shared<SearchControl>();control_->initialize(limits);auto control=control_;auto root=position_;auto options=options_;auto table=table_;bool stats_enabled=inspect_stats_;
+        worker_=std::jthread([this,control,root,options,table,limits,stats_enabled] {
             try {
                 Search search(table);auto result=search.run(root,limits,options,control,[&](const SearchInfo& data){info(root,data);});
                 while(control->pondering.load()&&!control->stop.load())std::this_thread::sleep_for(std::chrono::milliseconds(1));
+                if(stats_enabled) {
+                    auto& s=result.info.stats;std::ostringstream details;
+                    details<<"info string stats qnodes "<<s.qnodes<<" tt_hits "<<s.table_hits<<" tt_cutoffs "<<s.table_cutoffs<<" beta_cutoffs "<<s.beta_cutoffs<<" null_cutoffs "<<s.null_cutoffs<<" lmr "<<s.lmr_searches<<" researches "<<s.researches<<" futility "<<s.futility_skips<<" eval_calls "<<s.evaluator_calls<<" eval_ns "<<s.evaluator_ns<<" completed_depth_nodes "<<result.info.completed_depth_nodes;emit(details.str());
+                }
+                for(auto& sample:result.info.trace) {
+                    std::ostringstream detail;detail<<"info string trace depth "<<sample.depth<<" ply "<<sample.ply<<" alpha "<<sample.alpha<<" beta "<<sample.beta<<" synthetic "<<sample.synthetic<<" fen "<<sample.fen;emit(detail.str());
+                }
                 std::string text="bestmove "+root.uci(result.best);
                 if(result.pv.size()>1){auto next=root;next.make(result.best);text+=" ponder "+next.uci(result.pv[1]);}emit(text);
             }catch(const std::exception& e){error(e);auto p=root;auto moves=p.legal();emit("bestmove "+(moves.empty()?std::string("0000"):p.uci(moves[0])));}

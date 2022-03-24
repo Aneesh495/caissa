@@ -47,9 +47,11 @@ class Worker {
 public:
     Worker(TranspositionTable& table,SearchControl& control,const SearchOptions& options):table_(table),control_(control),options_(options){}
     SearchStats stats;
+    std::vector<TraceSample> trace;
     void reset(const Position& p){if(options_.network)accumulator_=options_.network->refresh(p);}
     int visit(Position& p,int depth,int alpha,int beta,int ply,bool allow_null,Move previous,Moves& pv) {
         touch(ply);pv.clear();
+        if(depth>=2&&trace.size()<static_cast<std::size_t>(options_.trace_limit))trace.push_back({p.fen(),depth,alpha,beta,ply,p.synthetic_search_path()});
         if(ply>=max_ply-1) return evaluate(p);
         bool check=p.in_check(p.side());
         auto moves=p.legal();auto state=rules(p,moves);
@@ -187,7 +189,7 @@ private:
 };
 }
 SearchResult Search::run(Position root,const Limits& limits,const SearchOptions& options,std::shared_ptr<SearchControl> control,const InfoCallback& callback) {
-    if(options.threads<1||options.threads>8||options.multipv<1||options.multipv>32||limits.depth<1||limits.depth>64)throw InputError("search resources out of bounds");
+    if(options.threads<1||options.threads>8||options.multipv<1||options.multipv>32||options.trace_limit<0||options.trace_limit>64||limits.depth<1||limits.depth>64)throw InputError("search resources out of bounds");
     auto start=monotonic_ns();control->initialize(limits);
     auto legal=root.legal();SearchResult result;
     auto state=rules(root,legal);if(state.ended()) {result.score=state.terminal==Termination::checkmate?-mate_score:0;return result;}
@@ -235,7 +237,7 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
         if(!complete) {result.interrupted=true;break;}
         std::stable_sort(current.begin(),current.end(),[](const auto& a,const auto& b){return a.score!=b.score?a.score>b.score:a.bound==Bound::exact&&b.bound!=Bound::exact;});prior=current;
         result.best=current[0].move;result.score=state.claimable()?std::max(0,current[0].score):current[0].score;result.pv=current[0].pv;
-        SearchInfo info;info.depth=depth;info.nodes=control->nodes.load();info.elapsed_ms=(monotonic_ns()-start)/1000000;info.hashfull=table_->hashfull();
+        SearchInfo info;info.depth=depth;info.nodes=control->nodes.load();info.completed_depth_nodes=info.nodes;info.elapsed_ms=(monotonic_ns()-start)/1000000;info.hashfull=table_->hashfull();
         for(auto& worker:workers)info.stats+=worker->stats;
         info.lines.assign(current.begin(),current.begin()+static_cast<std::ptrdiff_t>(std::min(current.size(),static_cast<std::size_t>(options.multipv))));result.info=info;
         if(callback)callback(info);
@@ -243,7 +245,7 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
     }
     result.info.nodes=control->nodes.load();if(limits.nodes)result.info.nodes=std::min(result.info.nodes,limits.nodes);
     result.info.elapsed_ms=(monotonic_ns()-start)/1000000;
-    result.info.stats={};for(auto& worker:workers)result.info.stats+=worker->stats;
+    result.info.stats={};for(auto& worker:workers){result.info.stats+=worker->stats;result.info.trace.insert(result.info.trace.end(),worker->trace.begin(),worker->trace.end());}
     return result;
 }
 }

@@ -13,6 +13,10 @@
 #include <string_view>
 using namespace caissa;
 namespace {
+std::uint64_t parse_u64(std::string_view text) {
+    std::uint64_t value=0;auto [end,error]=std::from_chars(text.data(),text.data()+text.size(),value);
+    if(error!=std::errc{}||end!=text.data()+text.size())throw InputError("invalid unsigned integer");return value;
+}
 int parse_depth(std::string_view s) {
     int depth=-1;auto [p,e]=std::from_chars(s.data(),s.data()+s.size(),depth);
     if(e!=std::errc{}||p!=s.data()+s.size()||depth<0||depth>80) throw InputError("invalid depth");return depth;
@@ -31,7 +35,7 @@ int main(int argc,char** argv) {
     try {
         if(argc==1)return uci_loop(std::cin,std::cout);
         if(argc==4&&std::string_view(argv[1])=="--eval-bench") {
-            auto net=Network::load(argv[2]);auto calls=std::stoull(argv[3]);if(calls<100||calls>10000000)throw InputError("evaluation calls outside bounds");
+            auto net=Network::load(argv[2]);auto calls=parse_u64(argv[3]);if(calls<100||calls>10000000)throw InputError("evaluation calls outside bounds");
             auto p=Position::start();auto accumulator=net->refresh(p);std::int64_t signature=0;
             for(int i=0;i<128;++i)signature+=net->evaluate(p,accumulator);
             auto begin=monotonic_ns();for(std::uint64_t i=0;i<calls;++i)signature+=net->evaluate(p,accumulator,true);auto scalar=monotonic_ns()-begin;
@@ -57,7 +61,7 @@ int main(int argc,char** argv) {
             return 0;
         }
         if(argc==6&&std::string_view(argv[1])=="--selfplay-pair") {
-            std::uint64_t pair=std::stoull(argv[2]),seed=std::stoull(argv[3]),nodes=std::stoull(argv[4]);
+            std::uint64_t pair=parse_u64(argv[2]),seed=parse_u64(argv[3]),nodes=parse_u64(argv[4]);
             int opening=parse_depth(argv[5]);selfplay_pair(std::cout,pair,seed,nodes,opening,512);return 0;
         }
         if(argc==2&&std::string_view(argv[1])=="--version") {std::cout<<version()<<'\n';return 0;}
@@ -72,7 +76,7 @@ int main(int argc,char** argv) {
             SearchOptions options;if(argc>4)options.threads=parse_depth(argv[4]);
             Search search(std::make_shared<TranspositionTable>(32));
             auto r=search.run(p,limits,options,std::make_shared<SearchControl>());
-            std::cout<<"{\"bestmove\":\""<<p.uci(r.best)<<"\",\"score\":"<<r.score<<",\"depth\":"<<r.info.depth<<",\"nodes\":"<<r.info.nodes<<",\"milliseconds\":"<<r.info.elapsed_ms<<",\"pv\":[";
+            std::cout<<"{\"bestmove\":\""<<p.uci(r.best)<<"\",\"score\":"<<r.score<<",\"depth\":"<<r.info.depth<<",\"nodes\":"<<r.info.nodes<<",\"milliseconds\":"<<r.info.elapsed_ms<<",\"completed_depth_nodes\":"<<r.info.completed_depth_nodes<<",\"evaluator_calls\":"<<r.info.stats.evaluator_calls<<",\"evaluator_ns\":"<<r.info.stats.evaluator_ns<<",\"table_hits\":"<<r.info.stats.table_hits<<",\"qnodes\":"<<r.info.stats.qnodes<<",\"pv\":[";
             bool first=true;for(auto m:r.pv){if(!first)std::cout<<',';first=false;std::cout<<'"'<<p.uci(m)<<'"';p.make(m);}
             std::cout<<"]}\n";return 0;
         }
