@@ -1,0 +1,68 @@
+name: correctness
+on:
+  push:
+  pull_request:
+concurrency:
+  group: correctness-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  native:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Independent verifier dependencies
+        run: python -m pip install numpy==2.2.6 chess==1.11.2
+      - name: Build and original native correctness
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build -j 4
+          ctest --test-dir build --output-on-failure
+          python tools/check_perft.py
+          ./build/network_test models/diagnostic-v2.cai 10000
+          python tests/format_controls.py --network models/diagnostic-v2.cai
+          python -m tests.statistics_test
+      - name: Real analysis integration
+        run: |
+          npm ci --ignore-scripts
+          npm run build
+          node dist/analysis-service/server.js > runs/service.log 2>&1 &
+          SERVICE_PID=$!
+          trap 'kill "$SERVICE_PID"' EXIT
+          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8765/api/session >/dev/null && break || sleep 0.2; done
+          node tests/service_integration.mjs
+      - name: Native arena and semantic negative controls
+        run: |
+          python -m arena.run config/arena-ci.json runs/ci-arena --workers 1
+          python -m arena.statistics runs/ci-arena
+          python -m tools.evidence --checkout . --engine build/caissa --network models/diagnostic-v2.cai --arena runs/ci-arena --output runs/ci-evidence
+          python -m verification.verify runs/ci-evidence --checkout . --expected-commit "$GITHUB_SHA" --profile diagnostic
+          python -m tools.negative_controls runs/ci-evidence runs/ci-negative --checkout . --expected-commit "$GITHUB_SHA"
+      - name: Docs and packaging
+        run: |
+          python tools/check_docs.py
+          cmake --install build --prefix runs/package
+          test -x runs/package/bin/caissa
+          runs/package/bin/caissa --version
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: diagnostic-${{ matrix.os }}
+          path: |
+            runs/ci-evidence
+            runs/ci-negative/CONTROLS.json
+            runs/ci-arena/SUMMARY.json
+            runs/service.log
+          retention-days: 14
