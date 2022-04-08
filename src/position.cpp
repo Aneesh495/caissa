@@ -101,6 +101,7 @@ Position Position::from_fen(std::string_view fen, bool chess960) {
         p.ep_=*s;
     }
     p.halfmove_=counter(half,false);p.fullmove_=counter(full,true);
+    if(p.ep_!=no_square&&p.halfmove_!=0)throw InputError("en passant requires a zero halfmove clock");
     if(p.in_check(opposite(p.side_))) throw InputError("side that just moved is in check");
     p.key_=p.recompute_key();
     p.history_.push_back(p.repetition_key());

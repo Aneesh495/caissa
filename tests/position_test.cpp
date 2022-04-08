@@ -15,7 +15,7 @@ int main() {
         check(perft(kiwi,3)==97862,"kiwipete depth 3");
         auto ep=Position::from_fen("4k3/8/8/r4pPK/8/8/8/8 w - f6 0 1");
         check(!ep.parse_uci("g5f6"),"en passant exposes king");
-        for(auto fen:{"8/8/8/8/8/8/8/8 w - - 0 1","4k3/8/8/8/8/8/8/4K3 w K - 0 1","4k3/8/8/8/8/8/8/4K3 w - - -1 0"}) {
+        for(auto fen:{"8/8/8/8/8/8/8/8 w - - 0 1","4k3/8/8/8/8/8/8/4K3 w K - 0 1","4k3/8/8/8/8/8/8/4K3 w - - -1 0","4k3/8/8/3p4/8/8/8/4K3 w - d6 3 1"}) {
             bool rejected=false;try {Position::from_fen(fen);}catch(const InputError&){rejected=true;}check(rejected,"bad FEN accepted");
         }
         std::mt19937 rng(1729);std::vector<Undo> stack;std::vector<std::string> fens;

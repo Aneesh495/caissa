@@ -13,5 +13,7 @@ int main(){try {
     auto variant=Game::parse("[FEN \"4k3/8/8/8/8/8/8/5KR1 w G - 0 1\"]\n[Variant \"Chess960\"]\n1. O-O *");
     if(variant.nodes.size()!=2||!variant.initial.chess960())throw std::runtime_error("variant tag order");
     auto initial=Position::start();if(parse_san(initial,"e4#"))throw std::runtime_error("incorrect mate marker accepted");
+    auto annotated=Game::parse("{Opening note} 1.e4! e5 $2 *");auto annotated_copy=Game::parse(annotated.pgn());
+    if(annotated_copy.nodes[0].comment!="Opening note"||annotated_copy.nodes[1].nags!=std::vector<int>{1}||annotated_copy.nodes[2].nags!=std::vector<int>{2})throw std::runtime_error("annotation or leading comment lost");
     std::cout<<"SAN, nested variations, comments and deterministic PGN export passed\n";
 }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}}
