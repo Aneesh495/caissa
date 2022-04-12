@@ -1,3 +1,4 @@
+#include "caissa/thread.hpp"
 #include "caissa/search.hpp"
 #include <algorithm>
 #include <cmath>
@@ -232,7 +233,7 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
             }
         };
         if(options.threads==1)work(0);
-        else {std::vector<std::jthread> pool;for(int id=0;id<options.threads;++id)pool.emplace_back(work,id);}
+        else {std::vector<JoiningThread> pool;for(int id=0;id<options.threads;++id)pool.emplace_back(work,id);}
         bool complete=std::all_of(completed.begin(),completed.end(),[](auto v){return v!=0;});
         if(!complete) {result.interrupted=true;break;}
         std::stable_sort(current.begin(),current.end(),[](const auto& a,const auto& b){return a.score!=b.score?a.score>b.score:a.bound==Bound::exact&&b.bound!=Bound::exact;});prior=current;

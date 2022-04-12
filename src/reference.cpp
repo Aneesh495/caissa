@@ -95,13 +95,17 @@ struct Mailbox {
                 }
                 continue;
             }
-            std::vector<int> directions;
-            if(k==2) directions={21,19,12,8,-8,-12,-19,-21};
-            if(k==3||k==5||k==6) directions.insert(directions.end(),{11,9,-9,-11});
-            if(k==4||k==5||k==6) directions.insert(directions.end(),{1,-1,10,-10});
-            for(int d:directions) for(int b=a+d;(*this)[b]!=99;b+=d) {
+            std::array<int,8> directions{};std::size_t direction_count=0;
+            auto append=[&](std::initializer_list<int> values){for(int value:values)directions[direction_count++]=value;};
+            if(k==2)append({21,19,12,8,-8,-12,-19,-21});
+            if(k==3||k==5||k==6)append({11,9,-9,-11});
+            if(k==4||k==5||k==6)append({1,-1,10,-10});
+            for(std::size_t direction=0;direction<direction_count;++direction) {
+                int d=directions[direction];
+                for(int b=a+d;(*this)[b]!=99;b+=d) {
                 if((*this)[b]*turn>0||std::abs((*this)[b])==6) break;
                 accept(a,b);if((*this)[b]||k==2||k==6) break;
+                }
             }
         }
         for(int w=0;w<2;++w) if(castle(w)) accept(king(turn),rooks[turn==1?0:1][static_cast<std::size_t>(w)],Kind::none,MoveFlag::castle);

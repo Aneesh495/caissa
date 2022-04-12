@@ -1,3 +1,4 @@
+#include "caissa/thread.hpp"
 #include "caissa/uci.hpp"
 #include "caissa/protocol_io.hpp"
 #include "caissa/search.hpp"
@@ -53,7 +54,7 @@ public:
 private:
     ProtocolOutput& output_;Position position_;
     std::shared_ptr<TranspositionTable> table_;SearchOptions options_;
-    std::shared_ptr<SearchControl> control_;std::jthread worker_;
+    std::shared_ptr<SearchControl> control_;JoiningThread worker_;
     int overhead_=20;bool chess960_=false,inspect_stats_=false;std::shared_ptr<const Network> loaded_network_;
     void emit(const std::string& text){output_.send(text);}
     void stop(){if(control_)control_->stop.store(true);if(worker_.joinable())worker_.join();control_.reset();}
@@ -138,7 +139,7 @@ private:
             limits.milliseconds=std::min<std::int64_t>(limits.milliseconds,600000);
         } else if(!have_clock&&!have_limit)limits.milliseconds=1000;
         stop();control_=std::make_shared<SearchControl>();control_->initialize(limits);auto control=control_;auto root=position_;auto options=options_;auto table=table_;bool stats_enabled=inspect_stats_;
-        worker_=std::jthread([this,control,root,options,table,limits,stats_enabled] {
+        worker_=JoiningThread([this,control,root,options,table,limits,stats_enabled] {
             try {
                 Search search(table);auto result=search.run(root,limits,options,control,[&](const SearchInfo& data){info(root,data);});
                 while(control->pondering.load()&&!control->stop.load())std::this_thread::sleep_for(std::chrono::milliseconds(1));

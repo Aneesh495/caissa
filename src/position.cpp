@@ -76,7 +76,7 @@ Position Position::from_fen(std::string_view fen, bool chess960) {
         if(upper=='K'||upper=='Q') {
             if(!chess960) rook=square(upper=='K'?7:0,home);
             else {
-                auto rooks=p.pieces(side,Kind::rook)&(0xffULL<<(home*8));
+                Bitboard rooks=p.pieces(side,Kind::rook)&(Bitboard{0xff}<<(home*8));
                 while(rooks) {
                     auto s=pop_lsb(rooks);
                     if(upper=='K'&&file(s)>file(p.king(side))) rook=s;
