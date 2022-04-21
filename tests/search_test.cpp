@@ -39,6 +39,9 @@ int main(){try {
     check(stopped.best.valid(),"stop lost legal fallback");check((monotonic_ns()-start)/1000000<100,"stop latency");
     limits.infinite=false;limits.nodes=250;options.threads=1;
     auto bounded=engine.run(Position::start(),limits,options,std::make_shared<SearchControl>());check(bounded.info.nodes<=250,"node budget exceeded");
+    auto failure_options=options;failure_options.threads=4;failure_options.inject_worker_start_failure_after=2;Limits failure_limits;failure_limits.infinite=true;auto failure_start=monotonic_ns();bool launch_rejected=false;
+    try{engine.run(Position::start(),failure_limits,failure_options,std::make_shared<SearchControl>());}catch(const std::runtime_error&){launch_rejected=true;}
+    check(launch_rejected&&(monotonic_ns()-failure_start)<100000000,"partial worker startup did not cancel and join");
     auto early_hit=std::make_shared<SearchControl>();early_hit->ponderhit();Limits ponder_limits;ponder_limits.ponder=true;ponder_limits.milliseconds=100;early_hit->initialize(ponder_limits);
     check(!early_hit->pondering.load()&&early_hit->deadline_ns.load()!=INT64_MAX,"early ponder hit was lost");
     check(time_budget(1000,10,30,20)>0&&time_budget(1,0,30,20)==1,"time allocation bounds");
