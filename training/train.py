@@ -15,7 +15,7 @@ def save(path,value):
     finally:os.close(directory)
 
 def targets(rows,weight):
-    outcome=rows[:,0];teacher=torch.sigmoid(rows[:,1]/400)
+    outcome=rows[:,0];teacher=rows[:,2] if rows.shape[1]>=3 else torch.sigmoid(rows[:,1]/400)
     return weight*outcome+(1-weight)*teacher
 
 def main():
@@ -29,7 +29,7 @@ def main():
     for filename,sha in manifest['files'].items():
         if filename.startswith('test-'):continue
         if digest(a.dataset/filename)!=sha:raise ValueError('dataset bytes changed')
-    dataset_id=digest(a.dataset/'DATASET.json');config={k:v for k,v in vars(a).items() if k not in ['resume','output','dataset']};config.update({'dataset_sha256':dataset_id,'schema':'caissa-train-config-v1','torch':torch.__version__,'network_contract':f'v2-q1024-clip2047-{a.width}-32-16','validation_count':min(8192,manifest['splits']['validation']),'validation_selection':'first sorted canonical SHA256 identities; no test arrays opened'})
+    dataset_id=digest(a.dataset/'DATASET.json');config={k:v for k,v in vars(a).items() if k not in ['resume','output','dataset']};config.update({'dataset_sha256':dataset_id,'schema':'caissa-train-config-v1','torch':torch.__version__,'network_contract':f'v2-q1024-clip2047-{a.width}-32-16','validation_count':min(8192,manifest['splits']['validation']),'validation_selection':('first sorted input SHA256 identities; no test arrays opened' if manifest.get('schema')=='caissa-dataset-v2' else 'first sorted canonical SHA256 identities; no test arrays opened')})
     a.output.mkdir(parents=True,exist_ok=True);lock_file=(a.output/'TRAIN.lock').open('a');fcntl.flock(lock_file.fileno(),fcntl.LOCK_EX|fcntl.LOCK_NB);cfg=a.output/'CONFIG.json'
     if cfg.exists() and json.loads(cfg.read_text())!=config:raise ValueError('resume configuration differs')
     atomic_json(cfg,config)
@@ -94,7 +94,7 @@ def main():
                     best_generation={'path':legacy,'sha256':digest(a.output/legacy)}
                 atomic_json(pointer,{'schema':'caissa-checkpoint-transaction-v1','last':current_generation,'best':best_generation})
                 alias('last.pt',relative);alias('best.pt',best_generation['path'])
-        summary={'status':'diagnostic-learning' if manifest['splits']['train']<10000000 or manifest['counts']['completed_games']<100000 else 'full-data-training-completed','seed':a.seed,'steps':a.steps,'updates':updates,'initial_sha256':initial_hash,'final_sha256':state_hash(model),'untrained_validation':untrained,'best_validation':best,'improved':best<untrained,'dataset_sha256':dataset_id,'test_accessed':False,'seconds_this_session':time.monotonic()-start,'training_positions':len(train_x),'validation_positions_evaluated':len(validation_indices)}
+        summary={'status':'diagnostic-learning' if manifest['splits']['train']<10000000 or manifest['counts']['completed_games']<100000 or not manifest.get('functional_deduplication',False) else 'full-data-training-completed','seed':a.seed,'steps':a.steps,'updates':updates,'initial_sha256':initial_hash,'final_sha256':state_hash(model),'untrained_validation':untrained,'best_validation':best,'improved':best<untrained,'dataset_sha256':dataset_id,'test_accessed':False,'seconds_this_session':time.monotonic()-start,'training_positions':len(train_x),'validation_positions_evaluated':len(validation_indices)}
         atomic_json(a.output/'SUMMARY.json',summary);print(json.dumps(summary))
     finally:log.close()
 if __name__=='__main__':main()
