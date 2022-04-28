@@ -3,7 +3,10 @@
 namespace caissa {
 TranspositionTable::TranspositionTable(std::size_t megabytes) {
     if(megabytes<1||megabytes>1024) throw InputError("Hash must be in [1,1024] MiB");
-    bucket_count_=std::bit_floor(megabytes*1024*1024/sizeof(Bucket));
+    auto budget=megabytes*1024*1024;
+    bucket_count_=std::bit_floor((budget*7/8)/sizeof(Bucket));
+    hint_count_=std::bit_floor((budget-bucket_count_*sizeof(Bucket))/sizeof(Hint));
+    hints_=std::make_unique<Hint[]>(hint_count_);
     buckets_=std::make_unique<Bucket[]>(bucket_count_);
 }
 std::optional<TableEntry> TranspositionTable::probe(Key key) const {
@@ -30,8 +33,24 @@ void TranspositionTable::store(Key key,Move move,int score,int evaluation,int de
     if(!move.valid()&&victim->key==key) move=victim->move;
     *victim={key,move,static_cast<std::int16_t>(mate_to_table(score,ply)),static_cast<std::int16_t>(evaluation),static_cast<std::int16_t>(depth),bound,age};
 }
+std::optional<Move> TranspositionTable::ordering_hint(Key key) const {
+    auto slot=static_cast<std::size_t>(key)&(hint_count_-1);
+    std::lock_guard lock(locks_[slot%stripe_count]);
+    const auto& hint=hints_[slot];
+    if(hint.depth>=0&&hint.key==key&&hint.move.valid())return hint.move;
+    return std::nullopt;
+}
+void TranspositionTable::store_hint(Key key,Move move,int depth) {
+    if(!move.valid())return;
+    auto slot=static_cast<std::size_t>(key)&(hint_count_-1);
+    std::lock_guard lock(locks_[slot%stripe_count]);
+    auto& hint=hints_[slot];auto age=age_.load(std::memory_order_relaxed);
+    if(hint.depth<0||hint.age!=age||depth>=hint.depth)
+        hint={key,move,static_cast<std::int16_t>(depth),age};
+}
 void TranspositionTable::new_search() {age_.fetch_add(1,std::memory_order_relaxed);}
 void TranspositionTable::clear() {
+    for(std::size_t h=0;h<hint_count_;++h){std::lock_guard lock(locks_[h%stripe_count]);hints_[h]=Hint{};}
     for(std::size_t b=0;b<bucket_count_;++b) {std::lock_guard lock(locks_[b%stripe_count]);buckets_[b]=Bucket{};}
 }
 int TranspositionTable::hashfull() const {
