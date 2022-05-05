@@ -10,11 +10,12 @@ namespace caissa {
 struct SearchOptions {
     bool table=true, pvs=true, aspiration=true, quiescence=true;
     bool null_move=true, lmr=true, extensions=true, history=true, see=true;
-    bool futility=true, ordering_hints=true;
+    bool futility=true, ordering_hints=false;
     int threads=1, multipv=1,trace_limit=0;
     int inject_worker_start_failure_after=-1;
     std::shared_ptr<const Network> network;
     bool scalar_network=false;
+    int neural_weight=100;
 };
 struct Limits {
     int depth=64;

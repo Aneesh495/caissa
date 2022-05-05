@@ -19,7 +19,13 @@ void replay(Position p,const Moves& pv){for(auto m:pv){auto legal=p.legal();chec
 int main(){try {
     SearchOptions exact;exact.null_move=false;exact.lmr=false;exact.extensions=false;exact.futility=false;exact.quiescence=false;
     for(auto fen:{"8/8/8/4k3/8/4K3/4P3/8 w - - 0 1","7k/8/8/8/8/8/4P3/4K3 w - - 0 1"}) {
-        auto p=Position::from_fen(fen);int expected=exhaustive(p,4,0);
+        for(bool hints:{false,true}) {
+        auto tested=exact;tested.ordering_hints=hints;
+        auto board=Position::from_fen("8/8/8/4k3/8/4K3/4P3/8 w - - 0 1");
+        Search verified(std::make_shared<TranspositionTable>(1));Limits bounded;bounded.depth=4;
+        check(verified.run(board,bounded,tested,std::make_shared<SearchControl>()).score==exhaustive(board,4,0),"hint ordering changed exact minimax value");
+    }
+    auto p=Position::from_fen(fen);int expected=exhaustive(p,4,0);
         for(bool use_table:{false,true}) {
             exact.table=use_table;Search engine(std::make_shared<TranspositionTable>(1));Limits limits;limits.depth=4;
             auto r=engine.run(p,limits,exact,std::make_shared<SearchControl>());check(r.score==expected,"PVS disagrees with independent minimax");replay(p,r.pv);

@@ -33,7 +33,9 @@ public:
             emit("option name MultiPV type spin default 1 min 1 max 32");
             emit("option name Move Overhead type spin default 20 min 0 max 1000");
             emit("option name UCI_Chess960 type check default false");emit("option name Ponder type check default false");
-            for(auto name:{"Null Move","LMR","Extensions","PVS","Aspiration","Quiescence","History","SEE","Futility","Use Table","Ordering Hints"})emit(std::string("option name ")+name+" type check default true");
+            for(auto name:{"Null Move","LMR","Extensions","PVS","Aspiration","Quiescence","History","SEE","Futility","Use Table"})emit(std::string("option name ")+name+" type check default true");
+            emit("option name Ordering Hints type check default false");
+            emit("option name Neural Weight type spin default 100 min 0 max 100");
             emit("option name EvalFile type string default <empty>");emit("option name Use Neural type check default false");emit("option name Scalar Neural type check default false");
             emit("option name Search Stats type check default false");emit("option name Trace Samples type spin default 0 min 0 max 64");
             emit("option name Clear Hash type button");emit("uciok");
@@ -68,6 +70,7 @@ private:
         if(name=="EvalFile") {loaded_network_=Network::load(value);if(options_.network)options_.network=loaded_network_;emit("info string network "+loaded_network_->identity());}
         else if(name=="Use Neural") {bool use=boolean(value);if(use&&!loaded_network_)throw InputError("load EvalFile before enabling neural evaluation");options_.network=use?loaded_network_:nullptr;}
         else if(name=="Scalar Neural") options_.scalar_network=boolean(value);
+        else if(name=="Neural Weight") options_.neural_weight=static_cast<int>(number(value,100));
         else if(name=="Hash")table_=std::make_shared<TranspositionTable>(static_cast<std::size_t>(number(value,1024)));
         else if(name=="Threads"){auto n=number(value,8);if(n==0)throw InputError("Threads must be positive");options_.threads=static_cast<int>(n);}
         else if(name=="MultiPV"){auto n=number(value,32);if(n==0)throw InputError("MultiPV must be positive");options_.multipv=static_cast<int>(n);}
