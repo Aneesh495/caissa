@@ -43,3 +43,7 @@ Match time controls and final width must be frozen after speed pilots in a subse
 Network arithmetic follows `docs/notes/quantization.md`. Diagnostic untrained maximum float/integer error was 46.1 cp. That observation does not freeze a trained-network tolerance. A justified trained-model tolerance must precede its held-out acceptance run. Record p50/p95/p99 command latency, evaluator ns/call, nodes/s, TT bytes, depth and cancellation for scalar and native kernels. UCI stop p99 must be below 50 ms under supported load. Race-instrumented execution is required separately from locking design review.
 
 Independent verification must reject rehashed illegal PVs, swapped colors/results, wrong network outputs and invalid draw claims, plus missing artifacts, source mismatch and corrupt bytes. No saved pass boolean can substitute for these subprocess checks.
+
+## Later version
+
+[Prospective protocol v2](EXPERIMENT_PLAN_V2.md) records the unenforced v1 resource ceiling and freezes the screened-input, q1024, width, mixture and match settings for future full runs. Earlier diagnostics retain their original identities and limitations.

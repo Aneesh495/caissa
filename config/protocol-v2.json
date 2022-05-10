@@ -1,0 +1,10 @@
+{
+  "schema": "caissa-experiment-protocol-v2",
+  "purpose": "Prospective full campaign; earlier diagnostics and protocol deviations retained",
+  "network": {"format": 2, "feature": 1, "width": 64, "dense": [32,16], "scale": 1024, "clip": 2047, "maximum_float_error_cp": 32, "probes": 100000, "probe_seed": 86028157, "neural_weight": 10},
+  "training": {"seeds": [17,41,73], "steps": 20000, "batch": 2048, "threads": 2, "device": "cpu", "lr": 0.001, "outcome_weight": 0.5, "checkpoint_every": 250},
+  "data": {"pairs": 200000, "teacher_nodes": 500, "workers": 8, "maximum_output_gib": 40, "minimum_free_gib": 10, "prospective_resume_wall_seconds": 43200, "minimum_training_inputs": 10000000, "minimum_completed_games": 100000, "functional_input_screening": true},
+  "matches": {"milliseconds": 20, "threads": 1, "hash_mib": 16, "warmup_nodes": 1, "transport_allowance_ms": 150, "maximum_plies": 512, "neural_pairs": 2000, "external_pairs": [334,333,333], "external_settings": ["Stockfish 19 Skill Level 0", "Stockfish 19 UCI_Elo 2000", "Stockfish 19 unrestricted"], "opening_file": "config/strength-openings.json", "bootstrap_resamples": 20000, "bootstrap_seed": 104729, "confidence": 0.95, "minimum_neural_gain_elo": 50, "minimum_neural_lower_elo_exclusive": 0},
+  "selection": "Seed/checkpoint selected on validation only; test unopened until selection. Blend/architecture frozen by this prospective protocol, never chosen from full-match outcomes.",
+  "historical_deviation": "v1 generation wall ceiling was not enforced; historical CPU hours are unavailable. This protocol does not retroactively pass v1. Future session wall/monotonic/child CPU times are recorded independently."
+}
