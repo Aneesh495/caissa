@@ -148,7 +148,7 @@ private:
                 while(control->pondering.load()&&!control->stop.load())std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 if(stats_enabled) {
                     auto& s=result.info.stats;std::ostringstream details;
-                    details<<"info string stats qnodes "<<s.qnodes<<" tt_hits "<<s.table_hits<<" ordering_hints "<<s.ordering_hint_hits<<" tt_cutoffs "<<s.table_cutoffs<<" beta_cutoffs "<<s.beta_cutoffs<<" null_cutoffs "<<s.null_cutoffs<<" lmr "<<s.lmr_searches<<" researches "<<s.researches<<" futility "<<s.futility_skips<<" eval_calls "<<s.evaluator_calls<<" eval_ns "<<s.evaluator_ns<<" completed_depth_nodes "<<result.info.completed_depth_nodes;emit(details.str());
+                    details<<"info string stats visited_nodes "<<result.info.nodes<<" table_bytes "<<table->bytes()<<" elapsed_ms "<<result.info.elapsed_ms<<" qnodes "<<s.qnodes<<" tt_hits "<<s.table_hits<<" ordering_hints "<<s.ordering_hint_hits<<" tt_cutoffs "<<s.table_cutoffs<<" beta_cutoffs "<<s.beta_cutoffs<<" null_cutoffs "<<s.null_cutoffs<<" lmr "<<s.lmr_searches<<" researches "<<s.researches<<" futility "<<s.futility_skips<<" eval_calls "<<s.evaluator_calls<<" eval_ns "<<s.evaluator_ns<<" completed_depth_nodes "<<result.info.completed_depth_nodes;emit(details.str());
                 }
                 for(auto& sample:result.info.trace) {
                     std::ostringstream detail;detail<<"info string trace depth "<<sample.depth<<" ply "<<sample.ply<<" alpha "<<sample.alpha<<" beta "<<sample.beta<<" synthetic "<<sample.synthetic<<" fen "<<sample.fen;emit(detail.str());
