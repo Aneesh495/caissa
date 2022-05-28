@@ -34,6 +34,7 @@ jobs:
           ./build/network_test models/diagnostic-v2.cai 10000
           python tests/format_controls.py --network models/diagnostic-v2.cai
           python -m tests.statistics_test
+          python -m tests.residual_contract
           python -m tests.arena_options
           python -m tests.features_test
           python -m training.corpus --engine build/caissa --pairs 50 --nodes 500 --workers 2 --output data/ci-original

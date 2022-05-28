@@ -55,6 +55,14 @@ int main(int argc,char** argv) {
             if(!move)throw InputError("illegal requested move");auto text=san(p,*move);p.make(*move);
             std::cout<<"{\"fen\":"<<json_quote(p.fen())<<",\"san\":"<<json_quote(text)<<"}\n";return 0;
         }
+        if(argc==2&&std::string_view(argv[1])=="--eval-probe") {
+            std::string line;
+            while(std::getline(std::cin,line)) {
+                auto p=Position::from_fen(line);
+                std::cout<<"{\"classical\":"<<classical(p)<<",\"contract\":"<<classical_contract_version<<"}\n"<<std::flush;
+            }
+            return 0;
+        }
         if(argc==3&&std::string_view(argv[1])=="--net-probe") {
             auto net=Network::load(argv[2]);std::string line;
             while(std::getline(std::cin,line)) {
@@ -63,9 +71,9 @@ int main(int argc,char** argv) {
             }
             return 0;
         }
-        if(argc==6&&std::string_view(argv[1])=="--selfplay-pair") {
+        if((argc==6||(argc==7&&std::string_view(argv[6])=="searched-v2"))&&std::string_view(argv[1])=="--selfplay-pair") {
             std::uint64_t pair=parse_u64(argv[2]),seed=parse_u64(argv[3]),nodes=parse_u64(argv[4]);
-            int opening=parse_depth(argv[5]);selfplay_pair(std::cout,pair,seed,nodes,opening,512);return 0;
+            int opening=parse_depth(argv[5]);selfplay_pair(std::cout,pair,seed,nodes,opening,512,argc==7);return 0;
         }
         if(argc==2&&std::string_view(argv[1])=="--version") {std::cout<<version()<<'\n';return 0;}
         if(argc>=3&&(std::string_view(argv[1])=="--perft"||std::string_view(argv[1])=="--divide")) {

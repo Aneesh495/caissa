@@ -1,6 +1,7 @@
 #pragma once
 #include "caissa/position.hpp"
 namespace caissa {
+inline constexpr int classical_contract_version=1;
 struct EvalTerms {
     int material=0, placement=0, pawns=0, mobility=0, king_safety=0, pairs=0;
     int total() const {return material+placement+pawns+mobility+king_safety+pairs;}
