@@ -26,7 +26,8 @@ int main(){try {
         check(verified.run(board,bounded,tested,std::make_shared<SearchControl>()).score==exhaustive(board,4,0),"hint ordering changed exact minimax value");
     }
     auto p=Position::from_fen(fen);int expected=exhaustive(p,4,0);
-        for(bool use_table:{false,true}) {
+        for(bool use_table:{false,true}) for(std::uint64_t tie_seed:{0ULL,11ULL,29ULL}) {
+            exact.root_shuffle_seed=tie_seed;
             exact.table=use_table;Search engine(std::make_shared<TranspositionTable>(1));Limits limits;limits.depth=4;
             auto r=engine.run(p,limits,exact,std::make_shared<SearchControl>());check(r.score==expected,"PVS disagrees with independent minimax");replay(p,r.pv);
         }

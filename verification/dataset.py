@@ -197,6 +197,14 @@ def verify_dataset(
             for reverse, game in enumerate(pair["games"]):
                 if game["pair"] != number or game["reverse"] != reverse:
                     raise Rejection("original reversed-color pair identity differs")
+                if (
+                    game.get("search_policy", "legacy-v1")
+                    != manifest["corpus_config"].get("search_policy", "legacy-v1")
+                    or game["budget_nodes"] != manifest["corpus_config"]["nodes"]
+                ):
+                    raise Rejection(
+                        "original teacher policy/budget differs from corpus configuration"
+                    )
                 opening = game["moves"][: game["opening_plies"]]
                 if prefix is not None and prefix != opening:
                     raise Rejection("original pair did not share its opening")

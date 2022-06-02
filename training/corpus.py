@@ -30,7 +30,7 @@ def atomic_json(path, value):
         os.close(fd)
 
 
-def run_pair(engine, root, pair, nodes, seed, timeout):
+def run_pair(engine, root, pair, nodes, seed, timeout, policy="legacy-v1"):
     folder = root / f"{pair//256:06d}"
     folder.mkdir(exist_ok=True)
     path = folder / f"{pair:09d}.json"
@@ -43,6 +43,8 @@ def run_pair(engine, root, pair, nodes, seed, timeout):
         str(nodes),
         str(16 + (pair % 9) * 2),
     ]
+    if policy == "searched-v2":
+        command.append(policy)
     start = time.monotonic()
     result = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
     if result.returncode:
@@ -55,6 +57,8 @@ def run_pair(engine, root, pair, nodes, seed, timeout):
     ):
         raise ValueError("paired output identity")
     for g in games:
+        if g.get("search_policy", "legacy-v1") != policy:
+            raise ValueError("native selfplay policy differs from declared campaign")
         if g["complete"] != (g["result"] != "*"):
             raise ValueError("completion/result disagreement")
         if not g["moves"]:
@@ -87,6 +91,9 @@ def main():
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--seed", type=int, default=271828)
     ap.add_argument("--timeout", type=int, default=120)
+    ap.add_argument(
+        "--policy", choices=["legacy-v1", "searched-v2"], default="legacy-v1"
+    )
     ap.add_argument("--max-seconds", type=float, default=0)
     ap.add_argument("--max-gib", type=float, default=40)
     ap.add_argument("--min-free-gib", type=float, default=10)
@@ -116,6 +123,11 @@ def main():
         "outcome_perspective": "white",
         "search_score_perspective": "side-to-move",
     }
+    if a.policy == "searched-v2":
+        config["search_policy"] = a.policy
+        config["opening_policy"] = (
+            "random-16-to-32-plies; seeded-root-order-v2; single principal variation"
+        )
     cfg = a.output / "CONFIG.json"
     if cfg.exists():
         if json.loads(cfg.read_text()) != config:
@@ -197,7 +209,14 @@ def main():
             if pair is not None:
                 running[
                     pool.submit(
-                        run_pair, engine, a.output, pair, a.nodes, a.seed, a.timeout
+                        run_pair,
+                        engine,
+                        a.output,
+                        pair,
+                        a.nodes,
+                        a.seed,
+                        a.timeout,
+                        a.policy,
                     )
                 ] = pair
 

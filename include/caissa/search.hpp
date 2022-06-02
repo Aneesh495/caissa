@@ -16,6 +16,7 @@ struct SearchOptions {
     std::shared_ptr<const Network> network;
     bool scalar_network=false;
     int neural_weight=100;
+    std::uint64_t root_shuffle_seed=0;
 };
 struct Limits {
     int depth=64;
