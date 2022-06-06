@@ -94,6 +94,7 @@ def main():
     ap.add_argument(
         "--policy", choices=["legacy-v1", "searched-v2"], default="legacy-v1"
     )
+    ap.add_argument("--max-child-cpu-seconds", type=float, default=0)
     ap.add_argument("--max-seconds", type=float, default=0)
     ap.add_argument("--max-gib", type=float, default=40)
     ap.add_argument("--min-free-gib", type=float, default=10)
@@ -101,7 +102,7 @@ def main():
     if (
         any(
             not math.isfinite(v) or v < 0
-            for v in [a.max_seconds, a.max_gib, a.min_free_gib]
+            for v in [a.max_seconds, a.max_gib, a.min_free_gib, a.max_child_cpu_seconds]
         )
         or a.max_gib == 0
     ):
@@ -152,6 +153,27 @@ def main():
         done.add(pair)
         completed += sum(g["complete"] for g in record["games"])
         samples += sum(len(g["positions"]) for g in record["games"])
+    history = []
+    if (a.output / "SESSIONS.jsonl").exists():
+        history = [
+            json.loads(line)
+            for line in (a.output / "SESSIONS.jsonl").read_text().splitlines()
+        ]
+    started = {event["session"] for event in history if event["event"] == "started"}
+    finished = {event["session"] for event in history if event["event"] == "finished"}
+    if a.max_child_cpu_seconds and started - finished:
+        raise ValueError(
+            "an earlier session has incomplete CPU accounting; retain it as diagnostic instead of resetting the budget"
+        )
+    previous_child_cpu = sum(
+        event.get("child_cpu_seconds_this_session", 0)
+        for event in history
+        if event["event"] == "finished"
+    )
+    origin = min(
+        (event["utc_unix"] for event in history if event["event"] == "started"),
+        default=time.time(),
+    )
     start = time.monotonic()
     wall_start = time.time()
     cpu_start = resource.getrusage(resource.RUSAGE_CHILDREN)
@@ -172,6 +194,9 @@ def main():
             "workers": a.workers,
             "initial_pairs": len(done),
             "max_seconds": a.max_seconds,
+            "max_child_cpu_seconds": a.max_child_cpu_seconds,
+            "previous_child_cpu_seconds": previous_child_cpu,
+            "campaign_wall_origin_unix": origin,
             "max_gib": a.max_gib,
             "min_free_gib": a.min_free_gib,
             "timing_note": "wall seconds and monotonic seconds recorded separately; CPU counts only reaped children in this session",
@@ -188,8 +213,18 @@ def main():
     def budget():
         if stop_reason:
             return stop_reason
-        if a.max_seconds > 0 and time.time() - wall_start >= a.max_seconds:
+        if a.max_seconds > 0 and time.time() - origin >= a.max_seconds:
             return "wall-time-budget"
+        current_cpu = resource.getrusage(resource.RUSAGE_CHILDREN)
+        consumed = (
+            previous_child_cpu
+            + current_cpu.ru_utime
+            + current_cpu.ru_stime
+            - cpu_start.ru_utime
+            - cpu_start.ru_stime
+        )
+        if a.max_child_cpu_seconds and consumed >= a.max_child_cpu_seconds:
+            return "child-cpu-scheduling-budget"
         if output_bytes >= a.max_gib * 1024**3:
             return "output-byte-budget"
         if shutil.disk_usage(a.output).free < a.min_free_gib * 1024**3:
@@ -266,6 +301,12 @@ def main():
         - cpu_start.ru_utime
         - cpu_start.ru_stime,
         "parent_cpu_seconds": time.process_time(),
+        "campaign_child_cpu_seconds": previous_child_cpu
+        + cpu_end.ru_utime
+        + cpu_end.ru_stime
+        - cpu_start.ru_utime
+        - cpu_start.ru_stime,
+        "campaign_wall_origin_unix": origin,
         "workers": a.workers,
         "output_bytes": output_bytes,
         "stop_reason": stop_reason,
