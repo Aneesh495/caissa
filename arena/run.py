@@ -114,6 +114,7 @@ def game(config, opening, pair, reverse, root):
                         "move": text,
                         "milliseconds": elapsed,
                         "uci": lines,
+                        "request": client.last_request,
                     }
                     observations.append(observation)
                     if "milliseconds" in config and elapsed > config[
@@ -229,6 +230,7 @@ def main():
             protocol[role] = {
                 "handshake": probe.handshake,
                 "declared_options": probe.available_options,
+                "configuration_commands": probe.configuration_commands,
                 "executable_sha256": identities[role]["executable"],
             }
     protocol_path = a.output / "PROTOCOL.json"
