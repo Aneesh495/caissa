@@ -1,0 +1,44 @@
+{
+  "schema": "caissa-browser-observation-v1",
+  "scope": "observed fresh-origin native browser flow; diagnostic source binding, not complete project acceptance",
+  "normal_viewport": [
+    1280,
+    720
+  ],
+  "constrained_viewport": [
+    390,
+    844
+  ],
+  "native_executable_sha256": "cd33e7f3f925bb522569c34283cc9f20c710d9e1bc50760bda62ccacbf2994ed",
+  "native_source_commit": "9ad1d9cbe18de3596d55b1ae209cb4317d74600b",
+  "source_files": {
+    "web/app.ts": "a86916bed2b11ca594568be6a3624ad185e2be33a1d816c0a6dae07811d1964e",
+    "web/style.css": "be1693320a4820dfc96447cf8870c1612a364192f6acbaeb7cc390693102b369",
+    "analysis-service/native.ts": "e06cfc705f1f62edddf1db4c125f19cbe20c7c2dd3100c1395ea84ccec28e1de",
+    "analysis-service/server.ts": "a93ac51918f1064f190775aa70e31dc571cfff978ca3370dee060d833281551e"
+  },
+  "observations": [
+    "fresh origin imported original PGN with variations",
+    "keyboard e2-e4 and c7-c5 created an actual variation",
+    "constrained keyboard g1-f3 retained board focus at f3",
+    "native analysis yielded independently legal PVs",
+    "Escape changed SEARCHING to READY during a 30-second request",
+    "invalid FEN reported visibly",
+    "same PGN and selected FEN restored after service restart",
+    "native integration test proved canceled worker cleanup"
+  ],
+  "ui_transition_ms_including_automation_and_snapshot": 602.3752499967813,
+  "timing_scope": "UI observation only; not native stop-latency measurement",
+  "independent_pgn_and_pv_replay": "passed",
+  "full_acceptance": false,
+  "files": {
+    "narrow-evidence.json": "d63ec407ef652037f3ca239b21b756ac9bb6fe2b507f8fffd97f555990fe4d40",
+    "cancel-observations.json": "99b5e43df361a0e2a30a4fb70156daf6e43698e358a4309375388bdcdd925ad7",
+    "cancel-after.txt": "1c00cbeaf533b2c2b9dc11e087336c3e4c62b8685c8ae690bf0d0d8d267d9c86",
+    "service-integration.log": "fc4766aa78d717da666b1a951e2acf529c4cda1d389fcd9518b3880805896c3b",
+    "restart-evidence.json": "d702d63eedb24f31b7363be3d7493725cbcc98a4924cfa2f857f95227e9618bc",
+    "exported.pgn": "2822a326a1a836a0d98c91e7841f7ab0fc5136b2802c52c62307468438cb415c",
+    "invalid-fen.txt": "971d9339d4e8b5bff7ddfe08ce0ca242182e52f5c96486b4d789c6b471682519",
+    "cancel-before.txt": "2dc48ab5d08f3a8464ee8a671729b52da7a2e2289c343511e654a949ebb0c5bb"
+  }
+}
