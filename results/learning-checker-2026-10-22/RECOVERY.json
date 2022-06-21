@@ -1,0 +1,17 @@
+[
+  {
+    "case": "training-forced-SIGKILL",
+    "interrupted_after": "checkpoints/step-00000050.pt",
+    "final_parameters_bit_identical": true,
+    "best_checkpoint_identical": true,
+    "initial_checkpoint_preserved": "1bf97ad7b5ea874697c44c2455ef7d487583fd8325ea760b44282feecc2ae648",
+    "updates": 400
+  },
+  {
+    "case": "corpus-forced-SIGKILL",
+    "completed_before": 3,
+    "completed_after": 30,
+    "preserved_completed_bytes": true,
+    "ignored_torn_file": true
+  }
+]

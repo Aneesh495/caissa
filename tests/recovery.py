@@ -64,6 +64,7 @@ def main():
                 raise TimeoutError("checkpoint not written")
             time.sleep(0.005)
         pointer = json.loads((interrupted / "CHECKPOINTS.json").read_text())
+        initial_checkpoint_sha = digest(interrupted / "initial.pt")
         os.kill(process.pid, signal.SIGKILL)
         process.wait(timeout=5)
     with (a.output / "training-resumed.log").open("w") as f:
@@ -76,6 +77,8 @@ def main():
         )
     one = json.loads((uninterrupted / "SUMMARY.json").read_text())
     two = json.loads((interrupted / "SUMMARY.json").read_text())
+    if digest(interrupted / "initial.pt") != initial_checkpoint_sha:
+        raise ValueError("resumption replaced the original random initialization")
     if (
         one["final_sha256"] != two["final_sha256"]
         or one["best_validation"] != two["best_validation"]
@@ -101,6 +104,7 @@ def main():
             "interrupted_after": pointer["last"]["path"],
             "final_parameters_bit_identical": True,
             "best_checkpoint_identical": True,
+            "initial_checkpoint_preserved": initial_checkpoint_sha,
             "updates": two["updates"],
         }
     )

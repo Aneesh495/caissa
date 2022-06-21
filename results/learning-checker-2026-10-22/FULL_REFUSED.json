@@ -1,0 +1,23 @@
+{
+  "command": [
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python",
+    "-m",
+    "verification.learning",
+    "--dataset",
+    "data/diagnostic-v2-final-screened",
+    "--runs",
+    "runs/learning-independent-pilot/seed17",
+    "runs/learning-independent-pilot/seed41",
+    "runs/learning-independent-pilot/seed73",
+    "--selection",
+    "runs/learning-independent-pilot/selection",
+    "--baseline",
+    "runs/small-classical-baselines",
+    "--require-full",
+    "--protocol",
+    "config/protocol-v2.json"
+  ],
+  "exit": 1,
+  "stdout": "{\"status\": \"rejected\", \"reason\": \"full original data floors are absent\"}\n",
+  "stderr": ""
+}
