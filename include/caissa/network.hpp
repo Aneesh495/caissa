@@ -27,7 +27,7 @@ public:
     static std::shared_ptr<const Network> load(const std::filesystem::path& path);
     Accumulator refresh(const Position& p) const;
     void update(const Position& after,const Undo& before,Accumulator& accumulator) const;
-    int evaluate(const Position& p,const Accumulator& accumulator,bool scalar=false) const;
+    int evaluate(const Position& p,const Accumulator& accumulator,bool scalar=false,int neural_weight=100) const;
     std::string identity()const{return identity_;}
     std::uint32_t checksum()const{return checksum_;}
 private:

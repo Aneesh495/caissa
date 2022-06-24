@@ -1,0 +1,25 @@
+Test project /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-weighted
+      Start  1: version
+ 1/10 Test  #1: version ..........................   Passed    0.38 sec
+      Start  2: core
+ 2/10 Test  #2: core .............................   Passed    0.33 sec
+      Start  3: position
+ 3/10 Test  #3: position .........................   Passed    0.36 sec
+      Start  4: rules
+ 4/10 Test  #4: rules ............................   Passed    0.30 sec
+      Start  5: evaluation
+ 5/10 Test  #5: evaluation .......................   Passed    0.30 sec
+      Start  6: table
+ 6/10 Test  #6: table ............................   Passed    0.30 sec
+      Start  7: search
+ 7/10 Test  #7: search ...........................   Passed    0.43 sec
+      Start  8: notation
+ 8/10 Test  #8: notation .........................   Passed    0.30 sec
+      Start  9: uci
+ 9/10 Test  #9: uci ..............................   Passed    0.33 sec
+      Start 10: kernels
+10/10 Test #10: kernels ..........................   Passed    0.41 sec
+
+100% tests passed, 0 tests failed out of 10
+
+Total Test time (real) =   3.44 sec

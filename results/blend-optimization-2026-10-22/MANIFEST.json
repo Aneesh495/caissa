@@ -1,0 +1,21 @@
+{
+  "profile": "diagnostic score-preserving evaluation optimization",
+  "files": {
+    "microbench.json": "6711ee494e9fc4556e20b5c6c41b1e755b1eb9dae6f0703d8b8b7b5fa3a7303f",
+    "residual-contract.json": "6c441ee6ba79456d54f8fb6ac91a9a6ecf2c641e6eedda013908500588f2898d",
+    "PARITY.json": "7439f07426143568bb2664c11100909e9b84a587a12667c55d87ce0f877a39e4",
+    "positions.fen": "e0df407650d218852146c425abccbe990296423fe426bf0b6bd7ad3a60becae2",
+    "residual-transitions.json": "177f4835487e306496bf66c77137d1733363816425b7b1b661030bc6ee8b8041",
+    "native-tests.log": "cfe2f8eb2e92f19c08a9a87fc9b8cdcb5279fe00b16afe9b4e6de2d6ae50fb3b",
+    "absolute-transitions.json": "177f4835487e306496bf66c77137d1733363816425b7b1b661030bc6ee8b8041",
+    "search.jsonl": "496e1ab7a7883490a860b5438d425c4a792742df0a3a516cf57373dd74720fb7"
+  },
+  "source_files": {
+    "apps/main.cpp": "fbcbfcd16dcd91e9040d34a147d44f4905d65407522be24f5e7185cbb703d25c",
+    "src/network.cpp": "2688d78c2de13442d92ee136ca4cf4e24bbd9857ee5ddcae238286b48a367b6f",
+    "src/search.cpp": "0d717a342a81d1e5bf6ff2bcf0ed27ab845e294b7336cd0b270d823844c2aef2",
+    "include/caissa/network.hpp": "cbcb69505a61f1c62d422e06ded05dec7be9a5b79f3d77e6fa5c214128fac1c5"
+  },
+  "model_sha256": "580ea83d33f54426981adc072042d4555bf26259a859ddafbc0bb0eb2f7b8926",
+  "full_acceptance": false
+}

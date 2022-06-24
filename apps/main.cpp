@@ -37,14 +37,21 @@ void inspect(std::string_view text) {
 int main(int argc,char** argv) {
     try {
         if(argc==1)return uci_loop(std::cin,std::cout);
-        if(argc==4&&std::string_view(argv[1])=="--eval-bench") {
+        if((argc==4||argc==5)&&std::string_view(argv[1])=="--eval-bench") {
             auto net=Network::load(argv[2]);auto calls=parse_u64(argv[3]);if(calls<100||calls>10000000)throw InputError("evaluation calls outside bounds");
+            auto requested_weight=argc==5?parse_u64(argv[4]):100;if(requested_weight>100)throw InputError("neural weight outside percentage bounds");int weight=static_cast<int>(requested_weight);
             auto p=Position::start();auto accumulator=net->refresh(p);std::int64_t signature=0;
             for(int i=0;i<128;++i)signature+=net->evaluate(p,accumulator);
-            auto begin=monotonic_ns();for(std::uint64_t i=0;i<calls;++i)signature+=net->evaluate(p,accumulator,true);auto scalar=monotonic_ns()-begin;
-            begin=monotonic_ns();for(std::uint64_t i=0;i<calls;++i)signature+=net->evaluate(p,accumulator,false);auto native=monotonic_ns()-begin;
+            auto begin=monotonic_ns();for(std::uint64_t i=0;i<calls;++i)signature+=net->evaluate(p,accumulator,true,weight);auto scalar=monotonic_ns()-begin;
+            begin=monotonic_ns();for(std::uint64_t i=0;i<calls;++i)signature+=net->evaluate(p,accumulator,false,weight);auto native=monotonic_ns()-begin;
             begin=monotonic_ns();for(std::uint64_t i=0;i<calls;++i)signature+=classical(p);auto baseline=monotonic_ns()-begin;
-            std::cout<<"{\"calls\":"<<calls<<",\"width\":"<<transformer_width<<",\"scalar_ns_per_call\":"<<static_cast<double>(scalar)/static_cast<double>(calls)<<",\"native_ns_per_call\":"<<static_cast<double>(native)/static_cast<double>(calls)<<",\"classical_ns_per_call\":"<<static_cast<double>(baseline)/static_cast<double>(calls)<<",\"signature\":"<<signature<<"}\n";return 0;
+            std::int64_t legacy_signature=0;begin=monotonic_ns();
+            for(std::uint64_t i=0;i<calls;++i) {
+                if(weight==0)legacy_signature+=classical(p);
+                else {int score=net->evaluate(p,accumulator);legacy_signature+=weight==100?score:(score*weight+classical(p)*(100-weight))/100;}
+            }
+            auto legacy=monotonic_ns()-begin;
+            std::cout<<"{\"calls\":"<<calls<<",\"width\":"<<transformer_width<<",\"neural_weight\":"<<weight<<",\"scalar_ns_per_call\":"<<static_cast<double>(scalar)/static_cast<double>(calls)<<",\"native_ns_per_call\":"<<static_cast<double>(native)/static_cast<double>(calls)<<",\"legacy_blend_ns_per_call\":"<<static_cast<double>(legacy)/static_cast<double>(calls)<<",\"legacy_blend_signature\":"<<legacy_signature<<",\"classical_ns_per_call\":"<<static_cast<double>(baseline)/static_cast<double>(calls)<<",\"signature\":"<<signature<<"}\n";return 0;
         }
         if(argc==2&&std::string_view(argv[1])=="--pgn-json") {
             std::string input;char c;while(std::cin.get(c)){if(input.size()>=1048576)throw InputError("PGN exceeds 1 MiB");input+=c;}
@@ -63,11 +70,12 @@ int main(int argc,char** argv) {
             }
             return 0;
         }
-        if(argc==3&&std::string_view(argv[1])=="--net-probe") {
+        if((argc==3||argc==4)&&std::string_view(argv[1])=="--net-probe") {
             auto net=Network::load(argv[2]);std::string line;
+            auto requested_weight=argc==4?parse_u64(argv[3]):100;if(requested_weight>100)throw InputError("neural weight outside percentage bounds");int weight=static_cast<int>(requested_weight);
             while(std::getline(std::cin,line)) {
                 auto p=Position::from_fen(line);auto acc=net->refresh(p);
-                std::cout<<"{\"scalar\":"<<net->evaluate(p,acc,true)<<",\"native\":"<<net->evaluate(p,acc,false)<<"}\n"<<std::flush;
+                std::cout<<"{\"scalar\":"<<net->evaluate(p,acc,true,weight)<<",\"native\":"<<net->evaluate(p,acc,false,weight)<<"}\n"<<std::flush;
             }
             return 0;
         }
