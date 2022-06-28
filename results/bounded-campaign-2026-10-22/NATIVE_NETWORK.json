@@ -1,0 +1,15 @@
+{
+  "status": "parity-passed-error-bound-not-yet-frozen",
+  "probes": 1000,
+  "probe_seed": 67867967,
+  "frozen_maximum_error_cp": 32.0,
+  "float_quantized_cp": {
+    "mean": 0.404698810338974,
+    "p99": 1.2512347412109375,
+    "max": 1.484466552734375
+  },
+  "seconds": 0.7969301250413992,
+  "network_sha256": "320b0ee6e4100dc855c04efbac3e37ee28d35f37f54745d134dd5e2fbc73e12f",
+  "trained": true,
+  "probes_sha256": "f7a9fd8a7329d2c9ccb4a19e1dc0b41336d32b775ecccbf2de8ec3933aff40f8"
+}

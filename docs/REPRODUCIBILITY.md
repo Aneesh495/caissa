@@ -45,3 +45,5 @@ make verify PROFILE=diagnostic EVIDENCE=runs/local-diagnostic-001 CHECKOUT=work/
 ```
 
 Full acceptance is currently incomplete. `make acceptance RUN_ID=full-attempt-001 PROFILE=full` writes an explicit incomplete-gate receipt and returns nonzero. The full verifier cannot certify the diagnostic bundle. Required full data, learned contribution, external strength, parallel profiles, browser campaign, frozen performance and release audit remain pending. `make release` requires independently verified full evidence and a current maintainer audit; no release is available yet.
+
+A finite three-seed pipeline with independent data, checkpoint, native-network and mutation checks is available through `make learning-audit RUN_ID=learning-demo-001`. [Bounded campaign execution](BOUNDED_CAMPAIGNS.md) states its deadlines, diagnostic scope and manually dispatched Linux workflow.

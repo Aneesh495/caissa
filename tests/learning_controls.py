@@ -64,7 +64,9 @@ def main():
         target = args.output / case
         # Each mutation replaces a destination path before writing, preserving the
         # original immutable run even on filesystems with copied hard links.
-        shutil.copytree(args.source, target, symlinks=True)
+        target.mkdir()
+        for name in ["seed17", "seed41", "seed73", "selection"]:
+            shutil.copytree(args.source / name, target / name, symlinks=True)
         selection_path = target / "selection" / "SELECTION.json"
         selection = json.loads(selection_path.read_text())
         for row in selection["all_seeds"]:
