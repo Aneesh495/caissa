@@ -25,3 +25,12 @@ A real diagnostic trained seeds 17, 41 and 73 for 100 updates each, evaluated al
 ```
 
 Full learning additionally requires the actual data floors, functional split screening, the frozen protocol and every declared seed with identical numerical settings. The complete project verifier must independently bind these artifacts to trusted source and run the original-game and strength checks. A domain checker never sets complete project acceptance.
+
+
+## Relocated artifacts
+
+`CHECKPOINTS.json` and its immutable generation files are authoritative. Optional `best.pt` and `last.pt` shortcuts are checked if present; their absence does not erase the saved generations. A missing required generation or a present shortcut naming different bytes still fails. Recorded origin folder names remain provenance text. Only explicitly supplied directories locate inputs; model hashes, seed identities, numerical settings and validation ordering remain mandatory.
+
+The clean Linux diagnostic executed twelve stages, 400 original games, three seeded runs and native inference checks. Its downloaded artifacts independently replayed on macOS without recreating checkpoints or editing selection metadata. Original data/targets, all saved validation checkpoints, exact selected export and 1000 numerical probes passed. The source inventory was checked against trusted commit `1e5d59ac68282cf46bfcde792ba26309244854e1`, obtained from the hosted run. [Raw receipts and controls](../results/linux-learning-2026-10-22/MANIFEST.json) retain the initial missing-shortcut rejection, successful canonical replay, mandatory-generation and wrong-shortcut failures, and four repeated semantic mutations.
+
+This is replay of saved results across platforms. It does not assert bit-identical retraining between ARM and x86 or between different PyTorch builds. Full data, final-source acceptance and playing strength remain separate.

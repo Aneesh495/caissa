@@ -1,0 +1,86 @@
+[
+  {
+    "case": "validation-loss",
+    "command": [
+      "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python",
+      "-m",
+      "verification.learning",
+      "--dataset",
+      "work/linux-learning-39885423740/learning-39885423740/dataset",
+      "--runs",
+      "runs/linux-relocated-semantic-controls-r2/validation-loss/seed17",
+      "runs/linux-relocated-semantic-controls-r2/validation-loss/seed41",
+      "runs/linux-relocated-semantic-controls-r2/validation-loss/seed73",
+      "--selection",
+      "runs/linux-relocated-semantic-controls-r2/validation-loss/selection",
+      "--baseline",
+      "work/linux-learning-39885423740/learning-39885423740/baseline"
+    ],
+    "exit": 1,
+    "expected_reason": "independent saved-checkpoint validation loss differs",
+    "actual": "{\"status\": \"rejected\", \"reason\": \"independent saved-checkpoint validation loss differs\"}"
+  },
+  {
+    "case": "sampler-state",
+    "command": [
+      "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python",
+      "-m",
+      "verification.learning",
+      "--dataset",
+      "work/linux-learning-39885423740/learning-39885423740/dataset",
+      "--runs",
+      "runs/linux-relocated-semantic-controls-r2/sampler-state/seed17",
+      "runs/linux-relocated-semantic-controls-r2/sampler-state/seed41",
+      "runs/linux-relocated-semantic-controls-r2/sampler-state/seed73",
+      "--selection",
+      "runs/linux-relocated-semantic-controls-r2/sampler-state/selection",
+      "--baseline",
+      "work/linux-learning-39885423740/learning-39885423740/baseline"
+    ],
+    "exit": 1,
+    "expected_reason": "saved sampler state differs",
+    "actual": "{\"status\": \"rejected\", \"reason\": \"saved sampler state differs from exact replayed training draws\"}"
+  },
+  {
+    "case": "optimizer-step",
+    "command": [
+      "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python",
+      "-m",
+      "verification.learning",
+      "--dataset",
+      "work/linux-learning-39885423740/learning-39885423740/dataset",
+      "--runs",
+      "runs/linux-relocated-semantic-controls-r2/optimizer-step/seed17",
+      "runs/linux-relocated-semantic-controls-r2/optimizer-step/seed41",
+      "runs/linux-relocated-semantic-controls-r2/optimizer-step/seed73",
+      "--selection",
+      "runs/linux-relocated-semantic-controls-r2/optimizer-step/selection",
+      "--baseline",
+      "work/linux-learning-39885423740/learning-39885423740/baseline"
+    ],
+    "exit": 1,
+    "expected_reason": "optimizer step provenance differs",
+    "actual": "{\"status\": \"rejected\", \"reason\": \"optimizer step provenance differs\"}"
+  },
+  {
+    "case": "exported-weight",
+    "command": [
+      "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python",
+      "-m",
+      "verification.learning",
+      "--dataset",
+      "work/linux-learning-39885423740/learning-39885423740/dataset",
+      "--runs",
+      "runs/linux-relocated-semantic-controls-r2/exported-weight/seed17",
+      "runs/linux-relocated-semantic-controls-r2/exported-weight/seed41",
+      "runs/linux-relocated-semantic-controls-r2/exported-weight/seed73",
+      "--selection",
+      "runs/linux-relocated-semantic-controls-r2/exported-weight/selection",
+      "--baseline",
+      "work/linux-learning-39885423740/learning-39885423740/baseline"
+    ],
+    "exit": 1,
+    "expected_reason": "selected export weights differ",
+    "actual": "{\"status\": \"rejected\", \"reason\": \"selected export weights differ from independently quantized checkpoint\"}"
+  }
+]

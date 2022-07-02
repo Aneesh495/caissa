@@ -1,0 +1,14 @@
+[
+  {
+    "port": 8766,
+    "exit": 0,
+    "seconds": 0.2542823330149986,
+    "stdout": ""
+  },
+  {
+    "port": 8767,
+    "exit": 1,
+    "seconds": 7.716629458998796,
+    "stdout": "Service readiness deadline exceeded\n"
+  }
+]

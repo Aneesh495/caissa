@@ -1,0 +1,22 @@
+{
+  "profile": "diagnostic cross-platform reproduction",
+  "github_run": "https://github.com/Aneesh495/caissa-chess/actions/runs/39885423740",
+  "trusted_source_commit": "1e5d59ac68282cf46bfcde792ba26309244854e1",
+  "github_reported_archive_digest": "sha256:2a81832efbd09ae32edd551cbcb27e9dd7aa4f0e814c5c613854f06ab2901d75",
+  "downloaded_archive_bytes_reported_by_github": 61873318,
+  "raw_download_local": "work/linux-learning-39885423740",
+  "files": {
+    "CAMPAIGN.json": "7ac17c1374a91e00d8a1375293707dc62566c52d9d84862bdb209b6854f111b0",
+    "CONFIG.json": "42f5324420f18494fa1a55cc4ab39641019967a054d4022cffddafce7e81fdba",
+    "PORTABILITY_CONTROLS.json": "f52c7156d63af145b8d683dbd94c58b1967ad858dd9324c52fd32cad863ccffc",
+    "COMMANDS.jsonl": "4f5aff737f5730143a6454a9075c6e54f2a6ddc179f0bdeeaa375a09f8ba28b2",
+    "RELOCATED_SEMANTIC_CONTROLS.json": "f59775d0552ee63c83b9b4e426205aa99709aa07eee23d2211216e6eb759cb4b",
+    "MACOS_SOURCE_NETWORK_REPLAY.json": "8f16c5e01dcb53d5cf314c42dca582736316628f3463fe1f40a5f42a5122ce31",
+    "BEFORE_FIX.json": "287ecec88f22f2cae40fd1dc0e9064f91cdf0a9da8cbddc81e8900b2597899cc",
+    "INDEPENDENT.json": "d4c2ce3dae958a7ac5642d717e6dcc25185ab8c9cd20a2dfda4030772a6df8ae",
+    "MACOS_LEARNING_REPLAY.json": "cd6e3586531a302efabb9f63155e164eaadbe3204a4cecd9c9edff43b802ccfe",
+    "READINESS_CONTROLS.json": "9d6b17b2bce594a3e86a525654ababb1034aeb35a9542a66bbff3e2ef0cdddf1",
+    "MACOS_DATA_REPLAY.json": "3ca1e4d484b1195af59045de233a9906b16980a5604b081708534fbdae0201f8"
+  },
+  "full_acceptance": false
+}
