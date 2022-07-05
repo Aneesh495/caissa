@@ -1,0 +1,1 @@
+{"status":"owner-failed-after-all-five-checks-passed","exception":"AttributeError: 'Campaign' object has no attribute 'finish'","correction":"The owner API is close, not finish. Original stage journals remain unchanged. This receipt independently checks all five exits and log hashes; no campaign completion is backfilled.","verified_stage_count":5,"full_acceptance":false}

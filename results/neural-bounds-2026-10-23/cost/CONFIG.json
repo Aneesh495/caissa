@@ -1,0 +1,1 @@
+{"profile":"diagnostic fixed-node neural cost","nodes":20000,"repeats":3,"maximum_seconds":960,"load_note":"Eight searched corpus workers and preparation continue on the same host. Timing is descriptive under load."}

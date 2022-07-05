@@ -22,12 +22,22 @@ struct Accumulator {
 int king_bucket(Color perspective,Square king);
 int feature_index(Color perspective,int bucket,Piece piece,Square square);
 std::uint32_t crc32(std::span<const std::uint8_t> bytes);
+struct ScoreInterval { int lower; int upper; };
+struct BoundedEvaluation {
+    int score;
+    // A nonexact result is a certified lower bound at least the requested threshold.
+    bool exact;
+};
 class Network {
 public:
     static std::shared_ptr<const Network> load(const std::filesystem::path& path);
     Accumulator refresh(const Position& p) const;
     void update(const Position& after,const Undo& before,Accumulator& accumulator) const;
     int evaluate(const Position& p,const Accumulator& accumulator,bool scalar=false,int neural_weight=100) const;
+    ScoreInterval score_interval(const Position& p,int neural_weight=100) const;
+    BoundedEvaluation evaluate_at_least(const Position& p,const Accumulator& accumulator,
+                                      int threshold,bool scalar=false,int neural_weight=100) const;
+    bool residual()const{return residual_;}
     std::string identity()const{return identity_;}
     std::uint32_t checksum()const{return checksum_;}
 private:
@@ -43,7 +53,12 @@ private:
     std::uint32_t checksum_=0;
     int scale_=64,clip_=127;
     bool residual_=false;
+    int raw_lower_=0,raw_upper_=0;
     void add(std::array<std::int32_t,transformer_width>& accumulator,int feature,int sign)const;
+    void validate(const Position& p,const Accumulator& accumulator,int neural_weight)const;
+    int dense_score(const Position& p,const Accumulator& accumulator,bool scalar)const;
+    int blend(int raw,int baseline,int neural_weight)const;
+    ScoreInterval interval(int baseline,int neural_weight)const;
 };
 // Dot inputs are clipped activations in [0,2047] and arbitrary int16 weights.
 std::int64_t dot_scalar(const std::int16_t* a,const std::int16_t* b,std::size_t count);

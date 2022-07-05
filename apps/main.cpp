@@ -75,7 +75,8 @@ int main(int argc,char** argv) {
             auto requested_weight=argc==4?parse_u64(argv[3]):100;if(requested_weight>100)throw InputError("neural weight outside percentage bounds");int weight=static_cast<int>(requested_weight);
             while(std::getline(std::cin,line)) {
                 auto p=Position::from_fen(line);auto acc=net->refresh(p);
-                std::cout<<"{\"scalar\":"<<net->evaluate(p,acc,true,weight)<<",\"native\":"<<net->evaluate(p,acc,false,weight)<<"}\n"<<std::flush;
+                auto interval=net->score_interval(p,weight);
+                std::cout<<"{\"scalar\":"<<net->evaluate(p,acc,true,weight)<<",\"native\":"<<net->evaluate(p,acc,false,weight)<<",\"lower\":"<<interval.lower<<",\"upper\":"<<interval.upper<<"}\n"<<std::flush;
             }
             return 0;
         }
