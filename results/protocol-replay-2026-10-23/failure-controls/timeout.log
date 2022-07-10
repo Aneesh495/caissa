@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/protocol_audit.py", line 6, in <module>
+    raise SystemExit(main())
+                     ^^^^^^
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/protocol_campaign.py", line 153, in main
+    send("position fen " + board.fen(en_passant="fen"))
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/protocol_campaign.py", line 77, in send
+    raise TimeoutError("cumulative protocol audit deadline")
+TimeoutError: cumulative protocol audit deadline

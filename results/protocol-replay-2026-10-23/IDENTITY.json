@@ -1,0 +1,13 @@
+{
+  "profile": "source-bound development protocol replay",
+  "native_source_commit": "563bc95891724b5412ce174f8f1500093c05823a",
+  "engine_sha256": "f74766373940186dfc985ff3821ea6c34785c80578d3be05b89808756be6021e",
+  "protocol_source_files": {
+    "tools/protocol_audit.py": "e5d617d5ef72f8252ceab11840eeab0024ad0e062cc1158da6990f64587da06f",
+    "tools/protocol_campaign.py": "5b7b653719e5ca18755e6e791e3d58dce087c08f2e3c6364f77e0e4cefe2078f",
+    "verification/protocol.py": "00282f3c43fd232fd035e63aba6f5b9260858e0c3908ef4ccdaffa39cf872901",
+    "tests/protocol_controls.py": "ab7b4ab66041ce1c2e1983b231d6babe7dba286090c5e8c5de30ef5ccf660688"
+  },
+  "native_input_identity": "../neural-bounds-2026-10-23/IDENTITY.json",
+  "full_acceptance": false
+}
