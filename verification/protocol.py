@@ -43,6 +43,11 @@ def digest(path):
 
 
 def verify(root, expected_engine, full=False):
+    require(
+        len(expected_engine) == 64
+        and all(c in "0123456789abcdef" for c in expected_engine),
+        "expected executable SHA256 is malformed",
+    )
     config = read_json((root / "CONFIG.json").read_text())
     summary = read_json((root / "summary.json").read_text())
     require(
@@ -351,11 +356,14 @@ def verify(root, expected_engine, full=False):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("evidence", type=Path)
-    parser.add_argument("--engine-sha256", required=True)
+    identity = parser.add_mutually_exclusive_group(required=True)
+    identity.add_argument("--engine-sha256")
+    identity.add_argument("--engine", type=Path)
     parser.add_argument("--full", action="store_true")
     args = parser.parse_args()
     try:
-        result = verify(args.evidence, args.engine_sha256, args.full)
+        expected = digest(args.engine) if args.engine else args.engine_sha256
+        result = verify(args.evidence, expected, args.full)
         print(json.dumps(result, allow_nan=False))
         return 0
     except (ValueError, KeyError, OSError, TypeError) as error:

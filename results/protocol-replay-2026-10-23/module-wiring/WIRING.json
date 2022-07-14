@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "direct_entry_prior_failure": "runs/protocol-direct-entry.log",
+  "direct_ordinary_sequences": 1,
+  "direct_ponder_sequences": 100,
+  "prior_full_10000_replayed_via_actual_bytes": true,
+  "make_module_expansion_passed": true,
+  "source_files": {
+    "Makefile": "710dc813949e11752006f84f5af1b4d866474466a9faae90767de04d56649553",
+    "tools/protocol_audit.py": "0b61dee1b5e38fb401e69e693eb4b79d44a26f6cc3e6306e1876f9374eec2243",
+    "verification/protocol.py": "9cd0e2125846802f5f3a8632258ca3448a3d8c01d75a2b07830bb219e6fcdfc6"
+  },
+  "full_acceptance": false
+}

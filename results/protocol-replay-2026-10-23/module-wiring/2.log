@@ -1,0 +1,4 @@
+cmake -S . -B build-dense -G Ninja -DCMAKE_BUILD_TYPE=Release -DCAISSA_NETWORK_WIDTH=64
+cmake --build build-dense -j 4
+.venv/bin/python -m tools.protocol_audit --engine build-dense/caissa --sequences 10000 --output runs/module-wiring-protocol
+.venv/bin/python -m verification.protocol runs/module-wiring-protocol --engine build-dense/caissa --full

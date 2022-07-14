@@ -56,7 +56,8 @@ bench: build
 stress: build
 	$(BUILD)/network_test $(NETWORK) 1000000
 	$(PYTHON) tools/differential.py --engine $(BUILD)/caissa --positions 100000 --output runs/$(RUN_ID)-rules
-	$(PYTHON) tools/protocol_audit.py --engine $(BUILD)/caissa --sequences 10000 --output runs/$(RUN_ID)-protocol
+	$(PYTHON) -m tools.protocol_audit --engine $(BUILD)/caissa --sequences 10000 --output runs/$(RUN_ID)-protocol
+	$(PYTHON) -m verification.protocol runs/$(RUN_ID)-protocol --engine $(BUILD)/caissa --full
 docs:
 	$(PYTHON) tools/check_docs.py
 	$(PYTHON) tools/diagrams.py
@@ -77,3 +78,8 @@ profile: build
 .PHONY: learning-audit
 learning-audit: build
 	$(PYTHON) -m tools.learning_demo --engine $(BUILD)/caissa --run-id $(RUN_ID)-learning
+
+.PHONY: protocol-audit
+protocol-audit: build
+	$(PYTHON) -m tools.protocol_audit --engine $(BUILD)/caissa --sequences 10000 --output runs/$(RUN_ID)-protocol
+	$(PYTHON) -m verification.protocol runs/$(RUN_ID)-protocol --engine $(BUILD)/caissa --full

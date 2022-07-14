@@ -1,0 +1,9 @@
+usage: protocol_audit.py [-h] [--engine ENGINE] [--sequences SEQUENCES]
+                         [--max-seconds MAX_SECONDS] --output OUTPUT
+
+options:
+  -h, --help            show this help message and exit
+  --engine ENGINE
+  --sequences SEQUENCES
+  --max-seconds MAX_SECONDS
+  --output OUTPUT
