@@ -1,0 +1,1 @@
+{"calls":100000,"width":64,"neural_weight":10,"scalar_ns_per_call":14183.4,"native_ns_per_call":7277.61,"legacy_blend_ns_per_call":8580.07,"legacy_blend_signature":1400000,"classical_ns_per_call":2526.78,"signature":4004352}

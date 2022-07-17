@@ -63,5 +63,10 @@ private:
 // Dot inputs are clipped activations in [0,2047] and arbitrary int16 weights.
 std::int64_t dot_scalar(const std::int16_t* a,const std::int16_t* b,std::size_t count);
 std::int64_t dot_native(const std::int16_t* a,const std::int16_t* b,std::size_t count);
+// Input activations are in [0,clip], weights are row-major int16, and biases
+// are int32. Up to 256 inputs and 32 outputs, with exact signed rounding.
+void clipped_affine(const std::int16_t* input,const std::int16_t* weights,
+                    const std::int32_t* biases,std::int16_t* output,
+                    std::size_t inputs,std::size_t outputs,int scale,int clip,bool scalar=false);
 std::string_view native_kernel();
 }

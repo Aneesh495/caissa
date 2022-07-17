@@ -1,0 +1,1 @@
+{"status":"failed","details":{"exception":"StageFailure('stage micro-0-previous failed: nonzero-exit (exit 2)')"},"seconds_this_campaign":113.8828306249925,"stages_started":7,"utc_unix":1792731303.3485608,"full_acceptance":false}

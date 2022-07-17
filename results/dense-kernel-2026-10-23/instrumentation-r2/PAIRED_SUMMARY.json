@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "scope": "same-process paired operator benchmark",
+  "shapes": {
+    "(64, 32)": {
+      "median_process_cpu_ratio": 0.5525119329065531,
+      "cpu_ratio_range": [
+        0.5374647887323943,
+        0.5916889058330156
+      ],
+      "median_wall_ratio": 0.39991560723387853,
+      "paired_trials": 10,
+      "calls_per_sample": 10000
+    },
+    "(128, 32)": {
+      "median_process_cpu_ratio": 0.4375769085900777,
+      "cpu_ratio_range": [
+        0.42785939139559287,
+        0.477211296486159
+      ],
+      "median_wall_ratio": 0.21245204380988048,
+      "paired_trials": 10,
+      "calls_per_sample": 10000
+    },
+    "(256, 32)": {
+      "median_process_cpu_ratio": 0.4241016733234766,
+      "cpu_ratio_range": [
+        0.4061694247808354,
+        0.43148438614002566
+      ],
+      "median_wall_ratio": 0.3753219347359104,
+      "paired_trials": 10,
+      "calls_per_sample": 10000
+    },
+    "(32, 16)": {
+      "median_process_cpu_ratio": 0.5844502543463796,
+      "cpu_ratio_range": [
+        0.517467248908297,
+        0.6728553137003841
+      ],
+      "median_wall_ratio": 0.5816543452199026,
+      "paired_trials": 10,
+      "calls_per_sample": 10000
+    }
+  },
+  "full_acceptance": false
+}

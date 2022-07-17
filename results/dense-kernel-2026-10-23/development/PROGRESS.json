@@ -1,0 +1,1 @@
+{"phase":"micro-0-previous","pid":92489,"command":["build-bounds/caissa","--net-bench","models/residual-prefix-diagnostic.cai","100000","10"],"seconds_this_stage":0.004402125021442771,"seconds_this_campaign":113.87529083300615,"retained_output_bytes":87,"discarded_output_bytes":0,"stopping_reason":null}

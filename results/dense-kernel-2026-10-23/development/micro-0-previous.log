@@ -1,0 +1,1 @@
+Usage: caissa --version | --perft depth [FEN] [960] | --divide depth [FEN] | --inspect

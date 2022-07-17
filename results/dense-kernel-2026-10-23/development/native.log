@@ -1,0 +1,29 @@
+Test project /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-dense
+      Start  1: version
+ 1/12 Test  #1: version ..........................   Passed    0.45 sec
+      Start  2: core
+ 2/12 Test  #2: core .............................   Passed    0.50 sec
+      Start  3: position
+ 3/12 Test  #3: position .........................   Passed    0.85 sec
+      Start  4: rules
+ 4/12 Test  #4: rules ............................   Passed    0.37 sec
+      Start  5: evaluation
+ 5/12 Test  #5: evaluation .......................   Passed    0.37 sec
+      Start  6: table
+ 6/12 Test  #6: table ............................   Passed    0.37 sec
+      Start  7: search
+ 7/12 Test  #7: search ...........................   Passed    0.56 sec
+      Start  8: notation
+ 8/12 Test  #8: notation .........................   Passed    0.40 sec
+      Start  9: uci
+ 9/12 Test  #9: uci ..............................   Passed    0.39 sec
+      Start 10: kernels
+10/12 Test #10: kernels ..........................   Passed    0.47 sec
+      Start 11: dense_kernels
+11/12 Test #11: dense_kernels ....................   Passed    0.71 sec
+      Start 12: neural_bounds
+12/12 Test #12: neural_bounds ....................   Passed    2.11 sec
+
+100% tests passed, 0 tests failed out of 12
+
+Total Test time (real) =   7.55 sec
