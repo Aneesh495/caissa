@@ -1,6 +1,7 @@
 #include "caissa/thread.hpp"
 #include "caissa/uci.hpp"
 #include "caissa/protocol_io.hpp"
+#include "caissa/position_line.hpp"
 #include "caissa/search.hpp"
 #include "caissa/version.hpp"
 #include <charconv>
@@ -21,7 +22,7 @@ std::uint64_t number(std::string_view s,std::uint64_t maximum=1000000000000ULL) 
 bool boolean(const std::string& s) {if(s=="true")return true;if(s=="false")return false;throw InputError("boolean must be true or false");}
 class Session {
 public:
-    explicit Session(ProtocolOutput& output):output_(output),position_(Position::start()),table_(std::make_shared<TranspositionTable>(32)){}
+    explicit Session(ProtocolOutput& output):output_(output),table_(std::make_shared<TranspositionTable>(32)){}
     ~Session(){stop();}
     bool command(const std::string& line) {
         auto t=tokens(line);if(t.empty())return true;auto& cmd=t[0];
@@ -43,19 +44,19 @@ public:
         } else if(cmd=="isready") emit("readyok");
         else if(cmd=="stop") stop();
         else if(cmd=="ponderhit") {if(control_)control_->ponderhit();}
-        else if(cmd=="ucinewgame") {stop();table_->clear();position_=Position::from_fen(start_fen,chess960_);}
+        else if(cmd=="ucinewgame") {stop();table_->clear();line_=PositionLine(chess960_);}
         else if(cmd=="setoption") option(t);
         else if(cmd=="position") set_position(t);
         else if(cmd=="go") go(t);
-        else if(cmd=="d") emit("info string fen "+position_.fen());
-        else if(cmd=="eval") emit("info string classical cp "+std::to_string(classical(position_)));
+        else if(cmd=="d") emit("info string fen "+line_.current().fen());
+        else if(cmd=="eval") emit("info string classical cp "+std::to_string(classical(line_.current())));
         else if(cmd=="debug"||cmd=="register") emit("info string command acknowledged");
         else throw InputError("unsupported command");
         return true;
     }
     void error(const std::exception& e){emit("info string error "+std::string(e.what()));}
 private:
-    ProtocolOutput& output_;Position position_;
+    ProtocolOutput& output_;PositionLine line_;
     std::shared_ptr<TranspositionTable> table_;SearchOptions options_;
     std::shared_ptr<SearchControl> control_;JoiningThread worker_;
     int overhead_=20;bool chess960_=false,inspect_stats_=false;std::shared_ptr<const Network> loaded_network_;
@@ -93,18 +94,19 @@ private:
     }
     void set_position(const std::vector<std::string>& t) {
         if(t.size()<2)throw InputError("position missing specification");
-        std::size_t i=2;Position next=Position::start();
-        if(t[1]=="startpos")next=Position::from_fen(start_fen,chess960_);
+        std::size_t i=2;std::string fen;
+        if(t[1]=="startpos")fen=start_fen;
         else if(t[1]=="fen") {
             if(t.size()<8)throw InputError("position FEN needs six fields");
-            std::string fen;for(;i<8;++i){if(!fen.empty())fen+=' ';fen+=t[i];}next=Position::from_fen(fen,chess960_);
+            for(;i<8;++i){if(!fen.empty())fen+=' ';fen+=t[i];}
         } else throw InputError("expected startpos or fen");
+        std::span<const std::string> moves;
         if(i<t.size()) {
             if(t[i++]!="moves")throw InputError("expected moves");
-            if(t.size()-i>1024)throw InputError("position history exceeds 1024 plies");
-            for(;i<t.size();++i){auto m=next.parse_uci(t[i]);if(!m)throw InputError("illegal position move");next.make(*m);}
+            moves=std::span(t).subspan(i);
         }
-        stop();position_=std::move(next);
+        auto next=line_.updated(fen,moves,chess960_);
+        stop();line_=std::move(next);
     }
     void info(const Position& root,const SearchInfo& info) {
         for(std::size_t i=0;i<info.lines.size();++i) {
@@ -118,13 +120,14 @@ private:
         }
     }
     void go(const std::vector<std::string>& t) {
+        auto position=line_.current();
         Limits limits;std::uint64_t wtime=0,btime=0,winc=0,binc=0;int moves_to_go=30;bool have_clock=false,have_limit=false;
         for(std::size_t i=1;i<t.size();++i) {
             auto& word=t[i];
             if(word=="infinite"){limits.infinite=true;have_limit=true;continue;}
             if(word=="ponder"){limits.ponder=true;continue;}
             if(word=="searchmoves") {
-                while(i+1<t.size()) {auto move=position_.parse_uci(t[i+1]);if(!move)break;limits.root_moves.push_back(*move);++i;}
+                while(i+1<t.size()) {auto move=position.parse_uci(t[i+1]);if(!move)break;limits.root_moves.push_back(*move);++i;}
                 if(limits.root_moves.empty())throw InputError("searchmoves missing legal moves");continue;
             }
             if(i+1>=t.size())throw InputError("go field missing value");auto value=number(t[++i]);
@@ -138,11 +141,11 @@ private:
             else throw InputError("unknown go field");
         }
         if(have_clock&&limits.milliseconds==0) {
-            auto remaining=position_.side()==Color::white?wtime:btime,increment=position_.side()==Color::white?winc:binc;
+            auto remaining=position.side()==Color::white?wtime:btime,increment=position.side()==Color::white?winc:binc;
             limits.milliseconds=time_budget(static_cast<std::int64_t>(remaining),static_cast<std::int64_t>(increment),moves_to_go,overhead_);
             limits.milliseconds=std::min<std::int64_t>(limits.milliseconds,600000);
         } else if(!have_clock&&!have_limit)limits.milliseconds=1000;
-        stop();control_=std::make_shared<SearchControl>();control_->initialize(limits);auto control=control_;auto root=position_;auto options=options_;auto table=table_;bool stats_enabled=inspect_stats_;
+        stop();control_=std::make_shared<SearchControl>();control_->initialize(limits);auto control=control_;auto root=std::move(position);auto options=options_;auto table=table_;bool stats_enabled=inspect_stats_;
         worker_=JoiningThread([this,control,root,options,table,limits,stats_enabled] {
             try {
                 Search search(table);auto result=search.run(root,limits,options,control,[&](const SearchInfo& data){info(root,data);});
