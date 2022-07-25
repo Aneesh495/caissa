@@ -1,0 +1,10 @@
+{
+  "profile": "independent cached integer interpretation development",
+  "base_commit": "e19e887e8eb68ca6397e853019993e36b3c8380a",
+  "source_files": {
+    "verification/inference.py": "bc3ef4ee8ffc2fac2fdf24190d1c4e53b02f6e1aada5c9403520174fc94d427e",
+    "verification/network_bytes.py": "17947a24100bdfee757729acadcfe55ec02cb988c3c65583bc85e6c7f366146c",
+    "tests/network_bytes.py": "a58a1e2275d1748ca1291a4e7965bfa74eec921de90f699ad086220cd5ac2d6b"
+  },
+  "full_acceptance": false
+}
