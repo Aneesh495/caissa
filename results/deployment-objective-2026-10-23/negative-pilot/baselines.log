@@ -1,0 +1,5 @@
+{"split": "train", "completed": 8192, "positions": 17654}
+{"split": "train", "completed": 16384, "positions": 17654}
+{"split": "train", "completed": 17654, "positions": 17654}
+{"split": "validation", "completed": 2563, "positions": 2563}
+{"status": "completed", "splits": {"train": 17654, "validation": 2563}, "test_accessed": false, "manifest_sha256": "45b6c587739b2264e342f2b1cfbda659d0b106a29693537317721154b58dcd73"}

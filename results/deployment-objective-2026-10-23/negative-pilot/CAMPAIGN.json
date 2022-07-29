@@ -1,0 +1,1 @@
+{"status":"failed","details":{"exception":"StageFailure('stage independent failed: nonzero-exit (exit 1)')"},"seconds_this_campaign":147.96128054201836,"stages_started":7,"utc_unix":1792734360.173043,"full_acceptance":false}

@@ -1,0 +1,11 @@
+{
+  "scope": "diagnostic objective and failed-learning forensics; no full acceptance",
+  "base_commit": "49514939eea6c06840af0d10e1b869812d6cc0d9",
+  "source_files": {
+    "training/model.py": "8197f6f564486bbefeb0567f3437a07aaba64d9fc8e9316e8c3afc16747e6b52",
+    "training/train.py": "7101097995cdbd8a705d0b1bdf20311ccdcdcede73fcd634962013568ce85a1e",
+    "verification/learning.py": "420e8cc93e17bffc1214d5662f177d5d5dacc9ff9cdc8c2635928df7d556700e",
+    "tests/deployment_objective.py": "467d60ce672091f2dfe2310810ff4641f77af3fedda9ea6383d2cb2e5f18e017"
+  },
+  "full_acceptance": false
+}

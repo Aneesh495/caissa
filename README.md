@@ -8,7 +8,7 @@ An original C++23 chess engine with incremental neural evaluation, a paired-matc
 
 ## Run
 
-Native prerequisites: C++23 compiler, CMake 3.25 or newer and Ninja. The laboratory uses uv, Python 3.12 and Node 24. Apple arm64 and Ubuntu x86-64 builds run in [CI](https://github.com/Aneesh495/caissa-chess/actions/workflows/ci.yml).
+Native prerequisites: C++23 compiler, CMake 3.25 or newer and Ninja. The laboratory uses uv, Python 3.12 and Node 24. Apple arm64 and Ubuntu x86-64 builds run in [CI](https://github.com/Aneesh495/caissa/actions/workflows/ci.yml).
 
 ```sh
 make bootstrap
