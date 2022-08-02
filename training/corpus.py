@@ -95,6 +95,7 @@ def main():
         "--policy", choices=["legacy-v1", "searched-v2"], default="legacy-v1"
     )
     ap.add_argument("--stop-prepared", type=Path)
+    ap.add_argument("--max-preparation-lag-pairs", type=int, default=0)
     ap.add_argument("--target-training-inputs", type=int, default=10100000)
     ap.add_argument("--minimum-training-inputs", type=int, default=10000000)
     ap.add_argument("--minimum-completed-games", type=int, default=100000)
@@ -103,6 +104,12 @@ def main():
     ap.add_argument("--max-gib", type=float, default=40)
     ap.add_argument("--min-free-gib", type=float, default=10)
     a = ap.parse_args()
+    if a.max_preparation_lag_pairs and (
+        a.stop_prepared is None or not 100 <= a.max_preparation_lag_pairs <= 500000
+    ):
+        ap.error("preparation backpressure requires a progress path and lag100..500000")
+    if a.max_preparation_lag_pairs < 0:
+        ap.error("preparation lag must be nonnegative")
     if (
         any(
             not math.isfinite(v) or v < 0
@@ -218,6 +225,8 @@ def main():
             "target_training_inputs": (
                 a.target_training_inputs if a.stop_prepared is not None else None
             ),
+            "max_preparation_lag_pairs": a.max_preparation_lag_pairs,
+            "resume_preparation_lag_pairs": a.max_preparation_lag_pairs // 2,
             "minimum_training_inputs": (
                 a.minimum_training_inputs if a.stop_prepared is not None else None
             ),
@@ -286,12 +295,46 @@ def main():
     pending = iter(i for i in range(a.pairs) if i not in done)
     with concurrent.futures.ThreadPoolExecutor(max_workers=a.workers) as pool:
         running = {}
+        exhausted = False
+        throttled = False
+        last_progress = 0.0
+
+        def preparation_ready():
+            nonlocal throttled
+            if not a.max_preparation_lag_pairs:
+                return True
+            marker = prepared_progress()
+            consumed = marker["source_pairs"] if marker is not None else 0
+            backlog = len(done) + len(running) - consumed
+            previous = throttled
+            if backlog >= a.max_preparation_lag_pairs:
+                throttled = True
+            elif throttled and backlog <= a.max_preparation_lag_pairs // 2:
+                throttled = False
+            if previous != throttled:
+                journal(
+                    {
+                        "event": (
+                            "preparation-throttled"
+                            if throttled
+                            else "preparation-resumed"
+                        ),
+                        "utc_unix": time.time(),
+                        "session": session,
+                        "completed_pairs": len(done),
+                        "in_flight_pairs": len(running),
+                        "observed_prepared_pairs": consumed,
+                        "backlog_pairs": backlog,
+                        "maximum_lag_pairs": a.max_preparation_lag_pairs,
+                    }
+                )
+            return not throttled
 
         def submit():
-            nonlocal stop_reason
+            nonlocal stop_reason, exhausted
             stop_reason = budget()
-            if stop_reason:
-                return
+            if stop_reason or exhausted or not preparation_ready():
+                return False
             pair = next(pending, None)
             if pair is not None:
                 running[
@@ -306,13 +349,25 @@ def main():
                         a.policy,
                     )
                 ] = pair
+                return True
+            exhausted = True
+            return False
 
-        for _ in range(a.workers):
-            submit()
-        while running:
-            finished, _ = concurrent.futures.wait(
-                running, return_when=concurrent.futures.FIRST_COMPLETED
-            )
+        while True:
+            stop_reason = budget()
+            while len(running) < a.workers and submit():
+                pass
+            if not running and (stop_reason or exhausted):
+                break
+            finished = set()
+            if running:
+                finished, _ = concurrent.futures.wait(
+                    running, timeout=0.5, return_when=concurrent.futures.FIRST_COMPLETED
+                )
+            else:
+                # Dependency waits still consume the original wall budget.
+                # Keep publishing the observed preparation counter below.
+                time.sleep(0.2)
             for future in finished:
                 running.pop(future)
                 pair, complete, positions, size = future.result()
@@ -320,8 +375,13 @@ def main():
                 completed += complete
                 samples += positions
                 output_bytes += size
-                submit()
-            if len(done) % 25 == 0 or not running:
+            now = time.monotonic()
+            if (
+                (finished and len(done) % 25 == 0)
+                or now - last_progress >= 5
+                or (not running and stop_reason)
+            ):
+                marker = prepared_progress()
                 summary = {
                     "status": (
                         "diagnostic"
@@ -336,9 +396,20 @@ def main():
                     "wall_seconds_this_session": time.time() - wall_start,
                     "output_bytes": output_bytes,
                     "stop_reason": stop_reason,
+                    "phase": (
+                        "waiting-for-preparation"
+                        if throttled and not running
+                        else "generating"
+                    ),
+                    "observed_prepared_pairs": (
+                        marker["source_pairs"] if marker is not None else None
+                    ),
+                    "max_preparation_lag_pairs": a.max_preparation_lag_pairs,
+                    "in_flight_pairs": len(running),
                 }
                 atomic_json(a.output / "PROGRESS.json", summary)
                 print(json.dumps(summary), flush=True)
+                last_progress = now
     completion_proof = None
     target_complete = False
     if stop_reason == "screened-training-target":
@@ -388,6 +459,7 @@ def main():
         "workers": a.workers,
         "output_bytes": output_bytes,
         "stop_reason": stop_reason,
+        "max_preparation_lag_pairs": a.max_preparation_lag_pairs,
         "session": session,
     }
     journal({"event": "finished", "utc_unix": time.time(), **final})
