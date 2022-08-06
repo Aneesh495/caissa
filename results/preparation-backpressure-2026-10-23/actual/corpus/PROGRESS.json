@@ -1,0 +1,1 @@
+{"status":"diagnostic","pairs":318,"completed_games":636,"positions_before_dedup":44779,"seconds_this_session":94.62026495800819,"workers":4,"wall_seconds_this_session":94.62091088294983,"output_bytes":6942811,"stop_reason":null,"phase":"generating","observed_prepared_pairs":315,"max_preparation_lag_pairs":128,"in_flight_pairs":2}

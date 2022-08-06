@@ -8,6 +8,7 @@ from verification.dataset import verify_dataset
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--engine", default="build/caissa")
+    parser.add_argument("--nodes", type=int, default=500)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--interrupt", action="store_true")
     args = parser.parse_args()
@@ -23,7 +24,7 @@ def main():
         "--pairs",
         "5000",
         "--nodes",
-        "500",
+        str(args.nodes),
         "--workers",
         "2",
         "--policy",

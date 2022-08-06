@@ -406,6 +406,8 @@ def main():
                     ),
                     "max_preparation_lag_pairs": a.max_preparation_lag_pairs,
                     "in_flight_pairs": len(running),
+                    "session": session,
+                    "pid": os.getpid(),
                 }
                 atomic_json(a.output / "PROGRESS.json", summary)
                 print(json.dumps(summary), flush=True)
@@ -414,8 +416,32 @@ def main():
     target_complete = False
     if stop_reason == "screened-training-target":
         wait_start = time.time()
+        last_confirmation_progress = 0.0
         while stop_reason == "screened-training-target":
             marker = prepared_progress()
+            if time.time() - last_confirmation_progress >= 5:
+                progress = {
+                    "status": "data-generated-unverified",
+                    "phase": "confirming-complete-prefix",
+                    "pairs": len(done),
+                    "completed_games": completed,
+                    "positions_before_dedup": samples,
+                    "seconds_this_session": time.monotonic() - start,
+                    "wall_seconds_this_session": time.time() - wall_start,
+                    "observed_prepared_pairs": (
+                        marker["source_pairs"] if marker is not None else None
+                    ),
+                    "output_bytes": output_bytes,
+                    "workers": a.workers,
+                    "in_flight_pairs": 0,
+                    "stop_reason": stop_reason,
+                    "max_preparation_lag_pairs": a.max_preparation_lag_pairs,
+                    "session": session,
+                    "pid": os.getpid(),
+                }
+                atomic_json(a.output / "PROGRESS.json", progress)
+                print(json.dumps(progress), flush=True)
+                last_confirmation_progress = time.time()
             if marker is not None and marker["source_pairs"] == len(done):
                 completion_proof = marker
                 target_complete = (
