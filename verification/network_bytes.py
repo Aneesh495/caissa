@@ -103,7 +103,7 @@ class QuantizedNetwork:
         self.identity = identity
         self.sha256 = hashlib.sha256(raw).hexdigest()
 
-    def evaluate_features(self, features, baseline=None):
+    def evaluate_features(self, features, baseline=None, clip_output=True):
         features = np.asarray(features)
         if (
             features.ndim != 3
@@ -135,7 +135,7 @@ class QuantizedNetwork:
                     "independent residual baseline absent or out of contract"
                 )
             scores = scores + baseline
-        return scores.clip(-29871, 29871)
+        return scores.clip(-29871, 29871) if clip_output else scores
 
     def infer(self, fen):
         baseline = None

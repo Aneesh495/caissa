@@ -1,0 +1,1 @@
+{"profile":"New failed-summary and contradictory-status behavior checks, not a repeat of the completed100k observations or the exhausted subsequent replay phase","maximum_seconds":180,"prior_exhausted_phase":"runs/independent-numerical-final-checks","prior_failure":"905.88 wall seconds elapsed during6.52 monotonic seconds;600-second phase ceiling stays exhausted"}
