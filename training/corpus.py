@@ -6,6 +6,58 @@ from pathlib import Path
 SCHEMA = "caissa-selfplay-v1"
 
 
+def enforce_resume_limits(history, requested, now):
+    """A new process never grants a new resource or confirmation budget."""
+    starts = [event for event in history if event["event"] == "started"]
+    hard_stops = {
+        "wall-time-budget",
+        "child-cpu-scheduling-budget",
+        "output-byte-budget",
+        "preparation-confirmation-timeout",
+    }
+    if any(
+        event["event"] == "finished" and event.get("stop_reason") in hard_stops
+        for event in history
+    ):
+        raise ValueError(
+            "acquisition budget already exhausted; a restart cannot reset it"
+        )
+    for name in ["max_seconds", "max_child_cpu_seconds", "max_gib"]:
+        limits = [event[name] for event in starts if event.get(name, 0) > 0]
+        if limits and (requested[name] == 0 or requested[name] > min(limits)):
+            raise ValueError(
+                "resume would extend the frozen acquisition limit: " + name
+            )
+    reserves = [event["min_free_gib"] for event in starts if "min_free_gib" in event]
+    if reserves and requested["min_free_gib"] < max(reserves):
+        raise ValueError("resume would reduce the frozen free-space reserve")
+    if starts:
+        origin = min(
+            event.get("campaign_wall_origin_unix", event["utc_unix"])
+            for event in starts
+        )
+        if requested["max_seconds"] and now - origin >= requested["max_seconds"]:
+            raise ValueError("original acquisition wall budget already exhausted")
+        spent = sum(
+            event.get("child_cpu_seconds_this_session", 0)
+            for event in history
+            if event["event"] == "finished"
+        )
+        if (
+            requested["max_child_cpu_seconds"]
+            and spent >= requested["max_child_cpu_seconds"]
+        ):
+            raise ValueError("original acquisition child CPU budget already exhausted")
+    confirmations = [
+        event["deadline_unix"]
+        for event in history
+        if event["event"] == "confirmation-started"
+    ]
+    if confirmations and now >= min(confirmations):
+        raise ValueError("original preparation confirmation budget already exhausted")
+    return min(confirmations) if confirmations else None
+
+
 def digest(path):
     h = hashlib.sha256()
     with Path(path).open("rb") as f:
@@ -153,6 +205,13 @@ def main():
     else:
         atomic_json(cfg, config)
     config_sha = digest(cfg)
+    history = []
+    if (a.output / "SESSIONS.jsonl").exists():
+        history = [
+            json.loads(line)
+            for line in (a.output / "SESSIONS.jsonl").read_text().splitlines()
+        ]
+    confirmation_deadline = enforce_resume_limits(history, vars(a), time.time())
     done = set()
     completed = 0
     samples = 0
@@ -171,12 +230,6 @@ def main():
         done.add(pair)
         completed += sum(g["complete"] for g in record["games"])
         samples += sum(len(g["positions"]) for g in record["games"])
-    history = []
-    if (a.output / "SESSIONS.jsonl").exists():
-        history = [
-            json.loads(line)
-            for line in (a.output / "SESSIONS.jsonl").read_text().splitlines()
-        ]
     started = {event["session"] for event in history if event["event"] == "started"}
     finished = {event["session"] for event in history if event["event"] == "finished"}
     if a.max_child_cpu_seconds and started - finished:
@@ -235,6 +288,7 @@ def main():
             ),
             "max_gib": a.max_gib,
             "min_free_gib": a.min_free_gib,
+            "confirmation_timeout_seconds": 10800,
             "timing_note": "wall seconds and monotonic seconds recorded separately; CPU counts only reaped children in this session",
         }
     )
@@ -416,6 +470,17 @@ def main():
     target_complete = False
     if stop_reason == "screened-training-target":
         wait_start = time.time()
+        if confirmation_deadline is None:
+            confirmation_deadline = wait_start + 10800
+            journal(
+                {
+                    "event": "confirmation-started",
+                    "session": session,
+                    "utc_unix": wait_start,
+                    "deadline_unix": confirmation_deadline,
+                    "timeout_seconds": 10800,
+                }
+            )
         last_confirmation_progress = 0.0
         while stop_reason == "screened-training-target":
             marker = prepared_progress()
@@ -438,10 +503,19 @@ def main():
                     "max_preparation_lag_pairs": a.max_preparation_lag_pairs,
                     "session": session,
                     "pid": os.getpid(),
+                    "confirmation_deadline_unix": confirmation_deadline,
                 }
                 atomic_json(a.output / "PROGRESS.json", progress)
                 print(json.dumps(progress), flush=True)
                 last_confirmation_progress = time.time()
+            # A late consumer checkpoint cannot turn an already expired
+            # campaign into success, even when all pair files now exist.
+            if a.max_seconds and time.time() - origin >= a.max_seconds:
+                stop_reason = "wall-time-budget"
+                break
+            if time.time() >= confirmation_deadline:
+                stop_reason = "preparation-confirmation-timeout"
+                break
             if marker is not None and marker["source_pairs"] == len(done):
                 completion_proof = marker
                 target_complete = (
@@ -451,12 +525,6 @@ def main():
                 )
                 if not target_complete:
                     stop_reason = "screened-target-invalidated-by-later-data"
-                break
-            if a.max_seconds and time.time() - origin >= a.max_seconds:
-                stop_reason = "wall-time-budget"
-                break
-            if time.time() - wait_start > 10800:
-                stop_reason = "preparation-confirmation-timeout"
                 break
             time.sleep(0.2)
     complete = len(done) == a.pairs or target_complete

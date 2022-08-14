@@ -1,0 +1,10 @@
+{
+  "status": "diagnostic owner configuration collision disclosed",
+  "cause": "The forensic copier wrote the original corpus CONFIG.json and PROGRESS.json into the process-owner directory after the byte audit. These are source-corpus receipts, not the owner configuration.",
+  "source_corpus_config_sha256": "29ece37659b297d24bda565a139e442a1d571ba3058ae9bb23f9de3dba1d8cb9",
+  "owner_scope_from_original_wrapper": "Read-only retention and byte audit of failed acquisition; no budget reset, generation, export, training or final acceptance",
+  "owner_maximum_seconds_from_original_command_journal": 300,
+  "actual_wall_seconds": 231.88857507705688,
+  "no_reconstruction_claim": "The overwritten owner configuration bytes were not retained. Its actual start, ceiling, command and completion remain in COMMANDS.jsonl. This diagnostic is not full data acceptance.",
+  "full_acceptance": false
+}

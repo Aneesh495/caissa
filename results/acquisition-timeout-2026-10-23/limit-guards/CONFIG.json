@@ -1,0 +1,1 @@
+{"profile":"Prevent exhausted acquisition budget resets; inspect immutable failed corpus and test distinct small original acquisition","maximum_seconds":240,"source_files":{"training/corpus.py":"6c1b5402a212788072bb2f69a00715c6ae970415bad3bc95c1fb95c791ea689d","tests/acquisition_limits.py":"33e2b43a4aa24feed0e99ae5e758d55c8854f6526fd73ce3b8f8712857ad9b8d"}}

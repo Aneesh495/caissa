@@ -1,0 +1,27 @@
+{
+  "schema": "caissa-fixed-prefix-finalization-proposal-v1",
+  "status": "proposed-inactive; explicit additional resource authorization required",
+  "purpose": "Finish retained original data after the original confirmation deadline failed; never relabel that failed campaign",
+  "maximum_wall_seconds": 21600,
+  "maximum_new_games": 0,
+  "corpus_config_sha256": "29ece37659b297d24bda565a139e442a1d571ba3058ae9bb23f9de3dba1d8cb9",
+  "pair_hash_manifest_sha256": "a68c2b878fb2fbf7fcc738096396fa952408053f283c0fcf6c2ec2bf4a22e774",
+  "completed_pairs": 114791,
+  "minimum_training_inputs": 10000000,
+  "minimum_completed_games": 100000,
+  "minimum_completed_search_fraction": 0.95,
+  "minimum_free_gib": 10,
+  "maximum_additional_disk_gib": 20,
+  "teacher_sha256": "cd33e7f3f925bb522569c34283cc9f20c710d9e1bc50760bda62ccacbf2994ed",
+  "prior_protocol": "config/data-generation-v5.json",
+  "prior_failure": "preparation-confirmation-timeout",
+  "operations": [
+    "Verify exact fixed prefix against the preserved pre-restart SHA256 manifest",
+    "Export every split from the retained committed preparation transaction, with no resampling or changed labels",
+    "Independently replay all original games and reconstruct the complete deduplication, split, feature, target and contributor records",
+    "Record separate finalization and verification receipts while preserving all earlier failed receipts"
+  ],
+  "restart_rule": "Original acquisition stays stopped. A separately authorized finalization deadline is fixed once and never reset by process replacement. A new failure remains failed.",
+  "exclusions": "No new generation, model training, model selection, opponent match or release is authorized by this proposed finalization budget",
+  "full_acceptance": false
+}
