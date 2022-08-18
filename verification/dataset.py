@@ -10,12 +10,18 @@ import json
 import math
 import sqlite3
 import tempfile
+import time
 from pathlib import Path
 
 import chess
 import numpy as np
 
 from verification.verify import Rejection, load, terminal
+from verification.acquisition import (
+    protocol as recovery_protocol,
+    prefix as recovery_prefix,
+    endpoints as recovery_endpoints,
+)
 
 
 def digest(path):
@@ -133,9 +139,67 @@ def original_game(game):
 
 
 def verify_dataset(
-    dataset, corpus, studies, openings, require_full=False, scratch=None
+    dataset,
+    corpus,
+    studies,
+    openings,
+    require_full=False,
+    scratch=None,
+    *,
+    fixed_prefix_protocol=None,
+    expected_protocol_sha256=None,
+    pair_manifest=None,
+    progress=None,
+    maximum_seconds=21600,
+    wall_deadline=None,
+    retain_index=False,
 ):
+    start, wall_start = time.monotonic(), time.time()
+    if not math.isfinite(maximum_seconds) or not 0 < maximum_seconds <= 21600:
+        raise Rejection("finite independent data replay deadline required")
+    deadline = wall_start + maximum_seconds
+    if wall_deadline is not None:
+        if not math.isfinite(wall_deadline):
+            raise Rejection("finite absolute replay deadline required")
+        deadline = min(deadline, wall_deadline)
+
+    def checkpoint(phase, **counts):
+        if time.time() >= deadline or time.monotonic() - start >= maximum_seconds:
+            raise Rejection("original independent data replay deadline exhausted")
+        if progress is not None:
+            temporary = Path(progress).with_suffix(".tmp")
+            temporary.write_text(
+                json.dumps(
+                    {
+                        "phase": phase,
+                        "seconds": time.monotonic() - start,
+                        "wall_seconds": time.time() - wall_start,
+                        "deadline_unix": deadline,
+                        **counts,
+                    }
+                )
+                + "\n"
+            )
+            temporary.replace(progress)
+
     dataset, corpus = Path(dataset), Path(corpus)
+    checkpoint("input-identities")
+    recovery = None
+    preserved_pairs = None
+    if fixed_prefix_protocol is not None:
+        if pair_manifest is None:
+            raise Rejection(
+                "fixed-prefix recovery requires its preserved identity manifest"
+            )
+        recovery = recovery_protocol(fixed_prefix_protocol, expected_protocol_sha256)
+        preserved_pairs = recovery_prefix(
+            recovery,
+            corpus,
+            pair_manifest,
+            check=lambda: checkpoint("prefix-identities"),
+        )
+    elif expected_protocol_sha256 is not None or pair_manifest is not None:
+        raise Rejection("partial fixed-prefix recovery binding")
     manifest = load(dataset / "DATASET.json")
     if manifest.get("schema") != "caissa-dataset-v2" or not manifest.get(
         "functional_deduplication"
@@ -156,18 +220,26 @@ def verify_dataset(
     for path in (studies, openings):
         if manifest["heldout_inputs"].get(str(path)) != digest(path):
             raise Rejection("frozen held-out source differs")
+        if recovery is not None and recovery["heldout_inputs"].get(str(path)) != digest(
+            path
+        ):
+            raise Rejection(
+                "held-out source differs from the external recovery protocol"
+            )
     if digest(dataset / "SOURCE_PAIRS.json") != manifest["source_pairs_sha256"]:
         raise Rejection("original source-pair inventory differs")
     heldout, excluded_families = holdouts(studies, openings)
     source_pairs = load(dataset / "SOURCE_PAIRS.json")
+    if preserved_pairs is not None and source_pairs != preserved_pairs:
+        raise Rejection("prepared data omitted or changed an original frozen pair")
     if [row["pair"] for row in source_pairs] != sorted(
         {row["pair"] for row in source_pairs}
     ):
         raise Rejection("duplicated source pair identity")
-    complete_games = unfinished_games = raw_samples = 0
+    complete_games = unfinished_games = raw_samples = searched_samples = 0
     corpus_hash = hashlib.sha256()
     with tempfile.TemporaryDirectory(
-        prefix="caissa-verify-data-", dir=scratch
+        prefix="caissa-verify-data-", dir=scratch, delete=not retain_index
     ) as temporary:
         connection = sqlite3.connect(Path(temporary) / "replayed.sqlite3")
         connection.execute("PRAGMA journal_mode=OFF")
@@ -180,6 +252,14 @@ def verify_dataset(
         )
         for entry in source_pairs:
             number = entry["pair"]
+            if number % 256 == 0:
+                checkpoint(
+                    "original-games",
+                    source_pairs=number,
+                    completed_games=complete_games,
+                    raw_samples=raw_samples,
+                    index=str(temporary),
+                )
             source = corpus / f"{number // 256:06d}" / f"{number:09d}.json"
             raw = source.read_bytes()
             actual_hash = hashlib.sha256(raw).hexdigest()
@@ -215,6 +295,9 @@ def verify_dataset(
                     continue
                 complete_games += 1
                 raw_samples += len(observations)
+                searched_samples += sum(
+                    sample["depth"] > 0 for _, sample in observations
+                )
                 family = hashlib.sha256(
                     " ".join(game["moves"][:8]).encode()
                 ).hexdigest()
@@ -269,10 +352,12 @@ def verify_dataset(
         if (
             complete_games != manifest["counts"]["completed_games"]
             or unfinished_games != manifest["counts"]["unfinished_games"]
+            or raw_samples != manifest["counts"]["raw_positions"]
         ):
             raise Rejection("original completion counts differ")
         counts = {}
         for split, name in enumerate(("train", "validation", "test")):
+            checkpoint("prepared-arrays", split=name, checked_inputs=0)
             expected_count = connection.execute(
                 "SELECT count(*) FROM expected WHERE split=?", (split,)
             ).fetchone()[0]
@@ -311,6 +396,13 @@ def verify_dataset(
                         (split,),
                     )
                 ):
+                    if index % 25000 == 0:
+                        checkpoint(
+                            "prepared-arrays",
+                            split=name,
+                            checked_inputs=index,
+                            total_inputs=expected_count,
+                        )
                     row = json.loads(next(identities, "{}"))
                     if (
                         row.get("input_id") != identity.hex()
@@ -362,6 +454,39 @@ def verify_dataset(
     if require_full:
         if complete_games < 100000 or counts["train"] < 10000000:
             raise Rejection("full original game/training-input floors not met")
+        if recovery is not None:
+            recovery_result = recovery_endpoints(
+                recovery, counts, complete_games, raw_samples, searched_samples
+            )
+            recovery_prefix(
+                recovery,
+                corpus,
+                pair_manifest,
+                check=lambda: checkpoint("final-prefix-identities"),
+            )
+            checkpoint(
+                "completed",
+                source_pairs=len(source_pairs),
+                completed_games=complete_games,
+                rebuilt_splits=counts,
+            )
+            return {
+                "status": "passed",
+                "profile": "full-data-replay",
+                "acquisition_mode": "separately-authorized-fixed-prefix-finalization",
+                "original_acquisition_status": "failed-preserved",
+                "source_pairs": len(source_pairs),
+                "completed_games": complete_games,
+                "unfinished_games": unfinished_games,
+                "raw_samples": raw_samples,
+                "independently_rebuilt_splits": counts,
+                "dataset_sha256": digest(dataset / "DATASET.json"),
+                "recovery_protocol_sha256": expected_protocol_sha256,
+                **recovery_result,
+                "seconds": time.monotonic() - start,
+                "wall_seconds": time.time() - wall_start,
+                "full_acceptance": False,
+            }
         summary = load(corpus / "SUMMARY.json")
         if (
             summary.get("status", "completed") != "completed"
@@ -406,6 +531,13 @@ def main():
     )
     parser.add_argument("--require-full", action="store_true")
     parser.add_argument("--scratch", type=Path)
+    parser.add_argument("--fixed-prefix-protocol", type=Path)
+    parser.add_argument("--expected-prefix-protocol-sha256")
+    parser.add_argument("--pair-manifest", type=Path)
+    parser.add_argument("--progress", type=Path)
+    parser.add_argument("--max-seconds", type=float, default=21600)
+    parser.add_argument("--wall-deadline-unix", type=float)
+    parser.add_argument("--retain-index", action="store_true")
     args = parser.parse_args()
     try:
         result = verify_dataset(
@@ -415,6 +547,13 @@ def main():
             args.openings,
             args.require_full,
             args.scratch,
+            fixed_prefix_protocol=args.fixed_prefix_protocol,
+            expected_protocol_sha256=args.expected_prefix_protocol_sha256,
+            pair_manifest=args.pair_manifest,
+            progress=args.progress,
+            maximum_seconds=args.max_seconds,
+            wall_deadline=args.wall_deadline_unix,
+            retain_index=args.retain_index,
         )
         print(json.dumps(result))
         return 0

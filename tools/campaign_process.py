@@ -49,7 +49,15 @@ def group_signal(pid, signum):
 
 
 class Campaign:
-    def __init__(self, output, config, maximum_seconds):
+    def __init__(
+        self,
+        output,
+        config,
+        maximum_seconds,
+        *,
+        absolute_deadline=None,
+        resource_guard=None,
+    ):
         self.output = Path(output)
         if not math.isfinite(maximum_seconds) or not 0 < maximum_seconds <= 7 * 86400:
             raise ValueError("finite campaign duration is required")
@@ -60,6 +68,11 @@ class Campaign:
         self.start = time.monotonic()
         self.deadline = self.start + maximum_seconds
         self.wall_deadline = time.time() + maximum_seconds
+        if absolute_deadline is not None:
+            if not math.isfinite(absolute_deadline):
+                raise ValueError("finite absolute deadline required")
+            self.wall_deadline = min(self.wall_deadline, absolute_deadline)
+        self.resource_guard = resource_guard
         self.sequence = 0
         self.closed = False
         self.interrupted = None
@@ -86,7 +99,15 @@ class Campaign:
             stream.flush()
             os.fsync(stream.fileno())
 
-    def run(self, stage, command, timeout, maximum_output_bytes=32 * 1024 * 1024):
+    def run(
+        self,
+        stage,
+        command,
+        timeout,
+        maximum_output_bytes=32 * 1024 * 1024,
+        *,
+        cwd=None,
+    ):
         if self.closed:
             raise ValueError("campaign already closed")
         if not re.fullmatch("[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}", stage):
@@ -142,6 +163,7 @@ class Campaign:
                     stderr=subprocess.STDOUT,
                     bufsize=0,
                     start_new_session=True,
+                    cwd=cwd,
                 )
                 os.set_blocking(process.stdout.fileno(), False)
                 selector.register(process.stdout, selectors.EVENT_READ)
@@ -187,6 +209,11 @@ class Campaign:
                         if discarded and reason is None:
                             reason = "output-byte-budget"
                     if now - last_progress >= 1:
+                        if self.resource_guard is not None and reason is None:
+                            try:
+                                self.resource_guard()
+                            except (ValueError, RuntimeError, OSError) as error:
+                                reason = "resource-guard: " + str(error)
                         log.flush()
                         atomic(
                             self.output / "PROGRESS.json",
