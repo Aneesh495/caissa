@@ -278,7 +278,25 @@ def main():
     start = time.monotonic()
     untrained = validation(False) if first_step == 0 else state["untrained_validation"]
     initial_path = a.output / "initial.pt"
-    if first_step == 0:
+    if first_step == 0 and initial_path.exists():
+        # A process can die after initialization but before its first optimizer
+        # transaction. Recreate the seeded start and preserve its original bytes.
+        from verification.learning import checkpoint as read_checkpoint, parameter_hash
+
+        origin = read_checkpoint(initial_path)
+        identity = json.loads((a.output / "INITIAL.json").read_text())
+        if (
+            origin["schema"] != "caissa-initial-parameters-v1"
+            or origin["config"] != config
+            or origin["initial_hash"] != initial_hash
+            or parameter_hash(origin["model"]) != initial_hash
+            or origin["untrained_validation"] != untrained
+            or identity["sha256"] != digest(initial_path)
+            or identity["parameter_sha256"] != initial_hash
+            or identity["seed"] != a.seed
+        ):
+            raise ValueError("saved initialization differs from exact seeded recovery")
+    elif first_step == 0:
         save(
             initial_path,
             {

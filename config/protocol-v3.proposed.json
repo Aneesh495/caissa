@@ -1,0 +1,26 @@
+{
+  "schema": "caissa-experiment-protocol-v3",
+  "status": "proposed; freeze dataset and finalization identities before full training",
+  "purpose": "Original residual-mixture learning and fixed-sample playing-strength tests after searched-teacher data reconstruction. Earlier failures remain retained.",
+  "data": {
+    "dataset_sha256": null,
+    "finalization_sha256": null,
+    "finalization_protocol_sha256": "4f87782001915c1c1462618d3af3a254b9921fbe8a1d2616f5c2636224c388e2",
+    "pair_manifest_sha256": "a68c2b878fb2fbf7fcc738096396fa952408053f283c0fcf6c2ec2bf4a22e774",
+    "teacher_sha256": "cd33e7f3f925bb522569c34283cc9f20c710d9e1bc50760bda62ccacbf2994ed",
+    "minimum_training_inputs": 10000000,
+    "minimum_completed_games": 100000,
+    "minimum_completed_search_fraction": 0.95,
+    "functional_input_screening": true
+  },
+  "network": {"format": 3, "feature": 1, "width": 64, "dense": [32,16], "scale": 1024, "clip": 2047, "maximum_float_error_cp": 32, "probes": 100000, "probe_seed": 86028157, "error_contract": "unclamped-quantization-and-clamped-inference", "neural_weight": 10},
+  "training": {"seeds": [17,41,73], "steps": 20000, "batch": 2048, "threads": 2, "device": "cpu", "lr": 0.001, "outcome_weight": 0.5, "checkpoint_every": 250, "neural_weight": 10, "optimizer": "AdamW; weight_decay=0.00001", "schedule": "cosine to five percent; float first half and quantized-aware second half", "mixture_contract": "residual-output-ste-round-clamp-truncate-v1"},
+  "model_campaign": {"output": "runs/searched-full-model-v3", "maximum_wall_seconds": 21600, "maximum_additional_disk_gib": 20, "minimum_free_gib": 10, "maximum_attempts": 3, "training_order": [17,41,73], "seed_replacement": false, "early_stopping": false, "native_transitions": 1000000},
+  "matches": {"milliseconds": 100, "threads": 1, "hash_mib": 16, "warmup_nodes": 1, "transport_allowance_ms": 150, "maximum_plies": 512, "workers": 2, "neural_pairs": 2000, "external_pairs": [334,333,333], "external_settings": ["Stockfish 19 Skill Level 0", "Stockfish 19 UCI_Elo 2000", "Stockfish 19 unrestricted"], "stockfish_sha256": "dc2f18c34ae962dff591b66147d220ec06e61d756b93d8a4f5e04fd8e55c251f", "opening_file": "config/strength-openings.json", "bootstrap_resamples": 20000, "bootstrap_seed": 104729, "confidence": 0.95, "minimum_neural_gain_elo": 50, "minimum_neural_lower_elo_exclusive": 0, "maximum_neural_campaign_wall_seconds": 43200, "maximum_external_campaign_wall_seconds": 43200, "host_load": "No corpus generation/preparation, training, compiler, other arena or performance campaign may run during decisive timed games. Preserve startup and periodic process/load snapshots. All actual forfeits remain outcomes."},
+  "selection": "Lowest saved quantized validation-mixture loss; seed breaks exact ties. Keep all checkpoints and all three completed budgets, including failed learning seeds. No test-model metrics or match outcomes affect seed, architecture, checkpoint, training budget or mixture selection.",
+  "classical_control": "Identical frozen executable and search/resource options; Use Neural=false; original classical contract1 remains unchanged. Neural Bounds and Ordering Hints remain disabled in both actors.",
+  "resource_basis": "Earlier three residual20000-update batch2048 seeds used1075.75,2121.39 and1423.74 measured session seconds on the older prefix. A16-game100ms diagnostic used95.03wall seconds with two workers and retained four time forfeits under compiler/data contention. Its result cannot establish strength. New model wall ceiling is six hours; decisive matches get separately bounded twelve-hour ceilings and controlled host load.",
+  "failure_policy": "A failed learning seed remains failed after all provenance and checkpoints are audited. Numerical/restoration and fixed-sample strength observations may still be collected for that validation-selected model, with the failed learning gate disclosed. A domain pass never substitutes for another gate. No release until every required gate passes.",
+  "absolute_rating": "No absolute Elo inference from Stockfish option names or search speed. Report relative estimates, paired uncertainty, censored endpoints and all failures. Stockfish parity requires actual supporting games.",
+  "historical_deviation": "Original weak teacher, older splits, failed neural diagnostics, failed small mixture seeds and the original acquisition confirmation timeout are retained. This proposal rewrites none of them."
+}

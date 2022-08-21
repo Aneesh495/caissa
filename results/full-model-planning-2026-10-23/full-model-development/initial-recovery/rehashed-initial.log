@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/training/train.py", line 469, in <module>
+    main()
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/training/train.py", line 298, in main
+    raise ValueError("saved initialization differs from exact seeded recovery")
+ValueError: saved initialization differs from exact seeded recovery

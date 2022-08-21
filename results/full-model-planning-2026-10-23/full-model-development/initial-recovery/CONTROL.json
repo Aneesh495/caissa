@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "actual_forced_exit": -9,
+  "initial_checkpoint_sha256_preserved": "36f048e8cfc36aa658e118e3eb81ca4d750ddd73234764c6e12024ac5c632df7",
+  "initial_identity_bytes_preserved": true,
+  "exact_recovered_fields": [
+    "model",
+    "optimizer",
+    "scheduler",
+    "sampler",
+    "torch_rng",
+    "numpy_rng",
+    "python_rng",
+    "config",
+    "step",
+    "updates",
+    "initial_hash",
+    "current_hash",
+    "best_validation",
+    "untrained_validation"
+  ],
+  "real_updates_each": 100,
+  "rehashed_initial_rejected_exit": 1,
+  "test_arrays_opened": false,
+  "full_acceptance": false
+}
