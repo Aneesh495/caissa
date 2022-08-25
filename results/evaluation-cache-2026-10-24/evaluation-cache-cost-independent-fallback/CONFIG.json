@@ -1,0 +1,1 @@
+{"scope":"Validate actual legal zero-completed-depth fallback instead of requiring a nonexistent score; retain previous failed replay and initial cleanup failure","original_origin_unix":1792815209.760074,"original_maximum_seconds":900}

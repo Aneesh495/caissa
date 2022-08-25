@@ -30,6 +30,7 @@ def main():
     parser.add_argument("--repeats", type=int, default=3)
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--load-note", required=True)
+    parser.add_argument("--cache-comparison", action="store_true")
     args = parser.parse_args()
     if not 1000 <= args.nodes <= 100000 or not 1 <= args.repeats <= 10:
         parser.error("fixed workload exceeds diagnostic bounds")
@@ -49,6 +50,15 @@ def main():
         "neural-exact": (100, False),
         "neural-bounds": (100, True),
     }
+    if args.cache_comparison:
+        modes = {
+            "classical-exact": (0, False, False),
+            "classical-cache": (0, False, True),
+            "mixture-exact": (10, False, False),
+            "mixture-cache": (10, False, True),
+            "neural-exact": (100, False, False),
+            "neural-cache": (100, False, True),
+        }
     config = {
         "schema": "caissa-neural-cost-v1",
         "profile": "diagnostic",
@@ -74,15 +84,18 @@ def main():
         for mode, setting in modes.items():
             options = {"Threads": 1, "Hash": 16, "Search Stats": True}
             if setting:
-                weight, bounded = setting
-                options.update(
-                    {
-                        "EvalFile": str(args.network.resolve()),
-                        "Use Neural": True,
-                        "Neural Weight": weight,
-                        "Neural Bounds": bounded,
-                    }
-                )
+                weight, bounded = setting[:2]
+                if len(setting) == 3:
+                    options["Evaluation Cache"] = setting[2]
+                if weight:
+                    options.update(
+                        {
+                            "EvalFile": str(args.network.resolve()),
+                            "Use Neural": True,
+                            "Neural Weight": weight,
+                            "Neural Bounds": bounded,
+                        }
+                    )
             clients[mode] = stack.enter_context(
                 UciClient([str(args.engine.resolve())], options, warmup_nodes=1)
             )
@@ -148,9 +161,22 @@ def main():
             "neural_evaluations": sum(s["neural_evaluations"] for s in stats),
             "certified_cutoffs": sum(s["neural_bound_cutoffs"] for s in stats),
             "evaluator_ns": sum(s["eval_ns"] for s in stats),
+            "evaluation_cache_hits": sum(
+                s.get("evaluation_cache_hits", 0) for s in stats
+            ),
+            "evaluation_requests": sum(s["eval_calls"] for s in stats),
         }
-    summary["paired_bounds_over_exact_roundtrip_ratio"] = {}
-    for prefix in ["mixture", "neural"]:
+    result_key = (
+        "paired_cache_over_exact_roundtrip_ratio"
+        if args.cache_comparison
+        else "paired_bounds_over_exact_roundtrip_ratio"
+    )
+    summary[result_key] = {}
+    for prefix in (
+        ["classical", "mixture", "neural"]
+        if args.cache_comparison
+        else ["mixture", "neural"]
+    ):
         ratios = []
         for repeat in range(args.repeats):
             for position in positions:
@@ -159,11 +185,53 @@ def main():
                     for r in rows
                     if r["repeat"] == repeat and r["position"] == position["id"]
                 }
+                varied = pair[
+                    prefix + ("-cache" if args.cache_comparison else "-bounds")
+                ]
+                exact = pair[prefix + "-exact"]
+                if args.cache_comparison:
+                    if (
+                        any(
+                            varied["observed"].get(key) != exact["observed"].get(key)
+                            for key in [
+                                "depth",
+                                "seldepth",
+                                "nodes",
+                                "score_type",
+                                "score",
+                                "pv",
+                            ]
+                        )
+                        or varied["bestmove"] != exact["bestmove"]
+                    ):
+                        raise ValueError(
+                            "exact evaluation cache changed fixed-node result"
+                        )
+                    for key in [
+                        "visited_nodes",
+                        "completed_depth_nodes",
+                        "qnodes",
+                        "tt_hits",
+                        "tt_cutoffs",
+                        "beta_cutoffs",
+                        "null_cutoffs",
+                        "lmr",
+                        "researches",
+                        "futility",
+                        "eval_calls",
+                    ]:
+                        if (
+                            varied["observed"]["stats"][key]
+                            != exact["observed"]["stats"][key]
+                        ):
+                            raise ValueError(
+                                "exact evaluation cache changed search-tree counters: "
+                                + key
+                            )
                 ratios.append(
-                    pair[prefix + "-bounds"]["roundtrip_ms"]
-                    / pair[prefix + "-exact"]["roundtrip_ms"]
+                    varied["roundtrip_ms"] / pair[prefix + "-exact"]["roundtrip_ms"]
                 )
-        summary["paired_bounds_over_exact_roundtrip_ratio"][prefix] = {
+        summary[result_key][prefix] = {
             "median": statistics.median(ratios),
             "minimum": min(ratios),
             "maximum": max(ratios),

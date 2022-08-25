@@ -1,0 +1,1 @@
+{"phase":"build","pid":48552,"command":["cmake","--build","build-evaluation-cache","-j","2"],"seconds_this_stage":8.406728792004287,"seconds_this_campaign":9.437304041988682,"retained_output_bytes":2443,"discarded_output_bytes":0,"stopping_reason":null}

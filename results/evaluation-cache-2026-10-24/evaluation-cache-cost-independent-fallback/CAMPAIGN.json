@@ -1,0 +1,1 @@
+{"status":"failed","details":{"type":"StageFailure","reason":"stage independent-cost failed: nonzero-exit (exit 1)"},"seconds_this_campaign":0.5100403329706751,"stages_started":1,"utc_unix":1792815971.892519,"full_acceptance":false}

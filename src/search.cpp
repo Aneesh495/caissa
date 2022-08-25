@@ -1,5 +1,6 @@
 #include "caissa/thread.hpp"
 #include "caissa/search.hpp"
+#include "caissa/evaluation_cache.hpp"
 #include <algorithm>
 #include <cmath>
 #include <numeric>
@@ -31,6 +32,7 @@ std::int64_t time_budget(std::int64_t remaining,std::int64_t increment,int moves
 }
 SearchStats& SearchStats::operator+=(const SearchStats& r) {
     neural_evaluations+=r.neural_evaluations;neural_bound_cutoffs+=r.neural_bound_cutoffs;
+    evaluation_cache_hits+=r.evaluation_cache_hits;evaluation_cache_bytes+=r.evaluation_cache_bytes;
     ordering_hint_hits+=r.ordering_hint_hits;qnodes+=r.qnodes;table_hits+=r.table_hits;table_cutoffs+=r.table_cutoffs;beta_cutoffs+=r.beta_cutoffs;
     null_cutoffs+=r.null_cutoffs;lmr_searches+=r.lmr_searches;researches+=r.researches;futility_skips+=r.futility_skips;
     evaluator_calls+=r.evaluator_calls;evaluator_ns+=r.evaluator_ns;seldepth=std::max(seldepth,r.seldepth);return *this;
@@ -54,7 +56,9 @@ struct Guard {
 };
 class Worker {
 public:
-    Worker(TranspositionTable& table,SearchControl& control,const SearchOptions& options):table_(table),control_(control),options_(options){}
+    Worker(TranspositionTable& table,SearchControl& control,const SearchOptions& options):table_(table),control_(control),options_(options) {
+        if(options_.evaluation_cache){evaluation_cache_=std::make_unique<EvaluationCache>();stats.evaluation_cache_bytes=evaluation_cache_->bytes();}
+    }
     SearchStats stats;
     std::vector<TraceSample> trace;
     void reset(const Position& p){if(options_.network)accumulator_=options_.network->refresh(p);}
@@ -146,6 +150,7 @@ private:
     std::array<std::array<Move,64>,64> counters_{};
     std::array<std::array<std::array<int,64>,64>,2> history_{};
     std::uint64_t local_nodes_=0;Accumulator accumulator_;
+    std::unique_ptr<EvaluationCache> evaluation_cache_;
     void touch(int ply) {
         if(control_.stop.load(std::memory_order_relaxed)) throw Abort{};
         auto ticket=control_.nodes.fetch_add(1,std::memory_order_relaxed);
@@ -154,18 +159,26 @@ private:
         stats.seldepth=std::max(stats.seldepth,ply);
     }
     int evaluate(const Position& p,int stand_pat_beta=infinity) {
-        auto begin=monotonic_ns();int score;
+        auto begin=monotonic_ns();int score;bool exact=true;
+        ++stats.evaluator_calls;
+        if(evaluation_cache_) {
+            if(auto cached=evaluation_cache_->find(p.key())) {
+                ++stats.evaluation_cache_hits;
+                stats.evaluator_ns+=static_cast<std::uint64_t>(monotonic_ns()-begin);
+                return *cached;
+            }
+        }
         if(options_.neural_bounds&&options_.network&&options_.network->residual()&&
            options_.neural_weight>0&&stand_pat_beta<infinity) {
             auto result=options_.network->evaluate_at_least(p,accumulator_,stand_pat_beta,
                                                           options_.scalar_network,options_.neural_weight);
-            score=result.score;
+            score=result.score;exact=result.exact;
             if(result.exact)++stats.neural_evaluations;else ++stats.neural_bound_cutoffs;
         } else {
             score=evaluation_of(p,options_,&accumulator_);
             if(options_.network&&options_.neural_weight>0)++stats.neural_evaluations;
         }
-        ++stats.evaluator_calls;
+        if(evaluation_cache_&&exact)evaluation_cache_->store(p.key(),score);
         stats.evaluator_ns+=static_cast<std::uint64_t>(monotonic_ns()-begin);return score;
     }
     bool is_capture(const Position& p,Move m) const {return m.flag==MoveFlag::en_passant||(m.flag!=MoveFlag::castle&&p.at(m.to));}
