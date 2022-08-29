@@ -38,6 +38,7 @@ public:
             emit("option name Ordering Hints type check default false");
             emit("option name Neural Bounds type check default false");
             emit("option name Evaluation Cache type check default false");
+            emit("option name Tactical Generation type check default false");
             emit("option name Neural Weight type spin default 100 min 0 max 100");
             emit("option name EvalFile type string default <empty>");emit("option name Use Neural type check default false");emit("option name Scalar Neural type check default false");
             emit("option name Search Stats type check default false");emit("option name Trace Samples type spin default 0 min 0 max 64");
@@ -88,7 +89,7 @@ private:
             else if(name=="Extensions")options_.extensions=v;else if(name=="PVS")options_.pvs=v;
             else if(name=="Aspiration")options_.aspiration=v;else if(name=="Quiescence")options_.quiescence=v;
             else if(name=="History")options_.history=v;else if(name=="SEE")options_.see=v;
-            else if(name=="Futility")options_.futility=v;else if(name=="Use Table")options_.table=v;else if(name=="Ordering Hints")options_.ordering_hints=v;else if(name=="Neural Bounds")options_.neural_bounds=v;else if(name=="Evaluation Cache")options_.evaluation_cache=v;
+            else if(name=="Futility")options_.futility=v;else if(name=="Use Table")options_.table=v;else if(name=="Ordering Hints")options_.ordering_hints=v;else if(name=="Neural Bounds")options_.neural_bounds=v;else if(name=="Evaluation Cache")options_.evaluation_cache=v;else if(name=="Tactical Generation")options_.tactical_generation=v;
             else throw InputError("unknown option");
         }
         table_->clear();

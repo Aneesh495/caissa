@@ -1,0 +1,554 @@
+{
+  "schema": "caissa-tactical-generation-evidence-v1",
+  "engine_sha256": "b3f835804a014b4a6970bbe971c3129aa5fbd5229b102e7e34ae374430f621fd",
+  "previous_engine_sha256": "3297ae639f5fbe2e4d99d697256f3372b21b6e618001acbf83831c7724c523dc",
+  "network_sha256": "580ea83d33f54426981adc072042d4555bf26259a859ddafbc0bb0eb2f7b8926",
+  "full_acceptance": false,
+  "source_note": "Executed C++ source hashes are in development CONFIG. The independent tactical verifier was formatted with Black after the completed100k run; no algorithm changed. Native binaries were unchanged. Final release source-bound campaigns remain required.",
+  "files": [
+    {
+      "path": "tactical-generation-development/CAMPAIGN.json",
+      "source": "runs/tactical-generation-development/CAMPAIGN.json",
+      "source_sha256": "1a380735a1f1b5bec362c1d627408a5bc958149af7e965d78689a6830734038c",
+      "source_bytes": 229,
+      "sha256": "1a380735a1f1b5bec362c1d627408a5bc958149af7e965d78689a6830734038c",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-development/COMMANDS.jsonl.gz",
+      "source": "runs/tactical-generation-development/COMMANDS.jsonl",
+      "source_sha256": "cd4ed8f98a54e7dbb2514dd70f44d281792ae7baa67e417a4d827704375a77e3",
+      "source_bytes": 7037,
+      "sha256": "6f90af9305ecd966bdce4630a4c5bba766acfcd06bfc2cd4f379c7285eb61dd2",
+      "gzip": true
+    },
+    {
+      "path": "tactical-generation-development/CONFIG.json",
+      "source": "runs/tactical-generation-development/CONFIG.json",
+      "source_sha256": "b29c3f2ab854f6523bdbcb5f15d3c125b83c0bf8e254360b0d8d0f64fc066930",
+      "source_bytes": 5380,
+      "sha256": "b29c3f2ab854f6523bdbcb5f15d3c125b83c0bf8e254360b0d8d0f64fc066930",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-development/PROGRESS.json",
+      "source": "runs/tactical-generation-development/PROGRESS.json",
+      "source_sha256": "197d32ae3713ae3052fe6c1d4fb21939e8e63a9cbfe583e920e758d8acedcbe8",
+      "source_bytes": 301,
+      "sha256": "197d32ae3713ae3052fe6c1d4fb21939e8e63a9cbfe583e920e758d8acedcbe8",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-development/build-release.json",
+      "source": "runs/tactical-generation-development/build-release.json",
+      "source_sha256": "6347fb64868c7677c47b800c019110c6dd07ced547bcd42a7436c09a4bceefc1",
+      "source_bytes": 488,
+      "sha256": "6347fb64868c7677c47b800c019110c6dd07ced547bcd42a7436c09a4bceefc1",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-development/build-release.log.gz",
+      "source": "runs/tactical-generation-development/build-release.log",
+      "source_sha256": "3c0a3215501c2a0990b580c364d1aa86360571f72b591ec0aedebeadbbd67b43",
+      "source_bytes": 4098,
+      "sha256": "b2b7a04bbd5682c5a3cb24a015777db89ba31b1818b9c5eab375ba048e10c3d7",
+      "gzip": true
+    },
+    {
+      "path": "tactical-generation-development/build-sanitizers.json",
+      "source": "runs/tactical-generation-development/build-sanitizers.json",
+      "source_sha256": "df4bf08bf300e6ac4951deb576d9de1a84f0bf8e3f1b45142106425ba2c5504f",
+      "source_bytes": 501,
+      "sha256": "df4bf08bf300e6ac4951deb576d9de1a84f0bf8e3f1b45142106425ba2c5504f",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-development/build-sanitizers.log.gz",
+      "source": "runs/tactical-generation-development/build-sanitizers.log",
+      "source_sha256": "7df86d5a86b995fa43b90b768f67749be2ccc46e9bd4c3794985c0b64e28fcc3",
+      "source_bytes": 4098,
+      "sha256": "687b21badfbf72b7c80bddaa2184ae118e373fc538aa76207a22675786f7e581",
+      "gzip": true
+    },
+    {
+      "path": "tactical-generation-development/configure-release.json",
+      "source": "runs/tactical-generation-development/configure-release.json",
+      "source_sha256": "55a138e0d3a044d695ae54e408678caa5a33e9b950d99482d7cec5d328fa2bf6",
+      "source_bytes": 521,
+      "sha256": "55a138e0d3a044d695ae54e408678caa5a33e9b950d99482d7cec5d328fa2bf6",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-development/configure-release.log.gz",
+      "source": "runs/tactical-generation-development/configure-release.log",
+      "source_sha256": "aecc818ab530481426284e2ee04a374f53120c15a6d7838666d8687bf41cd37c",
+      "source_bytes": 571,
+      "sha256": "064ae8b2881f7504ab846586d04cd70e695e6b0e2d4837b6b1880211b7147c3b",
+      "gzip": true
+    },
+    {
+      "path": "tactical-generation-development/configure-sanitizers.json",
+      "source": "runs/tactical-generation-development/configure-sanitizers.json",
+      "source_sha256": "f6c6e49e62b40d407623d20a1c285ff80b01677a0402aad08c6ed9de6fb21cd0",
+      "source_bytes": 575,
+      "sha256": "f6c6e49e62b40d407623d20a1c285ff80b01677a0402aad08c6ed9de6fb21cd0",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-development/configure-sanitizers.log.gz",
+      "source": "runs/tactical-generation-development/configure-sanitizers.log",
+      "source_sha256": "5b213a57719b1b20c1ca254eaf33ca9c622cbb690be6fc536d1b835d7bee4764",
+      "source_bytes": 580,
+      "sha256": "1a3d25e8164aa277d8d309fc5e900faaaa08d1d9a28004dbe771c0fdf702be84",
+      "gzip": true
+    },
+    {
+      "path": "tactical-generation-development/independent100k.json",
+      "source": "runs/tactical-generation-development/independent100k.json",
+      "source_sha256": "c514c58fe380d54d85ad224b80bfcd68ef454fe7a6a2d08098f48640e4649a61",
+      "source_bytes": 757,
+      "sha256": "c514c58fe380d54d85ad224b80bfcd68ef454fe7a6a2d08098f48640e4649a61",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-development/independent100k.log.gz",
+      "source": "runs/tactical-generation-development/independent100k.log",
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "source_bytes": 0,
+      "sha256": "abfbb86f9f5ddfbd9fc1a72c43ab384702ce8bae86b60f3324748485e235e61e",
+      "gzip": true
+    },
+    {
+      "path": "tactical-generation-development/native-release.json",
+      "source": "runs/tactical-generation-development/native-release.json",
+      "source_sha256": "def643b2f3aa77dcf80eb393276899b0ca6e4c1eb804e30fbfd824c048d34ef5",
+      "source_bytes": 535,
+      "sha256": "def643b2f3aa77dcf80eb393276899b0ca6e4c1eb804e30fbfd824c048d34ef5",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-development/native-release.log.gz",
+      "source": "runs/tactical-generation-development/native-release.log",
+      "source_sha256": "0ca1124c05ade1b7fa47dc877ed09498ccde404033e10e95cad262eb29ac17fc",
+      "source_bytes": 1654,
+      "sha256": "d260382d73045c6dbc39499c5af867af914e4fd1899dc5ba1c43045858c52361",
+      "gzip": true
+    },
+    {
+      "path": "tactical-generation-development/native-sanitizers.json",
+      "source": "runs/tactical-generation-development/native-sanitizers.json",
+      "source_sha256": "e5523e184539594281909c21299875c5f75cf0e5a6be507cd09126d143bed9cc",
+      "source_bytes": 551,
+      "sha256": "e5523e184539594281909c21299875c5f75cf0e5a6be507cd09126d143bed9cc",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-development/native-sanitizers.log.gz",
+      "source": "runs/tactical-generation-development/native-sanitizers.log",
+      "source_sha256": "1b19885fd6f8742b433feaf11e8845bf83d22121def802fc6d8a5d85ff5e1d9f",
+      "source_bytes": 1663,
+      "sha256": "7910c44e684d4a7995d5f497ac3899c71873c257d940d67a8177a98f11b449f4",
+      "gzip": true
+    },
+    {
+      "path": "tactical-generation-development/perft20.json",
+      "source": "runs/tactical-generation-development/perft20.json",
+      "source_sha256": "6725f27a4cc43482463327b9bcd420bf11220ba747db2c0e85255eff90ac32b3",
+      "source_bytes": 596,
+      "sha256": "6725f27a4cc43482463327b9bcd420bf11220ba747db2c0e85255eff90ac32b3",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-development/perft20.log.gz",
+      "source": "runs/tactical-generation-development/perft20.log",
+      "source_sha256": "85387539629ac3436397928674773cb5d0213e01e37c71bcb279953c5dbd802a",
+      "source_bytes": 71,
+      "sha256": "dcaba86d5fe2520ee93022ecf3c8e7636a01911409118c14e294adfc249fb7d2",
+      "gzip": true
+    },
+    {
+      "path": "tactical-generation-differential/CONFIG.json",
+      "source": "runs/tactical-generation-differential/CONFIG.json",
+      "source_sha256": "4d610d08fc3bd0d4e4ada4202123dd6ead4056d9e66d62a2903f96ea357eac01",
+      "source_bytes": 541,
+      "sha256": "4d610d08fc3bd0d4e4ada4202123dd6ead4056d9e66d62a2903f96ea357eac01",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-differential/PROGRESS.json",
+      "source": "runs/tactical-generation-differential/PROGRESS.json",
+      "source_sha256": "6ff8ff8fd1f2ef5360aed19eaeb039ed13dee972d34520a07ecf0ff08c711c5f",
+      "source_bytes": 102,
+      "sha256": "6ff8ff8fd1f2ef5360aed19eaeb039ed13dee972d34520a07ecf0ff08c711c5f",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-differential/SUMMARY.json",
+      "source": "runs/tactical-generation-differential/SUMMARY.json",
+      "source_sha256": "178500b896bef2de324cc2bc03f34fbd17ea2596edeec048e9c7a4181a4fe323",
+      "source_bytes": 636,
+      "sha256": "178500b896bef2de324cc2bc03f34fbd17ea2596edeec048e9c7a4181a4fe323",
+      "gzip": false
+    },
+    {
+      "path": "tactical-generation-differential/observations.jsonl.gz",
+      "source": "runs/tactical-generation-differential/observations.jsonl",
+      "source_sha256": "53ea289be880a102a54938280313122d554cfda71946dfd74e34a0c1725d23d7",
+      "source_bytes": 90850724,
+      "sha256": "3dc7227b2f70166e19132d4db979445396fdae5b91947f05df347a01b0c6b6f6",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-owner/CAMPAIGN.json",
+      "source": "runs/combined-exact-cost-owner/CAMPAIGN.json",
+      "source_sha256": "0284b5af96e10f87c9e817a4dc89f793870fba8ada043b4b7c0e19bbff391c93",
+      "source_bytes": 226,
+      "sha256": "0284b5af96e10f87c9e817a4dc89f793870fba8ada043b4b7c0e19bbff391c93",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-owner/COMMANDS.jsonl.gz",
+      "source": "runs/combined-exact-cost-owner/COMMANDS.jsonl",
+      "source_sha256": "640e2f0bab69b9370676ee9331c0cfaa232736700c254fed57e5c0f85910550a",
+      "source_bytes": 3852,
+      "sha256": "05095f2ef5bd16481d3d4f85215d893f5b99b332d864e944d2ec2c67a7345c96",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-owner/CONFIG.json",
+      "source": "runs/combined-exact-cost-owner/CONFIG.json",
+      "source_sha256": "8e5248bdcc214838efe92bbabe175e140e7fbf59967efd11ec7a3ab32c3d30ca",
+      "source_bytes": 253,
+      "sha256": "8e5248bdcc214838efe92bbabe175e140e7fbf59967efd11ec7a3ab32c3d30ca",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-owner/INDEPENDENT_REPLAY.jsonl.gz",
+      "source": "runs/combined-exact-cost-owner/INDEPENDENT_REPLAY.jsonl",
+      "source_sha256": "f6ef14979d0b58db6115241adf9b6fc85df6b87dada241527b960805da59f339",
+      "source_bytes": 269771,
+      "sha256": "a1e80467001613da8b60b00b12be835b1828b000f0677d3c3037565ad33cfaff",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-owner/PROGRESS.json",
+      "source": "runs/combined-exact-cost-owner/PROGRESS.json",
+      "source_sha256": "10538c73b2ccb2d2a63073e6953abc0e30b718ca5147a78807fac520d5bdf871",
+      "source_bytes": 552,
+      "sha256": "10538c73b2ccb2d2a63073e6953abc0e30b718ca5147a78807fac520d5bdf871",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-owner/cost.json",
+      "source": "runs/combined-exact-cost-owner/cost.json",
+      "source_sha256": "95e00e5473fa71ea786be549a8ee3dd019511978718c8d8a01189d1444b392bb",
+      "source_bytes": 860,
+      "sha256": "95e00e5473fa71ea786be549a8ee3dd019511978718c8d8a01189d1444b392bb",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-owner/cost.log.gz",
+      "source": "runs/combined-exact-cost-owner/cost.log",
+      "source_sha256": "ee4fabd625f5fa3aea2cad880d0fbb5bf37b9730aac11f8ac74c5358b4226119",
+      "source_bytes": 1925,
+      "sha256": "43d51f151e19a617e9e99b318bd2d5e256a04f948f8c01a31b175a6187eadb8f",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-owner/format.json",
+      "source": "runs/combined-exact-cost-owner/format.json",
+      "source_sha256": "baba823058775afe8771c13ad4d8f6fa301f5bfc053a77a762ec47fbe7f9dc98",
+      "source_bytes": 536,
+      "sha256": "baba823058775afe8771c13ad4d8f6fa301f5bfc053a77a762ec47fbe7f9dc98",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-owner/format.log.gz",
+      "source": "runs/combined-exact-cost-owner/format.log",
+      "source_sha256": "90f9b2290e294b883a668217861034c315a162f72197abe7a7910bffe4c931db",
+      "source_bytes": 122,
+      "sha256": "5edad5be77f471045b45bca51fc2476d619cccf8f2c0e6e71f6d1a04026fb209",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-owner/independent-replay.json",
+      "source": "runs/combined-exact-cost-owner/independent-replay.json",
+      "source_sha256": "5163d8f651ad47ff204e25fe1fd2b115e0fa723c97c07c96926abfe2965d9651",
+      "source_bytes": 799,
+      "sha256": "5163d8f651ad47ff204e25fe1fd2b115e0fa723c97c07c96926abfe2965d9651",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-owner/independent-replay.log.gz",
+      "source": "runs/combined-exact-cost-owner/independent-replay.log",
+      "source_sha256": "0132b33d2a06025dd07f1d986baa7657c71c55557cfd434b1f69a5e2e85e97b3",
+      "source_bytes": 767,
+      "sha256": "0292be51bac125127d9f6c7859badffc65411ef0d5cb1dba641320dafaf6732f",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost/CONFIG.json",
+      "source": "runs/combined-exact-cost/CONFIG.json",
+      "source_sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "source_bytes": 1112,
+      "sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost/PROGRESS.json",
+      "source": "runs/combined-exact-cost/PROGRESS.json",
+      "source_sha256": "89f521b1a9855ea2d5da6b1a30ddfe9e3bb637583739b039993c4c2d79754539",
+      "source_bytes": 69,
+      "sha256": "89f521b1a9855ea2d5da6b1a30ddfe9e3bb637583739b039993c4c2d79754539",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost/SUMMARY.json",
+      "source": "runs/combined-exact-cost/SUMMARY.json",
+      "source_sha256": "84d50b877e9235d3e4ad2ba46d4b0602f9575c76cd5862cb9637fcdd8dbf8d10",
+      "source_bytes": 1799,
+      "sha256": "84d50b877e9235d3e4ad2ba46d4b0602f9575c76cd5862cb9637fcdd8dbf8d10",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost/observations.jsonl.gz",
+      "source": "runs/combined-exact-cost/observations.jsonl",
+      "source_sha256": "cc34c744d2eab865b70da9d00525a466cba8e19562efd0f39bed44ffd0c50b80",
+      "source_bytes": 386095,
+      "sha256": "c1f6152f685548643b67a21a4bdda967f9835d143f62026d7fbddf02800e4e5a",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-controls-owner/CAMPAIGN.json",
+      "source": "runs/combined-exact-cost-controls-owner/CAMPAIGN.json",
+      "source_sha256": "9958198f5cfa98f745d9e339610a12dd2b0dba23c0eca9a58d060a2d1671d897",
+      "source_bytes": 213,
+      "sha256": "9958198f5cfa98f745d9e339610a12dd2b0dba23c0eca9a58d060a2d1671d897",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls-owner/COMMANDS.jsonl.gz",
+      "source": "runs/combined-exact-cost-controls-owner/COMMANDS.jsonl",
+      "source_sha256": "eafd2f7974306af6c882d66a90a7652e2aafa2dab36de1934b96c6f34aa78b2c",
+      "source_bytes": 2307,
+      "sha256": "fd78558b7e6f595c3732517eed9bdda3fe14104cdc867e147eebba2244278e85",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-controls-owner/CONFIG.json",
+      "source": "runs/combined-exact-cost-controls-owner/CONFIG.json",
+      "source_sha256": "77d4cedc57a764e13dd06dbc193e7d13350334904fd58080078bb9683199fd57",
+      "source_bytes": 148,
+      "sha256": "77d4cedc57a764e13dd06dbc193e7d13350334904fd58080078bb9683199fd57",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls-owner/PROGRESS.json",
+      "source": "runs/combined-exact-cost-controls-owner/PROGRESS.json",
+      "source_sha256": "3c7dfd306c589a76722ec5af990e26dd597ae63149366153cebb2c6e53747fc0",
+      "source_bytes": 514,
+      "sha256": "3c7dfd306c589a76722ec5af990e26dd597ae63149366153cebb2c6e53747fc0",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls-owner/format.json",
+      "source": "runs/combined-exact-cost-controls-owner/format.json",
+      "source_sha256": "50fd96145ea1e47795ac49a5e9971729aef7f38733ff0d2e530443975b0acfac",
+      "source_bytes": 518,
+      "sha256": "50fd96145ea1e47795ac49a5e9971729aef7f38733ff0d2e530443975b0acfac",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls-owner/format.log.gz",
+      "source": "runs/combined-exact-cost-controls-owner/format.log",
+      "source_sha256": "3fd0895b0c1b05bd04dda3b9259f7479641980d6f29167238b72dceddee53572",
+      "source_bytes": 90,
+      "sha256": "f7f56b2b97196bc34214ed7d728dab8c8bcb9fc7180e171811b76d6b9041482b",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-controls-owner/rehashed-controls.json",
+      "source": "runs/combined-exact-cost-controls-owner/rehashed-controls.json",
+      "source_sha256": "bf3964879f6a7f07254be0cfefce35239c0a8f94c21b1b0183ba983b8c7fc1de",
+      "source_bytes": 764,
+      "sha256": "bf3964879f6a7f07254be0cfefce35239c0a8f94c21b1b0183ba983b8c7fc1de",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls-owner/rehashed-controls.log.gz",
+      "source": "runs/combined-exact-cost-controls-owner/rehashed-controls.log",
+      "source_sha256": "8b7e25623906d64d3b46325ca093afb656d153181d0596bd2f22e98e184da439",
+      "source_bytes": 1232,
+      "sha256": "221b8c8c5bc5c64d959538db0efb37c0ebbea746ddd983b80017cd34ee57944a",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-controls/CONTROLS.json",
+      "source": "runs/combined-exact-cost-controls/CONTROLS.json",
+      "source_sha256": "2198452bf88a01db5a8d2a8ce1ca68d7dbbd31a311b016aae0628c93747c355a",
+      "source_bytes": 1508,
+      "sha256": "2198452bf88a01db5a8d2a8ce1ca68d7dbbd31a311b016aae0628c93747c355a",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/changed-budget/CONFIG.json",
+      "source": "runs/combined-exact-cost-controls/changed-budget/CONFIG.json",
+      "source_sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "source_bytes": 1112,
+      "sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/changed-budget/SUMMARY.json",
+      "source": "runs/combined-exact-cost-controls/changed-budget/SUMMARY.json",
+      "source_sha256": "037d3ba532d6d5888fcc29bafbac5e8deaf7ec3a3f0fec5e40459c21d64a3d1e",
+      "source_bytes": 1925,
+      "sha256": "037d3ba532d6d5888fcc29bafbac5e8deaf7ec3a3f0fec5e40459c21d64a3d1e",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/changed-budget/observations.jsonl.gz",
+      "source": "runs/combined-exact-cost-controls/changed-budget/observations.jsonl",
+      "source_sha256": "94cc200b2e8c1f9d8d638d2bf403c21b5c9432c6af1821282861d6bec53eb05f",
+      "source_bytes": 386091,
+      "sha256": "c727a4d6743de49ff734076ce4f352a72926966d44cadd02c9cf66a3285a2229",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-controls/changed-mode/CONFIG.json",
+      "source": "runs/combined-exact-cost-controls/changed-mode/CONFIG.json",
+      "source_sha256": "316aed100288aea32a705c2dedbf3f6a26d9ecda55b2925d676bc49c3424315e",
+      "source_bytes": 1176,
+      "sha256": "316aed100288aea32a705c2dedbf3f6a26d9ecda55b2925d676bc49c3424315e",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/changed-mode/SUMMARY.json",
+      "source": "runs/combined-exact-cost-controls/changed-mode/SUMMARY.json",
+      "source_sha256": "ee4fabd625f5fa3aea2cad880d0fbb5bf37b9730aac11f8ac74c5358b4226119",
+      "source_bytes": 1925,
+      "sha256": "ee4fabd625f5fa3aea2cad880d0fbb5bf37b9730aac11f8ac74c5358b4226119",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/changed-mode/observations.jsonl.gz",
+      "source": "runs/combined-exact-cost-controls/changed-mode/observations.jsonl",
+      "source_sha256": "cc34c744d2eab865b70da9d00525a466cba8e19562efd0f39bed44ffd0c50b80",
+      "source_bytes": 386095,
+      "sha256": "c1f6152f685548643b67a21a4bdda967f9835d143f62026d7fbddf02800e4e5a",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-controls/changed-parsed-score/CONFIG.json",
+      "source": "runs/combined-exact-cost-controls/changed-parsed-score/CONFIG.json",
+      "source_sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "source_bytes": 1112,
+      "sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/changed-parsed-score/SUMMARY.json",
+      "source": "runs/combined-exact-cost-controls/changed-parsed-score/SUMMARY.json",
+      "source_sha256": "93a7f93081f19268be08816e37797a904a1bf349c705906f3cc595b066318288",
+      "source_bytes": 1925,
+      "sha256": "93a7f93081f19268be08816e37797a904a1bf349c705906f3cc595b066318288",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/changed-parsed-score/observations.jsonl.gz",
+      "source": "runs/combined-exact-cost-controls/changed-parsed-score/observations.jsonl",
+      "source_sha256": "5867562bf56d48c5074de9bb394e76c2ba4505ed22db82ff6c10bb63e9f73410",
+      "source_bytes": 386095,
+      "sha256": "2e52f754367075110a701421b86dbbbaf1565a7185dc7a16beeff1e742973d57",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-controls/fabricated-time-ratio/CONFIG.json",
+      "source": "runs/combined-exact-cost-controls/fabricated-time-ratio/CONFIG.json",
+      "source_sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "source_bytes": 1112,
+      "sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/fabricated-time-ratio/SUMMARY.json",
+      "source": "runs/combined-exact-cost-controls/fabricated-time-ratio/SUMMARY.json",
+      "source_sha256": "ef3983635b7375a1d56dff6e1e1adcc0e60bb84a28c15735adc645d2ece7b212",
+      "source_bytes": 1925,
+      "sha256": "ef3983635b7375a1d56dff6e1e1adcc0e60bb84a28c15735adc645d2ece7b212",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/fabricated-time-ratio/observations.jsonl.gz",
+      "source": "runs/combined-exact-cost-controls/fabricated-time-ratio/observations.jsonl",
+      "source_sha256": "cc34c744d2eab865b70da9d00525a466cba8e19562efd0f39bed44ffd0c50b80",
+      "source_bytes": 386095,
+      "sha256": "c1f6152f685548643b67a21a4bdda967f9835d143f62026d7fbddf02800e4e5a",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-controls/false-completed-fallback/CONFIG.json",
+      "source": "runs/combined-exact-cost-controls/false-completed-fallback/CONFIG.json",
+      "source_sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "source_bytes": 1112,
+      "sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/false-completed-fallback/SUMMARY.json",
+      "source": "runs/combined-exact-cost-controls/false-completed-fallback/SUMMARY.json",
+      "source_sha256": "daa1d5561b5e83e37911297f99fa1dc0ac8dc898590e64f86e75f49e8119aa4f",
+      "source_bytes": 1925,
+      "sha256": "daa1d5561b5e83e37911297f99fa1dc0ac8dc898590e64f86e75f49e8119aa4f",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/false-completed-fallback/observations.jsonl.gz",
+      "source": "runs/combined-exact-cost-controls/false-completed-fallback/observations.jsonl",
+      "source_sha256": "fdacf5bb80e085c4a2f8888580085dd8e9c4b1ee07a353c75c2daa6543db2887",
+      "source_bytes": 385447,
+      "sha256": "e6a30bc7e9afdb945b616b150e8c17b7e2561ff820dfa24a5bd26f74baa0ec00",
+      "gzip": true
+    },
+    {
+      "path": "combined-exact-cost-controls/illegal-pv/CONFIG.json",
+      "source": "runs/combined-exact-cost-controls/illegal-pv/CONFIG.json",
+      "source_sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "source_bytes": 1112,
+      "sha256": "37f3fc226da3911b7036179acab765d9cb2b5f83a2c162d0f05e1218d9efad87",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/illegal-pv/SUMMARY.json",
+      "source": "runs/combined-exact-cost-controls/illegal-pv/SUMMARY.json",
+      "source_sha256": "544e6fb364a5d3d9c69b8af935eb7d10a80bd60f0ffd9483c5824a61b4ffa906",
+      "source_bytes": 1925,
+      "sha256": "544e6fb364a5d3d9c69b8af935eb7d10a80bd60f0ffd9483c5824a61b4ffa906",
+      "gzip": false
+    },
+    {
+      "path": "combined-exact-cost-controls/illegal-pv/observations.jsonl.gz",
+      "source": "runs/combined-exact-cost-controls/illegal-pv/observations.jsonl",
+      "source_sha256": "c5442ba84a8719f6c07d1944828d5cf530e1b641e617c38830961d7964ed1280",
+      "source_bytes": 386137,
+      "sha256": "55a98568506d67633ab57d9a4553f8e3fd8d1de24c716c6ec747b89e46f8d694",
+      "gzip": true
+    },
+    {
+      "path": "release-native-detail.log.gz",
+      "source": "build-tactical/Testing/Temporary/LastTest.log",
+      "source_sha256": "c41f894b44c52ea89b94d93dfae23b72e08dde254a73d3fd5a606409687bc01b",
+      "source_bytes": 10896,
+      "sha256": "138f504912fdfb2ee4c5a55fb3af5fbda0bb05c0f9df037f98785d1c246dd53d",
+      "gzip": true
+    },
+    {
+      "path": "asan-ubsan-relwithdebinfo-native-detail.log.gz",
+      "source": "build-tactical-sanitize/Testing/Temporary/LastTest.log",
+      "source_sha256": "373d2f1bc8f024db3ec73f031734cb52116122ffe4faf4dc5c2764bdd9b91c6d",
+      "source_bytes": 11166,
+      "sha256": "10e8434f07593571c297d17577ff646abc90576f6f99982bf08e183d5448195b",
+      "gzip": true
+    }
+  ]
+}

@@ -66,14 +66,14 @@ public:
         touch(ply);pv.clear();
         if(depth>=2&&trace.size()<static_cast<std::size_t>(options_.trace_limit))trace.push_back({p.fen(),depth,alpha,beta,ply,p.synthetic_search_path()});
         if(ply>=max_ply-1) return evaluate(p);
-        bool check=p.in_check(p.side());
-        auto moves=p.legal();auto state=rules(p,moves);
+        auto prepared=prepare_position(p,depth<=0);
+        bool check=prepared.checked;auto moves=std::move(prepared.moves);auto state=prepared.state;
         if(state.ended()) return state.terminal==Termination::checkmate?-mate_score+ply:0;
         bool claim=state.claimable();
         if(claim) {if(beta<=0)return 0;alpha=std::max(alpha,0);}
         if(depth<=0) {
             if(!options_.quiescence) return std::max(claim?0:-infinity,evaluate(p));
-            return quiet(p,alpha,beta,ply,0,claim,std::move(moves),pv);
+            return quiet(p,alpha,beta,ply,0,claim,std::move(moves),pv,check,prepared.tactical_pending);
         }
         alpha=std::max(alpha,-mate_score+ply);beta=std::min(beta,mate_score-ply-1);
         if(alpha>=beta) return alpha;
@@ -151,6 +151,16 @@ private:
     std::array<std::array<std::array<int,64>,64>,2> history_{};
     std::uint64_t local_nodes_=0;Accumulator accumulator_;
     std::unique_ptr<EvaluationCache> evaluation_cache_;
+    struct PreparedPosition {RuleState state;bool checked,tactical_pending;Moves moves;};
+    PreparedPosition prepare_position(Position& p,bool leaf) {
+        if(leaf&&options_.tactical_generation) {
+            auto available=p.availability();auto state=rules(p,available);Moves moves;
+            if(available.checked()&&!state.ended())moves=p.legal();
+            return {state,available.checked(),!available.checked(),std::move(moves)};
+        }
+        bool checked=p.in_check(p.side());auto moves=p.legal();auto state=rules(p,moves);
+        return {state,checked,false,std::move(moves)};
+    }
     void touch(int ply) {
         if(control_.stop.load(std::memory_order_relaxed)) throw Abort{};
         auto ticket=control_.nodes.fetch_add(1,std::memory_order_relaxed);
@@ -208,21 +218,24 @@ private:
         std::stable_sort(ordered.begin(),ordered.end(),[](auto& a,auto& b){return a.first>b.first;});
         for(std::size_t i=0;i<moves.size();++i) moves[i]=ordered[i].second;
     }
-    int quiet(Position& p,int alpha,int beta,int ply,int qply,bool claim,Moves moves,Moves& pv) {
-        ++stats.qnodes;bool check=p.in_check(p.side());
+    int quiet(Position& p,int alpha,int beta,int ply,int qply,bool claim,Moves moves,Moves& pv,bool check,bool tactical_pending) {
+        ++stats.qnodes;
         int best=claim?0:-infinity;
         // A certified evaluation lower bound is usable only as a stand-pat
         // cutoff outside check. Principal/full evaluations remain exact.
         if(!check) {best=std::max(best,evaluate(p,beta));if(best>=beta)return best;alpha=std::max(alpha,best);}
         if(qply>=24||ply>=max_ply-2) return check?evaluate(p):best;
-        if(!check)std::erase_if(moves,[&](Move m){return !is_capture(p,m)&&m.promotion==Kind::none;});
+        if(!check) {
+            if(tactical_pending)moves=p.legal_tactical();
+            else std::erase_if(moves,[&](Move m){return !is_capture(p,m)&&m.promotion==Kind::none;});
+        }
         order(p,moves,{}, {},ply);
         for(auto m:moves) {
             if(!check&&!is_capture(p,m)&&m.promotion==Kind::none)continue;
             Moves child;int score;
-            {Guard guard(p,m,options_.network.get(),options_.network?&accumulator_:nullptr);touch(ply+1);auto replies=p.legal();auto state=rules(p,replies);
+            {Guard guard(p,m,options_.network.get(),options_.network?&accumulator_:nullptr);touch(ply+1);auto prepared=prepare_position(p,true);auto state=prepared.state;
                 if(state.ended()) score=state.terminal==Termination::checkmate?mate_score-ply-1:0;
-                else score=-quiet(p,-beta,-alpha,ply+1,qply+1,state.claimable(),std::move(replies),child);
+                else score=-quiet(p,-beta,-alpha,ply+1,qply+1,state.claimable(),std::move(prepared.moves),child,prepared.checked,prepared.tactical_pending);
             }
             if(score>best) {best=score;pv={m};pv.insert(pv.end(),child.begin(),child.end());}
             alpha=std::max(alpha,score);if(alpha>=beta)break;

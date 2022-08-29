@@ -24,14 +24,20 @@ int parse_depth(std::string_view s) {
     int depth=-1;auto [p,e]=std::from_chars(s.data(),s.data()+s.size(),depth);
     if(e!=std::errc{}||p!=s.data()+s.size()||depth<0||depth>80) throw InputError("invalid depth");return depth;
 }
-void inspect(std::string_view text) {
+void inspect(std::string_view text,bool tactical=false) {
     bool c960=text.starts_with("960|");if(c960) text.remove_prefix(4);
     auto p=Position::from_fen(text,c960);auto moves=p.legal();auto ref=reference::legal(p);
     auto sort=[](Moves& list){std::sort(list.begin(),list.end(),[](Move a,Move b){return a.packed()<b.packed();});};
     sort(moves);sort(ref);if(moves!=ref) throw std::logic_error("mailbox and bitboard move sets disagree");
     std::cout<<"{\"fen\":\""<<p.fen()<<"\",\"key\":"<<json_quote(key_text(p.key()))<<",\"repetition_key\":"<<json_quote(key_text(p.repetition_key()))<<",\"check\":"<<(p.in_check(p.side())?"true":"false")<<",\"moves\":[";
     bool first=true;for(auto m:moves){if(!first)std::cout<<',';first=false;std::cout<<'"'<<p.uci(m)<<'"';}
-    std::cout<<"]}\n"<<std::flush;
+    std::cout<<']';
+    if(tactical) {
+        auto available=p.availability();auto captures=p.legal_tactical();
+        std::cout<<",\"any\":"<<(available.any()?"true":"false")<<",\"availability_check\":"<<(available.checked()?"true":"false")<<",\"tactical\":[";
+        first=true;for(auto m:captures){if(!first)std::cout<<',';first=false;std::cout<<json_quote(p.uci(m));}std::cout<<']';
+    }
+    std::cout<<"}\n"<<std::flush;
 }
 }
 int main(int argc,char** argv) {
@@ -100,10 +106,10 @@ int main(int argc,char** argv) {
             bool first=true;for(auto m:r.pv){if(!first)std::cout<<',';first=false;std::cout<<'"'<<p.uci(m)<<'"';p.make(m);}
             std::cout<<"]}\n";return 0;
         }
-        if(argc==2&&std::string_view(argv[1])=="--inspect") {
+        if(argc==2&&(std::string_view(argv[1])=="--inspect"||std::string_view(argv[1])=="--inspect-tactical")) {
             std::string line;
             while(std::getline(std::cin,line)) {
-                try {inspect(line);}catch(const std::exception&){std::cout<<"{\"error\":\"invalid position or reference mismatch\"}\n"<<std::flush;}
+                try {inspect(line,std::string_view(argv[1])=="--inspect-tactical");}catch(const std::exception&){std::cout<<"{\"error\":\"invalid position or reference mismatch\"}\n"<<std::flush;}
             }
             return 0;
         }

@@ -17,6 +17,16 @@ struct Undo {
     Color side=Color::white;
     int synthetic_depth=0;
 };
+class MoveAvailability {
+public:
+    Key position_key() const noexcept {return key_;}
+    bool checked() const noexcept {return checked_;}
+    bool any() const noexcept {return any_;}
+private:
+    friend class Position;
+    MoveAvailability(Key key,bool checked,bool any):key_(key),checked_(checked),any_(any){}
+    Key key_;bool checked_,any_;
+};
 class Position {
 public:
     static Position from_fen(std::string_view fen, bool chess960=false);
@@ -47,6 +57,8 @@ public:
     bool can_castle(int wing) const;
     Moves pseudo_legal() const;
     Moves legal();
+    Moves legal_tactical();
+    MoveAvailability availability();
     Undo make(Move m);
     void unmake(const Undo& u);
     Undo make_null();
