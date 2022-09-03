@@ -1,0 +1,491 @@
+{
+  "schema": "caissa-full-strength-owner-evidence-v1",
+  "full_acceptance": false,
+  "scope": "contract guards, actual8actor UCI probes and4rehashed existing-game controls; no full strength games",
+  "retained_failure": "first actual preflight enabled UseNeural before EvalFile and was rejected; dependency order fixed and all8actual probes passed within same600second origin",
+  "source_files": {
+    "tools/full_strength.py": "acc74d8b5726dae72980cdfffa098e416aea945fdef0d9aa1d1b7801d90b4f4c",
+    "verification/external_strength.py": "2f932508d5b0e8f4135d89a0fdd6e2301fe2ebcf35817b86aafda24c63336ec4",
+    "verification/strength.py": "d4106519059579b018b0d3fd06e04857e466f071e67937ef61a761723317a5e2",
+    "tools/recovery_scope.py": "d284e99d59e96fcadaaf09f1eb23c6aefea99190ec7c85d8aa8917fb5ecb81ac",
+    "tools/full_learning.py": "6a6f8728a20476349168d2382e323623edf1aa21643dd98021e501a788e7e561",
+    "tests/full_strength.py": "3568631f54ed811ada4c0c4f15e7282c1c0797917f7bda24cc35f9de818aeae2",
+    "tests/full_strength_transport.py": "a176f9d3b8c0e35c4119b3c543d5f25d244651917271e711977aae183483f5fd",
+    "tests/full_model_protocol.py": "12f662b17a9359db9889ec7b7e886038b01e4a3ad69622c663a6e98563d27b23",
+    "config/protocol-v3.proposed.json": "911ae4f628ca66312d895e6a18af7fd37b47f2bf0325bb22ec2c339e14188564"
+  },
+  "files": [
+    {
+      "path": "full-strength-owner-development/CAMPAIGN.json",
+      "source": "runs/full-strength-owner-development/CAMPAIGN.json",
+      "source_bytes": 211,
+      "source_sha256": "bc73a20ca0f2aabcb5cf3cbe23ab8dccbdd9f6c2a545ad61c07826e2eff8d6a7",
+      "sha256": "bc73a20ca0f2aabcb5cf3cbe23ab8dccbdd9f6c2a545ad61c07826e2eff8d6a7",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-development/COMMANDS.jsonl.gz",
+      "source": "runs/full-strength-owner-development/COMMANDS.jsonl",
+      "source_bytes": 5071,
+      "source_sha256": "fabd2ccdeb85549dadbfeb9a15632a28fa52dadec7ca23f89060c9a94e1e9233",
+      "sha256": "7292c29db86486a1fa4de5b600603c6d069d04908450a988be4c033dd225c065",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-development/CONFIG.json",
+      "source": "runs/full-strength-owner-development/CONFIG.json",
+      "source_bytes": 124,
+      "source_sha256": "b327aa411fd474b3cee88390010239e6c6bb532f03cf9a6c69d0b443cb0bdd00",
+      "sha256": "b327aa411fd474b3cee88390010239e6c6bb532f03cf9a6c69d0b443cb0bdd00",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-development/PROGRESS.json",
+      "source": "runs/full-strength-owner-development/PROGRESS.json",
+      "source_bytes": 451,
+      "source_sha256": "e82c5c47abc03198c72e188708702f7d8dd5f19540c6be08518a5edf129e685f",
+      "sha256": "e82c5c47abc03198c72e188708702f7d8dd5f19540c6be08518a5edf129e685f",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-development/compile-python.json",
+      "source": "runs/full-strength-owner-development/compile-python.json",
+      "source_bytes": 686,
+      "source_sha256": "61904879954f48e751cd4dc7a88efc1295a0dd89829f1f53553a1c45017167ed",
+      "sha256": "61904879954f48e751cd4dc7a88efc1295a0dd89829f1f53553a1c45017167ed",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-development/compile-python.log.gz",
+      "source": "runs/full-strength-owner-development/compile-python.log",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-development/format.json",
+      "source": "runs/full-strength-owner-development/format.json",
+      "source_bytes": 621,
+      "source_sha256": "87c566ec9d80f62dd77dc534d4a00356d56bd4f93502d6a2b6ae6fef464e815e",
+      "sha256": "87c566ec9d80f62dd77dc534d4a00356d56bd4f93502d6a2b6ae6fef464e815e",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-development/format.log.gz",
+      "source": "runs/full-strength-owner-development/format.log",
+      "source_bytes": 245,
+      "source_sha256": "df0ca098c1b793876f37f15d43cbe169253dd2e5001550fe1366014029fc285f",
+      "sha256": "041fecd3bb0dd9d774e937609da286c2ad74acc60c4d14c22ae66a1ce12cd840",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-development/frozen-model-controls.json",
+      "source": "runs/full-strength-owner-development/frozen-model-controls.json",
+      "source_bytes": 652,
+      "source_sha256": "f570ee35c45182037a116832788796f8a5c42761ed221df5d192d59547b6f863",
+      "sha256": "f570ee35c45182037a116832788796f8a5c42761ed221df5d192d59547b6f863",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-development/frozen-model-controls.log.gz",
+      "source": "runs/full-strength-owner-development/frozen-model-controls.log",
+      "source_bytes": 1783,
+      "source_sha256": "7c1f59d4adaa969211d184804dd517c3429baa7e0eba473d204971008ccd8aa6",
+      "sha256": "f379e7b26569aef402f86ed328b68cd7e2e2b19e6463112c3efc1b87545d3519",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-development/scope-controls.json",
+      "source": "runs/full-strength-owner-development/scope-controls.json",
+      "source_bytes": 576,
+      "source_sha256": "e8be117d16c731b895ed185008dc8e4577c245538a09836b4b3109e7a0abf0a8",
+      "sha256": "e8be117d16c731b895ed185008dc8e4577c245538a09836b4b3109e7a0abf0a8",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-development/scope-controls.log.gz",
+      "source": "runs/full-strength-owner-development/scope-controls.log",
+      "source_bytes": 383,
+      "source_sha256": "38de129a1cc74a90adb92cdae58227ea92691307ba53aa81571f67a38e66475e",
+      "sha256": "0443d9ac0ba2d8ed5e987602f4a74652a83620a4a963cb0a25731346f3c4973f",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-development/strength-controls.json",
+      "source": "runs/full-strength-owner-development/strength-controls.json",
+      "source_bytes": 582,
+      "source_sha256": "ef6273f14ad2c4244c03dce096a37d0365570bfe56ddd0b88158cf36497154be",
+      "sha256": "ef6273f14ad2c4244c03dce096a37d0365570bfe56ddd0b88158cf36497154be",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-development/strength-controls.log.gz",
+      "source": "runs/full-strength-owner-development/strength-controls.log",
+      "source_bytes": 2571,
+      "source_sha256": "34cba7eccebc20732e550397047a32e335eb4e17fba394b1b190e049548d1827",
+      "sha256": "bc85c4894bb75588db5248f47e28c9c223ffefa8d79b95a1080de4f490a09fd5",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-final-checks/CAMPAIGN.json",
+      "source": "runs/full-strength-owner-final-checks/CAMPAIGN.json",
+      "source_bytes": 213,
+      "source_sha256": "56486fc1ba8b3048b362732561b69d5d29284e97ca07834d2fb0176ca9c56f67",
+      "sha256": "56486fc1ba8b3048b362732561b69d5d29284e97ca07834d2fb0176ca9c56f67",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-final-checks/COMMANDS.jsonl.gz",
+      "source": "runs/full-strength-owner-final-checks/COMMANDS.jsonl",
+      "source_bytes": 4446,
+      "source_sha256": "47f71a8b155167e42e98b37565c496c822d220198885b6deab8a56897482fbf3",
+      "sha256": "d55f8a3af2623d2461eea818a4ca767766eda5f1262ea9bee80839d364ff4cba",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-final-checks/CONFIG.json",
+      "source": "runs/full-strength-owner-final-checks/CONFIG.json",
+      "source_bytes": 143,
+      "source_sha256": "4b79c7b8efaf810c17f91bafd54f2785d5a928073eea63b5fdb31d92475dfe1e",
+      "sha256": "4b79c7b8efaf810c17f91bafd54f2785d5a928073eea63b5fdb31d92475dfe1e",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-final-checks/PROGRESS.json",
+      "source": "runs/full-strength-owner-final-checks/PROGRESS.json",
+      "source_bytes": 545,
+      "source_sha256": "77d1bb0909e3f752197e2915f4f3027ea8c9bc195004daf3a1efa42235f4f213",
+      "sha256": "77d1bb0909e3f752197e2915f4f3027ea8c9bc195004daf3a1efa42235f4f213",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-final-checks/actual-transports.json",
+      "source": "runs/full-strength-owner-final-checks/actual-transports.json",
+      "source_bytes": 797,
+      "source_sha256": "7ae3d5900f1ea0c60aac18bdfb810177114eb7a3bffa5f46187ba1a3a22e17e4",
+      "sha256": "7ae3d5900f1ea0c60aac18bdfb810177114eb7a3bffa5f46187ba1a3a22e17e4",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-final-checks/actual-transports.log.gz",
+      "source": "runs/full-strength-owner-final-checks/actual-transports.log",
+      "source_bytes": 897,
+      "source_sha256": "341409eede6e301b9fed56591521562f721b6acc1e5d23aca91ab882c0148cb3",
+      "sha256": "cedd5b85c00924531a2236a6585ec09dbd0c999e0f9c73272fc245b4f1864618",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-final-checks/format.json",
+      "source": "runs/full-strength-owner-final-checks/format.json",
+      "source_bytes": 613,
+      "source_sha256": "1f4b11afc22539414ea3296f349666f9bbf961fb3155b3a7ca36b8011f9dec7b",
+      "sha256": "1f4b11afc22539414ea3296f349666f9bbf961fb3155b3a7ca36b8011f9dec7b",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-final-checks/format.log.gz",
+      "source": "runs/full-strength-owner-final-checks/format.log",
+      "source_bytes": 226,
+      "source_sha256": "80ccd646b763fe9c763aad7460c2fe92103a46bcd294c2b21df8de68d6c03b83",
+      "sha256": "5b2e266a5df23f67c2900a4ca71e1151b99ab0bbc345f5cbcf26037b96e55df2",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-final-checks/strength-controls.json",
+      "source": "runs/full-strength-owner-final-checks/strength-controls.json",
+      "source_bytes": 585,
+      "source_sha256": "7ba70ebaca31eeada5bda7d25371d746b473e842d8fc2b1ad7a1aa6b13014b45",
+      "sha256": "7ba70ebaca31eeada5bda7d25371d746b473e842d8fc2b1ad7a1aa6b13014b45",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-final-checks/strength-controls.log.gz",
+      "source": "runs/full-strength-owner-final-checks/strength-controls.log",
+      "source_bytes": 2571,
+      "source_sha256": "d38733444c5833920eef2b28ae3118e0c437a9621ac71a8ec031a2dc2ab7e1f2",
+      "sha256": "563dd580b194fcf3fd13464790392ce322c0bd67e441deb325adb24778c3c919",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-final-checks/updated-protocol-controls.json",
+      "source": "runs/full-strength-owner-final-checks/updated-protocol-controls.json",
+      "source_bytes": 662,
+      "source_sha256": "0de64d55abc65841040b772eba0dd31fade2aa74e551481dd5bb59420d17ceb3",
+      "sha256": "0de64d55abc65841040b772eba0dd31fade2aa74e551481dd5bb59420d17ceb3",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-final-checks/updated-protocol-controls.log.gz",
+      "source": "runs/full-strength-owner-final-checks/updated-protocol-controls.log",
+      "source_bytes": 1975,
+      "source_sha256": "74805d308918cb5646e7825f22d1d68fd765cf53f96f6efc29af1100995ee378",
+      "sha256": "5e131ab164b2300e34c7ada4ffe6d95aee337bf0f445f89854a524628b9686a5",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-transport-recovery/CAMPAIGN.json",
+      "source": "runs/full-strength-transport-recovery/CAMPAIGN.json",
+      "source_bytes": 243,
+      "source_sha256": "04583342db54871fd7f1df79cccd70949658071764efe8f423bdc2164e11555b",
+      "sha256": "04583342db54871fd7f1df79cccd70949658071764efe8f423bdc2164e11555b",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-transport-recovery/COMMANDS.jsonl.gz",
+      "source": "runs/full-strength-transport-recovery/COMMANDS.jsonl",
+      "source_bytes": 2527,
+      "source_sha256": "ee1262274df0fc36f94b50c837747bdbb118c0e12bc3b62636154acb9b33e75e",
+      "sha256": "a71686399846be62234fe03e31b59e70fb22385aee42a619f86ad2d876bacdea",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-transport-recovery/CONFIG.json",
+      "source": "runs/full-strength-transport-recovery/CONFIG.json",
+      "source_bytes": 195,
+      "source_sha256": "ba0e361bee805e4fa3f22f2ca1db76d885336084ceefc6f0776125bbd5c5279a",
+      "sha256": "ba0e361bee805e4fa3f22f2ca1db76d885336084ceefc6f0776125bbd5c5279a",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-transport-recovery/PROGRESS.json",
+      "source": "runs/full-strength-transport-recovery/PROGRESS.json",
+      "source_bytes": 333,
+      "source_sha256": "c106b08da1a18291877ed34873281f0cbd519a1374fe562ab2f16bf9fe9d92ca",
+      "sha256": "c106b08da1a18291877ed34873281f0cbd519a1374fe562ab2f16bf9fe9d92ca",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-transport-recovery/actual-transports.json",
+      "source": "runs/full-strength-transport-recovery/actual-transports.json",
+      "source_bytes": 800,
+      "source_sha256": "46fb821703fc66b8985a1a304ff477db6d56284ac17029cfcdb40b67f5dba241",
+      "sha256": "46fb821703fc66b8985a1a304ff477db6d56284ac17029cfcdb40b67f5dba241",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-transport-recovery/actual-transports.log.gz",
+      "source": "runs/full-strength-transport-recovery/actual-transports.log",
+      "source_bytes": 284,
+      "source_sha256": "b5d1d6909579d8c05441b0df766b02d3e1bddb005a8f3a276465bdbc050a6187",
+      "sha256": "73e231df76c6cd857b855c08d0ff74b75e4d08e84ea9a0cc168b88f680b9a001",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-transport-recovery/contract-controls.json",
+      "source": "runs/full-strength-transport-recovery/contract-controls.json",
+      "source_bytes": 583,
+      "source_sha256": "bcf856d5487b44b88e537c2393d687016e078d2e1370e913d41cf045ff319abb",
+      "sha256": "bcf856d5487b44b88e537c2393d687016e078d2e1370e913d41cf045ff319abb",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-transport-recovery/contract-controls.log.gz",
+      "source": "runs/full-strength-transport-recovery/contract-controls.log",
+      "source_bytes": 2571,
+      "source_sha256": "2e8e7c5fa6ad7bead252d73e3635a964e8229525011b83f9dd19313b4d7ffdf4",
+      "sha256": "0ad106fea8062b74147251bd2409d6750b2c6c2ef602e06f4603c9f958ba3b6c",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-finish/CAMPAIGN.json",
+      "source": "runs/full-strength-owner-finish/CAMPAIGN.json",
+      "source_bytes": 223,
+      "source_sha256": "a62b46bcff717c7ec503e0c3dff59818518a446f08a4c944e9ec5b54a674cdff",
+      "sha256": "a62b46bcff717c7ec503e0c3dff59818518a446f08a4c944e9ec5b54a674cdff",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-finish/COMMANDS.jsonl.gz",
+      "source": "runs/full-strength-owner-finish/COMMANDS.jsonl",
+      "source_bytes": 4455,
+      "source_sha256": "4abd2f52b2cbf5fad803c1279fa60daa069126385146025fa5e9b76f765572da",
+      "sha256": "74203707a21100e67b55d1a762f42c86cb546083b0dc6c09c7266e0e53eeec2e",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-finish/CONFIG.json",
+      "source": "runs/full-strength-owner-finish/CONFIG.json",
+      "source_bytes": 146,
+      "source_sha256": "482191b78b8b26b0a6bf664cb7e1547efea3c303c395e11ee1c76f0f2d159d14",
+      "sha256": "482191b78b8b26b0a6bf664cb7e1547efea3c303c395e11ee1c76f0f2d159d14",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-finish/PROGRESS.json",
+      "source": "runs/full-strength-owner-finish/PROGRESS.json",
+      "source_bytes": 507,
+      "source_sha256": "acbc29cc9f8da56d80e9639a0da2801199aed12cbddb80fee22d047de2436a6f",
+      "sha256": "acbc29cc9f8da56d80e9639a0da2801199aed12cbddb80fee22d047de2436a6f",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-finish/actual-transports.json",
+      "source": "runs/full-strength-owner-finish/actual-transports.json",
+      "source_bytes": 797,
+      "source_sha256": "9f37e818aea10b1c13fcff8a9e80ac01dc19e9441cb0b14e69c1fc0ed6738cf4",
+      "sha256": "9f37e818aea10b1c13fcff8a9e80ac01dc19e9441cb0b14e69c1fc0ed6738cf4",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-finish/actual-transports.log.gz",
+      "source": "runs/full-strength-owner-finish/actual-transports.log",
+      "source_bytes": 284,
+      "source_sha256": "b5d1d6909579d8c05441b0df766b02d3e1bddb005a8f3a276465bdbc050a6187",
+      "sha256": "73e231df76c6cd857b855c08d0ff74b75e4d08e84ea9a0cc168b88f680b9a001",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-finish/contracts.json",
+      "source": "runs/full-strength-owner-finish/contracts.json",
+      "source_bytes": 565,
+      "source_sha256": "18b7f71b47603e5f44b61eeb9a2d1a9ff56dd52c8792c2b2399573bc558dbdc9",
+      "sha256": "18b7f71b47603e5f44b61eeb9a2d1a9ff56dd52c8792c2b2399573bc558dbdc9",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-finish/contracts.log.gz",
+      "source": "runs/full-strength-owner-finish/contracts.log",
+      "source_bytes": 2571,
+      "source_sha256": "608c2d51f05b6f77670814eb7012c83629d74a624983b641ca838bbfcd15caf2",
+      "sha256": "2da666fb8236b52ef703f5af32f5277365bfec93c476fb20f2a1388fbcaa3afd",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-finish/format.json",
+      "source": "runs/full-strength-owner-finish/format.json",
+      "source_bytes": 531,
+      "source_sha256": "6071e132cb7035601878d0a2a8229f2270065f0b855bcf22ef5cd66d5a5b0fff",
+      "sha256": "6071e132cb7035601878d0a2a8229f2270065f0b855bcf22ef5cd66d5a5b0fff",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-finish/format.log.gz",
+      "source": "runs/full-strength-owner-finish/format.log",
+      "source_bytes": 117,
+      "source_sha256": "4674e8b2ed2c14874144e07dcf41e5fab3c7300cb0f936d16da5959848a22069",
+      "sha256": "977f281280d0d7d615fcf938fb0c9deaec533788dc988f61dc7bf4fb48cb7721",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-owner-finish/real-rehashed-game-controls.json",
+      "source": "runs/full-strength-owner-finish/real-rehashed-game-controls.json",
+      "source_bytes": 754,
+      "source_sha256": "889ef1732ed5272b6149aaaad86fbbb5218b6a893bd5fdd4eba6670e70cd40cc",
+      "sha256": "889ef1732ed5272b6149aaaad86fbbb5218b6a893bd5fdd4eba6670e70cd40cc",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-owner-finish/real-rehashed-game-controls.log.gz",
+      "source": "runs/full-strength-owner-finish/real-rehashed-game-controls.log",
+      "source_bytes": 456,
+      "source_sha256": "fdc416329ced9b03a4879b191ea0acbcc9dc3eb1bf02661f0610e1e97245de93",
+      "sha256": "74cb6e41dfa9abf59c60c400a684ef1da796e1ebb8359801c6e0b2327a437954",
+      "gzip": true
+    },
+    {
+      "path": "full-strength-frozen-model-controls/CONTROLS.json",
+      "source": "runs/full-strength-frozen-model-controls/CONTROLS.json",
+      "source_bytes": 2171,
+      "source_sha256": "3c3450891d28a29f26732fcbe2c9161430472849293d944670bb13d0035dc869",
+      "sha256": "3c3450891d28a29f26732fcbe2c9161430472849293d944670bb13d0035dc869",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-frozen-model-controls/PROTOCOL.json",
+      "source": "runs/full-strength-frozen-model-controls/PROTOCOL.json",
+      "source_bytes": 4465,
+      "source_sha256": "d1e12b993fb3e837e9b0dfca455f90b90d7c70c87126d274cf7fa6cb20c7a5d4",
+      "sha256": "d1e12b993fb3e837e9b0dfca455f90b90d7c70c87126d274cf7fa6cb20c7a5d4",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-updated-protocol-controls/CONTROLS.json",
+      "source": "runs/full-strength-updated-protocol-controls/CONTROLS.json",
+      "source_bytes": 2407,
+      "source_sha256": "016a9c9ce48e1c5645762e6af14c95efbfb5750d1601d9a8d3c073d455261124",
+      "sha256": "016a9c9ce48e1c5645762e6af14c95efbfb5750d1601d9a8d3c073d455261124",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-updated-protocol-controls/PROTOCOL.json",
+      "source": "runs/full-strength-updated-protocol-controls/PROTOCOL.json",
+      "source_bytes": 4595,
+      "source_sha256": "3ebac937b6d3116cf8e29fa524f68635ea36b4482cf048a2622e9d0bb4ac15b1",
+      "sha256": "3ebac937b6d3116cf8e29fa524f68635ea36b4482cf048a2622e9d0bb4ac15b1",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-actual-transports-recovered/SUMMARY.json",
+      "source": "runs/full-strength-actual-transports-recovered/SUMMARY.json",
+      "source_bytes": 296,
+      "source_sha256": "3c681abf9c49edf59e0a9845fb8c3f10c663780fefae2536c252601b0bb4f546",
+      "sha256": "3c681abf9c49edf59e0a9845fb8c3f10c663780fefae2536c252601b0bb4f546",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-actual-transports-recovered/observations.json",
+      "source": "runs/full-strength-actual-transports-recovered/observations.json",
+      "source_bytes": 27156,
+      "source_sha256": "69c07c2d7814da3caac192cfbcc7d217a2409caf7c694d1534f946e06792c64d",
+      "sha256": "69c07c2d7814da3caac192cfbcc7d217a2409caf7c694d1534f946e06792c64d",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-actual-transports-final/SUMMARY.json",
+      "source": "runs/full-strength-actual-transports-final/SUMMARY.json",
+      "source_bytes": 296,
+      "source_sha256": "3c681abf9c49edf59e0a9845fb8c3f10c663780fefae2536c252601b0bb4f546",
+      "sha256": "3c681abf9c49edf59e0a9845fb8c3f10c663780fefae2536c252601b0bb4f546",
+      "gzip": false
+    },
+    {
+      "path": "full-strength-actual-transports-final/observations.json",
+      "source": "runs/full-strength-actual-transports-final/observations.json",
+      "source_bytes": 27156,
+      "source_sha256": "323203c91c73d35e3fcf51d093755a0a9ea8c771d4f99616dcee7c447e41cc3e",
+      "sha256": "323203c91c73d35e3fcf51d093755a0a9ea8c771d4f99616dcee7c447e41cc3e",
+      "gzip": false
+    },
+    {
+      "path": "rehashed-game-controls/CONTROLS.json",
+      "source": "runs/full-strength-rehashed-game-controls/CONTROLS.json",
+      "source_bytes": 530,
+      "source_sha256": "4138e441f273ae2ca7d722b7990e97df23bba1e30b9acaa532a6fb2590b4a993",
+      "sha256": "4138e441f273ae2ca7d722b7990e97df23bba1e30b9acaa532a6fb2590b4a993",
+      "gzip": false
+    },
+    {
+      "path": "rehashed-game-controls/illegal-pv/first-mutated-pair.json",
+      "source": "runs/full-strength-rehashed-game-controls/illegal-pv/pairs/000000.json",
+      "source_bytes": 208669,
+      "source_sha256": "2f81f4b32901307a27349b19f97f36772621c2e586f2b1e3b5e53536df359c5a",
+      "sha256": "2f81f4b32901307a27349b19f97f36772621c2e586f2b1e3b5e53536df359c5a",
+      "gzip": false
+    },
+    {
+      "path": "rehashed-game-controls/wrong-budget/first-mutated-pair.json",
+      "source": "runs/full-strength-rehashed-game-controls/wrong-budget/pairs/000000.json",
+      "source_bytes": 208622,
+      "source_sha256": "91a3f8503523fc5dff90642a0b9d5556eb02081bf3eaff0c0bc3527ce968da7f",
+      "sha256": "91a3f8503523fc5dff90642a0b9d5556eb02081bf3eaff0c0bc3527ce968da7f",
+      "gzip": false
+    },
+    {
+      "path": "rehashed-game-controls/swapped-colors/first-mutated-pair.json",
+      "source": "runs/full-strength-rehashed-game-controls/swapped-colors/pairs/000000.json",
+      "source_bytes": 208626,
+      "source_sha256": "fa84d2e6352843021f7b9ce1b8a727a223ba2e7f04c343055b665f3cffa99f00",
+      "sha256": "fa84d2e6352843021f7b9ce1b8a727a223ba2e7f04c343055b665f3cffa99f00",
+      "gzip": false
+    },
+    {
+      "path": "rehashed-game-controls/missing-observation/first-mutated-pair.json",
+      "source": "runs/full-strength-rehashed-game-controls/missing-observation/pairs/000000.json",
+      "source_bytes": 207895,
+      "source_sha256": "f7ee91e2ad5a5ab2ca8caf124614337a422649f6b7bc0e30755c52b0ffaef0e3",
+      "sha256": "f7ee91e2ad5a5ab2ca8caf124614337a422649f6b7bc0e30755c52b0ffaef0e3",
+      "gzip": false
+    }
+  ]
+}

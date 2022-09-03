@@ -200,6 +200,29 @@ def verify_campaign(
         if protocol is None:
             raise Rejection("full strength verification requires the frozen protocol")
         rules = protocol["matches"]
+        if protocol.get("schema") == "caissa-experiment-protocol-v3":
+            optimizations = protocol.get("search_optimizations")
+            expected = {
+                "evaluation_cache": True,
+                "tactical_generation": True,
+                "neural_bounds": False,
+                "ordering_hints": False,
+            }
+            if optimizations != expected:
+                raise Rejection("full exact search optimization protocol differs")
+            for actor in ([candidate, opponent] if neural else [candidate]):
+                if any(
+                    actor["options"].get(name) != expected[key]
+                    for name, key in [
+                        ("Evaluation Cache", "evaluation_cache"),
+                        ("Tactical Generation", "tactical_generation"),
+                        ("Neural Bounds", "neural_bounds"),
+                        ("Ordering Hints", "ordering_hints"),
+                    ]
+                ):
+                    raise Rejection(
+                        "full actual search optimizations differ from frozen protocol"
+                    )
         if neural and (
             rules["neural_pairs"] < 2000
             or rules["minimum_neural_gain_elo"] < 50
@@ -271,6 +294,10 @@ def verify_campaign(
 
     def records():
         for number, path in enumerate(paths):
+            if not 0 < path.stat().st_size <= 64 * 1024 * 1024 or path.is_symlink():
+                raise Rejection(
+                    "arena pair exceeds bounded replay or uses a symbolic link"
+                )
             pair = load(path)
             opening = openings[number % len(openings)]
             if pair["pair"] != number or pair["opening_id"] != opening["id"]:
