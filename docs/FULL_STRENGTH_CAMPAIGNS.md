@@ -16,4 +16,6 @@ After committing the fully frozen v3 protocol and completing the full model owne
 
 The owner reports domain observations with `full_acceptance: false`. Full release still requires the independent complete-project verifier, all other gates and the private release audit.
 
+The independent checker also requires the complete original-engine option inventory. Adding `Use Table=false` to both actors cannot hide behind equal-resource comparison, and weakening only the classical actor is rejected. Six controls cover extra pruning/scalar switches, a missing model path, changed mixture and altered hash resources. This new verifier component has a separate 120-second development bound, retained in `results/full-actor-contract-2026-10-24`; it does not renew either timed-match ceiling.
+
 The first actual UCI preflight failed because the candidate enabled `Use Neural` before its `EvalFile` had loaded. Configuration now respects that dependency. All eight transports then passed, and a further final run exercised the independently implemented setting map. The original failure, successful probes, thirteen setting/ceiling rejections, nineteen frozen-model protocol controls and four rehashed game failures are retained in [the owner evidence](../results/full-strength-owner-2026-10-24/). They share the original 600-second development ceiling.

@@ -1,0 +1,50 @@
+{
+  "schema": "caissa-full-actor-contract-v1",
+  "files": [
+    {
+      "path": "CAMPAIGN.json",
+      "source_sha256": "81da136fd5052aafd2df14e6b1996404f6e8ab4da62180d8860ff3b607669624",
+      "sha256": "81da136fd5052aafd2df14e6b1996404f6e8ab4da62180d8860ff3b607669624"
+    },
+    {
+      "path": "COMMANDS.jsonl.gz",
+      "source_sha256": "aa2a960872cda74a661bd61189d9b31bdbdc8faca5e01da8d42ad087d83535f9",
+      "sha256": "cf465208747c0bca63bf9ded6c49675eace919967d4ccc126bda3f03dc0e6893"
+    },
+    {
+      "path": "CONFIG.json",
+      "source_sha256": "93a5d0bd03c21b9f9dfa41deff8f50aeec38a5c9a4afd53933f9eb3f6365ff41",
+      "sha256": "93a5d0bd03c21b9f9dfa41deff8f50aeec38a5c9a4afd53933f9eb3f6365ff41"
+    },
+    {
+      "path": "PROGRESS.json",
+      "source_sha256": "b52bad1c98afa605ce1f29a5c6a98d00afc7be06d7febe14b6101bab6ad5c3b2",
+      "sha256": "b52bad1c98afa605ce1f29a5c6a98d00afc7be06d7febe14b6101bab6ad5c3b2"
+    },
+    {
+      "path": "format.json",
+      "source_sha256": "a314e0aff11e821b5117176eac98143caf2f409ad997400fc579725b1927fc12",
+      "sha256": "a314e0aff11e821b5117176eac98143caf2f409ad997400fc579725b1927fc12"
+    },
+    {
+      "path": "format.log.gz",
+      "source_sha256": "af3692175792631c43b1f76cc9af42129910d0299a704c918478046e52c4981f",
+      "sha256": "9735e6aef7f3e91192136ab2d45f67ec4ace7f3453670faf0e14c9f6852e0c7e"
+    },
+    {
+      "path": "independent-option-controls.json",
+      "source_sha256": "a3199ec1d4089c1f2655c01ab4b764a74ce048dada59948be799347c61861062",
+      "sha256": "a3199ec1d4089c1f2655c01ab4b764a74ce048dada59948be799347c61861062"
+    },
+    {
+      "path": "independent-option-controls.log.gz",
+      "source_sha256": "80dca054f98ab55a7295de9eff2798634b4da0e7a2f77425f1cdff7b878ccc22",
+      "sha256": "4e4435ff13f0d356e7fdd3d635a8c4d6e7abc00c60ed78fe54d3779f35410213"
+    }
+  ],
+  "source_files": {
+    "verification/strength.py": "4b25c5de613f2fbb4f12742ff1ca9b369dea73d99f3a57fb662589ed932ab18f",
+    "tests/full_actor_contract.py": "4ff1e65d4ad458b866dd1631bf0bfafff39d05f602ef053b984c10b5e37956f4"
+  },
+  "full_acceptance": false
+}
