@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "controls": [
+    {
+      "case": "illegal-pv",
+      "actual_exit": 1,
+      "reason": "cost observation contains illegal PV",
+      "rehash": "53c4dc774ad002e509f83e7c10ce7dafbfed81f946c3157d5f3bbd414e00037c"
+    },
+    {
+      "case": "changed-request-budget",
+      "actual_exit": 1,
+      "reason": "performance actual request changes the frozen resource or position",
+      "rehash": "3eeb8845cb2834f5f6a0c057b4eaa9487ce006d55fcafd415df44e8046c682a0"
+    },
+    {
+      "case": "fabricated-duration",
+      "actual_exit": 1,
+      "reason": "performance request duration differs from actual timestamps",
+      "rehash": "dd8f2a521b0925786791527284239f694c51aa751ea7d297974710e60c78d25f"
+    },
+    {
+      "case": "invented-rss",
+      "actual_exit": 1,
+      "reason": "RSS bytes differ from actual ps observation",
+      "rehash": "5bb6b4f57bd6e3a13d66dda1e80ccbdaa54ae4ba9bc922cca56ac684cf326cb7"
+    },
+    {
+      "case": "swapped-rss-process",
+      "actual_exit": 1,
+      "reason": "RSS sample process or profile differs",
+      "rehash": "9ecf0d29c00f61293939087289f7828908d00a7e39f8373fb51c3c05b8ffef6e"
+    },
+    {
+      "case": "changed-native-counter",
+      "actual_exit": 1,
+      "reason": "performance parsed result differs from actual native output",
+      "rehash": "e2c2df91835006f501e36aec44de993a0c4eacf8d240a75f99b6f3a470941fa8"
+    },
+    {
+      "case": "fabricated-throughput",
+      "actual_exit": 1,
+      "reason": "independent performance metric differs: profiles.0.useful_nodes_per_second",
+      "rehash": null
+    },
+    {
+      "case": "missing-search",
+      "actual_exit": 1,
+      "reason": "performance timed search sample is incomplete",
+      "rehash": "b7eb6b87425916de295e0c71d8a149080e514ac43911ca039be39b25a1e5fdb9"
+    },
+    {
+      "case": "scalar-label-swap",
+      "actual_exit": 1,
+      "reason": "scalar/native correctness labels were swapped",
+      "rehash": "65ea75060f868372e3d8c6a4a8761d72b3c2ab9d856c0632957636a6b57e6689"
+    },
+    {
+      "case": "duplicate-latency",
+      "actual_exit": 1,
+      "reason": "readiness latency sample is duplicate or incomplete",
+      "rehash": "bb6e00765388a7e4aabccce521999da4b9d07bb89457f9c2210ffe644521148e"
+    },
+    {
+      "case": "diagnostic-as-full",
+      "actual_exit": 1,
+      "reason": "full performance cannot use a diagnostic or different optimization contract",
+      "rehash": null
+    },
+    {
+      "case": "fake-neural-work",
+      "actual_exit": 1,
+      "reason": "neural resource profile lacks actual inference or correct cache accounting",
+      "rehash": "dc72f0eb55969fd5da49e6340a16cbc11475e8fb38d11be958329a064a67600e"
+    },
+    {
+      "case": "oversized-artifact",
+      "actual_exit": 1,
+      "reason": "performance artifact size exceeds bounded replay before hashing",
+      "rehash": "22be6d2a69d3b3afdb3a058f7d49d7e1ed5c2478e0495ede16dde87437efa166"
+    }
+  ],
+  "full_acceptance": false
+}

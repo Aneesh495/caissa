@@ -5,7 +5,7 @@ A faster executable has no automatic Elo conversion. Freeze source, compiler/opt
 ## Resource profiles
 
 ```sh
-python -m tools.performance --engine build/caissa --network models/diagnostic-v2.cai --output runs/profile-001 --load-note 'Describe actual competing host work here' --diagnostic
+python -m tools.performance --engine build/caissa --network models/diagnostic-v2.cai --output runs/profile-001 --load-note 'Describe actual competing host work here' --diagnostic --exact-optimizations --maximum-seconds 1800
 ```
 
 The checked `config/performance.json` fixes eight positions, five repeats, 250 ms searches, one/two/four/eight threads, 16 MiB and 1000 ready-command samples. The profiles cover classical, pure scalar neural, pure native neural and the ten-percent experimental mixture. Each fresh client warms up, then each position clears game/table state. All actual best moves and PVs are independently replayed. The original UCI transcript is retained.
@@ -27,3 +27,5 @@ The initial evaluator microbenchmarks ran while corpus generation and preparatio
 Use one frozen source executable for both sides of a heuristic/evaluator comparison. Change only the declared option. Preserve baseline evaluation weights, resources, openings, warmup and adjudication. Report all failures. Compare equal time for product strength and a separate equal-node experiment for information quality. For parallelism, compare strength as well as total nodes and useful completed work.
 
 Opening families are the independent statistical units. Color reversal controls side assignment; repeated use of one family does not create independent openings. Use the predeclared fixed sample, confidence method and endpoint censoring from the experiment protocol. Archive failed and inconclusive hypotheses. Do not select a seed using test results or silently switch statistical procedures after a favorable sample.
+
+The [v2 resource profile](notes/resource-profile-v2.md) retains raw RSS and actual request/latency timestamps. `verification.performance` independently reconstructs those observations and reruns saved scalar/native probes. The older diagnostic model completed the full 640-search resource workload under active corpus replay; it is not final selected-model or isolated-host acceptance.
