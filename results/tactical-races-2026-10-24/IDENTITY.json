@@ -1,0 +1,556 @@
+{
+  "schema": "caissa-native-race-evidence-v1",
+  "full_acceptance": false,
+  "source_commit": "e74e64e6e55f15b8b75e1c4162ac843e0b528272",
+  "producer_native_cases_passed": 15,
+  "producer_network_transitions_passed": 20000,
+  "independent_native_cases_completed_before_interruption": 13,
+  "independent_replay_status": "failed, budget exhausted; no restart",
+  "failure": "Host wall/active gap exhausted the native replay stage; final process-group cleanup raised PermissionError and obscured its exit. Raw evidence retained.",
+  "source_files": {
+    "verification/native_build.py": "1b9a9be3e45d0aea6edf1ba5695fd77af1ff1ce8b97e5e67b7bdaf94a22e3240",
+    "tools/campaign_process.py": "51df621b8a2841f08eaa5abd298a95b4a3629fff7feffa0a224c90740ac7484f",
+    "tests/campaign_cleanup.py": "159294a9b8e5d5193f07c3a1f3c089b10fa4220cbcabd61c2c88bb49bac7a861"
+  },
+  "files": [
+    {
+      "path": "runs/cleanup-denial-controls/CAMPAIGN.json",
+      "source_bytes": 219,
+      "source_sha256": "b8f08c4051a13900c3cc4bf0f28bc22a696548a01cf0bf039d23d2b3cdbe02e7",
+      "sha256": "b8f08c4051a13900c3cc4bf0f28bc22a696548a01cf0bf039d23d2b3cdbe02e7",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-controls/COMMANDS.jsonl.gz",
+      "source_bytes": 3084,
+      "source_sha256": "4c4a7a53b18e1b656eb3da610881056b995dd8297743fe876a21e84347a7fc8b",
+      "sha256": "411582993eae5516827a6103da6f6f42bc5c87d3758b9895871ab608a99936de",
+      "gzip": true
+    },
+    {
+      "path": "runs/cleanup-denial-controls/CONFIG.json",
+      "source_bytes": 176,
+      "source_sha256": "3371b9d4a704196355832dc0eef262d00925e1214300c432e2ac2f77f0d5143a",
+      "sha256": "3371b9d4a704196355832dc0eef262d00925e1214300c432e2ac2f77f0d5143a",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-controls/PROGRESS.json",
+      "source_bytes": 428,
+      "source_sha256": "064e68b75f0f6ff68b46bad038fd3f8df335dcfda25e772bcb37a96d9dc797b5",
+      "sha256": "064e68b75f0f6ff68b46bad038fd3f8df335dcfda25e772bcb37a96d9dc797b5",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-controls/denial-controls.json",
+      "source_bytes": 602,
+      "source_sha256": "ce4d6bf018de8ae7540cf3c0df4a2abfccfe935422d5a7b93b07e95eae50680a",
+      "sha256": "ce4d6bf018de8ae7540cf3c0df4a2abfccfe935422d5a7b93b07e95eae50680a",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-controls/denial-controls.log.gz",
+      "source_bytes": 554,
+      "source_sha256": "a5aee2e619cb879b4f12a8d45a85c0f2b8afc7df9255d23d9f1e3c87ccb5c0c0",
+      "sha256": "40533feb3a8d9bd20023c780ff75f1a34df798a9f9b03f23e672341170c6c4c6",
+      "gzip": true
+    },
+    {
+      "path": "runs/cleanup-denial-controls/existing-process-controls.json",
+      "source_bytes": 706,
+      "source_sha256": "0cc0e40603a8a0d908f64cec233c5b7803f5cd36942ae53e574c32da6bbd0d59",
+      "sha256": "0cc0e40603a8a0d908f64cec233c5b7803f5cd36942ae53e574c32da6bbd0d59",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-controls/existing-process-controls.log.gz",
+      "source_bytes": 129,
+      "source_sha256": "31e615ffc39e62b2b333933d44cc55ee9a3a85c0dba3b5e613d833d7c13ddba8",
+      "sha256": "b989b7114e037c98091939cd07fe18d5675deb85cca77b7fe1e574ba7cf3bccb",
+      "gzip": true
+    },
+    {
+      "path": "runs/cleanup-denial-controls/format.json",
+      "source_bytes": 546,
+      "source_sha256": "fdc5b0d09cd6b2c8595806346a723c4d98183214e0a354f528b1fe1740d9c657",
+      "sha256": "fdc5b0d09cd6b2c8595806346a723c4d98183214e0a354f528b1fe1740d9c657",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-controls/format.log.gz",
+      "source_bytes": 121,
+      "source_sha256": "9c63f4ff5f6fa3470c335804491b00df6fc03ff619e7d92719a466faf3747bfd",
+      "sha256": "3e88a5fbbee81fbb0c2340ae36c215e4a256da08b96cb3915b356e2fb9e3bdd9",
+      "gzip": true
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/CAMPAIGN.json",
+      "source_bytes": 178,
+      "source_sha256": "d44e83cc8f647b5c1ff2117fe4ebb7acaa23651f5a2ab289413521e45eb6307e",
+      "sha256": "d44e83cc8f647b5c1ff2117fe4ebb7acaa23651f5a2ab289413521e45eb6307e",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/COMMANDS.jsonl.gz",
+      "source_bytes": 5327,
+      "source_sha256": "c3998c0af6938a852e36f976487dfb84a5a33990b05f4fd632cbfac3947ccf6e",
+      "sha256": "15eec8b7eddfa8164653fda7f7ce95403059fb09b981cbbb374c781db9688967",
+      "gzip": true
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/CONFIG.json",
+      "source_bytes": 41,
+      "source_sha256": "7e0a2c1dc1a9356ea17ce3bfd312045b533a049eee7c870cd7a54542bb420b5d",
+      "sha256": "7e0a2c1dc1a9356ea17ce3bfd312045b533a049eee7c870cd7a54542bb420b5d",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/PROGRESS.json",
+      "source_bytes": 646,
+      "source_sha256": "7774644653bdc5705cd37ba5c6e8e6c0fb7cbb7b5fde6ad2a71728851d4679d1",
+      "sha256": "7774644653bdc5705cd37ba5c6e8e6c0fb7cbb7b5fde6ad2a71728851d4679d1",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/ignored-termination.json",
+      "source_bytes": 721,
+      "source_sha256": "ea645456bc3b6f9dd351caf7a7315e8a8fe1764a1ad1fad89b9b25535aed075e",
+      "sha256": "ea645456bc3b6f9dd351caf7a7315e8a8fe1764a1ad1fad89b9b25535aed075e",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/ignored-termination.log.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/leftover-descendant.json",
+      "source_bytes": 924,
+      "source_sha256": "275ac913eb56db3bc1ae7e8f173aa9e997dd37cde9ca763ef86d45bfc3a1d2be",
+      "sha256": "275ac913eb56db3bc1ae7e8f173aa9e997dd37cde9ca763ef86d45bfc3a1d2be",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/leftover-descendant.log.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/native-version.json",
+      "source_bytes": 506,
+      "source_sha256": "6af5f617cfdbd86b028640b706da8586e7118bc18077f970259c4710500c9aa3",
+      "sha256": "6af5f617cfdbd86b028640b706da8586e7118bc18077f970259c4710500c9aa3",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/native-version.log.gz",
+      "source_bytes": 17,
+      "source_sha256": "1f6e376b14355016470d540418db2c39a363e67ac9e46a6dbfcd8d2a59f34f54",
+      "sha256": "3f93bb98334014eba2e4f0e779c7958d9731e4d700e531bc6d5c33b37bffee19",
+      "gzip": true
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/nonzero.json",
+      "source_bytes": 587,
+      "source_sha256": "d9ad9c47a68a4049bd0b78b34733e54ad12b0016f465fa310dcf47189a4d6c53",
+      "sha256": "d9ad9c47a68a4049bd0b78b34733e54ad12b0016f465fa310dcf47189a4d6c53",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/nonzero.log.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/output-flood.json",
+      "source_bytes": 629,
+      "source_sha256": "a3ec280d96916f770f5458296090388736437c26b313df73cc6c61f4652193d1",
+      "sha256": "a3ec280d96916f770f5458296090388736437c26b313df73cc6c61f4652193d1",
+      "gzip": false
+    },
+    {
+      "path": "runs/cleanup-denial-process-regression/output-flood.log.gz",
+      "source_bytes": 4096,
+      "source_sha256": "a2e659dacb4691e887ac0139f8893d04764ee197d70fb73d3190d56113d18e3e",
+      "sha256": "9a8a58ef24e1580eba06a129a52de3b834c4c87d77ad3a5443ffa956333442f5",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/COMMANDS.jsonl.gz",
+      "source_bytes": 4051,
+      "source_sha256": "d7f91b6f5ab96be8e940589dca1f2839bb1ac6dd368eb24acfe30e1444af50e8",
+      "sha256": "fd062ae0b2d42fddf750549f53fdc0867755bf5052d3bbadbfe03eb2e098e06a",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/core-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/core-0.stdout.gz",
+      "source_bytes": 36,
+      "source_sha256": "fcbfad6fc8c9b89b68da28d0130d20e7c30e97a1260582e5b677ed7424892510",
+      "sha256": "c623c5c296d746786c671b697b0fdef3f086413e32ae3d370b138eabe6579e20",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/dense_kernels-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/dense_kernels-0.stdout.gz",
+      "source_bytes": 60,
+      "source_sha256": "c00949661822f01d5c281ddb5afa3c3f5ebb97c34a780b77afac4838e44f7107",
+      "sha256": "1a7c62576ed40593dadfd2730817b66378197b7835aac80a5563a3109a5fcb51",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/evaluation-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/evaluation-0.stdout.gz",
+      "source_bytes": 55,
+      "source_sha256": "50a402d86b8827a4075c7cad3e9340b1a8a941ffdb0ed4fc8cfd5e4761371673",
+      "sha256": "817d7ba8e87b4d7c4f9efc5c54f91c1965bfd4e148a3cbc2bbdc37373306299d",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/kernels-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/kernels-0.stdout.gz",
+      "source_bytes": 66,
+      "source_sha256": "9f38745db2722f097620a92e60b77ae5b4c586bb8a4a2f632ce07681cc9defc2",
+      "sha256": "af347c3c2d81116b04d73efaa9ff8532c2df586b579f83043a4dfe9e46606afa",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/neural_bounds-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/neural_bounds-0.stdout.gz",
+      "source_bytes": 97,
+      "source_sha256": "ec3fc35e2aa73430944abdde8b4e51d55706ec644d0e39b931a3685d08bd3bc5",
+      "sha256": "25ae94ff60fc867a0e1b36daaf215bcdc183bc9e8f23679a7294aeae65670727",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/notation-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/notation-0.stdout.gz",
+      "source_bytes": 69,
+      "source_sha256": "6b7bf98621a7f1a93636828b935c7aa80f788615e0b453cee117a5787ba09260",
+      "sha256": "cf56a62ef374d6e7380b99bb70eedcb6e94c9f0c82e905349f4b3170deadc107",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/position-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/position-0.stdout.gz",
+      "source_bytes": 56,
+      "source_sha256": "1cdec1703d2034d5aedb4be7b70704da883fded3099613185e1c8df41ded202d",
+      "sha256": "67aeb73ba936997d33d6e261bcfcd1cb7a7430a6f92ab8069f9184137cd44a1d",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/position_line-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/position_line-0.stdout.gz",
+      "source_bytes": 160,
+      "source_sha256": "8c78531fd7f4d82bd5143a36f8aa012fc5e6d8512ef676b1fe20d41b5b2e35fa",
+      "sha256": "3b21f1ad3b75ec06be0c9692dcd38c808ee550a2a6b6caaba07db643b64430c5",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/rules-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/rules-0.stdout.gz",
+      "source_bytes": 65,
+      "source_sha256": "027d4473a7a4cd02dad9a00315e4332b478674e8c3666ee7f1225bc39532ee14",
+      "sha256": "24e94154542f892669e6eedc5cb4a4481c6629c4dbd0b16e607b71e2ad3cd78e",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/search-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/search-0.stdout.gz",
+      "source_bytes": 71,
+      "source_sha256": "e40245a972b45e847bb5be9371cdc473d2b2a473bf40699d4ac1b7aa4f690761",
+      "sha256": "6016dbeb3d4bf3a0ddf37d6b7b011860e6141658a1ddc5682caee0709feb0dbf",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/table-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/table-0.stdout.gz",
+      "source_bytes": 67,
+      "source_sha256": "1dcffe183b5e0da2507859bc4dbf0dece77c6fc625be1aabbd6797b9713112c6",
+      "sha256": "1ce080a3ffda31c7e39f621967e2f45f21e46e7b4d5f414e483dbaad4ef5f9f6",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/uci-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/uci-0.stdout.gz",
+      "source_bytes": 73,
+      "source_sha256": "a194e37e7ee319f6eb6372b0613bb8806e572046e2692be5e6e5af72237758f1",
+      "sha256": "75538f7e120df3fad6b022dae06a78933f7adf6e1e0883739c9438db099e1240",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/version-0.stderr.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent/version-0.stdout.gz",
+      "source_bytes": 17,
+      "source_sha256": "1f6e376b14355016470d540418db2c39a363e67ac9e46a6dbfcd8d2a59f34f54",
+      "sha256": "3f93bb98334014eba2e4f0e779c7958d9731e4d700e531bc6d5c33b37bffee19",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent-owner/CAMPAIGN.json",
+      "source_bytes": 190,
+      "source_sha256": "2057bc0152606aca4d16e817afbe5b5e3b1acb451e9f813da8cafeab59eaae30",
+      "sha256": "2057bc0152606aca4d16e817afbe5b5e3b1acb451e9f813da8cafeab59eaae30",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-independent-owner/COMMANDS.jsonl.gz",
+      "source_bytes": 1509,
+      "source_sha256": "1b60d0a82d4dfeb8d9a909e6dfe6a5236910335ac50c8649e10bca6ccf5fbf3d",
+      "sha256": "c48140e33cc5388e28dc90c732e319cdb35daaa94d56228f0d170041f1658850",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent-owner/CONFIG.json",
+      "source_bytes": 212,
+      "source_sha256": "a8bf69f7be0fee51e101f1cb5256655114a13cecffb25146ef69bbaff6d96aeb",
+      "sha256": "a8bf69f7be0fee51e101f1cb5256655114a13cecffb25146ef69bbaff6d96aeb",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-independent-owner/PROGRESS.json",
+      "source_bytes": 523,
+      "source_sha256": "e30517005b19c2ce09674a21bf67a45903b2e1e3b9fab2ee0c4eed7b39a86e8b",
+      "sha256": "e30517005b19c2ce09674a21bf67a45903b2e1e3b9fab2ee0c4eed7b39a86e8b",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-independent-owner/format.json",
+      "source_bytes": 502,
+      "source_sha256": "accc251e778dd1473f03a4c01ba395c96608b6461774be2c7d6870a97ad6ccac",
+      "sha256": "accc251e778dd1473f03a4c01ba395c96608b6461774be2c7d6870a97ad6ccac",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-independent-owner/format.log.gz",
+      "source_bytes": 85,
+      "source_sha256": "1e6b866d8528c6d16329e38e0bd45e74ef918a4b7c44e558d4d4b63146ab715d",
+      "sha256": "114fcf8a9be112a3e815125d2423e4b0de9cff0534bebca958e16ce20f75517a",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent-owner/independent-replay.log.gz",
+      "source_bytes": 0,
+      "source_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "sha256": "f1b651238a58fe290baec6c5e32f3bdb1943dd2bd582f02569231f7a757c7837",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-independent-owner.log.gz",
+      "source_bytes": 929,
+      "source_sha256": "755b3f99b29b3610efbc59c9c08c44cc11bc1dddb3f95ae50618c9f8017d38e2",
+      "sha256": "252f9e94654a0de46fc611abd01433efcd490c934f888ed87bfa455deeef3733",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/CAMPAIGN.json",
+      "source_bytes": 254,
+      "source_sha256": "839369c207f7777bc67797e35d7d87123accfd474d15f7458c358c3455c98645",
+      "sha256": "839369c207f7777bc67797e35d7d87123accfd474d15f7458c358c3455c98645",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/COMMANDS.jsonl.gz",
+      "source_bytes": 5913,
+      "source_sha256": "5468215c939bb94c10345c3dae1c3ef165ecb4f3d9f5aea26000a23c3f9b7f67",
+      "sha256": "297dec665d070bc1033807d140e499eb2f8c6e0875689f6adaf059a25d897e20",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/CONFIG.json",
+      "source_bytes": 16664,
+      "source_sha256": "cce844ce56f2c06f1d378399ba585e8d3cf8809422e09cb926eac2b120326002",
+      "sha256": "cce844ce56f2c06f1d378399ba585e8d3cf8809422e09cb926eac2b120326002",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/IDENTITY.json",
+      "source_bytes": 203,
+      "source_sha256": "cbdeeabc53d996db95cd37789f5440d639be4066477ed19c2611b031dd948c56",
+      "sha256": "cbdeeabc53d996db95cd37789f5440d639be4066477ed19c2611b031dd948c56",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/PROGRESS.json",
+      "source_bytes": 522,
+      "source_sha256": "e2173cc47662b72d9a4b991d081185838fcbfb0fb929a4c2a90abeaf68ad768d",
+      "sha256": "e2173cc47662b72d9a4b991d081185838fcbfb0fb929a4c2a90abeaf68ad768d",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/build/CMakeCache.txt.gz",
+      "source_bytes": 13953,
+      "source_sha256": "bbf85760ee91db37cc1b00c4f5f9813425176eb542cc0f9ba080836bd9f2130a",
+      "sha256": "ddb7ec21d4de8160fd9e75ef74396c7321b185a190666adebab5b224e8bf8828",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/build/CMakeFiles/caissa_core.dir/flags.make.gz",
+      "source_bytes": 599,
+      "source_sha256": "1fdce8b3d0b2f97ff6ebfbaa2dd85cceeec9c4c28ab1f5e6219193e9f78ef2eb",
+      "sha256": "e6c825b44480a952478bd6297fee6e75a9926a04f5ed583f9b16292d072b5eda",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/build/Testing/Temporary/LastTest.log.gz",
+      "source_bytes": 11886,
+      "source_sha256": "a96a9286362c7c83a8a37714c1bf8a3b5787e83eae0862ddffdcc8df4bfd194c",
+      "sha256": "68a080dfe7c0cab04ebbcc7b9f729d58e43188abaf27617fb59379e9fe90d1af",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/build.json",
+      "source_bytes": 579,
+      "source_sha256": "39bfad20f2f38d603583060f2b0ea73bc15d243054cf07270bcf8e4a653ba61d",
+      "sha256": "39bfad20f2f38d603583060f2b0ea73bc15d243054cf07270bcf8e4a653ba61d",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/build.log.gz",
+      "source_bytes": 4098,
+      "source_sha256": "966f86f8da0300e603a3cd6699668bb1fc84ac8c1ac84433aa15523104993c99",
+      "sha256": "2c300ff7fcdfc33d50eac7faddfd5b339690b703fa9025f8df248c480b610bfb",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/configure.json",
+      "source_bytes": 769,
+      "source_sha256": "9f0ec9a315c4674546c25607ae8b9742993e5a561d0d017788e10e4660f35847",
+      "sha256": "9f0ec9a315c4674546c25607ae8b9742993e5a561d0d017788e10e4660f35847",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/configure.log.gz",
+      "source_bytes": 597,
+      "source_sha256": "1a316b36afc8e9fa9537cb53098eac145a6f906dbd37c7801316896f39eba104",
+      "sha256": "7633806d7204e476d106c61863903bab8dfe20fe13f40e42f74c1cdcc8fabd7c",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/native-races.json",
+      "source_bytes": 628,
+      "source_sha256": "40fd579c3bd4fa33aa1049b02aca0b2ad82dd728901e2c5bf4c67ce0f4ae9473",
+      "sha256": "40fd579c3bd4fa33aa1049b02aca0b2ad82dd728901e2c5bf4c67ce0f4ae9473",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/native-races.log.gz",
+      "source_bytes": 1680,
+      "source_sha256": "0d99e8c80f75c3b223a75739ce2b938f85fb18f3661e0addbcf703a9f9024d47",
+      "sha256": "6d41f53526ded46d307d81e02db75e73491045a9cc91f71d11738bd5aac3056b",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/transitions-diagnostic-v2.json",
+      "source_bytes": 752,
+      "source_sha256": "7b40ad96bde56af35de7f930805da1ec14417162e172c38108e97cbe427eaf3a",
+      "sha256": "7b40ad96bde56af35de7f930805da1ec14417162e172c38108e97cbe427eaf3a",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/transitions-diagnostic-v2.log.gz",
+      "source_bytes": 89,
+      "source_sha256": "006b5fc5b5b832286d9e42919b6536315eb603dc6ebdefeceeb5b3a5b80b5046",
+      "sha256": "cb3c57939dbcd3215b92e9ad7a32365a0a2b1e6119bb3e4b1d75205892029f26",
+      "gzip": true
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/transitions-residual-prefix-diagnostic.json",
+      "source_bytes": 792,
+      "source_sha256": "703ef4407bb5d1edfd444ecf1d4055f7e39283736424f8cfb6722d017ba988c1",
+      "sha256": "703ef4407bb5d1edfd444ecf1d4055f7e39283736424f8cfb6722d017ba988c1",
+      "gzip": false
+    },
+    {
+      "path": "runs/tactical-race-instrumentation/transitions-residual-prefix-diagnostic.log.gz",
+      "source_bytes": 89,
+      "source_sha256": "006b5fc5b5b832286d9e42919b6536315eb603dc6ebdefeceeb5b3a5b80b5046",
+      "sha256": "cb3c57939dbcd3215b92e9ad7a32365a0a2b1e6119bb3e4b1d75205892029f26",
+      "gzip": true
+    }
+  ]
+}
