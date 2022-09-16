@@ -40,6 +40,8 @@ jobs:
           python -m tests.features_test
           python -m tests.acquisition_limits
           python -m tests.recovery_scope
+          python -m tests.campaign_cleanup
+          python -m tests.power_guard
           python -m tests.full_strength
           python -m tests.full_actor_contract
           python -m tests.full_model_protocol --output runs/ci-full-model-controls
@@ -47,6 +49,7 @@ jobs:
           python -m training.prepare data/ci-original data/ci-prepared
           python -m verification.dataset data/ci-prepared data/ci-original
           python -m tests.dataset_controls --dataset data/ci-prepared --corpus data/ci-original --output runs/ci-data-controls
+          python -m tests.independent_index_recovery --dataset data/ci-prepared --corpus data/ci-original --output runs/ci-independent-index-recovery --maximum-seconds 120
       - name: Real analysis integration
         run: |
           npm ci --ignore-scripts

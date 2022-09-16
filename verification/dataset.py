@@ -9,7 +9,6 @@ import hashlib
 import json
 import math
 import sqlite3
-import tempfile
 import time
 from pathlib import Path
 
@@ -17,6 +16,7 @@ import chess
 import numpy as np
 
 from verification.verify import Rejection, load, terminal
+from verification.dataset_index import ReplayIndex
 from verification.acquisition import (
     protocol as recovery_protocol,
     prefix as recovery_prefix,
@@ -151,13 +151,22 @@ def verify_dataset(
     pair_manifest=None,
     progress=None,
     maximum_seconds=21600,
+    maximum_wall_seconds=None,
     wall_deadline=None,
     retain_index=False,
+    resume_index=None,
+    expected_index_sha256=None,
+    checkpoint_pairs=256,
 ):
     start, wall_start = time.monotonic(), time.time()
     if not math.isfinite(maximum_seconds) or not 0 < maximum_seconds <= 21600:
         raise Rejection("finite independent data replay deadline required")
-    deadline = wall_start + maximum_seconds
+    wall_budget = (
+        maximum_seconds if maximum_wall_seconds is None else maximum_wall_seconds
+    )
+    if not math.isfinite(wall_budget) or not 0 < wall_budget <= 86400:
+        raise Rejection("finite independent data replay wall ceiling required")
+    deadline = wall_start + wall_budget
     if wall_deadline is not None:
         if not math.isfinite(wall_deadline):
             raise Rejection("finite absolute replay deadline required")
@@ -238,19 +247,74 @@ def verify_dataset(
         raise Rejection("duplicated source pair identity")
     complete_games = unfinished_games = raw_samples = searched_samples = 0
     corpus_hash = hashlib.sha256()
-    with tempfile.TemporaryDirectory(
-        prefix="caissa-verify-data-", dir=scratch, delete=not retain_index
-    ) as temporary:
-        connection = sqlite3.connect(Path(temporary) / "replayed.sqlite3")
-        connection.execute("PRAGMA journal_mode=OFF")
-        connection.execute("PRAGMA cache_size=-131072")
-        connection.execute(
-            "CREATE TABLE expected (id BLOB PRIMARY KEY, split INTEGER, fen TEXT, outcome REAL, cp REAL, probability REAL, n INTEGER, game TEXT, family TEXT) WITHOUT ROWID"
-        )
-        connection.execute(
-            "CREATE TABLE contributors (id BLOB, game TEXT, n INTEGER, first INTEGER, last INTEGER, PRIMARY KEY(id,game)) WITHOUT ROWID"
-        )
-        for entry in source_pairs:
+    if type(checkpoint_pairs) is not int or not 1 <= checkpoint_pairs <= 256:
+        raise Rejection("independent checkpoint batch exceeds bounded transaction size")
+    bindings = {
+        "schema": "caissa-independent-replay-index-v1",
+        "dataset_sha256": digest(dataset / "DATASET.json"),
+        "source_pairs_sha256": manifest["source_pairs_sha256"],
+        "verifier_sha256": digest(Path(__file__)),
+        "index_code_sha256": digest(Path(__file__).with_name("dataset_index.py")),
+        "studies_sha256": digest(studies),
+        "openings_sha256": digest(openings),
+        "fixed_prefix_protocol_sha256": expected_protocol_sha256,
+        "require_full": require_full,
+    }
+    with ReplayIndex(
+        scratch, retain_index, bindings, resume_index, expected_index_sha256
+    ) as replay:
+        connection = replay.connection
+        temporary = str(replay.directory)
+        state = replay.state
+        cursor = state["cursor"]
+        if cursor > len(source_pairs):
+            raise Rejection("independent replay cursor exceeds source inventory")
+        complete_games = state["complete_games"]
+        unfinished_games = state["unfinished_games"]
+        raw_samples = state["raw_samples"]
+        searched_samples = state["searched_samples"]
+        if (
+            complete_games + unfinished_games != 2 * cursor
+            or searched_samples > raw_samples
+        ):
+            raise Rejection("independent replay counters disagree with durable cursor")
+        for entry in source_pairs[:cursor]:
+            number = entry["pair"]
+            if number % 256 == 0:
+                checkpoint(
+                    "resume-prefix-identities", source_pairs=number, index=temporary
+                )
+            source = corpus / f"{number//256:06d}" / f"{number:09d}.json"
+            raw = source.read_bytes()
+            actual_hash = hashlib.sha256(raw).hexdigest()
+            if actual_hash != entry["sha256"]:
+                raise Rejection("resumed original prefix bytes changed")
+            corpus_hash.update(bytes.fromhex(actual_hash))
+        if cursor and corpus_hash.hexdigest() != state["prefix_sha256"]:
+            raise Rejection("resumed original prefix chain differs")
+
+        def commit_cursor(count):
+            replay.commit(
+                {
+                    "cursor": count,
+                    "complete_games": complete_games,
+                    "unfinished_games": unfinished_games,
+                    "raw_samples": raw_samples,
+                    "searched_samples": searched_samples,
+                    "prefix_sha256": corpus_hash.hexdigest(),
+                }
+            )
+            checkpoint(
+                "committed-original-games",
+                source_pairs=count,
+                completed_games=complete_games,
+                raw_samples=raw_samples,
+                index=temporary,
+            )
+
+        for ordinal, entry in enumerate(source_pairs):
+            if ordinal < cursor:
+                continue
             number = entry["pair"]
             if number % 256 == 0:
                 checkpoint(
@@ -344,9 +408,9 @@ def verify_dataset(
                         "INSERT INTO contributors VALUES(?,?,?,?,?) ON CONFLICT(id,game) DO UPDATE SET n=n+1,last=excluded.last",
                         (identity, lineage, 1, sample["ply"], sample["ply"]),
                     )
-            if number % 256 == 0:
-                connection.commit()
-        connection.commit()
+            if (ordinal + 1) % checkpoint_pairs == 0:
+                commit_cursor(ordinal + 1)
+        commit_cursor(len(source_pairs))
         if corpus_hash.hexdigest() != manifest["corpus_content_sha256"]:
             raise Rejection("original corpus content chain differs")
         if (
@@ -450,7 +514,6 @@ def verify_dataset(
                 if identities.readline():
                     raise Rejection("unexpected extra prepared identity")
             counts[name] = expected_count
-        connection.close()
     if require_full:
         if complete_games < 100000 or counts["train"] < 10000000:
             raise Rejection("full original game/training-input floors not met")
@@ -536,8 +599,12 @@ def main():
     parser.add_argument("--pair-manifest", type=Path)
     parser.add_argument("--progress", type=Path)
     parser.add_argument("--max-seconds", type=float, default=21600)
+    parser.add_argument("--max-wall-seconds", type=float)
     parser.add_argument("--wall-deadline-unix", type=float)
     parser.add_argument("--retain-index", action="store_true")
+    parser.add_argument("--resume-index", type=Path)
+    parser.add_argument("--expected-index-state-sha256")
+    parser.add_argument("--checkpoint-pairs", type=int, default=256)
     args = parser.parse_args()
     try:
         result = verify_dataset(
@@ -552,8 +619,12 @@ def main():
             pair_manifest=args.pair_manifest,
             progress=args.progress,
             maximum_seconds=args.max_seconds,
+            maximum_wall_seconds=args.max_wall_seconds,
             wall_deadline=args.wall_deadline_unix,
             retain_index=args.retain_index,
+            resume_index=args.resume_index,
+            expected_index_sha256=args.expected_index_state_sha256,
+            checkpoint_pairs=args.checkpoint_pairs,
         )
         print(json.dumps(result))
         return 0

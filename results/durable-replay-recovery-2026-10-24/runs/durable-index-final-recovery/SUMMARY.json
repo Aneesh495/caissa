@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "actual_interruption_exit": -9,
+  "committed_pair_cursor": 1,
+  "stopped_index_sha256": "927cbdb6fb5c3af308cf820fcac8f52a91a21e0123e69d0c0c19840d6d389914",
+  "completed_index_sha256": "cd7d3ea1215513f6f927d503b7932e4ec633d9755f5ca15615545c4cadf09def",
+  "independent_result": {
+    "status": "passed",
+    "profile": "diagnostic-data-replay",
+    "source_pairs": 200,
+    "completed_games": 400,
+    "unfinished_games": 0,
+    "raw_samples": 28088,
+    "independently_rebuilt_splits": {
+      "train": 17654,
+      "validation": 2563,
+      "test": 2108
+    },
+    "dataset_sha256": "73f27dbfb1ca044bcc86da4387afaaf74e947c3779470bd08fa5f2c8169ac7a0"
+  },
+  "wrong_pin_exit": 1,
+  "unpinned_exit": 1,
+  "uncommitted_pages_and_cursor_rolled_back": true,
+  "legacy_unsafe_index_refused": true,
+  "full_acceptance": false
+}
