@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "independently_reexecuted_queries": 180,
+  "original_raw_sha256": "595d80ce90233ddb20e8093846d54fa51917fab16fb7833de2c80a9659c301bb",
+  "replay_sha256": "6946f2ebf223724970cc032586c971944b7e8e747fae13ec7dab016acc883302",
+  "full_acceptance": false,
+  "scope": "Independent parser and native transport reproduce all work counters, scores, PVs and best moves; timings remain descriptive loaded-host observations, not an Elo estimate"
+}

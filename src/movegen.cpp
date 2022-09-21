@@ -137,7 +137,7 @@ MoveAvailability Position::availability() {
 }
 Undo Position::save_state() const {
     Undo u;u.castling=castling_;u.ep=ep_;u.halfmove=halfmove_;u.fullmove=fullmove_;
-    u.key=key_;u.history_size=history_.size();u.side=side_;u.synthetic_depth=synthetic_depth_;return u;
+    u.key=key_;u.history_context=history_context_;u.history_size=history_.size();u.side=side_;u.synthetic_depth=synthetic_depth_;return u;
 }
 void Position::save_square(Undo& u, Square s) {
     for(std::uint8_t i=0;i<u.count;++i) if(u.squares[i]==s) return;
@@ -170,7 +170,7 @@ Undo Position::make(Move m) {
     }
     halfmove_=(captured||kind(moving)==Kind::pawn)?0:halfmove_+1;
     if(side_==Color::black) ++fullmove_;
-    side_=opposite(side_);key_^=metadata_key();history_.push_back(repetition_key());
+    side_=opposite(side_);key_^=metadata_key();append_history();
     return u;
 }
 Undo Position::make_null() {
@@ -182,7 +182,7 @@ void Position::unmake(const Undo& u) {
     for(std::uint8_t i=0;i<u.count;++i) put(u.squares[i],0);
     for(std::uint8_t i=0;i<u.count;++i) put(u.squares[i],u.pieces[i]);
     castling_=u.castling;ep_=u.ep;halfmove_=u.halfmove;fullmove_=u.fullmove;
-    key_=u.key;side_=u.side;synthetic_depth_=u.synthetic_depth;history_.resize(u.history_size);
+    key_=u.key;history_context_=u.history_context;side_=u.side;synthetic_depth_=u.synthetic_depth;history_.resize(u.history_size);
 }
 std::string Position::uci(Move m) const {
     if(!m.valid()) return "0000";

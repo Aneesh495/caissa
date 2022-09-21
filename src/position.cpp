@@ -5,6 +5,7 @@
 #include <sstream>
 namespace caissa {
 namespace {
+constexpr Key history_multiplier=0x9e3779b185ebca87ULL;
 Key mix(Key v) {
     v += 0x9e3779b97f4a7c15ULL;
     v = (v^(v>>30))*0xbf58476d1ce4e5b9ULL;
@@ -104,7 +105,7 @@ Position Position::from_fen(std::string_view fen, bool chess960) {
     if(p.ep_!=no_square&&p.halfmove_!=0)throw InputError("en passant requires a zero halfmove clock");
     if(p.in_check(opposite(p.side_))) throw InputError("side that just moved is in check");
     p.key_=p.recompute_key();
-    p.history_.push_back(p.repetition_key());
+    p.append_history();
     return p;
 }
 std::string Position::fen() const {
@@ -156,11 +157,17 @@ Key Position::repetition_key() const {
     }
     return key_^mix(12000+ep_);
 }
+void Position::append_history() {
+    auto identity=repetition_key();
+    history_.push_back(identity);
+    // Pawn moves and captures exclude all earlier positions from repetition.
+    if(halfmove_==0)history_context_=0;
+    history_context_=history_context_*history_multiplier+identity;
+}
 Key Position::search_key() const {
-    Key context=mix(halfmove_+20000);
-    if(synthetic_depth_)context^=mix(30000+static_cast<Key>(synthetic_depth_));
     auto count=std::min(history_.size(),static_cast<std::size_t>(halfmove_)+1);
-    for(std::size_t i=history_.size()-count;i<history_.size();++i) context=mix(context^history_[i]);
+    Key context=mix(history_context_^mix(halfmove_+20000)^(count*0xd6e8feb86659fd93ULL));
+    if(synthetic_depth_)context^=mix(30000+static_cast<Key>(synthetic_depth_));
     return key_^context;
 }
 bool Position::coherent() const {
@@ -169,6 +176,10 @@ bool Position::coherent() const {
     for(Square s=0;s<64;++s) if(at(s)) {
         auto c=static_cast<std::size_t>(index(color(at(s))));bb[c][static_cast<std::size_t>(kind(at(s)))]|=bit(s);colors[c]|=bit(s);
     }
-    return bb==pieces_&&colors==colors_&&key_==recompute_key();
+    Key history_context=0;
+    auto count=std::min(history_.size(),static_cast<std::size_t>(halfmove_)+1);
+    for(std::size_t i=history_.size()-count;i<history_.size();++i)
+        history_context=history_context*history_multiplier+history_[i];
+    return bb==pieces_&&colors==colors_&&key_==recompute_key()&&history_context_==history_context;
 }
 }

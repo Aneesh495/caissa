@@ -1,0 +1,1 @@
+{"phase":"sanitizers-tests","pid":35446,"command":["ctest","--test-dir","build-search-context-sanitize","--output-on-failure","--timeout","300","-j2"],"seconds_this_stage":95.5355192080001,"seconds_this_campaign":131.4278595410001,"retained_output_bytes":1618,"discarded_output_bytes":0,"stopping_reason":null}
