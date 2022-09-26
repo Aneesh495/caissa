@@ -1,0 +1,21 @@
+# Automatic data, model and strength continuation
+
+`tools.continue_project` connects the already running full corpus reconstruction to the separately declared full model and strength owners. It does not acquire data, import a network, select from match outcomes, or certify the complete project. The retained original acquisition and first finalization failures remain failed.
+
+There is one fixed scheduling output, `runs/project-continuation-v1`, with an exclusive writer lock, immutable input bindings, a 72-hour outer wall ceiling and at most three recovery attempts. This ceiling only bounds scheduling. Every child still enforces its own original persistent deadline, attempts, disk limits, source archive and actual failure. Scheduling cannot extend or replace an exhausted child scope.
+
+The scheduler waits on `runs/searched-full-v3-finalization-v2/FINALIZATION.json`. While the data owner holds its lock, the scheduler publishes its actual independent counters every fifteen seconds and starts no model scope. A stopped owner without a full pass stops scheduling. An exported manifest or pilot receipt cannot satisfy this dependency.
+
+After a matching complete original-data pass, the scheduler fills only the dataset and finalization hashes in the previously committed proposed v3 protocol and changes its status to frozen. It validates that exact protocol, commits it, pushes it and checks remote parity before starting the model owner. Unrelated uncommitted changes stop this step. A protocol already frozen to different inputs is never overwritten.
+
+The model owner completes all three 20000-update budgets and validation-only selection, then independent learning, numerical and restoration checks. Its unstarted prospective scope permits six cumulative active hours within 24 hours of wall time. A persistent ledger charges across resumes and a scoped macOS assertion keeps the machine awake while the owner runs, including on battery. Earlier failed budgets are unchanged.
+
+The neural owner then completes 2000 reversed-color pairs, followed by the external owner with 334/333/333 pairs against three pinned Stockfish settings. Each owner keeps its separate twelve-hour wall ceiling. The external comparator is copied into the ignored scheduling output and verified against its prospective SHA256; it never supplies Caissa's moves or learning labels. The strength owners also retain scoped awake assertions, process/load observations and their actual failures. Load guards recognize both ordinary Python modules and archived-source launchers.
+
+A completed, independently audited negative learning or neural-contribution endpoint does not stop the remaining predeclared measurements. Its failed gate remains in every continuation result. An abnormal exit, timeout, missing receipt, changed input or incomplete sample stops the queue. A negative result cannot justify changing seeds, sample sizes, mixture, resources or the unchanged classical control.
+
+Resume runs `tools.continue_project --resume` against the same scheduling output. A child with an existing scope runs its original archived owner code through an explicit Python module path. No fresh output can grant another model or match budget. The scheduler's final result always has `full_acceptance: false` and no absolute Elo. Remaining systems, browser, independent whole-project and release gates still require completion.
+
+Launch from a clean committed checkout with `.venv/bin/python -m tools.continue_project --stockfish /opt/homebrew/Cellar/stockfish/19/bin/stockfish`. Actual progress is in the scheduler's `PROGRESS.json` and the child domain's counters. The thread heartbeat reports these about every ten minutes as requested by the user. It must inspect this scheduler before starting another owner.
+
+The control campaign exercises a live dependency lock, stopped dependency, wrong data identities, incomplete seeds, test-based selection, wrong exits, original-source resumes, expired scopes and complete negative endpoints. Synthetic receipt fixtures demonstrate scheduling only; they never count as actual data, training or games. Both queued strength domains execute after a negative model fixture, while an unexpected child crash stops the queue. The raw control results are retained separately from actual campaigns.

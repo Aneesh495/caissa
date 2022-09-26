@@ -63,7 +63,21 @@ def main():
             "budget-expanded",
             "model_campaign",
             "maximum_wall_seconds",
+            86401,
+            "cumulative resources",
+        ),
+        (
+            "active-budget-expanded",
+            "model_campaign",
+            "maximum_active_seconds",
             21601,
+            "cumulative resources",
+        ),
+        (
+            "awake-policy-changed",
+            "model_campaign",
+            "host_policy",
+            None,
             "cumulative resources",
         ),
         (

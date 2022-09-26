@@ -107,7 +107,33 @@ def main():
             "command": "python -m training.train data",
         },
     ]
-    assert [row["pid"] for row in offenders(rows, 100)] == [200, 201, 202]
+    for pid, command in [
+        (204, "python -m verification.performance evidence"),
+        (205, "python -P -c import_runpy /archived/source training.train data"),
+        (206, "python /archived/source/verification/native_build.py evidence"),
+        (207, "ctest --test-dir build"),
+    ]:
+        rows.append(
+            {"pid": pid, "ppid": 1, "state": "R", "cpu": 100, "command": command}
+        )
+    rows.append(
+        {
+            "pid": 208,
+            "ppid": 100,
+            "state": "R",
+            "cpu": 100,
+            "command": "python -P -c import_runpy /archived/source arena.run own/config",
+        }
+    )
+    assert [row["pid"] for row in offenders(rows, 100)] == [
+        200,
+        201,
+        202,
+        204,
+        205,
+        206,
+        207,
+    ]
     with tempfile.TemporaryDirectory(prefix="caissa-strength-ceilings-") as folder:
         base = Path(folder)
         data = base / "model"

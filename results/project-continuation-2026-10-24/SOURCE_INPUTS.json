@@ -1,0 +1,15 @@
+{
+  "base_commit": "d517a9f0557a7f10d119fa0a9d30acc19ee4aa62",
+  "files": {
+    "tools/continue_project.py": "0bd7a33e9ca06a445c1e4fd3f9d1b3ba6863803ab6b036273243b85f5ee1ca97",
+    "tools/full_learning.py": "c69c99c1369f6bae3f956542eb7a78553557dfbb762fc57728a183c60f4d05b7",
+    "tools/full_strength.py": "0f4e9cdcb5a8ebd635f809a1299b04ba04e603c908472899ec7d69c5c60086b9",
+    "tests/project_continuation.py": "0246fabf5dd67fc7e031fb56cf2c56b04ff47d871ead41e878ec8f549a56a6e7",
+    "tests/full_model_protocol.py": "931d1af1078a0a66d558ffcf245cf6cd6f6423af64dd6201106888bc3e5014ca",
+    "tests/full_strength.py": "410ea6967ee3e9df19bdf3b9a12d0f00a7639f6b2c2fd3a003c88956a1c705d4",
+    "config/protocol-v3.proposed.json": "81ec3c971bd3732d860fea12945af01226f2bae6e93ceafbb8ca86550d1933e7",
+    ".github/workflows/ci.yml": "e031d23034d0d3004041dc4dd0ee8433f22a46a2cca6ea2f7a7a52fcbfa49534"
+  },
+  "scope": "Synthetic scheduling controls and prospective child resource rules, not completed corpus/learning/games",
+  "full_acceptance": false
+}
