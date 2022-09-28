@@ -1,0 +1,7 @@
+{
+  "counters": "All visited nodes1,933,707Nodes at completed depth1,375,139Quiescence nodes1,466,825Hash table memory32.00 MiBSearch elapsed time1,000 msHash table hits173,459Hash table cutoffs124,233Beta cutoffs297,473Null-move cutoffs4,479Futility skips277,524Late-move reductions161,285Full-depth re-searches1,888Ordering hints0Evaluator calls1,681,722Evaluator time, summed over workers549.29 msStatic evaluation cache hits0Static cache memory0.00 MiBNeural evaluations0Neural bound cutoffs0",
+  "note": "Final search counters. 327 ns per evaluator call. Cutoff categories can overlap; they are not percentages of total work.",
+  "scrollWidth": 390,
+  "traceCount": "16",
+  "width": 390
+}

@@ -6,6 +6,8 @@ The native rules, classical evaluation, PVS search, bounded UCI, Chess960, PGN v
 
 The current core maintains its ordered reversible-history score fingerprint incrementally. All 16 Release and all 16 ASan/UBSan cases passed, including a million-transition context reconstruction and sixty mailbox-minimax comparisons. Independent transport reproduced 180 paired cost observations. The loaded-host median runtime ratios were 0.942 classical and 0.957 neural mixture against the previous original executable. [Evidence and limits](notes/search-context.md) distinguish search cost from unmeasured playing strength. Full corpus reconstruction is still running and no final absolute Elo exists.
 
+The browser can now display optional native search counters and bounded position samples. Actual one/four-thread streams, a 10000-node inspection parity case, ten malformed telemetry controls, cancellation, terminal zero-work output, stale-position clearing and a 390-pixel keyboard/browser flow passed. [The inspection study](notes/search-inspection.md) preserves the original driver timeout and source-bound development evidence. This does not replace the final release browser or strength campaigns.
+
 | Gate | Current evidence | Remaining work |
 |---|---|---|
 | G01 Rules | 20 exact perft fixtures; multiple independent 100000-position comparisons | Bind final campaign to release source |

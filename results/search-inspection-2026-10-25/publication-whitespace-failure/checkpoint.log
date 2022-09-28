@@ -1,0 +1,11 @@
+results/search-inspection-2026-10-25/cases-2/cancelled.sse:9: new blank line at EOF.
+results/search-inspection-2026-10-25/cases-2/default.sse:42: new blank line at EOF.
+results/search-inspection-2026-10-25/cases-2/inspected-1.sse:69: new blank line at EOF.
+results/search-inspection-2026-10-25/cases-2/inspected-4.sse:147: new blank line at EOF.
+results/search-inspection-2026-10-25/cases-2/terminal.sse:9: new blank line at EOF.
+Traceback (most recent call last):
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.agent-local/checkpoint.py", line 5, in <module>
+    subprocess.run(['git','diff','--cached','--check'],check=True)
+  File "/Users/aneeshkrishna/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['git', 'diff', '--cached', '--check']' returned non-zero exit status 2.

@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "origin": "http://127.0.0.1:8767/",
+  "desktopFinalCounters": true,
+  "desktopSamples": 16,
+  "positionChangeClearedCounters": true,
+  "cancellationNote": true,
+  "mobileWidth": 390,
+  "mobileScrollWidth": 390,
+  "mobileSamples": 16,
+  "keyboardOff": true,
+  "keyboardOn": true,
+  "keyboardResetCounters": "",
+  "full_acceptance": false
+}

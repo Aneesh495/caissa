@@ -1,0 +1,69 @@
+event: started
+data: {"engine":"Caissa","evaluation":"classical","milliseconds":250}
+
+event: info
+data: {"depth":1,"seldepth":3,"multipv":1,"scoreType":"cp","score":32,"nodes":41,"time":0,"nps":41000,"hashfull":0,"pv":["b1c3"]}
+
+event: info
+data: {"depth":1,"seldepth":3,"multipv":2,"scoreType":"cp","score":28,"nodes":41,"time":0,"nps":41000,"hashfull":0,"pv":["d2d3"]}
+
+event: info
+data: {"depth":2,"seldepth":8,"multipv":1,"scoreType":"cp","score":12,"nodes":1287,"time":0,"nps":1287000,"hashfull":0,"pv":["b1c3","b8c6"]}
+
+event: info
+data: {"depth":2,"seldepth":8,"multipv":2,"scoreType":"cp","score":8,"nodes":1287,"time":0,"nps":1287000,"hashfull":0,"pv":["d2d3","b8c6"]}
+
+event: info
+data: {"depth":3,"seldepth":14,"multipv":1,"scoreType":"cp","score":38,"nodes":5860,"time":4,"nps":1465000,"hashfull":0,"pv":["b1c3","b8c6","c3d5"]}
+
+event: info
+data: {"depth":3,"seldepth":14,"multipv":2,"scoreType":"cp","score":24,"nodes":5860,"time":4,"nps":1465000,"hashfull":0,"pv":["d2d3","b8c6","b1c3"]}
+
+event: info
+data: {"depth":4,"seldepth":14,"multipv":1,"scoreType":"cp","score":12,"nodes":15856,"time":10,"nps":1585600,"hashfull":3,"pv":["b1c3","b8c6","c3d5","c6d4"]}
+
+event: info
+data: {"depth":4,"seldepth":14,"multipv":2,"scoreType":"cp","score":5,"nodes":15856,"time":10,"nps":1585600,"hashfull":3,"pv":["g1f3","d7d6","b1c3","b8c6"]}
+
+event: info
+data: {"depth":5,"seldepth":18,"multipv":1,"scoreType":"cp","score":28,"nodes":86756,"time":64,"nps":1355562,"hashfull":23,"pv":["g1f3","d7d6","b1c3","g8f6","d2d3"]}
+
+event: info
+data: {"depth":5,"seldepth":18,"multipv":2,"scoreType":"cp","score":20,"nodes":86756,"time":64,"nps":1355562,"hashfull":23,"pv":["d2d3","b8c6","g1f3","f7f6","b1c3"]}
+
+event: info
+data: {"depth":6,"seldepth":19,"multipv":1,"scoreType":"cp","score":12,"nodes":237592,"time":181,"nps":1312662,"hashfull":66,"pv":["g1f3","d7d6","b1c3","g8f6","d2d3","b8c6"]}
+
+event: info
+data: {"depth":6,"seldepth":19,"multipv":2,"scoreType":"cp","score":12,"nodes":237592,"time":181,"nps":1312662,"hashfull":66,"pv":["d2d3","b8c6","b1c3","g8f6","g1f3","d7d6"]}
+
+event: statistics
+data: {"visited_nodes":325504,"table_bytes":16777216,"elapsed_ms":250,"qnodes":254364,"tt_hits":24124,"ordering_hints":0,"tt_cutoffs":16574,"beta_cutoffs":48319,"null_cutoffs":489,"lmr":14797,"researches":875,"futility":25735,"eval_calls":280576,"eval_ns":74772493,"evaluation_cache_hits":0,"evaluation_cache_bytes":0,"neural_evaluations":0,"neural_bound_cutoffs":0,"completed_depth_nodes":237592}
+
+event: trace
+data: {"depth":2,"ply":1,"alpha":-32000,"beta":32000,"synthetic":false,"fen":"rnbqkbnr/pppp1ppp/8/4p3/4P3/2N5/PPPP1PPP/R1BQKBNR b KQkq - 1 2"}
+
+event: trace
+data: {"depth":2,"ply":1,"alpha":-32000,"beta":32000,"synthetic":false,"fen":"rnbqkbnr/pppp1ppp/8/4p3/4P3/3P4/PPP2PPP/RNBQKBNR b KQkq - 0 2"}
+
+event: trace
+data: {"depth":2,"ply":1,"alpha":-32000,"beta":32000,"synthetic":false,"fen":"rnbqkbnr/pppp1ppp/8/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2"}
+
+event: trace
+data: {"depth":2,"ply":1,"alpha":-32000,"beta":32000,"synthetic":false,"fen":"rnbqkbnr/pppp1ppp/8/4p3/4P3/6P1/PPPP1P1P/RNBQKBNR b KQkq - 0 2"}
+
+event: trace
+data: {"depth":2,"ply":1,"alpha":-32000,"beta":32000,"synthetic":false,"fen":"rnbqkbnr/pppp1ppp/8/4p3/4P3/5P2/PPPP2PP/RNBQKBNR b KQkq - 0 2"}
+
+event: trace
+data: {"depth":2,"ply":1,"alpha":-32000,"beta":32000,"synthetic":false,"fen":"rnbqkbnr/pppp1ppp/8/4p3/2B1P3/8/PPPP1PPP/RNBQK1NR b KQkq - 1 2"}
+
+event: trace
+data: {"depth":2,"ply":1,"alpha":-32000,"beta":32000,"synthetic":false,"fen":"rnbqkbnr/pppp1ppp/8/4p3/4P3/1P6/P1PP1PPP/RNBQKBNR b KQkq - 0 2"}
+
+event: trace
+data: {"depth":2,"ply":1,"alpha":-32000,"beta":32000,"synthetic":false,"fen":"rnbqkbnr/pppp1ppp/8/4p3/3PP3/8/PPP2PPP/RNBQKBNR b KQkq d3 0 2"}
+
+event: bestmove
+data: {"move":"g1f3"}
+

@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "observations": [
+    {
+      "case": "native-inspection-fixed-node-parity",
+      "nodes": 10000,
+      "samples": 8
+    },
+    {
+      "case": "malformed-native-telemetry-rejected",
+      "rejections": 10
+    },
+    {
+      "case": "actual-inspection-stream",
+      "threads": 1,
+      "visited": 325504,
+      "samples": 8
+    },
+    {
+      "case": "actual-inspection-stream",
+      "threads": 4,
+      "visited": 820202,
+      "samples": 32
+    },
+    {
+      "case": "terminal-zero-summary-invalid-input-and-cancellation",
+      "completed": true
+    }
+  ],
+  "full_acceptance": false
+}

@@ -64,6 +64,7 @@ jobs:
             sleep 0.2
           done
           node tests/service_integration.mjs
+          CAISSA_ENGINE=build/caissa node tests/search_inspection.mjs runs/ci-search-inspection
       - name: Native arena and semantic negative controls
         run: |
           python -m arena.run config/arena-ci.json runs/ci-arena --workers 1

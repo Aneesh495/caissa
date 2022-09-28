@@ -1,0 +1,10 @@
+file:///Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tests/search_inspection.mjs:15
+    const timer = setTimeout(() => { child.kill('SIGKILL'); reject(new Error('Finite native inspection probe timed out.')); }, 5000);
+                                                                   ^
+
+Error: Finite native inspection probe timed out.
+    at Timeout._onTimeout (file:///Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tests/search_inspection.mjs:15:68)
+    at listOnTimeout (node:internal/timers:685:17)
+    at process.processTimers (node:internal/timers:618:7)
+
+Node.js v24.22.1

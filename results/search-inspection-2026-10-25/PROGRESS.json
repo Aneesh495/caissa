@@ -1,0 +1,1 @@
+{"phase":"native-service-inspection","pid":70734,"command":["/Users/aneeshkrishna/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node","tests/search_inspection.mjs","runs/search-inspection/cases"],"seconds_this_stage":5.039578625000104,"seconds_this_campaign":5.682264125000074,"retained_output_bytes":631,"discarded_output_bytes":0,"stopping_reason":null}

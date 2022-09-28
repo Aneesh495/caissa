@@ -1,0 +1,8 @@
+Browser tab: 1, Title: "Caissa | Analysis room", URL: "http://127.0.0.1:8767/".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 292-293
++						324 container
++							325 button (expanded) Sample 1: depth 2, ply 1, Secondary Actions: Collapse
++								326 text Sample 1: depth 2, ply 1
++							327 text Window -32000 to 32000 centipawns, from the side to move. rnbqkbnr/pppppppp/8/8/8/4P3/PPPP1PPP/RNBQKBNR b KQkq - 0 1
+The focused UI element is 325 button (expanded) Sample 1: depth 2, ply 1, Secondary Actions: Collapse

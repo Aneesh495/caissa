@@ -44,7 +44,8 @@ function analysisRequest(data: Record<string, unknown>): AnalysisRequest {
   if (/[\r\n]/.test(fen)) throw new RequestError('FEN contains command delimiters.');
   const moves = data['moves'];
   if (!Array.isArray(moves) || moves.length > 512 || !moves.every((m: unknown) => typeof m === 'string' && /^[a-h][1-8][a-h][1-8][nbrq]?$/.test(m))) throw new RequestError('Invalid move path.');
-  return { fen, moves: moves as string[], chess960: data['chess960'] === true, threads: integer(data['threads'], 'Threads', 1, 4), hash: integer(data['hash'], 'Hash', 1, 128), multipv: integer(data['multipv'], 'MultiPV', 1, 8), milliseconds: integer(data['milliseconds'], 'Analysis time', 50, 30000) };
+  if (data['inspect'] !== undefined && typeof data['inspect'] !== 'boolean') throw new RequestError('Inspect search must be a boolean.');
+  return { fen, moves: moves as string[], chess960: data['chess960'] === true, threads: integer(data['threads'], 'Threads', 1, 4), hash: integer(data['hash'], 'Hash', 1, 128), multipv: integer(data['multipv'], 'MultiPV', 1, 8), milliseconds: integer(data['milliseconds'], 'Analysis time', 50, 30000), inspect: data['inspect'] === true };
 }
 async function route(request: IncomingMessage, response: ServerResponse): Promise<void> {
   response.setHeader('X-Content-Type-Options', 'nosniff');
