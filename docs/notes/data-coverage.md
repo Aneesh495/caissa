@@ -1,0 +1,17 @@
+# Data coverage and target distributions
+
+`training.data_profile` streams all exported feature/target rows without importing a neural network, computing gradients or selecting a model. It binds every array to the exact dataset manifest, checks the hashes before and after the scan, validates storage/probability/search-score bounds and publishes bounded chunk progress. Inputs and prepared metadata remain read-only.
+
+Raw observation counts and deduplicated model inputs answer different questions. The raw histograms retain repeated positions and describe material, tapered phase, game ply, outcome, halfmove clock and original-teacher evaluation bins. Each histogram must total the actual raw observation count. These counters come from preparation; the separate full original-data reconstruction verifies their provenance. A coverage report cannot replace that reconstruction.
+
+For each exported split, the report independently decodes material and phase from the two perspective feature arrays. Both perspectives must agree, and each contains exactly one king of each color. It counts outcome targets, teacher centipawns/probabilities and absolute target disagreement. Every bin inventory must retain every row. Scores outside the displayed +/-2000 cp range enter the end bins rather than disappearing. The report also retains the number of clipped-tail rows.
+
+Exported targets are means over an input's contributors. A fractional outcome can mean a draw or a mixture of outcomes. The mean teacher probability need not equal the logistic function of the mean teacher score. The report does not falsely reject this valid aggregation. Target disagreement is a description of these data labels; it is not a held-out learned-model score, an absolute rating or a playing-strength measurement.
+
+`tools.plot_data_profile` renders two standalone PNG/SVG figures from the saved counts. The first shows the six raw observation distributions. The second overlays train/validation/test distributions with equal weight per exported input. This structural split inspection does not evaluate the selected neural network. The existing experiment's architecture, mixture, seeds, optimizer budget and validation-only selection are unchanged; test-label plots do not select any of them.
+
+The optional `reports` dependency supplies Matplotlib. The local rendering campaign installs it into an ignored isolated directory, preserving the actual training runtime. Numerical profiling uses the existing pinned NumPy environment. The renderer records its version and the input/plot hashes.
+
+Run `.venv/bin/python -m training.data_profile --dataset DATASET_DIRECTORY --output NEW_OUTPUT_DIRECTORY --maximum-seconds 300`, then `python -m tools.plot_data_profile NEW_OUTPUT_DIRECTORY/PROFILE.json --output NEW_PLOT_DIRECTORY` in an environment with the reports extra. Both outputs reject overwriting existing evidence. All figures and counts remain `full_acceptance: false`; no corpus pass or model gain follows from plotting them.
+
+The initial controls decode 162 seeded legal positions and sparse endgames through an independent chess representation. Scalar histogram assignment and moments agree, and seven-row chunks produce exactly the same counts as one batch. Nine corrupt-feature/target/storage controls are rejected. A retained 400-game pilot also produced complete statistics for 17654/2563/2108 train/validation/test inputs. The full corpus is a separate workload whose actual result is recorded in the report evidence, not inferred from that pilot.

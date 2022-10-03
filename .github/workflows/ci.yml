@@ -49,6 +49,7 @@ jobs:
           python -m training.corpus --engine build/caissa --pairs 50 --nodes 500 --workers 2 --output data/ci-original
           python -m training.prepare data/ci-original data/ci-prepared
           python -m verification.dataset data/ci-prepared data/ci-original
+          python -m tests.data_profile --dataset data/ci-prepared --output runs/ci-data-profile
           python -m tests.dataset_controls --dataset data/ci-prepared --corpus data/ci-original --output runs/ci-data-controls
           python -m tests.independent_index_recovery --dataset data/ci-prepared --corpus data/ci-original --output runs/ci-independent-index-recovery --maximum-seconds 120
       - name: Real analysis integration

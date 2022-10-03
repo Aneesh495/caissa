@@ -1,0 +1,11 @@
+{
+  "files": {
+    "training/data_profile.py": "d46dd362c2f944ae75371ad409c467fedb66dece38943812e414e2dd96d41268",
+    "tools/plot_data_profile.py": "05542a00e29fba261a8c95f3ad8f02fe7d7a0664ca6e3cd5523fcac4720b3575",
+    "tests/data_profile.py": "f10f7c9b4ad12368e7a18870d8a678c0cc384ca2194db8c2880fc83fff92c5cb",
+    "pyproject.toml": "dddf026df8057f4f5b2e69050a61b2a2f101a21eb901a46e97f11395344e297a",
+    ".github/workflows/ci.yml": "fb79be6f324375d0ad30d0cc4f9c7579410030a312e056d877c1e7674317b350"
+  },
+  "scope": "Data-only profile code and pilot/scalar controls; no neural model selection or full data acceptance",
+  "full_acceptance": false
+}
