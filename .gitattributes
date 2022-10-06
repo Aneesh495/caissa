@@ -1,2 +1,5 @@
 # Raw SSE records end with a blank event delimiter. Preserve captured bytes.
 *.sse -text whitespace=-blank-at-eof
+# Generated SVG paths and byte-bound command logs retain their original format.
+results/**/*.svg -text whitespace=-blank-at-eol
+results/**/*.log -text whitespace=-blank-at-eol,-blank-at-eof

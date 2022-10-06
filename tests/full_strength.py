@@ -112,6 +112,8 @@ def main():
         (205, "python -P -c import_runpy /archived/source training.train data"),
         (206, "python /archived/source/verification/native_build.py evidence"),
         (207, "ctest --test-dir build"),
+        (209, "python -m training.data_profile --dataset data"),
+        (210, "python -m tools.plot_data_profile observations.json"),
     ]:
         rows.append(
             {"pid": pid, "ppid": 1, "state": "R", "cpu": 100, "command": command}
@@ -133,6 +135,8 @@ def main():
         205,
         206,
         207,
+        209,
+        210,
     ]
     with tempfile.TemporaryDirectory(prefix="caissa-strength-ceilings-") as folder:
         base = Path(folder)

@@ -1,0 +1,27 @@
+{
+  "profile_source_commit": "deab2c678b5f2f62bd771eeae9567f7208d1deb3",
+  "profile_sha256": "b1381594cce11c27517c05a14b6e64ede133b96475a1c01e6c4b1fb261ef2e55",
+  "total_variation_by_fixed_bins": {
+    "validation": {
+      "material": 0.004766973662756187,
+      "phase": 0.008202065497008502,
+      "outcome": 0.004653628603636386,
+      "teacher_cp": 0.005167828082718199,
+      "teacher_probability": 0.004520493232114731,
+      "absolute_target_disagreement": 0.0037083971791987505
+    },
+    "test": {
+      "material": 0.006150147687520768,
+      "phase": 0.008272935965919723,
+      "outcome": 0.00884079236334784,
+      "teacher_cp": 0.0051328585843280075,
+      "teacher_probability": 0.005326932798924114,
+      "absolute_target_disagreement": 0.0043873016678096415
+    }
+  },
+  "searched_depth_fraction": 0.9796610019725852,
+  "raw_clock_90_plus_fraction": 0.0008444599030429546,
+  "data_finalization_pass_exists_at_report": false,
+  "model_evaluated": false,
+  "full_acceptance": false
+}
