@@ -37,6 +37,8 @@ FORBIDDEN_MODULES = {
     "tools.performance",
     "tools.neural_cost",
     "tools.plot_data_profile",
+    "tools.heuristic_study",
+    "verification.heuristic_study",
     "verification.learning",
     "verification.numerical",
     "verification.performance",

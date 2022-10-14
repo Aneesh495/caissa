@@ -1,0 +1,18 @@
+{
+  "schema": "caissa-heuristic-study-v1",
+  "status": "frozen",
+  "profile": "diagnostic-loaded-host",
+  "positions": "config/performance.json",
+  "positions_sha256": "8a27cea07ff367e7c991a5c855a1d4620a7f43b8578f95309e8d50f0ad63fcfe",
+  "nodes": [5000, 25000],
+  "milliseconds": [25, 100],
+  "repeats": 3,
+  "schedule_seed": 32452843,
+  "threads": 1,
+  "hash_mib": 16,
+  "warmup_nodes": 1,
+  "maximum_seconds": 600,
+  "maximum_observation_bytes": 134217728,
+  "hypothesis": "Measure each required heuristic's work, completed depth and root-decision effects at short/long time and node budgets. All classical reference settings stay enabled. No Elo, isolated speed or tactical-quality conclusion follows from root-score differences alone.",
+  "selection": "No model, checkpoint, mixture, source parameter or baseline tuning uses these observations. Every interrupted iteration and legal fallback is retained. Full heuristic strength ablations remain separate."
+}
