@@ -1,0 +1,1 @@
+{"status": "passed", "raw_queries_recomputed": 1056, "fixed_node_queries_independently_reexecuted": 528, "seconds": 6.170910835266113, "absolute_elo": null, "full_acceptance": false, "scope": "Frozen loaded-host heuristic ablations. Timed searches remain actual observations, not deterministic replay targets or measured playing strength."}
