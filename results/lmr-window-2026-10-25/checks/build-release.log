@@ -1,0 +1,22 @@
+[ 32%] Built target caissa_core
+[ 35%] Built target core_test
+[ 39%] Built target caissa
+[ 46%] Built target position_test
+[ 46%] Built target rules_test
+[ 53%] Built target table_test
+[ 53%] Built target evaluation_test
+[ 60%] Built target network_test
+[ 60%] Built target search_test
+[ 67%] Built target uci_test
+[ 67%] Built target notation_test
+[ 73%] Built target kernel_test
+[ 75%] Built target position_line_test
+[ 82%] Built target dense_kernel_bench
+[ 82%] Built target dense_kernel_test
+[ 89%] Built target evaluation_cache_test
+[ 89%] Built target neural_bounds_test
+[ 96%] Built target tactical_generation_test
+[ 96%] Built target search_context_test
+[ 98%] Building CXX object CMakeFiles/lmr_window_test.dir/tests/lmr_window_test.cpp.o
+[100%] Linking CXX executable lmr_window_test
+[100%] Built target lmr_window_test

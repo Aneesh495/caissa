@@ -1,0 +1,1 @@
+{"status":"failed","details":{"error":"StageFailure('stage default-parity failed: nonzero-exit (exit 1)')","full_acceptance":false},"seconds_this_campaign":12.30810187499992,"stages_started":7,"utc_unix":1792896403.171678,"full_acceptance":false}

@@ -1,0 +1,5 @@
+{"pvs":false,"lmr":false,"expected":-196,"actual":-196,"lmr_searches":0,"researches":0}
+{"pvs":false,"lmr":true,"expected":-196,"actual":-196,"lmr_searches":96,"researches":25}
+{"pvs":true,"lmr":false,"expected":-196,"actual":-196,"lmr_searches":0,"researches":25}
+{"pvs":true,"lmr":true,"expected":-196,"actual":-196,"lmr_searches":47,"researches":34}
+{"status":"passed","oracle_nodes":18642,"native_queries":4}
