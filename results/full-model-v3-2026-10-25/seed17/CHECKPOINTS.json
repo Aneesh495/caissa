@@ -1,0 +1,1 @@
+{"schema":"caissa-checkpoint-transaction-v1","last":{"path":"checkpoints/step-00020000.pt","sha256":"d6f71da6c915ef0ab19bdd4e9e82a5e634dd2aba24a7f74727cca551602ed763"},"best":{"path":"checkpoints/step-00001500.pt","sha256":"a880b693402f7cd6414bba371484cbc6b5aad7111bc0319bb5fac7d85f23a527"}}
