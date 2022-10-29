@@ -305,20 +305,26 @@ def sampler_states(seed, steps, batch, positions):
         yield step, sampler.bit_generator.state
 
 
-def verify_export(path, state, identity):
+def verify_export(path, state, identity, export_format=None):
     raw = Path(path).read_bytes()
     version, width = architecture(state["config"], state["model"])
-    if len(raw) < 120 or raw[:8] != f"CAISSAN{version}".encode():
+    wire = version if export_format is None else export_format
+    if type(wire) is not int or not (wire == version or (version == 3 and wire == 4)):
+        raise Rejection(
+            "export conversion does not preserve trained numerical semantics"
+        )
+    scale, clip = (4096, 8188) if wire == 4 else (1024, 2047)
+    if len(raw) < 120 or raw[:8] != f"CAISSAN{wire}".encode():
         raise Rejection("selected network header differs")
     if struct.unpack("<8I", raw[8:40]) != (
-        version,
+        wire,
         1,
         12288,
         width,
         32,
         16,
-        1024,
-        2047,
+        scale,
+        clip,
     ):
         raise Rejection("selected network dimensions or precision differ")
     if raw[40:104].decode("ascii") != identity:
@@ -327,18 +333,18 @@ def verify_export(path, state, identity):
     if (
         length != len(raw) - 120
         or crc != zlib.crc32(raw[120:])
-        or baseline != (1 if version == 3 else 0)
+        or baseline != (1 if wire >= 3 else 0)
     ):
         raise Rejection("selected export checksum or classical contract differs")
     offset = 120
     parameters = state["model"]
-    entries = [("embedding.weight", 1024, "<i2"), ("bias0", 1024, "<i4")]
+    entries = [("embedding.weight", scale, "<i2"), ("bias0", scale, "<i4")]
     entries += [
-        (layer + suffix, scale, dtype)
+        (layer + suffix, multiplier, dtype)
         for layer in ["dense1", "dense2", "output"]
-        for suffix, scale, dtype in [
-            (".weight", 1024, "<i2"),
-            (".bias", 1048576, "<i4"),
+        for suffix, multiplier, dtype in [
+            (".weight", scale, "<i2"),
+            (".bias", scale * scale, "<i4"),
         ]
     ]
     for name, scale, dtype in entries:

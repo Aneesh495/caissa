@@ -1,0 +1,71 @@
+name: precision v4
+on:
+  push:
+    paths:
+      - '.github/workflows/precision-v4.yml'
+      - 'config/precision-v4.json'
+      - 'src/network.cpp'
+      - 'src/network_kernel.cpp'
+      - 'include/caissa/network.hpp'
+      - 'training/model.py'
+      - 'training/export.py'
+      - 'verification/learning.py'
+      - 'verification/network_bytes.py'
+      - 'verification/numerical.py'
+      - 'tools/network_audit.py'
+      - 'tools/precision_audit.py'
+      - 'tests/precision_export.py'
+      - 'tests/network_precision_test.cpp'
+      - 'tests/dense_kernel_test.cpp'
+      - 'tests/kernel_test.cpp'
+      - 'results/precision-v4-inputs/**'
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: precision-v4-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  encoding:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - name: Original profile deadline and cumulative workflow limits
+        run: |
+          python3 - <<'PY'
+          import json, os, time
+          rule = json.load(open('config/precision-v4.json'))['resources']
+          assert int(os.environ['GITHUB_RUN_NUMBER']) <= 3
+          assert int(os.environ['GITHUB_RUN_ATTEMPT']) == 1
+          assert time.time() < rule['deadline_unix']
+          assert rule['deadline_unix'] - rule['origin_unix'] == 7200
+          PY
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: false
+      - name: Pinned dependencies
+        timeout-minutes: 15
+        run: uv sync --frozen --extra oracle
+      - name: Native build and arithmetic tests
+        timeout-minutes: 5
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build -j 2
+          ctest --test-dir build --output-on-failure
+      - name: Fixed original-checkpoint precision experiment
+        timeout-minutes: 15
+        run: |
+          .venv/bin/python -m tools.precision_audit --engine build/caissa --checkpoint results/precision-v4-inputs/selected.pt --protocol config/precision-v4.json --expected-protocol-sha256 624a0f1700657e2f23ea28c12e800139be10921ba7286395da75fdca62ccfab9 --expected-commit "$GITHUB_SHA" --output runs/precision-v4-${{ github.run_id }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: precision-v4-${{ matrix.os }}-${{ github.run_id }}
+          path: |
+            runs/precision-v4-*/
+            build/Testing/Temporary/LastTest.log
+          retention-days: 14
