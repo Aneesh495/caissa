@@ -1,0 +1,25 @@
+{
+  "schema": "caissa-artifact-hashes-v1",
+  "files": {
+    "ARCHIVE_IDENTITIES.json": "ddb6b6ce31cda8fe98d51955f310546bb9dc9ff8e799dfb8457a6b75b5fa2df5",
+    "BINARY_PROVENANCE.json": "e7a2c49ecb4736045fcc24535f65f84d0fca081458142ba899b97fbee1c9ec89",
+    "linux/EXPORT.json": "dee9ee78e953e869b17cbc6e724e1293516cbfbc899a3b97088403aeeb4174fe",
+    "linux/INDEPENDENT.json": "484d80cec36559313f8935cee3263e96cf7b38512fe2b0de3c26ba1db7bc883c",
+    "linux/NATIVE.log": "54f41b2ff2cbe364d13eec268036928c25b27e666f85d2767c7ce50aa50dfe3b",
+    "linux/NUMERICAL.json": "6d506f7afb823e7d641c554699855a27933e495c093200957b48207494a38a2d",
+    "linux/PRECISION.json": "fc132bcf945449a574a4c254a702e21b70f628741a38a593fba34f3050758f7c",
+    "linux/RAW.zip": "d0829f4284059318a09b8041aabe298412b715654b5e67df2bbfbe76629f46a3",
+    "linux/RESTORATION.json": "93064581fc40d822aece04d021a9976969c0dfe35abc45d3fffff1737e96d67c",
+    "linux/caissa": "624b9c394141b7b6d34a5351f1697d2c2f37d26031826c9efa8b1c7f32ad275d",
+    "macos/EXPORT.json": "50d46da414a85fadefa0aba85201d11caf51187fda943e02eafc33a5f034f736",
+    "macos/INDEPENDENT.json": "fba1d0a237f1b53d3cbf2bcd9bf55717951081913cd01adcaa99c68a1eda24a5",
+    "macos/NATIVE.log": "c870fed647bfd126a6a6d1889697aa8f03dcd6cf182837fe212ace0baba5bb32",
+    "macos/NUMERICAL.json": "bbb0397fd0a8fd53475038e32c3c2e01a0399fb790e81d1189f99190f8b35537",
+    "macos/PRECISION.json": "2948f352654b54b9ef87b80741150c508d50dbcdababb90a1b80690bb0244175",
+    "macos/RAW.zip": "c305307ea77b616e8dc9a5c5db04d8c53bc16f93171983e21f7b9e26ef22b6fe",
+    "macos/RESTORATION.json": "4faa3da02f1b64709cf3fa271e11cffaf9e60b1043234ba75eaf8b71953ad6c0",
+    "macos/caissa": "3486153f001414aef60688a73e434800f681401b891869dde8f4fb82d7695eee",
+    "selected-v4.cai": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7"
+  },
+  "full_acceptance": false
+}

@@ -120,10 +120,24 @@ def main():
         (214, "python -m tools.network_audit --network candidate.cai"),
         (215, "python -m tests.precision_export --checkpoint selected.pt"),
         (216, "python -m training.export selected.pt candidate.cai"),
+        (219, "python -P -c import_runpy /archived/source training.train data"),
+        (220, "python -I -B -W ignore /archived/source/training/train.py data"),
     ]:
         rows.append(
             {"pid": pid, "ppid": 1, "state": "R", "cpu": 100, "command": command}
         )
+    for pid, command in [
+        (
+            217,
+            "python .agent-local/checkpoint.py title checks training/train.py verification/numerical.py",
+        ),
+        (
+            218,
+            "python -m metadata.export --input training/train.py --label training.train",
+        ),
+        (221, "python -P .agent-local/checkpoint.py --message -m training.train"),
+    ]:
+        rows.append({"pid": pid, "ppid": 1, "state": "S", "cpu": 0, "command": command})
     rows.append(
         {
             "pid": 208,
@@ -149,6 +163,8 @@ def main():
         214,
         215,
         216,
+        219,
+        220,
     ]
     with tempfile.TemporaryDirectory(prefix="caissa-strength-ceilings-") as folder:
         base = Path(folder)

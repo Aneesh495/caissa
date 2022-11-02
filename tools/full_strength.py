@@ -88,6 +88,33 @@ def process_rows():
     return rows
 
 
+def python_entry(tokens):
+    """Locate the executed entry point, rather than source paths in its data.
+
+    ps does not preserve argv quoting for inline code. Keep that case
+    conservative, including the archived runpy launchers used by our owners.
+    Direct scripts and -m modules have an unambiguous entry position.
+    """
+    index = 1
+    while index < len(tokens):
+        value = tokens[index]
+        if value == "--":
+            return "script", tokens[index + 1 : index + 2]
+        if value == "-m":
+            return "module", tokens[index + 1 : index + 2]
+        if value.startswith("-m") and len(value) > 2:
+            return "module", [value[2:]]
+        if value == "-c" or (value.startswith("-c") and len(value) > 2):
+            return "inline", tokens[index + 1 :]
+        if value in ["-W", "-X", "--check-hash-based-pycs"]:
+            index += 2
+        elif value.startswith("-"):
+            index += 1
+        else:
+            return "script", [value]
+    return "none", []
+
+
 def offenders(rows, owner):
     owned = {owner}
     while True:
@@ -101,13 +128,9 @@ def offenders(rows, owner):
             continue
         tokens = row["command"].split()
         executable = Path(tokens[0]).name if tokens else ""
-        module = (
-            tokens[tokens.index("-m") + 1]
-            if "-m" in tokens and tokens.index("-m") + 1 < len(tokens)
-            else None
-        )
-        # Resumed owners use an explicit archived-source runpy launcher rather
-        # than -m. Direct source paths are also recognized for known producers.
+        # A metadata script may receive training/export.py as a file argument.
+        # That does not execute training. Inspect the actual Python entry point.
+        kind, candidates = python_entry(tokens)
         python_work = executable.startswith("python") and any(
             token in FORBIDDEN_MODULES
             or any(
@@ -115,9 +138,9 @@ def offenders(rows, owner):
                 or token.endswith("/" + name.replace(".", "/") + ".py")
                 for name in FORBIDDEN_MODULES
             )
-            for token in tokens[1:]
+            for token in candidates
         )
-        if executable in COMPILERS or module in FORBIDDEN_MODULES or python_work:
+        if executable in COMPILERS or python_work:
             found.append(row)
     return found
 
