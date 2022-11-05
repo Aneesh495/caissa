@@ -73,8 +73,17 @@ def distribution(values):
 
 
 @contextlib.contextmanager
-def replay_native(engine, network, positions):
+def replay_native(
+    engine, network, positions, *, neural_weight=100, maximum_seconds=120
+):
     """Own one original CLI process; bound time, output files and cleanup."""
+    require(
+        type(neural_weight) is int
+        and 0 <= neural_weight <= 100
+        and math.isfinite(maximum_seconds)
+        and 0 < maximum_seconds <= 120,
+        "native numerical replay weight or deadline outside bounds",
+    )
     with (
         positions.open("rb") as source,
         tempfile.TemporaryFile() as output,
@@ -83,8 +92,11 @@ def replay_native(engine, network, positions):
         start = time.monotonic()
         wall = time.time()
         before = resource.getrusage(resource.RUSAGE_CHILDREN)
+        command = [str(engine.resolve()), "--net-probe", str(network.resolve())]
+        if neural_weight != 100:
+            command.append(str(neural_weight))
         process = subprocess.Popen(
-            [str(engine.resolve()), "--net-probe", str(network.resolve())],
+            command,
             stdin=source,
             stdout=output,
             stderr=errors,
@@ -93,7 +105,8 @@ def replay_native(engine, network, positions):
         try:
             while process.poll() is None:
                 require(
-                    time.monotonic() - start < 120 and time.time() - wall < 120,
+                    time.monotonic() - start < maximum_seconds
+                    and time.time() - wall < maximum_seconds,
                     "saved native numerical replay deadline",
                 )
                 require(

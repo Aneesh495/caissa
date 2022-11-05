@@ -14,6 +14,9 @@ on:
       - 'verification/numerical.py'
       - 'tools/network_audit.py'
       - 'tools/precision_audit.py'
+      - 'tools/precision_followup.py'
+      - 'verification/deployment_loss.py'
+      - 'config/precision-v4-followup.json'
       - 'tests/precision_export.py'
       - 'tests/network_precision_test.cpp'
       - 'tests/dense_kernel_test.cpp'
@@ -52,15 +55,28 @@ jobs:
         timeout-minutes: 15
         run: uv sync --frozen --extra oracle
       - name: Native build and arithmetic tests
+        if: github.run_number == 1
         timeout-minutes: 5
         run: |
           cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
           cmake --build build -j 2
           ctest --test-dir build --output-on-failure
       - name: Fixed original-checkpoint precision experiment
+        if: github.run_number == 1
         timeout-minutes: 15
         run: |
           .venv/bin/python -m tools.precision_audit --engine build/caissa --checkpoint results/precision-v4-inputs/selected.pt --protocol config/precision-v4.json --expected-protocol-sha256 624a0f1700657e2f23ea28c12e800139be10921ba7286395da75fdca62ccfab9 --expected-commit "$GITHUB_SHA" --output runs/precision-v4-${{ github.run_id }}
+      - name: Original native-source identity
+        if: github.run_number > 1
+        timeout-minutes: 2
+        run: git fetch --no-tags --depth=1 origin d386b8df2e2c1a9ab2cf67660595fcad90ba8eb4
+      - name: Deployed loss and instrumented native follow-up
+        if: github.run_number > 1
+        timeout-minutes: 20
+        env:
+          UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+        run: |
+          .venv/bin/python -m tools.precision_followup --protocol config/precision-v4-followup.json --expected-protocol-sha256 52d4f58b0e1bb4e5e08d1314f14dd3e02558d03abd6b4683b8f8d6aa487b0cb5 --expected-commit "$GITHUB_SHA" --output runs/precision-v4-followup-${{ github.run_id }}
       - uses: actions/upload-artifact@v4
         if: always()
         with:
