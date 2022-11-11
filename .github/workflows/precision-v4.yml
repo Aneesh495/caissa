@@ -16,6 +16,7 @@ on:
       - 'tools/precision_audit.py'
       - 'tools/precision_followup.py'
       - 'verification/deployment_loss.py'
+      - 'verification/precision_systems.py'
       - 'config/precision-v4-followup.json'
       - 'tests/precision_export.py'
       - 'tests/network_precision_test.cpp'

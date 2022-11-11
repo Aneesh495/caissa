@@ -97,6 +97,24 @@ def execute(args):
         absolute_deadline=rule["original_deadline_unix"],
     )
     failed, reports = [], {}
+    tracked = subprocess.check_output(
+        ["git", "ls-files", "-z"], text=True, timeout=5
+    ).split("\0")
+    native_inputs = [
+        name
+        for name in tracked
+        if name == "CMakeLists.txt"
+        or (
+            name.startswith(("src/", "include/", "apps/", "tests/"))
+            and name.endswith((".cpp", ".hpp"))
+        )
+        or (name.startswith("models/") and name.endswith(".cai"))
+    ]
+    programs = {
+        "source_commit": commit,
+        "source_files": {name: sha(root / name) for name in native_inputs},
+        "modes": {},
+    }
     py = sys.executable
     try:
         # The new checks do not alter any original native implementation.
@@ -188,6 +206,25 @@ def execute(args):
                 (args.output / ("compile-" + mode + ".json")).write_bytes(
                     (build / "compile_commands.json").read_bytes()
                 )
+                shutil.copy2(
+                    build / "Testing/Temporary/LastTest.log",
+                    args.output / ("native-detail-" + mode + ".log"),
+                )
+                saved = args.output / "bin" / mode
+                saved.mkdir(parents=True)
+                executables = {Path(row["command"][0]) for row in cases["tests"]}
+                executables.add(build / "network_test")
+                if len(executables) != 19:
+                    raise ValueError("saved native program inventory differs")
+                identities = {}
+                for executable in sorted(executables):
+                    target = saved / executable.name
+                    shutil.copy2(executable, target)
+                    identities[str(target.relative_to(args.output))] = sha(target)
+                programs["modes"][mode] = {
+                    "cases": {row["name"]: row["command"] for row in cases["tests"]},
+                    "binaries": identities,
+                }
                 if mode == "release":
                     campaign.run(
                         "deployed-validation",
@@ -222,6 +259,46 @@ def execute(args):
                     }
                 )
                 reports[mode] = {"status": "failed", "actual_failure": failed[-1]}
+        independent = None
+        if not failed:
+            manifest = args.output / "PROGRAMS.json"
+            manifest.write_text(json.dumps(programs, sort_keys=True, indent=2) + "\n")
+            replay_output = args.output.with_name(args.output.name + "-independent")
+            campaign.run(
+                "independent-native",
+                [
+                    py,
+                    "-m",
+                    "verification.precision_systems",
+                    "--evidence",
+                    str(args.output.resolve()),
+                    "--checkout",
+                    str(root),
+                    "--expected-commit",
+                    commit,
+                    "--expected-programs-sha256",
+                    sha(manifest),
+                    "--maximum-seconds",
+                    "600",
+                    "--deadline-unix",
+                    str(rule["original_deadline_unix"]),
+                    "--output",
+                    str(replay_output.resolve()),
+                ],
+                610,
+            )
+            independent = {
+                "receipt_sha256": sha(replay_output / "INDEPENDENT.json"),
+                "programs_sha256": sha(manifest),
+                "path": str(replay_output),
+            }
+        if (
+            sum(
+                path.stat().st_size for path in args.output.rglob("*") if path.is_file()
+            )
+            > 2 * 1024**3
+        ):
+            raise ValueError("original precision evidence byte ceiling exceeded")
         result = {
             "status": "passed" if not failed else "completed with failed gates",
             "reports": reports,
@@ -235,6 +312,7 @@ def execute(args):
             "test_arrays_opened": False,
             "full_acceptance": False,
             "playing_strength_measured": False,
+            "independent_native_replay": independent,
         }
         (args.output / "FOLLOWUP.json").write_text(json.dumps(result, indent=2) + "\n")
         campaign.close(result["status"], result)
