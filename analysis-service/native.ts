@@ -1,6 +1,7 @@
 import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process';
 import { createInterface } from 'node:readline';
 import { resolve } from 'node:path';
+import { StringDecoder } from 'node:string_decoder';
 import { parseStatistics, parseTrace } from './telemetry.js';
 
 export const enginePath = resolve(process.env['CAISSA_ENGINE'] ?? 'build/caissa');
@@ -12,26 +13,40 @@ const children = new Set<ChildProcessWithoutNullStreams>();
 export async function nativeJson(args: string[], input = '', timeoutMs = 5000): Promise<unknown> {
   if (commands >= 4) throw new RequestError('Position workers are busy. Retry shortly.', 429);
   commands++;
+  // A rejected response still owns its process until the close event reaps it.
+  // Releasing on rejection permits new workers to overlap a child being killed.
+  let spawned = false;
   try {
     return await new Promise((accept, reject) => {
-      const child = spawn(enginePath, args, { stdio: 'pipe' }); children.add(child);
-      let output = '', error = '', settled = false;
+      const child = spawn(enginePath, args, { stdio: 'pipe' }); spawned = true; children.add(child);
+      const decoder = new StringDecoder('utf8');
+      let output = '', error = '', settled = false, outputBytes = 0;
       const timer = setTimeout(() => { child.kill('SIGKILL'); finish(new RequestError('Position command timed out.', 408)); }, timeoutMs);
       function finish(failure?: Error): void {
-        if (settled) return; settled = true; clearTimeout(timer); children.delete(child);
+        if (settled) return; settled = true; clearTimeout(timer);
         if (failure) reject(failure);
-        else { try { accept(JSON.parse(output) as unknown); } catch { reject(new RequestError('Engine returned invalid data.', 502)); } }
+        else { try { accept(JSON.parse(output + decoder.end()) as unknown); } catch { reject(new RequestError('Engine returned invalid data.', 502)); } }
       }
       child.stdout.on('data', (chunk: Buffer) => {
-        output += chunk.toString('utf8');
-        if (Buffer.byteLength(output) > 4 * 1024 * 1024) { child.kill('SIGKILL'); finish(new RequestError('Position response exceeded limit.', 413)); }
+        if (settled) return;
+        outputBytes += chunk.length;
+        if (outputBytes > 4 * 1024 * 1024) { child.kill('SIGKILL'); finish(new RequestError('Position response exceeded limit.', 413)); return; }
+        output += decoder.write(chunk);
       });
-      child.stderr.on('data', (chunk: Buffer) => { if (error.length < 4096) error += chunk.toString('utf8'); });
+      child.stderr.on('data', (chunk: Buffer) => { if (error.length < 4096) error += chunk.toString('utf8').slice(0, 4096 - error.length); });
       child.on('error', () => finish(new RequestError('Engine executable unavailable. Run make build.', 503)));
-      child.on('close', (code) => finish(code === 0 ? undefined : new RequestError(error.trim() || 'Engine rejected the input.')));
+      child.on('close', (code) => {
+        commands--; children.delete(child);
+        finish(code === 0 ? undefined : new RequestError(error.trim() || 'Engine rejected the input.'));
+      });
       child.stdin.on('error', () => {}); child.stdin.end(input);
     });
-  } finally { commands--; }
+  } catch (error) {
+    // spawn normally reports errors asynchronously and still emits close.
+    // Only synchronous spawn failure has no child to release the reservation.
+    if (!spawned) commands--;
+    throw error;
+  }
 }
 export interface AnalysisRequest { fen: string; moves: string[]; chess960: boolean; threads: number; hash: number; multipv: number; milliseconds: number; inspect: boolean; }
 export interface AnalysisHandle { cancel(): void; }
@@ -52,7 +67,7 @@ export function analyze(request: AnalysisRequest, emit: (event: string, value: u
     child.stdin.write('stop\nquit\n');
     killTimer = setTimeout(() => child.kill('SIGKILL'), 200);
   }
-  child.on('error', () => { emit('error', { message: 'Engine unavailable.' }); cleanup(); });
+  child.on('error', () => { emit('error', { message: 'Engine unavailable.' }); });
   child.on('close', cleanup); child.stdin.on('error', () => {});
   const lines = createInterface({ input: child.stdout });
   lines.on('line', (line) => {
@@ -100,5 +115,8 @@ export function parseInfo(line: string): Record<string, unknown> {
   }
   return record;
 }
-export function shutdown(): void { for (const child of children) child.kill('SIGTERM'); }
+export function shutdown(): void {
+  for (const child of children) child.kill('SIGTERM');
+  setTimeout(() => { for (const child of children) child.kill('SIGKILL'); }, 200).unref();
+}
 export function workerCounts(): { positions: number; analyses: number } { return { positions: commands, analyses: activeAnalysis }; }
