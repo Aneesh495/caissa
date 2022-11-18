@@ -1,0 +1,13 @@
+{
+  "files": {
+    "COMMANDS.jsonl": "b13e7f9bee91964868cd83cf3d7fb08eeb49f8abd3ddf97bb576e28921f2c131",
+    "CONFIG.json": "5fb2766c03dff2bf28bb4f6eca9bccc5c4d8e118e4fa2b5bcdaa65376ab603f4",
+    "HOSTED.json": "84e8b42354cc281d2013abb6b03ad5adcd227f4bef3ed733ad6ea686e885b552",
+    "linux-ci.log.gz": "eddb1e79bbbcce8c2e6a66e4ef6056efb3fc46eed0d7e118c6d7f8c04bd62b9b",
+    "macos-ci.log.gz": "03c81a34bc4c5ea42c5c5da983debb57bdae258a9a15416bf4f5e0f826115b97",
+    "transport-controls.log": "7161aa67f8522ab51c62a41361bb07984f3647d25c92d30846ade1119a1cc052",
+    "typescript.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "workflow.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "full_acceptance": false
+}

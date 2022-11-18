@@ -1,0 +1,13 @@
+{
+  "source_commit": "b04414b834fcff7d733ef058007efbe47dfffaaa",
+  "workflow_run": 40170311731,
+  "linux_job": 121099632579,
+  "macos_job": 121099632831,
+  "conclusion": "success",
+  "platforms": [
+    "ubuntu-24.04",
+    "macos-15"
+  ],
+  "scope": "Actual original-engine analysis/PGN/cancellation and adversarial process transport; final browser and whole-project acceptance remain separate.",
+  "full_acceptance": false
+}
