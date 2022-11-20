@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "validation_rows": 8192,
+  "untrained_loss": 0.41021441125063524,
+  "deployed_loss": 0.402049260532219,
+  "loss_improvement": 0.008165150718416225,
+  "neural_weight": 10,
+  "actual_native_queries": 24576,
+  "native_modes": {
+    "100": {
+      "exit": 0,
+      "seconds": 0.10905200000001969,
+      "reaped_child_cpu_seconds": 0.09705099999999998
+    },
+    "0": {
+      "exit": 0,
+      "seconds": 0.13043716600003563,
+      "reaped_child_cpu_seconds": 0.067233
+    },
+    "10": {
+      "exit": 0,
+      "seconds": 0.12519858299998532,
+      "reaped_child_cpu_seconds": 0.09422599999999998
+    }
+  },
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "engine_sha256": "3486153f001414aef60688a73e434800f681401b891869dde8f4fb82d7695eee",
+  "slice_sha256": "fc58d808fd3bede62b31640d5cdf74bd7ccbdfe309f9771fbe8b6395feac6869",
+  "protocol_sha256": "52d4f58b0e1bb4e5e08d1314f14dd3e02558d03abd6b4683b8f8d6aa487b0cb5",
+  "observations_sha256": "bfdee933b89abf7b80ca1ac1baad7145dedad4e2a5e5dafa101dd407c8ac5f36",
+  "seconds": 3.000393867492676,
+  "selection_changed": false,
+  "test_arrays_opened": false,
+  "full_acceptance": false,
+  "scope": "Same original validation prefix used for selection, evaluated at deployed q4096 integer semantics. No model selection or population-strength inference."
+}

@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "reports": {
+    "release": {
+      "status": "passed",
+      "native_cases": 18,
+      "transitions": 1000000,
+      "engine_sha256": "624b9c394141b7b6d34a5351f1697d2c2f37d26031826c9efa8b1c7f32ad275d",
+      "instrumentation": null
+    },
+    "asan": {
+      "status": "passed",
+      "native_cases": 18,
+      "transitions": 1000000,
+      "engine_sha256": "f4788d1da9380b1f1efae11067fa1995b823f2a585c80bc113f07560855a025e",
+      "instrumentation": "-fsanitize=address,undefined"
+    },
+    "tsan": {
+      "status": "passed",
+      "native_cases": 18,
+      "transitions": 1000000,
+      "engine_sha256": "c5f0499cec875a7aff4eed3ef1a2664a648e1f0d61f3d5c6c720cb4e88d98f58",
+      "instrumentation": "-fsanitize=thread"
+    }
+  },
+  "failed_domains": [],
+  "original_origin_unix": 1792906174.2199628,
+  "original_deadline_unix": 1792913374.2199628,
+  "source_commit": "bebc3119b8c0022e307360a0a48ee2714f5f8f08",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "protocol_sha256": "52d4f58b0e1bb4e5e08d1314f14dd3e02558d03abd6b4683b8f8d6aa487b0cb5",
+  "model_selection_changed": false,
+  "test_arrays_opened": false,
+  "full_acceptance": false,
+  "playing_strength_measured": false,
+  "independent_native_replay": {
+    "receipt_sha256": "c7bfd05bbcd79d4dc4c9b79248f907957d403f1eb3a0a89e76218c8a151587f9",
+    "programs_sha256": "4574b7bc81f8268faa84fb101694c688c0243b2503cef8d1b40f08e9851267ef",
+    "path": "runs/precision-v4-followup-40170041796-independent"
+  }
+}
