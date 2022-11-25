@@ -29,7 +29,7 @@ The subsequent [PVS-off LMR recovery repair](notes/lmr-window-recovery.md) passe
 | G11 Recovery | SIGKILL training/corpus/arena recovery tests executed | Source-bound replay of recovery records |
 | G12 Browser | Fresh-origin import, native analysis/cancel, keyboard variation, 390px viewport, service restart/export and malformed FEN exercised | Repeat against final release source |
 | G13 Performance | Auditable 640-search four-evaluator 1/2/4/8 pilot; 5097 RSS and 2000 latency samples independently reconstructed; 16 native scalar probes and 13 rehashed controls | Final selected model under controlled host load |
-| G14 Semantic verifier | Rehashed semantic controls rejected; separate data, learning, strength and protocol checkers execute | Remaining full campaign schema and independent checks |
+| G14 Semantic verifier | Rehashed domain controls; committed Git-blob/product source binding and full input-lineage admission implemented | Complete all full-domain semantic adapters and campaign coordinator; admission cannot certify full acceptance |
 | G15 Reproduction | Clean source diagnostic passed; Linux/macOS CI passes | Full saved-model/game/report reproduction |
 | G16 Release | Blocked by incomplete and failed full gates | All required gates and final identity audit |
 

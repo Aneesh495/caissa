@@ -1,5 +1,7 @@
 # Artifact contracts
 
+[Full-bundle admission](FULL_BUNDLE_ADMISSION.md) specifies the product source inventory, external input identity and cross-domain relationships. It rejects contradictions but cannot certify unexecuted full semantic gates.
+
 All JSON counts must be finite integers where declared. Every run uses a noncolliding directory. A manifest maps exact relative file names to SHA256; unsafe paths and symlinks are rejected by the verifier. Ordinary hashes prove byte integrity, not chess or statistical semantics.
 
 A diagnostic evidence bundle contains `SOURCE_INPUTS.json`, `DATASETS.json`, `ENVIRONMENT.json`, `COMMANDS.jsonl`, `MANIFEST.json`, `ACCEPTANCE.json`, `COVERAGE.json`, raw perft/search/network observations, raw arena pairs, independent summary inputs, draw-history probes and the exact saved native executable/network. Source inputs are checked against a separately supplied trusted clean checkout and expected commit. The saved model must agree with the trusted original diagnostic model. Missing or additional artifacts fail inventory checks.
