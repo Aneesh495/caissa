@@ -9,6 +9,7 @@ import hashlib
 import json
 import struct
 import subprocess
+import time
 import zlib
 from pathlib import Path
 
@@ -361,7 +362,12 @@ def inspect(bundle, checkout, expected_commit, expected_inputs_sha256):
 
 
 def verify(
-    root, checkout, expected_commit, expected_inputs_sha256, maximum_seconds=600
+    root,
+    checkout,
+    expected_commit,
+    expected_inputs_sha256,
+    maximum_seconds=600,
+    replay_output=None,
 ):
     require(
         expected_inputs_sha256 is not None,
@@ -370,8 +376,58 @@ def verify(
     from tools.heuristic_study import avoid_decisive_matches
 
     avoid_decisive_matches(Path(checkout) / "runs")
+    if replay_output is not None:
+        avoid_decisive_matches(Path(__file__).resolve().parents[1] / "runs")
     with Bundle(root, maximum_seconds) as bundle:
-        return inspect(bundle, checkout, expected_commit, expected_inputs_sha256)
+        review = inspect(bundle, checkout, expected_commit, expected_inputs_sha256)
+        inputs = bundle.json("FULL_INPUTS.json")
+        domain = inputs["domains"]["G01"]
+        if domain.get("driver") == "rules-v1":
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G01"
+                ] = "rules replay requires an external --replay-output directory"
+            else:
+                output = Path(replay_output).resolve()
+                require(
+                    not output.is_relative_to(bundle.root),
+                    "full replay must preserve the original evidence",
+                )
+                arguments = domain["rules"]
+                paths = {
+                    key: bundle.reference(arguments[key])
+                    for key in ["profile", "fixtures", "summary", "observations"]
+                }
+                declared = {bundle.reference(ref) for ref in domain["artifacts"]}
+                require(
+                    set(paths.values()) <= declared,
+                    "G01 replay inputs are absent from its declared raw artifacts",
+                )
+                from verification.rules import verify as verify_rules
+
+                remaining = min(
+                    bundle.monotonic_deadline - time.monotonic(),
+                    bundle.wall_deadline - time.time(),
+                )
+                result = verify_rules(
+                    bundle.root / paths["observations"],
+                    bundle.root / paths["summary"],
+                    bundle.root / inputs["engine"]["path"],
+                    inputs["engine"]["sha256"],
+                    bundle.root / paths["profile"],
+                    arguments["profile"]["sha256"],
+                    bundle.root / paths["fixtures"],
+                    arguments["observations"]["sha256"],
+                    output / "G01",
+                    maximum_seconds=min(900, remaining),
+                )
+                require(
+                    result["full_gate"] is True,
+                    "G01 replay did not complete its full required sample",
+                )
+                review["verified_semantic_gates"] = {"G01": result}
+                del review["pending_semantic_gates"]["G01"]
+        return review
 
 
 def main():
@@ -381,6 +437,7 @@ def main():
     parser.add_argument("--expected-commit", required=True)
     parser.add_argument("--expected-inputs-sha256", required=True)
     parser.add_argument("--maximum-seconds", type=float, default=600)
+    parser.add_argument("--replay-output", type=Path)
     args = parser.parse_args()
     try:
         result = verify(
@@ -389,6 +446,7 @@ def main():
             args.expected_commit,
             args.expected_inputs_sha256,
             args.maximum_seconds,
+            args.replay_output,
         )
         print(json.dumps(result))
         return 0 if result.get("full_acceptance") is True else 2

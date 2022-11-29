@@ -1,0 +1,16 @@
+{
+  "schema": "caissa-rules-replay-v1",
+  "status": "frozen",
+  "positions": 100000,
+  "seed": 1729,
+  "reset_probability": 0.015,
+  "maximum_game_ply": 300,
+  "chess960_every_reset": 4,
+  "oracle": "chess 1.11.2",
+  "perft_positions": 20,
+  "perft_sha256": "3db35f2159694ddad19b9dfc906f4b144c16b7a893c1acab22d8a3c15eb69cb7",
+  "maximum_seconds": 900,
+  "maximum_observation_bytes": 536870912,
+  "maximum_oracle_perft_nodes": 10000000,
+  "scope": "Independent G01 replay of the frozen reachable-position walk and exact source perft fixtures. Diagnostic prefixes cannot pass the full gate. No training, acquisition or strength budget is renewed."
+}

@@ -162,11 +162,19 @@ def independent_statistics(records):
     }
 
 
-def verify(bundle, checkout, expected, profile, expected_inputs_sha256=None):
+def verify(
+    bundle, checkout, expected, profile, expected_inputs_sha256=None, replay_output=None
+):
     if profile == "full":
         from verification.full_bundle import verify as verify_full
 
-        return verify_full(bundle, checkout, expected, expected_inputs_sha256)
+        return verify_full(
+            bundle,
+            checkout,
+            expected,
+            expected_inputs_sha256,
+            replay_output=replay_output,
+        )
     source_check(bundle, checkout, expected)
     with Bundle(bundle) as integrity:
         integrity.verify_manifest(excluded=("VERIFICATION.json",))
@@ -276,6 +284,7 @@ def main():
     ap.add_argument("--checkout", type=Path, required=True)
     ap.add_argument("--expected-commit", required=True)
     ap.add_argument("--expected-inputs-sha256")
+    ap.add_argument("--replay-output", type=Path)
     ap.add_argument("--profile", choices=["full", "diagnostic"], default="full")
     a = ap.parse_args()
     try:
@@ -285,6 +294,7 @@ def main():
             a.expected_commit,
             a.profile,
             a.expected_inputs_sha256,
+            a.replay_output,
         )
         print(json.dumps(result))
         return 0 if result["status"] == "passed" else 2
