@@ -16,7 +16,7 @@ The subsequent [PVS-off LMR recovery repair](notes/lmr-window-recovery.md) passe
 
 | Gate | Current evidence | Remaining work |
 |---|---|---|
-| G01 Rules | 20 exact perft fixtures; multiple independent 100000-position comparisons | Bind final campaign to release source |
+| G01 Rules | 20 exact perft fixtures; development 100000-position comparisons; independent frozen-walk/perft replay adapter implemented | Execute and bind the full final-source replay; diagnostic prefixes cannot pass |
 | G02 Restoration | Million-transition diagnostic passed; trained-network refresh checks passed | Final selected model/source campaign |
 | G03 Draw history | Native claim/automatic/mate/history tests and independent draw replay | Final bundle |
 | G04 Protocol | 10000 sequences independently replayed, stop p99 8.47 ms; six rehashed semantic controls rejected; unread-output bound test | Repeat and bind final executable |
