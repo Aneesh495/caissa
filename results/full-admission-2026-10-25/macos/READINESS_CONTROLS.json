@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "frozen_identity_selected": true,
+  "failed_domain_preserved": true,
+  "missing_data_remains_unknown": true,
+  "scope": "Synthetic metadata-only readiness fixture",
+  "full_acceptance": false
+}

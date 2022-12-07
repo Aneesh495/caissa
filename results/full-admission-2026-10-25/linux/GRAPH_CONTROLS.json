@@ -1,0 +1,414 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "receipt-booleans",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/receipt-booleans",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "29f2b63811f0298dc09d59768c4064478b6122b3df836c7938d5e3b680e85275"
+      ],
+      "exit": 2,
+      "observed": {
+        "status": "incomplete",
+        "profile": "full",
+        "full_acceptance": false,
+        "source_commit": "24af308f49c7408296cc65c620d00786350502a4",
+        "inputs_sha256": "29f2b63811f0298dc09d59768c4064478b6122b3df836c7938d5e3b680e85275",
+        "verified_relationships": {
+          "deployment": {
+            "format": 4,
+            "scale": 4096,
+            "clip": 8188,
+            "classical_contract": 1,
+            "neural_weight": 10,
+            "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005"
+          },
+          "data": {
+            "training_inputs": 10578434,
+            "completed_original_games": 229582,
+            "dataset_sha256": "f09cdec986858c5b1aa80b3c97aaa4d825be892fc94e16ac5d835bc3d709f0ce",
+            "semantic_reconstruction_required": true
+          },
+          "learning": {
+            "seeds": [
+              17,
+              41,
+              73
+            ],
+            "selected_seed": 73,
+            "selected_step": 2750,
+            "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+            "optimizer_and_validation_replay_required": true
+          }
+        },
+        "pending_semantic_gates": {
+          "G01": "independent full-domain semantic adapter required",
+          "G02": "independent full-domain semantic adapter required",
+          "G03": "independent full-domain semantic adapter required",
+          "G04": "independent full-domain semantic adapter required",
+          "G05": "independent full-domain semantic adapter required",
+          "G06": "independent full-domain semantic adapter required",
+          "G07": "independent full-domain semantic adapter required",
+          "G08": "independent full-domain semantic adapter required",
+          "G09": "independent full-domain semantic adapter required",
+          "G10": "independent full-domain semantic adapter required",
+          "G11": "independent full-domain semantic adapter required",
+          "G12": "independent full-domain semantic adapter required",
+          "G13": "independent full-domain semantic adapter required",
+          "G14": "independent full-domain semantic adapter required",
+          "G15": "independent full-domain semantic adapter required",
+          "G16": "independent full-domain semantic adapter required"
+        },
+        "scope": "Artifact integrity, committed product source and experiment-lineage admission only; no full gate certified"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "changed-mixture",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/changed-mixture",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "ea177de3e09bfee309173026e06e4626b3d9f9459ba59a64608f6898f486abec"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full deployment changed original classical evaluation or selected mixture"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "changed-checkpoint",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/changed-checkpoint",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "9bf68a789cd73b83f0d5168a09e7b2b2aee2c46b3c8e6fe48edc1f3a83721627"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full network is not the selected float checkpoint"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "weakened-gain",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/weakened-gain",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "269429669ac713f00e137d805c2fb0b7133e69610e1bb19040fc4360fe83c66b"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full neural-gain threshold or uncertainty was weakened"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "lost-seed",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/lost-seed",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "17b71075e4914bf99c50f295464e000192070cbe06c6289fd9056bb0ae51c23d"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full learning omitted or replaced a frozen seed"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "test-selection",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/test-selection",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "12b43c9e21992486ebd827b9248588d0fde706d47f542b3c0eeab006b5ca7182"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full learning changed data or accessed test selection"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "different-engine",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/different-engine",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "c2cc42c5768f31c257dca0cabb1078eaedbc5b049384de6be2688f738c8c77c9"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full gate used a different engine: G08"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "different-evaluator",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/different-evaluator",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "c2329912d303bca3c9ab7d090676283b2b3293e878e45afc45480da9fabf31fa"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full gate used a different evaluator: G08"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "changed-heldout",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/changed-heldout",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "24ee6aa00a83f6b0febcd625cab0811154dbd77cb418859e632b12564ba16fc2"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full held-out study/opening bytes differ from data screening"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "bad-network-crc",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/bad-network-crc",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "982315eed2509ecfe9ac0263c7739cff1775e46c4514da3e9ce0ea591ad07f81"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full selected network payload, CRC or classical contract differs"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "linked-artifact-directory",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/linked-artifact-directory",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "29f2b63811f0298dc09d59768c4064478b6122b3df836c7938d5e3b680e85275"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "evidence contains a symbolic link"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "missing-input-pin",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/missing-input-pin",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full verification requires external expected-inputs SHA256"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": false
+    },
+    {
+      "case": "malformed-deployment",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/malformed-deployment",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "810e40f5d2e33155bce3b662262bfc5c9c74aaf8292941c012bfaa7998f5420a"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full deployment descriptor must be an object"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "bool-classical",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/bool-classical",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "519a161948941601eb6a06a5137842741bfe10bee8f1e5e7957df721b500a1c0"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "full deployment changed original classical evaluation or selected mixture"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    },
+    {
+      "case": "nonfinite-input",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.verify",
+        "/tmp/caissa-full-graph-6kl63c9c/nonfinite-input",
+        "--checkout",
+        "/tmp/caissa-full-graph-6kl63c9c/source",
+        "--expected-commit",
+        "24af308f49c7408296cc65c620d00786350502a4",
+        "--profile",
+        "full",
+        "--expected-inputs-sha256",
+        "ac9623fbb22846df35d44dbaaed494d37b88be7a1a22c5e0b9a968eab451d854"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "nonfinite JSON value: Infinity"
+      },
+      "stderr": "",
+      "ordinary_hashes_and_external_input_pin_recomputed": true
+    }
+  ],
+  "scope": "Synthetic metadata relationship controls through actual CLI; no raw domain gate certified or native executable run",
+  "full_acceptance": false
+}

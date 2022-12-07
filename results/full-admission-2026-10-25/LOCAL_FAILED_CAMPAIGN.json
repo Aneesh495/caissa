@@ -1,0 +1,1 @@
+{"status":"failed","details":{"error":"StageFailure('stage historical-source-compatibility failed: nonzero-exit (exit 1)')","full_acceptance":false},"seconds_this_campaign":4.989498459002789,"stages_started":5,"utc_unix":1792913874.8962612,"full_acceptance":false}

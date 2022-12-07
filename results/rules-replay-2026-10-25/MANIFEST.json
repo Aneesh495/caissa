@@ -1,0 +1,23 @@
+{
+  "schema": "caissa-artifact-hashes-v1",
+  "files": {
+    "ARCHIVES.json": "a71acffc3620cdaf812c93e0b2b2e7bea0edc88f310bd79ff5fb24733e55eb33",
+    "README.md": "755cfb0f97b847daaa84c146ff97cb1488e656b1b8ec187d43c07aa5f4448ea3",
+    "SOURCE.json": "4907bfebf4e833e1236e20f549f7d8a8c489cb3146863621e01fc5ed2e8a1b30",
+    "linux/GRAPH_CONTROLS.json": "e6cad98f910efb87d8f5ccc57622102ab8989ee19ab6cad954a0fc1ad1e3438a",
+    "linux/INTEGRITY_CONTROLS.json": "e6ff8bc8209f63b782c7e528606dcfc8933f5211907d5fa585ab42f8614adb46",
+    "linux/RAW.zip": "174851a449ef71add470832ddd398b99b1965ea143768c2502bdfa0a81657b56",
+    "linux/READINESS_CONTROLS.json": "260405256d9c0c7903a8cf53dfad5cd6ffc3dc7d6c9d7813aa3e67d0e6f22840",
+    "linux/RULES_CONTROLS.json": "d61265810439c16f137653ca1152ee344e4a6f751c4ea4c2722272ac55db085f",
+    "linux/RULES_REPLAY.json": "f5ead3a43c5c85d717583b81809711c51ff0751c09f499e23a54841729fe2ce5",
+    "linux/SOURCE_CONTROLS.json": "59c30819a0b709e637d316ba436683526f47a09841347a57b6e659dad1486232",
+    "macos/GRAPH_CONTROLS.json": "9d8b5f05864b3747749ddd1e8e2c5c9b814756f9f08ffe20a4dfda451fe9d511",
+    "macos/INTEGRITY_CONTROLS.json": "e6ff8bc8209f63b782c7e528606dcfc8933f5211907d5fa585ab42f8614adb46",
+    "macos/RAW.zip": "305b68285467054b1a28a43c6d951e2b684f65e618c71de7b842c53dd80bcf35",
+    "macos/READINESS_CONTROLS.json": "260405256d9c0c7903a8cf53dfad5cd6ffc3dc7d6c9d7813aa3e67d0e6f22840",
+    "macos/RULES_CONTROLS.json": "c23f990d6d5a2c4b66cda849b15780253b56583d06f4737353e663bb9065c326",
+    "macos/RULES_REPLAY.json": "35126d919ca35bb2a74a4f526a02389398bfaf597cb5beec596370ec90bc8cc0",
+    "macos/SOURCE_CONTROLS.json": "e74899791009cb500c92a242ae3d60d53d332b713af9a3d9b5b0fdd3c16ee4b1"
+  },
+  "full_acceptance": false
+}

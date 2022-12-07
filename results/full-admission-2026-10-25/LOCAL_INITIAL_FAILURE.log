@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.agent-local/check_legacy_sources.py", line 3, in <module>
+    from verification.source import LEGACY,snapshot
+ModuleNotFoundError: No module named 'verification'

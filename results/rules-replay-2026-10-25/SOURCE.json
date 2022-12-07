@@ -1,0 +1,10 @@
+{
+  "source_commit": "a425ef7a963cffb35f081a7dd333a17d25dd6aa8",
+  "workflow": 40176028859,
+  "platforms": [
+    "ubuntu-24.04",
+    "macos-15"
+  ],
+  "scope": "Source/graph admission controls and ordinary original-core integration; rules-prefix evidence where present is diagnostic only.",
+  "full_acceptance": false
+}
