@@ -33,6 +33,8 @@ jobs:
           python tools/check_perft.py
           ./build/network_test models/diagnostic-v2.cai 10000
           ./build/network_test models/residual-prefix-diagnostic.cai 10000
+          ./build/accumulator_stack_test models/residual-prefix-diagnostic.cai 10000
+          ./build/accumulator_stack_test models/diagnostic-v2.cai 10000
           python tests/format_controls.py --network models/diagnostic-v2.cai
           python -m tests.statistics_test
           python -m tests.residual_contract
@@ -101,4 +103,5 @@ jobs:
             runs/ci-bundle-integrity/CONTROLS.json
             runs/ci-acceptance-readiness/CONTROLS.json
             runs/ci-rules-replay/
+            build/Testing/Temporary/LastTest.log
           retention-days: 14

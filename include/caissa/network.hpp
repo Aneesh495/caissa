@@ -41,6 +41,7 @@ public:
     std::string identity()const{return identity_;}
     std::uint32_t checksum()const{return checksum_;}
 private:
+    friend class AccumulatorStack;
     std::vector<std::int16_t> embedding_;
     std::array<std::int32_t,transformer_width> bias0_{};
     std::array<std::int16_t,dense1_width*transformer_width*2> weights1_{};
