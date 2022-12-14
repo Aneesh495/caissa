@@ -38,6 +38,7 @@ assert.deepEqual(stableInfo(plain), stableInfo(traced));
 assert.equal(plain.at(-1), traced.at(-1));
 const summaryLine = traced.find((line) => line.startsWith('info string stats ')); assert(summaryLine);
 const statistics = parseStatistics(summaryLine); assert.equal(statistics.visited_nodes, 10000);
+for (const key of ['accumulator_pushes', 'accumulator_materializations', 'accumulator_copies', 'accumulator_refreshes', 'accumulator_delta_squares']) assert.equal(statistics[key], 0);
 const stableCounters = (value) => Object.fromEntries(Object.entries(value).filter(([key]) => !['elapsed_ms', 'eval_ns'].includes(key)));
 assert.deepEqual(stableCounters(parseStatistics(plain.find((line) => line.startsWith('info string stats ')))), stableCounters(statistics));
 const traceLines = traced.filter((line) => line.startsWith('info string trace ')); assert.equal(traceLines.length, 8);

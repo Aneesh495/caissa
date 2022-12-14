@@ -90,6 +90,9 @@ const statisticLabels: Record<keyof SearchStatistics, string> = {
   researches: 'Full-depth re-searches', ordering_hints: 'Ordering hints', eval_calls: 'Evaluator calls', eval_ns: 'Evaluator time, summed over workers',
   evaluation_cache_hits: 'Static evaluation cache hits', evaluation_cache_bytes: 'Static cache memory',
   neural_evaluations: 'Neural evaluations', neural_bound_cutoffs: 'Neural bound cutoffs',
+  accumulator_pushes: 'Neural state pushes', accumulator_materializations: 'Computed neural states',
+  accumulator_copies: 'Neural perspective copies', accumulator_refreshes: 'Neural perspective rebuilds',
+  accumulator_delta_squares: 'Neural changed-square updates',
 };
 function resetInspection(message = 'Start an analysis to collect a search summary.'): void {
   inspectionPending = false; inspectionComplete = false;
