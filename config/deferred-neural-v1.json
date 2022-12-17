@@ -1,0 +1,111 @@
+{
+  "schema": "caissa-deferred-neural-profile-v1",
+  "purpose": "Measure one original sparse-state deferral implementation with the fixed validation-selected network. Correctness and runtime diagnostic only. No games, training, model selection, release or Elo endpoint.",
+  "development_base_commit": "5c636eb8dd6fc38f467c4d7ea5ae2a797a10c237",
+  "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "classical_contract": 1,
+  "selected_seed": 73,
+  "selected_step": 2750,
+  "deployed_neural_weight": 10,
+  "references": {
+    "Linux": {
+      "path": "results/precision-v4-2026-10-25/linux/caissa",
+      "sha256": "624b9c394141b7b6d34a5351f1697d2c2f37d26031826c9efa8b1c7f32ad275d"
+    },
+    "Darwin": {
+      "path": "results/precision-v4-2026-10-25/macos/caissa",
+      "sha256": "3486153f001414aef60688a73e434800f681401b891869dde8f4fb82d7695eee"
+    }
+  },
+  "correctness": {
+    "modes": [
+      "release",
+      "address-undefined",
+      "thread"
+    ],
+    "native_cases": 19,
+    "transitions_per_mode": 1000000,
+    "seed": 67867967,
+    "fixed_node_search_pairs_per_mode": 144,
+    "parallel_workers": [
+      2,
+      4,
+      8
+    ]
+  },
+  "measurement": {
+    "nodes": 20000,
+    "threads": 1,
+    "hash_mib": 16,
+    "repeats": 5,
+    "weights": [
+      0,
+      10,
+      100
+    ],
+    "evaluation_cache": [
+      false,
+      true
+    ],
+    "tactical_generation": true,
+    "neural_bounds": false,
+    "warmup_nodes": 1,
+    "order_seed": 104395301,
+    "arms": [
+      "archived-eager",
+      "stack-eager",
+      "stack-lazy"
+    ],
+    "maximum_seconds": 600,
+    "positions": [
+      {
+        "id": "start",
+        "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+      },
+      {
+        "id": "kiwipete",
+        "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
+      },
+      {
+        "id": "rook-ending",
+        "fen": "8/2p5/3p4/KP5r/1R3p1k/8/4P1P1/8 w - - 0 1"
+      },
+      {
+        "id": "queen-ending",
+        "fen": "7k/8/5KQ1/8/8/8/8/8 w - - 0 1"
+      },
+      {
+        "id": "opposition",
+        "fen": "8/8/8/4k3/8/4K3/4P3/8 w - - 0 1"
+      },
+      {
+        "id": "castling",
+        "fen": "r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1"
+      },
+      {
+        "id": "promotion",
+        "fen": "1r2k3/P7/8/8/8/8/8/4K3 w - - 0 1"
+      },
+      {
+        "id": "ep",
+        "fen": "4k3/8/8/5pP1/8/8/8/4K3 w - f6 0 1"
+      }
+    ]
+  },
+  "resources": {
+    "hosted_platforms": [
+      "ubuntu-24.04",
+      "macos-15"
+    ],
+    "maximum_jobs_per_platform": 3,
+    "maximum_job_seconds": 1800,
+    "maximum_cumulative_job_seconds_per_platform": 5400,
+    "origin_unix": 1792919134,
+    "deadline_unix": 1792929934,
+    "maximum_build_seconds": 180,
+    "maximum_correctness_seconds_per_mode": 600,
+    "maximum_artifact_bytes_per_host": 268435456
+  },
+  "failure_policy": "Preserve every raw failure and negative runtime outcome. At most three meaningful hosted executions per platform, no GitHub job reruns or new output to reset ceilings. Ordinary CI is diagnostic, not a substitute for these one-million-transition checks. Frozen original data, training, numerical, full-neural and external scopes remain unchanged. Lazy Neural stays off unless later reviewed evidence supports enabling it."
+}

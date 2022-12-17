@@ -1,0 +1,62 @@
+name: deferred neural state
+on:
+  push:
+    paths:
+      - '.github/workflows/deferred-neural.yml'
+      - 'config/deferred-neural-v1.json'
+      - 'tools/deferred_neural.py'
+      - 'src/accumulator_stack.cpp'
+      - 'include/caissa/accumulator_stack.hpp'
+      - 'tests/accumulator_stack_test.cpp'
+permissions:
+  contents: read
+concurrency:
+  group: deferred-neural-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  exact-state:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Original deadline and execution ceilings
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, time
+          path = 'config/deferred-neural-v1.json'
+          assert hashlib.sha256(open(path, 'rb').read()).hexdigest() == '91add4ccf9a33f46358ca5381f2dbf1679eae02697a0c891b452e8749ad4821a'
+          rule = json.load(open(path))['resources']
+          assert 1 <= int(os.environ['GITHUB_RUN_NUMBER']) <= rule['maximum_jobs_per_platform']
+          assert int(os.environ['GITHUB_RUN_ATTEMPT']) == 1
+          assert time.time() < rule['deadline_unix']
+          assert rule['maximum_jobs_per_platform'] * rule['maximum_job_seconds'] <= rule['maximum_cumulative_job_seconds_per_platform']
+          PY
+      - name: Pinned legal replay dependencies
+        run: python -m pip install numpy==2.2.6 chess==1.11.2
+      - name: Three native modes and randomized runtime diagnostic
+        env:
+          UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+          TSAN_OPTIONS: halt_on_error=1
+        run: python -m tools.deferred_neural --expected-commit "$GITHUB_SHA" --output runs/deferred-neural-${{ github.run_id }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: deferred-neural-${{ matrix.os }}-${{ github.run_id }}
+          path: |
+            runs/deferred-neural-*/*.json
+            runs/deferred-neural-*/*.jsonl
+            runs/deferred-neural-*/*.log
+            runs/deferred-neural-*/archived-caissa
+            runs/deferred-neural-*/runtime/
+            runs/deferred-neural-*/build-*/caissa
+            runs/deferred-neural-*/build-*/accumulator_stack_test
+            runs/deferred-neural-*/build-*/Testing/Temporary/LastTest.log
+            config/deferred-neural-v1.json
+          retention-days: 14
