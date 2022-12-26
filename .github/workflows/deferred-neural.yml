@@ -1,13 +1,7 @@
 name: deferred neural state
 on:
-  push:
-    paths:
-      - '.github/workflows/deferred-neural.yml'
-      - 'config/deferred-neural-v1.json'
-      - 'tools/deferred_neural.py'
-      - 'src/accumulator_stack.cpp'
-      - 'include/caissa/accumulator_stack.hpp'
-      - 'tests/accumulator_stack_test.cpp'
+  # Completed original scope. Ordinary pushes cannot restart it.
+  workflow_dispatch:
 permissions:
   contents: read
 concurrency:
@@ -30,6 +24,8 @@ jobs:
         run: |
           python - <<'PY'
           import hashlib, json, os, time
+          from pathlib import Path
+          assert not Path('results/deferred-neural-2026-10-25/CLOSED.json').exists(), 'Original deferred-state scope is closed'
           path = 'config/deferred-neural-v1.json'
           assert hashlib.sha256(open(path, 'rb').read()).hexdigest() == '91add4ccf9a33f46358ca5381f2dbf1679eae02697a0c891b452e8749ad4821a'
           rule = json.load(open(path))['resources']

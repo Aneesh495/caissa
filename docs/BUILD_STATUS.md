@@ -14,6 +14,8 @@ The later [full independent reconstruction](../results/full-data-2026-10-25/READ
 
 The subsequent [PVS-off LMR recovery repair](notes/lmr-window-recovery.md) passed all seventeen Release and seventeen ASan/UBSan cases and 48 default-PVS old/new parity pairs. The original failed regression, first parity-driver failure and three remaining selective-oracle discrepancies are retained. This development binary is distinct from the immutable full-model campaign binary.
 
+[Deferred neural state](../results/deferred-neural-2026-10-25/README.md) now skips unused sparse-transformer work. Nineteen cases in Release/ASan/UBSan/TSan, one million tree operations and 144 exact search pairs per mode passed on Linux/macOS. Independent raw reconstruction confirmed all 1440 runtime queries and eight semantic rejection controls. At the selected mixture with caching, median wall time fell 8.93% on Linux and 7.03% on macOS against the archived executable. Other groups include neutral/slower outcomes. The new option stays experimental/off, no new strength result follows, and the original full neural failure remains failed.
+
 | Gate | Current evidence | Remaining work |
 |---|---|---|
 | G01 Rules | 20 exact perft fixtures; development 100000-position comparisons; independent frozen-walk/perft replay adapter implemented | Execute and bind the full final-source replay; diagnostic prefixes cannot pass |
@@ -29,7 +31,7 @@ The subsequent [PVS-off LMR recovery repair](notes/lmr-window-recovery.md) passe
 | G11 Recovery | SIGKILL training/corpus/arena recovery tests executed | Source-bound replay of recovery records |
 | G12 Browser | Fresh-origin import, native analysis/cancel, keyboard variation, 390px viewport, service restart/export and malformed FEN exercised | Repeat against final release source |
 | G13 Performance | Auditable 640-search four-evaluator 1/2/4/8 pilot; 5097 RSS and 2000 latency samples independently reconstructed; 16 native scalar probes and 13 rehashed controls | Final selected model under controlled host load |
-| G14 Semantic verifier | Rehashed domain controls; committed Git-blob/product source binding and full input-lineage admission implemented | Complete all full-domain semantic adapters and campaign coordinator; admission cannot certify full acceptance |
+| G14 Semantic verifier | Rehashed domain controls; committed product/lineage admission, independent G01 rules and G04 protocol adapters | Complete remaining full-domain adapters and coordinator; final full samples still required |
 | G15 Reproduction | Clean source diagnostic passed; Linux/macOS CI passes | Full saved-model/game/report reproduction |
 | G16 Release | Blocked by incomplete and failed full gates | All required gates and final identity audit |
 

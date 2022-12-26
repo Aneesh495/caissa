@@ -1,0 +1,45 @@
+{
+  "source_commit": "113c5dbee14fd0b4262ed30e7b256c8e36afee9b",
+  "workflow_run": 40179372115,
+  "platforms": {
+    "linux": {
+      "artifact_sha256": "17956f797c4b4f503bde5e31340507e08e2d480141339b4905c4dd4c1153833f",
+      "engine_sha256": "88a9ca56fe74e8e3050600a3b01d2c99c54ac8aab60d7686e6a82796eba9d543",
+      "reference_sha256": "624b9c394141b7b6d34a5351f1697d2c2f37d26031826c9efa8b1c7f32ad275d",
+      "seconds_this_campaign": 554.433279134
+    },
+    "macos": {
+      "artifact_sha256": "0d1d7076233a6175ec8b2bcbb726602ae0733bc427d5af95ecc5c668af0fc0c3",
+      "engine_sha256": "6e726cb7301dbbd07ef867f140550033b0e7f634beff8f38adf25337315ec433",
+      "reference_sha256": "3486153f001414aef60688a73e434800f681401b891869dde8f4fb82d7695eee",
+      "seconds_this_campaign": 447.882321833
+    }
+  },
+  "files": {
+    "CLOSED.json": "21e1ba4a8857ce725ee328110e8d2a97bd25975931a41a06ac49a8f3d47d46af",
+    "CONTROLS.json": "ce0b15c73234d9df353aea20576afa8f1a6b7f0dd166d346dd194f2e9583b61d",
+    "README.md": "997315bf4065df06078fe15d29fae231f495b010de89ed17ecccb68c5920b28e",
+    "control-exits/counter-duplicate.json": "e3950e1d3b0c9173a4585e81d8e91216b82b494080b29ba44f72f5a63f8d7305",
+    "control-exits/illegal-pv.json": "51aef92631397603984b6f71dbe83e298d729b2494a808ce7068b47859f08a1d",
+    "control-exits/linux-positive.json": "d52a497ef14514d7d930181b048abe7af74925d2fa4bf939b8f01358dbbd261f",
+    "control-exits/macos-positive.json": "e8cf23bdc9ed5be98a2f89d8997bc90625a385886ff0bca07c9b752bb5817a73",
+    "control-exits/mixture.json": "14501caaf4416478ea76dab1f7bd36cc3f00df23be47a0ea35dda38a507a9a47",
+    "control-exits/model.json": "d05edfbe346f7bca316b491813d07894c457d33e45bce814eed3ecb64b644d33",
+    "control-exits/order.json": "ec637fce0df88cc47ea22275690b4a9e0e4fb4a38418e0321b5e7257cc9080b1",
+    "control-exits/partial.json": "410498bf033f8965fde2d937e829e4dac65e5556204bea46ef2a15740e193956",
+    "control-exits/ratio.json": "3daf7e8407346bbe9ea751a9cd251f0c26b8ee6834fdc08692c627ac7eb3b9f1",
+    "control-exits/timestamp.json": "6511f6ada3f40c41e606037b94a048773b4a59fd92ad6369e523003af1b0dcce",
+    "initial-integration-failure/linux.log": "18c9be72e9fb80abd443798bb035ff5acb70444baf98dd4066f32c9a88e78704",
+    "initial-integration-failure/macos.log": "d2466f532900df3af549f5e569135b84df84ad27f86120466c30b07ea6358c4d",
+    "linux/CAMPAIGN.json": "500978e76dee14de8b8b002e8cc92ae05daa5cb637185928ed882556f073747b",
+    "linux/INDEPENDENT.json": "4f3959c8007da18b3dc822832dedd59791db741f0205e74da908092a30ce26b7",
+    "linux/PROGRAMS.json": "39cfdbb2477c4706f7547bc24432a1f0e953996d64467bab2f995f56135342f0",
+    "linux/RAW.zip": "17956f797c4b4f503bde5e31340507e08e2d480141339b4905c4dd4c1153833f",
+    "linux/RUNTIME.json": "7a8501e7da286fb4fc8e3f98fc6017bec84df859bc17b49db294b7d6516ba045",
+    "macos/CAMPAIGN.json": "0f849fd5a9e68a4267acf06de4558a0e3c97ba63b66728c45434dad6c02872b0",
+    "macos/INDEPENDENT.json": "5c76ba04070149049a888c8612cd3559af4a696e2ba3300fb149e9b34be54ef9",
+    "macos/PROGRAMS.json": "207beb43f589f2858ef8e933411e44b2970b06806c2adf6bc4e9ea3fcbb70eed",
+    "macos/RAW.zip": "0d1d7076233a6175ec8b2bcbb726602ae0733bc427d5af95ecc5c668af0fc0c3",
+    "macos/RUNTIME.json": "5a46bb24851923dd1c9729ed0fca7af57fd758d37c17641dfe71896392400df5"
+  }
+}

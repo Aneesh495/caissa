@@ -1,0 +1,17 @@
+{
+  "source_commit": "113c5dbee14fd0b4262ed30e7b256c8e36afee9b",
+  "programs": {
+    "release": {
+      "caissa": "6e726cb7301dbbd07ef867f140550033b0e7f634beff8f38adf25337315ec433",
+      "accumulator_stack_test": "c2d5623d94997b63e41c9f24f2dbe10ec0d3d4c7d7c1e41aec08cd88172a9748"
+    },
+    "address-undefined": {
+      "caissa": "febc22104095e9749265f069cd3067754c62d38c0b47da93b89178b324fb1975",
+      "accumulator_stack_test": "4314fb1fcab7c87cb18012d0c343be7778136f545305e0193a0f90cad42d2334"
+    },
+    "thread": {
+      "caissa": "7210a927fe83d9a5ec963a24b98f13a7943016bccc76fe17151ba119fc3b303d",
+      "accumulator_stack_test": "5fbb087e198ecaa513346a4ec73b7aa409677bc8bf2ad7745cf2c058902e1c05"
+    }
+  }
+}
