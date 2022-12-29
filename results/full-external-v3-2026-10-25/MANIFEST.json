@@ -1,0 +1,22 @@
+{
+  "files": {
+    "INDEPENDENT.json": "0a1af28246f56c19af7c0c362b88ab6d9815d6bd99d7ef510dcc75cba7801558",
+    "INDEPENDENT_STAGE.json": "d14fcad9b8eaab1c93ffdaf20364d9a2a7496650e262e58cd930bddba47d4a22",
+    "MODEL_CAMPAIGN.json": "92d62149d3a4de184ad93b9f5f04f77e38386992d04d02bd824b33cf3e5241bd",
+    "OPENINGS.json": "61b8c8812a107e0ea0b6e8a763a0d52d088b6b8480a0879a4952c4689bae71a8",
+    "PROTOCOL.json": "4cf0545699ab141dafe4e3f67fcbdb7b996cbec2b8e0b246fc2137a5dc963f62",
+    "README.md": "aeaeab7d84f7ad11262a9997e217fb57d79e5ef4fa2521e6c78103a5f59a1ef2",
+    "SCOPE.json": "f9ed3d7b379e47a4d66ff21c4c3ff6904ee2cb288b641a317c7c3846f60fcd7d",
+    "SOURCE_INPUTS.json": "58488a0318e4c48ea72797224d35ee1f1151954d2d4826b59233b940645fb026",
+    "STRENGTH_CAMPAIGN.json": "a19f8c0789fea685dc474ae4a1b8b01ed7c28c4c6a3105bc7fadff63ddbc6e88",
+    "caissa": "49057cfe1b03077c49085225cfb5e9dde7cead86c9dda92b6d6c3f9a60505da2",
+    "external-0/CONFIG.json": "a66b61948212c81b2a5a48e4862229110190fc553d2aa0093c347581e10d96a6",
+    "external-0/SUMMARY.json": "57479ff77eac789afffb3c7a286c20f2907290587b26b45dbce34c5ba0931a5f",
+    "external-1/CONFIG.json": "0d790614412cf02fec39da9943f67019fd61d7d16a86b2402e13acdb3348a5cf",
+    "external-1/SUMMARY.json": "e93dca908db3d10b8feb5c82282f8848e7d025be88727772f47b646809b25391",
+    "external-2/CONFIG.json": "c0c78be5129f0985b5ffa491bd6ac894fa540b0eed10a55ee5f8314ceb7221c6",
+    "external-2/SUMMARY.json": "549d55d8d741d78881680ef954dca6b5c12f415ee74e09a50526b00a57def1ae",
+    "selected.cai": "c251670ec53ba38a680c16cc6199be48f89cc829dd5483197e6d4b39ac6debf6"
+  },
+  "full_acceptance": false
+}

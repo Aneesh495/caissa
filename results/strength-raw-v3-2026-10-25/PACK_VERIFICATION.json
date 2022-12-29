@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "files": 15008,
+  "raw_bytes": 2668894520,
+  "compressed_archive_sha256": "158dfc20d14ceede3551387f91c7d06199771693360a275f0d387aeea3b991d8",
+  "scope": "Every packed raw file independently decoded and hashed against original source-byte index; no engine or model execution",
+  "full_acceptance": false
+}
