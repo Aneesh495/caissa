@@ -3,6 +3,7 @@
 #include "caissa/selfplay.hpp"
 #include "caissa/network.hpp"
 #include "caissa/serialization.hpp"
+#include "caissa/state_probe.hpp"
 #include "caissa/position.hpp"
 #include "caissa/reference.hpp"
 #include "caissa/search.hpp"
@@ -43,6 +44,9 @@ void inspect(std::string_view text,bool tactical=false) {
 int main(int argc,char** argv) {
     try {
         if(argc==1)return uci_loop(std::cin,std::cout);
+        if(argc==3&&std::string_view(argv[1])=="--state-probe") {
+            auto network=Network::load(argv[2]);return state_probe(std::cin,std::cout,*network);
+        }
         if((argc==4||argc==5)&&std::string_view(argv[1])=="--eval-bench") {
             auto net=Network::load(argv[2]);auto calls=parse_u64(argv[3]);if(calls<100||calls>10000000)throw InputError("evaluation calls outside bounds");
             auto requested_weight=argc==5?parse_u64(argv[4]):100;if(requested_weight>100)throw InputError("neural weight outside percentage bounds");int weight=static_cast<int>(requested_weight);

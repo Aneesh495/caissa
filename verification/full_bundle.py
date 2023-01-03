@@ -427,6 +427,60 @@ def verify(
                 )
                 review["verified_semantic_gates"] = {"G01": result}
                 del review["pending_semantic_gates"]["G01"]
+        domain = inputs["domains"]["G02"]
+        if domain.get("driver") == "restoration-v1":
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G02"
+                ] = "restoration replay requires an external --replay-output directory"
+            else:
+                from verification.restoration import verify as verify_restoration
+
+                output = Path(replay_output).resolve()
+                require(
+                    not output.is_relative_to(bundle.root),
+                    "full replay must preserve the original evidence",
+                )
+                arguments = domain["restoration"]
+                paths = {
+                    key: bundle.reference(arguments[key])
+                    for key in ["profile", "config", "summary", "observations"]
+                }
+                declared = {bundle.reference(ref) for ref in domain["artifacts"]}
+                require(
+                    len(set(paths.values())) == 4 and set(paths.values()) <= declared,
+                    "G02 replay requires distinct declared raw artifacts",
+                )
+                config = bundle.json(paths["config"])
+                require(
+                    config.get("source_commit") == expected_commit,
+                    "G02 producer source differs from full deployment",
+                )
+                remaining = min(
+                    bundle.monotonic_deadline - time.monotonic(),
+                    bundle.wall_deadline - time.time(),
+                )
+                result = verify_restoration(
+                    bundle.root / paths["observations"],
+                    bundle.root / paths["summary"],
+                    bundle.root / paths["config"],
+                    bundle.root / inputs["engine"]["path"],
+                    inputs["engine"]["sha256"],
+                    bundle.root / inputs["network"]["artifact"]["path"],
+                    inputs["network"]["artifact"]["sha256"],
+                    bundle.root / paths["profile"],
+                    arguments["profile"]["sha256"],
+                    arguments["observations"]["sha256"],
+                    output / "G02",
+                    maximum_seconds=min(3600, remaining),
+                )
+                require(
+                    result["full_gate"] is True,
+                    "G02 replay did not complete its full required sample",
+                )
+                bundle.tick()
+                review.setdefault("verified_semantic_gates", {})["G02"] = result
+                del review["pending_semantic_gates"]["G02"]
         domain = inputs["domains"]["G04"]
         if domain.get("driver") == "protocol-v2":
             if replay_output is None:

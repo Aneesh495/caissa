@@ -31,7 +31,10 @@ class Probe:
     def __init__(self, executable, option, deadline):
         self.deadline = deadline
         self.process = subprocess.Popen(
-            [str(executable.resolve()), option],
+            [
+                str(executable.resolve()),
+                *(option if isinstance(option, (list, tuple)) else [option]),
+            ],
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -86,6 +89,7 @@ class Probe:
         line, self.buffer = self.buffer.split(b"\n", 1)
         if len(line) > 16384:
             raise ValueError("native FEN response line ceiling")
+        self.last_response = line
         return json.loads(line)
 
     def close(self):
