@@ -12,7 +12,7 @@ from pathlib import Path
 from tools.campaign_process import atomic
 from verification.bundle import strict_json
 from verification.network_bytes import QuantizedNetwork
-from verification.restoration_state import Shadow, require, state_commands
+from verification.restoration_state import Shadow, require, same_type, state_commands
 from verification.tactical_generation import Probe
 
 PROFILE_SHA256 = "6cde330d87e49084135760cb737f3c2756a594a69b4ed709e21b98df5f9e584c"
@@ -189,6 +189,11 @@ def verify(
                     actual == recorded and reply == expected_reply,
                     "fresh native restoration response differs from saved raw state",
                 )
+                for field, value in actual.items():
+                    require(
+                        same_type(recorded[field], value),
+                        "restoration state wire type differs: " + field,
+                    )
                 entry = (
                     json.dumps(
                         {
