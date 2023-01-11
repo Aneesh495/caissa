@@ -54,6 +54,7 @@ FORBIDDEN_MODULES = {
     "tools.differential",
     "tests.rules_replay",
     "tools.restoration",
+    "tools.restoration_campaign",
     "verification.restoration",
     "tests.restoration_replay",
 }
