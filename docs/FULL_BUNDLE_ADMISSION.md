@@ -1,5 +1,13 @@
 # Full evidence admission and remaining semantic replay
 
+G03 now accepts `driver: draw-history-v1` with distinct declared `draw_history`
+references named `profile`, `config`, `summary` and `observations`.
+[The draw-history adapter](DRAW_HISTORY_REPLAY.md) independently reconstructs
+every fixed and seeded history, intended/current claims, automatic outcomes,
+null suppression, conservative dead material and hash context, then reexecutes
+the pinned saved program. It requires equal-FEN history witnesses and all six
+terminal outcomes. Other semantic domains remain independently required.
+
 The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before domain replay. A G01 rules adapter is implemented; the remaining full-domain adapters and complete campaign coordinator remain unfinished. Full verification still returns nonzero with `full_acceptance: false`. Passing metadata, existing receipts or admission controls cannot certify a release.
 
 ## Source identity

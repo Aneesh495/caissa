@@ -55,6 +55,9 @@ FORBIDDEN_MODULES = {
     "tests.rules_replay",
     "tools.restoration",
     "tools.restoration_campaign",
+    "tools.draw_history",
+    "verification.draw_history",
+    "tests.draw_history",
     "verification.restoration",
     "tests.restoration_replay",
 }

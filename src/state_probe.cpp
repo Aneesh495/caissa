@@ -2,7 +2,9 @@
 #include "caissa/accumulator_stack.hpp"
 #include "caissa/evaluation.hpp"
 #include "caissa/protocol_io.hpp"
+#include "caissa/rules.hpp"
 #include "caissa/serialization.hpp"
+#include <algorithm>
 #include <iomanip>
 #include <sstream>
 namespace caissa {
@@ -16,6 +18,7 @@ public:
         undos_.reserve(max_ply);accumulator_.reset(position_);
     }
     std::string command(std::string_view line) {
+        if(line=="rules")return rule_state();
         if(line.starts_with("reset ")) {
             auto fen=line.substr(6);bool c960=fen.starts_with("960|");if(c960)fen.remove_prefix(4);
             auto next=Position::from_fen(fen,c960);position_=std::move(next);
@@ -42,6 +45,31 @@ public:
 private:
     const Network& network_;Position position_=Position::start();
     AccumulatorStack accumulator_;std::vector<Undo> undos_;
+    std::string rule_state() {
+        const auto fen=position_.fen();const std::vector<Key> history(position_.history().begin(),position_.history().end());
+        const auto key=position_.key(),search=position_.search_key();
+        const auto legal=position_.legal();const auto availability=position_.availability();
+        const auto direct=rules(position_),listed=rules(position_,legal),available=rules(position_,availability);
+        auto equal=[](const RuleState& a,const RuleState& b){return a.terminal==b.terminal&&a.threefold_claim==b.threefold_claim&&a.fifty_move_claim==b.fifty_move_claim;};
+        std::vector<std::string> claims;
+        for(auto move:claim_by_move(position_))claims.push_back(position_.uci(move));
+        std::sort(claims.begin(),claims.end());
+        const bool restored=position_.fen()==fen&&std::equal(history.begin(),history.end(),position_.history().begin(),position_.history().end())&&position_.key()==key&&position_.search_key()==search&&position_.coherent();
+        std::ostringstream out;
+        out<<"{\"fen\":"<<json_quote(fen)<<",\"chess960\":"<<(position_.chess960()?"true":"false")
+           <<",\"terminal\":"<<json_quote(termination_name(direct.terminal))
+           <<",\"threefold_claim\":"<<(direct.threefold_claim?"true":"false")
+           <<",\"fifty_move_claim\":"<<(direct.fifty_move_claim?"true":"false")
+           <<",\"ended\":"<<(direct.ended()?"true":"false")<<",\"claimable\":"<<(direct.claimable()?"true":"false")
+           <<",\"proven_dead\":"<<(proven_dead(position_)?"true":"false")
+           <<",\"synthetic_depth\":"<<position_.synthetic_depth()<<",\"repetitions\":"<<position_.repetitions()
+           <<",\"key\":"<<json_quote(hex(key))<<",\"repetition_key\":"<<json_quote(hex(position_.repetition_key()))
+           <<",\"search_key\":"<<json_quote(hex(search))
+           <<",\"overloads_equal\":"<<(equal(direct,listed)&&equal(direct,available)?"true":"false")
+           <<",\"restored\":"<<(restored?"true":"false")<<",\"claim_moves\":[";
+        for(std::size_t i=0;i<claims.size();++i){if(i)out<<',';out<<json_quote(claims[i]);}
+        out<<"]}";return out.str();
+    }
     std::string state() {
         const auto& accumulator=accumulator_.get(position_);auto refreshed=network_.refresh(position_);
         std::ostringstream out;
