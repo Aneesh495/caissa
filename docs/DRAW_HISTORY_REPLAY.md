@@ -7,7 +7,7 @@ rule-overload results. It also verifies that intended-move inspection restores
 the complete board, history and search identity. The new command preserves
 the existing state response.
 
-[The frozen profile](../config/draw-history-v1.json) specifies28 fixed histories
+[The frozen profile](../config/draw-history-v2.json) specifies28 fixed histories
 and64 seeded reachable walks of at most32 plies. Fixed cases include identical
 FENs with different repetition histories, threefold versus fivefold, intended
 claims, reversible transpositions, synthetic null branches, clocks98/99/100
