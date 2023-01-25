@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tests/draw_history.py", line 275, in <module>
+    main()
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tests/draw_history.py", line 44, in main
+    owner.run(
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/campaign_process.py", line 341, in run
+    raise StageFailure(record)
+tools.campaign_process.StageFailure: stage observe failed: nonzero-exit (exit 1)

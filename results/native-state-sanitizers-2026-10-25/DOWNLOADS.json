@@ -1,0 +1,22 @@
+[
+  {
+    "name": "linux-tsan",
+    "sha256": "05b52a02c78c048b68a8276ab4d9bc36cd50f29b605b83e347a91f90bead1757",
+    "bytes": 23235530
+  },
+  {
+    "name": "mac-asan",
+    "sha256": "b17ff8e21124193ba62459c1a2fff4a778e7de2587d79a5ee653e091e691dd15",
+    "bytes": 6463923
+  },
+  {
+    "name": "mac-tsan",
+    "sha256": "112db0e57f2f155965e1811bde083c7401b5d561e4d75bf65d8800ed6c2bd654",
+    "bytes": 2471301
+  },
+  {
+    "name": "linux-asan",
+    "sha256": "3741119c751be4c44d54ac91094d6f92ea9a0861b101bbd4637b231eac21cab6",
+    "bytes": 45506933
+  }
+]

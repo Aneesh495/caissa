@@ -1,0 +1,69 @@
+[  1%] Building CXX object CMakeFiles/caissa_core.dir/src/state_probe.cpp.o
+[  3%] Linking CXX static library libcaissa_core.a
+[ 31%] Built target caissa_core
+[ 35%] Building CXX object CMakeFiles/position_test.dir/tests/position_test.cpp.o
+[ 35%] Building CXX object CMakeFiles/caissa.dir/apps/main.cpp.o
+[ 35%] Building CXX object CMakeFiles/rules_test.dir/tests/rules_test.cpp.o
+[ 37%] Building CXX object CMakeFiles/core_test.dir/tests/core_test.cpp.o
+[ 39%] Linking CXX executable core_test
+[ 40%] Linking CXX executable rules_test
+[ 40%] Built target core_test
+[ 42%] Building CXX object CMakeFiles/evaluation_test.dir/tests/evaluation_test.cpp.o
+[ 42%] Built target rules_test
+[ 43%] Building CXX object CMakeFiles/table_test.dir/tests/table_test.cpp.o
+[ 45%] Linking CXX executable position_test
+[ 45%] Built target position_test
+[ 46%] Building CXX object CMakeFiles/search_test.dir/tests/search_test.cpp.o
+[ 48%] Linking CXX executable caissa
+[ 50%] Linking CXX executable evaluation_test
+[ 50%] Built target evaluation_test
+[ 51%] Linking CXX executable table_test
+[ 53%] Building CXX object CMakeFiles/network_test.dir/tests/network_test.cpp.o
+[ 53%] Built target table_test
+[ 54%] Building CXX object CMakeFiles/notation_test.dir/tests/notation_test.cpp.o
+[ 54%] Built target caissa
+[ 56%] Building CXX object CMakeFiles/uci_test.dir/tests/uci_test.cpp.o
+[ 57%] Linking CXX executable network_test
+[ 59%] Linking CXX executable search_test
+[ 60%] Linking CXX executable notation_test
+[ 60%] Built target network_test
+[ 62%] Building CXX object CMakeFiles/position_line_test.dir/tests/position_line_test.cpp.o
+[ 64%] Linking CXX executable uci_test
+[ 64%] Built target search_test
+[ 64%] Built target notation_test
+[ 65%] Building CXX object CMakeFiles/kernel_test.dir/tests/kernel_test.cpp.o
+[ 67%] Building CXX object CMakeFiles/dense_kernel_test.dir/tests/dense_kernel_test.cpp.o
+[ 67%] Built target uci_test
+[ 68%] Building CXX object CMakeFiles/dense_kernel_bench.dir/tests/dense_kernel_bench.cpp.o
+[ 70%] Linking CXX executable position_line_test
+[ 70%] Built target position_line_test
+[ 71%] Building CXX object CMakeFiles/neural_bounds_test.dir/tests/neural_bounds_test.cpp.o
+[ 73%] Linking CXX executable kernel_test
+[ 75%] Linking CXX executable dense_kernel_test
+[ 75%] Built target dense_kernel_test
+[ 75%] Built target kernel_test
+[ 76%] Building CXX object CMakeFiles/evaluation_cache_test.dir/tests/evaluation_cache_test.cpp.o
+[ 78%] Building CXX object CMakeFiles/tactical_generation_test.dir/tests/tactical_generation_test.cpp.o
+[ 79%] Linking CXX executable dense_kernel_bench
+[ 79%] Built target dense_kernel_bench
+[ 81%] Building CXX object CMakeFiles/search_context_test.dir/tests/search_context_test.cpp.o
+[ 82%] Linking CXX executable neural_bounds_test
+[ 84%] Linking CXX executable evaluation_cache_test
+[ 85%] Linking CXX executable tactical_generation_test
+[ 85%] Built target neural_bounds_test
+[ 87%] Building CXX object CMakeFiles/lmr_window_test.dir/tests/lmr_window_test.cpp.o
+[ 89%] Linking CXX executable search_context_test
+[ 89%] Built target evaluation_cache_test
+[ 90%] Building CXX object CMakeFiles/network_precision_test.dir/tests/network_precision_test.cpp.o
+[ 90%] Built target tactical_generation_test
+[ 92%] Building CXX object CMakeFiles/accumulator_stack_test.dir/tests/accumulator_stack_test.cpp.o
+[ 93%] Linking CXX executable lmr_window_test
+[ 93%] Built target search_context_test
+[ 95%] Building CXX object CMakeFiles/state_probe_test.dir/tests/state_probe_test.cpp.o
+[ 96%] Linking CXX executable network_precision_test
+[ 96%] Built target lmr_window_test
+[ 96%] Built target network_precision_test
+[ 98%] Linking CXX executable accumulator_stack_test
+[100%] Linking CXX executable state_probe_test
+[100%] Built target state_probe_test
+[100%] Built target accumulator_stack_test

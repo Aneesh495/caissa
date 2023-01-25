@@ -1,0 +1,1 @@
+{"status":"failed","details":{"error":"StageFailure('stage observe failed: nonzero-exit (exit 1)')"},"seconds_this_campaign":0.1593360419938108,"stages_started":1,"utc_unix":1792935029.827224,"full_acceptance":false}

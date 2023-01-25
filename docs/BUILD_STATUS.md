@@ -18,10 +18,10 @@ The subsequent [PVS-off LMR recovery repair](notes/lmr-window-recovery.md) passe
 
 | Gate | Current evidence | Remaining work |
 |---|---|---|
-| G01 Rules | 20 exact perft fixtures; development 100000-position comparisons; independent frozen-walk/perft replay adapter implemented | Execute and bind the full final-source replay; diagnostic prefixes cannot pass |
-| G02 Restoration | Million-transition diagnostic passed; trained-network refresh checks passed | Final selected model/source campaign |
-| G03 Draw history | Native claim/automatic/mate/history tests and independent draw replay | Final bundle |
-| G04 Protocol | 10000 sequences independently replayed, stop p99 8.47 ms; six rehashed semantic controls rejected; unread-output bound test | Repeat and bind final executable |
+| G01 Rules | Full d2 development sample:100000 reachable comparisons,96589 unique positions and20 independently recomputed perft fixtures passed | Final deployment/bundle source binding |
+| G02 Restoration | Full abbe/636/q4096 sample:1000000 pairs,1040911 independent complete states,3040911 fresh native requests passed in961.17seconds | Full raw bulk distribution and final deployment binding; later rule transport is a separate image |
+| G03 Draw history | New actual native rule transport and full independent92-history/2195-observation replay passed;12 rehashed controls; real full entry certifies only G03 | Hosted new-source instrumentation and final bundle |
+| G04 Protocol | New d2/c82 sample:10000 ordinary+100ponder sequences independently replayed; stop p99 .174375ms; all thread modes and4304legal PVs | Final deployment/bundle source binding |
 | G05 Search | Independent tiny minimax, bounds and mate tests; exhaustive neural cutoff controls; 1056 heuristic queries and 528 fixed-node replays | Full heuristic strength ablations |
 | G06 Network | Original q1024 model failed at 57.06 cp. Same-checkpoint q4096 passed 100000 fresh probes on Linux/macOS, maximum 10.395 cp; deployed validation-loss improvement retained; Release/ASan/UBSan/TSan and independent saved-program replay passed | Bind the new encoding to final deployment/strength; old failure stays failed |
 | G07 Learning | Full data passed; all three 20000-update seeds complete; 240 checkpoints independently evaluated; validation-only seed 73 selected with improved loss | Bind full final evidence; portable corpus/checkpoint reproduction remains required |
@@ -31,7 +31,7 @@ The subsequent [PVS-off LMR recovery repair](notes/lmr-window-recovery.md) passe
 | G11 Recovery | SIGKILL training/corpus/arena recovery tests executed | Source-bound replay of recovery records |
 | G12 Browser | Fresh-origin import, native analysis/cancel, keyboard variation, 390px viewport, service restart/export and malformed FEN exercised | Repeat against final release source |
 | G13 Performance | Auditable 640-search four-evaluator 1/2/4/8 pilot; 5097 RSS and 2000 latency samples independently reconstructed; 16 native scalar probes and 13 rehashed controls | Final selected model under controlled host load |
-| G14 Semantic verifier | Rehashed domain controls; committed product/lineage admission, independent G01 rules and G04 protocol adapters | Complete remaining full-domain adapters and coordinator; final full samples still required |
+| G14 Semantic verifier | Rehashed domain controls; committed product/lineage admission, independent G01/G02/G03/G04 adapters | Complete remaining full-domain adapters and coordinator; final full samples still required |
 | G15 Reproduction | Clean source diagnostic passed; Linux/macOS CI passes | Full saved-model/game/report reproduction |
 | G16 Release | Blocked by incomplete and failed full gates | All required gates and final identity audit |
 
@@ -48,3 +48,5 @@ The legacy 500-node data generator was stopped after a quality audit found that 
 The saved `models/diagnostic-v2.cai` is original diagnostic data, not a release-strength model. No full pass, final Elo or Stockfish parity claim follows from the current measurements.
 
 [Durable full-data replay](DURABLE_DATA_REPLAY.md) preserves both failed budgets and the human-directed continuation. [Native race evidence](notes/tactical-races.md) distinguishes the completed 15-case producer from the interrupted 13-case independent replay.
+
+[Full restoration development proof](../results/restoration-full-2026-10-25/README.md) retains the exact observed program, model, source/scope and stage exits. Its5.349GB raw state journal remains local with an immutable hash; bulk portability is pending. [All four instrumented native archives](../results/native-state-sanitizers-2026-10-25/README.md) preserve the20-case transport checks before the later rules command. [The new draw-history sample](../results/draw-history-2026-10-25/README.md) includes its entire raw journal and original rejected fixtures. [The current rules/protocol samples](../results/native-checks-d2-2026-10-25/README.md) include all raw records and preserve the final controller bookkeeping failure after the four successful observation/replay stages. These identities do not automatically certify a later release.

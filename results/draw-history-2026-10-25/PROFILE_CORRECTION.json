@@ -1,0 +1,9 @@
+{
+  "failed_profile": "config/draw-history-v1.json",
+  "failed_sha256": "c560c4bd43995d69e2279784dff676b78ebcd37cd4864fda189bbf3bca956455",
+  "corrected_profile": "config/draw-history-v2.json",
+  "corrected_sha256": "4512410118ad92190c167232b2082308aa18c42e07b287fa7b281b8ecc90c583",
+  "original_scope": "SCOPE.json",
+  "reason": "native rejects EP with nonzero halfmove; actual rejection preserved insemantic-attempt-001",
+  "budget_reset": false
+}

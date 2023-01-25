@@ -1,0 +1,126 @@
+{
+  "schema": "caissa-restoration-v1",
+  "status": "frozen",
+  "transitions": 1000000,
+  "seed": 49979699,
+  "maximum_game_ply": 96,
+  "null_every": 127,
+  "fixtures": [
+    {
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "chess960": false,
+      "prefix": [
+        "g1f3",
+        "g8f6",
+        "f3g1",
+        "f6g8",
+        "g1f3",
+        "g8f6",
+        "f3g1",
+        "f6g8",
+        "g1f3",
+        "g8f6",
+        "f3g1",
+        "f6g8"
+      ]
+    },
+    {
+      "fen": "4k3/8/8/5pP1/8/8/8/4K3 w - f6 0 1",
+      "chess960": false,
+      "prefix": [
+        "g5f6"
+      ]
+    },
+    {
+      "fen": "1r2k3/P7/8/8/8/8/8/4K3 w - - 0 1",
+      "chess960": false,
+      "prefix": [
+        "a7b8n"
+      ]
+    },
+    {
+      "fen": "4k3/P7/8/8/8/8/8/4K3 w - - 0 1",
+      "chess960": false,
+      "prefix": [
+        "a7a8q"
+      ]
+    },
+    {
+      "fen": "4k3/8/8/8/8/8/8/5KR1 w G - 0 1",
+      "chess960": true,
+      "prefix": [
+        "f1g1"
+      ]
+    },
+    {
+      "fen": "4k3/8/8/8/8/8/8/6KR w H - 0 1",
+      "chess960": true,
+      "prefix": [
+        "g1h1"
+      ]
+    },
+    {
+      "fen": "4k3/8/8/8/8/8/8/1RK5 w B - 0 1",
+      "chess960": true,
+      "prefix": [
+        "c1b1"
+      ]
+    },
+    {
+      "fen": "r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 31 1",
+      "chess960": false,
+      "prefix": [
+        "e1g1"
+      ]
+    },
+    {
+      "fen": "4k3/8/8/8/8/8/8/4K3 w - - 0 1",
+      "chess960": false,
+      "prefix": [
+        "e1d1",
+        "e8d8",
+        "d1e1",
+        "d8e8"
+      ]
+    },
+    {
+      "fen": "7k/8/8/8/8/8/8/R3K3 w - - 99 1",
+      "chess960": false,
+      "prefix": [
+        "a1a2",
+        "h8h7",
+        "a2a1",
+        "h7h8"
+      ]
+    },
+    {
+      "fen": "7k/8/8/8/8/8/8/R3K3 w - - 149 1",
+      "chess960": false,
+      "prefix": [
+        "a1a2"
+      ]
+    },
+    {
+      "fen": "7k/8/8/8/8/8/8/R3K3 w - - 1000000 1",
+      "chess960": false,
+      "prefix": [
+        "a1a2",
+        "h8h7"
+      ]
+    }
+  ],
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+  "classical_contract": 1,
+  "neural_weight": 10,
+  "oracle": "chess1.11.2/numpy2.2.6",
+  "maximum_producer_seconds": 1800,
+  "maximum_independent_seconds": 3600,
+  "maximum_campaign_seconds": 7200,
+  "maximum_observation_bytes": 12884901888,
+  "maximum_replay_bytes": 1073741824,
+  "maximum_additional_disk_bytes": 17179869184,
+  "minimum_free_bytes": 10737418240,
+  "maximum_attempts": 3,
+  "scope": "FullG02one million actual make/unmake pairs. Independently evolve every board/history, reconstruct hashes and original integer features/evaluation, compare all returned bytes with a fresh execution of the pinned native program. Commit operations and null/corner observations are additional work. Diagnostic prefixes never pass fullG02. No data, training, numerical or strength budget is reopened."
+}

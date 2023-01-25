@@ -1,0 +1,229 @@
+{
+  "status": "passed domain observations; original owner summary failed",
+  "controller_failure": "Actual KeyError(sequences) after all4zeroexit stages. No native or oracle campaign rerun; original CAMPAIGN failed receipt preserved. Metadata-only bounded recovery checks actual completed key.",
+  "scope": {
+    "source_commit": "d2e2d9668351891afddccc5cdf8f86f8c549e41f",
+    "engine_sha256": "c82d1fa80ceaae20a96d3d188d09aa91079e2cde611b55b3a5ce4f3ccc42dbf4",
+    "engine_source_commit": "18ebff0f997fd71b6e0d9562c35d53de6a32fe04",
+    "native_git_blobs": {
+      "CMakeLists.txt": "210123000b31c51f8aad8c3562dd103128422f2e",
+      "apps/main.cpp": "9c06ef1bed5a47a8b1ec448bc697993f3957ed2e",
+      "include/caissa/accumulator_stack.hpp": "8c4563c53469229153ebd9f6834eac723c87df35",
+      "include/caissa/attacks.hpp": "f415ec44ac9a88186b0ba2c9d21bec43bf6ea82d",
+      "include/caissa/evaluation.hpp": "b4f9875eb6e3fefa87236f62ebc361006f3dc5af",
+      "include/caissa/evaluation_cache.hpp": "52ece92687ccb24ac5f1054e7fec6959bd8e102b",
+      "include/caissa/network.hpp": "a671e6996e815e9bff05ee4695b195b727806371",
+      "include/caissa/notation.hpp": "3ef1f5ca0b0bfff61a2c11e3ed3759a62c5f66dc",
+      "include/caissa/position.hpp": "97525670e9afe521b510eeda5a6f444bdf944f41",
+      "include/caissa/position_line.hpp": "450e35aa01d40a5b86b1d464da039cedb74aea1b",
+      "include/caissa/protocol_io.hpp": "3e8bd2cde979869ccfb67ee07c3ac435cadafb51",
+      "include/caissa/reference.hpp": "e5aa2413ed918f5217da6cb5524eb435a13064d6",
+      "include/caissa/rules.hpp": "f3be69843b2ae254d2a40ad50f325ef8b2a1ee06",
+      "include/caissa/search.hpp": "0835f56bc1255982f71748b9fa897afcb9ca1e2a",
+      "include/caissa/selfplay.hpp": "5720fd11b2f05eb1b899aa82c19db6a1c78933da",
+      "include/caissa/serialization.hpp": "3766a84b9e6ce0be2f1446791375791cfe6a7629",
+      "include/caissa/state_probe.hpp": "94200f085e9e45c2c67499e126db27d686966704",
+      "include/caissa/table.hpp": "f28fffa3813d6b4b02617b37f5cab6a73bb0547b",
+      "include/caissa/thread.hpp": "24c4c9472700bc9b693f8a0e85bf4f08cb929f25",
+      "include/caissa/types.hpp": "0c6905b0a05cb49c04db4d66ba7d15254cc9228e",
+      "include/caissa/uci.hpp": "c810591d5e77a87d02745f03aba381f6249469e1",
+      "include/caissa/version.hpp": "61ecaa95ba395086d7d649f28293e3346cf6c484",
+      "src/accumulator_stack.cpp": "947a0b96242d03a99f965cf07fa3a60036f17eae",
+      "src/attacks.cpp": "9f7c8eca3589967e6ea350071bcb805fa07e6819",
+      "src/evaluation.cpp": "4c23ab9120c000bb4a28fb4cff1c4cdf94bd1e80",
+      "src/movegen.cpp": "840a01769cc12e093a3abc7cba32cf1ab8adcf3f",
+      "src/network.cpp": "bd60b7d746236a058e8925dafd22b8f1818ab486",
+      "src/network_kernel.cpp": "2b4a535a36b693e7f4039da4d2125e9194324456",
+      "src/notation.cpp": "0b07b07697efd3c3ff30120966e14e678d0ed23c",
+      "src/position.cpp": "f358bca20eed15bb354f61d7585fb6a09f7c9920",
+      "src/position_line.cpp": "411a626d5436a86fddd8517e53d7bcc35634f3a2",
+      "src/protocol_io.cpp": "317878e6ccf04c69ca26a81dcc6dd97d2051144b",
+      "src/reference.cpp": "e78165f002c8445c49cee51423fa9510b04f94fd",
+      "src/rules.cpp": "3ade0e8b1af264fdd2f6347b540bd3bf3e2c24a4",
+      "src/search.cpp": "6bf4c1649403a31beb8d88bdf5d51d3b8393b575",
+      "src/selfplay.cpp": "8e8b253f5ef5952c45bb545a42f0f0184a680c07",
+      "src/serialization.cpp": "30bb4b2b40363318e7e3d339edcf474814a01fc1",
+      "src/state_probe.cpp": "b8667f948edc42e2c3447afb65787347db4f3635",
+      "src/table.cpp": "2989f1ffef992df4b175cf9789fe9431a0748186",
+      "src/uci.cpp": "1f05e6904880c950471687adbe335514023d8c75",
+      "src/version.cpp": "312e299bead415cb896cc1b0c1ed7b3dab7f2b6d"
+    },
+    "maximum_seconds": 1800,
+    "origin_unix": 1792935188.762217,
+    "deadline_unix": 1792936988.762217,
+    "parent_project_deadline_unix": 1793150297.974828,
+    "maximum_attempts": 3,
+    "no_closed_scopes_restarted": true,
+    "rules_positions": 100000,
+    "protocol_sequences": 10000,
+    "full_acceptance": false
+  },
+  "rules": {
+    "status": "passed",
+    "gate": "G01",
+    "profile": "full",
+    "full_gate": true,
+    "full_acceptance": false,
+    "positions": 100000,
+    "unique": 96589,
+    "perft": [
+      {
+        "id": "standard-0",
+        "depth": 4,
+        "native": 197281,
+        "oracle": 197281
+      },
+      {
+        "id": "standard-1",
+        "depth": 3,
+        "native": 97862,
+        "oracle": 97862
+      },
+      {
+        "id": "standard-2",
+        "depth": 3,
+        "native": 2812,
+        "oracle": 2812
+      },
+      {
+        "id": "standard-3",
+        "depth": 3,
+        "native": 9467,
+        "oracle": 9467
+      },
+      {
+        "id": "standard-4",
+        "depth": 3,
+        "native": 62379,
+        "oracle": 62379
+      },
+      {
+        "id": "standard-5",
+        "depth": 3,
+        "native": 89890,
+        "oracle": 89890
+      },
+      {
+        "id": "reachable-0",
+        "depth": 3,
+        "native": 16347,
+        "oracle": 16347
+      },
+      {
+        "id": "reachable-1",
+        "depth": 3,
+        "native": 10732,
+        "oracle": 10732
+      },
+      {
+        "id": "reachable-2",
+        "depth": 3,
+        "native": 46739,
+        "oracle": 46739
+      },
+      {
+        "id": "reachable-3",
+        "depth": 3,
+        "native": 21961,
+        "oracle": 21961
+      },
+      {
+        "id": "reachable-4",
+        "depth": 3,
+        "native": 45666,
+        "oracle": 45666
+      },
+      {
+        "id": "reachable-5",
+        "depth": 3,
+        "native": 31670,
+        "oracle": 31670
+      },
+      {
+        "id": "reachable-6",
+        "depth": 3,
+        "native": 49019,
+        "oracle": 49019
+      },
+      {
+        "id": "reachable-7",
+        "depth": 3,
+        "native": 23742,
+        "oracle": 23742
+      },
+      {
+        "id": "reachable-8",
+        "depth": 3,
+        "native": 20451,
+        "oracle": 20451
+      },
+      {
+        "id": "reachable-9",
+        "depth": 3,
+        "native": 47446,
+        "oracle": 47446
+      },
+      {
+        "id": "reachable-10",
+        "depth": 3,
+        "native": 24260,
+        "oracle": 24260
+      },
+      {
+        "id": "reachable-11",
+        "depth": 3,
+        "native": 22204,
+        "oracle": 22204
+      },
+      {
+        "id": "reachable-12",
+        "depth": 3,
+        "native": 13003,
+        "oracle": 13003
+      },
+      {
+        "id": "reachable-13",
+        "depth": 3,
+        "native": 19718,
+        "oracle": 19718
+      }
+    ],
+    "engine_sha256": "c82d1fa80ceaae20a96d3d188d09aa91079e2cde611b55b3a5ce4f3ccc42dbf4",
+    "profile_sha256": "a63e23962322b1c389426954ac21510618914e40451166de7bed50c69ce631b5",
+    "observations_sha256": "dee8ff343005530abbd35b2335083794d72faf2cf8db8d1e87bd5e797011fff7",
+    "scope": "Exact saved-core rules replay and independent reachable-walk/perft oracle; other full gates remain separate"
+  },
+  "protocol": {
+    "status": "passed",
+    "scope": "full G04 transcript sample",
+    "completed": 10000,
+    "ponder_completed": 100,
+    "legal_pvs": 4304,
+    "bestmoves": 10100,
+    "negative_control_errors": 2611,
+    "threads_observed": [
+      1,
+      2,
+      4,
+      8
+    ],
+    "stop_ms": {
+      "p50": 0.074084,
+      "p95": 0.143125,
+      "p99": 0.174375,
+      "max": 6.123083
+    },
+    "transcript_sha256": "d8b58c836d9fe5b376a39729438a6298296956b7de1b1a11589b6b88a004650f",
+    "engine_sha256": "c82d1fa80ceaae20a96d3d188d09aa91079e2cde611b55b3a5ce4f3ccc42dbf4",
+    "full_acceptance": false
+  },
+  "stage_exits": {
+    "observe-rules": 0,
+    "independent-rules": 0,
+    "observe-protocol": 0,
+    "independent-protocol": 0
+  },
+  "completed_unix": 1792935330.4223082,
+  "full_acceptance": false,
+  "closed": true
+}

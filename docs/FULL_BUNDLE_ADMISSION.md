@@ -8,7 +8,7 @@ null suppression, conservative dead material and hash context, then reexecutes
 the pinned saved program. It requires equal-FEN history witnesses and all six
 terminal outcomes. Other semantic domains remain independently required.
 
-The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before domain replay. A G01 rules adapter is implemented; the remaining full-domain adapters and complete campaign coordinator remain unfinished. Full verification still returns nonzero with `full_acceptance: false`. Passing metadata, existing receipts or admission controls cannot certify a release.
+The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before domain replay. G01 rules, G02 restoration, G03 draw-history and G04 protocol adapters are implemented; the remaining full-domain adapters and complete campaign coordinator remain unfinished. Full verification still returns nonzero with `full_acceptance: false`. Passing metadata, existing receipts or admission controls cannot certify a release.
 
 ## Source identity
 
