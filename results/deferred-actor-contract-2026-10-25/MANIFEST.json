@@ -1,0 +1,14 @@
+{
+  "files": {
+    "README.md": "33dc7de25e9e85eec19206bc4c4d882f93cb5e568cbe2ef221bd2c1febbb9922",
+    "deferred.json": "4127cc0067f21438e0efdfdd88961f5b069e73dd88bbbce05b6eb55d1f683967",
+    "deferred.log": "692e65631aaf50c5f4ade96e682cd920bde3d02ef5f8d72fae2a95ca0c84b073",
+    "host.json": "070454d811717f898e47fc08ef69fafea0097ca6dd4c86f3dd301314c837ab37",
+    "host.log": "14a84a20b606e5c8b7c4b5416c6165405799dc85d55f16fbc254f03565176d1b",
+    "legacy.json": "ed008555f9535c035d5bd7d5206fa9219425b08c2ee7acd93f6279047c4c8033",
+    "legacy.log": "80dca054f98ab55a7295de9eff2798634b4da0e7a2f77425f1cdff7b878ccc22",
+    "statistics.json": "8eee239b4612f5321592677952f14cad7fe7c9da0b8773a7cb4fa488d029c845",
+    "statistics.log": "ccf683cf646752cbb155072afca7972509132dfc8f1f77c3ffbb5b76d000862b"
+  },
+  "full_acceptance": false
+}

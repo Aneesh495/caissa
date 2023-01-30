@@ -47,6 +47,7 @@ jobs:
           python -m tests.full_strength
           python -m tests.heuristic_study
           python -m tests.full_actor_contract
+          python -m tests.deferred_actor_contract
           python -m tests.full_model_protocol --output runs/ci-full-model-controls
           python -m tests.project_continuation
           python -m tests.source_binding --output runs/ci-source-binding

@@ -48,8 +48,24 @@ def principal_variations(board, lines):
 
 def full_actor_options(candidate, opponent, protocol, neural):
     """Interpret the full option inventory independently of the arena owner."""
-    if protocol.get("schema") != "caissa-experiment-protocol-v3":
+    schema = protocol.get("schema")
+    if schema == "caissa-experiment-protocol-v2":
         return
+    if schema not in {"caissa-experiment-protocol-v3", "caissa-experiment-protocol-v4"}:
+        raise Rejection("unsupported full strength protocol schema")
+    deferred = schema == "caissa-experiment-protocol-v4"
+    if deferred:
+        network = protocol["network"]
+        if any(
+            type(network.get(key)) is not int or network[key] != value
+            for key, value in {
+                "format": 4,
+                "scale": 4096,
+                "clip": 8188,
+                "neural_weight": 10,
+            }.items()
+        ):
+            raise Rejection("full deferred actor encoding or selected mixture differs")
     rules = protocol["matches"]
     common = {
         "Threads": rules["threads"],
@@ -59,21 +75,41 @@ def full_actor_options(candidate, opponent, protocol, neural):
         "Evaluation Cache": True,
         "Tactical Generation": True,
     }
+    if deferred:
+        common["Lazy Neural"] = True
+        if any(
+            type(rules.get(key)) is not int or rules[key] != value
+            for key, value in {"threads": 1, "hash_mib": 16}.items()
+        ):
+            raise Rejection("full deferred actor resource types or values differ")
     options = candidate["options"]
     expected = {
         **common,
         "Use Neural": True,
         "Neural Weight": protocol["network"]["neural_weight"],
     }
+    observed = {key: value for key, value in options.items() if key != "EvalFile"}
+
+    def exact(left, right):
+        return left.keys() == right.keys() and all(
+            type(left[key]) is type(value) and left[key] == value
+            for key, value in right.items()
+        )
+
     if (
-        {key: value for key, value in options.items() if key != "EvalFile"} != expected
+        not (exact(observed, expected) if deferred else observed == expected)
         or not isinstance(options.get("EvalFile"), str)
         or not 1 <= len(options["EvalFile"]) <= 4096
     ):
         raise Rejection(
             "full candidate option inventory differs from frozen original-engine contract"
         )
-    if neural and opponent["options"] != {**common, "Use Neural": False}:
+    classical = {**common, "Use Neural": False}
+    if neural and not (
+        exact(opponent["options"], classical)
+        if deferred
+        else opponent["options"] == classical
+    ):
         raise Rejection(
             "full classical control option inventory differs from frozen original-engine contract"
         )
@@ -234,7 +270,10 @@ def verify_campaign(
             raise Rejection("full strength verification requires the frozen protocol")
         rules = protocol["matches"]
         full_actor_options(candidate, opponent, protocol, neural)
-        if protocol.get("schema") == "caissa-experiment-protocol-v3":
+        if protocol.get("schema") in {
+            "caissa-experiment-protocol-v3",
+            "caissa-experiment-protocol-v4",
+        }:
             optimizations = protocol.get("search_optimizations")
             expected = {
                 "evaluation_cache": True,
@@ -242,7 +281,15 @@ def verify_campaign(
                 "neural_bounds": False,
                 "ordering_hints": False,
             }
-            if optimizations != expected:
+            if protocol["schema"] == "caissa-experiment-protocol-v4":
+                expected["deferred_neural_state"] = True
+            if optimizations != expected or (
+                protocol["schema"] == "caissa-experiment-protocol-v4"
+                and any(
+                    type(optimizations[key]) is not type(value)
+                    for key, value in expected.items()
+                )
+            ):
                 raise Rejection("full exact search optimization protocol differs")
             for actor in ([candidate, opponent] if neural else [candidate]):
                 if any(
@@ -253,6 +300,11 @@ def verify_campaign(
                         ("Neural Bounds", "neural_bounds"),
                         ("Ordering Hints", "ordering_hints"),
                     ]
+                    + (
+                        [("Lazy Neural", "deferred_neural_state")]
+                        if protocol["schema"] == "caissa-experiment-protocol-v4"
+                        else []
+                    )
                 ):
                     raise Rejection(
                         "full actual search optimizations differ from frozen protocol"
