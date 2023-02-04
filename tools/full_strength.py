@@ -58,6 +58,9 @@ FORBIDDEN_MODULES = {
     "tools.draw_history",
     "verification.draw_history",
     "tests.draw_history",
+    "tools.search_semantics",
+    "verification.search_semantics",
+    "tests.search_semantics",
     "verification.restoration",
     "tests.restoration_replay",
 }

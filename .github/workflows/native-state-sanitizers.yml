@@ -58,8 +58,8 @@ jobs:
           commands = json.loads(Path('build-state/compile_commands.json').read_text())
           assert commands and all(os.environ['SANITIZER_MARKER'] in row['command'] for row in commands)
           cases = json.loads(Path('runs/native-state-cases.json').read_text())['tests']
-          expected = {'version','core','position','rules','evaluation','table','search','notation','uci','position_line','kernels','dense_kernels','neural_bounds','evaluation_cache','tactical_generation','search_context','lmr_window','network_precision','accumulator_stack','state_probe'}
-          assert len(cases) == 20 and {case['name'] for case in cases} == expected
+          expected = {'version','core','position','rules','evaluation','table','search','notation','uci','position_line','kernels','dense_kernels','neural_bounds','evaluation_cache','tactical_generation','search_context','lmr_window','network_precision','accumulator_stack','state_probe','search_claim','search_probe'}
+          assert len(cases) == 22 and {case['name'] for case in cases} == expected
           files = sorted({case['command'][0] for case in cases})
           record = {'source_commit':os.environ['GITHUB_SHA'],'instrumentation':os.environ['SANITIZER_MARKER'],'programs':{name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in files},'full_acceptance':False}
           Path('runs/native-state-programs.json').write_text(json.dumps(record,indent=2)+'\n')

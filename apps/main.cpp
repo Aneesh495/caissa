@@ -7,6 +7,7 @@
 #include "caissa/position.hpp"
 #include "caissa/reference.hpp"
 #include "caissa/search.hpp"
+#include "caissa/search_probe.hpp"
 #include <algorithm>
 #include <charconv>
 #include <iostream>
@@ -44,6 +45,7 @@ void inspect(std::string_view text,bool tactical=false) {
 int main(int argc,char** argv) {
     try {
         if(argc==1)return uci_loop(std::cin,std::cout);
+        if(argc==2&&std::string_view(argv[1])=="--search-probe")return search_probe(std::cin,std::cout);
         if(argc==3&&std::string_view(argv[1])=="--state-probe") {
             auto network=Network::load(argv[2]);return state_probe(std::cin,std::cout,*network);
         }

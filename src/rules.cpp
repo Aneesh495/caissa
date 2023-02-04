@@ -42,6 +42,28 @@ Moves claim_by_move(Position& p) {
     }
     return result;
 }
+Move intended_claim_move(Position& p,const Moves& supplied) {
+    if(p.synthetic_search_path())return {};
+    bool possible=p.halfmove()==99;
+    auto history=p.history();auto count=std::min(history.size(),static_cast<std::size_t>(p.halfmove())+1);
+    // The next side to move must have occurred twice. Screen only that
+    // parity of the reversible window before inspecting legal continuations.
+    if(!possible&&count>=8) {
+        auto begin=history.size()-count;
+        for(std::size_t i=history.size()-2;i>=begin+2&&!possible;i-=2) {
+            for(std::size_t j=i-2;;j-=2){if(history[i]==history[j]){possible=true;break;}if(j<begin+2)break;}
+            if(i<begin+4)break;
+        }
+    }
+    if(!possible)return {};
+    auto generated=supplied.empty()?p.legal():Moves{};
+    const auto& moves=supplied.empty()?generated:supplied;
+    for(auto move:moves) {
+        auto undo=p.make(move);auto state=rules(p);p.unmake(undo);
+        if(state.claimable()&&!state.ended())return move;
+    }
+    return {};
+}
 std::string_view termination_name(Termination t) {
     switch(t) {
         case Termination::ongoing:return "ongoing";

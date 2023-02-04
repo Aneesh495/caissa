@@ -72,7 +72,13 @@ public:
         auto prepared=prepare_position(p,depth<=0);
         bool check=prepared.checked;auto moves=std::move(prepared.moves);auto state=prepared.state;
         if(state.ended()) return state.terminal==Termination::checkmate?-mate_score+ply:0;
-        bool claim=state.claimable();
+        // This node follows a real move, or a synthetic branch whose rules
+        // suppress claims. On a claimable real child the previous mover
+        // could claim by announcing that move and the current mover can
+        // claim now. Either side can force zero. Root claims stay optional
+        // in Search::run so a clock reset or immediate mate can still win.
+        if(state.claimable())return 0;
+        bool claim=intended_claim_move(p,moves).valid();
         if(claim) {if(beta<=0)return 0;alpha=std::max(alpha,0);}
         if(depth<=0) {
             if(!options_.quiescence) return std::max(claim?0:-infinity,evaluate(p));
@@ -229,7 +235,7 @@ private:
         // A certified evaluation lower bound is usable only as a stand-pat
         // cutoff outside check. Principal/full evaluations remain exact.
         if(!check) {best=std::max(best,evaluate(p,beta));if(best>=beta)return best;alpha=std::max(alpha,best);}
-        if(qply>=24||ply>=max_ply-2) return check?evaluate(p):best;
+        if(qply>=24||ply>=max_ply-2) return check?std::max(claim?0:-infinity,evaluate(p)):best;
         if(!check) {
             if(tactical_pending)moves=p.legal_tactical();
             else std::erase_if(moves,[&](Move m){return !is_capture(p,m)&&m.promotion==Kind::none;});
@@ -240,7 +246,8 @@ private:
             Moves child;int score;
             {Guard guard(p,m,accumulator_.get());touch(ply+1);auto prepared=prepare_position(p,true);auto state=prepared.state;
                 if(state.ended()) score=state.terminal==Termination::checkmate?mate_score-ply-1:0;
-                else score=-quiet(p,-beta,-alpha,ply+1,qply+1,state.claimable(),std::move(prepared.moves),child,prepared.checked,prepared.tactical_pending);
+                else if(state.claimable())score=0;
+                else {bool intended=intended_claim_move(p,prepared.moves).valid();score=-quiet(p,-beta,-alpha,ply+1,qply+1,intended,std::move(prepared.moves),child,prepared.checked,prepared.tactical_pending);}
             }
             if(score>best) {best=score;pv={m};pv.insert(pv.end(),child.begin(),child.end());}
             alpha=std::max(alpha,score);if(alpha>=beta)break;
