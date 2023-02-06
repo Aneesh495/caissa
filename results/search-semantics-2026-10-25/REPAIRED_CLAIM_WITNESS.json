@@ -1,0 +1,15 @@
+{
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+  "fen": "1r5k/8/8/8/8/8/8/K7 w - - 99 50",
+  "command": [
+    "build-search-semantics/caissa",
+    "--search",
+    "1",
+    "1r5k/8/8/8/8/8/8/K7 w - - 99 50"
+  ],
+  "exit": 0,
+  "stdout": "{\"bestmove\":\"a1a2\",\"score\":0,\"depth\":1,\"nodes\":1,\"milliseconds\":0,\"completed_depth_nodes\":1,\"evaluator_calls\":0,\"evaluator_ns\":0,\"table_hits\":0,\"qnodes\":0,\"pv\":[\"a1a2\"]}\n",
+  "stderr": "",
+  "full_acceptance": false
+}

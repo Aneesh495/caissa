@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "maximum_seconds": 180,
+  "seconds": 0.41226641600223957,
+  "raw_files": 211,
+  "raw_bytes": 22856784,
+  "archive_bytes": 5217989,
+  "archive_sha256": "acdd856134c657762ab5889dbde62f6497524e94b048ed99a61228dce11e2a82",
+  "every_member_decoded": true,
+  "full_acceptance": false
+}

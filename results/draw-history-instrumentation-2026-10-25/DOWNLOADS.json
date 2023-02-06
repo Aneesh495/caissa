@@ -1,0 +1,26 @@
+[
+  {
+    "name": "native-state-ubuntu-24.04-thread-40197994490",
+    "artifact_id": 12600831069,
+    "archive_sha256": "69752af283bdcc20b4f7ad1af8158e22ec9f2a10f3dff57b5d8dd1304a92bcce",
+    "bytes": 23803311
+  },
+  {
+    "name": "native-state-ubuntu-24.04-address-undefined-40197994490",
+    "artifact_id": 12600724291,
+    "archive_sha256": "fd4568bf2a393c68d60b53090075ca7e43fbfdd07392127809d5a2fe101b698c",
+    "bytes": 46275031
+  },
+  {
+    "name": "native-state-macos-15-address-undefined-40197994490",
+    "artifact_id": 12600484675,
+    "archive_sha256": "4e0fe939ce345333c48f73cbfd0a411451af88bedc54fcf3b1dacb4149fb935f",
+    "bytes": 6844071
+  },
+  {
+    "name": "native-state-macos-15-thread-40197994490",
+    "artifact_id": 12599884834,
+    "archive_sha256": "208aa9ae7c975bc4e71bc8f872fe2c33f836f6059df96295527b2ac89fd59346",
+    "bytes": 2826689
+  }
+]

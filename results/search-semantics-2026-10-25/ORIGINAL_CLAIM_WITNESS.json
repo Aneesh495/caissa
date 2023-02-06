@@ -1,0 +1,17 @@
+{
+  "engine_sha256": "c82d1fa80ceaae20a96d3d188d09aa91079e2cde611b55b3a5ce4f3ccc42dbf4",
+  "fen": "1r5k/8/8/8/8/8/8/K7 w - - 99 50",
+  "python_chess_can_claim_fifty": true,
+  "clock": 99,
+  "command": [
+    "build-draw-history/caissa",
+    "--search",
+    "1",
+    "1r5k/8/8/8/8/8/8/K7 w - - 99 50"
+  ],
+  "exit": 0,
+  "stdout": "{\"bestmove\":\"a1a2\",\"score\":-552,\"depth\":1,\"nodes\":1,\"milliseconds\":0,\"completed_depth_nodes\":1,\"evaluator_calls\":1,\"evaluator_ns\":208,\"table_hits\":0,\"qnodes\":1,\"pv\":[\"a1a2\"]}\n",
+  "stderr": "",
+  "scope": "Original actor observed before G05 changes; intended draw option should prevent a negative minimax value",
+  "full_acceptance": false
+}

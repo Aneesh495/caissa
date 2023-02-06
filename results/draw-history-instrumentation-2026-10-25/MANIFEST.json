@@ -1,0 +1,13 @@
+{
+  "files": {
+    "ARTIFACT_CHECK.json": "3b5508f0500645963934f0086a4381bb29403b9700a274f1a0e4826b831394f3",
+    "DOWNLOADS.json": "f532799ec75fe8a69a794f8cf27e3ab99ed1ac1844270eb0ad2770630df90e0a",
+    "RAW_RETENTION.json": "f6a535960604bf5fc1bfdcc02153dbce1708d194c731347a2cd66ce972c06122",
+    "README.md": "c625afefaf7cd36e9250cd07a6a97834d7f3c27ad4d6ebdc961d48bb1b9ca6fd",
+    "retained-original-failure/121182547402.log": "338d2bf003ba6e3a1636a811b9aadb586bbf74f48fb203f97b5b50467e2d34a7",
+    "retained-original-failure/121182547564.log": "f78932032346e60c75d2ae7fdc1ea5a17501f10b1a0eacea0e6b42ca05508273",
+    "retained-original-failure/121182547593.log": "50986b5c048e6cfdec840d3618076c5e9db60a62c0980df5996dddcb21ed243d",
+    "retained-original-failure/121182547633.log": "f2a14962a9cc99f021bb388a076fb217a4979d2b475b53042d33c7dfeec7604c"
+  },
+  "full_acceptance": false
+}
