@@ -34,6 +34,8 @@ FORBIDDEN_MODULES = {
     "tools.full_learning",
     "arena.run",
     "tools.full_strength",
+    "tools.strength_v4",
+    "tools.strength_v4_preflight",
     "tools.performance",
     "tools.neural_cost",
     "tools.plot_data_profile",
@@ -63,6 +65,8 @@ FORBIDDEN_MODULES = {
     "tests.search_semantics",
     "verification.restoration",
     "tests.restoration_replay",
+    "tools.protocol_campaign",
+    "verification.protocol",
 }
 COMPILERS = {
     "clang",
@@ -77,6 +81,17 @@ COMPILERS = {
     "make",
     "cmake",
     "ctest",
+}
+NATIVE_WORK = {
+    "caissa",
+    "stockfish",
+    "network_test",
+    "accumulator_stack_test",
+    "dense_kernel_bench",
+    "search_test",
+    "search_context_test",
+    "search_claim_test",
+    "search_probe_test",
 }
 
 
@@ -156,7 +171,7 @@ def offenders(rows, owner):
             )
             for token in candidates
         )
-        if executable in COMPILERS or python_work:
+        if executable in COMPILERS or executable in NATIVE_WORK or python_work:
             found.append(row)
     return found
 

@@ -1,0 +1,1 @@
+{"command": [".venv/bin/python", "-m", "tools.strength_v4_preflight", "--profile", "runs/strength-v4-development-v1/PREFLIGHT_PROFILE.json", "--expected-profile-sha256", "a8623bf2d59561d434546ad612c939f994a4e699b1c61f4eba5b3114f26528dd", "--output", "runs/strength-v4-development-v1/actual-actor-preflight-001"], "exit": 0, "maximum_seconds": 190}

@@ -1,0 +1,151 @@
+{
+  "schema": "caissa-experiment-protocol-v4",
+  "status": "proposed",
+  "purpose": "New saved original q4096/deferred/intended-claim actor. Reuse the real completed three-seed learning receipt and selected checkpoint unchanged. Old numerical and neural-gain failures remain failed.",
+  "data": {
+    "dataset_sha256": "f09cdec986858c5b1aa80b3c97aaa4d825be892fc94e16ac5d835bc3d709f0ce",
+    "finalization_sha256": "3ce25ac90fe2b90449502a6e92a051c05dc1bcce30cdc2bbc0b6b766920afa9e",
+    "finalization_protocol_sha256": "f2bf006189ece6b1c96b8835ed1e1c7cbcab4675980d60da836f889f2958b89d",
+    "pair_manifest_sha256": "a68c2b878fb2fbf7fcc738096396fa952408053f283c0fcf6c2ec2bf4a22e774",
+    "teacher_sha256": "cd33e7f3f925bb522569c34283cc9f20c710d9e1bc50760bda62ccacbf2994ed",
+    "minimum_training_inputs": 10000000,
+    "minimum_completed_games": 100000,
+    "minimum_completed_search_fraction": 0.95,
+    "functional_input_screening": true
+  },
+  "network": {
+    "format": 4,
+    "feature": 1,
+    "width": 64,
+    "dense": [
+      32,
+      16
+    ],
+    "scale": 4096,
+    "clip": 8188,
+    "maximum_float_error_cp": 32,
+    "probes": 100000,
+    "probe_seed": 32452867,
+    "error_contract": "unclamped-quantization-and-clamped-inference",
+    "neural_weight": 10
+  },
+  "search_optimizations": {
+    "evaluation_cache": true,
+    "tactical_generation": true,
+    "neural_bounds": false,
+    "ordering_hints": false,
+    "deferred_neural_state": true
+  },
+  "training": {
+    "seeds": [
+      17,
+      41,
+      73
+    ],
+    "steps": 20000,
+    "batch": 2048,
+    "threads": 2,
+    "device": "cpu",
+    "lr": 0.001,
+    "outcome_weight": 0.5,
+    "checkpoint_every": 250,
+    "neural_weight": 10,
+    "optimizer": "AdamW; weight_decay=0.00001",
+    "schedule": "cosine to five percent; float first half and quantized-aware second half",
+    "mixture_contract": "residual-output-ste-round-clamp-truncate-v1"
+  },
+  "model_campaign": {
+    "output": "runs/searched-full-model-v3",
+    "maximum_wall_seconds": 86400,
+    "maximum_active_seconds": 21600,
+    "host_policy": {
+      "platform": "darwin",
+      "require_ac_power": false,
+      "scoped_caffeinate_flags": "-di",
+      "check_interval_seconds": 5
+    },
+    "maximum_additional_disk_gib": 20,
+    "minimum_free_gib": 10,
+    "maximum_attempts": 3,
+    "training_order": [
+      17,
+      41,
+      73
+    ],
+    "seed_replacement": false,
+    "early_stopping": false,
+    "native_transitions": 1000000
+  },
+  "matches": {
+    "milliseconds": 100,
+    "threads": 1,
+    "hash_mib": 16,
+    "warmup_nodes": 1,
+    "transport_allowance_ms": 150,
+    "maximum_plies": 512,
+    "workers": 2,
+    "neural_pairs": 2000,
+    "external_pairs": [
+      334,
+      333,
+      333
+    ],
+    "external_settings": [
+      "Stockfish 19 Skill Level 0",
+      "Stockfish 19 UCI_Elo 2000",
+      "Stockfish 19 unrestricted"
+    ],
+    "stockfish_sha256": "dc2f18c34ae962dff591b66147d220ec06e61d756b93d8a4f5e04fd8e55c251f",
+    "opening_file": "config/strength-openings.json",
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 104729,
+    "confidence": 0.95,
+    "minimum_neural_gain_elo": 50,
+    "minimum_neural_lower_elo_exclusive": 0,
+    "maximum_neural_campaign_wall_seconds": 43200,
+    "maximum_external_campaign_wall_seconds": 43200,
+    "host_load": "No corpus generation/preparation, training, compiler, other arena or performance campaign may run during decisive timed games. Preserve startup and periodic process/load snapshots. All actual forfeits remain outcomes."
+  },
+  "selection": "Lowest saved quantized validation-mixture loss; seed breaks exact ties. Keep all checkpoints and all three completed budgets, including failed learning seeds. No test-model metrics or match outcomes affect seed, architecture, checkpoint, training budget or mixture selection.",
+  "classical_control": "Identical frozen executable and search/resource options; Use Neural=false; original classical contract1 remains unchanged. Neural Bounds and Ordering Hints remain disabled in both actors.",
+  "resource_basis": "A genuinely changed original actor: q4096 encoding, deferred accumulator state and intended-draw search repair. It has no strength measurement. Each new fixed domain has one twelve-hour wall/active ceiling, at most three attempts and20GiB additional disk within the unchanged original project deadline. Closed v3 runs are not restarted or relabeled.",
+  "failure_policy": "A failed learning seed remains failed after all provenance and checkpoints are audited. Numerical/restoration and fixed-sample strength observations may still be collected for that validation-selected model, with the failed learning gate disclosed. A domain pass never substitutes for another gate. No release until every required gate passes.",
+  "absolute_rating": "No absolute Elo inference from Stockfish option names or search speed. Report relative estimates, paired uncertainty, censored endpoints and all failures. Stockfish parity requires actual supporting games.",
+  "historical_deviation": "Original weak teacher, older splits, failed neural diagnostics, failed small mixture seeds and the original acquisition confirmation timeout are retained. This proposal rewrites none of them.",
+  "strength_actor": {
+    "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+    "compiled_source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+    "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+    "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+    "original_model_campaign_sha256": "92d62149d3a4de184ad93b9f5f04f77e38386992d04d02bd824b33cf3e5241bd",
+    "original_selection_sha256": "1cd49b3062986086e74396fce27fbbdf4886a0ce9b5b6b6350533b27e3ac8b84",
+    "original_independent_learning_sha256": "19e2b2d26bc1b76f16c466519737f87dd4a1a3ff0d0102656208bc33f5aaa20b",
+    "wire_export_sha256": "50d46da414a85fadefa0aba85201d11caf51187fda943e02eafc33a5f034f736",
+    "original_protocol_sha256": "4cf0545699ab141dafe4e3f67fcbdb7b996cbec2b8e0b246fc2137a5dc963f62",
+    "openings_sha256": "61b8c8812a107e0ea0b6e8a763a0d52d088b6b8480a0879a4952c4689bae71a8",
+    "classical_contract": 1,
+    "selected_seed": 73,
+    "selected_step": 2750,
+    "neural_weight": 10,
+    "lazy_neural": true
+  },
+  "strength_resources": {
+    "maximum_attempts": 3,
+    "maximum_active_seconds_per_domain": 43200,
+    "maximum_wall_seconds_per_domain": 43200,
+    "minimum_free_gib": 10,
+    "maximum_additional_gib_per_domain": 20,
+    "parent_project_deadline_unix": 1793150297.974828,
+    "host_policy": {
+      "platform": "darwin",
+      "require_ac_power": false,
+      "scoped_caffeinate_flags": "-di",
+      "check_interval_seconds": 5
+    },
+    "scope_paths": {
+      "neural": "runs/full-neural-strength-v4",
+      "external": "runs/full-external-strength-v4"
+    }
+  },
+  "derivation": "The true old MODEL_CAMPAIGN.json still names its original executable and q1024network. This separate profile binds the real unchanged float checkpoint, prior selection and independently verified wire4 export to the new saved executable. No retraining, checkpoint replacement, mixture selection or test-driven architecture change."
+}

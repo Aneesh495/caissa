@@ -1,0 +1,1 @@
+{"command": [".venv/bin/python", "-m", "tests.arena_options"], "exit": 0, "maximum_seconds": 40}

@@ -1,0 +1,1 @@
+{"command": [".venv/bin/python", "-m", "tests.full_actor_contract"], "exit": 0, "maximum_seconds": 40}

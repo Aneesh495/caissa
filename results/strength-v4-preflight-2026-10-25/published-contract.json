@@ -1,0 +1,1 @@
+{"command": [".venv/bin/python", "-m", "tests.strength_v4_profile", "--published-inputs", "--output", "runs/strength-v4-development-v1/published-contract"], "exit": 0, "maximum_seconds": 40}

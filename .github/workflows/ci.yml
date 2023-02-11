@@ -48,6 +48,7 @@ jobs:
           python -m tests.heuristic_study
           python -m tests.full_actor_contract
           python -m tests.deferred_actor_contract
+          python -m tests.strength_v4_profile --published-inputs --output runs/ci-strength-v4-profile
           python -m tests.full_model_protocol --output runs/ci-full-model-controls
           python -m tests.project_continuation
           python -m tests.source_binding --output runs/ci-source-binding
@@ -105,6 +106,8 @@ jobs:
             runs/ci-arena/SUMMARY.json
             runs/service.log
             runs/ci-source-binding/CONTROLS.json
+            runs/ci-strength-v4-profile/CONTROLS.json
+            runs/ci-strength-v4-profile/REAL_LINEAGE.json
             runs/ci-full-bundle/CONTROLS.json
             runs/ci-bundle-integrity/CONTROLS.json
             runs/ci-acceptance-readiness/CONTROLS.json
