@@ -90,6 +90,7 @@ jobs:
           python -m arena.run config/arena-ci.json runs/ci-arena --workers 1
           python -m arena.statistics runs/ci-arena
           python -m tests.match_journals --campaign runs/ci-arena --output runs/ci-match-journals
+          python -m tests.strength_bundle --campaign runs/ci-arena --output runs/ci-strength-bundle
           python -m tests.strength_controls --campaign runs/ci-arena --output runs/ci-strength-controls
           python -m tools.evidence --checkout . --engine build/caissa --network models/diagnostic-v2.cai --arena runs/ci-arena --output runs/ci-evidence
           python -m verification.verify runs/ci-evidence --checkout . --expected-commit "$GITHUB_SHA" --profile diagnostic
@@ -110,6 +111,8 @@ jobs:
             runs/ci-arena/SUMMARY.json
             runs/ci-match-journals/*.json
             runs/ci-match-journals/*.log
+            runs/ci-strength-bundle/*.json
+            runs/ci-strength-bundle/*.log
             runs/service.log
             runs/ci-source-binding/CONTROLS.json
             runs/ci-strength-v4-profile/CONTROLS.json

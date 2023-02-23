@@ -1,0 +1,30 @@
+{
+  "schema": "caissa-match-journals-controls-v1",
+  "source_commit": "33a80006763bc4ec8efd7f8f5a7e56b8db958bf4",
+  "workflow_run": 40212451591,
+  "jobs": {
+    "linux": 121226407663,
+    "macos": 121226407953
+  },
+  "status": "passed",
+  "per_platform": {
+    "real_original_lineage_controls": 26,
+    "actual_journal_games": 4,
+    "journal_semantic_rejections": 9
+  },
+  "scope": "Small real native CI arena, pair/game/PGN agreement and actual original actor lineage controls. No full strength sample or Elo result.",
+  "logs": [
+    {
+      "file": "linux.log",
+      "bytes": 503227,
+      "sha256": "cb5ffd9f1efbc5444deac82bf9459cd7d39d70bc3d9262afeb6adaaae0a83dca"
+    },
+    {
+      "file": "macos.log",
+      "bytes": 102632,
+      "sha256": "3063b24d87e9a8e314f451e0174021a24c57ca64d3c5e4d87aaa8dc135ccc641"
+    }
+  ],
+  "full_strength_sample_certified": false,
+  "full_acceptance": false
+}

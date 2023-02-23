@@ -222,7 +222,10 @@ def verify_campaign(
     protocol=None,
     neural=False,
     require_full=False,
+    tick=None,
 ):
+    if tick is not None:
+        tick()
     campaign = Path(campaign)
     identity = load(campaign / "CONFIG.json")
     config = identity["config"]
@@ -389,6 +392,8 @@ def verify_campaign(
 
     def records():
         for number, path in enumerate(paths):
+            if tick is not None:
+                tick()
             if not 0 < path.stat().st_size <= 64 * 1024 * 1024 or path.is_symlink():
                 raise Rejection(
                     "arena pair exceeds bounded replay or uses a symbolic link"
@@ -429,7 +434,9 @@ def verify_campaign(
                     )
             yield pair
 
-    computed = independent_statistics(records())
+    computed = independent_statistics(records(), tick=tick)
+    if tick is not None:
+        tick()
     saved = load(campaign / "SUMMARY.json")
     if require_full:
         if (

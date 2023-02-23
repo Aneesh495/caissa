@@ -24,7 +24,10 @@ PGN results/colors/moves, boolean identities, an invented75-move draw, an
 illegal PV, a missing PGN and an extra pair file. The intended outcome is one
 positive reconstruction and nine semantic rejections. They are run remotely
 while the local frozen v4 strength sequence owns the timed host. Their actual
-results must be inspected before claiming this increment verified.
+results passed on both Linux and macOS at source33a8000 in correctness run
+40212451591. [The complete platform logs](../results/match-journals-2026-10-25/VERIFICATION.json)
+also retain all26 original actor lineage controls. This verifies the small
+journal increment, with no full-sample or Elo claim.
 
 This strengthens the raw-artifact portion of G14/G15. It supplements the
 fixed-sample strength verifier and does not replace any of its game counts,
