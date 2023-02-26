@@ -1,0 +1,33 @@
+{
+  "schema": "caissa-strength-bundle-controls-v1",
+  "source_commit": "bf91c5d6bb9bf632892e2b0396f7bc1ab5a30a4f",
+  "workflow_run": 40213009686,
+  "jobs": {
+    "linux": 121228095497,
+    "macos": 121228095745
+  },
+  "status": "passed",
+  "per_platform": {
+    "controls": 10,
+    "real_small_sample_games_staged": 4,
+    "artifact_or_sample_mutations_rejected": 7,
+    "actual_full_cli_forged_receipt_rejected": 1,
+    "cumulative_bootstrap_deadline_enforced": 1
+  },
+  "scope": "Actual small native arena journals through immutable staging and semantic controls. New G08/G09 adapter implementation checked; no fullsize sample certified.",
+  "fullsize_positive_replay": "pending complete frozen campaigns",
+  "logs": [
+    {
+      "file": "linux.log",
+      "bytes": 503613,
+      "sha256": "14dbcfc9dccd5a7ab4c8f10425b526aa7234ae587cd09dbea7136551d3061688"
+    },
+    {
+      "file": "macos.log",
+      "bytes": 103824,
+      "sha256": "426c32c2f6e18173e8e9eb6992fc891e032efa69d3b65ad3952b836b0e604d5a"
+    }
+  ],
+  "full_strength_sample_certified": false,
+  "full_acceptance": false
+}

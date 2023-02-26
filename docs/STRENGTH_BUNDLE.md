@@ -27,6 +27,8 @@ while other domains are pending.
 Hosted controls stage the four actual native CI games, reject seven artifact
 and sample mutations, invoke the actual full CLI against a rehashed false pass
 receipt, and interrupt bootstrap with the caller's original deadline. These
-small controls do not certify a full strength sample. Full-size positive replay
+small controls passed on Linux and macOS in correctness run40213009686 at
+sourcebf91c5d. [Complete platform logs and identities](../results/strength-bundle-2026-10-25/VERIFICATION.json)
+retain the actual ten-control results. They do not certify a full strength sample. Full-size positive replay
 still requires the completed frozen campaign. Local timed matches continue
 from their original archived owner and verifier code.
