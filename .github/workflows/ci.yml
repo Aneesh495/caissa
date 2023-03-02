@@ -56,6 +56,7 @@ jobs:
           python -m tests.project_continuation
           python -m tests.source_binding --output runs/ci-source-binding
           python -m tests.full_bundle --output runs/ci-full-bundle
+          python -m tests.numerical_bundle --output runs/ci-numerical-bundle
           python -m tests.bundle_integrity --output runs/ci-bundle-integrity
           python -m tests.acceptance_readiness --output runs/ci-acceptance-readiness
           python -m tests.rules_replay --engine build/caissa --output runs/ci-rules-replay
@@ -118,6 +119,8 @@ jobs:
             runs/ci-strength-v4-profile/CONTROLS.json
             runs/ci-strength-v4-profile/REAL_LINEAGE.json
             runs/ci-full-bundle/CONTROLS.json
+            runs/ci-numerical-bundle/*.json
+            runs/ci-numerical-bundle/*.log
             runs/ci-bundle-integrity/CONTROLS.json
             runs/ci-acceptance-readiness/CONTROLS.json
             runs/ci-rules-replay/
