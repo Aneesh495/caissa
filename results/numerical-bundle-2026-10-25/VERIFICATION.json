@@ -1,0 +1,46 @@
+{
+  "schema": "caissa-numerical-bundle-controls-v1",
+  "source_commit": "73375fca96f7c5de01e92b6dfd7a53f693685943",
+  "workflow_run": 40214608300,
+  "status": "passed",
+  "jobs": [
+    {
+      "id": 121232928343,
+      "name": "native (ubuntu-24.04)",
+      "conclusion": "success",
+      "started_at": "2026-10-25T17:03:27Z",
+      "completed_at": "2026-10-25T17:08:58Z",
+      "seconds": 331
+    },
+    {
+      "id": 121232928653,
+      "name": "native (macos-15)",
+      "conclusion": "success",
+      "started_at": "2026-10-25T17:03:29Z",
+      "completed_at": "2026-10-25T17:09:49Z",
+      "seconds": 380
+    }
+  ],
+  "per_platform": {
+    "metadata_admissions": 1,
+    "actual_full_cli_semantic_rejections": 14
+  },
+  "scope": "Bounded G06 artifact admission and rehashed full-command rejections only. No native or FP64 numerical replay in these fixtures.",
+  "fullsize_positive_replay": "pending source-bound complete campaign",
+  "native_process_group_cleanup_tested_by_this_increment": false,
+  "original_precision_scopes_restarted": false,
+  "logs": [
+    {
+      "file": "linux.log",
+      "bytes": 503901,
+      "sha256": "be2a75ba4d45cb67cd9ac9681306f58c6a7228c85367fad6518bcd31b29c32b8"
+    },
+    {
+      "file": "macos.log",
+      "bytes": 104178,
+      "sha256": "8c86381f17a1ed07f1417b2b5215c41f93e3d6c73b2131375cf7065d6315daf8"
+    }
+  ],
+  "full_numerical_sample_certified": false,
+  "full_acceptance": false
+}
