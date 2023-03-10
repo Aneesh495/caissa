@@ -668,6 +668,39 @@ def verify(
                 else:
                     review.setdefault("verified_semantic_gates", {})["G06"] = result
                 del review["pending_semantic_gates"]["G06"]
+        domain = inputs["domains"]["G07"]
+        if domain.get("driver") == "original-learning-v1":
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G07"
+                ] = "original learning replay requires an external --replay-output directory"
+            else:
+                from verification.learning_bundle import (
+                    LearningEndpointFailure,
+                    verify as verify_learning,
+                )
+
+                try:
+                    result = verify_learning(
+                        bundle, inputs, Path(replay_output).resolve() / "G07-learning"
+                    )
+                except LearningEndpointFailure as error:
+                    review.setdefault("failed_semantic_components", {}).setdefault(
+                        "G07", {}
+                    )["learning"] = {
+                        "status": "failed",
+                        "reason": str(error),
+                        "observed": error.observed,
+                        "full_gate": False,
+                        "full_acceptance": False,
+                    }
+                else:
+                    review.setdefault("verified_semantic_components", {}).setdefault(
+                        "G07", {}
+                    )["learning"] = result
+                review["pending_semantic_gates"][
+                    "G07"
+                ] = "full original-data reconstruction and joint G07 component audit required"
         for gate in ["G08", "G09"]:
             domain = inputs["domains"][gate]
             if domain.get("driver") != "strength-journals-v1":

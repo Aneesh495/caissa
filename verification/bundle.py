@@ -134,6 +134,53 @@ class Bundle:
     def json(self, name, maximum_bytes=4 * 1024 * 1024):
         return strict_json(self.bytes(name, maximum_bytes))
 
+    def copy(self, name, destination, maximum_bytes=8 * 1024**3):
+        """Stream a pinned artifact to a new external file with bounded memory."""
+        require(
+            type(maximum_bytes) is int and 0 < maximum_bytes <= 8 * 1024**3,
+            "finite evidence copy byte ceiling required",
+        )
+        require(
+            self.identities is not None and name in self.identities,
+            "evidence copy requires a verified manifest identity",
+        )
+        destination = Path(destination)
+        require(
+            not destination.resolve().is_relative_to(self.root),
+            "evidence copy must preserve the original artifact directory",
+        )
+        stream, before = self.open(name)
+        with stream:
+            require(
+                before.st_size <= maximum_bytes, "evidence copy byte ceiling exceeded"
+            )
+            digest, size = hashlib.sha256(), 0
+            with destination.open("xb") as target:
+                while True:
+                    self.tick()
+                    block = stream.read(1048576)
+                    if not block:
+                        break
+                    size += len(block)
+                    require(
+                        size <= maximum_bytes, "growing evidence copy exceeded ceiling"
+                    )
+                    digest.update(block)
+                    target.write(block)
+                target.flush()
+                os.fsync(target.fileno())
+            after = os.fstat(stream.fileno())
+        require(
+            size == before.st_size and self.stamp(before) == self.stamp(after),
+            "evidence artifact changed during streaming copy",
+        )
+        require(
+            digest.hexdigest() == self.identities[name],
+            "verified copy bytes changed after manifest validation",
+        )
+        self.tick()
+        return {"bytes": size, "sha256": digest.hexdigest()}
+
     def sha(self, name, maximum_bytes=8 * 1024**3):
         stream, before = self.open(name)
         with stream:
