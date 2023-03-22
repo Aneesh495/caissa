@@ -1,0 +1,24 @@
+{
+  "source": "4244d21365c3d1fd5bb3c1b8e70eb891a86f4ea0",
+  "workflow_run": 40252772378,
+  "status": "failed",
+  "platforms": [
+    "linux",
+    "macos"
+  ],
+  "reason": "Catalog metadata snapshot was nested under its metadata parent; the immutable-directory copy guard correctly rejected it before data reconstruction.",
+  "repair": "Read/hash the bounded catalog metadata snapshot; retain the strict streamed-copy guard for all original data views. Also freeze output path and check actual held-host exclusion.",
+  "logs": [
+    {
+      "file": "linux.log",
+      "bytes": 495537,
+      "sha256": "92c2a40c8a701ab195729ddd8e08c1cfa81cf4042313d665234df00bda3ce335"
+    },
+    {
+      "file": "macos.log",
+      "bytes": 95095,
+      "sha256": "2296d762771d8caeb48648a800fe641ccb37ddb03c67795fbdb2bb6341649a3b"
+    }
+  ],
+  "full_acceptance": false
+}

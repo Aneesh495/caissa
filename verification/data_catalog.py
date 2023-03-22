@@ -99,6 +99,7 @@ def contract(path, expected, expected_commit, diagnostic=False):
             "source_commit",
             "dataset_sha256",
             "pairs",
+            "output",
             "resources",
             "shards",
             "files",
@@ -120,6 +121,7 @@ def contract(path, expected, expected_commit, diagnostic=False):
         "data catalog profile mismatch; diagnostic work cannot certify full data",
     )
     digest_text(value["dataset_sha256"])
+    relative_path(value["output"])
     require(
         type(value["pairs"]) is int
         and 1 <= value["pairs"] <= (100 if diagnostic else 500000),
@@ -333,7 +335,7 @@ def admit(rule, sources, diagnostic, tick=None):
                     tick()
                 if pair.suffix == ".json":
                     require(
-                        re.fullmatch("[0-9]{9}\.json", pair.name)
+                        re.fullmatch(r"[0-9]{9}\.json", pair.name)
                         and not pair.is_symlink(),
                         "unexpected original corpus journal path",
                     )
@@ -385,6 +387,10 @@ def execute(path, expected, input_root, output, expected_commit, diagnostic=Fals
     )
     output = Path(output).resolve()
     input_root = Path(input_root).resolve()
+    require(
+        output == input_path(input_root, rule["output"]).resolve(),
+        "changing the frozen output cannot create a new data replay budget",
+    )
     require(
         not output.exists(), "data replay output already exists; scope cannot be reset"
     )
@@ -441,10 +447,14 @@ def execute(path, expected, input_root, output, expected_commit, diagnostic=Fals
         with Bundle(
             Path(path).resolve().parent, min(30, scope.remaining())
         ) as catalog_view:
-            catalog_view.identities = {Path(path).name: expected}
-            catalog_view.copy(
-                Path(path).name, output / "CATALOG.json", 128 * 1024**2, check=guard
+            catalog_bytes = catalog_view.bytes(Path(path).name, 128 * 1024**2)
+            require(
+                hashlib.sha256(catalog_bytes).hexdigest() == expected,
+                "data catalog changed before its owned snapshot",
             )
+            (output / "CATALOG.json").write_bytes(catalog_bytes)
+            del catalog_bytes
+        guard()
         raw = output / "raw"
         raw.mkdir()
         total = 0

@@ -1,6 +1,7 @@
 """Actual original CI data through bounded catalog staging and independent replay."""
 
 import argparse
+import fcntl
 import json
 import os
 import shutil
@@ -37,6 +38,11 @@ def main():
         "source_commit": commit,
         "dataset_sha256": sha(dataset / "DATASET.json"),
         "pairs": pairs,
+        "output": str(
+            (args.output / "real-small-original-data-replay")
+            .resolve()
+            .relative_to(project)
+        ),
         "resources": {
             "maximum_wall_seconds": 120,
             "maximum_active_seconds": 120,
@@ -97,10 +103,13 @@ def main():
     write(original, rule)
     records = []
 
-    def run(name, value, reason=None, output=None, diagnostic=True):
+    def run(name, value, reason=None, output=None, diagnostic=True, bind_output=True):
         path = args.output / (name + "-catalog.json")
-        write(path, value)
         destination = output or (args.output / (name + "-replay"))
+        value = json.loads(json.dumps(value))
+        if bind_output:
+            value["output"] = str(destination.resolve().relative_to(project))
+        write(path, value)
         command = [
             sys.executable,
             "-m",
@@ -155,6 +164,15 @@ def main():
 
     completed = run("real-small-original-data", rule)
     run("existing-output-cannot-reset", rule, "scope cannot be reset", output=completed)
+    run("different-output-cannot-reset", rule, "frozen output", bind_output=False)
+    lock_path = project / "runs/TIMED_STRENGTH.lock"
+    existed = lock_path.exists()
+    with lock_path.open("a") as lock:
+        fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        run("timed-host-exclusion", rule, "timed decisive matches own the host")
+        assert not (args.output / "timed-host-exclusion-replay").exists()
+    if not existed:
+        lock_path.unlink()
     for case, reason in {
         "renewed-budget": "cumulative resource ceilings differ",
         "full-promotion": "original frozen dataset or prefix",

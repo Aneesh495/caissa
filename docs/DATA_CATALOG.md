@@ -11,6 +11,8 @@ directory and an externally pinned manifest of selected file hashes. Original
 directories remain untouched. Other preparation indexes are neither consumed
 nor claimed as verified. The original corpus namespace is checked separately
 so a selected view cannot hide missing or additional paired games.
+The frozen output path is part of the catalog; another output directory
+cannot reset a completed or exhausted replay's resource ledger.
 
 Full catalogs retain the exact114791-pair corpus, datasetf09, fixed-prefix
 protocolf2bf and pair-hash manifesta68. They include all six arrays, all three
@@ -41,3 +43,5 @@ this new catalog path. Controls reject altered resources, false full promotion,
 omitted/extra games, aliases, traversal, swapped arrays and rehashed source
 forgeries. A legal-data hash update cannot bless an illegal original game.
 These checks are not a full-corpus replay or a renewed historical budget.
+An actual held timed-host lock must reject the catalog before it creates an
+output scope. Output diversion is rejected without resetting the old ledger.
