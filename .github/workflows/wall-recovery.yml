@@ -7,7 +7,31 @@ on:
       - '.github/workflows/wall-recovery.yml'
 permissions:
   contents: read
+  actions: read
 jobs:
+  retained-data-error:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - name: Read preserved child failure without rerunning the campaign
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import io, os, urllib.request, zipfile
+          for artifact in [12622195176,12620734758]:
+              request=urllib.request.Request(f'https://api.github.com/repos/Aneesh495/caissa/actions/artifacts/{artifact}/zip',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+              with urllib.request.urlopen(request,timeout=25) as response:
+                  data=response.read(16*1024*1024+1)
+              assert len(data)<=16*1024*1024
+              with zipfile.ZipFile(io.BytesIO(data)) as archive:
+                  for name in archive.namelist():
+                      if 'ci-data-catalog' in name and name.endswith(('.log','FAILED.json')):
+                          info=archive.getinfo(name)
+                          if info.file_size<=32768:
+                              print('PRESERVED',artifact,name)
+                              print(archive.read(name).decode('utf8',errors='replace'))
+          PY
   controls:
     strategy:
       fail-fast: false
