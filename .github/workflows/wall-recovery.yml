@@ -19,9 +19,15 @@ jobs:
         run: |
           python3 - <<'PY'
           import io, os, urllib.request, zipfile
+          class ScopedRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self, request, response, code, message, headers, url):
+                  redirected=super().redirect_request(request,response,code,message,headers,url)
+                  redirected.remove_header('Authorization')
+                  return redirected
+          opener=urllib.request.build_opener(ScopedRedirect())
           for artifact in [12622195176,12620734758]:
               request=urllib.request.Request(f'https://api.github.com/repos/Aneesh495/caissa/actions/artifacts/{artifact}/zip',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
-              with urllib.request.urlopen(request,timeout=25) as response:
+              with opener.open(request,timeout=25) as response:
                   data=response.read(16*1024*1024+1)
               assert len(data)<=16*1024*1024
               with zipfile.ZipFile(io.BytesIO(data)) as archive:
