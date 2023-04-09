@@ -1,0 +1,26 @@
+{
+  "schema": "caissa-approved-wall-recovery-development-proof-v1",
+  "hosted_source": "56b58d3b6697c45c9b668bc927af082a859c2ad2",
+  "hosted_run": 40255489975,
+  "hosted_controls_per_platform": 11,
+  "linux_macos": "passed",
+  "metadata_allocation_correction_source": "5994aa81e83e114e79a3f57fc0f11208d19c881f",
+  "metadata_controls": 12,
+  "metadata_controls_execution": "local; mocked UciClient forbids engine startup; under one second",
+  "original_scope_sha256": "b80c2af13f5087d0872f8239a175e681e41fae53085a295bbb0f9449348a87fa",
+  "original_deadline_unix": 1792982806.744264,
+  "recovery_deadline_unix": 1793000806.744264,
+  "combined_active_seconds": 43200,
+  "combined_attempts": 3,
+  "sample_certified": false,
+  "actual_recovery_not_started": true,
+  "retained_reader_failure": "401 on signed-storage redirect, repaired by removing cross-host Authorization header",
+  "full_acceptance": false,
+  "artifacts": {
+    "retained-data-error.log": "193e989311eb21113d325c77408e54c451f30ca9fafaa00ce0b4187764e93c7f",
+    "macos.log": "2106800d8fc2a01b64a9860b9ae19c5378c489af8416497956b9e0eaa9e200e4",
+    "linux.log": "3ed043a4a92fc2c9491137a5e82d7e4bed605b85d34735574a813214d6b4cba5",
+    "metadata-only-allocation-control.log": "b2c8ea26566bfecdc94dc0c92b39a87e0684dceb7bb058d53a5984ebc330a92e",
+    "retained-reader-401.log": "f1afbabbf65dc4a992123ab0aabbba902868de7f6409563c1e5b42cd2cae3599"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "schema": "caissa-data-catalog-development-proof-v1",
+  "source_commit": "56b58d3b6697c45c9b668bc927af082a859c2ad2",
+  "ci_run": 40255489974,
+  "linux_macos": "passed",
+  "actual_small_corpus_pairs": 50,
+  "full_corpus_certified": false,
+  "full_G07_certified": false,
+  "retained_failures": [
+    40252772378,
+    40253659989
+  ],
+  "repairs": [
+    "Preserve original-directory copying guard; snapshot bounded catalog metadata in its owned output",
+    "Create owned scratch parent before ReplayIndex tempfile creation"
+  ],
+  "no_native_actor_changes": true,
+  "full_acceptance": false,
+  "artifacts": {
+    "macos.log": "4e95277809a3488fc81a4bff77a918dab416b8cf9dfb191cace4eb9699621e12",
+    "linux.log": "655ec28758c370daad4508a0b438e74e5791da3b39b7c3794518e6c992f2a829",
+    "retained-initial-failure/macos.log": "2296d762771d8caeb48648a800fe641ccb37ddb03c67795fbdb2bb6341649a3b",
+    "retained-initial-failure/linux.log": "92c2a40c8a701ab195729ddd8e08c1cfa81cf4042313d665234df00bda3ce335",
+    "retained-initial-failure/FAILURE.json": "2a6bc7289d3c01031b137496226055bf6c486fb2891b015fb73eb68be6093cf2",
+    "retained-second-failure/macos.log": "59de22326107cd338adb931f07bfa6ffb9624eecfa09ad03a72e7005633bd368",
+    "retained-second-failure/linux.log": "81f3a3895644207bb82d90e11fc9d5b2ea30dc5e13dc766d836954b4a6bb1b3b",
+    "retained-second-failure/FAILURE.json": "dc6fb1544b6dd840a5ff63c9193bc17d3a55c9bfe615faf867bdb396a0bbf6d2"
+  }
+}
