@@ -208,7 +208,7 @@ def metrics(rows):
     }
 
 
-def options(config, network, evaluation, threads, optimized):
+def options(config, network, evaluation, threads, optimized, lazy=False):
     result = {
         "Hash": config["hash_mib"],
         "Threads": threads,
@@ -218,6 +218,8 @@ def options(config, network, evaluation, threads, optimized):
         "Neural Bounds": False,
         "Ordering Hints": False,
     }
+    if lazy:
+        result["Lazy Neural"] = True
     if evaluation != "classical":
         result.update(
             {
@@ -239,8 +241,13 @@ def main():
     parser.add_argument("--load-note", required=True)
     parser.add_argument("--diagnostic", action="store_true")
     parser.add_argument("--exact-optimizations", action="store_true")
+    parser.add_argument("--lazy-neural", action="store_true")
     parser.add_argument("--maximum-seconds", type=int, default=1800)
     args = parser.parse_args()
+    if args.lazy_neural and not args.exact_optimizations:
+        parser.error(
+            "deferred neural profiling requires the exact optimization contract"
+        )
     config = json.loads(args.config.read_text())
     validate(config)
     budget = Budget(args.maximum_seconds)
@@ -260,6 +267,7 @@ def main():
         "maximum_seconds": args.maximum_seconds,
         "deadline_unix": budget.deadline,
         "exact_optimizations": args.exact_optimizations,
+        "lazy_neural": args.lazy_neural,
         "full_acceptance": False,
     }
     atomic_json(args.output / "CONFIG.json", record)
@@ -269,7 +277,12 @@ def main():
     def connect(evaluation, threads):
         budget.check()
         selected = options(
-            config, network, evaluation, threads, args.exact_optimizations
+            config,
+            network,
+            evaluation,
+            threads,
+            args.exact_optimizations,
+            args.lazy_neural,
         )
         client = UciClient([engine], selected, warmup_nodes=1)
         sessions.append(

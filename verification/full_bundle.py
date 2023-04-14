@@ -731,6 +731,23 @@ def verify(
             )
             review.setdefault("verified_semantic_gates", {})[gate] = result
             del review["pending_semantic_gates"][gate]
+        domain = inputs["domains"]["G13"]
+        if domain.get("driver") == "performance-observations-v2":
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G13"
+                ] = "performance replay requires an external --replay-output directory"
+            else:
+                from verification.performance_bundle import verify as verify_performance
+
+                result = verify_performance(
+                    bundle, inputs, Path(replay_output).resolve() / "G13"
+                )
+                require(
+                    result["full_gate"] is True, "G13 full-domain replay incomplete"
+                )
+                review.setdefault("verified_semantic_gates", {})["G13"] = result
+                del review["pending_semantic_gates"]["G13"]
         return review
 
 
