@@ -149,7 +149,7 @@ def main():
             command = [
                 sys.executable,
                 "-m",
-                "verification.verify",
+                "verification.full_bundle",
                 str(root),
                 "--checkout",
                 str(source),
@@ -157,8 +157,6 @@ def main():
                 commit,
                 "--expected-inputs-sha256",
                 pin,
-                "--profile",
-                "full",
                 "--maximum-seconds",
                 "30",
                 "--replay-output",
@@ -166,6 +164,7 @@ def main():
             ]
             result = subprocess.run(command, capture_output=True, text=True, timeout=35)
             (args.output / (case + ".log")).write_text(result.stdout + result.stderr)
+            assert result.stdout.strip(), (case, result.returncode, result.stderr)
             observed = json.loads(result.stdout)
             assert result.returncode == 1 and reason in observed.get("reason", ""), (
                 case,
