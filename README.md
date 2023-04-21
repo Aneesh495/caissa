@@ -62,9 +62,11 @@ See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution w
 | Float/integer error | Maximum 10.395 cp, mean 1.108 cp, unchanged limit 32 cp | Same selected float checkpoint; original q1024 failure retained |
 | Warm Stockfish 19 unrestricted | 0 wins, 0 draws, 48 losses | 20 ms/move, small paired diagnostic |
 | Full original neural contribution | 1274W/746D/1980L; -61.97 Elo, 95% interval [-71.25,-52.87] | [4000 games independently replayed](results/full-neural-v3-2026-10-25/README.md); required positive gain failed |
+| Full original external comparison | 2000 games across three settings; unrestricted Stockfish 19 subset: -392.39 relative Elo, 95% interval [-438.13,-353.45] | [Original q1024 candidate](results/full-external-v3-2026-10-25/README.md); no absolute rating |
+| New q4096/deferred candidate | Full neural comparison in progress; no new strength estimate | [Separate frozen profile](config/protocol-v4.json); 2000 external games follow |
 | Larger neural pilot versus classical | 4 wins, 8 draws, 84 losses | 2000 nodes/move, diagnostic data split |
 
-These checks establish specific behavior. The data-domain pass does not certify a positive learned contribution, the full external campaign or a release. Opponent strength settings are not a calibrated absolute rating pool.
+These checks establish specific behavior. The data-domain pass does not certify a positive learned contribution, the new deployment's strength or a release. Opponent strength settings are not a calibrated absolute rating pool.
 
 The [model card](docs/MODEL_CARD.md) records the completed three-seed training, validation-only selection, original failed encoding and subsequent precision experiment. It also gives the explicit ten-percent UCI setting required by the selected model.
 

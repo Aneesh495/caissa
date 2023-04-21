@@ -1,0 +1,23 @@
+{
+  "schema": "caissa-full-performance-adapter-development-proof-v1",
+  "source_commit": "fe96b06dd84194e0dd8f03bace101bbf525baa0c",
+  "ci_run": 40257052685,
+  "linux_macos": "passed",
+  "metadata_admissions_per_platform": 1,
+  "full_cli_rejections_per_platform": 14,
+  "declared_option_contracts_per_platform": 8,
+  "real_native_ownership_probes_per_platform": 2,
+  "full_G13_sample_certified": false,
+  "full_G10_sample_certified": false,
+  "original_fixed_strength_actor_changed": false,
+  "retained_failed_ci_run": 40256731282,
+  "failure_observed": "Test driver raised JSONDecodeError because its CLI stdout was empty. Its command passed the full-bundle-only maximum-seconds flag to the legacy wrapper; invocation was repaired to use verification.full_bundle.",
+  "remaining": "Full final-host timed performance sample, independent full-size replay, parallel strength and race joins remain required.",
+  "full_acceptance": false,
+  "artifacts": {
+    "macos.log": "2ccd9d5b51aaf72e403307f8b2db2d75de50ab14b9e5cca54d963c540641ae35",
+    "linux.log": "04a47e264e5e875a096b02777dd2abda75ed98a1346511b8b03147e69829a8cf",
+    "retained-initial-failure/macos.log": "7a793cb2993a1b55c48b8d594e9f751ff22a232680002525619cd8262da0df2a",
+    "retained-initial-failure/linux.log": "dd3a50c36442265a1bc59b459310b9f0b3a6834cdd83cc0f4ea7cbc3447968ce"
+  }
+}

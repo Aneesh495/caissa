@@ -1,6 +1,6 @@
 # Limitations
 
-Caissa has no defensible absolute Elo rating. Short paired comparisons measure relative performance at their exact hardware, openings and resources. Stockfish strength option names are not interchangeable with an independently rated population. Full unrestricted Stockfish defeated the current classical diagnostic candidate in every warm game.
+Caissa has no defensible absolute Elo rating. Paired comparisons measure relative performance at their exact hardware, openings and resources. Stockfish strength option names are not interchangeable with an independently rated population. An earlier classical diagnostic lost every warm Stockfish game. The completed original q1024 external sample measured -392.39 relative Elo against unrestricted Stockfish 19, with a 95% interval of [-438.13,-353.45]. The new q4096/deferred actor is a separate unfinished measurement.
 
 The learned evaluator has not demonstrated a positive contribution. The shipped network is diagnostic, and the browser uses classical evaluation. King-bucket sparse features omit castling rights, en passant, rule clocks and history. Search owns those rule conditions; functional-input deduplication deliberately merges omitted distinctions before training splits.
 
