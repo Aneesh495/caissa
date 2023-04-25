@@ -256,7 +256,7 @@ def inventory(bundle, inputs, args, protocol, model):
     return copies
 
 
-def verify(bundle, inputs, output):
+def verify(bundle, inputs, output, *, inherit_process_group=False):
     from tools.heuristic_study import avoid_decisive_matches
 
     avoid_decisive_matches()
@@ -312,7 +312,11 @@ def verify(bundle, inputs, output):
         failure = None
         try:
             record = campaign.run(
-                "independent", command, remaining, maximum_output_bytes=4 * 1024**2
+                "independent",
+                command,
+                remaining,
+                maximum_output_bytes=4 * 1024**2,
+                new_session=not inherit_process_group,
             )
         except StageFailure as error:
             record, failure = error.record, error
@@ -358,6 +362,9 @@ def verify(bundle, inputs, output):
             component="learning",
             component_pass=True,
             original_lineage=lineage,
+            selected_step=bundle.json(
+                bundle.reference(inputs["learning"]["selection"])
+            )["selected"]["step"],
             full_gate=False,
             full_acceptance=False,
             data_reconstruction_required=True,
@@ -368,3 +375,56 @@ def verify(bundle, inputs, output):
     finally:
         if not campaign.closed:
             campaign.close("failed")
+
+
+def main():
+    import argparse
+    import hashlib
+    import json
+    from verification.bundle import Bundle
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("evidence", type=Path)
+    parser.add_argument("--expected-manifest-sha256", required=True)
+    parser.add_argument("--expected-inputs-sha256", required=True)
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--maximum-seconds", type=float, default=3600)
+    parser.add_argument("--inherit-process-group", action="store_true")
+    args = parser.parse_args()
+    try:
+        with Bundle(args.evidence, args.maximum_seconds) as bundle:
+            require(
+                hashlib.sha256(bundle.bytes("MANIFEST.json", 128 * 1024**2)).hexdigest()
+                == args.expected_manifest_sha256,
+                "learning catalog manifest differs from frozen identity",
+            )
+            bundle.verify_manifest()
+            raw = bundle.bytes("LEARNING_INPUTS.json", 4 * 1024**2)
+            require(
+                hashlib.sha256(raw).hexdigest() == args.expected_inputs_sha256,
+                "learning catalog inputs differ from frozen identity",
+            )
+            result = verify(
+                bundle,
+                strict_json(raw),
+                args.output,
+                inherit_process_group=args.inherit_process_group,
+            )
+        print(json.dumps(result))
+        return 0
+    except (ValueError, KeyError, TypeError, OSError, RuntimeError) as error:
+        print(
+            json.dumps(
+                {
+                    "status": "rejected",
+                    "reason": str(error),
+                    "full_gate": False,
+                    "full_acceptance": False,
+                }
+            )
+        )
+        return 1
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

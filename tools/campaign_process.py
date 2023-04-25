@@ -114,9 +114,19 @@ class Campaign:
         *,
         cwd=None,
         wall_timeout=None,
+        pass_fds=(),
+        env=None,
+        new_session=True,
     ):
         if self.closed:
             raise ValueError("campaign already closed")
+        if (
+            type(new_session) is not bool
+            or type(pass_fds) is not tuple
+            or any(type(fd) is not int or not 3 <= fd <= 1048576 for fd in pass_fds)
+            or len(set(pass_fds)) != len(pass_fds)
+        ):
+            raise ValueError("invalid owned process group or inherited descriptors")
         if not re.fullmatch("[a-zA-Z0-9][a-zA-Z0-9_.-]{0,79}", stage):
             raise ValueError("invalid stage identity")
         if not command or not all(
@@ -155,6 +165,8 @@ class Campaign:
                 "timeout_seconds": timeout,
                 "wall_timeout_seconds": wall_timeout,
                 "maximum_output_bytes": maximum_output_bytes,
+                "owns_process_group": new_session,
+                "inherited_descriptors": list(pass_fds),
             }
         )
         process = None
@@ -170,7 +182,10 @@ class Campaign:
         def signal_owned(signum):
             nonlocal reason
             try:
-                group_signal(process.pid, signum)
+                if new_session:
+                    group_signal(process.pid, signum)
+                else:
+                    process.send_signal(signum)
                 return True
             except PermissionError:
                 warning = "permission denied signalling owned process group: " + str(
@@ -192,8 +207,10 @@ class Campaign:
                     stdout=subprocess.PIPE,
                     stderr=subprocess.STDOUT,
                     bufsize=0,
-                    start_new_session=True,
+                    start_new_session=new_session,
                     cwd=cwd,
+                    pass_fds=pass_fds,
+                    env=env,
                 )
                 os.set_blocking(process.stdout.fileno(), False)
                 selector.register(process.stdout, selectors.EVENT_READ)
@@ -270,7 +287,7 @@ class Campaign:
                 log.flush()
                 os.fsync(log.fileno())
         except BaseException as error:
-            if process is not None:
+            if process is not None and new_session:
                 signal_owned(signal.SIGTERM)
                 try:
                     process.wait(timeout=2)
