@@ -207,7 +207,17 @@ def main():
         }
         archive_source(git, folder / "archive", old_commit, manifest["files"])
         subprocess.run(
-            ["git", "commit", "--allow-empty", "-qm", "new unrelated checkpoint"],
+            [
+                "git",
+                "-c",
+                "user.name=Verifier fixture",
+                "-c",
+                "user.email=verifier@example.invalid",
+                "commit",
+                "--allow-empty",
+                "-qm",
+                "new unrelated checkpoint",
+            ],
             cwd=git,
             check=True,
             timeout=5,
