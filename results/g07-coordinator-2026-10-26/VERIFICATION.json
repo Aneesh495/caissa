@@ -1,0 +1,28 @@
+{
+  "schema": "caissa-g07-coordinator-development-proof-v1",
+  "source_commit": "dce141fbdec349408370084baa39cfe0a83298f4",
+  "ci_run": 40260539544,
+  "linux_macos": "passed",
+  "full_plan_cli_rejections_per_platform": 10,
+  "component_relationship_rejections_per_platform": 7,
+  "source_archive_controls_per_platform": 2,
+  "actual_original_pairs_replayed_per_platform": 50,
+  "actual_inherited_host_lock_checks": true,
+  "actual_nested_reader_timeout_cleanup": true,
+  "full_G07_certified": false,
+  "original_learning_receipt_rewritten": false,
+  "retained_linux_failure": {
+    "run": 40259890681,
+    "job": 121369763502,
+    "source": "8a69ca593ed747fe6d7676b167e0d68bd09d731e",
+    "actual_exit": 128,
+    "reason": "Temporary Git fixture empty commit lacked author identity on Linux; source/archive/runtime controls were not weakened. Fixture-only identity supplied."
+  },
+  "remaining": "Prepare and externally pin the full catalogs, then execute the full live original-data/240-checkpoint audit after the frozen strength pipeline settles. No full audit started by these controls.",
+  "full_acceptance": false,
+  "artifacts": {
+    "retained-linux-identity-failure.log": "b89bd53bb2e24f8c1fb58ce70a037b6f587328fd2183e9ee96a823825cd24bb8",
+    "macos.log": "eb3feff0d54e71e77cede92ab6b5449c54ad45da1e5d21a926ef30afc00b4f5c",
+    "linux.log": "56df69468f28de116673e87022ff1bbf3610639e7a1f9933616adb5ff9b8f5b0"
+  }
+}
