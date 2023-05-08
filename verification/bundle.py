@@ -185,7 +185,7 @@ class Bundle:
             check()
         return {"bytes": size, "sha256": digest.hexdigest()}
 
-    def sha(self, name, maximum_bytes=8 * 1024**3):
+    def sha(self, name, maximum_bytes=8 * 1024**3, *, check=None):
         stream, before = self.open(name)
         with stream:
             require(
@@ -196,6 +196,8 @@ class Bundle:
             size = 0
             while True:
                 self.tick()
+                if check is not None:
+                    check()
                 block = stream.read(1048576)
                 if not block:
                     break
