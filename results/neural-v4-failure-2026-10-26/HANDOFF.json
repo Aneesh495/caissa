@@ -1,0 +1,61 @@
+{
+  "schema": "caissa-v4-independent-domain-handoff-v1",
+  "observed_unix": 1792993107.1814332,
+  "neural_game_records": 4000,
+  "completed_games": 3997,
+  "unfinished": [
+    {
+      "path": "runs/full-neural-strength-v4/neural/games/001242-1.json",
+      "sha256": "3938a107d0dbb400a7df319a269298c729fda21e2e26fc59fbcbe55a9cbebb00",
+      "termination": "ply-limit",
+      "plies": 512,
+      "pair": 1242,
+      "reverse": 1
+    },
+    {
+      "path": "runs/full-neural-strength-v4/neural/games/001500-1.json",
+      "sha256": "c8e2661351f5ff86f1a33aa57048ad12c46f8a4d3c34ccb69af12920e7833bf1",
+      "termination": "ply-limit",
+      "plies": 512,
+      "pair": 1500,
+      "reverse": 1
+    },
+    {
+      "path": "runs/full-neural-strength-v4/neural/games/001684-0.json",
+      "sha256": "6b04c88576443a982c22531bea4c9b8444aca2b0493f4455e07a034e96ce782b",
+      "termination": "ply-limit",
+      "plies": 512,
+      "pair": 1684,
+      "reverse": 0
+    }
+  ],
+  "original_failure_preserved": true,
+  "recovery_failure_sha256": "725b408cd355aea3f77d04fc1d8ff462410671b03a4726dbce43cd85281eb9c7",
+  "combined_active_seconds": 22176.774574208997,
+  "neural_full_gate": false,
+  "neural_strength_certified": false,
+  "no_neural_rerun": true,
+  "reason": "Three frozen games reached their original 512-ply ceiling. All game attempts are recorded, but full sample verification rejected unfinished games. Preserve records and failed endpoint. No replacement game, changed result or extended ply limit. Independently advance already frozen external2000 domain with unchanged original source/profile and separately declared original scope.",
+  "external_scope": {
+    "schema": "caissa-recovery-scope-v1",
+    "bindings": {
+      "source_commit": "9f3ac86ca38eb28b357ad7ef146f1af4bfb96021",
+      "protocol_sha256": "a8623bf2d59561d434546ad612c939f994a4e699b1c61f4eba5b3114f26528dd",
+      "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+      "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+      "kind": "external",
+      "original_model_campaign_sha256": "92d62149d3a4de184ad93b9f5f04f77e38386992d04d02bd824b33cf3e5241bd",
+      "workflow_sha256": "0a04b37c8554a31710498892b521a97f46de4f8d83e6527e5750842e5a56cc75",
+      "parent_project_deadline_unix": 1793150297.974828
+    },
+    "origin_unix": 1792993035.0077372,
+    "deadline_unix": 1793036235.0077372,
+    "maximum_seconds": 43200,
+    "minimum_free_bytes": 10737418240,
+    "maximum_additional_bytes": 21474836480,
+    "data_root": "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/searched-full-model-v3",
+    "initial_data_bytes": 2429749086,
+    "maximum_active_seconds": 43200
+  },
+  "full_acceptance": false
+}
