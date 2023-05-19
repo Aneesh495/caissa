@@ -36,6 +36,8 @@ FORBIDDEN_MODULES = {
     "tools.full_strength",
     "tools.strength_v4",
     "tools.strength_v4_preflight",
+    "tools.systems_strength",
+    "verification.systems_strength",
     "tools.performance",
     "tools.neural_cost",
     "tools.plot_data_profile",
