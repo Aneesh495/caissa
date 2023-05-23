@@ -87,22 +87,39 @@ def configuration(rule, row, engine, network, openings):
     }
 
 
+def contract_inputs(root, args):
+    """A resumed domain must not depend on later live config files."""
+    require(args.kind in {"parallel", "heuristics"}, "unknown systems owner domain")
+    output = root / "runs" / ("full-" + args.kind + "-strength-v1")
+    source_record = output / "SOURCE_INPUTS.json"
+    saved = source_record.exists()
+    profile = output / "inputs/PROFILE.json" if saved else args.profile
+    base_path = (
+        output / "inputs/BASE_PROTOCOL.json"
+        if saved
+        else root / "config/protocol-v4.json"
+    )
+    rule, base, pin = contract(profile, base_path)
+    require(
+        pin == args.expected_profile_sha256, "systems external profile identity differs"
+    )
+    require(rule["kind"] == args.kind, "systems owner domain differs from its profile")
+    require(
+        output == root / rule["resources"]["output"], "systems fixed output differs"
+    )
+    return rule, base, pin, output, source_record
+
+
 def context(root, args):
     require(
         strength_settled(root),
         "original frozen strength pipeline has not settled; defer systems matches",
     )
-    rule, base, pin = contract(args.profile, root / "config/protocol-v4.json")
-    require(
-        pin == args.expected_profile_sha256, "systems external profile identity differs"
-    )
-    require(rule["kind"] == args.kind, "systems owner domain differs from its profile")
-    output = root / rule["resources"]["output"]
+    rule, base, pin, output, source_record = contract_inputs(root, args)
     require(
         not (output / "SYSTEMS_STRENGTH.json").exists(),
         "systems comparison domain is already closed; do not rerun completed samples",
     )
-    source_record = output / "SOURCE_INPUTS.json"
     if source_record.exists():
         require(args.resume, "existing systems source requires explicit resume")
         _, source = read(source_record)
@@ -417,6 +434,7 @@ def main():
         TypeError,
         TimeoutError,
         StageFailure,
+        subprocess.SubprocessError,
     ) as error:
         print(
             json.dumps(

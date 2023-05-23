@@ -14,10 +14,11 @@ import sys
 import tempfile
 import os
 from pathlib import Path
+from types import SimpleNamespace
 
 from tools.campaign_process import atomic
 from verification.systems_strength import admission, contract
-from tools.systems_strength import configuration
+from tools.systems_strength import configuration, contract_inputs
 
 
 def profile(kind):
@@ -219,6 +220,55 @@ def main():
         "neural-heuristic-control",
     ]
     controls = []
+    # Real saved metadata continues to work when live profile paths disappear.
+    # Mutating either saved input still fails its original external identity.
+    with tempfile.TemporaryDirectory(
+        prefix="caissa-systems-saved-inputs-"
+    ) as temporary:
+        workspace = Path(temporary)
+        saved = workspace / "runs/full-parallel-strength-v1"
+        (saved / "inputs").mkdir(parents=True)
+        atomic(saved / "SOURCE_INPUTS.json", {"selection_control_only": True})
+        atomic(saved / "inputs/PROFILE.json", profile("parallel"))
+        shutil.copyfile(base, saved / "inputs/BASE_PROTOCOL.json")
+        pin = hashlib.sha256((saved / "inputs/PROFILE.json").read_bytes()).hexdigest()
+        selected = SimpleNamespace(
+            kind="parallel",
+            profile=workspace / "missing-live-profile.json",
+            expected_profile_sha256=pin,
+        )
+        rule, original, actual_pin, path, _ = contract_inputs(workspace, selected)
+        assert rule["kind"] == "parallel" and actual_pin == pin and path == saved
+        assert not selected.profile.exists() and not (workspace / "config").exists()
+        controls.append({"case": "resume-uses-saved-contract-without-live-configs"})
+        selected.profile.write_text('{"edited":"unrelated later live file"}')
+        assert contract_inputs(workspace, selected)[2] == pin
+        controls.append({"case": "later-live-profile-cannot-replace-saved-input"})
+        original_saved = (saved / "inputs/PROFILE.json").read_bytes()
+        altered = profile("parallel")
+        altered["comparisons"][0]["pairs"] = 1
+        atomic(saved / "inputs/PROFILE.json", altered)
+        try:
+            contract_inputs(workspace, selected)
+        except ValueError as error:
+            assert "matrix" in str(error)
+            controls.append(
+                {"case": "changed-saved-contract-rejected", "reason": str(error)}
+            )
+        else:
+            raise AssertionError("resumed sample changed")
+        (saved / "inputs/PROFILE.json").write_bytes(original_saved)
+        with (saved / "inputs/BASE_PROTOCOL.json").open("ab") as stream:
+            stream.write(b" ")
+        try:
+            contract_inputs(workspace, selected)
+        except ValueError as error:
+            assert "original v4 profile differs" in str(error)
+            controls.append(
+                {"case": "changed-saved-base-rejected", "reason": str(error)}
+            )
+        else:
+            raise AssertionError("resumed actor lineage changed")
     # Exercise the actual owner entry point in an unsettled fresh workspace.
     # It must refuse before profile reads, source freezing or scope creation.
     with tempfile.TemporaryDirectory(
