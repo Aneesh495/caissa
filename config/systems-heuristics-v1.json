@@ -1,0 +1,338 @@
+{
+  "schema": "caissa-systems-strength-protocol-v1",
+  "status": "frozen",
+  "base_protocol_sha256": "a8623bf2d59561d434546ad612c939f994a4e699b1c61f4eba5b3114f26528dd",
+  "kind": "heuristics",
+  "comparisons": [
+    {
+      "id": "null-milliseconds-100",
+      "threads": 1,
+      "switch": "Null Move",
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 50
+    },
+    {
+      "id": "null-milliseconds-400",
+      "threads": 1,
+      "switch": "Null Move",
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 50
+    },
+    {
+      "id": "null-nodes-20000",
+      "threads": 1,
+      "switch": "Null Move",
+      "budget_kind": "nodes",
+      "budget": 20000,
+      "pairs": 25
+    },
+    {
+      "id": "null-nodes-100000",
+      "threads": 1,
+      "switch": "Null Move",
+      "budget_kind": "nodes",
+      "budget": 100000,
+      "pairs": 25
+    },
+    {
+      "id": "lmr-milliseconds-100",
+      "threads": 1,
+      "switch": "LMR",
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 50
+    },
+    {
+      "id": "lmr-milliseconds-400",
+      "threads": 1,
+      "switch": "LMR",
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 50
+    },
+    {
+      "id": "lmr-nodes-20000",
+      "threads": 1,
+      "switch": "LMR",
+      "budget_kind": "nodes",
+      "budget": 20000,
+      "pairs": 25
+    },
+    {
+      "id": "lmr-nodes-100000",
+      "threads": 1,
+      "switch": "LMR",
+      "budget_kind": "nodes",
+      "budget": 100000,
+      "pairs": 25
+    },
+    {
+      "id": "extensions-milliseconds-100",
+      "threads": 1,
+      "switch": "Extensions",
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 50
+    },
+    {
+      "id": "extensions-milliseconds-400",
+      "threads": 1,
+      "switch": "Extensions",
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 50
+    },
+    {
+      "id": "extensions-nodes-20000",
+      "threads": 1,
+      "switch": "Extensions",
+      "budget_kind": "nodes",
+      "budget": 20000,
+      "pairs": 25
+    },
+    {
+      "id": "extensions-nodes-100000",
+      "threads": 1,
+      "switch": "Extensions",
+      "budget_kind": "nodes",
+      "budget": 100000,
+      "pairs": 25
+    },
+    {
+      "id": "futility-milliseconds-100",
+      "threads": 1,
+      "switch": "Futility",
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 50
+    },
+    {
+      "id": "futility-milliseconds-400",
+      "threads": 1,
+      "switch": "Futility",
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 50
+    },
+    {
+      "id": "futility-nodes-20000",
+      "threads": 1,
+      "switch": "Futility",
+      "budget_kind": "nodes",
+      "budget": 20000,
+      "pairs": 25
+    },
+    {
+      "id": "futility-nodes-100000",
+      "threads": 1,
+      "switch": "Futility",
+      "budget_kind": "nodes",
+      "budget": 100000,
+      "pairs": 25
+    },
+    {
+      "id": "see-milliseconds-100",
+      "threads": 1,
+      "switch": "SEE",
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 50
+    },
+    {
+      "id": "see-milliseconds-400",
+      "threads": 1,
+      "switch": "SEE",
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 50
+    },
+    {
+      "id": "see-nodes-20000",
+      "threads": 1,
+      "switch": "SEE",
+      "budget_kind": "nodes",
+      "budget": 20000,
+      "pairs": 25
+    },
+    {
+      "id": "see-nodes-100000",
+      "threads": 1,
+      "switch": "SEE",
+      "budget_kind": "nodes",
+      "budget": 100000,
+      "pairs": 25
+    },
+    {
+      "id": "history-milliseconds-100",
+      "threads": 1,
+      "switch": "History",
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 50
+    },
+    {
+      "id": "history-milliseconds-400",
+      "threads": 1,
+      "switch": "History",
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 50
+    },
+    {
+      "id": "history-nodes-20000",
+      "threads": 1,
+      "switch": "History",
+      "budget_kind": "nodes",
+      "budget": 20000,
+      "pairs": 25
+    },
+    {
+      "id": "history-nodes-100000",
+      "threads": 1,
+      "switch": "History",
+      "budget_kind": "nodes",
+      "budget": 100000,
+      "pairs": 25
+    },
+    {
+      "id": "pvs-milliseconds-100",
+      "threads": 1,
+      "switch": "PVS",
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 50
+    },
+    {
+      "id": "pvs-milliseconds-400",
+      "threads": 1,
+      "switch": "PVS",
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 50
+    },
+    {
+      "id": "pvs-nodes-20000",
+      "threads": 1,
+      "switch": "PVS",
+      "budget_kind": "nodes",
+      "budget": 20000,
+      "pairs": 25
+    },
+    {
+      "id": "pvs-nodes-100000",
+      "threads": 1,
+      "switch": "PVS",
+      "budget_kind": "nodes",
+      "budget": 100000,
+      "pairs": 25
+    },
+    {
+      "id": "aspiration-milliseconds-100",
+      "threads": 1,
+      "switch": "Aspiration",
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 50
+    },
+    {
+      "id": "aspiration-milliseconds-400",
+      "threads": 1,
+      "switch": "Aspiration",
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 50
+    },
+    {
+      "id": "aspiration-nodes-20000",
+      "threads": 1,
+      "switch": "Aspiration",
+      "budget_kind": "nodes",
+      "budget": 20000,
+      "pairs": 25
+    },
+    {
+      "id": "aspiration-nodes-100000",
+      "threads": 1,
+      "switch": "Aspiration",
+      "budget_kind": "nodes",
+      "budget": 100000,
+      "pairs": 25
+    },
+    {
+      "id": "quiescence-milliseconds-100",
+      "threads": 1,
+      "switch": "Quiescence",
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 50
+    },
+    {
+      "id": "quiescence-milliseconds-400",
+      "threads": 1,
+      "switch": "Quiescence",
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 50
+    },
+    {
+      "id": "quiescence-nodes-20000",
+      "threads": 1,
+      "switch": "Quiescence",
+      "budget_kind": "nodes",
+      "budget": 20000,
+      "pairs": 25
+    },
+    {
+      "id": "quiescence-nodes-100000",
+      "threads": 1,
+      "switch": "Quiescence",
+      "budget_kind": "nodes",
+      "budget": 100000,
+      "pairs": 25
+    },
+    {
+      "id": "table-milliseconds-100",
+      "threads": 1,
+      "switch": "Use Table",
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 50
+    },
+    {
+      "id": "table-milliseconds-400",
+      "threads": 1,
+      "switch": "Use Table",
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 50
+    },
+    {
+      "id": "table-nodes-20000",
+      "threads": 1,
+      "switch": "Use Table",
+      "budget_kind": "nodes",
+      "budget": 20000,
+      "pairs": 25
+    },
+    {
+      "id": "table-nodes-100000",
+      "threads": 1,
+      "switch": "Use Table",
+      "budget_kind": "nodes",
+      "budget": 100000,
+      "pairs": 25
+    }
+  ],
+  "resources": {
+    "maximum_wall_seconds": 43200,
+    "maximum_active_seconds": 43200,
+    "maximum_attempts": 3,
+    "maximum_additional_bytes": 21474836480,
+    "minimum_free_bytes": 10737418240,
+    "workers": 2,
+    "parent_deadline_unix": 1793150297.974828,
+    "output": "runs/full-heuristics-strength-v1"
+  }
+}

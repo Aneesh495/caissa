@@ -1,0 +1,119 @@
+{
+  "schema": "caissa-systems-strength-development-verification-v1",
+  "status": "passed original bounded development scope",
+  "source_commit": "599e250fab525eb43954daba300e06ad81ef226c",
+  "epochs": [
+    {
+      "source": "ff377ed1549f5cd3aebb64fd5552acd02b8eebc3",
+      "run": 40276497301,
+      "jobs": [
+        {
+          "id": 121420243986,
+          "name": "native (macos-15)",
+          "conclusion": "success",
+          "started_at": "2026-10-26T05:51:28Z",
+          "completed_at": "2026-10-26T05:58:09Z",
+          "seconds": 401,
+          "log": "contract-macos.log",
+          "sha256": "7a985ec04f8f81c8db3113cd28e71f4e011d837d57e6f6d8a9aa0a7a1700b0e6"
+        },
+        {
+          "id": 121420244218,
+          "name": "native (ubuntu-24.04)",
+          "conclusion": "success",
+          "started_at": "2026-10-26T05:51:27Z",
+          "completed_at": "2026-10-26T05:57:15Z",
+          "seconds": 348,
+          "log": "contract-linux.log",
+          "sha256": "80d4613be3b993ceae207421158958b4ff4910b3c772a4fe6b1d3c0f7f3eee72"
+        }
+      ]
+    },
+    {
+      "source": "79881a0e7884d25788c771a7723721dc1df03f13",
+      "run": 40277272215,
+      "jobs": [
+        {
+          "id": 121422573079,
+          "name": "native (ubuntu-24.04)",
+          "conclusion": "success",
+          "started_at": "2026-10-26T05:59:54Z",
+          "completed_at": "2026-10-26T06:07:38Z",
+          "seconds": 464,
+          "log": "owner-linux.log",
+          "sha256": "7d6f063593eea7235e6635b2266817f8134dabcc05dd02a5a786af8fc49bcc94"
+        },
+        {
+          "id": 121422573325,
+          "name": "native (macos-15)",
+          "conclusion": "success",
+          "started_at": "2026-10-26T05:59:55Z",
+          "completed_at": "2026-10-26T06:06:39Z",
+          "seconds": 404,
+          "log": "owner-macos.log",
+          "sha256": "bae585d1deacfd2decb714342170a54277cea4ea0c629abac48a576faee8b078"
+        }
+      ]
+    },
+    {
+      "source": "599e250fab525eb43954daba300e06ad81ef226c",
+      "run": 40278156438,
+      "jobs": [
+        {
+          "id": 121425281239,
+          "name": "native (macos-15)",
+          "conclusion": "success",
+          "started_at": "2026-10-26T06:09:17Z",
+          "completed_at": "2026-10-26T06:14:49Z",
+          "seconds": 332,
+          "log": "final-macos.log",
+          "sha256": "67f85b80ea4aaf25ce5d810d8336206e012d6b665fc06b5c77baa79c8e697d7f"
+        },
+        {
+          "id": 121425281388,
+          "name": "native (ubuntu-24.04)",
+          "conclusion": "success",
+          "started_at": "2026-10-26T06:09:17Z",
+          "completed_at": "2026-10-26T06:17:02Z",
+          "seconds": 465,
+          "log": "final-linux.log",
+          "sha256": "01a682593f549c4f583ea3192f3f1b0526174d51e711cff5de46ec70972a6b4f"
+        }
+      ]
+    }
+  ],
+  "cumulative_hosted_seconds": {
+    "linux": 1277,
+    "macos": 1137
+  },
+  "executions_used": 3,
+  "maximum_executions": 3,
+  "maximum_seconds_per_platform": 2700,
+  "original_scope": {
+    "schema": "caissa-bounded-development-scope-v1",
+    "origin_unix": 1792993701.3102112,
+    "deadline_unix": 1792997301.3102112,
+    "maximum_wall_seconds": 3600,
+    "maximum_ci_executions": 3,
+    "maximum_cumulative_ci_seconds_per_platform": 2700,
+    "parent_deadline_unix": 1793150297.974828,
+    "purpose": "Independent prospective parallel/heuristic actor, complete comparison matrix and full journal admission. Remote metadata/CLI semantic controls only during current external games. No production profile frozen or system-comparison game started."
+  },
+  "checks": {
+    "linux": {
+      "metadata_comparisons": 46,
+      "producer_actor_comparisons": 46,
+      "control_cases": 33,
+      "full_sample_certified": false
+    },
+    "macos": {
+      "metadata_comparisons": 46,
+      "producer_actor_comparisons": 46,
+      "control_cases": 33,
+      "full_sample_certified": false
+    }
+  },
+  "production_profiles_frozen_during_controls": false,
+  "full_G10_certified": false,
+  "full_acceptance": false
+}

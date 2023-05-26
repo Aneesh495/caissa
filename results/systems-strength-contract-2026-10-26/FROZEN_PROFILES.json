@@ -1,0 +1,69 @@
+{
+  "schema": "caissa-prospective-systems-profiles-v1",
+  "frozen_unix": 1792995674.848533,
+  "implementation_source_commit": "599e250fab525eb43954daba300e06ad81ef226c",
+  "verification_run": 40278156438,
+  "profiles": [
+    {
+      "kind": "parallel",
+      "profile": "config/systems-parallel-v1.json",
+      "sha256": "5b405adcb7edbdc4bbae410612c7867879a83f73e635ed5ca29c26eeee072f48",
+      "comparisons": 6,
+      "scheduled_games": 1200,
+      "scope_output": "runs/full-parallel-strength-v1",
+      "scope_started": false,
+      "games_started": false,
+      "actor": {
+        "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+        "compiled_source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+        "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+        "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+        "original_model_campaign_sha256": "92d62149d3a4de184ad93b9f5f04f77e38386992d04d02bd824b33cf3e5241bd",
+        "original_selection_sha256": "1cd49b3062986086e74396fce27fbbdf4886a0ce9b5b6b6350533b27e3ac8b84",
+        "original_independent_learning_sha256": "19e2b2d26bc1b76f16c466519737f87dd4a1a3ff0d0102656208bc33f5aaa20b",
+        "wire_export_sha256": "50d46da414a85fadefa0aba85201d11caf51187fda943e02eafc33a5f034f736",
+        "original_protocol_sha256": "4cf0545699ab141dafe4e3f67fcbdb7b996cbec2b8e0b246fc2137a5dc963f62",
+        "openings_sha256": "61b8c8812a107e0ea0b6e8a763a0d52d088b6b8480a0879a4952c4689bae71a8",
+        "classical_contract": 1,
+        "selected_seed": 73,
+        "selected_step": 2750,
+        "neural_weight": 10,
+        "lazy_neural": true
+      }
+    },
+    {
+      "kind": "heuristics",
+      "profile": "config/systems-heuristics-v1.json",
+      "sha256": "1d6bb4a26490d7ec4b4cc28c8da8fda0ad4dfd10678edcf2f2a69f13eba2f592",
+      "comparisons": 40,
+      "scheduled_games": 3000,
+      "scope_output": "runs/full-heuristics-strength-v1",
+      "scope_started": false,
+      "games_started": false,
+      "actor": {
+        "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+        "compiled_source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+        "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+        "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+        "original_model_campaign_sha256": "92d62149d3a4de184ad93b9f5f04f77e38386992d04d02bd824b33cf3e5241bd",
+        "original_selection_sha256": "1cd49b3062986086e74396fce27fbbdf4886a0ce9b5b6b6350533b27e3ac8b84",
+        "original_independent_learning_sha256": "19e2b2d26bc1b76f16c466519737f87dd4a1a3ff0d0102656208bc33f5aaa20b",
+        "wire_export_sha256": "50d46da414a85fadefa0aba85201d11caf51187fda943e02eafc33a5f034f736",
+        "original_protocol_sha256": "4cf0545699ab141dafe4e3f67fcbdb7b996cbec2b8e0b246fc2137a5dc963f62",
+        "openings_sha256": "61b8c8812a107e0ea0b6e8a763a0d52d088b6b8480a0879a4952c4689bae71a8",
+        "classical_contract": 1,
+        "selected_seed": 73,
+        "selected_step": 2750,
+        "neural_weight": 10,
+        "lazy_neural": true
+      }
+    }
+  ],
+  "original_v4_samples_and_failures_unchanged": true,
+  "current_external_scope_not_modified": true,
+  "strength_settlement_and_host_lease_required_before_start": true,
+  "G07_audit_priority_before_systems_games": true,
+  "no_model_checkpoint_or_mixture_selection_from_matches": true,
+  "full_G10_certified": false,
+  "full_acceptance": false
+}
