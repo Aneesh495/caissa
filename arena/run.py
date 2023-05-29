@@ -46,7 +46,7 @@ def write_pgn(record, actors, path):
     temp.replace(path.with_suffix(".pgn"))
 
 
-def game(config, opening, pair, reverse, root):
+def game(config, opening, pair, reverse, root, recovery_barrier=None):
     path = root / "games" / f"{pair:06d}-{reverse}.json"
     if path.exists():
         record = json.loads(path.read_text())
@@ -162,15 +162,35 @@ def game(config, opening, pair, reverse, root):
         "uci_handshakes": [c.handshake for c in clients],
     }
     atomic_json(path, record)
+    if recovery_barrier is not None and pair == 0 and reverse == 0:
+        # This opt-in diagnostic failpoint leaves a committed authoritative
+        # JSON before its derived PGN and reversed-color partner exist.
+        atomic_json(
+            recovery_barrier,
+            {
+                "schema": "caissa-arena-commit-barrier-v1",
+                "pair": pair,
+                "reverse": reverse,
+                "game_sha256": digest(path),
+            },
+        )
+        deadline = time.monotonic() + 30
+        while not recovery_barrier.with_suffix(".release").exists():
+            if time.monotonic() >= deadline:
+                raise TimeoutError("diagnostic recovery barrier deadline exhausted")
+            time.sleep(0.01)
     write_pgn(record, actors, path)
     return record
 
 
-def pair(config, opening, identity, root):
+def pair(config, opening, identity, root, recovery_barrier=None):
     path = root / "pairs" / f"{identity:06d}.json"
     if path.exists():
         return json.loads(path.read_text())
-    games = [game(config, opening, identity, reverse, root) for reverse in [0, 1]]
+    games = [
+        game(config, opening, identity, reverse, root, recovery_barrier)
+        for reverse in [0, 1]
+    ]
     record = {
         "schema": "caissa-arena-pair-v1",
         "pair": identity,
@@ -186,10 +206,27 @@ def main():
     ap.add_argument("config", type=Path)
     ap.add_argument("output", type=Path)
     ap.add_argument("--workers", type=int, default=2)
+    ap.add_argument(
+        "--recovery-barrier",
+        type=Path,
+        help="Bounded fault-injection point for the isolated two-pair recovery diagnostic",
+    )
     a = ap.parse_args()
     if not 1 <= a.workers <= 4:
         ap.error("workers outside [1,4]")
     config = json.loads(a.config.read_text())
+    if a.recovery_barrier is not None:
+        if not (
+            config.get("profile") == "recovery-diagnostic-v2"
+            and config.get("pairs") == 2
+            and a.workers == 1
+            and config.get("nodes") == 2000
+            and a.recovery_barrier.resolve().is_relative_to(a.output.resolve())
+            and not a.recovery_barrier.exists()
+        ):
+            raise ValueError(
+                "recovery barrier is restricted to its isolated diagnostic"
+            )
     openings = json.loads(Path(config["openings"]).read_text())["openings"]
     if not 1 <= config["pairs"] <= 100000 or not 64 <= config["max_plies"] <= 1024:
         raise ValueError("campaign resource bounds")
@@ -247,7 +284,14 @@ def main():
             i = next(pending, None)
             if i is not None:
                 active[
-                    pool.submit(pair, config, openings[i % len(openings)], i, a.output)
+                    pool.submit(
+                        pair,
+                        config,
+                        openings[i % len(openings)],
+                        i,
+                        a.output,
+                        a.recovery_barrier,
+                    )
                 ] = i
 
         for _ in range(a.workers):

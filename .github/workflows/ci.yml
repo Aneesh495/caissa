@@ -99,6 +99,7 @@ jobs:
           python -m tests.match_journals --campaign runs/ci-arena --output runs/ci-match-journals
           python -m tests.strength_bundle --campaign runs/ci-arena --output runs/ci-strength-bundle
           python -m tests.systems_strength --campaign runs/ci-arena --output runs/ci-systems-strength
+          python -m tests.arena_recovery_component --engine build/caissa --output runs/ci-arena-recovery-component
           python -m tests.strength_controls --campaign runs/ci-arena --output runs/ci-strength-controls
           python -m tools.evidence --checkout . --engine build/caissa --network models/diagnostic-v2.cai --arena runs/ci-arena --output runs/ci-evidence
           python -m verification.verify runs/ci-evidence --checkout . --expected-commit "$GITHUB_SHA" --profile diagnostic
@@ -122,6 +123,7 @@ jobs:
             runs/ci-strength-bundle/*.json
             runs/ci-strength-bundle/*.log
             runs/ci-systems-strength/
+            runs/ci-arena-recovery-component/
             runs/service.log
             runs/ci-source-binding/CONTROLS.json
             runs/ci-strength-v4-profile/CONTROLS.json

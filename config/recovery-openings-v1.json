@@ -1,0 +1,8 @@
+{
+  "schema": "caissa-recovery-openings-v1",
+  "purpose": "Short legal games for forced process-interruption and journal reconstruction; never a strength sample",
+  "openings": [
+    {"id": "recovery-white-mate", "fen": "7k/5K2/6Q1/8/8/8/8/8 w - - 0 1", "moves": []},
+    {"id": "recovery-black-mate", "fen": "8/8/8/8/8/6q1/5k2/7K b - - 0 1", "moves": []}
+  ]
+}

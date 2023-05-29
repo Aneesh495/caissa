@@ -731,6 +731,24 @@ def verify(
             )
             review.setdefault("verified_semantic_gates", {})[gate] = result
             del review["pending_semantic_gates"][gate]
+        domain = inputs["domains"]["G11"]
+        if domain.get("driver") == "forced-recovery-components-v1":
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G11"
+                ] = "arena recovery requires an external --replay-output directory"
+            else:
+                from verification.recovery_bundle import verify_arena
+
+                result = verify_arena(
+                    bundle, inputs, Path(replay_output).resolve() / "G11-arena"
+                )
+                review.setdefault("verified_semantic_components", {}).setdefault(
+                    "G11", {}
+                )["arena"] = result
+                review["pending_semantic_gates"][
+                    "G11"
+                ] = "independent training and original-data/split recovery components still required"
         domain = inputs["domains"]["G13"]
         if domain.get("driver") == "performance-observations-v2":
             if replay_output is None:
