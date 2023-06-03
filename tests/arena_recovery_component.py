@@ -8,11 +8,14 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import os
 from pathlib import Path
 
 from tools.campaign_process import atomic
 from verification.bundle import Bundle
 from verification.recovery_bundle import verify_arena
+from tests.full_bundle import fixture, reference, seal
+from tests.source_binding import repository
 
 
 def main():
@@ -85,9 +88,9 @@ def main():
             if p.is_file()
         }
         atomic(evidence / "MANIFEST.json", {"files": files})
-        refs = [{"artifact": name, "sha256": digest} for name, digest in files.items()]
+        refs = [{"path": name, "sha256": digest} for name, digest in files.items()]
         config_ref = next(
-            ref for ref in refs if ref["artifact"] == "arena-component/CONFIG.json"
+            ref for ref in refs if ref["path"] == "arena-component/CONFIG.json"
         )
         inputs = {
             "engine": {"sha256": config["engine_sha256"]},
@@ -177,6 +180,85 @@ def main():
             pair["games"][1] = value
             atomic(pair_path, pair)
         run(case, folder, reason)
+    # Saved arena-pass receipts cannot discharge full G11 through the real
+    # whole-project entry point. Hashes are updated for every forged artifact.
+    project = Path(__file__).resolve().parents[1]
+    with tempfile.TemporaryDirectory(prefix="caissa-full-g11-receipts-") as temporary:
+        temporary = Path(temporary)
+        source = temporary / "source"
+        commit = repository(source)
+        for case in [
+            "saved-pass-is-not-raw-recovery",
+            "whole-g11-needs-all-raw-arena-artifacts",
+        ]:
+            evidence = temporary / case
+            inputs = fixture(evidence, project, source, commit)
+            observed = {
+                "status": "passed",
+                "full_gate": True,
+                "full_G11_certified": True,
+            }
+            if case == "whole-g11-needs-all-raw-arena-artifacts":
+                observed.update(
+                    {
+                        "schema": "caissa-arena-recovery-observations-v1",
+                        "profile": "recovery-component-only",
+                        "engine_sha256": inputs["engine"]["sha256"],
+                        "source_commit": commit,
+                        "maximum_seconds": 120,
+                        "maximum_output_bytes": 128 * 1024**2,
+                        "minimum_free_bytes": 10 * 1024**3,
+                        "started_unix": 1,
+                        "deadline_unix": 121,
+                    }
+                )
+            raw = evidence / "arena-component/CONFIG.json"
+            raw.parent.mkdir()
+            atomic(raw, observed)
+            ref = reference(evidence, "arena-component/CONFIG.json")
+            inputs["domains"]["G11"].update(
+                {
+                    "driver": "forced-recovery-components-v1",
+                    "arena_recovery": {"config": ref},
+                    "artifacts": [ref],
+                }
+            )
+            pin = seal(evidence, inputs)
+            argv = [
+                sys.executable,
+                "-m",
+                "verification.verify",
+                str(evidence),
+                "--checkout",
+                str(source),
+                "--expected-commit",
+                commit,
+                "--expected-inputs-sha256",
+                pin,
+                "--profile",
+                "full",
+                "--replay-output",
+                str(temporary / (case + "-replay")),
+            ]
+            result = subprocess.run(
+                argv,
+                cwd=temporary,
+                env={**os.environ, "PYTHONPATH": str(project)},
+                capture_output=True,
+                text=True,
+                timeout=30,
+            )
+            (args.output / (case + ".log")).write_text(result.stdout + result.stderr)
+            value = json.loads(result.stdout)
+            reason = (
+                "raw forced-recovery observations"
+                if case == "saved-pass-is-not-raw-recovery"
+                else "raw component inventory"
+            )
+            assert result.returncode == 1 and reason in value["reason"], (case, value)
+            controls.append(
+                {"case": case, "actual_exit": result.returncode, "observed": value}
+            )
     # Strength profiles cannot activate the fault-injection branch.
     candidate = json.loads((root / "ARENA_INPUT.json").read_text())
     candidate["profile"] = "full fixed-sample original-engine strength"
