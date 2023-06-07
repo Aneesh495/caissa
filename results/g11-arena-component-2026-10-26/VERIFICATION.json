@@ -1,0 +1,99 @@
+{
+  "schema": "caissa-g11-arena-development-verification-v1",
+  "status": "passed arena component development; training/data components remain pending",
+  "source_commit": "973f288afb3d05e736da11370c253b84c7114679",
+  "epochs": [
+    {
+      "run": 40282526471,
+      "source": "dac90876e07030f06ca6628da12e1abe3b8c361c",
+      "jobs": [
+        {
+          "id": 121438766824,
+          "name": "native (macos-15)",
+          "conclusion": "failure",
+          "started_at": "2026-10-26T06:54:05Z",
+          "completed_at": "2026-10-26T06:59:30Z",
+          "seconds": 325,
+          "log": "failed-1-macos.log",
+          "sha256": "10adad041d6b1da8f96177e3fe8b537b429e8c0449a331f98d13a8d81ba234dc"
+        },
+        {
+          "id": 121438767105,
+          "name": "native (ubuntu-24.04)",
+          "conclusion": "failure",
+          "started_at": "2026-10-26T06:54:04Z",
+          "completed_at": "2026-10-26T06:59:44Z",
+          "seconds": 340,
+          "log": "failed-1-linux.log",
+          "sha256": "ef0f1e6af8a4943665eb775c9c575e2c244f877ede893a0e8cdfa87334c8c1b0"
+        }
+      ]
+    },
+    {
+      "run": 40283219837,
+      "source": "973f288afb3d05e736da11370c253b84c7114679",
+      "jobs": [
+        {
+          "id": 121440904802,
+          "name": "native (macos-15)",
+          "conclusion": "success",
+          "started_at": "2026-10-26T07:01:08Z",
+          "completed_at": "2026-10-26T07:07:30Z",
+          "seconds": 382,
+          "log": "passed-2-macos.log",
+          "sha256": "b98dd1394ad3670231e00fb70127e2bb926220d82b31ad123edd8e4b93ba3c03"
+        },
+        {
+          "id": 121440905124,
+          "name": "native (ubuntu-24.04)",
+          "conclusion": "success",
+          "started_at": "2026-10-26T07:01:08Z",
+          "completed_at": "2026-10-26T07:07:32Z",
+          "seconds": 384,
+          "log": "passed-2-linux.log",
+          "sha256": "3b5c30ae194724d3410afc70378a257f96dac72da117f650f3ae4a9da30d2dae"
+        }
+      ]
+    }
+  ],
+  "cumulative_hosted_seconds": {
+    "linux": 724,
+    "macos": 707
+  },
+  "executions_used": 2,
+  "original_scope": {
+    "schema": "caissa-bounded-development-scope-v1",
+    "origin_unix": 1792996715.7721338,
+    "deadline_unix": 1793000315.7721338,
+    "maximum_wall_seconds": 3600,
+    "maximum_ci_executions": 3,
+    "maximum_cumulative_ci_seconds_per_platform": 2700,
+    "parent_deadline_unix": 1793150297.974828,
+    "purpose": "G11 arena recovery component: deterministic diagnostic-only commit failpoint, actual forced SIGKILL before derivedPGN/pair, preserved raw snapshots and independent game/PGN/outcome reconstruction. Remote native controls only while external strength runs. Training and data recovery remain separate; no fullG11 gate claimed; old scopes never resumed."
+  },
+  "observed": {
+    "linux": {
+      "status": "passed",
+      "cases": 16,
+      "actual_forced_exit": -9,
+      "positive_reconstructed_games": 4,
+      "full_G11_certified": false,
+      "full_acceptance": false
+    },
+    "macos": {
+      "status": "passed",
+      "cases": 16,
+      "actual_forced_exit": -9,
+      "positive_reconstructed_games": 4,
+      "full_G11_certified": false,
+      "full_acceptance": false
+    }
+  },
+  "actual_independent_native_resumption_probes_per_platform": 2,
+  "fresh_games_per_probe": 3,
+  "protected_game_preserved_per_probe": 1,
+  "first_failure": "Test fixture used artifact instead of exact path/SHA reference; strict Bundle reader correctly rejected it. Original failures retained.",
+  "full_G11_certified": false,
+  "full_acceptance": false,
+  "raw_artifact_distribution": "Hosted workflow artifacts include exact positive/killed/native-replay journals and controls. Portable bulk download remains pending until timed matches release the host."
+}
