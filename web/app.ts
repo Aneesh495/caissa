@@ -135,6 +135,7 @@ function cancel(): void {
 }
 async function selectNode(id: number, manual = true): Promise<void> {
   if (manual) playing++; generation++; const version = generation; cancel(); resetInspection(); current = id; selected = undefined; legal = []; variations.clear(); drawLines(); drawBoard(); drawMoves(); save();
+  element('depth').textContent = '0 / 0'; element('nodes').textContent = '0'; element('nps').textContent = '0';
   const value = await api<PositionState>('state', { fen: node().fen, chess960: game.chess960 });
   if (version !== generation) return; legal = value.moves; drawBoard();
   status(value.moves.length ? (value.check ? 'Check. Find a legal reply.' : 'Select a piece or start an analysis.') : (value.check ? 'Checkmate.' : 'No legal moves.'));
@@ -192,6 +193,7 @@ function drawLines(): void {
 function movePath(): string[] { const path: string[] = []; let id = current; while (id) { const entry = node(id); path.push(entry.uci); id = entry.parent; } return path.reverse(); }
 async function startAnalysis(): Promise<void> {
   cancel(); const controller = new AbortController(); active = controller; const version = generation, capturedNode = current, capturedSide = node().fen.split(' ')[1];
+  variations.clear(); drawLines(); element('depth').textContent = '0 / 0'; element('nodes').textContent = '0'; element('nps').textContent = '0';
   resetInspection('Waiting for the finished search summary.'); const inspect = element<HTMLInputElement>('inspect-search').checked; inspectionPending = inspect;
   element<HTMLButtonElement>('cancel').disabled = false; element<HTMLButtonElement>('analyze').disabled = true; element('analysis-state').textContent = 'SEARCHING'; element('analysis-state').classList.add('active');
   const numeric = (id: string): number => Number(element<HTMLSelectElement>(id).value);

@@ -2,9 +2,17 @@ import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process';
 import { createInterface } from 'node:readline';
 import { resolve } from 'node:path';
 import { StringDecoder } from 'node:string_decoder';
+import { readFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { parseStatistics, parseTrace } from './telemetry.js';
 
 export const enginePath = resolve(process.env['CAISSA_ENGINE'] ?? 'build/caissa');
+const networkPath = process.env['CAISSA_NETWORK'] ? resolve(process.env['CAISSA_NETWORK']) : undefined;
+if (networkPath && /[\r\n\0]/.test(networkPath)) throw new Error('Invalid local network path.');
+// Serving the experimental selected model is opt-in. The normal analysis room
+// continues to use the unchanged classical evaluator.
+export const evaluation = networkPath ? 'experimental neural blend (10%)' : 'classical';
+export const networkSha256 = networkPath ? createHash('sha256').update(readFileSync(networkPath)).digest('hex') : null;
 export class RequestError extends Error {
   constructor(message: string, public readonly status = 400) { super(message); }
 }
@@ -74,11 +82,12 @@ export function analyze(request: AnalysisRequest, emit: (event: string, value: u
     if (closing && !line.startsWith('bestmove ')) return;
     if (line.length > 8192) { emit('error', { message: 'Oversized engine message.' }); cancel(); return; }
     if (line === 'uciok') {
-      child.stdin.write(`setoption name Threads value ${request.threads}\nsetoption name Hash value ${request.hash}\nsetoption name MultiPV value ${request.multipv}\nsetoption name UCI_Chess960 value ${request.chess960}\nsetoption name Search Stats value ${request.inspect}\nsetoption name Trace Samples value ${request.inspect ? 8 : 0}\nisready\n`);
+      const evaluator = networkPath ? `setoption name EvalFile value ${networkPath}\nsetoption name Neural Weight value 10\nsetoption name Use Neural value true\n` : 'setoption name Use Neural value false\n';
+      child.stdin.write(`setoption name Threads value ${request.threads}\nsetoption name Hash value ${request.hash}\nsetoption name MultiPV value ${request.multipv}\nsetoption name UCI_Chess960 value ${request.chess960}\n${evaluator}setoption name Lazy Neural value true\nsetoption name Search Stats value ${request.inspect}\nsetoption name Trace Samples value ${request.inspect ? 8 : 0}\nisready\n`);
     } else if (line === 'readyok' && !initialized && !closing) {
       initialized = true;
       child.stdin.write(`position fen ${request.fen}${request.moves.length ? ' moves ' + request.moves.join(' ') : ''}\ngo movetime ${request.milliseconds}\n`);
-      emit('started', { engine: 'Caissa', evaluation: 'classical', milliseconds: request.milliseconds });
+      emit('started', { engine: 'Caissa', evaluation, networkSha256, milliseconds: request.milliseconds });
     } else if (line.startsWith('info depth ')) {
       if (!emit('info', parseInfo(line))) cancel();
     } else if (request.inspect && (line.startsWith('info string stats ') || line.startsWith('info string trace '))) {

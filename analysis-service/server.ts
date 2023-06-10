@@ -2,7 +2,7 @@ import { createServer, type IncomingMessage, type ServerResponse } from 'node:ht
 import { readFile } from 'node:fs/promises';
 import { randomBytes } from 'node:crypto';
 import { resolve } from 'node:path';
-import { analyze, nativeJson, RequestError, shutdown, workerCounts, type AnalysisRequest } from './native.js';
+import { analyze, nativeJson, RequestError, shutdown, workerCounts, evaluation, networkSha256, type AnalysisRequest } from './native.js';
 
 const port = Number(process.env['PORT'] ?? '8765');
 const token = randomBytes(24).toString('hex');
@@ -56,7 +56,7 @@ async function route(request: IncomingMessage, response: ServerResponse): Promis
     if (request.headers.origin && request.headers.origin !== allowedOrigin) throw new RequestError('Origin rejected.', 403);
     for (const [id, time] of sessions) if (Date.now() - time > 3600000) { sessions.delete(id); rate.delete(id); }
     if (sessions.size >= 64) throw new RequestError('Local session limit exceeded.', 429);
-    const id = randomBytes(16).toString('hex'); sessions.set(id, Date.now()); json(response, 200, { token, session: id, engine: 'Caissa', evaluation: 'classical' }); return;
+    const id = randomBytes(16).toString('hex'); sessions.set(id, Date.now()); json(response, 200, { token, session: id, engine: 'Caissa', evaluation, networkSha256 }); return;
   }
   if (path.startsWith('/api/')) {
     authorize(request);
