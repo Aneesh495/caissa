@@ -335,6 +335,14 @@ def verify(root, engine_sha256, network_sha256, source_commit, maximum_seconds=6
                 saw_neural = False
                 for request in complete:
                     parameters = strict_json(request["request"])
+                    require(
+                        parameters.get("threads") == 1
+                        and parameters.get("hash") == 16
+                        and parameters.get("multipv") == 3
+                        and parameters.get("milliseconds") in [1000, 30000]
+                        and parameters.get("inspect") is True,
+                        "G12 actual browser analysis resources differ",
+                    )
                     board = chess.Board(
                         parameters["fen"], chess960=parameters["chess960"]
                     )
@@ -346,6 +354,7 @@ def verify(root, engine_sha256, network_sha256, source_commit, maximum_seconds=6
                         )
                         board.push(move)
                     stream = frames(request["body"])
+                    latest = {}
                     require(
                         stream[0][0] == "started"
                         and not any(k == "error" for k, _ in stream),
@@ -358,6 +367,7 @@ def verify(root, engine_sha256, network_sha256, source_commit, maximum_seconds=6
                     )
                     for event, value in stream:
                         if event == "info":
+                            latest[value.get("multipv", 1)] = value
                             position = board.copy()
                             for uci in value.get("pv", []):
                                 move = chess.Move.from_uci(uci)
@@ -382,6 +392,21 @@ def verify(root, engine_sha256, network_sha256, source_commit, maximum_seconds=6
                                 "G12 requested evaluator was not actually used",
                             )
                             saw_neural = True
+                    if parameters["milliseconds"] == 1000:
+                        visible = [
+                            f"{rank}. "
+                            + " ".join(value.get("pv", []))
+                            + (
+                                " (" + value["bound"] + ")"
+                                if value.get("bound")
+                                else ""
+                            )
+                            for rank, value in sorted(latest.items())
+                        ]
+                        require(
+                            visible and by_name["analysis"]["lines"] == visible,
+                            "G12 displayed principal variations differ from actual native stream",
+                        )
                 require(
                     saw_neural,
                     "G12 completed browser search lacks actual evaluator counters",
@@ -409,6 +434,71 @@ def verify(root, engine_sha256, network_sha256, source_commit, maximum_seconds=6
                         any(e.filename.endswith(".trace") for e in entries)
                         and any(e.filename.endswith(".network") for e in entries),
                         "G12 actual browser trace or network capture is missing",
+                    )
+                    require(archive.testzip() is None, "G12 browser trace CRC failed")
+                    operations, resources = [], []
+                    for entry in entries:
+                        if entry.filename.endswith((".trace", ".network")):
+                            require(
+                                entry.file_size <= 16 * 1024**2,
+                                "G12 trace metadata exceeds bounds",
+                            )
+                            values = [
+                                strict_json(line)
+                                for line in archive.read(entry).splitlines()
+                            ]
+                            if entry.filename.endswith(".trace"):
+                                operations.extend(values)
+                            else:
+                                resources.extend(values)
+                    settings = [
+                        r for r in operations if r.get("type") == "context-options"
+                    ]
+                    require(
+                        len(settings) == 1
+                        and settings[0].get("browserName") == "chromium"
+                        and settings[0]["options"]["viewport"]
+                        == {"width": width, "height": 900},
+                        "G12 real browser trace context differs",
+                    )
+                    calls = [r for r in operations if r.get("type") == "before"]
+                    require(
+                        [
+                            r["params"]["key"]
+                            for r in calls
+                            if r.get("method") == "keyboardPress"
+                        ]
+                        == ["Enter", "ArrowUp", "ArrowUp", "Enter"],
+                        "G12 trace lacks the actual keyboard edit",
+                    )
+                    require(
+                        not any(
+                            r.get("method") in {"route", "routeFromHAR", "fulfill"}
+                            for r in calls
+                        ),
+                        "G12 browser intercepted production responses",
+                    )
+                    urls = {
+                        r["snapshot"]["request"]["url"].removeprefix(
+                            "http://127.0.0.1:18771"
+                        )
+                        for r in resources
+                        if r.get("type") == "resource-snapshot"
+                        and r["snapshot"]["response"]["status"] == 200
+                    }
+                    require(
+                        {
+                            "/",
+                            "/app.js",
+                            "/style.css",
+                            "/api/session",
+                            "/api/pgn",
+                            "/api/state",
+                            "/api/move",
+                            "/api/analyze",
+                        }
+                        <= urls,
+                        "G12 trace lacks actual product/native routes",
                     )
         return {
             "status": "passed",

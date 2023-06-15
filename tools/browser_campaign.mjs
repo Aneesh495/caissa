@@ -109,7 +109,7 @@ async function exercise(mode, width) {
   const exported = await snapshot(page, 'export', mode, width);
   await page.locator('#flip').click(); const flipped = await snapshot(page, 'flip', mode, width); assert.equal(flipped.cells[0].square, 'h1');
   await page.locator('#flip').click();
-  for (const [id, value] of Object.entries({ time: '1000', threads: '1', multipv: '2', hash: '16' })) await page.locator('#' + id).selectOption(value);
+  for (const [id, value] of Object.entries({ time: '1000', threads: '1', multipv: '3', hash: '16' })) await page.locator('#' + id).selectOption(value);
   await page.locator('#inspect-search').check();
   await page.locator('#analyze').click();
   await page.waitForFunction(() => document.querySelector('#status').textContent.startsWith('Analysis complete.'));

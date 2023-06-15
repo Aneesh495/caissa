@@ -53,7 +53,15 @@ def main():
         timeout=250,
     )
     (args.output / "producer.log").write_text(actual.stdout + actual.stderr)
-    assert actual.returncode == 0, actual.stdout + actual.stderr
+    assert actual.returncode == 0, (
+        actual.stdout
+        + actual.stderr
+        + (
+            (root / "browser.log").read_text()
+            if (root / "browser.log").exists()
+            else ""
+        )
+    )
     config = json.loads((root / "CONFIG.json").read_text())
     results = []
 
@@ -130,11 +138,22 @@ def main():
         ("neural-not-used", "NETWORK.json", "evaluator was not actually used"),
         ("changed-mixture", "CONFIG.json", "evaluator or component"),
         ("promoted-full-gate", "CONFIG.json", "evaluator or component"),
+        ("faked-visible-pv", "BROWSER.json", "displayed principal variations"),
+        ("empty-trace", "classical-1280/trace.zip", "trace context"),
     ]
     for label, name, reason in cases:
         with tempfile.TemporaryDirectory(prefix="caissa-browser-forgery-") as temporary:
             folder = Path(temporary) / "raw"
             shutil.copytree(root, folder)
+            if label == "empty-trace":
+                import zipfile
+
+                with zipfile.ZipFile(folder / name, "w") as archive:
+                    archive.writestr("trace.trace", "")
+                    archive.writestr("trace.network", "")
+                seal(folder)
+                run(label, folder, reason)
+                continue
             value = json.loads((folder / name).read_text())
             if label == "saved-pass-without-raw":
                 value["records"] = []
@@ -167,6 +186,10 @@ def main():
                 value["neural_weight"] = 20
             elif label == "promoted-full-gate":
                 value["full_G12_certified"] = True
+            elif label == "faked-visible-pv":
+                next(r for r in value["records"] if r["name"] == "analysis")[
+                    "lines"
+                ] = ["1. a1a8"]
             else:
                 changed = False
                 for row in value:
