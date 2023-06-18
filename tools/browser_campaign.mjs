@@ -134,7 +134,7 @@ async function exercise(mode, width) {
   // persistence. No route interception, response substitution or clock mocks.
   await page.locator('#pgn').fill(exported.pgn); await page.locator('#import-pgn').click();
   await page.waitForFunction(() => document.querySelector('#status').textContent.startsWith('Imported'));
-  await page.locator('#next').click(); await page.waitForFunction(() => document.querySelector('#fen').value === edited.fen);
+  await page.locator('#next').click(); await page.waitForFunction((fen) => document.querySelector('#fen').value === fen, edited.fen);
   const oldSession = requests.find((r) => r.mode === mode && r.width === width && r.url === '/api/session' && r.body);
   assert(oldSession); const previous = JSON.parse(oldSession.body);
   await stopServer(); await startServer(mode);
