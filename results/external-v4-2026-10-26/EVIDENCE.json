@@ -1,0 +1,19 @@
+{
+  "schema": "caissa-external-v4-publication-v1",
+  "status": "full external sample independently passed",
+  "games": 2000,
+  "full_acceptance": false,
+  "absolute_elo": null,
+  "raw_journals": "Original journals retained in runs/full-external-strength-v4; portable bulk distribution pending.",
+  "files": {
+    "STRENGTH_CAMPAIGN.json": "09144a683a459a30fff24f19802743b211baf6108079a921607364b33cef2377",
+    "external-1-SUMMARY.json": "a9114f1b94d86f076d313368f075353b53deb9511a72b5cb77e8ea13383e911f",
+    "SOURCE_INPUTS.json": "14b3678bda1d0268bd8103d7a2e4bf4c62c4dcbeb41af117a2559fa6a2e7fb4f",
+    "external-0-SUMMARY.json": "e7e62c7c8bbc5419dcfb66ff6e06d06864ebe969254cb253cb267ea9c73ea14b",
+    "SCOPE.json": "7eef44ad66e0cc3692da35d8e4adc5bd7a0239424d69b3c2c35b1357c4fec57c",
+    "independent-external.json": "ebfef415b326ae4e93680a7e8e28d9ba22d16a859819da90150d4746acc476e8",
+    "DEPLOYMENT_LINEAGE.json": "f351af26cc7bbe124a5f13399158eae40881eeef0d35bcfce1639d65b8efb1cd",
+    "PROTOCOL.json": "a8623bf2d59561d434546ad612c939f994a4e699b1c61f4eba5b3114f26528dd",
+    "external-2-SUMMARY.json": "79df20df6d67ae4082244072708b04fa97d7ddaebc2a95c7de32037521624965"
+  }
+}
