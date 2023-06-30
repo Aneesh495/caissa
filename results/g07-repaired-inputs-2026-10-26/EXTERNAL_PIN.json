@@ -1,0 +1,12 @@
+{
+  "schema": "caissa-external-g07-plan-pin-v1",
+  "pinned_unix": 1793002281.976296,
+  "plan_sha256": "24039cee6cb240b625f5469059481d080db38b573f9f21ce70b21f202fb86d67",
+  "catalog_sha256": "36daece55cb9807c1db7ef1c91e465c74fb722f8113617fdd1ba2ba4d03a436d",
+  "learning_manifest_sha256": "7732a1a7c18a2750b5f7ddc467cc5ea4b754ae09c178af515f2e7128debfc568",
+  "learning_inputs_sha256": "4566347f882149f6c73563458d0748ff2c973175f09d951b1bc6955f96a35a94",
+  "archived_reader_source_commit": "6c94365d529acad6b8aaa66963abb70d610c9aab",
+  "producer_source_commit": "cdff3bbb32721a157d00cd040e45b937ca055144",
+  "full_G07_certified": false,
+  "no_training_or_new_games": true
+}

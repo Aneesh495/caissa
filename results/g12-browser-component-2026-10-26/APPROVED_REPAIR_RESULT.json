@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "full_G12_certified": false,
+  "source": "cdff3bbb32721a157d00cd040e45b937ca055144",
+  "run": 40290174216,
+  "original_failed_executions_preserved": true,
+  "reason": "Independent browser reader lacks complete captured original-native SSE response evidence, despite producer completion of4real contexts. No test acceptance or gate waiver. Further execution not authorized.",
+  "G07_input_repair": "Separately succeeded. Actual full catalog and all240checkpoint inputs prepared, with original failed scope preserved. Full semantic data/learning audit now running."
+}
