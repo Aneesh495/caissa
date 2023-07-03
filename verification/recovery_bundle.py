@@ -64,3 +64,54 @@ def verify_arena(bundle, inputs, output):
     result["training_and_data_recovery_still_required"] = True
     (output / "ARENA_RECOVERY.json").write_text(json.dumps(result, indent=2) + "\n")
     return result
+
+
+def verify_training(bundle, inputs, output):
+    from verification.training_recovery import admit, verify as replay_training
+
+    domain = inputs["domains"]["G11"]
+    arguments = domain["training_recovery"]
+    require(
+        isinstance(arguments, dict) and set(arguments) == {"config"},
+        "G11 training component requires its exact raw CONFIG reference",
+    )
+    name = bundle.reference(arguments["config"])
+    prefix = str(Path(name).parent)
+    require(
+        prefix != "." and Path(name).name == "CONFIG.json",
+        "G11 training component needs its own raw directory",
+    )
+    admit(bundle.json(name), inputs["engine"]["sha256"], domain["source_commit"])
+    manifest_name = prefix + "/MANIFEST.json"
+    manifest = bundle.json(manifest_name)
+    require(
+        isinstance(manifest, dict)
+        and set(manifest) == {"files"}
+        and isinstance(manifest["files"], dict),
+        "G11 training component raw manifest differs",
+    )
+    expected = {prefix + "/" + path for path in manifest["files"]} | {manifest_name}
+    present = {path for path in bundle.identities if path.startswith(prefix + "/")}
+    declared = {bundle.reference(ref) for ref in domain["artifacts"]}
+    require(
+        present == expected and expected <= declared,
+        "G11 training raw inventory is missing, extra or undeclared",
+    )
+    output = Path(output).resolve()
+    require(
+        not output.is_relative_to(bundle.root),
+        "G11 training reconstruction must preserve original evidence",
+    )
+    raw = output / "raw"
+    raw.mkdir(parents=True, exist_ok=False)
+    for name in sorted(expected):
+        target = raw / name[len(prefix) + 1 :]
+        target.parent.mkdir(parents=True, exist_ok=True)
+        bundle.copy(name, target, 128 * 1024**2)
+    result = replay_training(raw, inputs["engine"]["sha256"], domain["source_commit"])
+    require(
+        result["component_pass"] is True and result["full_G11_certified"] is False,
+        "G11 training component attempted full project acceptance",
+    )
+    (output / "TRAINING_RECOVERY.json").write_text(json.dumps(result, indent=2) + "\n")
+    return result

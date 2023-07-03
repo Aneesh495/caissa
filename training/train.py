@@ -63,7 +63,22 @@ def main():
     ap.add_argument("--threads", type=int, default=2)
     ap.add_argument("--checkpoint-every", type=int, default=100)
     ap.add_argument("--resume", action="store_true")
+    ap.add_argument("--recovery-barrier", type=Path)
     a = ap.parse_args()
+    if a.recovery_barrier is not None and (
+        a.steps != 100
+        or a.checkpoint_every != 20
+        or a.seed != 17
+        or a.batch != 256
+        or a.threads != 2
+        or a.device != "cpu"
+        or a.network_version != 3
+        or a.neural_weight != 10
+        or a.resume
+        or a.recovery_barrier.resolve() != a.output.resolve() / "RECOVERY_READY.json"
+        or a.recovery_barrier.exists()
+    ):
+        ap.error("recovery barrier is restricted to the fixed100-step diagnostic")
     if not 1 <= a.neural_weight <= 100 or (
         a.neural_weight < 100 and a.network_version != 3
     ):
@@ -102,7 +117,14 @@ def main():
         k: v
         for k, v in vars(a).items()
         if k
-        not in ["resume", "output", "dataset", "network_version", "baseline_directory"]
+        not in [
+            "resume",
+            "output",
+            "dataset",
+            "network_version",
+            "baseline_directory",
+            "recovery_barrier",
+        ]
     }
     if a.neural_weight == 100:
         # Missing means the historical100-percent objective. Keep legacy
@@ -316,6 +338,10 @@ def main():
                 "seed": a.seed,
             },
         )
+    if a.resume:
+        from training.journal import recover
+
+        recover(a.output, first_step, a.checkpoint_every)
     log = (a.output / "observations.jsonl").open("a" if a.resume else "w")
     try:
         for step in range(first_step, a.steps):
@@ -373,6 +399,23 @@ def main():
                 log.write(json.dumps(record) + "\n")
                 log.flush()
                 print(json.dumps(record), flush=True)
+                if a.recovery_barrier is not None and step + 1 == 40:
+                    pointer_before = json.loads(pointer.read_text())
+                    atomic_json(
+                        a.recovery_barrier,
+                        {
+                            "schema": "caissa-training-recovery-boundary-v1",
+                            "uncommitted_step": 40,
+                            "committed": pointer_before["last"],
+                        },
+                    )
+                    end = time.monotonic() + 15
+                    while not a.recovery_barrier.with_suffix(".release").exists():
+                        if time.monotonic() >= end:
+                            raise TimeoutError(
+                                "fixed training recovery barrier expired"
+                            )
+                        time.sleep(0.005)
                 is_best = value < best
                 best = min(best, value)
                 state = {
