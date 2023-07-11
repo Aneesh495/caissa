@@ -80,6 +80,8 @@ def recover(folder, committed_step, checkpoint_every):
         return None
     prefix, tail = raw[:offset], raw[offset:]
     backups = folder / "recovery-tails"
+    if backups.is_symlink():
+        raise ValueError("unsafe recovery tail directory")
     backups.mkdir(exist_ok=True)
     if backups.is_symlink() or not backups.is_dir():
         raise ValueError("unsafe recovery tail directory")
