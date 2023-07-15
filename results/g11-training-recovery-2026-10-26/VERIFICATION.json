@@ -1,0 +1,56 @@
+{
+  "schema": "caissa-training-recovery-component-proof-v1",
+  "status": "passed both hosted platforms",
+  "source_commit": "34f40c293e114fafa8706dfd4d838b9be984ae55",
+  "run": 40295423374,
+  "platforms": [
+    "ubuntu-24.04",
+    "macos-15"
+  ],
+  "fixed_original_data_metadata_sha256": "51ab630fd7c986efa3010d0f2fc8b6bc1108af0917dc4ec408253a9de21be20e",
+  "actual_exit": -9,
+  "committed_before": 20,
+  "uncommitted_observation_before_kill": 40,
+  "final_steps_each": 100,
+  "checkpoint_pairs": 5,
+  "state_fields_independently_compared": [
+    "model",
+    "optimizer",
+    "scheduler",
+    "sampler",
+    "torch_rng",
+    "numpy_rng",
+    "python_rng",
+    "device_rng",
+    "config",
+    "step",
+    "updates",
+    "initial_hash",
+    "current_hash",
+    "best_validation",
+    "untrained_validation",
+    "schema"
+  ],
+  "controls_per_platform": 23,
+  "scope": "New recovery-only diagnostic. No original learning/strength campaign restarted or selected weights modified.",
+  "engineering_change": "Original trainer preserves complete committed journal prefix and durably retains uncommitted/torn suffix before recovery.",
+  "original_failed_run": 40294579714,
+  "original_failure_preserved": "linked recovery directory rejected before mkdir; initial guard fixture failure retained in both original logs",
+  "runtime_artifacts": [
+    {
+      "platform": "ubuntu-24.04",
+      "artifact_id": 12638530278
+    },
+    {
+      "platform": "macos-15",
+      "artifact_id": 12637823621
+    }
+  ],
+  "raw_bulk_portability_pending": true,
+  "full_G11_certified": false,
+  "full_acceptance": false,
+  "pending": [
+    "original-data/split recovery",
+    "final source and saved native-image binding"
+  ]
+}
