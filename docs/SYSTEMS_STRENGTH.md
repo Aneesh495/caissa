@@ -2,7 +2,10 @@
 
 `verification.systems_strength` admits prospective parallel and heuristic
 comparison contracts separately from the neural contribution experiment.
-No production systems profile or game sample is frozen by this implementation.
+The prospective profiles are frozen in `config/systems-parallel-v1.json` and
+`config/systems-heuristics-v1.json`. Their freeze proof is published in
+`results/systems-strength-contract-2026-10-26`. Freezing these profiles does
+not mean that their games have been collected.
 `tools.systems_strength` owns the separately bounded experiments. Its actual
 frozen profile, source archive and original learned inputs must be ready before
 games may start. It refuses to steal the current strength sequence's handoff.

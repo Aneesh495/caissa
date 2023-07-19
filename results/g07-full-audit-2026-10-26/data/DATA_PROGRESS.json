@@ -1,0 +1,1 @@
+{"phase": "completed", "seconds": 6151.219467083007, "wall_seconds": 6151.286327838898, "deadline_unix": 1793023884.8887901, "source_pairs": 114791, "completed_games": 229582, "rebuilt_splits": {"train": 10578434, "validation": 1336496, "test": 1301363}}

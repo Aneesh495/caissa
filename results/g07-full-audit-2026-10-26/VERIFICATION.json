@@ -1,0 +1,29 @@
+{
+  "schema": "caissa-full-g07-publication-v1",
+  "status": "passed G07 only",
+  "source_commit": "6c94365d529acad6b8aaa66963abb70d610c9aab",
+  "plan_sha256": "24039cee6cb240b625f5469059481d080db38b573f9f21ce70b21f202fb86d67",
+  "source_pairs": 114791,
+  "completed_games": 229582,
+  "original_observations": 16522987,
+  "rebuilt_splits": {
+    "train": 10578434,
+    "validation": 1336496,
+    "test": 1301363
+  },
+  "checkpoints_independently_evaluated": 240,
+  "selected_seed": 73,
+  "selected_step": 2750,
+  "closed_active_seconds": 6276.851625041003,
+  "original_learning_receipt_unchanged": true,
+  "full_acceptance": false,
+  "preserved_failed_domains": [
+    "original acquisition deadline",
+    "old q1024 numerical endpoints",
+    "old q1024 neural contribution",
+    "v4 incomplete neural sample and failed gain",
+    "G12 browser evidence capture"
+  ],
+  "bulk_corpus_and_checkpoints_still_required": true,
+  "published_unix": 1793013168.589319
+}
