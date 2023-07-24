@@ -64,12 +64,13 @@ def configuration(rule, row, engine, network, openings):
         options = {
             **common,
             "Threads": row["threads"] if role == "candidate" else 1,
-            "Use Neural": parallel,
         }
         if parallel:
             options.update({"EvalFile": str(network), "Neural Weight": 10})
         elif role == "opponent":
             options[row["switch"]] = False
+        # The original native protocol requires the model before activation.
+        options["Use Neural"] = parallel
         actors[role] = {
             "name": "Caissa " + rule["kind"] + " " + row["id"] + " " + role,
             "command": [str(engine)],
@@ -127,7 +128,7 @@ def context(root, args):
             source["commit"] == args.expected_commit,
             "systems original source commit differs",
         )
-        verify_archive(output / "source", root, source, args.expected_commit, PRODUCT)
+        verify_archive(root, output / "source", source, args.expected_commit, PRODUCT)
         if Path(__file__).resolve() != output / "source/tools/systems_strength.py":
             launcher = "import runpy,sys;sys.path.insert(0,sys.argv.pop(1));runpy.run_module('tools.systems_strength',run_name='__main__')"
             os.execv(

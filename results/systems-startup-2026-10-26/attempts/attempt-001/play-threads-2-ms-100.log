@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/full-parallel-strength-v1/source/arena/run.py", line 329, in <module>
+    main()
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/full-parallel-strength-v1/source/arena/run.py", line 262, in main
+    with UciClient(
+         ^^^^^^^^^^
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/full-parallel-strength-v1/source/arena/client.py", line 127, in __init__
+    self.until("readyok", timeout)
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/full-parallel-strength-v1/source/arena/client.py", line 163, in until
+    raise EngineFailure("engine rejected command: " + line[18:])
+arena.client.EngineFailure: engine rejected command: load EvalFile before enabling neural evaluation

@@ -1,0 +1,15 @@
+{
+  "files": {
+    "ACTIVE_USAGE.json": "96a4f0ee40386bb873da00846af94b4465f92fc160a0ebbbdb7a7b2a95e7745c",
+    "FAILED-1793013215994267000.json": "6cf63bcbec676870acfce6b095d422bc4b5ee34d30e834d85839d96d64974b03",
+    "PROPOSAL.json": "24dd86d81fd6dec0438fa09161f81c7c65d4ddc22b6b8378a1e2c42c4e7f1a3e",
+    "SCOPE.json": "fbd11fe8d7c7a0a842a8280a4916ab8a1a340eea2fea0538f6b2bca9579c8c5e",
+    "SOURCE_INPUTS.json": "282bfda2fbd3a3e0bc951c021049397d6f957352c6c13c11a70ee9f59639d9eb",
+    "VERIFICATION.json": "826578d43ad7e65ede71a94b0758044d9ecfdc282969e8ec5eebdf18469ead79",
+    "attempts/attempt-001/play-threads-2-ms-100.json": "ece0427ab89effd54783c3e016afdcd0b578a9924aa22ac7d1b0677a7090a91d",
+    "attempts/attempt-001/play-threads-2-ms-100.log": "34a7890bca64cd2c84e2120ce77125c703b91a0a2c7052d8e9d13180f613ae49",
+    "authorization-refusal.log": "a4bb0e36fb4f73563faa333a8127c14f556e1d84fb13a8909d3aadeb0d853325",
+    "check-only.log": "a2b1ad804dcb8a35f9b3c093f6dbc50a8fb72742dd2ca39b7a169397a76cce6c",
+    "inputs/threads-2-ms-100.json": "04b741d9c5ea6afff205ed083489b85dec9be63c9b41d35d0e552e2b353645d9"
+  }
+}

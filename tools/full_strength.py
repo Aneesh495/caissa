@@ -37,6 +37,7 @@ FORBIDDEN_MODULES = {
     "tools.strength_v4",
     "tools.strength_v4_preflight",
     "tools.systems_strength",
+    "tools.systems_startup_repair",
     "verification.systems_strength",
     "tools.arena_recovery",
     "verification.arena_recovery",
