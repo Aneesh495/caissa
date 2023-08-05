@@ -1,6 +1,6 @@
 """Replay, lineage splitting, functional-input deduplication and held-out screening."""
 
-import argparse, hashlib, json, math, sqlite3, time, fcntl
+import argparse, hashlib, json, math, sqlite3, time, fcntl, os
 from pathlib import Path
 import chess
 import numpy as np
@@ -58,7 +58,22 @@ def main():
     )
     ap.add_argument("--resume", action="store_true")
     ap.add_argument("--follow", action="store_true")
+    ap.add_argument("--recovery-barrier", type=Path)
     a = ap.parse_args()
+    if a.recovery_barrier is not None:
+        paths = sorted(a.corpus.glob("*/*.json"))
+        chain = hashlib.sha256()
+        for path in paths:
+            chain.update(bytes.fromhex(digest(path)))
+        if (
+            a.resume or a.follow
+            or digest(a.corpus / "CONFIG.json") != "818eb731b568d5b7526f20f8b374e516e28b4dd5e48431333ddffdab68ce493e"
+            or len(paths) != 56
+            or chain.hexdigest() != "9ec8e414a8aaae27706181929c5762485983777ed4ae911abe174c5e9543f00a"
+            or a.recovery_barrier.resolve() != a.output.resolve() / "RECOVERY_READY.json"
+            or a.recovery_barrier.exists() or a.recovery_barrier.is_symlink()
+        ):
+            ap.error("recovery barrier requires the unchanged original56pair diagnostic only")
     if a.resume and not (a.output / "identities.sqlite3").exists():
         raise ValueError("no preparation transaction exists to resume")
     a.output.mkdir(parents=True, exist_ok=a.resume)
@@ -355,6 +370,15 @@ def main():
         db.execute("INSERT INTO sources VALUES(?,?)", (number, sha))
         completed_sources[number] = sha
         session_pairs += 1
+        if a.recovery_barrier is not None and session_pairs == 32:
+            checkpoint()
+        if a.recovery_barrier is not None and session_pairs == 52:
+            atomic_json(a.recovery_barrier, {"schema": "caissa-data-recovery-boundary-v1", "committed_sources": last_checkpoint_count, "uncommitted_sources": len(completed_sources), "pid": os.getpid()})
+            deadline = time.monotonic() + 15
+            while not a.recovery_barrier.with_suffix(".release").exists():
+                if time.monotonic() >= deadline:
+                    raise TimeoutError("diagnostic data recovery barrier exhausted")
+                time.sleep(0.01)
         if session_pairs % 100 == 0:
             checkpoint()
     checkpoint()

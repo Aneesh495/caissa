@@ -115,3 +115,55 @@ def verify_training(bundle, inputs, output):
     )
     (output / "TRAINING_RECOVERY.json").write_text(json.dumps(result, indent=2) + "\n")
     return result
+
+
+def verify_data(bundle, inputs, output):
+    from verification.data_recovery import admit, verify as replay_data
+
+    domain = inputs["domains"]["G11"]
+    arguments = domain["data_recovery"]
+    require(
+        isinstance(arguments, dict) and set(arguments) == {"config"},
+        "G11 data component requires its exact CONFIG reference",
+    )
+    name = bundle.reference(arguments["config"])
+    prefix = str(Path(name).parent)
+    require(
+        prefix != "." and Path(name).name == "CONFIG.json",
+        "G11 data raw directory differs",
+    )
+    admit(bundle.json(name), domain["source_commit"])
+    manifest_name = prefix + "/MANIFEST.json"
+    manifest = bundle.json(manifest_name)
+    require(
+        isinstance(manifest, dict)
+        and set(manifest) == {"files"}
+        and isinstance(manifest["files"], dict),
+        "G11 data manifest differs",
+    )
+    expected = {prefix + "/" + path for path in manifest["files"]} | {manifest_name}
+    declared = {bundle.reference(ref) for ref in domain["artifacts"]}
+    require(
+        {path for path in bundle.identities if path.startswith(prefix + "/")}
+        == expected
+        and expected <= declared,
+        "G11 data inventory missing, extra or undeclared",
+    )
+    output = Path(output).resolve()
+    require(
+        not output.is_relative_to(bundle.root),
+        "G11 data replay must preserve original evidence",
+    )
+    raw = output / "raw"
+    raw.mkdir(parents=True, exist_ok=False)
+    for name in sorted(expected):
+        target = raw / name[len(prefix) + 1 :]
+        target.parent.mkdir(parents=True, exist_ok=True)
+        bundle.copy(name, target, 16 * 1024**2)
+    result = replay_data(raw, domain["source_commit"])
+    require(
+        result["component_pass"] is True and result["full_G11_certified"] is False,
+        "G11 data component tried to certify the project",
+    )
+    (output / "DATA_RECOVERY.json").write_text(json.dumps(result, indent=2) + "\n")
+    return result
