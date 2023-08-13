@@ -1,0 +1,7 @@
+{
+  "status": "failed local execution, preserved",
+  "source_commit": "b0b7e7ed1be7a13bbffa2561fe02914a8958ab58",
+  "failure": "Independent reader scratch parent not created; actual SIGKILL producer and independent32pair SQL reconstruction reached final56pair export replay.",
+  "log_sha256": "a613620bf010526c894ce1728ada19a8070d42aa8b6bdd22bb8e9b1a6a0decb1",
+  "no_local_retry_authorized": true
+}

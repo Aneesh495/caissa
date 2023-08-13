@@ -1,0 +1,12 @@
+{
+  "schema": "caissa-data-recovery-development-v1",
+  "origin_unix": 1793014810.670905,
+  "deadline_unix": 1793018410.670905,
+  "parent_deadline_unix": 1793150297.974828,
+  "maximum_local_executions": 1,
+  "maximum_ci_executions": 2,
+  "maximum_hosted_seconds_per_platform": 2700,
+  "maximum_output_bytes_per_platform": 1073741824,
+  "minimum_free_bytes": 10737418240,
+  "scope": "New original-data/split forced-interruption component using only the unchanged published56pair diagnostic corpus. No acquisition, model training, native strength games or closed browser/learning campaigns."
+}

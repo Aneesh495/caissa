@@ -212,22 +212,22 @@ def main():
                     "config": reference(evidence, "receipt.json")
                 }
             else:
-                shutil.copytree(raw, evidence / "data")
-                p = evidence / "data/CONFIG.json"
+                shutil.copytree(raw, evidence / "recovery-data")
+                p = evidence / "recovery-data/CONFIG.json"
                 value = json.loads(p.read_bytes())
                 value["source_commit"] = commit
                 atomic(p, value)
-                p = evidence / "data/KILL.json"
+                p = evidence / "recovery-data/KILL.json"
                 value = json.loads(p.read_bytes())
                 value["actual_exit"] = 0
                 atomic(p, value)
-                seal(evidence / "data")
+                seal(evidence / "recovery-data")
                 domain["data_recovery"] = {
-                    "config": reference(evidence, "data/CONFIG.json")
+                    "config": reference(evidence, "recovery-data/CONFIG.json")
                 }
                 domain["artifacts"] = [
                     reference(evidence, str(p.relative_to(evidence)))
-                    for p in (evidence / "data").rglob("*")
+                    for p in (evidence / "recovery-data").rglob("*")
                     if p.is_file()
                 ]
             digest = seal_full(evidence, inputs)
