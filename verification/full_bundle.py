@@ -311,6 +311,11 @@ def inspect(bundle, checkout, expected_commit, expected_inputs_sha256):
     )
     data = data_lineage(bundle, inputs, protocol)
     learning = learning_lineage(bundle, inputs, protocol, deployment)
+    native_binding = None
+    if "native_source_binding" in inputs:
+        from verification.runtime_binding import verify_observation
+
+        native_binding = verify_observation(bundle, inputs, checkout, expected_commit)
     require(
         set(inputs["domains"]) == GATES,
         "full gate inventory is incomplete or duplicated",
@@ -355,6 +360,11 @@ def inspect(bundle, checkout, expected_commit, expected_inputs_sha256):
             "deployment": deployment,
             "data": data,
             "learning": learning,
+            **(
+                {"native_source_boundary": native_binding}
+                if native_binding is not None
+                else {}
+            ),
         },
         "pending_semantic_gates": pending,
         "scope": "Artifact integrity, committed product source and experiment-lineage admission only; no full gate certified",

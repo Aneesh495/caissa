@@ -1,0 +1,10 @@
+{
+  "schema": "caissa-native-source-binding-development-v1",
+  "origin_unix": 1793018645.285642,
+  "deadline_unix": 1793022245.285642,
+  "parent_deadline_unix": 1793150297.974828,
+  "maximum_ci_executions": 2,
+  "maximum_hosted_seconds_per_platform": 1800,
+  "maximum_output_bytes_per_platform": 1073741824,
+  "scope": "New independent saved-native source/input boundary admission and full-entry integration. Metadata/Git/hash controls only, no native execution, model inference, browser, training, old semantic campaign or large archive rerun."
+}
