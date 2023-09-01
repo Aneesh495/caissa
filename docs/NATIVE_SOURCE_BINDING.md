@@ -7,7 +7,7 @@ and performs no model inference. The caller supplies the expected profile hash
 and exact product commit.
 
 The original compiled source commit remains explicit. Its tracked native input
-inventory must exactly match the product commit: CMakeLists.txt, every tracked
+inventory must exactly match the product commit: CMakeLists.txt, Makefile, every tracked
 file under src/, include/, apps/ and cmake/, plus C/C++ headers, source, assembly
 and CMake files elsewhere. Added, removed, edited, linked or mode-changed inputs
 fail admission. The live checkout must agree with Git, including native file
