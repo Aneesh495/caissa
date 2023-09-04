@@ -1,0 +1,35 @@
+{
+  "run": 40326171268,
+  "source_commit": "ef73e4e78ba18cbe966e5932210a0e6bf500d09d",
+  "portable_raw_retrieval_pending": true,
+  "artifacts": [
+    {
+      "id": 12651262499,
+      "name": "native-binding-controls-macos-15",
+      "size_in_bytes": 9022,
+      "digest": "sha256:d53b17e6f0ed2433edce792aae4bd16d3d3104ed84aa533700e5bbda2aa2339b",
+      "expired": false,
+      "workflow_run": {
+        "id": 40326171268,
+        "repository_id": 1429436566,
+        "head_repository_id": 1429436566,
+        "head_branch": "main",
+        "head_sha": "ef73e4e78ba18cbe966e5932210a0e6bf500d09d"
+      }
+    },
+    {
+      "id": 12650269652,
+      "name": "native-binding-controls-ubuntu-24.04",
+      "size_in_bytes": 8371,
+      "digest": "sha256:ba3e8d2476b3650ce0ec57eb34e2a26095444663b85ffcb9c9596d2c569e95a9",
+      "expired": false,
+      "workflow_run": {
+        "id": 40326171268,
+        "repository_id": 1429436566,
+        "head_repository_id": 1429436566,
+        "head_branch": "main",
+        "head_sha": "ef73e4e78ba18cbe966e5932210a0e6bf500d09d"
+      }
+    }
+  ]
+}

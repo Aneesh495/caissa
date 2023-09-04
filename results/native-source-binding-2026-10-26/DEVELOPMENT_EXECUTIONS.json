@@ -1,0 +1,43 @@
+{
+  "scope": {
+    "schema": "caissa-native-source-binding-development-v1",
+    "origin_unix": 1793018645.285642,
+    "deadline_unix": 1793022245.285642,
+    "parent_deadline_unix": 1793150297.974828,
+    "maximum_ci_executions": 2,
+    "maximum_hosted_seconds_per_platform": 1800,
+    "maximum_output_bytes_per_platform": 1073741824,
+    "scope": "New independent saved-native source/input boundary admission and full-entry integration. Metadata/Git/hash controls only, no native execution, model inference, browser, training, old semantic campaign or large archive rerun."
+  },
+  "ci_executions_started": 2,
+  "executions": [
+    {
+      "number": 1,
+      "source_commit": "c5dd2604c7b72d61588f6d8353a23b1d6036c242",
+      "charged_before_dispatch_unix": 1793019147.8003929,
+      "run": 40325898078,
+      "result": "failed fixture mutation comparison and noncanonical macOS temporary path",
+      "hosted_seconds": {
+        "linux": 41,
+        "macos": 37
+      }
+    },
+    {
+      "number": 2,
+      "source_commit": "ef73e4e78ba18cbe966e5932210a0e6bf500d09d",
+      "charged_before_dispatch_unix": 1793019275.037199,
+      "run": 40326171268,
+      "result": "passed both hosted platforms",
+      "hosted_seconds": {
+        "linux": 33,
+        "macos": 46
+      }
+    }
+  ],
+  "cumulative_hosted_seconds": {
+    "linux": 74,
+    "macos": 83
+  },
+  "closed": true,
+  "closed_unix": 1793019434.8654752
+}

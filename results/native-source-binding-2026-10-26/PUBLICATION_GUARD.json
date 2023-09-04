@@ -1,0 +1,7 @@
+{
+  "status": "fixed publication-only whitespace rejection",
+  "check": "git diff --cached --check",
+  "original_exit": 2,
+  "original_error": "ARTIFACTS.json:36: new blank line at EOF.",
+  "correction": "Removed only the extra terminal blank line and recomputed the publication manifest. Original runtime and hosted evidence unchanged."
+}
