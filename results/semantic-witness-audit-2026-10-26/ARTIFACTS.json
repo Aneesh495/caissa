@@ -1,0 +1,33 @@
+{
+  "run": 40329511266,
+  "source_commit": "1deecce362cf12d9758e1af4bbebb5bbdda95fb1",
+  "portable_raw_retrieval_pending": true,
+  "artifacts": [
+    {
+      "id": 12655125618,
+      "name": "semantic-witness-ubuntu-24.04",
+      "size_in_bytes": 56304103,
+      "digest": "sha256:3a5431cfc9bf63fea2bad3df09efcc37f2492ab920ae29b8444e0ad3e9bc7b10",
+      "workflow_run": {
+        "id": 40329511266,
+        "repository_id": 1429436566,
+        "head_repository_id": 1429436566,
+        "head_branch": "main",
+        "head_sha": "1deecce362cf12d9758e1af4bbebb5bbdda95fb1"
+      }
+    },
+    {
+      "id": 12655115593,
+      "name": "semantic-witness-macos-15",
+      "size_in_bytes": 54893531,
+      "digest": "sha256:45dd6642b18d9535e6e851c1d3f05231d6f950e4173013d33e7b56633c2fc0b3",
+      "workflow_run": {
+        "id": 40329511266,
+        "repository_id": 1429436566,
+        "head_repository_id": 1429436566,
+        "head_branch": "main",
+        "head_sha": "1deecce362cf12d9758e1af4bbebb5bbdda95fb1"
+      }
+    }
+  ]
+}

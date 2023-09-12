@@ -62,6 +62,15 @@ The full readiness command finds the dataset by the frozen protocol's exact meta
 
 Release packaging requires the same external input identity in the current private audit. Once every full gate passes, it copies the exact verified engine and selected evaluator, records their identities and declared mixture, and retains the source archive. It cannot substitute the older diagnostic model directory for the selected runtime. Packaging remains blocked by incomplete full verification and acceptance.
 
+G14 uses `driver: semantic-audit-v1` with one exact `semantic_audit.config`
+reference and its complete declared raw witness inventory. The
+[combined semantic audit](SEMANTIC_AUDIT.md) reconstructs actual PVs, paired game
+results, selected-network inference and draw histories, then rejects sixteen
+consistently rehashed forgeries. It requires a separate replay output and the
+exact saved image/source relationship before admitting the G14 sample. A
+different portability image remains a component. All other gates and the full
+project result remain independent.
+
 G05 uses `driver: search-semantics-v1` and four distinct declared
 `search_semantics` references: `profile`, `config`, `summary`, `observations`.
 [The independent search adapter](SEARCH_SEMANTICS.md) reconstructs exhaustive

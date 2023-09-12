@@ -1,0 +1,32 @@
+{
+  "scope": {
+    "schema": "caissa-g14-semantic-witness-development-v1",
+    "origin_unix": 1793020164.5362592,
+    "deadline_unix": 1793023764.5362592,
+    "parent_deadline_unix": 1793150297.974828,
+    "maximum_ci_executions": 2,
+    "maximum_hosted_seconds_per_platform": 2700,
+    "maximum_output_bytes_per_platform": 2147483648,
+    "scope": "New G14 combined semantic audit of four actual native search PVs, four mate-ending diagnostic games, four selected-network inferences and four original draw histories. Sixteen consistently rehashed semantic forgeries and full-entry integration. Remote only while local timed heuristics own host. No old full-domain reruns, training, strength games or browser execution."
+  },
+  "ci_executions_started": 1,
+  "executions": [
+    {
+      "number": 1,
+      "source_commit": "1deecce362cf12d9758e1af4bbebb5bbdda95fb1",
+      "charged_before_dispatch_unix": 1793020735.834414,
+      "run": 40329511266,
+      "result": "passed both hosted platforms; exact saved-image G14 sample passed macOS",
+      "hosted_seconds": {
+        "linux": 54,
+        "macos": 51
+      }
+    }
+  ],
+  "closed": true,
+  "closed_unix": 1793020937.532935,
+  "cumulative_hosted_seconds": {
+    "linux": 54,
+    "macos": 51
+  }
+}
