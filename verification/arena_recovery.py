@@ -78,7 +78,16 @@ def admit(config, expected_engine, expected_commit):
     )
 
 
-def native_resume(root, destination, identity, expected_engine, guard, remaining):
+def native_resume(
+    root,
+    destination,
+    identity,
+    expected_engine,
+    guard,
+    remaining,
+    *,
+    replay_engine=None,
+):
     """Re-execute resumption in a new owned tree using only verified bytes."""
     from tools.campaign_process import Campaign, atomic
     from tools.host_lease import HostLease, inherited, ENVIRONMENT
@@ -109,7 +118,9 @@ def native_resume(root, destination, identity, expected_engine, guard, remaining
         )
         environment = {**os.environ, ENVIRONMENT: str(descriptor)}
         binary = destination / "engine"
-        shutil.copyfile(root / "engine", binary)
+        shutil.copyfile(
+            root / "engine" if replay_engine is None else replay_engine, binary
+        )
         binary.chmod(0o755)
         require(
             hashlib.sha256(binary.read_bytes()).hexdigest() == expected_engine,

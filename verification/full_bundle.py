@@ -803,6 +803,33 @@ def verify(
                 review["pending_semantic_gates"][
                     "G11"
                 ] = "all required recovery components and final saved-source/native-image binding must be joined"
+        if domain.get("driver") == "forced-recovery-join-v1":
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G11"
+                ] = "full recovery join requires an external --replay-output directory"
+            else:
+                from verification.recovery_join_bundle import (
+                    verify as verify_recovery_join,
+                )
+
+                result = verify_recovery_join(
+                    bundle,
+                    inputs,
+                    checkout,
+                    expected_commit,
+                    Path(replay_output).resolve() / "G11-join",
+                )
+                if result["full_gate"] is True:
+                    review.setdefault("verified_semantic_gates", {})["G11"] = result
+                    del review["pending_semantic_gates"]["G11"]
+                else:
+                    review.setdefault("verified_semantic_components", {})[
+                        "G11"
+                    ] = result
+                    review["pending_semantic_gates"][
+                        "G11"
+                    ] = "exact saved final-image arena resumption join remains required"
         domain = inputs["domains"]["G12"]
         if domain.get("driver") == "browser-component-v1":
             if replay_output is None:
