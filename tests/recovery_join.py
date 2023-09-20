@@ -251,7 +251,7 @@ def main():
                     "missing-component": "required component inventory differs",
                     "swapped-original-zips": "ZIP identity or role differs",
                     "changed-historical-source": "artifact catalog differs",
-                    "changed-final-actor": "saved final actor",
+                    "changed-final-actor": "full graph saved actor",
                     "undeclared-original-archive": "archive inventory",
                 }[case]
                 assert reason in result["reason"], result
