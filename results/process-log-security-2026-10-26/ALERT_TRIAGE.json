@@ -1,0 +1,15 @@
+{
+  "incident": 39027204,
+  "status": "verified false positive",
+  "email_authenticated": true,
+  "alert_commit": "c5f9f85d37ad1b86521c59533c6bab8dc87c5ef6",
+  "flagged_path": "results/systems-startup-2026-10-26/MANIFEST.json",
+  "flagged_line": 11,
+  "entry": "authorization-refusal.log",
+  "classification": "SHA256 integrity checksum of a public failure log; not a credential",
+  "checksum_matches_original_committed_log": true,
+  "checksum_matches_current_log": true,
+  "credential_rotation_indicated": false,
+  "history_rewrite_indicated": false,
+  "separate_process_session_exposure_found": true
+}

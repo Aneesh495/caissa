@@ -1,0 +1,21 @@
+{
+  "schema": "caissa-public-process-redaction-v1",
+  "original_sha256": "99183a8d5cf4f0c7046d1b41c7bbc4a46c755d12b3fe0805b0d9813fbc085301",
+  "public_sha256": "9883c973f76192a2f317a58cc7198f4a38aa503c236f0c661c6866ba745b6f96",
+  "records": 29,
+  "removed_fields": "All process command lines and arguments; arbitrary additional process fields are excluded.",
+  "unchanged_fields": [
+    "unix",
+    "load",
+    "pid",
+    "ppid",
+    "state",
+    "cpu"
+  ],
+  "original_raw_retained_privately": true,
+  "original_run_receipts_unchanged": true,
+  "original_git_history_not_rewritten": true,
+  "previous_public_history_contains_local_session_tokens": true,
+  "required_action": "Replace the affected local Antigravity session. Current-tree redaction does not revoke already exposed values.",
+  "measurements_or_gate_status_changed": false
+}

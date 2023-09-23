@@ -18,6 +18,7 @@ from tools.campaign_process import Campaign, StageFailure, atomic
 from tools.finalize_corpus import archive_source
 from tools.full_learning import frozen_rule
 from tools.power_guard import PowerGuard
+from tools.process_evidence import public_snapshot
 from tools.recovery_scope import RecoveryScope
 from verification.acquisition import sha
 from verification.protocol import read_json
@@ -206,12 +207,14 @@ class HostGuard:
         rows = process_rows()
         bad = offenders(rows, os.getpid())
         top = sorted(rows, key=lambda row: row["cpu"], reverse=True)[:12]
-        snapshot = {
-            "unix": time.time(),
-            "load": list(os.getloadavg()),
-            "offenders": bad,
-            "top_processes": top,
-        }
+        snapshot = public_snapshot(
+            {
+                "unix": time.time(),
+                "load": list(os.getloadavg()),
+                "offenders": bad,
+                "top_processes": top,
+            }
+        )
         path = self.output / "HOST_SAMPLES.jsonl"
         if path.exists() and path.stat().st_size > 32 * 1024 * 1024:
             raise ValueError("host sample byte ceiling exhausted")
