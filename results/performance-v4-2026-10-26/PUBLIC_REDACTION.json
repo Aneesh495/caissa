@@ -16,6 +16,6 @@
   "original_run_receipts_unchanged": true,
   "original_git_history_not_rewritten": true,
   "previous_public_history_contains_local_session_tokens": true,
-  "required_action": "Replace the affected local Antigravity session. Current-tree redaction does not revoke already exposed values.",
-  "measurements_or_gate_status_changed": false
+  "measurements_or_gate_status_changed": false,
+  "session_replacement": "Human-approved normal app restart completed; old session process exited and current process uses different session values. No endpoint validity probe."
 }

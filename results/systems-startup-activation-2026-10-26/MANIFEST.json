@@ -1,0 +1,12 @@
+{
+  "files": {
+    "ACTIVE_USAGE.json": "8cff7b98455fe6e686aff4a1348881bd7396c54a3eac9af409f154a596bd60b8",
+    "AUTHORIZATION_PIN.json": "be619bf8509fdc044932e1ac09d77263c8d9a3568d292aa0bfaf8f21b87f2738",
+    "README.md": "ebbadde8c210dba3617389866b7f51ca7d9c4f977d421ea92fd30ea0018af9aa",
+    "SCOPE.json": "fbd11fe8d7c7a0a842a8280a4916ab8a1a340eea2fea0538f6b2bca9579c8c5e",
+    "SOURCE_INPUTS.json": "282bfda2fbd3a3e0bc951c021049397d6f957352c6c13c11a70ee9f59639d9eb",
+    "attempts/attempt-002/PROGRESS.json": "9101a0dc0060f8283432842a0d21903ec7f63a4a38d02a65b9265c793bfbb386",
+    "inputs/PROFILE.json": "5b405adcb7edbdc4bbae410612c7867879a83f73e635ed5ca29c26eeee072f48",
+    "preserved-startup-configs/original-threads-2-ms-100.json": "04b741d9c5ea6afff205ed083489b85dec9be63c9b41d35d0e552e2b353645d9"
+  }
+}

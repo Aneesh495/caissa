@@ -25,6 +25,10 @@ refusal without argument publication, unknown-field removal, exact raw-input
 preservation, and existing-file/symlink refusal. No engine, training, match,
 compiler, browser or closed-domain producer was executed for this correction.
 
-The affected local Antigravity session must be replaced. No application was
-terminated and no Git history was rewritten during this correction. GitGuardian
-has not been marked resolved automatically.
+The human subsequently approved restarting Antigravity. Normal application quit
+returned successfully and the app relaunched automatically. The original session
+process exited, both exposed values disappeared from the running process inventory,
+and replacement values were observed. The first watcher retained its failure to
+observe a completely empty app process set; no forced termination or repeated quit
+was used. No credential endpoint was probed and no Git history was rewritten.
+GitGuardian has not been marked resolved automatically.

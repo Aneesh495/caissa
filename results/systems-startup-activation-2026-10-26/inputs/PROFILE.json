@@ -1,0 +1,66 @@
+{
+  "schema": "caissa-systems-strength-protocol-v1",
+  "status": "frozen",
+  "base_protocol_sha256": "a8623bf2d59561d434546ad612c939f994a4e699b1c61f4eba5b3114f26528dd",
+  "kind": "parallel",
+  "comparisons": [
+    {
+      "id": "threads-2-ms-100",
+      "threads": 2,
+      "switch": null,
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 100
+    },
+    {
+      "id": "threads-2-ms-400",
+      "threads": 2,
+      "switch": null,
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 100
+    },
+    {
+      "id": "threads-4-ms-100",
+      "threads": 4,
+      "switch": null,
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 100
+    },
+    {
+      "id": "threads-4-ms-400",
+      "threads": 4,
+      "switch": null,
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 100
+    },
+    {
+      "id": "threads-8-ms-100",
+      "threads": 8,
+      "switch": null,
+      "budget_kind": "milliseconds",
+      "budget": 100,
+      "pairs": 100
+    },
+    {
+      "id": "threads-8-ms-400",
+      "threads": 8,
+      "switch": null,
+      "budget_kind": "milliseconds",
+      "budget": 400,
+      "pairs": 100
+    }
+  ],
+  "resources": {
+    "maximum_wall_seconds": 28800,
+    "maximum_active_seconds": 28800,
+    "maximum_attempts": 3,
+    "maximum_additional_bytes": 21474836480,
+    "minimum_free_bytes": 10737418240,
+    "workers": 1,
+    "parent_deadline_unix": 1793150297.974828,
+    "output": "runs/full-parallel-strength-v1"
+  }
+}

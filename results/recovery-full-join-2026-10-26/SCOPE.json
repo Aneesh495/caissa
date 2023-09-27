@@ -1,0 +1,11 @@
+{
+  "schema": "caissa-g11-historical-full-join-development-v1",
+  "origin_unix": 1793022295.019377,
+  "deadline_unix": 1793025895.019377,
+  "parent_deadline_unix": 1793150297.974828,
+  "maximum_ci_executions": 2,
+  "maximum_hosted_seconds_per_platform": 2700,
+  "maximum_output_bytes_per_platform": 4294967296,
+  "minimum_free_bytes": 10737418240,
+  "scope": "New all-component G11 final-source/saved-image join. Readonly independently pinned historical ZIPs, unchanged producer footprints, actual old SQL/tensor/game reconstruction and one current-code resumption probe on exactsaved1ff image. No acquisition, trainer, SIGKILL producer, old component control suite, browser or strength rerun. Three new mate-independent arena continuation diagnostic games only onmacOS are part of final-image joining, not strength."
+}

@@ -1,0 +1,15 @@
+{
+  "status": "stopped incomplete; no strength estimate accepted",
+  "games": 132,
+  "pairs": 66,
+  "attempts_used": 2,
+  "maximum_attempts": 3,
+  "active_seconds": 1475.6564510839817,
+  "original_deadline_unix": 1793042015.30114,
+  "observed_guard_offender": "Unrelated make build, parent Antigravity language-server process",
+  "new_attempt2_bootstrap_authorization_consumed": true,
+  "no_owner_running": true,
+  "raw_host_samples_retained_privately": true,
+  "published_host_samples": "Derived metadata only; command lines and arguments omitted.",
+  "full_acceptance": false
+}

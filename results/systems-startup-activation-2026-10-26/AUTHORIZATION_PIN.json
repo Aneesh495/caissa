@@ -1,0 +1,19 @@
+{
+  "approved": true,
+  "proposal_sha256": "24dd86d81fd6dec0438fa09161f81c7c65d4ddc22b6b8378a1e2c42c4e7f1a3e",
+  "entrypoint_sha256": "edcdcc79890d5441d9f62626dda00f5f2100601389f9af4865675d421718dffb",
+  "original_scope_sha256": "fbd11fe8d7c7a0a842a8280a4916ab8a1a340eea2fea0538f6b2bca9579c8c5e",
+  "only_original_attempt": 2,
+  "extra_attempts_added": 0,
+  "extra_wall_seconds_added": 0,
+  "extra_active_seconds_added": 0,
+  "original_deadline_unix": 1793042015.30114,
+  "authorization_sha256": "09ff0da64e2be41888f0efac5825284e4748145b573cef589a6a56b75ba462bf",
+  "human_direct_answer_received": true,
+  "original_source_commit": "d89b3e2139fef4dcbfdd6eac0dceaa1aec7c4829",
+  "original_attempt1_failure_preserved": true,
+  "original_heuristic_power_failure_and733games_preserved": true,
+  "specific_approved_attempt2_started": true,
+  "no_healthy_owner_was_preempted": true,
+  "full_acceptance": false
+}
