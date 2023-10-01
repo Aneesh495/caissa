@@ -1,0 +1,15 @@
+{
+  "status": "failed incomplete original heuristic sample; attempt ceiling exhausted",
+  "games": 798,
+  "pairs": 399,
+  "attempts_used": 3,
+  "maximum_attempts": 3,
+  "cumulative_active_seconds": 8582.557202958997,
+  "original_deadline_unix": 1793058983.7196429,
+  "second_attempt_stop": "Required AC lost;735games retained",
+  "third_attempt_admission": "Original source resumed after30seconds of confirmed AC and free-host checks",
+  "third_attempt_stop": "Unrelated clang process detected;798games retained",
+  "scope_or_source_changed": false,
+  "full_G10_certified": false,
+  "full_acceptance": false
+}

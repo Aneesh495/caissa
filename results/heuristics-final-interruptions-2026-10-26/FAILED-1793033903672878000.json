@@ -1,0 +1,1 @@
+{"reason":"stage play-extensions-milliseconds-400 failed: resource-guard: recovery lost required AC power; preserve checkpoint and resume within the same deadline (exit -15)","observed_unix":1793033903.6728802,"full_acceptance":false}
