@@ -1,0 +1,13 @@
+{
+  "run": 40369645769,
+  "source_commit": "0e7bd2a36273f1649301fcb55a54aac7f222cb9c",
+  "status": "passed original optional AC-boundary wait component",
+  "native_games_per_platform": 4,
+  "controls_per_platform": 3,
+  "hosted_seconds": {
+    "linux": 44,
+    "macos": 39
+  },
+  "new_default_battery_and_normal_use_verification": "local metadata-only checks passed; second hosted execution pending",
+  "full_acceptance": false
+}

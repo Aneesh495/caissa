@@ -85,6 +85,7 @@ def execute(args):
         )
         power = PowerGuard(POLICY if sys.platform == "darwin" else None)
         power.start(output)
+
         host = HostGuard(output, scope, power)
 
         def guard():
@@ -101,6 +102,8 @@ def execute(args):
                 "maximum_attempts": 1,
                 "maximum_additional_bytes": 20 * 1024**3,
                 "minimum_free_bytes": 10 * 1024**3,
+                "power_policy": "battery allowed; power state recorded",
+                "host_policy": "exclusive Caissa lease; unrelated compiler work allowed for untimed byte transport",
                 "semantic_verification_required": True,
             },
         )

@@ -86,15 +86,51 @@ class Boundaries(unittest.TestCase):
                 )
 
     def test_unknown_power_waits_rather_than_starting_work(self):
-        from tools.power_guard import POLICY, WAIT_POLICY, PowerGuard
+        from tools.power_guard import POLICY, STRICT_AC_POLICY, WAIT_POLICY, PowerGuard
 
         with (
             patch("tools.power_guard.sys.platform", "darwin"),
             patch("tools.power_guard.observe", return_value={"ac_power": False}),
         ):
             with self.assertRaisesRegex(ValueError, "plug Mac"):
-                PowerGuard(POLICY)
+                PowerGuard(STRICT_AC_POLICY)
+            self.assertFalse(PowerGuard(POLICY).admission["ac_power"])
+            with tempfile.TemporaryDirectory() as directory:
+                from unittest.mock import Mock
+
+                guard = PowerGuard(POLICY)
+                guard.output = Path(directory)
+                guard.helper = Mock()
+                guard.helper.poll.return_value = None
+                guard.check()
+                self.assertFalse(
+                    json.loads((Path(directory) / "POWER_SAMPLES.jsonl").read_text())[
+                        "ac_power"
+                    ]
+                )
             self.assertFalse(PowerGuard(WAIT_POLICY).admission["ac_power"])
+        from tools.full_strength import HostGuard
+        from unittest.mock import Mock
+
+        with tempfile.TemporaryDirectory() as directory:
+            rows = [
+                {
+                    "pid": 2,
+                    "ppid": 1,
+                    "state": "S",
+                    "cpu": 60,
+                    "command": "clang --token=SYNTHETIC",
+                }
+            ]
+            with (
+                patch("tools.full_strength.process_rows", return_value=rows),
+                patch("tools.full_strength.os.getpid", return_value=900000),
+            ):
+                HostGuard(Path(directory), Mock()).check()
+            snapshot = (Path(directory) / "HOST_SAMPLES.jsonl").read_text()
+            self.assertFalse(json.loads(snapshot)["idle_required"])
+            self.assertEqual(json.loads(snapshot)["offenders"][0]["pid"], 2)
+            self.assertNotIn("SYNTHETIC", snapshot)
         with tempfile.TemporaryDirectory() as directory:
             clock = FakeTime()
 

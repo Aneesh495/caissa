@@ -193,7 +193,10 @@ def offenders(rows, owner):
 
 
 class HostGuard:
-    def __init__(self, output, scope, power=None):
+    def __init__(self, output, scope, power=None, *, require_idle=False):
+        if type(require_idle) is not bool:
+            raise ValueError("host idle policy must be explicit Boolean")
+        self.require_idle = require_idle
         self.output, self.scope = output, scope
         self.power = power
         self.last = -1e9
@@ -211,6 +214,7 @@ class HostGuard:
             {
                 "unix": time.time(),
                 "load": list(os.getloadavg()),
+                "idle_required": self.require_idle,
                 "offenders": bad,
                 "top_processes": top,
             }
@@ -222,7 +226,7 @@ class HostGuard:
             stream.write(json.dumps(snapshot, separators=(",", ":")) + "\n")
             stream.flush()
         self.last = time.monotonic()
-        if bad:
+        if bad and self.require_idle:
             raise ValueError(
                 "decisive timed games conflict with active compiler, data, training, arena or performance work"
             )
