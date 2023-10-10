@@ -1,0 +1,9 @@
+{
+  "files": {
+    "ADMISSION_CONTROLS.json": "213ccad849d8b7307965cbb3973a919d55396a930bfbdec0e5b043a6c06437fa",
+    "AUTHORIZATION.json": "da2e242cb5e2e44f9293605d72d7a178b1d2d8603ec71d78ceaa18eb0f77e24e",
+    "PROPOSAL.json": "6f0fe2160e77008e35c59af9660f28def811c2ea8b5f824c2de0dcd2efa60b4d",
+    "PROTECTED_RECORDS.json": "b65c180c3d8d688b30b3741c64aaf181810fdb3aff7ef43ca6981b3bd5c8fe2c",
+    "README.md": "a5104b3b6e3cbee8c2cc591c8c503706dc145289ff82850d4797b0031bf7bc9d"
+  }
+}

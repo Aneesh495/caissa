@@ -1,0 +1,10 @@
+{
+  "run": 40372758102,
+  "source_commit": "2f2f39acc6fd0012e3d09f43999c4746e45d5e10",
+  "status": "failed missing test dependency NumPy on both platforms",
+  "native_games_entered": false,
+  "local_metadata_controls_passed": true,
+  "actual_full_battery_archive_transport_passed": true,
+  "third_execution_authorized": false,
+  "full_acceptance": false
+}
