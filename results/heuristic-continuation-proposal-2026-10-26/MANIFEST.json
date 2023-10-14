@@ -1,0 +1,11 @@
+{
+  "files": {
+    "ADMISSION_RESULT.json": "d7cd50fbfa4b94e01698f59210967b7eec6efadd9ef8c7f194a83f4efadef4ae",
+    "ADMISSION_SCOPE.json": "dfee6cde42db675ef9a6315df9d0040937f66cb8a0da57d702c294e9fee4a9a4",
+    "PROPOSAL.json": "6806331441f7c605a4b8cd0a4c31093ceda89a1f9ef1a74997e3609ece7cf0ab",
+    "PROTECTED_RECORDS.json": "72109481850297efebfeb985a71c8e7b9dcd726afe77da749a31762edddbd3b0",
+    "README.md": "d068ecef0cd340d182e2a1bdbc0ed5a3c2244d71db4f87e5790284c2fd61b1c0",
+    "preview.stderr.failed-preparation-001": "b884202efc940ed6661b992a9883e929646927ff57ec2ba728feeeae07d3adeb",
+    "preview.stdout.failed-preparation-001": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

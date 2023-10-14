@@ -1,0 +1,11 @@
+{
+  "status": "failed preparation; original metadata window expired",
+  "reason": "The preparation script reused a path variable, so the actual preview command pointed at a preserved failure JSON rather than the controller Python entrypoint. Controller never entered. No further commands ran after the60second metadata deadline.",
+  "preview_exit": 1,
+  "actual_controller_preview_verified": false,
+  "native_games": 0,
+  "experiment_started": false,
+  "original_scope_usage_attempts_unchanged": true,
+  "new_approval_required_before_one_bounded_preflight": true,
+  "full_acceptance": false
+}
