@@ -167,6 +167,10 @@ def main():
         check_only=args.check_only,
     )
     if not args.check_only:
+        # Refuse before writing an amendment while another campaign owns the host.
+        available = owner.HostLease(root / "runs")
+        available.check()
+        available.close()
         protected = json.loads((request.parent / "PROTECTED_RECORDS.json").read_bytes())
         for name, expected in protected.items():
             path = Path(name)
