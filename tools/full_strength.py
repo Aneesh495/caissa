@@ -19,6 +19,7 @@ from tools.finalize_corpus import archive_source
 from tools.full_learning import frozen_rule
 from tools.power_guard import PowerGuard
 from tools.process_evidence import public_snapshot
+from tools.telemetry_nonfatal import rows_or_unknown
 from tools.recovery_scope import RecoveryScope
 from verification.acquisition import sha
 from verification.protocol import read_json
@@ -207,7 +208,11 @@ class HostGuard:
             self.power.check()
         if time.monotonic() - self.last < 5:
             return
-        rows = process_rows()
+        rows, observer_error = (
+            (process_rows(), None)
+            if self.require_idle
+            else rows_or_unknown(process_rows)
+        )
         bad = offenders(rows, os.getpid())
         top = sorted(rows, key=lambda row: row["cpu"], reverse=True)[:12]
         snapshot = public_snapshot(
@@ -215,6 +220,8 @@ class HostGuard:
                 "unix": time.time(),
                 "load": list(os.getloadavg()),
                 "idle_required": self.require_idle,
+                "process_inventory_available": observer_error is None,
+                "observer_error": observer_error,
                 "offenders": bad,
                 "top_processes": top,
             }
