@@ -1,0 +1,17 @@
+{
+  "status": "running",
+  "owner_pid": 22554,
+  "session": 32143,
+  "observed_unix": 1793042240.365403,
+  "recorded_games": 798,
+  "recorded_pairs": 399,
+  "phase": "play-extensions-milliseconds-400",
+  "active_usage": {
+    "maximum_active_seconds": 43200,
+    "active_seconds": 8677.019448250998,
+    "monotonic_stamp": 129668.902167833,
+    "closed": false
+  },
+  "full_acceptance": false,
+  "controlled_idle_measurement": false
+}

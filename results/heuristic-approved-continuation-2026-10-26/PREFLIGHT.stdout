@@ -1,0 +1,2 @@
+{"telemetry_fault_controls": 8, "status": "passed"}
+{"status": "ready", "kind": "heuristics", "source_commit": "67f89c1bd89b6a86bbeb70a03fb3286d8614de8f", "profile_sha256": "1d6bb4a26490d7ec4b4cc28c8da8fda0ad4dfd10678edcf2f2a69f13eba2f592", "games_started": false, "scope_created": false, "full_acceptance": false, "requires_one_extra_start_approval": false, "original_attempts_consumed": 3, "proposed_start_number": 4}
