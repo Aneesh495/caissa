@@ -1,0 +1,21 @@
+{
+  "observed_unix": 1793042331.81174,
+  "status": "running",
+  "owner_pid": 22554,
+  "arena_pid": 27684,
+  "session": 32143,
+  "phase": "play-extensions-nodes-20000",
+  "recorded_games": 806,
+  "recorded_pairs": 402,
+  "active_usage": {
+    "maximum_active_seconds": 43200,
+    "active_seconds": 8767.638741917996,
+    "monotonic_stamp": 129759.5214615,
+    "closed": false
+  },
+  "stopping_reason": null,
+  "protected_original_files": 2228,
+  "new_games_started_after_approved_start": true,
+  "full_acceptance": false,
+  "new_full_elo_result": false
+}
