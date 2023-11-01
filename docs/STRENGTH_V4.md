@@ -1,5 +1,23 @@
 # Derived actor strength profile
 
+Both v4 scopes are closed. Do not restart their owners, extend games or reinterpret
+unfinished records. The external sample completed all 2000 games and passed
+independent replay. Its unrestricted Stockfish19 subset was 56 wins, two draws
+and 608 losses in 666 games: -411.50 relative Elo with a 95% interval of
+[-460.14, -370.68] at 100 ms, one thread and 16 MiB. This is not an absolute or
+human rating. [The compact external proof](../results/external-v4-2026-10-26/independent-external.json)
+does not yet provide every raw portable game artifact.
+
+The neural sample recorded 4000 attempts, 3997 finished games and three original
+512-ply-limit records. Independent full-sample acceptance failed. The completed-game
+diagnostic was -63.86 relative Elo against unchanged classical evaluation, with a
+95% interval of [-73.80, -54.07]. It does not satisfy the required 50 Elo gain and
+positive lower bound. Neither failed sample is repaired by selecting another
+checkpoint, seed or mixture from match outcomes.
+
+The owner commands below document the historical campaign interface. They are
+not instructions to rerun these closed samples.
+
 The original full learning and match sequence is closed. Its real
 `MODEL_CAMPAIGN.json` still names the original49057 executable, q1024c251
 network, selected float checkpoint and failed numerical gates. Its4000-game
