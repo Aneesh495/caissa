@@ -8,7 +8,7 @@ null suppression, conservative dead material and hash context, then reexecutes
 the pinned saved program. It requires equal-FEN history witnesses and all six
 terminal outcomes. Other semantic domains remain independently required.
 
-The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before domain replay. G01 rules, G02 restoration, G03 draw history, G04 protocol, G05 search, G06 numerical probes, G08/G09 strength journals and G13 performance adapters are implemented. G07 has an original-learning component and a separate full data/learning audit; its full-entry joint adapter remains incomplete. G11 has the historical source/saved-image recovery join, G12 has a browser component and G14 has the combined semantic audit. G10 systems, G15 complete reproduction, G16 release audit and complete campaign coordination remain unfinished. A component is not automatically a full gate, and historical sample acceptance does not bind later product source. Full verification still returns nonzero with `full_acceptance: false`. Passing metadata, existing receipts or admission controls cannot certify a release.
+The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before domain replay. G01 rules, G02 restoration, G03 draw history, G04 protocol, G05 search, G06 numerical probes, G08/G09 strength journals and G13 performance adapters are implemented. G07 has an original-learning component and a separate full data/learning audit; its full-entry joint adapter remains incomplete. G11 has the historical source/saved-image recovery join, G12 has a browser component and G14 has the combined semantic audit. G10 has a systems-matrix component implementation; its real full-bundle replay is unverified and its performance/race/source join remains incomplete. G15 complete reproduction, G16 release audit and complete campaign coordination remain unfinished. A component is not automatically a full gate, and historical sample acceptance does not bind later product source. Full verification still returns nonzero with `full_acceptance: false`. Passing metadata, existing receipts or admission controls cannot certify a release.
 
 ## Source identity
 
@@ -90,3 +90,23 @@ resumption after these checks. Historical producer reruns and a different native
 image cannot substitute for this join. The source6a63aaaa sample passed in
 run40336617662; it leaves fifteen other full gates incomplete. Subsequent source
 changes still require final all-domain binding and do not inherit full acceptance.
+
+
+G10 can declare `driver: systems-matrices-v1` with a `systems_strength.matrices`
+list in the original parallel/heuristics order. Each matrix names `kind`, its
+exact frozen `profile` reference and a complete ordered `campaigns` list of
+`{comparison, config}` entries. All profiles and raw campaign files belong in
+the gate's declared artifact inventory. Both profiles, all six thread settings
+and all forty heuristic comparisons are required; the frozen schedule totals
+4200 games. Distinct CONFIG references and exact per-campaign game/pair/PGN
+inventories are checked before each independent original systems reader runs.
+
+This new adapter stages immutable bytes outside the bundle and imports no arena
+producer. It neither starts replacement games nor promotes negative results.
+Complete samples with unfinished records remain failed components. Incomplete
+matrices cannot be accepted from saved summaries. Even successful matrix replay
+keeps `full_gate: false` and G10 pending until useful-work/memory/stop-latency,
+race instrumentation and final source/runtime relationships are joined. The
+current multicore and heuristic samples are incomplete, so no real complete
+matrix or full G10 acceptance is claimed. The adapter's real complete replay
+and full-entry controls remain unverified.

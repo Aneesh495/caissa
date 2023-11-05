@@ -1,0 +1,10 @@
+{
+  "status": "expired-unexecuted",
+  "closed_unix": 1793050940.583771,
+  "invocations_started": 0,
+  "actual_admission_controls_run": 0,
+  "scope_renewed": false,
+  "reason": "The original ten-second admission-review window elapsed before any invocation. No controls ran after expiry. Static implementation and syntax review do not establish component acceptance.",
+  "full_gate": false,
+  "full_acceptance": false
+}
