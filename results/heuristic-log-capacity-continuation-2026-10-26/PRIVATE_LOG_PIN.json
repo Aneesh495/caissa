@@ -1,0 +1,8 @@
+{
+  "path": "runs/full-heuristics-strength-v1/HOST_SAMPLES.jsonl",
+  "bytes": 33555967,
+  "sha256": "f07f050ea4c8924326e99a64976651919d55378cd6d0f7245810564e3c78704d",
+  "raw_commands_kept_private": true,
+  "retained_private_mode": "0600",
+  "public_copy_included": false
+}

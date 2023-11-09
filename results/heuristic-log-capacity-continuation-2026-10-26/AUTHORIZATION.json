@@ -1,0 +1,22 @@
+{
+  "approved": true,
+  "human_authorization_received": true,
+  "human_answer": "you have allowance to do whatever you want please dont hesitate or feel the need to wait for me. full access is turned on for a reason.",
+  "authorization_basis": "New direct broad instruction immediately after the human was informed that the log cap stopped attempt4 and consumed its start allowance. Numerical continuation limits are prospectively selected under that instruction, not presented as a verbatim numeric approval.",
+  "entrypoint_sha256": "c6a17be6ee9e48e4b67818914a70d9b4b114e476230da351a8e38352a99b0153",
+  "reviewed_entrypoint_sha256": "c44d6b7f7912987aab9a243813fac37a95f9f3d7facb5d2ecd9b95f5a52646b0",
+  "proposal_sha256": "f931925f078665c2c035e35ee4235d60ed78fe97a0f9b11b19cc9ae36b8e5318",
+  "original_scope_sha256": "7bbe6641b680955ffc1ecd3a3b0b22dd5a6c9dbaa908a603759ef7796a1e3cf0",
+  "protected_records_sha256": "e80a7eddccd0a31b40c0ccb46bd642968126b39108e8184d4a00bfa3c136c60d",
+  "telemetry_helper_sha256": "92108ff7d07f6eb41f38402b0e60db3b005c83c0076ed1fa666b87a8238a63e6",
+  "bounded_host_helper_sha256": "9614ffd5e97cc5fc50f42c9805db273ff9228d3dc132072b0dc0452274263111",
+  "implementation_amendment_sha256": "264702fd80267bc6d7beb15aa5c81af393fb35613683a0131d718bedcf53c5a0",
+  "original_attempt": 5,
+  "extra_attempts_added": 1,
+  "extra_wall_seconds_added": 7200,
+  "extra_active_seconds_added": 0,
+  "approved_deadline_unix": 1793066183.7196429,
+  "allow_battery": true,
+  "allow_normal_laptop_use": true,
+  "received_unix": 1793057235.070279
+}
