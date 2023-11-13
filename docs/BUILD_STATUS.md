@@ -8,15 +8,19 @@ finished and three reached the original 512-ply limit. Those records are retaine
 and the required neural gain remains unmet. No strength sample is being retrained
 or restarted.
 
-At 19:20 UTC on 2026-10-26, the explicitly approved fourth heuristic start was
-running beyond its retained 798-game prefix. It uses the original 3000-game
-schedule, saved source and cumulative limits. Battery changes, ordinary laptop
-use and failed optional power readings do not stop this runner. The multicore
-sample is stopped incomplete at 246 recorded games and 122 pair records after
-an optional power query timed out; all three original starts and its original
-deadline are exhausted. [Approval, actual preflight, failures and startup proof](../results/heuristic-approved-continuation-2026-10-26/README.md)
-retain each distinct outcome. These normal-use measurements are not controlled
-idle-host measurements, and no full systems result is certified.
+The fourth heuristic start stopped at 2497 recorded games when the optional
+host-monitoring log exceeded its byte cap. After a new direct instruction to
+handle necessary work without routine approval waits, a fifth start resumed the
+same 3000-game schedule and saved actor. Its separately recorded two-hour
+wall-only extension adds no active compute allowance; original scope/profile
+bytes and all old failures stay intact. Saturated logging now records bounded
+omission counters without terminating games. Battery changes and ordinary laptop
+use remain allowed. [Failure, new authorization and actual continuation](../results/heuristic-log-capacity-continuation-2026-10-26/README.md)
+preserve the failed preview separately from ten passed helper controls and the
+actual primary-owner admission. The multicore sample remains incomplete at 246
+recorded games and 122 pair records after its power-query timeout. These are
+normal-use observations, not controlled idle-host measurements; no full systems
+result is certified.
 
 The [complete original-data and learning audit](../results/g07-full-audit-2026-10-26/README.md)
 is closed passed: all 114791 pairs, 229582 original games, 16522987 observations,
@@ -57,7 +61,7 @@ full-sample result. The original q1024 model and match failures remain unchanged
 | G07 Learning | Full joined replay passed: all114791pairs/229582games/16522987observations and240original checkpoints; unchanged validation-only seed73step2750 | Final source binding and portable bulk corpus/checkpoint reproduction remain required |
 | G08 Neural contribution | Original q1024 full sample failed gain. V4 recorded4000attempts but only3997finished; three512-ply-limit records made independent acceptance fail. Completed-game diagnostic -63.86relativeElo95[-73.80,-54.07] | Required +50 gain and positive lower bound remain unmet; no reclassification or game replay |
 | G09 External strength | V4 all2000games independently passed; unrestricted Stockfish19 subset56W/2D/608L, -411.50relativeElo95[-460.14,-370.68] at100ms | Final source/deployment binding and portable raw v4 journals; no absolute rating |
-| G10 Parallel systems | Multicore stopped incomplete at246/1200recorded games after its third start hit a power-query timeout. The specifically approved fourth heuristic start resumed beyond798/3000games with battery/normal-use observations; earlier failures retained | Both complete matrices, useful-work/depth/memory/stop/race joins and final source binding; no additional start or time allowance |
+| G10 Parallel systems | Multicore stopped incomplete at246/1200recorded games after its third start hit a power-query timeout. Heuristic fourth start stopped at2497/3000on a monitoring log cap; fifth start resumed under new broad human authorization with7200wall-only seconds and no added active allowance; earlier failures retained | Both complete matrices, useful-work/depth/memory/stop/race joins and final source binding; no additional start or time allowance |
 | G11 Recovery | Full historical/source/saved-image join passed at6a63aaaa/run40336617662; original arena/trainer/data evidence reconstructed,9controls/platform; exact saved-image sample accepted onmacOS | Final all-domain source binding and portable original archives; no historical producer rerun |
 | G12 Browser | Four-context producers ran, but original three executions and the separately approved repair all failed independent acceptance; all eight platform logs retained | Missing complete captured original-native SSE evidence; no further browser execution authorized |
 | G13 Performance | Exact saved v4actor:640timed searches/4581RSS/2000readiness observations and16independent scalar/native searches passed under the exclusive host owner | Final source/deployment binding; this sample does not certify parallel match strength, race safety or a stop percentile |
