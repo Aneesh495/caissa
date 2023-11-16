@@ -1,0 +1,9 @@
+# Queued original multicore continuation
+
+The original 1200-game multicore sample stopped at 246 game records and 122 pair records after its third start hit a power-observation timeout. Its original expired scope, all failures and cumulative 3920.0089230839803 active seconds remain intact. No original game is replaced or reclassified.
+
+Under the later direct broad human instruction to handle necessary work without waiting for routine approval, this plan permits one fourth start with at most 28800 new wall seconds, beginning only when the healthy heuristic owner has exited and the exclusive host lease is free. The deadline is created once at that actual launch and clipped to the original parent deadline. The original 28800-second cumulative active ceiling, 20 GiB additional disk cap, 10 GiB reserve, saved actor and original schedule remain unchanged. These numerical bounds are prospectively selected under the broad instruction, not quoted as a separate numerical human reply.
+
+One 30-second readonly preflight passed in 0.5512969999981578 seconds. It entered the real original archived controller admission without native/game execution, new scope creation, attempt directories, or original scope/active-ledger/source mutations. All three original attempts remained unchanged. The actual fourth start is queued, not running; its wall budget has not begun. The bootstrap uses the same verified observer-error and log-cap helpers, correct archive argument forwarding and saved EvalFile-before-Use-Neural initialization. A separate runtime view records the effective fourth start and added wall-only window without changing original scope/profile bytes.
+
+The immutable input/game/failure catalog contains 665 files. It is verified again before actual startup. Complete matrix replay, performance/race/source joins and full G10 acceptance remain pending. No new Elo or project completion is claimed.
