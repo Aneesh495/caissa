@@ -1,0 +1,21 @@
+{
+  "schema": "caissa-finite-parallel-queue-v1",
+  "origin_unix": 1793058107.588161,
+  "wait_deadline_unix": 1793068907.588161,
+  "maximum_wait_seconds": 10800,
+  "maximum_waiter_invocations": 1,
+  "waiter_invocations_started": 1,
+  "parent_deadline_unix": 1793150297.974828,
+  "queue_source_sha256": "911c56c45a0e9a892b80266a3edcca16affe096a90c68e5d455983e749c998d0",
+  "pins": {
+    "tools/parallel_bounded_continuation.py": "3c217ef028ed11ce48fc9c5fab860146affb9a3dcf15855af16527ecda9b6f56",
+    "tools/telemetry_nonfatal.py": "92108ff7d07f6eb41f38402b0e60db3b005c83c0076ed1fa666b87a8238a63e6",
+    "tools/bounded_host_log.py": "9614ffd5e97cc5fc50f42c9805db273ff9228d3dc132072b0dc0452274263111",
+    "work/parallel-bounded-continuation-2026-10-26/PROPOSAL.json": "fddec2df907a7cf2109623aa2041aca64832d97d3f1f01310928710c3bc94b1c",
+    "work/parallel-bounded-continuation-2026-10-26/AUTHORIZATION.json": "1955813522ce8f2c1191a51b8253eb4ffc34d85c03f176e75eb55da9e585250c",
+    "work/parallel-bounded-continuation-2026-10-26/PROTECTED_RECORDS.json": "b72bd067bb8f1c6ceb97c4c10c3908e1c2f640dc791988fcaf9769272599fc6f"
+  },
+  "maximum_new_parallel_wall_seconds": 28800,
+  "extra_active_seconds_added": 0,
+  "queue_does_not_activate_parallel_wall_window": true
+}
