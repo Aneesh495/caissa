@@ -135,6 +135,11 @@ def main():
         ("viewport-overflow", "BROWSER.json", "viewport overflowed"),
         ("stale-session-accepted", "BROWSER.json", "stale session"),
         ("illegal-native-pv", "NETWORK.json", "principal variation"),
+        (
+            "completed-native-stream-omitted",
+            "NETWORK.json",
+            "completed original native analysis",
+        ),
         ("neural-not-used", "NETWORK.json", "evaluator was not actually used"),
         ("changed-mixture", "CONFIG.json", "evaluator or component"),
         ("promoted-full-gate", "CONFIG.json", "evaluator or component"),
@@ -190,6 +195,11 @@ def main():
                 next(r for r in value["records"] if r["name"] == "analysis")[
                     "lines"
                 ] = ["1. a1a8"]
+            elif label == "completed-native-stream-omitted":
+                for row in value:
+                    if row["url"] == "/api/analyze":
+                        row.pop("body", None)
+                        row["aborted"] = True
             else:
                 changed = False
                 for row in value:

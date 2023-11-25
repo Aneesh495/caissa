@@ -129,9 +129,12 @@ function showTrace(value: unknown): void {
   detail.textContent = `Window ${value.alpha} to ${value.beta} centipawns, from the side to move. `;
   fen.textContent = value.fen; sample.append(title, detail, fen); target.append(sample); element('trace-count').textContent = String(target.childElementCount);
 }
+function finishAnalysis(completed = false): void {
+  if (inspectionPending && !inspectionComplete) element('inspection-note').textContent = completed ? 'Analysis ended without final counters. No completed summary is available.' : 'Analysis stopped before final counters arrived. No completed summary is available.';
+  inspectionPending = false; active = undefined; element<HTMLButtonElement>('cancel').disabled = true; element<HTMLButtonElement>('analyze').disabled = false; element('analysis-state').textContent = 'READY'; element('analysis-state').classList.remove('active');
+}
 function cancel(): void {
-  if (inspectionPending && !inspectionComplete) element('inspection-note').textContent = 'Analysis stopped before final counters arrived. No completed summary is available.';
-  inspectionPending = false; active?.abort(); active = undefined; element<HTMLButtonElement>('cancel').disabled = true; element<HTMLButtonElement>('analyze').disabled = false; element('analysis-state').textContent = 'READY'; element('analysis-state').classList.remove('active');
+  active?.abort(); finishAnalysis();
 }
 async function selectNode(id: number, manual = true): Promise<void> {
   if (manual) playing++; generation++; const version = generation; cancel(); resetInspection(); current = id; selected = undefined; legal = []; variations.clear(); drawLines(); drawBoard(); drawMoves(); save();
@@ -197,6 +200,7 @@ async function startAnalysis(): Promise<void> {
   resetInspection('Waiting for the finished search summary.'); const inspect = element<HTMLInputElement>('inspect-search').checked; inspectionPending = inspect;
   element<HTMLButtonElement>('cancel').disabled = false; element<HTMLButtonElement>('analyze').disabled = true; element('analysis-state').textContent = 'SEARCHING'; element('analysis-state').classList.add('active');
   const numeric = (id: string): number => Number(element<HTMLSelectElement>(id).value);
+  let completed = false, completion: string | undefined;
   try {
     const response = await fetch('/api/analyze', { method: 'POST', signal: controller.signal, headers: { 'Content-Type': 'application/json', 'X-Caissa-Token': session.token, 'X-Caissa-Session': session.session }, body: JSON.stringify({ fen: game.initial, moves: movePath(), chess960: game.chess960, milliseconds: numeric('time'), threads: numeric('threads'), hash: numeric('hash'), multipv: numeric('multipv'), inspect }) });
     if (!response.ok) { const error = await response.json() as { error: string }; throw new Error(error.error); }
@@ -220,11 +224,19 @@ async function startAnalysis(): Promise<void> {
           if ((data.multipv ?? 1) === 1 && data.scoreType === 'cp') {
             const cp = (data.score ?? 0) * (capturedSide === 'w' ? 1 : -1); const old = evaluations.find((item) => item.node === capturedNode); if (old) old.cp = cp; else evaluations.push({ node: capturedNode, cp }); drawHistory(); save();
           }
-        } else if (event === 'bestmove') status(data.move === '0000' ? 'The game has ended.' : `Analysis complete. Best move: ${data.move ?? ''}.`);
+        } else if (event === 'bestmove') completion = data.move === '0000' ? 'The game has ended.' : `Analysis complete. Best move: ${data.move ?? ''}.`;
       }
     }
+    reader.releaseLock();
+    if (generation === version && active === controller) {
+      if (buffer.trim() || decoder.decode().trim()) throw new Error('Analysis stream ended with an incomplete event.');
+      if (completion === undefined) throw new Error('Analysis stream ended without a best move.');
+      // Completion is visible only after the original response reaches EOF.
+      // Releasing a finished request must not abort its browser transport.
+      completed = true; status(completion);
+    }
   } catch (error) { if (!(error instanceof DOMException && error.name === 'AbortError')) throw error; }
-  finally { if (active === controller) cancel(); }
+  finally { if (active === controller) { if (completed) finishAnalysis(true); else cancel(); } }
 }
 function quote(value: string): string { return value.replaceAll('\\', '\\\\').replaceAll('"', '\\"').replace(/[\r\n]/g, ' '); }
 function pgnText(): string {
