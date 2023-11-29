@@ -1,0 +1,14 @@
+{
+  "ci_executions_started": 1,
+  "maximum_ci_executions": 2,
+  "cumulative_hosted_seconds": {
+    "linux": 111,
+    "macos": 73
+  },
+  "status": "first browser execution failed; one metadata-only remote diagnosis charged",
+  "charged_unix": 1793058999.110973,
+  "ci_run": 40423146013,
+  "source_commit": "2967e87a82f34b3c3f13f6e54c7dae6ed830e223",
+  "failed_run": 40423146013,
+  "metadata_executions_started": 1
+}

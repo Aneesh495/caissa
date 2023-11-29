@@ -1,0 +1,47 @@
+name: bounded failed browser capture metadata
+on:
+  workflow_dispatch:
+    inputs:
+      source_sha:
+        description: Frozen read-only diagnosis source
+        required: true
+permissions:
+  contents: read
+  actions: read
+jobs:
+  metadata:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 2
+    steps:
+      - uses: actions/checkout@v4
+      - name: Read pinned failed metadata without local decode or new browser work
+        env:
+          EXPECTED_SOURCE: ${{ inputs.source_sha }}
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PY'
+          import json,os,time,zipfile
+          from pathlib import Path
+          from tools.recovery_join_inputs import download
+          rule=json.loads(Path('results/browser-capture-amendment-2026-10-26/DIAGNOSTIC_AMENDMENT.json').read_text())
+          assert os.environ['GITHUB_SHA']==os.environ['EXPECTED_SOURCE']
+          assert int(os.environ['GITHUB_RUN_NUMBER'])==1
+          assert int(os.environ['GITHUB_RUN_ATTEMPT'])==1
+          start=time.monotonic()
+          def tick():
+              assert time.monotonic()-start<60 and time.time()<rule['deadline_unix']
+          for item in rule['artifacts']:
+              target=Path('runs/capture-diagnosis')/(str(item['artifact_id'])+'.zip')
+              origin=download(item,target,tick)
+              print('PINNED_ARCHIVE',json.dumps(origin))
+              with zipfile.ZipFile(target) as bundle:
+                  for name in ['ORIGINAL_CAPTURE_INSPECTION.json','RESULT.json','component.log','component/positive/browser-process.log']:
+                      info=bundle.getinfo(name)
+                      assert info.file_size<=131072
+                      print('PINNED_MEMBER',name,bundle.read(info).decode()[-12000:])
+                  raw=bundle.read('component/positive/NETWORK.json')
+                  assert len(raw)<=33554432
+                  rows=json.loads(raw)
+                  print('CAPTURE_ERRORS',json.dumps([{k:r.get(k) for k in ['mode','width','url','status','aborted','transport_complete','capture_error']} for r in rows if r['url']=='/api/analyze']))
+              tick()
+          PY

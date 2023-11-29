@@ -1,0 +1,26 @@
+{
+  "schema": "caissa-capture-metadata-only-amendment-v1",
+  "authority": "Later direct broad human instruction; agent-selected finite read-only diagnosis to avoid local archive decoding during decisive games.",
+  "origin_unix": 1793059253.6427588,
+  "deadline_unix": 1793062599.0996091,
+  "parent_deadline_unix": 1793150297.974828,
+  "maximum_executions": 1,
+  "maximum_hosted_seconds": 120,
+  "new_browser_or_native_executions": 0,
+  "main_corrected_browser_execution_limit_unchanged": 2,
+  "combined_main_and_metadata_hosted_ceiling_per_platform_unchanged": 1800,
+  "no_wall_renewal": true,
+  "reason": "First corrected browser run failed; exact nested cause retained only in hosted artifacts. Inspect bounded metadata remotely before changing code or spending the second browser execution.",
+  "artifacts": [
+    {
+      "artifact_id": 12698112301,
+      "archive_bytes": 1430482,
+      "archive_sha256": "9889b1e9e8c44c0da3b72ed797a34bf24b928b82506570e5a98b43cbd62004ac"
+    },
+    {
+      "artifact_id": 12698551481,
+      "archive_bytes": 1531365,
+      "archive_sha256": "9e141f166fd0c0bd1440f4ae134096633fb4c71ec07827393581a71abc051f3f"
+    }
+  ]
+}
