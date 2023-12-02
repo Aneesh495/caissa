@@ -105,6 +105,7 @@ def main():
                 "cause": "Original observations are separate from the proposed UI transport-lifetime explanation.",
             },
         )
+        print("ORIGINAL_CAPTURE_CONTEXTS", json.dumps(contexts), flush=True)
         tick()
         result = subprocess.run(
             [
@@ -121,6 +122,7 @@ def main():
             timeout=min(360, rule["deadline_unix"] - time.time()),
         )
         (args.output / "component.log").write_text(result.stdout + result.stderr)
+        print(result.stdout + result.stderr, flush=True)
         if result.returncode:
             raise ValueError(
                 "actual amended browser component failed; see retained component.log"
