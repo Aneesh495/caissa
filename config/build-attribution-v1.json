@@ -50,5 +50,7 @@
   "actual_link_driver_capture": true,
   "system_and_compiler_payloads_in_public_transport": false,
   "saved_original_compiler_invocation_proven": false,
-  "runtime_dynamic_dependency_closure_proven": false
+  "runtime_dynamic_dependency_closure_proven": false,
+  "relative_compile_source": true,
+  "canonical_dependency_inventory": true
 }

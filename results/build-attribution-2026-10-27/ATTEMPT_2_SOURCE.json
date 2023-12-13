@@ -1,0 +1,32 @@
+{
+  "schema": "caissa-build-attribution-second-source-admission-v1",
+  "first_source": "07e9897815457a35afbbfca91d41283fd369de05",
+  "first_run": 40426236191,
+  "observed_unix": 1793061008.739934,
+  "first_limits_sha256": "8c377d57e3a68d22fed060badfc57f069620e2d911fff4bab43f959d7848af3e",
+  "second_limits_sha256": "82bd6ee4e852377f88518c433ac53f0c5c74f8a4b0f4f42901599dbd5b69cde8",
+  "original_amendment_scope_sha256": "8c377d57e3a68d22fed060badfc57f069620e2d911fff4bab43f959d7848af3e",
+  "fixed_deadline_unix": 1793067890.0419478,
+  "numeric_limits_unchanged": true,
+  "second_execution_charged": true,
+  "first_failures": {
+    "linux": "Two actual target images differed; all21ThinLTO object byte identities differed despite prefix maps. No independent acceptance entered.",
+    "macos": "Two actual target images were byte-identical, then independent consumed-dependency inventory comparison failed. No component pass."
+  },
+  "repair": "Record and execute relative source paths for stable compiler module identity, canonicalize SDK dependency aliases before retention, preserve all exact actual commands/dependency-query stderr and independent scans. Public project/object subset is saved before independent verification so future independent failures retain target bodies.",
+  "attribution_unchanged": "Only new diagnostic build images; original1ff actor/native source and all old failures unchanged.",
+  "full_G15_certified": false,
+  "first_artifacts": {
+    "linux": {
+      "artifact_id": 12699921679,
+      "bytes": 5871657,
+      "sha256": "e9b195672a9efbd769acb76d8a475d2793b531b575e30f585a3788a2e635f04c"
+    },
+    "macos": {
+      "artifact_id": 12700076577,
+      "bytes": 3701882,
+      "sha256": "a7440bea401546f61329212bc1368389722e0c232b79430b37317ebb019ba276"
+    }
+  },
+  "first_mac_target_payload_limitation": "Initial harness uploaded compiler receipts, dependency outputs and target hashes but not target/object bodies after the independent failure. Do not claim complete raw target payload retention for that failed Mac run."
+}

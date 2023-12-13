@@ -1,0 +1,11 @@
+{
+  "ci_executions_started": 2,
+  "maximum_ci_executions": 2,
+  "cumulative_hosted_seconds": {
+    "linux": 74,
+    "macos": 114
+  },
+  "status": "second finite source-bound execution charged before dispatch",
+  "charged_unix": 1793060690.04597,
+  "failed_run": 40426236191
+}

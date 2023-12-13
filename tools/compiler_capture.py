@@ -83,19 +83,33 @@ def main():
             "apps",
         }:
             return subprocess.call(command)
+        # Keep the compiler's module source name independent of the fresh clone's
+        # absolute directory while recording the exact command actually executed.
+        command[command.index("-c") + 1] = os.path.relpath(source, Path.cwd())
+        name = str(source.relative_to(checkout)).replace("/", "_")
         observed = subprocess.run(
-            dependency_command(command), capture_output=True, timeout=120, check=True
+            dependency_command(command), capture_output=True, timeout=120
         )
+        (output / (name + ".deps")).write_bytes(observed.stdout[: 4 * 1024**2])
+        (output / (name + ".deps.stderr")).write_bytes(observed.stderr[: 4 * 1024**2])
+        if observed.returncode:
+            raise ValueError(
+                "actual compiler dependency query failed: "
+                + observed.stderr.decode(errors="replace")[-2048:]
+            )
         if len(observed.stdout) > 4 * 1024**2:
             raise ValueError("compiler dependency output ceiling exhausted")
         text = observed.stdout.decode().replace("\\\n", "")
         if not text.startswith("caissa-input:"):
             raise ValueError("compiler dependency target differs")
-        inputs = sorted(set(shlex.split(text[len("caissa-input:") :])))
+        inputs = sorted(
+            {
+                str(Path(path).resolve(strict=True))
+                for path in shlex.split(text[len("caissa-input:") :])
+            }
+        )
         if not 0 < len(inputs) <= 4096:
             raise ValueError("compiler dependency inventory outside ceiling")
-        name = str(source.relative_to(checkout)).replace("/", "_")
-        (output / (name + ".deps")).write_bytes(observed.stdout)
     else:
         inputs = [
             word

@@ -79,9 +79,22 @@ def archive_members(raw):
 
 
 def verify(
-    root, checkout, commit, profile_sha, *, replay_dependencies=False, deadline=None
+    root,
+    checkout,
+    commit,
+    profile_sha,
+    *,
+    replay_dependencies=False,
+    deadline=None,
+    replay_output=None,
 ):
     root, checkout = Path(root), Path(checkout)
+    if replay_dependencies:
+        require(
+            replay_output is not None, "independent compiler replay output required"
+        )
+        replay_output = Path(replay_output)
+        replay_output.mkdir(parents=True, exist_ok=False)
     profile_raw = (root / "PROFILE.json").read_bytes()
     require(digest(profile_raw) == profile_sha, "external build profile differs")
     profile = json.loads(profile_raw)
@@ -251,12 +264,38 @@ def verify(
                         index += 1
                 timeout = 120 if deadline is None else min(120, deadline - time.time())
                 require(timeout > 0, "independent compiler deadline exhausted")
+                replay_started = time.time()
+                replay_command = filtered + ["-M", "-MT", "caissa-input", "-MF", "-"]
                 actual = subprocess.run(
-                    filtered + ["-M", "-MT", "caissa-input", "-MF", "-"],
+                    replay_command,
                     cwd=record["directory"],
                     capture_output=True,
                     timeout=timeout,
                 )
+                scan_name = label + "-" + name.replace("/", "_")
+                (replay_output / (scan_name + ".deps")).write_bytes(
+                    actual.stdout[: 4 * 1024**2]
+                )
+                (replay_output / (scan_name + ".stderr")).write_bytes(
+                    actual.stderr[: 4 * 1024**2]
+                )
+                with (replay_output / "SCANS.jsonl").open("a") as stream:
+                    stream.write(
+                        json.dumps(
+                            {
+                                "source": name,
+                                "build": label,
+                                "argv": replay_command,
+                                "directory": record["directory"],
+                                "exit": actual.returncode,
+                                "stdout_sha256": digest(actual.stdout),
+                                "stderr_sha256": digest(actual.stderr),
+                                "start_unix": replay_started,
+                                "end_unix": time.time(),
+                            }
+                        )
+                        + "\n"
+                    )
                 require(
                     actual.returncode == 0 and len(actual.stdout) <= 4 * 1024**2,
                     "independent compiler dependency scan failed",

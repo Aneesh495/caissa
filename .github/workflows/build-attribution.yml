@@ -52,10 +52,12 @@ jobs:
             runs/g15-build-attribution/*.json
             runs/g15-build-attribution/*.log
             runs/g15-build-attribution/public/
+            runs/g15-build-attribution/independent/
             runs/g15-build-attribution/positive/*.json
             runs/g15-build-attribution/positive/*.jsonl
             runs/g15-build-attribution/positive/*.log
             runs/g15-build-attribution/positive/build-*/trace/*.json
             runs/g15-build-attribution/positive/build-*/trace/*.deps
+            runs/g15-build-attribution/positive/build-*/trace/*.deps.stderr
             runs/g15-build-attribution/positive/toolchain/COMPILER.json
           retention-days: 14
