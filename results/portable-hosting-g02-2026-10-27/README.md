@@ -1,0 +1,7 @@
+# Original G02 volume hosting
+
+This finite queue prepares public hosting of the unchanged original319gzipvolumes and index on the create-only evidence-g02-volumes-v1 branch. It cannot update main or an existing unrelated branch and publishes no release or release assets. Every member is checked against the original independent index before uploading; every public member must then be retrieved from the immutable new commit and match its original SHA256 and length. No packing, gzip decode, new chess games or semantic rerun occurs.
+
+The later direct human autonomy instruction authorizes the work. Numeric bounds are agent-selected prospectively: one fixed maximum12hour metadata wait, then one fixed2hour upload window with at most2starts sharing that original deadline,10GiBreserve and1GiBadditional local evidence. Writes are paced at least8seconds apart. The upload clock begins only after both existing timed owners exit and the actual host lease is acquired. It never competes with those timed games. The saved worker uses gh API because it must continue without a model turn; credentials stay in the configured client environment and are never logged.
+
+Status: source frozen for one30second read-only metadata/API admission. No upload, new evidence branch, body hashing or hosting scope has started. The previous closed packing/decoder scope remains unchanged. Public body availability and fullG15/project acceptance remain false.

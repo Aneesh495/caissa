@@ -1,0 +1,52 @@
+{
+  "schema": "caissa-original-g02-create-only-hosting-v1",
+  "repository": "Aneesh495/caissa",
+  "branch": "evidence-g02-volumes-v1",
+  "base_commit": "e79f40793bcabd8dd9560c5c2941388a7a079bc6",
+  "project": "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess",
+  "packet_root": "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/portable-evidence-v1/46b7378b5432b26733d12427d4cde1960f6f0e495814e93e41be4868c44f204e/artifact",
+  "index_sha256": "493405d717001b10e5406287b6f42138cd73de61677794d96183b73e9cfaaa40",
+  "original_sha256": "46b7378b5432b26733d12427d4cde1960f6f0e495814e93e41be4868c44f204e",
+  "original_bytes": 5349131147,
+  "gzip_bytes": 507807163,
+  "volume_count": 319,
+  "parent_deadline_unix": 1793150297.974828,
+  "wait_origin_unix": 1793062374.737782,
+  "wait_deadline_unix": 1793105574.737782,
+  "maximum_queue_wait_seconds": 43200,
+  "maximum_upload_seconds": 7200,
+  "maximum_upload_attempts": 2,
+  "minimum_write_interval_seconds": 8,
+  "maximum_additional_bytes": 1073741824,
+  "minimum_free_bytes": 10737418240,
+  "frozen_source_files": {
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/work/portable-hosting-g02-2026-10-27/source/tools/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/work/portable-hosting-g02-2026-10-27/source/tools/publish_evidence.py": "55b6d85e3e0a60b47b1960edb1e9bcf93d3c94fc9ee715954138537a7082c56c",
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/work/portable-hosting-g02-2026-10-27/source/tools/host_lease.py": "5cd62b0588fe59894137219f6a6db81ba0dabe08da53e5e8da4fcd5833a92de4",
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/work/portable-hosting-g02-2026-10-27/queue.py": "3a9844f60daefd37f7ba8336aa638ea2d215e485b1f63b294585c039c894dcbf"
+  },
+  "protected_metadata_files": [
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/portable-evidence-v1/46b7378b5432b26733d12427d4cde1960f6f0e495814e93e41be4868c44f204e/SCOPE.json",
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/portable-evidence-v1/46b7378b5432b26733d12427d4cde1960f6f0e495814e93e41be4868c44f204e/ACTIVE_USAGE.json",
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/portable-evidence-v1/46b7378b5432b26733d12427d4cde1960f6f0e495814e93e41be4868c44f204e/PORTABLE.json",
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/portable-evidence-v1/46b7378b5432b26733d12427d4cde1960f6f0e495814e93e41be4868c44f204e/PLAN.json",
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/portable-evidence-v1/46b7378b5432b26733d12427d4cde1960f6f0e495814e93e41be4868c44f204e/ENCODING.json"
+  ],
+  "timed_dependencies": [
+    {
+      "name": "original-heuristic-attempt5",
+      "active_usage": "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/full-heuristics-strength-v1/ACTIVE_USAGE.json",
+      "pid": 32106
+    },
+    {
+      "name": "queued-original-parallel-attempt4",
+      "active_usage": "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/full-parallel-strength-v1/ACTIVE_USAGE.json",
+      "pid": 46456
+    }
+  ],
+  "new_release": false,
+  "new_compression_or_gzip_decode": false,
+  "saved_actor_changed": false,
+  "full_G15_certified": false,
+  "full_acceptance": false
+}
