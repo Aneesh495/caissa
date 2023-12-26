@@ -1,0 +1,16 @@
+{
+  "schema": "caissa-storage-archive-preflight-v1",
+  "origin_unix": 1793070083.942951,
+  "deadline_unix": 1793070203.942951,
+  "maximum_invocations": 2,
+  "maximum_active_seconds": 120,
+  "invocations_started": 2,
+  "network_write_canary_maximum_bytes": 4096,
+  "source_sha256": "2d0f01cc4574fc4977b9360b6d105e98083bf5f6352afeddd84981b4e0799760",
+  "test_sha256": "3571ed01dd671e4992205b356635b9ba62b7847c80084bfefb3253b3b8999bf0",
+  "native_games": 0,
+  "archive_input_mutation": false,
+  "closed": true,
+  "result": "first invocation failed package discovery; second passed24transport/restoration/forgery/path/retention controls plus actual private54byte blob roundtrip",
+  "ended_unix": 1793070232.898865
+}

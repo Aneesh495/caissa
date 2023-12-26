@@ -1,0 +1,10 @@
+{
+  "status": "verified duplicate replaced by hardlink",
+  "original_canonical_bytes_unchanged": true,
+  "all_original_paths_retained": true,
+  "duplicate_bytes": 5349131147,
+  "disk_used_before": 443364507648,
+  "disk_used_after": 438012444672,
+  "source_sha256": "46b7378b5432b26733d12427d4cde1960f6f0e495814e93e41be4868c44f204e",
+  "observed_unix": 1793063365.38331
+}
