@@ -1,0 +1,14 @@
+{
+  "origin_unix": 1793074807.5934248,
+  "deadline_unix": 1793074927.5934248,
+  "maximum_invocations": 1,
+  "maximum_readonly_github_requests": 5,
+  "maximum_metadata_local_bytes": 2000000,
+  "maximum_blob_payload_read_bytes": 2000000,
+  "mutations": 0,
+  "purpose": "Reconstruct exact existing failed-pack manifest from frozen inventory/checkpoint; retrieve its already-uploaded blob without repeating the failed ref update. Original failure remains closed.",
+  "closed": true,
+  "invocations_started": 0,
+  "status": "not invoked; superseded by concrete combined repair diagnosis/control scope",
+  "ended_unix": 1793074962.7060502
+}
