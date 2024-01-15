@@ -1,0 +1,12 @@
+{
+  "status": "bounded alternative upload/metadata test only",
+  "private_folder_id": "1VIh5amtHhs1_LXdCDNzAtdOVNtjLW-PC",
+  "canary_file_id": "1KFr2BUZ5KWySY3QMDOOcXeVDiYXH_lCh",
+  "canary_bytes": 50,
+  "upload_and_metadata_verified": true,
+  "raw_download_roundtrip_verified": false,
+  "raw_download_note": "Connector produced authenticated file reference. Local stdin downloader exited on EOF before consuming a URL; no restored bytes were obtained. No large Drive upload or producer used.",
+  "only_owner_permission_observed": true,
+  "archive_destination_selected": "existing private GitHub archive with exact blob anchors, after actual32MiBanchor/readback passed",
+  "no_source_eviction": true
+}

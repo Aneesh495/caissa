@@ -1,0 +1,58 @@
+{
+  "requests": [
+    {
+      "method": "GET",
+      "endpoint": "",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 200 OK",
+      "structured_response": {}
+    },
+    {
+      "method": "GET",
+      "endpoint": "/git/ref/heads/main",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 200 OK",
+      "structured_response": {}
+    },
+    {
+      "method": "GET",
+      "endpoint": "/git/commits/5f6dac8fbd9809150d421916ff40ac71d1ea39d0",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 200 OK",
+      "structured_response": {
+        "message": "Archive exact Caissa storage pack 0 [skip ci]"
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/git/trees",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 201 Created",
+      "structured_response": {}
+    },
+    {
+      "method": "POST",
+      "endpoint": "/git/commits",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 201 Created",
+      "structured_response": {
+        "message": "Bind one preexisting archive chunk for exact storage diagnosis [skip ci]"
+      }
+    },
+    {
+      "method": "GET",
+      "endpoint": "/git/ref/heads/main",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 200 OK",
+      "structured_response": {}
+    },
+    {
+      "method": "PATCH",
+      "endpoint": "/git/refs/heads/main",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 200 OK",
+      "structured_response": {}
+    }
+  ],
+  "observed_unix": 1793075496.2285929
+}

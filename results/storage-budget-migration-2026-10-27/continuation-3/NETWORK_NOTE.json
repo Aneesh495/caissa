@@ -1,0 +1,9 @@
+{
+  "isolated_semantic_controls_network_calls": 0,
+  "additional_actual_private_anchor_requests": {
+    "readonly": 6,
+    "mutations": 2
+  },
+  "canary_blob_existing_bytes": 33554432,
+  "original_control_stdout_unchanged": true
+}

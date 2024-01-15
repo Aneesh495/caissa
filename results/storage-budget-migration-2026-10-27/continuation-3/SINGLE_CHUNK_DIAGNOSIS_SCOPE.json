@@ -1,0 +1,15 @@
+{
+  "origin_unix": 1793075468.4581661,
+  "deadline_unix": 1793075648.4581661,
+  "maximum_invocations": 1,
+  "maximum_mutations": 3,
+  "maximum_readonly_requests": 6,
+  "new_blobs_uploaded": 0,
+  "maximum_new_reachable_existing_bytes": 33554432,
+  "expected_head": "5f6dac8fbd9809150d421916ff40ac71d1ea39d0",
+  "existing_chunk_git_blob": "8c5935a27406b31ed1b56fd7f9fa0929919df0c4",
+  "existing_chunk_sha256": "740b174c8e28de108492e57b4d88bd3e54cab9a9d78d25e87decde508c65270e",
+  "local_source_deletions": 0,
+  "no_new_games": true,
+  "human_authority": "Necessary finite storage repair/diagnosis under broad direct autonomy. Exact structured response replaces missing original stderr; staged existing single chunk may become reachable but never authorizes local deletion."
+}

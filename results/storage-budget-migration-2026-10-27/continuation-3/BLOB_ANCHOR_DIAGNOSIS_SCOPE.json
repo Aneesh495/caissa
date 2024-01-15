@@ -1,0 +1,15 @@
+{
+  "origin_unix": 1793075935.530602,
+  "deadline_unix": 1793076115.530603,
+  "maximum_invocations": 1,
+  "maximum_mutations": 2,
+  "maximum_readonly_requests": 3,
+  "new_blob_payload_bytes": 0,
+  "existing_blob_git_oid": "56b3f2c1b813e0f9b64c6861169232375a9f75f4",
+  "existing_blob_bytes": 825126,
+  "existing_blob_sha256": "29466051639eb0e33b52db32ca8db8d14b3d8f634dc80ab0ba7b226670515eae",
+  "local_deletions": 0,
+  "software_release": false,
+  "human_authority": "Necessary finite storage recovery under direct broad autonomy; retain an already-uploaded exact binary object via an immutable private archive tag, leaving all software/product refs and failed scopes unchanged.",
+  "purpose": "Test documented Git tag target-type blob to avoid failing large branch ref updates. Storage anchor only, not release/publication."
+}

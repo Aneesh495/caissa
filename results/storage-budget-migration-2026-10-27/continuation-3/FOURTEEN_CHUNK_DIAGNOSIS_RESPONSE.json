@@ -1,0 +1,58 @@
+{
+  "requests": [
+    {
+      "method": "GET",
+      "endpoint": "",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 200 OK",
+      "structured_response": {}
+    },
+    {
+      "method": "GET",
+      "endpoint": "/git/ref/heads/main",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 200 OK",
+      "structured_response": {}
+    },
+    {
+      "method": "GET",
+      "endpoint": "/git/commits/d935a3f65940a8ff613fd9aaea129b1b4420d11b",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 200 OK",
+      "structured_response": {
+        "message": "Bind one preexisting archive chunk for exact storage diagnosis [skip ci]"
+      }
+    },
+    {
+      "method": "POST",
+      "endpoint": "/git/trees",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 201 Created",
+      "structured_response": {}
+    },
+    {
+      "method": "POST",
+      "endpoint": "/git/commits",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 201 Created",
+      "structured_response": {
+        "message": "Bind14existing archive chunks for exact ref diagnosis [skip ci]"
+      }
+    },
+    {
+      "method": "GET",
+      "endpoint": "/git/ref/heads/main",
+      "exit_code": 0,
+      "http_status": "HTTP/2.0 200 OK",
+      "structured_response": {}
+    },
+    {
+      "method": "PATCH",
+      "endpoint": "/git/refs/heads/main",
+      "exit_code": 1,
+      "http_status": "HTTP/2.0 500 Internal Server Error",
+      "structured_response": {}
+    }
+  ],
+  "observed_unix": 1793075584.513279
+}

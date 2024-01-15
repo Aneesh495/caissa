@@ -1,0 +1,12 @@
+{
+  "origin_unix": 1793075407.225534,
+  "deadline_unix": 1793075527.225534,
+  "maximum_invocations": 1,
+  "maximum_ref_noop_probes": 1,
+  "maximum_readonly_requests": 2,
+  "maximum_local_bytes": 100000,
+  "same_existing_head_only": true,
+  "archive_bytes_or_refs_not_advanced": true,
+  "original_deadline_unix": 1793084632.899253,
+  "purpose": "Capture structured response status/message for one same-head ref no-op after smaller-update repair also failed. No archive owner/game starts."
+}
