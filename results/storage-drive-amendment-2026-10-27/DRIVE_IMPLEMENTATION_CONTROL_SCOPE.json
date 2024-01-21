@@ -1,0 +1,17 @@
+{
+  "origin_unix": 1793077321.2887301,
+  "deadline_unix": 1793077921.2887301,
+  "maximum_invocations": 1,
+  "maximum_active_seconds": 120,
+  "maximum_temporary_test_bytes": 5000000,
+  "actual_cloud_writes": 0,
+  "new_native_games": 0,
+  "source_sha256": "73aaa7fac3e28c601b92fd4531eddd3e491e7bb5c14404f93ac00082160aedae",
+  "controller_sha256": "addf0f4a9af92d05ad90c49bcdd13eca77a184df8afb8aba673d6a78647386f6",
+  "purpose": "Offline full pack/provider catalog/eviction/restore semantic controls and JS parse check before source-bound Drive backend launch",
+  "tests_sha256": "8e47b340e7c040564c7c86dbfe4067a0fcf81491397c046e98723e5524c0c08c",
+  "invocations_started": 1,
+  "closed": true,
+  "status": "passed11offline full-provider transport/integrity/eviction controls and controller syntax; later metadata-tool wait literal increased1to10seconds, independently parsed",
+  "ended_unix": 1793077605.355073
+}

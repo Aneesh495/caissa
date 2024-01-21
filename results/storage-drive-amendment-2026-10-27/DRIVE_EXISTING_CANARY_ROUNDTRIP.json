@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "bytes": 50,
+  "sha256": "a68975666e0dddc2dcb32276004faa6bec8a927386a0ec5bccd96e53a4efed89",
+  "authenticated_reference_raw_readback": true,
+  "TLS_verification_enabled": true,
+  "download_client": "system curl",
+  "earlier_helper_failure": "Python framework missing issuer CA, not a provider/data failure; no payload read during failed helper",
+  "observed_unix": 1793076853.179484
+}

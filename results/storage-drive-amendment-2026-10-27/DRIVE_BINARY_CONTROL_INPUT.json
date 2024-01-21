@@ -1,0 +1,8 @@
+{
+  "path": "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/work/storage-cap-migration-2026-10-27/bridge/drive-binary-control.raw",
+  "bytes": 33554432,
+  "sha256": "c37ec4035c3c1b50ad18bf52ee7cfc4a009cb5cbba2b0a83e28ea215b4cd3ac8",
+  "md5": "6c0e3a5051502636ae8dc32882343ff1",
+  "generated_unix": 1793076877.982659,
+  "purpose": "bounded random transport canary only"
+}
