@@ -1,0 +1,20 @@
+{
+  "observed_unix": 1793078262.418447,
+  "actual_owner_pid": 41800,
+  "python_session_id": 12909,
+  "controller_functions_cell_id": "1571",
+  "progress": {
+    "compressed_pack_bytes": 771751936,
+    "new_drive_uploaded_bytes": 771751936,
+    "observed_unix": 1793078210.514001,
+    "pack": 1,
+    "phase": "compressing-and-uploading-to-private-drive",
+    "scope_sha256": "6eaf28fed46c2af9c1037a307aeb223eccbbb09fd11a8d64d2c27e6b6836b0e1",
+    "source_sha256": "73aaa7fac3e28c601b92fd4531eddd3e491e7bb5c14404f93ac00082160aedae",
+    "uploaded_chunks": 23
+  },
+  "archive_full_pack_verified": false,
+  "stderr_bytes": 0,
+  "project_cap_met": false,
+  "no_new_game_or_training": true
+}

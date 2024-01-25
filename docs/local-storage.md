@@ -47,4 +47,16 @@ invocations. The third transport gives each binary a private annotated Git tag
 whose target is the exact blob, and commits only small manifests to the archive
 branch. These tags retain storage objects. They are not software release tags.
 Full remote reconstruction and local rehash still precede deletion. The original
-failures and the fixed migration deadline remain preserved.
+failures and the fixed migration deadline remain preserved. That blob-anchor
+attempt also failed before the next pack was evicted.
+
+The separately bounded Drive fallback uses `tools/storage_drive.py` and
+`tools/drive_controller.js`. The Python owner holds the exclusive lease and
+requests small connected-tool transfers through a private file bridge. A
+controller serves at most 64 requests or 500 seconds, then the next scheduled
+continuation serves the pending request. Waiting for that callback is expected;
+it does not justify restarting the Python owner. Raw download references stay
+in private temporary files and never appear in process arguments. Exact remote
+manifest and full object readback still precede deletion. The new backend scope
+explicitly records its additional finite time and cloud capacity allowance,
+preserving all three failed GitHub scopes and the parent deadline.
