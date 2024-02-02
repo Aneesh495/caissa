@@ -1,0 +1,35 @@
+{
+  "actual_transport_repair_yet_verified": false,
+  "amendment_sha256": "16d845a9ba1a88a5873224dd3e8caa71514ee91a9f282825d71c447e9b64b5b0",
+  "connector_callbacks_succeeded_before_curl_failure": true,
+  "continuation_source_sha256": "5b91cee26a82ea56658bd94cac1f2f72af4b8017d8411db7c0e3b322517e0cb0",
+  "control_result": {
+    "exit_code": 0,
+    "new_games_network_uploads": 0,
+    "observed_unix": 1793087951.698146,
+    "scope_sha256": "77be8254c9671da6855c1723d0ca7432aa967e23e74f356cb8169face1ccf4df",
+    "seconds": 0.18411266600014642,
+    "source_bound_readonly_admission": true,
+    "source_sha256": "5b91cee26a82ea56658bd94cac1f2f72af4b8017d8411db7c0e3b322517e0cb0",
+    "status": "passed"
+  },
+  "controller_sha256": "80cf3c00e5e7cc51848c773a595cf7982379622e30952628f340d7e31d84c886",
+  "failed_pack": 3,
+  "failed_pack_originals_not_deleted": true,
+  "full_acceptance": false,
+  "kind": "implementation and bounded transport-continuation preparation, not project acceptance",
+  "new_manifest_upload_is_explicit_and_counted": "One replacement manifest, zero repeated body chunks; old manifest byte count derived from exact pinned encoder and checkpoint",
+  "observed_unix": 1793088050.875846,
+  "old_accepted_drive_packs": [
+    1,
+    2
+  ],
+  "old_manifest_id_not_retained": true,
+  "original_backend_result": "closed failed",
+  "original_curl_stderr_not_retained": true,
+  "original_failure": "authenticated Drive readback failed, curl exit 56",
+  "original_failure_file_sha256": "bf4287d51feeeb09b2fa392cfbdd22f87ad3e0d2edffc28a521b6fb376a7bc8b",
+  "original_stderr_sha256": "df1fd4e41e3d94b3599025263a27a58cd609009111107f894a666f353e30b96e",
+  "source_bound_offline_cases": 13,
+  "two_metadata_searches_returned_empty_without_proving_absence": true
+}
