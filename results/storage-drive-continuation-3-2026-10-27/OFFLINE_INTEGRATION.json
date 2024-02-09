@@ -1,0 +1,39 @@
+{
+  "actual_remote_recovery_established": false,
+  "controls": [
+    "canonical-full-pack-gzip-unwind-performs-one-transfer-and-keeps-original",
+    "actual-new-adapter-reconstructs-complete-synthetic-pack-before-unlink",
+    "raw-corruption-is-fatal-with-no-retry-or-eviction",
+    "transient-curl-error-uses-fresh-reference-within-existing-attempt-policy",
+    "permanent-curl-error-is-not-retried",
+    "manifest-id-growth-bound-is-enforced-before-catalog-acceptance",
+    "actual-owner-rejects-staging-headroom-and-expired-wall",
+    "actual-source-input-admission-passes-but-draft-cannot-start-owner",
+    "controller-keeps-unchanged-bounds-and-protocol-with-new-ledger-only"
+  ],
+  "controls_passed": 9,
+  "old_failures_preserved": true,
+  "owner_starts": 0,
+  "passed": true,
+  "private_source_and_input_binding_omitted": true,
+  "project_storage_cap_passed": false,
+  "provider_calls": 0,
+  "python_version": "3.12.14",
+  "schema": "caissa-drive-continuation3-offline-integration-v1",
+  "scope": "Canonical-runtime integration using synthetic bytes and mocked connected responses/curl. No original chess or closed component sample rerun.",
+  "seconds": 0.17886829376220703,
+  "semantic_or_whole_project_acceptance": false,
+  "source_pins": {
+    "tools/drive_controller_continuation_3.js": "c54a4d2251459d0a3cd391aa19bca1715b664cd1b93c2dbece861f03b479b48c",
+    "tools/host_lease.py": "5cd62b0588fe59894137219f6a6db81ba0dabe08da53e5e8da4fcd5833a92de4",
+    "tools/storage_archive.py": "2d0f01cc4574fc4977b9360b6d105e98083bf5f6352afeddd84981b4e0799760",
+    "tools/storage_archive_continuation.py": "d648fb41b7215c64e81d63081948343a8fef74d03d9b8010bb2653901ea5bc04",
+    "tools/storage_budget.py": "f2c93a82ee940904583dc71135bb0fa69d13c1e37a768e717b4fb98e32af49fb",
+    "tools/storage_drive.py": "73aaa7fac3e28c601b92fd4531eddd3e491e7bb5c14404f93ac00082160aedae",
+    "tools/storage_drive_continuation.py": "5b91cee26a82ea56658bd94cac1f2f72af4b8017d8411db7c0e3b322517e0cb0",
+    "tools/storage_drive_continuation_3.py": "642d8b1aef0bbbc0c4d05e2d8fc2b3b907056704a944a9f8f114a24357ed2821",
+    "tools/storage_drive_continuation_3_controls.py": "6ef70ac8c284554164a09955b602daa8b0c9ff98b6794924ecd5e7b7030602d0",
+    "tools/storage_drive_recovery.py": "7366e738fdc95096a9c3f06a94e579b3495974f517809f5de74cb198ed5d1c80"
+  },
+  "stderr_bytes": 0
+}
