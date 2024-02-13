@@ -7,3 +7,5 @@ The controls reject compression-finalizer upload re-entry, corrupted remote byte
 The earlier standalone component controls passed under Python 3.14 but emitted a finalizer warning. Their original result, source and warning remain private and unchanged. This new canonical-runtime integration is a separate source binding and does not reclassify that observation.
 
 The proposed continuation selects untouched later archive packs. The earlier upload with an unknown outcome and its original inputs remain deferred. These offline controls do not establish actual remote recovery, the local storage cap, public raw-data availability, semantic acceptance or whole-project acceptance. Full private source/input bindings and old failures remain local; this public file is compact derived metadata.
+
+The separate [first actual byte-transport receipt](ACTUAL_PACK_00012.json) records full remote reconstruction and completed eviction for one later real pack. It is a transport component proof; the deferred upload, storage admission and whole-project gates remain open.
