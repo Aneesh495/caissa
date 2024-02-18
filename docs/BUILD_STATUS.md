@@ -2,25 +2,25 @@
 
 Status: implemented development system; full acceptance incomplete; no release and no final absolute Elo.
 
+October 28, 2026: the original parent deadline has expired. The local minimal
+retention cleanup is complete, and the dedicated bulk Drive archive was deleted.
+Older raw-artifact availability statements below are historical. See
+[current retention and execution limits](ARTIFACT_RETENTION.md).
+
 The frozen v4 strength sequence is closed. All 2000 external games passed
 independent replay. The neural sample failed: 4000 games were attempted, 3997
 finished and three reached the original 512-ply limit. Those records are retained,
 and the required neural gain remains unmet. No strength sample is being retrained
 or restarted.
 
-The fourth heuristic start stopped at 2497 recorded games when the optional
-host-monitoring log exceeded its byte cap. After a new direct instruction to
-handle necessary work without routine approval waits, a fifth start resumed the
-same 3000-game schedule and saved actor. Its separately recorded two-hour
-wall-only extension adds no active compute allowance; original scope/profile
-bytes and all old failures stay intact. Saturated logging now records bounded
-omission counters without terminating games. Battery changes and ordinary laptop
-use remain allowed. [Failure, new authorization and actual continuation](../results/heuristic-log-capacity-continuation-2026-10-26/README.md)
-preserve the failed preview separately from ten passed helper controls and the
-actual primary-owner admission. The multicore sample remains incomplete at 246
-recorded games and 122 pair records after its power-query timeout. These are
-normal-use observations, not controlled idle-host measurements; no full systems
-result is certified.
+The original heuristic schedule is closed with 3000 game attempts, 2999 finished
+games and 1500 pair records. Thirty-nine comparisons independently passed; the
+table-milliseconds-100 comparison failed on one original unfinished game.
+[The original-sample result](../results/heuristics-original-2026-10-27/STATUS.md)
+preserves that failure without replacement games. The multicore sample stopped
+for storage cleanup after its fourth start, with 262 game records and 131 pair
+records retained unchanged. No fifth start was admitted before the original
+parent deadline expired. No full systems result is certified.
 
 The [complete original-data and learning audit](../results/g07-full-audit-2026-10-26/README.md)
 is closed passed: all 114791 pairs, 229582 original games, 16522987 observations,
@@ -61,7 +61,7 @@ full-sample result. The original q1024 model and match failures remain unchanged
 | G07 Learning | Full joined replay passed: all114791pairs/229582games/16522987observations and240original checkpoints; unchanged validation-only seed73step2750 | Final source binding and portable bulk corpus/checkpoint reproduction remain required |
 | G08 Neural contribution | Original q1024 full sample failed gain. V4 recorded4000attempts but only3997finished; three512-ply-limit records made independent acceptance fail. Completed-game diagnostic -63.86relativeElo95[-73.80,-54.07] | Required +50 gain and positive lower bound remain unmet; no reclassification or game replay |
 | G09 External strength | V4 all2000games independently passed; unrestricted Stockfish19 subset56W/2D/608L, -411.50relativeElo95[-460.14,-370.68] at100ms | Final source/deployment binding and portable raw v4 journals; no absolute rating |
-| G10 Parallel systems | Multicore stopped incomplete at246/1200recorded games after its third start hit a power-query timeout. Heuristic fourth start stopped at2497/3000on a monitoring log cap; fifth start resumed under new broad human authorization with7200wall-only seconds and no added active allowance; earlier failures retained | Both complete matrices, useful-work/depth/memory/stop/race joins and final source binding; no additional start or time allowance |
+| G10 Parallel systems | Multicore stopped incomplete at262/1200 recorded games after its fourth start. Heuristics closed3000attempts/2999finished;39comparisons passed and one failed on an original unfinished game | Remaining multicore sample, useful-work/depth/memory/stop/race joins and final source binding; original parent expired, no fifth-start allowance |
 | G11 Recovery | Full historical/source/saved-image join passed at6a63aaaa/run40336617662; original arena/trainer/data evidence reconstructed,9controls/platform; exact saved-image sample accepted onmacOS | Final all-domain source binding and portable original archives; no historical producer rerun |
 | G12 Browser | Four-context producers ran, but original three executions and the separately approved repair all failed independent acceptance; all eight platform logs retained | Missing complete captured original-native SSE evidence; no further browser execution authorized |
 | G13 Performance | Exact saved v4actor:640timed searches/4581RSS/2000readiness observations and16independent scalar/native searches passed under the exclusive host owner | Final source/deployment binding; this sample does not certify parallel match strength, race safety or a stop percentile |

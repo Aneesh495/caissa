@@ -1,5 +1,9 @@
 # Drive upload failure recovery components
 
+Current availability: the dedicated bulk Drive archive was subsequently deleted
+under the maintainer's minimal-retention instruction. These are historical
+component receipts. See [artifact retention](../../docs/ARTIFACT_RETENTION.md).
+
 Nine new source-bound integration controls passed under Python 3.12.14 with no stderr, provider calls or real archive-owner starts. They exercise the actual pack writer, new transfer adapter, manifest and object reconstruction, and rehash-before-unlink path using synthetic local bytes and mocked connected responses and curl.
 
 The controls reject compression-finalizer upload re-entry, corrupted remote bytes, permanent curl errors, oversized file IDs, exhausted staging headroom and expired wall time. The whitelisted transient-error control requires a fresh download reference. A draft amendment cannot start an owner. The new controller differs from the prior controller only in its selected usage ledger.
