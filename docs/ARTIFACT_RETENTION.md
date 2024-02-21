@@ -23,3 +23,10 @@ storage enforcement for a future continuation is still unwired. No further
 experiment execution is authorized by that expired scope, and its follow-up
 automation was removed. All original failures and cumulative limits remain
 unchanged. Full acceptance and release remain blocked.
+
+Later on October 28, the maintainer explicitly authorized continued work and
+restored the follow-up. A new finite continuation records that authority
+separately from the expired parent. The new storage boundary has
+[source-bound synthetic integration evidence](../results/parallel-storage-continuation-2026-10-28/README.md).
+It must be admitted against actual storage before a fifth parallel owner starts.
+The historical raw-artifact retirement and frozen actor remain unchanged.
