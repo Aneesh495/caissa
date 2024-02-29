@@ -1,14 +1,14 @@
 # Caissa remaining work
 
-Updated: 2026-10-28T17:29:42-04:00 (America/New_York). Revision 41.
+Updated: 2026-10-28T17:41:30-04:00 (America/New_York). Revision 42.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
 ## Current work
 
-R08: Design and run a calibrated engine-pool rating benchmark.
+R05: Bind core correctness to the final engine.
 
-Prepare the prospective rating-pool benchmark design and identify genuine calibration prerequisites. Keep public-default classical and frozen-neural actors distinct. Declare target configuration, opponents, conditions, games/time/storage, independent replay and uncertainty before any new experiment. The exhausted original parallel scope grants no benchmark game time.
+Prepare the exact final source/actor/model/settings evidence inventory and identify missing G01-G06 joins under a new finite source-bound scope. Reuse closed accepted readers; do not rerun them for status. Keep the saved actor and original compiler-provenance blocker unchanged.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -35,7 +35,7 @@ Recorded attempts include failed or unfinished outcomes. A count does not establ
 | R05 | pending | Bind core correctness to the final engine |
 | R06 | blocked | Finish final data and learning lineage integration |
 | R07 | pending | Bind existing external strength to the final report |
-| R08 | pending design | Design and run a calibrated engine-pool rating benchmark |
+| R08 | blocked | Design and run a calibrated engine-pool rating benchmark |
 | R09 | pending | Complete final recovery acceptance |
 | R10 | pending | Complete final browser and native-engine acceptance |
 | R11 | pending | Bind the passed performance study to final deployment |
@@ -92,7 +92,7 @@ Blocker: The frozen neural sample failed and its completed-game diagnostic was w
 
 ### R05: Bind core correctness to the final engine
 
-Join rules, reversible state, draws, protocol, search and network numerical evidence to one exact final engine/model/source/settings inventory; complete only missing final checks under finite source-bound scopes.
+Prepare the exact final source/actor/model/settings evidence inventory and identify missing G01-G06 joins under a new finite source-bound scope. Reuse closed accepted readers; do not rerun them for status. Keep the saved actor and original compiler-provenance blocker unchanged.
 
 Completion requires: G01-G06 evidence and independent readers agree on the final identity, reject incorrect evidence, and show actual runtime completion where required.
 
@@ -124,15 +124,15 @@ Existing evidence: `results/external-v4-2026-10-26/independent-external.json`; `
 
 ### R08: Design and run a calibrated engine-pool rating benchmark
 
-Prepare the prospective rating-pool benchmark design and identify genuine calibration prerequisites. Keep public-default classical and frozen-neural actors distinct. Declare target configuration, opponents, conditions, games/time/storage, independent replay and uncertainty before any new experiment. The exhausted original parallel scope grants no benchmark game time.
+Implement and verify game-clock support only under a new finite source-bound development scope, establish calibration and independent rating analysis, and check genuine time feasibility before any match admission. Meanwhile advance R05 source/evidence joins. Do not substitute nominal Stockfish option labels for a calibrated rating.
 
 Completion requires: A checked connected match sample yields a named-pool rating estimate with a meaningful confidence interval and documented conditions. An official rating-list entry would require that list to test/include the engine separately.
 
 Dependencies: exclusive host released, fixed target configuration, fresh finite benchmark scope.
 
-Existing evidence: `docs/STRENGTH_V4.md`.
+Existing evidence: `docs/STRENGTH_V4.md`; `docs/RATING_BENCHMARK_DESIGN.md`.
 
-Blocker: Current multicore games measure Caissa thread differences. They do not anchor the engine to an external rating pool. No rating-pool experiment is admitted by this planning record.
+Blocker: The current runner has only node/per-move budgets, not the required game clocks. Defensible calibration uncertainty and a fresh feasible producer scope are missing. The full proposed sample does not fit the current parent worst-case time.
 
 ### R09: Complete final recovery acceptance
 
