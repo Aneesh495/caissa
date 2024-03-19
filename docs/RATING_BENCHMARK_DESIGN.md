@@ -10,7 +10,7 @@ The existing v4 neural result remains -411.50 relative Elo against unrestricted 
 
 ## Target identity
 
-The primary proposed target is the retained `1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897` executable with the classical configuration advertised by its archived source: one thread, 32 MiB hash, neural evaluation off, one principal variation and pondering off. The archived source also advertises evaluation cache, tactical generation and lazy neural evaluation as off. A new bounded identity check must confirm the executable's complete option inventory before any benchmark admission. Source declarations alone do not prove runtime settings or compiler provenance.
+The primary proposed target is the retained `1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897` executable with the classical configuration advertised by its archived source: one thread, 32 MiB hash, neural evaluation off, one principal variation and pondering off. Evaluation cache, tactical generation and lazy neural evaluation are also advertised as off. The separately accepted saved-actor G04 transcript now confirms the executable's complete initial option declarations in [ADVERTISED_OPTIONS.json](../results/final-saved-actor-protocol-2026-10-28/ADVERTISED_OPTIONS.json). No additional engine run was used for this identity extraction. Declarations do not establish the applied benchmark configuration or compiler provenance.
 
 This target follows the public default configuration. It is not a model selected from test outcomes. The saved neural actor remains a separate identity with network `52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7` and its unchanged ten-percent mixture. No new neural campaign is part of this design. The old studies used 16 MiB and different evaluator options, so their games cannot be pooled into the proposed default target's rating.
 
@@ -48,4 +48,4 @@ Clock losses remain results. Protocol failures and ply-limit records remain expl
 
 ## Current decision
 
-The design is written. The benchmark remains **not admitted**. Game clocks, a calibrated anchor with defensible uncertainty, independent rating analysis, native identity checks and a feasible fresh scope are still missing. Continue the final source and evidence joins while these requirements are unresolved. No absolute engine or human Elo is claimed.
+The design is written. The benchmark remains **not admitted**. Game clocks, a calibrated anchor with defensible uncertainty, independent rating analysis, comparator identity and applied configuration checks, and a feasible fresh scope are still missing. The saved Caissa option declarations are now retained from the accepted G04 transcript. Continue the final source and evidence joins while these requirements are unresolved. No absolute engine or human Elo is claimed.

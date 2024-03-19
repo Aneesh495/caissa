@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "scope": "full G04 transcript sample",
+  "completed": 10000,
+  "ponder_completed": 100,
+  "legal_pvs": 3922,
+  "bestmoves": 10100,
+  "negative_control_errors": 2611,
+  "threads_observed": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "stop_ms": {
+    "p50": 0.069958,
+    "p95": 0.146875,
+    "p99": 0.235042,
+    "max": 6.878458
+  },
+  "transcript_sha256": "9d3ad97c10a1a41016abc81d00584810a261e7659a9ec9de0c516d9b8b84d37e",
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "full_acceptance": false
+}
