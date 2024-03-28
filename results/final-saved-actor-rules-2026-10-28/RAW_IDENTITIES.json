@@ -1,0 +1,22 @@
+{
+  "retained_local_artifacts": {
+    "producer/observations.jsonl": {
+      "bytes": 57447610,
+      "sha256": "dee8ff343005530abbd35b2335083794d72faf2cf8db8d1e87bd5e797011fff7"
+    },
+    "producer/summary.json": {
+      "bytes": 347,
+      "sha256": "e055564e75cfc70b2edb6f4d15d765b58d663b5ecadfd0b29183d268f8ba3aca"
+    },
+    "independent/native-observations.jsonl": {
+      "bytes": 68840052,
+      "sha256": "9fcb30c5908ca4cb9025615188012522e4356eee26a3193ce57bba6e57c947de"
+    },
+    "independent/RULES.json": {
+      "bytes": 1725,
+      "sha256": "0af0ad65249a7fd85c1157c7b8819170d9f7bf5ee1f69a1701592ad5a3b575da"
+    }
+  },
+  "raw_contents_in_this_compact_package": false,
+  "original_historical_journals_reused_for_execution": false
+}

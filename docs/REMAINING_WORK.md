@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-28T18:42:15-04:00 (America/New_York). Revision 45.
+Updated: 2026-10-28T19:01:49-04:00 (America/New_York). Revision 46.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R05: Bind core correctness to the final engine.
 
-Prepare a fresh finite source/input-bound admission for missing saved1ff G01 rules checks. Inspect full-sample journal size, perft/native-start inventory and writer limits before admission. Reuse closed G03/G04 and accepted G05; do not rerun them for status. Preserve old actors, original failures and the exhausted parallel scope.
+Prepare a fresh finite source/input-bound G06 numerical check using the already retained original C76 checkpoint, selected52d model and saved1ff executable. Inspect full100000-probe output, temporary-file/native-descriptor limits and writer wiring before admission. Reuse closed G01/G03/G04 and prior G05; do not rerun them for status. G02 restoration still needs a feasible full-journal design.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -92,15 +92,15 @@ Blocker: The frozen neural sample failed and its completed-game diagnostic was w
 
 ### R05: Bind core correctness to the final engine
 
-Prepare a fresh finite source/input-bound admission for missing saved1ff G01 rules checks. Inspect full-sample journal size, perft/native-start inventory and writer limits before admission. Reuse closed G03/G04 and accepted G05; do not rerun them for status. Preserve old actors, original failures and the exhausted parallel scope.
+Prepare a fresh finite source/input-bound G06 numerical check using the already retained original C76 checkpoint, selected52d model and saved1ff executable. Inspect full100000-probe output, temporary-file/native-descriptor limits and writer wiring before admission. Reuse closed G01/G03/G04 and prior G05; do not rerun them for status. G02 restoration still needs a feasible full-journal design.
 
 Completion requires: G01-G06 evidence and independent readers agree on the final identity, reject incorrect evidence, and show actual runtime completion where required.
 
 Dependencies: exclusive host released, final source and actor inventory.
 
-Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`; `results/native-source-binding-2026-10-26`; `results/final-core-identity-join-2026-10-28`; `results/final-draw-wiring-2026-10-28`; `results/final-saved-actor-draw-2026-10-28`; `results/final-protocol-wiring-2026-10-28`; `results/final-saved-actor-protocol-2026-10-28`.
+Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`; `results/native-source-binding-2026-10-26`; `results/final-core-identity-join-2026-10-28`; `results/final-draw-wiring-2026-10-28`; `results/final-saved-actor-draw-2026-10-28`; `results/final-protocol-wiring-2026-10-28`; `results/final-saved-actor-protocol-2026-10-28`; `results/final-rules-wiring-2026-10-28`; `results/final-saved-actor-rules-2026-10-28`; `results/precision-v4-inputs/IDENTITY.json`.
 
-Blocker: Exact final-actor runtime evidence remains missing for G01/G02/G06. Full coordinator/final deployment and original compiler/runtime closure remain unproven.
+Blocker: Exact final-actor runtime evidence remains missing for G02/G06. G06 original floating checkpoint is available under its retained tracked path; its original campaign path is unavailable. Full coordinator/final deployment and original compiler/runtime closure remain unproven.
 
 ### R06: Finish final data and learning lineage integration
 
@@ -110,7 +110,7 @@ Completion requires: The final lineage graph is independently checked and accura
 
 Dependencies: R05, R14.
 
-Existing evidence: `results/g07-full-audit-2026-10-26`; `docs/ARTIFACT_RETENTION.md`.
+Existing evidence: `results/g07-full-audit-2026-10-26`; `docs/ARTIFACT_RETENTION.md`; `results/precision-v4-inputs/IDENTITY.json`.
 
 Blocker: Bulk historical corpora and obsolete checkpoints were intentionally retired. Full raw historical reconstruction from the current checkout is unavailable.
 

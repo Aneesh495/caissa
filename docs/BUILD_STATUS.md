@@ -54,7 +54,7 @@ The [current core identity join](../results/final-core-identity-join-2026-10-28/
 
 | Gate | Current evidence | Remaining work |
 |---|---|---|
-| G01 Rules | Full d2/c82 historical sample:100000 reachable comparisons,96589 unique positions and20 independently recomputed perft fixtures passed | Exact saved1ff runtime evidence and final bundle/source joins |
+| G01 Rules | New saved1ff full100000-position/96589-unique sample and20perft fixtures passed independent fresh native replay; original c82 evidence remains unchanged | Final full-bundle/coordinator and compiler/runtime relationships; component proof is in results/final-saved-actor-rules-2026-10-28 |
 | G02 Restoration | Historical abbe/636/q4096 full sample passed; its engine differs from saved1ff | Exact saved1ff runtime evidence, final source joins and honest availability of retired raw bulk inputs |
 | G03 Draw history | New saved1ff/52d full92-history/2195-observation producer and independent fresh native replay passed; original c82 evidence remains unchanged | Final full-bundle/coordinator and compiler/runtime relationships; component proof is in results/final-saved-actor-draw-2026-10-28 |
 | G04 Protocol | New saved1ff full10000ordinary+100ponder sequences passed independent transcript replay; stop p99 .235042ms; original c82 evidence remains unchanged | Final full-bundle/coordinator and compiler/runtime relationships; component proof is in results/final-saved-actor-protocol-2026-10-28 |

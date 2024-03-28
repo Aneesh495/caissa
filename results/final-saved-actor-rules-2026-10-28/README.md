@@ -1,0 +1,11 @@
+# Exact saved-actor rules component
+
+The retained 1ff executable passed the full G01 schedule: 100,000 reachable-position comparisons, 96,589 distinct positions and all 20 exact perft fixtures. The independent reader regenerated the fixed walk with its own sampler, checked every saved move/check observation, freshly replayed every position through a copied and rehashed saved executable, and separately recomputed each fixture with python-chess. Every native perft total matched that independent oracle.
+
+The controller checkpoint is `b4fe69da05d260f3584ac55a5c9629143c82bd04`. The executable remains `1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897`. The original rules profile remains `a63e23962322b1c389426954ac21510618914e40451166de7bed50c69ce631b5`, including seed 1729 and all 20 unchanged fixtures. The old c82 rules receipt is preserved and is not relabeled as this actor.
+
+Both Python stages and all 20 perft stages exited zero with no cleanup warnings. The one producer inspector, one independent inspector and 20 perft processes exhausted exactly their declared 22-start inventory and closed normally. Owner stdout and stderr were empty. The owner elapsed 39.018106790987076 seconds. The actual host lease was released and both active/write ledgers closed without a storage failure.
+
+The fresh finite admission retained the original full-sample endpoints. A rules-specific writer namespace metered the two larger immutable journals before growth; native processes used pipes and stayed inside their owning Python stage groups. The separately recorded [wiring controls](../final-rules-wiring-2026-10-28/README.md) preserve their first fixture failure and the bounded correction. This is audited writer enforcement, not an operating-system sandbox.
+
+This establishes the saved-actor G01 rules component. `RAW_IDENTITIES.json` identifies the complete new local journals without publishing their contents. No match game, compilation, training, model selection, old semantic sample rerun or parallel campaign restart occurred. G02/G06 final-actor runtime evidence, the full coordinator and original saved-image compiler/runtime closure remain unproven. No strength or release pass follows.
