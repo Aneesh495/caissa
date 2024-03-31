@@ -1,0 +1,5 @@
+# Numerical output wiring
+
+Eleven focused controls passed in 2.7700390839891043 seconds with clean stderr. The actual Torch/NumPy imports and retained checkpoint loader ran under the inherited host lease and numerical write guard, without inference. A bounded Python fixture wrote directly through native-style output descriptors after their full inherited file ceilings were reserved. The separate pipe path, exact command/start boundary, immutable journals, escaped directories, excess temporary files and closed ledger rejection also passed.
+
+Three synthetic Python children and zero chess executables were used. No match game, training, compilation, numerical sample or closed historical control was run. The native reader's two temporary files are retained at declared run paths; native file output is reserved before descriptor handoff. These controls establish this wiring only. They do not establish numerical accuracy, strength, original compiler/runtime closure or full-project acceptance. Writer enforcement is not an operating-system sandbox.
