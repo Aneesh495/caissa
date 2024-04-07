@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "controls": [
+    "compressed_roundtrip_preserves_every_logical_byte_and_count",
+    "original_uncompressed_digest_contract_preserved",
+    "corrupt_gzip_crc_rejected",
+    "truncated_gzip_trailer_rejected",
+    "decoded_logical_ceiling_enforced",
+    "plain_journal_bytes_remain_unchanged",
+    "committed_compressed_journal_rewrite_rejected",
+    "escaped_compressed_journal_write_rejected",
+    "actual_child_compressor_inherits_lease_and_quota",
+    "logical_writer_growth_rejected_before_compression",
+    "closed_restoration_ledger_rejected"
+  ],
+  "elapsed_seconds": 0.24997508301748894,
+  "native_actors": 0,
+  "match_games": 0,
+  "synthetic_python_children": 1,
+  "full_acceptance": false
+}
