@@ -1,0 +1,20 @@
+{
+  "encoding": "gzip-v1",
+  "compression_level": 9,
+  "logical_observations_bytes": 5349131147,
+  "logical_observations_sha256": "46b7378b5432b26733d12427d4cde1960f6f0e495814e93e41be4868c44f204e",
+  "complete_logical_digest_and_gzip_integrity_checked_by_independent_reader": true,
+  "fresh_records_generated_with_saved1ff": true,
+  "historical_raw_journal_reused": false,
+  "retained_local_artifacts": {
+    "producer/observations.jsonl.gz": {
+      "compressed_bytes": 497152826,
+      "compressed_sha256": "889b843b10688dc160888f3b71828692acbb0518eb73863a8382f4f2b7fcd685"
+    },
+    "independent/native-replay.jsonl.gz": {
+      "compressed_bytes": 56992745,
+      "compressed_sha256": "bd87dbd3f88d6b0bda08a81b5064dc61323e5afee7f081471aa8539e4b82dc7c"
+    }
+  },
+  "raw_contents_in_this_compact_package": false
+}
