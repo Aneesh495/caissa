@@ -1,0 +1,21 @@
+{
+  "closed": true,
+  "owner_starts": 1,
+  "owner_exit": 0,
+  "elapsed_seconds": 0.9074315000325441,
+  "scope_sha256": "33d97f060b0395576d333ebde6a3246b7143bf96ea2faaa0e3f0c0c7687d0c7f",
+  "stderr_bytes": 0,
+  "stdout_sha256": "9af4d0833d35eae6a7521969f17cd700b7dcdc094219fa194e46b335772615c9",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "native_starts": 0,
+  "games": 0,
+  "full_acceptance": false,
+  "closed_unix": 1793235470.407398,
+  "source_commit": "e7f3ebe9d637bdf6f402b454aa95bf8a24a58391",
+  "maximum_seconds": 30,
+  "combined_local_bytes": 4000000,
+  "input_bindings": 172,
+  "semantic_sample_reruns": 0,
+  "full_bundle_coordinator_executed": false,
+  "original_compiler_runtime_closure_established": false
+}

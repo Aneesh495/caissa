@@ -1,0 +1,125 @@
+{
+  "status": "passed_core_runtime_evidence_join",
+  "product_source_commit": "e7f3ebe9d637bdf6f402b454aa95bf8a24a58391",
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "matched_native_files": 69,
+  "domains": {
+    "G01": {
+      "status": "joined_accepted_runtime",
+      "source_commit": "b4fe69da05d260f3584ac55a5c9629143c82bd04",
+      "profile_sha256": "a63e23962322b1c389426954ac21510618914e40451166de7bed50c69ce631b5",
+      "reader_sha256": "56a74a4873e38499dae117570106687d179677fd60357723edd0f871c03dffd5"
+    },
+    "G02": {
+      "status": "joined_accepted_runtime",
+      "source_commit": "421167223a13c8a2a7edf1a150be8a3d6e10280d",
+      "profile_sha256": "6cde330d87e49084135760cb737f3c2756a594a69b4ed709e21b98df5f9e584c",
+      "reader_sha256": "84e6b11c0bd93b0f6b635cd85f077b87900dff6a0496665fa29cd81c898af3b4"
+    },
+    "G03": {
+      "status": "joined_accepted_runtime",
+      "source_commit": "2254180087760847f89a993effe20ec13b328e44",
+      "profile_sha256": "4512410118ad92190c167232b2082308aa18c42e07b287fa7b281b8ecc90c583",
+      "reader_sha256": "fd91b206b737579a9f3b1874017c3aaa410241ddb287b3803c2a289297d23747"
+    },
+    "G04": {
+      "status": "joined_accepted_runtime",
+      "source_commit": "2ed6adced575299a4ed892cd3176d68e614424c6",
+      "profile_sha256": null,
+      "reader_sha256": "3bb15dcd62e4b969f97d3b5c49faa2f3eae3d95dd4392602550e4b50785c88cf"
+    },
+    "G05": {
+      "status": "joined_accepted_runtime",
+      "source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+      "profile_sha256": "47940062c5092ce5fc3e964df8b498d5eaa6d8aca26f0d95eb4e2034725dda71",
+      "reader_sha256": "718dc6000f9a39a8ca0cd2245b5927700dec1455cc702f9cc4576b7f96424ee1"
+    },
+    "G06": {
+      "status": "joined_accepted_runtime",
+      "source_commit": "04a3038a10b51991b866743fee9d42494e545236",
+      "profile_sha256": "624a0f1700657e2f23ea28c12e800139be10921ba7286395da75fdca62ccfab9",
+      "reader_sha256": "048985faae4182cce37d9ad4663a463c73eac063f740a6e08ef7af02adaee9aa"
+    }
+  },
+  "negative_controls": [
+    {
+      "case": "missing-domain",
+      "status": "rejected",
+      "reason": "missing or additional core domain"
+    },
+    {
+      "case": "different-actor-rehashed",
+      "status": "rejected",
+      "reason": "G02 saved actor differs"
+    },
+    {
+      "case": "different-model-rehashed",
+      "status": "rejected",
+      "reason": "G06 model differs"
+    },
+    {
+      "case": "different-checkpoint-rehashed",
+      "status": "rejected",
+      "reason": "G06 checkpoint differs"
+    },
+    {
+      "case": "different-profile-rehashed",
+      "status": "rejected",
+      "reason": "G03 profile differs"
+    },
+    {
+      "case": "incomplete-million-pair-rehashed",
+      "status": "rejected",
+      "reason": "G02 incomplete full state/native replay"
+    },
+    {
+      "case": "boolean-count-rehashed",
+      "status": "rejected",
+      "reason": "G02 incomplete full state/native replay"
+    },
+    {
+      "case": "incomplete-protocol-rehashed",
+      "status": "rejected",
+      "reason": "G04 protocol schedule or stop endpoint differs"
+    },
+    {
+      "case": "failed-reader-rehashed",
+      "status": "rejected",
+      "reason": "G01 reader did not pass independently"
+    },
+    {
+      "case": "forged-full-acceptance-rehashed",
+      "status": "rejected",
+      "reason": "G05 reader did not pass independently"
+    },
+    {
+      "case": "open-owner",
+      "status": "rejected",
+      "reason": "G03 owner not cleanly closed"
+    },
+    {
+      "case": "failed-stage",
+      "status": "rejected",
+      "reason": "G06 stage failed or child cleanup incomplete"
+    },
+    {
+      "case": "child-cleanup-failure",
+      "status": "rejected",
+      "reason": "G04 stage failed or child cleanup incomplete"
+    },
+    {
+      "case": "published-result-differs",
+      "status": "rejected",
+      "reason": "G01 published reader differs from actual artifact"
+    }
+  ],
+  "elapsed_seconds": 0.865085291035939,
+  "native_starts": 0,
+  "games": 0,
+  "semantic_sample_reruns": 0,
+  "original_compiler_runtime_closure_established": false,
+  "full_bundle_coordinator_executed": false,
+  "full_gate": false,
+  "full_acceptance": false
+}
