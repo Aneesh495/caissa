@@ -1,0 +1,11 @@
+{
+  "original_publication_sha256": "937c355efb61af06f33492836c505aee364571510cf96eb3e9a7e3e6025e7188",
+  "original_independent_result_sha256": "ebfef415b326ae4e93680a7e8e28d9ba22d16a859819da90150d4746acc476e8",
+  "original_independent_stage_sha256": "bee0203bd7ea3f347fed04fe7f36307eb54a6322ffd3dc89687a2bae0e4b0fc2",
+  "original_host_receipt_sha256": "230774ad65bbcfbb88048a56d3c248ae3ec3ded2a2d69b5e30a1303426c8705b",
+  "core_source_boundary_sha256": "c7f46036d528f057c797e87994cfc2e03467f24b16c05d329655e48187199e25",
+  "retained_local_pgn_files": 2000,
+  "pgn_path_sha256_inventory_digest": "32aa37b36a98d6d5b48230adabd12f1b533a0f1ac61d5bbc6529c3af16cbe35d",
+  "raw_process_logs_in_public_package": false,
+  "raw_pgn_contents_in_public_package": false
+}

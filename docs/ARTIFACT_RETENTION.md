@@ -40,3 +40,5 @@ were independently checked; the last comparison remains incomplete. No further
 parallel start or active time is admitted. The follow-up remains active for
 other authorized work. Historical raw-artifact retirement and the frozen actor
 remain unchanged. Full acceptance and release remain blocked.
+
+The 2,000 original v4 external PGNs remain local. Their headers, outcomes and color pairs were checked in the [final external report binding](../results/final-external-report-2026-10-28/README.md). Per-move game JSON, pair journals and archived actor configurations are unavailable in that retained campaign tree. The old full independent replay remains an accepted historical result; this retained PGN audit does not reproduce that replay.
