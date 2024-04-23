@@ -1,0 +1,49 @@
+{
+  "executions": [
+    {
+      "closed": true,
+      "owner_starts": 1,
+      "owner_exit": 1,
+      "elapsed_seconds": 0.5695300829829648,
+      "scope_sha256": "4da5f65ef402e5260c31615ab8bdb196b27d9a18d35c1c03f218aa08bafa2166",
+      "stderr_bytes": 0,
+      "stdout_sha256": "fe79520f24a376ee03a01e6731326a7c8ff58de9e80514679e69d5b2789f700d",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "maximum_native_starts": 1,
+      "games_started": 0,
+      "compilations": 0,
+      "full_acceptance": false,
+      "closed_unix": 1793237266.380772,
+      "attempt": 1,
+      "native_exit": -25,
+      "status": "failed_preflight",
+      "scope_source_sha256": "5e2d958b32f06b532fe6361dec9493892edaf228188b218dfe0fb8abad5fc77b"
+    },
+    {
+      "closed": true,
+      "owner_starts": 1,
+      "owner_exit": 0,
+      "elapsed_seconds": 2.1081542909960262,
+      "scope_sha256": "a177315a9a9d39034bd9d211044f32cfb08657057b7dc246d6a18bd2712bd38b",
+      "stderr_bytes": 0,
+      "stdout_sha256": "427b0d40f02f51dc3a509e09b2707f4418fdfb5fcece7458343ba429a488203a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "maximum_native_starts": 1,
+      "games_started": 0,
+      "compilations": 0,
+      "full_acceptance": false,
+      "closed_unix": 1793237440.628565,
+      "attempt": 2,
+      "native_exit": 0,
+      "status": "passed_runtime_prerequisite_only",
+      "scope_source_sha256": "6e82b618c1183ddf3ec431bbd731c4223563c1d927205508414e84289e1c66fa"
+    }
+  ],
+  "cumulative_owner_seconds": 2.677684373978991,
+  "cumulative_maximum_seconds": 60,
+  "cumulative_maximum_local_bytes": 16000000,
+  "native_starts": 2,
+  "games_started": 0,
+  "full_R03_completed": false,
+  "full_acceptance": false
+}

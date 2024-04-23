@@ -1,0 +1,20 @@
+[
+  {
+    "artifact_id": 12602150018,
+    "platform": "linux",
+    "archive_sha256": "88f5898d35d499a95fb57642ddca71ceaa0ede6dc865101d09b00babc4d55225",
+    "bytes": 27817800,
+    "run_id": 40200780674,
+    "source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+    "raw_archive_kept_local": true
+  },
+  {
+    "artifact_id": 12601618012,
+    "platform": "macos",
+    "archive_sha256": "58c61192faac81bdf341a5d339f08220a726f26dcc78758638f937e5b416a49e",
+    "bytes": 3136713,
+    "run_id": 40200780674,
+    "source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+    "raw_archive_kept_local": true
+  }
+]

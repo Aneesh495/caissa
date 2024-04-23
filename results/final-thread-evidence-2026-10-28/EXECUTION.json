@@ -1,0 +1,22 @@
+{
+  "closed": true,
+  "owner_starts": 1,
+  "owner_exit": 0,
+  "elapsed_seconds": 3.6907334159477614,
+  "scope_sha256": "7b48d6793db80830409957e22286ef5dca622b8aef212d474dd69d707237b319",
+  "stderr_bytes": 0,
+  "stdout_sha256": "12ed5457f2fb7d02bea8907bd9afa49ad1f0be1eeeb3cc93d1696c029daab911",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "native_chess_actor_starts": 0,
+  "games_started": 0,
+  "closed_samples_reexecuted": 0,
+  "full_acceptance": false,
+  "closed_unix": 1793236947.568675,
+  "input_bindings": 88,
+  "maximum_seconds": 180,
+  "data_bytes": 40000000,
+  "control_bytes": 4000000,
+  "existing_artifact_fetches": 2,
+  "compiler_or_test_reruns": 0,
+  "full_R03_completed": false
+}

@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-28T21:09:46-04:00 (America/New_York). Revision 53.
+Updated: 2026-10-28T21:35:09-04:00 (America/New_York). Revision 55.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R03: Close thread-scaling, memory, stop and race-safety evidence.
 
-Join accepted same-actor G04 cancellation and G13 performance/memory evidence with the five accepted thread comparisons. Inspect actual source/actor coverage of the retained race checks, preserve the original incomplete race replay, and scope only the genuinely missing final race-safety check. No closed sample reruns or additional match time.
+Implement the proposed exact-neural thread-runtime producer and independent reader using established quota/lease/process guards; prospectively bind4000active-search stop sequences and64instrumented fixed-node searches. Then record a fresh finite source/input/numeric scope before execution. Reuse closed source archives, G04, G13 and both prerequisite receipts without reruns. No new match time or rating producer.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -38,7 +38,7 @@ Recorded attempts include failed or unfinished outcomes. A count does not establ
 | R08 | blocked | Design and run a calibrated engine-pool rating benchmark |
 | R09 | pending | Complete final recovery acceptance |
 | R10 | pending | Complete final browser and native-engine acceptance |
-| R11 | pending | Bind the passed performance study to final deployment |
+| R11 | in progress | Bind the passed performance study to final deployment |
 | R12 | pending | Finish semantic adapters and the complete coordinator |
 | R13 | blocked | Close compiler provenance and clean-build reproduction |
 | R14 | unavailable inputs | Produce a compact, honest reproducibility package |
@@ -70,13 +70,15 @@ Blocker: The sixth parallel comparison is incomplete at the original active cap.
 
 ### R03: Close thread-scaling, memory, stop and race-safety evidence
 
-Join accepted same-actor G04 cancellation and G13 performance/memory evidence with the five accepted thread comparisons. Inspect actual source/actor coverage of the retained race checks, preserve the original incomplete race replay, and scope only the genuinely missing final race-safety check. No closed sample reruns or additional match time.
+Implement the proposed exact-neural thread-runtime producer and independent reader using established quota/lease/process guards; prospectively bind4000active-search stop sequences and64instrumented fixed-node searches. Then record a fresh finite source/input/numeric scope before execution. Reuse closed source archives, G04, G13 and both prerequisite receipts without reruns. No new match time or rating producer.
 
 Completion requires: The multicore result includes checked performance and safety relationships for the same actor and options; source bindings and real stage exits are complete.
 
 Dependencies: R01, R02.
 
-Existing evidence: `results/performance-v4-2026-10-26`.
+Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-evidence-2026-10-28`; `results/final-thread-runtime-preflight-2026-10-28`; `config/thread-runtime-v1.proposed.json`.
+
+Blocker: G04 stop sample used1/2MiB hash with neural off. Existing TSan22-case source proof does not cover the complete52d/neural10/Lazy/cache/tactical/Hash16 configuration across1/2/4/8threads. Original sixth match comparison remains incomplete at the exhausted cap.
 
 ### R04: Diagnose the failed neural-strength requirement
 
@@ -156,13 +158,13 @@ Existing evidence: `results/browser-capture-amendment-2026-10-26`.
 
 ### R11: Bind the passed performance study to final deployment
 
-Reuse the checked saved-actor performance study and finish final source, runtime and deployment relationships. Keep single-actor performance distinct from multicore race/strength evidence.
+Reuse the checked G13 sample and partial native-source relationship without repeating performance measurements. Finish the required R03 exact-option runtime relationship and final coordinator/deployment join, preserving separate performance, race and strength claims.
 
 Completion requires: G13 final identity joins close without claiming that performance numbers certify race safety or playing strength.
 
 Dependencies: R03, R05.
 
-Existing evidence: `results/performance-v4-2026-10-26`.
+Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-evidence-2026-10-28`.
 
 ### R12: Finish semantic adapters and the complete coordinator
 

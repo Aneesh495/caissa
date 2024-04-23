@@ -1,0 +1,189 @@
+{
+  "status": "passed_partial_thread_evidence_join",
+  "product_source_commit": "19785052d1d05081122ff36057458c4327c82f50",
+  "saved_engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "matched_native_files": 69,
+  "tsan_archives": [
+    {
+      "platform": "linux",
+      "artifact_id": 12602150018,
+      "archive_sha256": "88f5898d35d499a95fb57642ddca71ceaa0ede6dc865101d09b00babc4d55225",
+      "archive_bytes": 27817800,
+      "source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+      "instrumentation": "-fsanitize=thread",
+      "compiled_units": 44,
+      "native_cases_passed": 22,
+      "independent_restoration_pairs": 1280,
+      "independent_draw_histories": 92,
+      "program_sha256": {
+        "accumulator_stack_test": "75ba55691fde8cb6a69b97086daaf39545c889879dc2311370aa6aaa620c8410",
+        "caissa": "fed07545ff1ce3767badcef696ac547394170628f069df209cc59dd51c4147c8",
+        "core_test": "cb47bd97861ae7f629b5f81dac9139f352f06bcca7c32e7c55efea7fc7697b89",
+        "dense_kernel_test": "2ad96d24ea23ee49ff3c67470edad11fa1440a1d46cc6b36439e086b96aaeaf1",
+        "evaluation_cache_test": "b984e470cd7b528b6bef3c9aa47e9f414461d38ee621f273b1391d7fd859fe18",
+        "evaluation_test": "652c1a83f8ded3286ba8ef13b068a9414701a90e2dc8495ebb5fe2f263d6530b",
+        "kernel_test": "b62d01b930ad3ec4979c0425620a63d3bbaaef006cb84482d8a3ff967c7a6dda",
+        "lmr_window_test": "06502ec247cfc5764f9f3782dba61459977ab71da6ff63c93433aa35183edd33",
+        "network_precision_test": "7ea07afbec3f99abb451b169c04978d7a23a25e6dc8a4feb8541b9b88873df41",
+        "neural_bounds_test": "6be26c83f1b055915a92680afcc80de81d7187d8992aadd484e987736c205474",
+        "notation_test": "bcf292563023aae39b9473a1567d59a61ef52347707149cd7e2ea36bb8e25144",
+        "position_line_test": "7d63146af5a323e6564fe3e45c0216f8264c9365744c0b2dffca66eb8ba46ae4",
+        "position_test": "949fa0d2ada7d9c91f0d387600cb18e1a9b9efc447c2e1ec219b8ac555906c68",
+        "rules_test": "f207b94f398f5ff53b392acd4c4035aeac2a097cc7ffaa17f8007f15def6405e",
+        "search_claim_test": "2ffacfe375fcc6545b60271eee9957f589aae32275f18150f88e45147e39c6d2",
+        "search_context_test": "281a3f2c29a090d715f665d85bf10782e8af7ffd768d6de25ef85bfb1a42c342",
+        "search_probe_test": "e8b1a2a11ff9d342975800b6f57965cd57ba08d98c8bbe912319b086c70ecbe2",
+        "search_test": "76a7348b9853b9fae02b22d7f173e9d5e310c8df6a70ed777d03dc82aa0aac39",
+        "state_probe_test": "2520615be42e0fcaafa46824648f7429341a0ff8d248f8c24e3ac13cea16bd52",
+        "table_test": "dd6cb9e11eb477e858141ffe45de9d27215d8c647a535e145277e98052ad263a",
+        "tactical_generation_test": "7a2cd34cd3e8718c016864448b8aea077ed250495e5f925fbaa9af204fca5802",
+        "uci_test": "0f2a55dd0055ec50e3d3a792d69f01f028601543efadf0025eeb32f0e134bf59"
+      },
+      "originals_executed_again": false
+    },
+    {
+      "platform": "macos",
+      "artifact_id": 12601618012,
+      "archive_sha256": "58c61192faac81bdf341a5d339f08220a726f26dcc78758638f937e5b416a49e",
+      "archive_bytes": 3136713,
+      "source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+      "instrumentation": "-fsanitize=thread",
+      "compiled_units": 44,
+      "native_cases_passed": 22,
+      "independent_restoration_pairs": 1280,
+      "independent_draw_histories": 92,
+      "program_sha256": {
+        "accumulator_stack_test": "7d407e686062494b380e5ef5d5d57532b6f52c731effa0c404dffe5695229d28",
+        "caissa": "7789a6a2dce7c35fbd92a1cd3b1e6be47b841ae78f655a28d4a565ad583560fb",
+        "core_test": "230055fb5f3d62334964dee3662ce57fd3a83f01e74cd62d5abc83a40cf9470c",
+        "dense_kernel_test": "57090efb20bf337087410180c50c26d8cfd0e3f9c6a163eb965bc4e8e5d01d5e",
+        "evaluation_cache_test": "37447c6e459f28f5fd31155d521835b75b2dab98feb76f1dbed75e12dc83cc34",
+        "evaluation_test": "e7e62ed73a29c998749daf856b458f2ceb0c4f3dd05398e2dc9f8171a2e30f44",
+        "kernel_test": "f962bdc30c96d28de886b65a0faa61dc42cb1c6d91ddf14e0f1def1fed3e4997",
+        "lmr_window_test": "6e230ec97685fba81a1fb4c3ac18abda34516ff8acc889e19407dd576a4c0696",
+        "network_precision_test": "a028e9981cafd31ac3dc88ff760a894e6a2108bb0a326ba8191ecaef5d0231a0",
+        "neural_bounds_test": "88a4ba3954cc48c8b4cce09b7e30211d35ab79476f5a6c68dcaf9ca2786d7a7c",
+        "notation_test": "7905fb08297d868c5ced000d67757e0269348ee9f8717d34e433d1191ace03e2",
+        "position_line_test": "969abe66dab039502761045a540b48ae484aceffc23cb610eb2e9bbafbc31776",
+        "position_test": "bf8dd263b690cfccd0b99da3d7cfd35ad9247b79cfc0b9cf6e08566d8709b669",
+        "rules_test": "7fb01c1ed52b879e43cedc605f652cf2c551cc40858eb1889129d56e085d1610",
+        "search_claim_test": "bf7ab437ff2611b14031af5880fb97f57166909e6000af5a84ed5652c5edac95",
+        "search_context_test": "361dbc0cdcabf0d2aab80506da180402785b9587dc47dee963a4ae5f6185b6eb",
+        "search_probe_test": "e6ea3051fea6d72448a129a00fc7ce05552e81a17098dcfc47679032b2b66f14",
+        "search_test": "a35676b90955a3f879941a0b1f378924c00892f2933d39b2be7f9a9986eae5b5",
+        "state_probe_test": "a17e4541f75dda62863a0baab3ff08178e8a75d775b5f904c7d746366ac70533",
+        "table_test": "4ddd72c2c367b304326f1eaae63a375de6da638244b96c4fecbeccfe1d69f773",
+        "tactical_generation_test": "c219733c48fb82659578ee9f1c4a53cd21265bb61e27a58eeb29785a56a0a98d",
+        "uci_test": "28ccb31726239d682e5db3497fba8f4089e940584aa2c51872e46853fbc45a88"
+      },
+      "originals_executed_again": false
+    }
+  ],
+  "performance": {
+    "timed_searches": 640,
+    "rss_samples": 4581,
+    "latency_samples": 2000,
+    "source_binding_checked": true,
+    "tables": [
+      {
+        "evaluation": "classical",
+        "threads": 1,
+        "useful_nodes_per_second": 1766738.8970844448,
+        "useful_work_ratio_to_one_thread": 1.0,
+        "mean_depth": 18.0,
+        "maximum_resident_bytes": 54083584
+      },
+      {
+        "evaluation": "classical",
+        "threads": 2,
+        "useful_nodes_per_second": 2432675.718479918,
+        "useful_work_ratio_to_one_thread": 1.37692995976623,
+        "mean_depth": 17.975,
+        "maximum_resident_bytes": 54591488
+      },
+      {
+        "evaluation": "classical",
+        "threads": 4,
+        "useful_nodes_per_second": 3521018.3192061107,
+        "useful_work_ratio_to_one_thread": 1.9929477553342263,
+        "mean_depth": 17.875,
+        "maximum_resident_bytes": 56705024
+      },
+      {
+        "evaluation": "classical",
+        "threads": 8,
+        "useful_nodes_per_second": 3682869.3349017645,
+        "useful_work_ratio_to_one_thread": 2.084557792314081,
+        "mean_depth": 16.6,
+        "maximum_resident_bytes": 59326464
+      },
+      {
+        "evaluation": "neural-blend",
+        "threads": 1,
+        "useful_nodes_per_second": 1220634.613452003,
+        "useful_work_ratio_to_one_thread": 1.0,
+        "mean_depth": 17.7,
+        "maximum_resident_bytes": 57212928
+      },
+      {
+        "evaluation": "neural-blend",
+        "threads": 2,
+        "useful_nodes_per_second": 2054331.415828642,
+        "useful_work_ratio_to_one_thread": 1.6830027538043602,
+        "mean_depth": 17.675,
+        "maximum_resident_bytes": 57524224
+      },
+      {
+        "evaluation": "neural-blend",
+        "threads": 4,
+        "useful_nodes_per_second": 2779487.7969509456,
+        "useful_work_ratio_to_one_thread": 2.2770842038392174,
+        "mean_depth": 17.45,
+        "maximum_resident_bytes": 58720256
+      },
+      {
+        "evaluation": "neural-blend",
+        "threads": 8,
+        "useful_nodes_per_second": 3401702.3733308404,
+        "useful_work_ratio_to_one_thread": 2.7868309941749816,
+        "mean_depth": 17.3,
+        "maximum_resident_bytes": 61636608
+      }
+    ]
+  },
+  "accepted_comparisons": [
+    "threads-2-ms-100",
+    "threads-2-ms-400",
+    "threads-4-ms-100",
+    "threads-4-ms-400",
+    "threads-8-ms-100"
+  ],
+  "G04_stop_ms": {
+    "p50": 0.069958,
+    "p95": 0.146875,
+    "p99": 0.235042,
+    "max": 6.878458
+  },
+  "G04_configuration": {
+    "hash_mib": [
+      1,
+      2
+    ],
+    "neural_model_loaded": false
+  },
+  "remaining": [
+    "Exact52d neural10/LazyNeural/cache/tactical/Hash16 configuration under race instrumentation across1/2/4/8threads",
+    "Stop p99 under that same applied neural configuration with active-search witnesses",
+    "Original sixth match comparison remains incomplete; no replacement time admitted"
+  ],
+  "prior_incomplete_tactical_race_replay_preserved": true,
+  "native_starts": 0,
+  "games_started": 0,
+  "closed_samples_reexecuted": 0,
+  "full_R03_completed": false,
+  "full_G10_certified": false,
+  "original_compiler_runtime_closure_established": false,
+  "full_acceptance": false,
+  "elapsed_seconds": 3.6495890830410644
+}
