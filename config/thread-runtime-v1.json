@@ -1,0 +1,106 @@
+{
+  "schema": "caissa-thread-runtime-v1",
+  "status": "frozen",
+  "purpose": "Fill the exact applied neural configuration gaps identified by the partial R03 source/evidence join. Existing G04/performance/race sample endpoints and failures remain unchanged.",
+  "compiled_native_source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+  "release_engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "instrumented_engine_sha256": "7789a6a2dce7c35fbd92a1cd3b1e6be47b841ae78f655a28d4a565ad583560fb",
+  "instrumented_runtime_sha256": "d5ad94f93fc2600abc1a31d49586fb25cf748173ac8799d59e22fe92a8eb2ab7",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "options": {
+    "Hash": 16,
+    "Use Neural": true,
+    "Neural Weight": 10,
+    "Lazy Neural": true,
+    "Evaluation Cache": true,
+    "Tactical Generation": true,
+    "Neural Bounds": false,
+    "Ordering Hints": false,
+    "Search Stats": false
+  },
+  "thread_modes": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "positions": [
+    {
+      "id": "start",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    },
+    {
+      "id": "kiwipete",
+      "fen": "r3k2r/p1ppqpb1/bn2pnp1/3PN3/1p2P3/2N2Q1p/PPPBBPPP/R3K2R w KQkq - 0 1"
+    },
+    {
+      "id": "castling",
+      "fen": "r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1"
+    },
+    {
+      "id": "ep",
+      "fen": "4k3/8/8/5pP1/8/8/8/4K3 w - f6 0 1"
+    }
+  ],
+  "stop_sample": {
+    "release_only": true,
+    "sequences_per_thread_mode": 1000,
+    "positions_cycled_in_fixed_order": true,
+    "minimum_active_search_depth_witness": 2,
+    "minimum_reported_nodes_exclusive": 0,
+    "stop_p99_limit_ms_exclusive": 50,
+    "check_each_thread_mode_and_all_sequences": true,
+    "early_bestmove_or_missing_witness_is_failure_not_replaced": true,
+    "clear_hash_between_sequences": true,
+    "ready_barrier_before_each_search": true,
+    "p99_definition": "sorted[min(n-1,floor(n*0.99))]"
+  },
+  "instrumented_sample": {
+    "positions": 4,
+    "thread_modes": 4,
+    "repeats_per_condition": 4,
+    "total_fixed_node_searches": 64,
+    "nodes_per_search": 2048,
+    "TSAN_OPTIONS": "halt_on_error=1:exitcode=66",
+    "sanitizer_warning_or_nonzero_exit_is_failure": true,
+    "clear_hash_between_sequences": true,
+    "ready_barrier_before_each_search": true
+  },
+  "independent_reader": {
+    "all_transcript_frames_and_complete_digests": true,
+    "applied_options_and_source_actor_model_runtime_pins": true,
+    "all_counts_timestamps_active_witnesses_and_legal_bestmoves_PVs": true,
+    "stop_percentiles_recomputed_without_outcome_exclusions": true,
+    "negative_controls_for_forged_options_counts_timing_runtime_and_failure_flags": true
+  },
+  "planning_limits_not_authorization": {
+    "maximum_active_seconds": 600,
+    "maximum_wall_seconds": 720,
+    "maximum_owner_starts": 1,
+    "maximum_python_stages": 2,
+    "maximum_native_starts": 8,
+    "data_bytes": 32000000,
+    "control_bytes": 8000000,
+    "reserve_bytes": 128000000,
+    "match_games": 0,
+    "new_training_or_acquisition": false
+  },
+  "requires_before_execution": [
+    "implement and review producer, independent reader and existing quota/process wiring",
+    "fresh finite source/input/numeric scope under the unchanged human parent",
+    "actual storage admission with all attributable paths",
+    "real host lease and exact native command/start inventory"
+  ],
+  "full_R03_completed": false,
+  "rating_producer_admitted": false,
+  "full_acceptance": false,
+  "native_io_and_cleanup": {
+    "owned_continuously_drained_stdout_stderr_pipes": true,
+    "optional_diagnostic_saturation_nonfatal": true,
+    "full_stream_hash_and_explicit_retention_counts": true,
+    "sanitizer_diagnostics_separately_retained_and_fatal": true,
+    "disable_native_core_dumps": true,
+    "contained_groups_and_all_native_exits_reaped": true
+  },
+  "execution_requires_separate_scope": true
+}
