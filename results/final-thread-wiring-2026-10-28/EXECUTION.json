@@ -1,0 +1,13 @@
+{
+  "closed": true,
+  "owner_exit": 0,
+  "elapsed_seconds": 1.1079352920060046,
+  "scope_sha256": "292d6c276568aabf7066e0ecdfd41434b34abec2c5fad2f4bd01fd4cfc450c8a",
+  "stderr_bytes": 0,
+  "stdout_sha256": "229993ba6ab9bcccf4658861dd24b1bd1f13aea17809436de93e0777ea55e91c",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "native_chess_actors": 0,
+  "games": 0,
+  "full_acceptance": false,
+  "closed_unix": 1793238806.2035258
+}
