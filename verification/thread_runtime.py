@@ -28,8 +28,9 @@ def inspect_events(events, profile, expected):
             require(current is None and session_count < 8, "unclosed or extra native session")
             kind, threads = order[session_count]
             require(row["kind"] == kind and type(row["threads"]) is int and row["threads"] == threads and row["engine_sha256"] == expected[kind + "_engine_sha256"] and row["network_sha256"] == expected["network_sha256"] and row["runtime_sha256"] == (None if kind == "release" else expected["runtime_sha256"]), "native actor, model, runtime or threads differ")
-            options = {**profile["options"], "Threads": threads, "EvalFile": expected["network_path"]}
-            setup = ["uci", *["setoption name " + k + " value " + (str(v).lower() if type(v) is bool else str(v)) for k, v in options.items()], "isready"]
+            setup = ["uci", "setoption name Hash value 16", "setoption name Threads value " + str(threads), "setoption name EvalFile value " + expected["network_path"]]
+            setup.extend("setoption name " + k + " value " + (str(v).lower() if type(v) is bool else str(v)) for k, v in profile["options"].items() if k != "Hash")
+            setup.append("isready")
             current = {"kind": kind, "threads": threads, "setup": setup, "setup_index": 0, "uciok": False, "configured": False, "ready": False, "phase": 0, "sequence": 0, "active": None, "quit": False, "stderr": bytearray(), "runtime_seen": False}
             session_count += 1
             continue
