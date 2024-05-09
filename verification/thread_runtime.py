@@ -31,7 +31,7 @@ def inspect_events(events, profile, expected):
             setup = ["uci", "setoption name Hash value 16", "setoption name Threads value " + str(threads), "setoption name EvalFile value " + expected["network_path"]]
             setup.extend("setoption name " + k + " value " + (str(v).lower() if type(v) is bool else str(v)) for k, v in profile["options"].items() if k != "Hash")
             setup.append("isready")
-            current = {"kind": kind, "threads": threads, "setup": setup, "setup_index": 0, "uciok": False, "configured": False, "ready": False, "phase": 0, "sequence": 0, "active": None, "quit": False, "stderr": bytearray(), "runtime_seen": False}
+            current = {"kind": kind, "threads": threads, "setup": setup, "setup_index": 0, "uciok": False, "configured": False, "network_seen": False, "ready": False, "phase": 0, "sequence": 0, "active": None, "quit": False, "stderr": bytearray(), "runtime_seen": False}
             session_count += 1
             continue
         require(current is not None, "event outside native session")
@@ -92,7 +92,7 @@ def inspect_events(events, profile, expected):
             c["uciok"] = True
         elif text == "readyok":
             if not c["configured"]:
-                require(c["setup_index"] == len(c["setup"]), "ready before full applied options")
+                require(c["setup_index"] == len(c["setup"]) and c["network_seen"], "ready before full applied options and model acknowledgement")
                 c["configured"] = True
             else:
                 require(c["phase"] == 3 and not c["ready"], "unexpected readiness response")
@@ -101,6 +101,9 @@ def inspect_events(events, profile, expected):
             require(not c["uciok"], "late UCI declarations")
         elif text.startswith("info string error"):
             raise ValueError("native rejected applied model/options/protocol")
+        elif text.startswith("info string network "):
+            require(not c["configured"] and not c["network_seen"] and c["setup_index"] >= 4 and text == "info string network " + expected["network_identity"], "wrong, duplicate or unsolicited model acknowledgement")
+            c["network_seen"] = True
         elif text.startswith("info "):
             a = c["active"]
             require(a is not None and stamp >= a["go"], "stale or unrequested search info")
@@ -141,7 +144,7 @@ def inspect_events(events, profile, expected):
     return {"status": "passed_exact_neural_thread_runtime_component", "stop_sequences": 4000, "instrumented_searches": 64, "native_sessions": 8, "legal_pvs": pvs, "stop_ms": all_stops, "stop_ms_per_thread": per_thread, "all_native_exits_zero": True, "forced_cleanup": False, "critical_sanitizer_diagnostics": 0, "full_G10_certified": False, "full_acceptance": False}
 
 
-def verify(scope):
+def verify(scope, result_root=None):
     root = Path(scope["output"])
     profile = strict_json(Path(scope["profile"]).read_bytes())
     summary = strict_json((root / "producer/SUMMARY.json").read_bytes())
@@ -159,11 +162,13 @@ def verify(scope):
                 count[0] += 1
                 yield strict_json(line)
 
-    expected = {"release_engine_sha256": scope["engine_sha256"], "instrumented_engine_sha256": scope["instrumented_engine_sha256"], "runtime_sha256": scope["instrumented_runtime_sha256"], "network_sha256": scope["network_sha256"], "network_path": scope["network"], "runtime_path": scope["instrumented_runtime"]}
+    network = Path(scope["network"]).read_bytes()
+    require(hashlib.sha256(network).hexdigest() == scope["network_sha256"] and network[:8] == b"CAISSAN4", "bound saved network differs")
+    expected = {"release_engine_sha256": scope["engine_sha256"], "instrumented_engine_sha256": scope["instrumented_engine_sha256"], "runtime_sha256": scope["instrumented_runtime_sha256"], "network_sha256": scope["network_sha256"], "network_identity": network[40:104].decode("ascii"), "network_path": scope["network"], "runtime_path": scope["instrumented_runtime"]}
     result = inspect_events(events(), profile, expected)
     after = path.stat()
     require((before.st_ino, before.st_size, before.st_mtime_ns) == (after.st_ino, after.st_size, after.st_mtime_ns) and digest.hexdigest() == summary["transcript_sha256"] and count[0] == summary["frames"] and summary["stop_sequences"] == 4000 and summary["instrumented_searches"] == 64 and summary["sessions"] == 8, "complete transcript/producer binding differs")
     result.update(engine_sha256=scope["engine_sha256"], network_sha256=scope["network_sha256"], instrumented_engine_sha256=scope["instrumented_engine_sha256"], instrumented_runtime_sha256=scope["instrumented_runtime_sha256"], profile_sha256=scope["profile_sha256"], transcript_sha256=digest.hexdigest(), frames=count[0])
     from tools.campaign_process import atomic
-    atomic(root / "THREAD_RUNTIME.json", result)
+    atomic(Path(result_root or root) / "THREAD_RUNTIME.json", result)
     print(json.dumps(result))
