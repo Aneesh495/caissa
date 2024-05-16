@@ -1,0 +1,47 @@
+{
+  "status": "passed",
+  "controls": [
+    {
+      "case": "correct_model_acknowledgement_prefix_is_not_full_sample",
+      "status": "checked",
+      "expected_rejection": "incomplete full thread runtime evidence"
+    },
+    {
+      "case": "wrong_model_identity",
+      "status": "checked",
+      "expected_rejection": "wrong, duplicate or unsolicited model acknowledgement"
+    },
+    {
+      "case": "missing_model_acknowledgement",
+      "status": "checked",
+      "expected_rejection": "ready before full applied options and model acknowledgement"
+    },
+    {
+      "case": "duplicate_model_acknowledgement",
+      "status": "checked",
+      "expected_rejection": "wrong, duplicate or unsolicited model acknowledgement"
+    },
+    {
+      "case": "model_acknowledgement_before_EvalFile",
+      "status": "checked",
+      "expected_rejection": "wrong, duplicate or unsolicited model acknowledgement"
+    },
+    {
+      "case": "late_model_acknowledgement",
+      "status": "checked",
+      "expected_rejection": "wrong, duplicate or unsolicited model acknowledgement"
+    },
+    {
+      "case": "unknown_unsolicited_info_remains_rejected",
+      "status": "checked",
+      "expected_rejection": "stale or unrequested search info"
+    },
+    {
+      "case": "native_model_error_remains_fatal",
+      "status": "checked",
+      "expected_rejection": "native rejected applied model/options/protocol"
+    }
+  ],
+  "native_starts": 0,
+  "original_closed_controls_rerun": false
+}

@@ -1,14 +1,14 @@
 # Caissa remaining work
 
-Updated: 2026-10-28T21:54:56-04:00 (America/New_York). Revision 57.
+Updated: 2026-10-28T22:31:43-04:00 (America/New_York). Revision 62.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
 ## Current work
 
-R03: Close thread-scaling, memory, stop and race-safety evidence.
+R09: Complete final recovery acceptance.
 
-Admit and run the implemented exact-neural thread workload once under fresh source/input/numeric bounds. The new full independent reader and18synthetic namespace/bootstrap/forgery controls passed. Preserve all4000active-stop sequences and64instrumented queries without replacement; inspect actual completion/exits/closed ledgers before accepting the component.
+Join the passed arena/training/data crash-and-resume components to final source/runtime and finish missing combined acceptance. Preserve original failure and resume records.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -30,7 +30,7 @@ Recorded attempts include failed or unfinished outcomes. A count does not establ
 |---|---|---|
 | R01 | blocked | Finish the frozen multicore match schedule |
 | R02 | in progress | Verify comparisons and integrate the matrix reader |
-| R03 | in progress | Close thread-scaling, memory, stop and race-safety evidence |
+| R03 | done | Close thread-scaling, memory, stop and race-safety evidence |
 | R04 | failed requirement | Diagnose the failed neural-strength requirement |
 | R05 | done | Bind core correctness to the final engine |
 | R06 | blocked | Finish final data and learning lineage integration |
@@ -38,7 +38,7 @@ Recorded attempts include failed or unfinished outcomes. A count does not establ
 | R08 | blocked | Design and run a calibrated engine-pool rating benchmark |
 | R09 | pending | Complete final recovery acceptance |
 | R10 | pending | Complete final browser and native-engine acceptance |
-| R11 | in progress | Bind the passed performance study to final deployment |
+| R11 | done | Bind the passed performance study to final deployment |
 | R12 | pending | Finish semantic adapters and the complete coordinator |
 | R13 | blocked | Close compiler provenance and clean-build reproduction |
 | R14 | unavailable inputs | Produce a compact, honest reproducibility package |
@@ -70,15 +70,13 @@ Blocker: The sixth parallel comparison is incomplete at the original active cap.
 
 ### R03: Close thread-scaling, memory, stop and race-safety evidence
 
-Admit and run the implemented exact-neural thread workload once under fresh source/input/numeric bounds. The new full independent reader and18synthetic namespace/bootstrap/forgery controls passed. Preserve all4000active-stop sequences and64instrumented queries without replacement; inspect actual completion/exits/closed ledgers before accepting the component.
+Reuse the closed final thread proof without semantic or measurement reruns. Carry its finite source-matched race evidence and exact-neural cancellation limits into the coordinator. The original sixth match comparison remains a separate incomplete R01/R02 gate.
 
 Completion requires: The multicore result includes checked performance and safety relationships for the same actor and options; source bindings and real stage exits are complete.
 
 Dependencies: R01, R02.
 
-Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-evidence-2026-10-28`; `results/final-thread-runtime-preflight-2026-10-28`; `config/thread-runtime-v1.proposed.json`; `results/final-thread-wiring-2026-10-28`; `config/thread-runtime-v1.json`.
-
-Blocker: G04 stop sample used1/2MiB hash with neural off. Existing TSan22-case source proof does not cover the complete52d/neural10/Lazy/cache/tactical/Hash16 configuration across1/2/4/8threads. Original sixth match comparison remains incomplete at the exhausted cap.
+Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-evidence-2026-10-28`; `results/final-thread-runtime-preflight-2026-10-28`; `config/thread-runtime-v1.proposed.json`; `results/final-thread-wiring-2026-10-28`; `config/thread-runtime-v1.json`; `results/final-thread-runtime-2026-10-28`.
 
 ### R04: Diagnose the failed neural-strength requirement
 
@@ -158,13 +156,13 @@ Existing evidence: `results/browser-capture-amendment-2026-10-26`.
 
 ### R11: Bind the passed performance study to final deployment
 
-Reuse the checked G13 sample and partial native-source relationship without repeating performance measurements. Finish the required R03 exact-option runtime relationship and final coordinator/deployment join, preserving separate performance, race and strength claims.
+Reuse the closed final performance identity join in R12. Preserve the descriptive250ms/16MiB diagnostic conditions, measured memory rows and separate strength/race claims; no performance rerun.
 
 Completion requires: G13 final identity joins close without claiming that performance numbers certify race safety or playing strength.
 
 Dependencies: R03, R05.
 
-Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-evidence-2026-10-28`.
+Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-evidence-2026-10-28`; `results/final-thread-runtime-2026-10-28`.
 
 ### R12: Finish semantic adapters and the complete coordinator
 

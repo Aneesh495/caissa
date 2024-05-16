@@ -1,0 +1,83 @@
+{
+  "schema": "caissa-derived-thread-component-execution-v1",
+  "failed_native_owners": [
+    {
+      "attempt": 1,
+      "scope_sha256": "7592bc572fbfec752c8bd19cae631a4ea79fb221a35cdf6369a5d5f5042a8d28",
+      "original_owner_exit": 1,
+      "elapsed_seconds": 45.84008450002875,
+      "failure": "Use Neural was sent before EvalFile; all eight sessions reported the model-enable error. Independent reader correctly rejected; counts do not establish applied neural operation.",
+      "stages": [
+        {
+          "stage": "produce",
+          "exit": 0,
+          "reason": "completed",
+          "monotonic_seconds": 45.24658749997616,
+          "cleanup_warnings": [],
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "stage": "independent",
+          "exit": 1,
+          "reason": "nonzero-exit",
+          "monotonic_seconds": 0.10574108402943239,
+          "cleanup_warnings": [],
+          "log_sha256": "5bec9e5afb51ec53e720cb33a3fa6a2d6d7247584665b37e4beb3856cf99764a"
+        }
+      ],
+      "source_preservation_sha256": "6cc97365ef79980864b631e09cc13de2ddbed0ca89603b70be8e10732bc504f9"
+    },
+    {
+      "attempt": 2,
+      "scope_sha256": "a853dffc684ad5b0e42db8d9470777af812f3cb50a6432e006e313b1b13ea3c1",
+      "original_owner_exit": 1,
+      "elapsed_seconds": 32.056294167006854,
+      "failure": "Correctly configured producer completed, but original reader misclassified the exact model-load acknowledgement. Its original failed owner and reader exit remain preserved; a separately scoped reader-only correction checked the unchanged retained transcript.",
+      "stages": [
+        {
+          "stage": "produce",
+          "exit": 0,
+          "reason": "completed",
+          "monotonic_seconds": 31.38467895903159,
+          "cleanup_warnings": [],
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "stage": "independent",
+          "exit": 1,
+          "reason": "nonzero-exit",
+          "monotonic_seconds": 0.11139133397955447,
+          "cleanup_warnings": [],
+          "log_sha256": "39a07b1ceef298111da462b3094b6150fc007c095c15abc538d119a99b8bec8f"
+        }
+      ],
+      "source_preservation_sha256": "65037c2745399b06c695c2248059b8e457d9574d238537850281488232b5b3ef"
+    }
+  ],
+  "reader_only_correction": {
+    "closed": true,
+    "owner_exit": 0,
+    "elapsed_seconds": 0.5993195840273984,
+    "scope_sha256": "7b67dbe0c845ea9f289c5fd52026cf3c211dacc6f17e5140eaa084146ae7d095",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "d0e097364e43732de8e9385f3933cfa858ea60a1ba6e163609db176b3c068a82",
+    "new_native_starts": 0,
+    "closed_unix": 1793240939.0792162
+  },
+  "final_relationship_join": {
+    "closed": true,
+    "owner_exit": 0,
+    "elapsed_seconds": 0.08584000001428649,
+    "scope_sha256": "58ccc182d0bc9167b05a97ef319863dfcecac9261dd11fae6e5ec9e2179c9572",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "7d4b8a2641966a104d7ac5639fe71e4f9e139d4c8a2c89a8c723b8dda67c6b03",
+    "native_starts": 0,
+    "games": 0,
+    "closed_unix": 1793241057.3144698
+  },
+  "new_match_games": 0,
+  "full_G10_certified": false,
+  "full_acceptance": false
+}

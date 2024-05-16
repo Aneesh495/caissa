@@ -1,0 +1,14 @@
+{
+  "schema": "caissa-compact-thread-proof-v1",
+  "files": {
+    "EXECUTIONS.json": "c9d0b0196ea5b31a14e1e605cc2a04323b8364fc79956935a56304ad879666d5",
+    "collect.py": "8082bb8c347854599907c963fe67129536a7fb2ab0f0d7dc6bcc362e225e506b",
+    "CONTROLS.json": "d268aff0bbb9988cab724a5feb79d736e78a26920fa8880363d3d23f799817c5",
+    "THREAD_RUNTIME.json": "dcd173265afcdf53d0770012bd063ce7d599afe42a306f6de6c0e4c65348a254",
+    "THREAD_PERFORMANCE_JOIN.json": "0cbf83c6223673782b56bc2a66637771f13e13c6f2ea85be895a803a0c818893",
+    "MODEL_ORDER_CONTROLS.json": "a24308dba6e509f2071f46569d4ca5c8b4e28c5158c4d03ad2d4e65c11210d2f",
+    "README.md": "fbf4eb3f0478a260a8457353dcc1c27d14d2d2493b289ab1ce24be89132e6c67"
+  },
+  "raw_transcripts": "retained local only",
+  "full_acceptance": false
+}
