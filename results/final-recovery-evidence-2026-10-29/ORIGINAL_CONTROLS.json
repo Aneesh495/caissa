@@ -1,0 +1,40 @@
+[
+  {
+    "case": "committed-producer-edit",
+    "actual_committed_source": "a477b282284c99589ffecb2456c004d0d876a734",
+    "rejection": "G11 current producer footprint differs from original forced-recovery evidence: training"
+  },
+  {
+    "case": "committed-producer-mode",
+    "actual_committed_source": "6d36ba17496a62ab260fa97f286c26e22533f061",
+    "rejection": "G11 current producer footprint differs from original forced-recovery evidence: training"
+  },
+  {
+    "case": "positive-full-entry",
+    "actual_exit": 2
+  },
+  {
+    "case": "missing-replay-output",
+    "actual_exit": 2
+  },
+  {
+    "case": "missing-component",
+    "actual_exit": 1
+  },
+  {
+    "case": "swapped-original-zips",
+    "actual_exit": 1
+  },
+  {
+    "case": "changed-historical-source",
+    "actual_exit": 1
+  },
+  {
+    "case": "changed-final-actor",
+    "actual_exit": 1
+  },
+  {
+    "case": "undeclared-original-archive",
+    "actual_exit": 1
+  }
+]

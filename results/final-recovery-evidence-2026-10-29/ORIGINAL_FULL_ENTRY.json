@@ -1,0 +1,23 @@
+{
+  "actual_exit": 2,
+  "stderr": "",
+  "full_acceptance": false,
+  "pending_semantic_gates": {
+    "G01": "independent full-domain semantic adapter required",
+    "G02": "independent full-domain semantic adapter required",
+    "G03": "independent full-domain semantic adapter required",
+    "G04": "independent full-domain semantic adapter required",
+    "G05": "independent full-domain semantic adapter required",
+    "G06": "independent full-domain semantic adapter required",
+    "G07": "independent full-domain semantic adapter required",
+    "G08": "independent full-domain semantic adapter required",
+    "G09": "independent full-domain semantic adapter required",
+    "G10": "independent full-domain semantic adapter required",
+    "G12": "independent full-domain semantic adapter required",
+    "G13": "independent full-domain semantic adapter required",
+    "G14": "independent full-domain semantic adapter required",
+    "G15": "independent full-domain semantic adapter required",
+    "G16": "independent full-domain semantic adapter required"
+  },
+  "full_entry_artifact_sha256": "df4d883cb46db2c7b05efb3d33b1ba75987f491b7c7968c03eaa9c8627c4f20f"
+}

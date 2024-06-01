@@ -1,0 +1,49 @@
+{
+  "status": "passed_recovery_coverage_and_identity_audit_only",
+  "product_source_commit": "6f5aa799b3d7f499f5f743712620781bc8c871b6",
+  "historical_G11_source_commit": "6a63aaaa507646c87ef54b7aab1bea2b71eec1ea",
+  "original_archive_sha256": "7c8fa076cc3b759ccda1f065653a6b74e0277795ca20852fc49f3ffe84b087fa",
+  "original_archive_bytes": 297027567,
+  "original_actual_full_entry_exit": 2,
+  "historical_full_G11_sample": true,
+  "matched_native_files_and_modes": 69,
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "historical_original_controls": 9,
+  "new_current_source_controls": 8,
+  "current_producer_changes": [
+    [
+      "arena",
+      "arena/run.py"
+    ]
+  ],
+  "unchanged_original_recovery_reader": true,
+  "strict_original_reader_rejects_current_arena": true,
+  "executions": {
+    "current_controls": {
+      "owner_exit": 0,
+      "elapsed_seconds": 0.48434354102937505,
+      "scope_sha256": "5e5bb7f7185d4e3262326e7701f65265596717c5b207715cf17c5cff2293b82d",
+      "stdout_sha256": "b647c8ea34994f1f8a44a40497f09ddd8402b845b4ffa19747f528465c6c8400",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "original_archive": {
+      "owner_exit": 0,
+      "elapsed_seconds": 12.877695582981687,
+      "scope_sha256": "5a019d7b5ca95f7cc9d83489c3cd24b3e54fd686be964434327541f9946e89f9",
+      "stdout_sha256": "44e17655f38c5704f1f60886f8453c60872a984145e10b973284a274248c1723",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "remaining_required": [
+    "Fresh prospective current-arena forced interruption, committed-record preservation and native resumption with independently checked journals and actual process ownership.",
+    "A final combined independent reader binding original training/data reconstruction, accepted saved-actor identity, current arena runtime and coordinator source."
+  ],
+  "current_native_recovery_sample_passed": false,
+  "full_R09_complete": false,
+  "full_acceptance": false,
+  "new_native_starts": 0,
+  "new_games": 0,
+  "closed_semantic_samples_rerun": 0,
+  "elapsed_seconds": 0.01781195803778246
+}
