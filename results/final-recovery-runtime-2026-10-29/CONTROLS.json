@@ -1,0 +1,62 @@
+[
+  {
+    "case": "missing_trainer_rng",
+    "rejected": true,
+    "reason": "original trainer state coverage incomplete"
+  },
+  {
+    "case": "changed_original_data_export",
+    "rejected": true,
+    "reason": "original data commit/export reconstruction incomplete"
+  },
+  {
+    "case": "changed_current_actor",
+    "rejected": true,
+    "reason": "current native actor differs: engine_sha256"
+  },
+  {
+    "case": "missing_model_ack",
+    "rejected": true,
+    "reason": "current native recovery endpoint incomplete"
+  },
+  {
+    "case": "rewritten_committed_game",
+    "rejected": true,
+    "reason": "actual forced boundary or committed record differs"
+  },
+  {
+    "case": "fake_forced_exit",
+    "rejected": true,
+    "reason": "actual forced boundary or committed record differs"
+  },
+  {
+    "case": "open_storage_ledger",
+    "rejected": true,
+    "reason": "current native storage/start ledger not closed cleanly"
+  },
+  {
+    "case": "changed_actual_stage_exit",
+    "rejected": true,
+    "reason": "actual recovery stage failed or cleanup differs"
+  },
+  {
+    "case": "surviving_process_group",
+    "rejected": true,
+    "reason": "current process ownership/reap incomplete"
+  },
+  {
+    "case": "changed_current_arena",
+    "rejected": true,
+    "reason": "current source differs from real recovery execution"
+  },
+  {
+    "case": "changed_native_source",
+    "rejected": true,
+    "reason": "current native source or modes differ"
+  },
+  {
+    "case": "forged_full_acceptance",
+    "rejected": true,
+    "reason": "current diagnostic scope or full-acceptance claim differs"
+  }
+]

@@ -1,0 +1,50 @@
+{
+  "runtime_owner": {
+    "closed": true,
+    "owner_exit": 0,
+    "elapsed_seconds": 2.954012750007678,
+    "scope_sha256": "6276bb6d1aa9213a6f94ab3f846c32ef57df14fab57adc244df4cc4213ff87d6",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0,
+    "closed_unix": 1793252967.597193
+  },
+  "join_owner": {
+    "closed": true,
+    "owner_exit": 0,
+    "elapsed_seconds": 0.061983417021110654,
+    "scope_sha256": "6f2fd20297e5e0b3e73343254457ad04c110cfd8b66d14c384c9613f414d4b83",
+    "stdout_sha256": "d6d210e0ccdab83a9101915476a31302c74f0fff8114ab0f1b78f3f0d31e0875",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0,
+    "closed_unix": 1793253216.0983849,
+    "native_starts": 0,
+    "games": 0
+  },
+  "stages": {
+    "interrupted": {
+      "exit": -9,
+      "reason": "nonzero-exit",
+      "monotonic_seconds": 1.1352860829792917,
+      "cleanup_warnings": [],
+      "discarded_output_bytes": 0,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "resumed": {
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.6816591660026461,
+      "cleanup_warnings": [],
+      "discarded_output_bytes": 0,
+      "log_sha256": "8845859263b2d2fe913609a045f5efc86d527d68702e6c6afeaaafbb3ad8160c"
+    },
+    "independent": {
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.21493916597682983,
+      "cleanup_warnings": [],
+      "discarded_output_bytes": 0,
+      "log_sha256": "b4615e39534c424f91ce5f1742e4babb9f09aadbafce33401a1c69d1505c03a2"
+    }
+  }
+}
