@@ -1,0 +1,9 @@
+{
+  "scope": "Two retained original screenshots visually inspected; no new browser execution",
+  "observations": "The 390px neural view keeps the board and controls inside the page and shows the completed native PVs, statistics and edited variation. The 1280px classical view shows the corresponding board, analysis and variation controls. Original full-page vertical scrolling is preserved. This visual observation supplies no missing compiled JavaScript bytes or final acceptance.",
+  "screenshots": {
+    "neural-390/analysis.png": "470d7e7384331e63921b1b707dc7929dbb14e7c97fa00f266aef3ab77625b215",
+    "classical-1280/analysis.png": "9a5ef0b08a65578a2f53aa18150e8f43782d3c2474215bb916df6a18e49fa6fa"
+  },
+  "full_R10_complete": false
+}
