@@ -68,7 +68,8 @@ def execute(path):
     def spawn(command, *args, **kwargs):
         require(command in allowed and command not in launched, 'only the three final browser stages are admitted')
         launched.append(command)
-        kwargs['preexec_fn'] = lambda: resource.setrlimit(resource.RLIMIT_FSIZE, (4*1024**2, 4*1024**2))
+        ceiling = 1024**2 if command == allowed[0] else 4*1024**2
+        kwargs['preexec_fn'] = lambda: resource.setrlimit(resource.RLIMIT_FSIZE, (ceiling, ceiling))
         process = original_popen(command, *args, **kwargs);active[0] = process
         require(os.getpgid(process.pid) == process.pid, 'browser stage does not own its process group')
         return process
@@ -84,9 +85,12 @@ def execute(path):
         traces = [*output.glob('*-*/trace.zip'), output/'failed-trace.zip']
         trace_used = sum(p.stat().st_size for p in traces if p.exists())
         require(trace_used <= scope['native_trace_bytes'], 'prepaid trace allowance exhausted')
+        compiler_root = output/'product/dist'
+        compiler_used = footprint([compiler_root])['charged_bytes'] if compiler_root.exists() else 0
+        require(compiler_used <= scope['compiler_writer_bytes'], 'prepaid compiler output exhausted')
         if force or time.monotonic()-last_storage[0] >= 10:
             actual = footprint([ROOT, *map(Path, scope['external_paths'])])
-            remaining = scope['control_bytes']-state['control_used']+scope['outside_control_bytes']+max(0, scope['native_temp_bytes']-usage)+max(0, scope['native_trace_bytes']-trace_used)
+            remaining = scope['control_bytes']-state['control_used']+scope['outside_control_bytes']+max(0, scope['native_temp_bytes']-usage)+max(0, scope['native_trace_bytes']-trace_used)+max(0, scope['compiler_writer_bytes']-compiler_used)
             storage.check_admission(actual['charged_bytes'], shutil.disk_usage(ROOT).used, 0, remaining, scope['reserve_bytes'])
             last_storage[0] = time.monotonic()
     def reap(label):

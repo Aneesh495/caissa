@@ -1,27 +1,30 @@
-// Emit the actual compiler output to the metered Python owner, never to disk.
-import { readFileSync } from 'node:fs';
+// Use the installed native TypeScript CLI with an exact prepaid output inventory.
+import { readFileSync, mkdirSync, readdirSync } from 'node:fs';
 import { resolve, relative } from 'node:path';
 import { createHash } from 'node:crypto';
-import { createRequire } from 'node:module';
+import { spawnSync } from 'node:child_process';
 
-const require = createRequire(import.meta.url);
 const scope = JSON.parse(readFileSync(process.argv[2], 'utf8'));
-const ts = require(resolve(scope.typescript, 'lib/typescript.js'));
 const sha = (data) => createHash('sha256').update(data).digest('hex');
-const config = ts.readConfigFile(resolve(scope.root, 'tsconfig.json'), ts.sys.readFile);
-if (config.error) throw new Error('Cannot read the pinned TypeScript configuration.');
-const parsed = ts.parseJsonConfigFileContent(config.config, ts.sys, scope.root);
-const options = { ...parsed.options, outDir: resolve(scope.output, 'product/dist'), typeRoots: [scope.type_roots] };
-const program = ts.createProgram(parsed.fileNames, options);
-const errors = [...parsed.errors, ...ts.getPreEmitDiagnostics(program)];
-if (errors.length) throw new Error(ts.formatDiagnosticsWithColorAndContext(errors, { getCurrentDirectory: () => scope.root, getCanonicalFileName: (x) => x, getNewLine: () => '\n' }));
+mkdirSync(resolve(scope.output, 'product/dist'), { recursive: true });
+const args = ['--project', resolve(scope.root, 'tsconfig.json'), '--outDir', resolve(scope.output, 'product/dist'), '--typeRoots', scope.type_roots, '--listFiles'];
+const actual = spawnSync(scope.typescript_executable, args, { cwd: scope.root, encoding: 'utf8', timeout: 55000, maxBuffer: 1024 * 1024 });
+if (actual.error || actual.status !== 0 || actual.signal || actual.stderr) throw new Error('Final TypeScript CLI failed: '+actual.stdout+actual.stderr);
 const outputs = {};
-const emitted = program.emit(undefined, (name, value) => {
-  const path = relative(scope.output, name).split('\\').join('/');
-  if (!/^product\/dist\/(?:web\/app|analysis-service\/(?:native|server|telemetry))\.js(?:\.map)?$/.test(path)) throw new Error('Compiler output escaped the exact eight-file inventory.');
-  const bytes = Buffer.from(value);outputs[path] = sha(bytes);
-  console.log(JSON.stringify({ artifact: path, data: bytes.toString('base64') }));
-});
-if (emitted.emitSkipped || emitted.diagnostics.length || Object.keys(outputs).length !== 8) throw new Error('Compiler did not finish the exact final build.');
-const sourceInputs = Object.fromEntries(program.getSourceFiles().map((file) => [file.fileName, sha(Buffer.from(file.text))]));
-console.log(JSON.stringify({ artifact: 'BUILD.json', data: Buffer.from(JSON.stringify({ status: 'compiled', node: process.version, typescript: ts.version, types_node: JSON.parse(readFileSync(resolve(scope.type_roots, 'node/package.json'), 'utf8')).version, outputs, source_inputs: sourceInputs })).toString('base64') }));
+for (const entry of readdirSync(resolve(scope.output, 'product/dist'), { recursive: true, withFileTypes: true })) {
+  if (!entry.isFile()) continue;
+  const file = resolve(entry.parentPath, entry.name);
+  const name = relative(scope.output, file).split('\\').join('/');
+  if (!/^product\/dist\/(?:web\/app|analysis-service\/(?:native|server|telemetry))\.js(?:\.map)?$/.test(name)) throw new Error('Compiler emitted an unadmitted file.');
+  outputs[name] = sha(readFileSync(file));
+}
+if (Object.keys(outputs).length !== 8) throw new Error('Compiler did not emit the exact eight-file inventory.');
+const sourceInputs = {};
+for (const line of actual.stdout.trim().split(/\r?\n/)) {
+  const file = resolve(scope.root, line);sourceInputs[file] = sha(readFileSync(file));
+}
+const result = { status: 'compiled', node: process.version, typescript: JSON.parse(readFileSync(resolve(scope.typescript, 'package.json'), 'utf8')).version,
+  types_node: JSON.parse(readFileSync(resolve(scope.type_roots, 'node/package.json'), 'utf8')).version,
+  compiler_exit: actual.status, compiler_pid: actual.pid, compiler_sha256: sha(readFileSync(scope.typescript_executable)), compiler_arguments: args,
+  outputs, source_inputs: sourceInputs };
+console.log(JSON.stringify({ artifact: 'BUILD.json', data: Buffer.from(JSON.stringify(result)).toString('base64') }));
