@@ -1,0 +1,39 @@
+{
+  "cancel_analysis_ms": 10000,
+  "chromium_revision": "1243",
+  "completed_analysis_ms": 3000,
+  "hash_mib": 16,
+  "height": 900,
+  "historical_sample_reexecutions": 0,
+  "import_pgn": "[Event \"Caissa final served build acceptance\"]\n\n1. Nf3 (1. d4 Nf6) d5 2. g3 *",
+  "inspect": true,
+  "keyboard_move": "e2e3",
+  "lazy_neural": true,
+  "match_games": 0,
+  "maximum_browsers": 1,
+  "maximum_capture_bytes": 5242880,
+  "maximum_native_starts_per_service": 32,
+  "maximum_services": 6,
+  "modes": [
+    "classical",
+    "neural"
+  ],
+  "multipv": 5,
+  "neural_weight": 10,
+  "playwright": "1.63.0",
+  "required_contexts": 4,
+  "required_served_assets": [
+    "/",
+    "/app.js",
+    "/style.css"
+  ],
+  "required_steps_per_context": 14,
+  "schema": "caissa-final-served-browser-v1",
+  "threads": 1,
+  "types_node": "25.9.5",
+  "typescript": "7.0.2",
+  "widths": [
+    1366,
+    375
+  ]
+}

@@ -1,14 +1,14 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T02:10:24-04:00 (America/New_York). Revision 69.
+Updated: 2026-10-29T03:00:36-04:00 (America/New_York). Revision 72.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
 ## Current work
 
-R10: Complete final browser and native-engine acceptance.
+R12: Finish semantic adapters and the complete coordinator.
 
-R10: implement a new finite final acceptance capture that binds actual served compiled app.js and current service build to source/native identity and required browser flows. Preserve original final_source_reexecution_required and all closed browser failures; reuse accepted original four-context evidence without status reruns.
+Implement source-bound final evidence adapters and coordinator dispatch for the closed final recovery/browser joins first. Bind actual raw inventories, source/mode boundaries, reader and owner exits plus closed ledgers; reject forged flags and changed relationships without semantic/native/browser reruns. Then integrate remaining final core/performance/external domains and failed/unavailable gates. Preserve original strict admission and every historical failure; do not infer all-domain acceptance from component results. Cover the pinned .cjs process helper explicitly rather than silently changing frozen historical inventory policies.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -37,9 +37,9 @@ Recorded attempts include failed or unfinished outcomes. A count does not establ
 | R07 | done | Bind existing external strength to the final report |
 | R08 | blocked | Design and run a calibrated engine-pool rating benchmark |
 | R09 | done | Complete final recovery acceptance |
-| R10 | in progress | Complete final browser and native-engine acceptance |
+| R10 | done | Complete final browser and native-engine acceptance |
 | R11 | done | Bind the passed performance study to final deployment |
-| R12 | pending | Finish semantic adapters and the complete coordinator |
+| R12 | in progress | Finish semantic adapters and the complete coordinator |
 | R13 | blocked | Close compiler provenance and clean-build reproduction |
 | R14 | unavailable inputs | Produce a compact, honest reproducibility package |
 | R15 | blocked | Finish source/provenance/security audit, report and release decision |
@@ -146,15 +146,13 @@ Existing evidence: `results/recovery-full-join-2026-10-26`; `results/final-recov
 
 ### R10: Complete final browser and native-engine acceptance
 
-R10: implement a new finite final acceptance capture that binds actual served compiled app.js and current service build to source/native identity and required browser flows. Preserve original final_source_reexecution_required and all closed browser failures; reuse accepted original four-context evidence without status reruns.
+Reuse the closed final served-browser proof in R12 coordinator integration without rerunning captures or controls. Preserve original historical reader flags and failed owners. Original saved C++ compiler/runtime, failed strength, reproduction and release gates remain open.
 
 Completion requires: The final browser reader checks actual captured native responses and required flows on the declared final build; old failed browser scopes remain failed.
 
 Dependencies: R05, exclusive host released.
 
-Existing evidence: `results/browser-capture-amendment-2026-10-26`; `results/final-browser-coverage-2026-10-29`.
-
-Blocker: The original browser reader explicitly requires final-source reexecution. Its traces omit all compiled app.js response bodies; equal TS source, route status, response size or old component pass cannot close the final served-build/source/native relationship.
+Existing evidence: `results/browser-capture-amendment-2026-10-26`; `results/final-browser-coverage-2026-10-29`; `results/final-served-browser-2026-10-29`.
 
 ### R11: Bind the passed performance study to final deployment
 
@@ -168,7 +166,7 @@ Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-ev
 
 ### R12: Finish semantic adapters and the complete coordinator
 
-Finish missing full evidence adapters and connect all required independent readers. Reuse passed semantic-forgery components, while adding only missing source-bound runtime/coordination checks.
+Implement source-bound final evidence adapters and coordinator dispatch for the closed final recovery/browser joins first. Bind actual raw inventories, source/mode boundaries, reader and owner exits plus closed ledgers; reject forged flags and changed relationships without semantic/native/browser reruns. Then integrate remaining final core/performance/external domains and failed/unavailable gates. Preserve original strict admission and every historical failure; do not infer all-domain acceptance from component results. Cover the pinned .cjs process helper explicitly rather than silently changing frozen historical inventory policies.
 
 Completion requires: The full coordinator reads real artifacts, rejects stale/forged/mismatched inputs, preserves failed gates and cannot report full acceptance from component pass flags.
 

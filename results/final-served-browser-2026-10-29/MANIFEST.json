@@ -1,0 +1,15 @@
+{
+  "files": {
+    "BUILD_PROVENANCE.json": "3951db34b9c56e4555870ce7d12291fbace770b681da2bd230c053e7bee51db5",
+    "CONTROLS.json": "0367c58d3e8da5855a2727610a82213b9c6d5431ff28aa0746b9de4030377d07",
+    "EXECUTIONS.json": "2a3a7747c03cd18666183c2b3cfb54bdabe7c45bcf0b0302d7562071212a0d9f",
+    "FINAL_BROWSER.json": "5b5409e9d73139a6e1e16b6f0bb8acd1f69fc72dbb9d52facfdd499388fd2e0f",
+    "PRIVATE_EVIDENCE_INDEX.json": "d673a4c7869f5df14901630fa7c309c3eb8c163361e6656eb44633cb7b245e06",
+    "PROFILE.json": "912726f331db4e1c3acb06bad68e657ecb0f0c9fee761c43f900672381c262f2",
+    "README.md": "952e1c38283fdc5dee76271ee7a786dcb7657412ce15846170534ad76d071af7",
+    "VISUAL_REVIEW.json": "9df1ba7a425be57652243b86914c1c2cf2a62b8aea963c4ba30cad0afb33b62b"
+  },
+  "full_R10_complete": true,
+  "full_acceptance": false,
+  "schema": "caissa-compact-final-browser-proof-v1"
+}

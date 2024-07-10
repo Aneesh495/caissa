@@ -1,0 +1,76 @@
+{
+  "files": {
+    "ACTIVE_USAGE.json": {
+      "bytes": 95,
+      "sha256": "865b09782590f349d9308c67db86a3db4bb842f102a869b8aed880f2210e6a92"
+    },
+    "ASSETS.json": {
+      "bytes": 345377,
+      "sha256": "fdcb3434a1389683144523277e793513c72101a5334eff160cdab4fe3c24deee"
+    },
+    "BROWSER.json": {
+      "bytes": 329450,
+      "sha256": "f74ac987f6bfec5738700f2c00008c548455064d1e4f5f0beb8ee4b970e780f5"
+    },
+    "CAMPAIGN.json": {
+      "bytes": 171,
+      "sha256": "2fe5ff546ab2dd9a00b98c2152b86b599542e2bd4e1c5d9cf2c3c63204f231e8"
+    },
+    "COMPILED_BUILD.json": {
+      "bytes": 40862,
+      "sha256": "b703c23b8005d33ce6a5e06b18d3d57b0481964684ae45e885ff7829f6347200"
+    },
+    "ERRORS.json": {
+      "bytes": 2,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "GROUPS.json": {
+      "bytes": 132,
+      "sha256": "eb7c1882ffe0422f6c08a815391615d9fd535554b2799908fdb2abead5c9f6e8"
+    },
+    "NATIVE_WRITER_USAGE.json": {
+      "bytes": 116,
+      "sha256": "1f0ccad76c58bde56c179de549e4120495109f0f23472268ac5e2a8eac6dca01"
+    },
+    "NETWORK.json": {
+      "bytes": 147617,
+      "sha256": "7e76d9421ddbaf47230e272388362fb185c3392d2a759b22727f0cc62dd49153"
+    },
+    "REUSED_COMPILER.json": {
+      "bytes": 627,
+      "sha256": "2f245d8a576a4425dcc7d5687c24fe454de971b20770a9c42cbde1a3caf3a569"
+    },
+    "capture.log": {
+      "bytes": 4393952,
+      "sha256": "0a9f113fcaf4b56d5d813b0aec8971a4538466bfc1d7e51b11f2614d1c5ad8d6"
+    },
+    "classical-1366/trace.zip": {
+      "bytes": 71317,
+      "sha256": "183e590322de1f0b966a901e3cc153f982049a4455d99056cb3373b3f8234f8a"
+    },
+    "classical-375/trace.zip": {
+      "bytes": 71238,
+      "sha256": "efa1811379d2c3f75c76e1d4a60500d1bd42ce66e3ec2d0f099616d08dcfc1c2"
+    },
+    "independent.log": {
+      "bytes": 1919,
+      "sha256": "b83c6248940737e66c0b90ec285c02d7b6049e8f472e2e7cb376a559457ff6e7"
+    },
+    "neural-1366/trace.zip": {
+      "bytes": 72573,
+      "sha256": "ef5cad772e03928eba525c0117e55575c9c57dd35a0543e7607d5a3da394e87d"
+    },
+    "neural-375/trace.zip": {
+      "bytes": 71691,
+      "sha256": "ca829467e642a2f75afe760bd7e16bf2db2e70d7712bf90ccb02a3d82a9b8c31"
+    },
+    "service.log": {
+      "bytes": 46764,
+      "sha256": "46b2f1e7767cb1b372a1a022157391a7ce3ce29753e6d591c43170440d1230ce"
+    }
+  },
+  "raw_available_locally": true,
+  "raw_scope_and_process_logs_private": true,
+  "raw_uploaded": false,
+  "schema": "caissa-compact-private-evidence-index-v1"
+}

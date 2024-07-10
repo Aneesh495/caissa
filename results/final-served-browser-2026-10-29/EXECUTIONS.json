@@ -1,0 +1,73 @@
+{
+  "active_ledger_closed": true,
+  "active_seconds": 22.68491350003751,
+  "browser_starts": 1,
+  "full_acceptance": false,
+  "historical_samples_reexecuted": false,
+  "native_exits": 88,
+  "native_starts": 88,
+  "new_compiler_starts_in_repair": 0,
+  "new_match_games": 0,
+  "old_actual_compiler_exit": 0,
+  "old_failed_owner": {
+    "closed": true,
+    "closed_unix": 1793256202.7814531,
+    "elapsed_seconds": 2.425546415965073,
+    "owner_exit": 1,
+    "scope_sha256": "cbcce8c654ae5f143e74f8af96b205b5c9700f346fd3f26a4528c349d4a8ac1d",
+    "stderr_bytes": 1784,
+    "stderr_sha256": "123405b3e5b10c1f2da33246e296fd87a701cb16d29db9da304431096708b6c7",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "old_failed_owner_browser_starts": 0,
+  "old_failed_owner_chess_starts": 0,
+  "old_failed_scope_sha256": "cbcce8c654ae5f143e74f8af96b205b5c9700f346fd3f26a4528c349d4a8ac1d",
+  "owner": {
+    "closed": true,
+    "closed_unix": 1793256506.312358,
+    "elapsed_seconds": 24.55207600002177,
+    "owner_exit": 0,
+    "scope_sha256": "3ce0fb5c474e2ab5c303fd778be38fe5273c4107dc0bd0c877da4bdada5cdc19",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "pre_admission_failure_preserved": true,
+  "schema": "caissa-final-served-browser-executions-v1",
+  "scope_sha256": "3ce0fb5c474e2ab5c303fd778be38fe5273c4107dc0bd0c877da4bdada5cdc19",
+  "services": 6,
+  "source_commit": "d227b2ca46ddc32bbd818c5c87b7276af5239a87",
+  "stage_groups_absent_after_reap": true,
+  "stages": {
+    "capture": {
+      "cleanup_warnings": [],
+      "discarded_output_bytes": 0,
+      "exit": 0,
+      "log_sha256": "0a9f113fcaf4b56d5d813b0aec8971a4538466bfc1d7e51b11f2614d1c5ad8d6",
+      "monotonic_seconds": 21.710017500037793,
+      "reason": "completed",
+      "retained_output_bytes": 4393952
+    },
+    "compiler-stage": {
+      "cleanup_warnings": [],
+      "discarded_output_bytes": 0,
+      "exit": 0,
+      "log_sha256": "6af9c665e2ac7a44cb18cce7366a1dbc20ee30311ea14fc66b52ae088280730b",
+      "monotonic_seconds": 0.4254168339539319,
+      "reason": "completed",
+      "retained_output_bytes": 54520
+    },
+    "independent": {
+      "cleanup_warnings": [],
+      "discarded_output_bytes": 0,
+      "exit": 0,
+      "log_sha256": "b83c6248940737e66c0b90ec285c02d7b6049e8f472e2e7cb376a559457ff6e7",
+      "monotonic_seconds": 0.9126553750247695,
+      "reason": "completed",
+      "retained_output_bytes": 1919
+    }
+  },
+  "whole_project_coordinator_executed": false,
+  "write_failure": null,
+  "write_ledger_closed": true
+}

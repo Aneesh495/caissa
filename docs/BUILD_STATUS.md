@@ -17,10 +17,13 @@ The original heuristic schedule is closed with 3000 game attempts, 2999 finished
 games and 1500 pair records. Thirty-nine comparisons independently passed; the
 table-milliseconds-100 comparison failed on one original unfinished game.
 [The original-sample result](../results/heuristics-original-2026-10-27/STATUS.md)
-preserves that failure without replacement games. The multicore sample stopped
-for storage cleanup after its fourth start, with 262 game records and 131 pair
-records retained unchanged. No fifth start was admitted before the original
-parent deadline expired. No full systems result is certified.
+preserves that failure without replacement games. The multicore sample initially
+stopped for storage cleanup after its fourth start, with 262 game records and 131
+pair records retained unchanged. A separately recorded human continuation later
+admitted one fifth owner. That owner is now closed incomplete at the unchanged
+cumulative active-time cap, with 1110 of 1200 attempts, 555 pairs and five accepted
+comparisons. The sixth comparison remains incomplete, with no additional match
+time or replacement start admitted. No full systems result is certified.
 
 The [complete original-data and learning audit](../results/g07-full-audit-2026-10-26/README.md)
 is closed passed: all 114791 pairs, 229582 original games, 16522987 observations,
@@ -65,7 +68,7 @@ The [current core identity join](../results/final-core-identity-join-2026-10-28/
 | G09 External strength | V4 all2000games independently passed; final source/actor/settings/report join now closes R07. All2000retained PGN outcomes/color pairs match; unrestricted SF19 subset56W/2D/608L, -411.50relativeElo95[-460.14,-370.68] at100ms | Full coordinator and original compiler/runtime relationships; retired per-move JSON/pair journals prevent current full raw reproduction. No absolute/default-classical/human rating |
 | G10 Parallel systems | Original1110/1200attempts and five accepted comparisons remain closed. Final R03 thread/runtime relationships passed:4000active-stop checks,64instrumented searches and exact-neural p99 .386750ms; preserved earlier failures remain failed | Sixth comparison and full matrix/coordinator remain incomplete, with no extra match time or restart; finite race observations do not prove universal race absence |
 | G11 Recovery | Final R09 recovery accepted: current saved1ff/52d forced interruption/resumption preserved committed bytes,4diagnostic checkmates/12normal native exits; independent combined source/ownership/training/data evidence join and12forgery controls passed | R12 must integrate the final reader into the whole-project coordinator. Original strict historical source guard and all earlier failures remain unchanged; no compiler/reproduction/release pass |
-| G12 Browser | Original amended four-context component retained; final audit checks16unchanged web/service/reader source files and69native inputs. Actual complete responses and cleanup exist in all4contexts; servedHTML/CSS match | R10 remains open: all8app.js trace responses omit compiled-script body bytes and the old reader still requires final-source reexecution. Final served-build/native/browser capture remains missing; no old closed campaign reopened |
+| G12 Browser | Final R10 acceptance passed: fresh four-context served-build capture checked24actual asset bodies including8complete app.js bodies,44boards/170legal native PV lines,88normal native exits and12semantic rejections; saved1ff/52d and69native inputs agree | R12 must integrate the final reader into the whole-project coordinator. Old failed owners and the historical reader's reexecution requirement stay preserved; exact compiled outputs were reused after the separately recorded evidence-name repair. Original compiler/runtime and release gates remain open |
 | G13 Performance | Exact1ff/52d sample640searches/4581RSS/2000readiness/16independent fixed-node searches passed; final R11 source/actor/deployment/real-exit relationships checked | Whole-project coordinator and original compiler/runtime closure remain open. Descriptive performance rates and memory rows do not certify race safety or playing strength |
 | G14 Semantic verifier | Combined saved-image semantic sample passed at1deecce/run40329511266 with16rehashed semantic rejections and7full-entry cases/platform | Final all-domain source/compiler/runtime relationships and complete campaign coordination; other failed gates stay failed |
 | G15 Reproduction | Historical raw G02 reconstruction passed; large historical corpora/checkpoints/raw archives were later deliberately retired. New compiler-attribution builds passed only their component | Full historical reproduction is unavailable where original inputs are missing. Original saved1ff compiler/runtime closure and clean saved-actor reproduction remain unproven |
