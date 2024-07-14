@@ -915,6 +915,9 @@ def verify(
                     review["pending_semantic_gates"][
                         "G14"
                     ] = "complete semantic mutation audit on the exact saved final native image remains required"
+        from verification.final_evidence_bundle import integrate as integrate_final_evidence
+
+        integrate_final_evidence(bundle, inputs, checkout, expected_commit, review)
         return review
 
 
