@@ -79,8 +79,6 @@ def main(scope_path):
     require(str(Path(sys.executable).resolve()) == scope["interpreter"] and sha(sys.executable) == scope["interpreter_sha256"], "adapter Python differs")
     lease = HostLease(ROOT / "runs")
     work.joinpath("STARTED.json").write_text(json.dumps({"unix": time.time()}) + "\n")
-    output.mkdir(mode=0o700)
-
     class AdapterQuota(storage.Quota):
         def classify(self, target, *, replacement=False):
             target = Path(target).absolute()
