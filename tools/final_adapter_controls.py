@@ -50,9 +50,11 @@ def entry(scope_path):
             name, mode, flags = args
             writing = isinstance(mode, str) and any(c in mode for c in "wax+") or isinstance(flags, int) and flags & (os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_TRUNC | os.O_APPEND)
             if writing:
+                if name == os.devnull:
+                    return
                 # Existing old OWNER locks are opened only for flock by the
                 # unchanged guard. RLIMIT_FSIZE=0 forbids any content append.
-                require(isinstance(name, str) and str(Path(name).absolute()) in inactive_locks and mode == "a" and Path(name).is_file() and Path(name).stat().st_size == 0, "full-entry regular-file write rejected")
+                require(isinstance(name, str) and str(Path(name).absolute()) in inactive_locks and mode == "a" and Path(name).is_file() and Path(name).stat().st_size == 0, "full-entry regular-file write rejected: " + repr((name, mode, flags)))
     sys.addaudithook(audit)
     fixture = Path(scope["output"]) / "fixture"
     sys.argv = ["verification.full_bundle", str(fixture), "--checkout", str(ROOT), "--expected-commit", scope["product_commit"], "--expected-inputs-sha256", sha(fixture / "FULL_INPUTS.json"), "--maximum-seconds", "30"]
