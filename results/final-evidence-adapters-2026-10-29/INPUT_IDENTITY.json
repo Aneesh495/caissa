@@ -1,0 +1,11 @@
+{
+  "artifact_manifest_sha256": "8a7ab2f94183abdccb80ca4095de1633989822043a33ce031cab61ec2aed132d",
+  "full_inputs_sha256": "f054312435bbde1902782933246db807d5f7e6715e72e8474c7c8ffb730de695",
+  "original_G11_join_scope": "6f2fd20297e5e0b3e73343254457ad04c110cfd8b66d14c384c9613f414d4b83",
+  "original_G11_scope": "6276bb6d1aa9213a6f94ab3f846c32ef57df14fab57adc244df4cc4213ff87d6",
+  "original_G12_scope": "3ce0fb5c474e2ab5c303fd778be38fe5273c4107dc0bd0c877da4bdada5cdc19",
+  "raw_and_fixture_data_private": true,
+  "raw_uploaded": false,
+  "scope_sha256": "3c2866e1639eade4240d5a7d956be1f646e0bf4aea4fd141ac70220ed589435f",
+  "source_inputs_sha256": "499ff6e36a36e8fd86f0bdf82ca0e9c3089c7b356bc2dc22476722b945307767"
+}

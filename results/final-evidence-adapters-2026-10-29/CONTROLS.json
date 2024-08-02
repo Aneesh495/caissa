@@ -1,0 +1,81 @@
+[
+  {
+    "case": "receipt_only_without_raw_inventory",
+    "reason": "final raw inventory is undeclared, missing or excessive",
+    "rejected": true
+  },
+  {
+    "case": "wrong_deployed_actor",
+    "reason": "final adapter deployment differs",
+    "rejected": true
+  },
+  {
+    "case": "wrong_deployed_model",
+    "reason": "final adapter deployment differs",
+    "rejected": true
+  },
+  {
+    "case": "stale_coordinator_source",
+    "reason": "unsupported or stale final evidence dispatch",
+    "rejected": true
+  },
+  {
+    "case": "wrong_gate_driver",
+    "reason": "unsupported or stale final evidence dispatch",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_wrong_gate_descriptor",
+    "reason": "final evidence descriptor or gate differs",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_missing_browser_raw_body",
+    "reason": "required final raw artifact missing: runs/final-served-browser-2-2026-10-29/ASSETS.json",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_missing_actual_reader_stage",
+    "reason": "required final raw artifact missing: runs/final-served-browser-2-2026-10-29/independent.json",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_missing_closed_owner",
+    "reason": "required final raw artifact missing: work/final-browser-runtime-3-2026-10-29/CLOSED.json",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_missing_compiled_output",
+    "reason": "required final raw artifact missing: runs/final-served-browser-2-2026-10-29/product/dist/web/app.js",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_missing_original_recovery",
+    "reason": "required final raw artifact missing: results/final-recovery-evidence-2026-10-29/ORIGINAL_G11.json",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_missing_recovery_raw_session",
+    "reason": "final recovery raw inventory incomplete",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_failed_actual_owner",
+    "reason": "final owner did not close cleanly",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_open_write_ledger",
+    "reason": "final write ledger open or failed",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_failed_actual_reader_exit",
+    "reason": "actual final independent/producer stage failed or differs",
+    "rejected": true
+  },
+  {
+    "case": "preserves_failed_and_missing_gates",
+    "passed": true
+  }
+]

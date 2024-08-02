@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T03:00:36-04:00 (America/New_York). Revision 72.
+Updated: 2026-10-29T03:37:18-04:00 (America/New_York). Revision 74.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R12: Finish semantic adapters and the complete coordinator.
 
-Implement source-bound final evidence adapters and coordinator dispatch for the closed final recovery/browser joins first. Bind actual raw inventories, source/mode boundaries, reader and owner exits plus closed ledgers; reject forged flags and changed relationships without semantic/native/browser reruns. Then integrate remaining final core/performance/external domains and failed/unavailable gates. Preserve original strict admission and every historical failure; do not infer all-domain acceptance from component results. Cover the pinned .cjs process helper explicitly rather than silently changing frozen historical inventory policies.
+Connect final core G01-G06, external G09 and performance G13 closed evidence through genuine source/exit/ledger relationships; then integrate G07/G14 and explicit failed/incomplete/unavailable G08/G10/G15/G16 decisions. Reuse all closed samples and new16controls without reruns. New work requires a fresh finite scope; original match cap stays exhausted.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -166,13 +166,13 @@ Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-ev
 
 ### R12: Finish semantic adapters and the complete coordinator
 
-Implement source-bound final evidence adapters and coordinator dispatch for the closed final recovery/browser joins first. Bind actual raw inventories, source/mode boundaries, reader and owner exits plus closed ledgers; reject forged flags and changed relationships without semantic/native/browser reruns. Then integrate remaining final core/performance/external domains and failed/unavailable gates. Preserve original strict admission and every historical failure; do not infer all-domain acceptance from component results. Cover the pinned .cjs process helper explicitly rather than silently changing frozen historical inventory policies.
+Connect final core G01-G06, external G09 and performance G13 closed evidence through genuine source/exit/ledger relationships; then integrate G07/G14 and explicit failed/incomplete/unavailable G08/G10/G15/G16 decisions. Reuse all closed samples and new16controls without reruns. New work requires a fresh finite scope; original match cap stays exhausted.
 
 Completion requires: The full coordinator reads real artifacts, rejects stale/forged/mismatched inputs, preserves failed gates and cannot report full acceptance from component pass flags.
 
 Dependencies: R02, R05, R06, R09, R10, R11.
 
-Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`.
+Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`.
 
 ### R13: Close compiler provenance and clean-build reproduction
 
