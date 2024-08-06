@@ -918,6 +918,9 @@ def verify(
         from verification.final_evidence_bundle import integrate as integrate_final_evidence
 
         integrate_final_evidence(bundle, inputs, checkout, expected_commit, review)
+        from verification.final_core_bundle import integrate as integrate_final_core
+
+        integrate_final_core(bundle, inputs, checkout, expected_commit, review)
         return review
 
 
