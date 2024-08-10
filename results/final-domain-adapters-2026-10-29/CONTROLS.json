@@ -1,0 +1,85 @@
+[
+  {
+    "case": "external_dispatch_changed_actor",
+    "reason": "final adapter changed saved deployment",
+    "rejected": true
+  },
+  {
+    "case": "performance_dispatch_stale_source",
+    "reason": "unsupported or stale final core/report/performance dispatch",
+    "rejected": true
+  },
+  {
+    "case": "search_dispatched_as_performance",
+    "reason": "unsupported or stale final core/report/performance dispatch",
+    "rejected": true
+  },
+  {
+    "case": "performance_given_core_descriptor",
+    "reason": "final evidence descriptor or gate differs",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_rules_reader_missing",
+    "reason": "accepted join metadata inventory incomplete",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_restoration_ledger_missing",
+    "reason": "accepted join metadata inventory incomplete",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_draw_owner_missing",
+    "reason": "accepted join metadata inventory incomplete",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_protocol_stage_missing",
+    "reason": "accepted join metadata inventory incomplete",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_search_archived_reader_source_missing",
+    "reason": "required final raw artifact missing: derived/G05_SOURCE_INPUTS.json",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_numerical_reader_missing",
+    "reason": "accepted join metadata inventory incomplete",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_external_real_independent_stage_missing",
+    "reason": "accepted join metadata inventory incomplete",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_performance_actual_stage_missing",
+    "reason": "accepted join metadata inventory incomplete",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_failed_restoration_owner",
+    "reason": "accepted join input bytes changed: work/final-restoration-runtime-1-2026-10-28/CLOSED.json",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_incomplete_numerical_result",
+    "reason": "accepted join input bytes changed: runs/final-saved-actor-numerical-2026-10-28/NUMERICAL_REPLAY.json",
+    "rejected": true
+  },
+  {
+    "case": "rehashed_failed_original_external_stage",
+    "reason": "accepted join input bytes changed: runs/full-external-strength-v4/attempts/attempt-001/independent-external.json",
+    "rejected": true
+  },
+  {
+    "case": "copied_data_namespace_rejects_rewrite",
+    "passed": true
+  },
+  {
+    "case": "ten_domain_projection_preserves_failure_and_incomplete_matrix",
+    "passed": true
+  }
+]

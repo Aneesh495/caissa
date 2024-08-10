@@ -1,0 +1,12 @@
+{
+  "archived_G05_metadata_member": "semantic-attempt-001/full-bundle/SOURCE_INPUTS.json",
+  "archived_G05_metadata_sha256": "1cb6ec6276e93dfe6ff994178a79dba83e97f0b0e7fcd22b7623d097a2aecf66",
+  "bundle_manifest_sha256": "42dd16400e76e18a9f28ae37989102a8eac42ef2c103ef7cb51bfb5e28bea3ed",
+  "full_inputs_sha256": "9382b1a503aa662be81a409e4a91cea1d361f34df83cc87de47bef1ba73f804a",
+  "raw_and_fixture_data_private": true,
+  "raw_uploaded": false,
+  "scope_sha256": "d94a0db43c8a3f523567ce33167234b34ffe004e507d69f187c05f2773ab43ec",
+  "source_commit": "59ade3469b5e730a425688254bd0068b43fb3360",
+  "source_inputs_sha256": "88036eb416abd15fccb40f1309417c4a135cd9e2a89cdf853376ed3378b93085",
+  "source_native_checkpoint_relationships_reused_from_accepted_independent_joins": true
+}

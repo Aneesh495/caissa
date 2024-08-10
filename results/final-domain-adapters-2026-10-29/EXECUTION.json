@@ -1,0 +1,34 @@
+{
+  "active_seconds": 2.7597886250005104,
+  "actual_owner_dead": true,
+  "full_R12_complete": false,
+  "full_acceptance": false,
+  "full_entry": {
+    "cleanup_warnings": [],
+    "discarded_output_bytes": 0,
+    "exit": 2,
+    "log_sha256": "fb8c21e9e5ac6a3ec3f335485189761388e032f307f63ad064603544c7ab8233",
+    "monotonic_seconds": 0.474974500015378,
+    "reason": "nonzero-exit",
+    "retained_output_bytes": 9066
+  },
+  "group_absent_after_reap": true,
+  "host_lease_released": true,
+  "new_chess_browser_starts": 0,
+  "old_16_controls_reexecuted": false,
+  "owner": {
+    "closed": true,
+    "closed_unix": 1793260750.830623,
+    "elapsed_seconds": 3.814299916033633,
+    "owner_exit": 0,
+    "scope_sha256": "d94a0db43c8a3f523567ce33167234b34ffe004e507d69f187c05f2773ab43ec",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "schema": "caissa-final-domain-adapter-execution-v1",
+  "scope_sha256": "d94a0db43c8a3f523567ce33167234b34ffe004e507d69f187c05f2773ab43ec",
+  "source_commit": "59ade3469b5e730a425688254bd0068b43fb3360",
+  "write_failure": null,
+  "write_ledger_closed": true
+}
