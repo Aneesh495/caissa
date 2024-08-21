@@ -1,0 +1,17 @@
+{
+  "source_commit": "8ada0369432183a8f56922536af48477815deabf",
+  "scope_sha256": "f1d3f31e9a00f0357c7901fac96bcc53b666f4e250dc32c7cbbb0f6ac0e9d075",
+  "owner_exit": 0,
+  "owner_elapsed_seconds": 0.5455303330090828,
+  "stderr_bytes": 0,
+  "owned_group_absent_after_reap": true,
+  "metadata_ledger_closed": true,
+  "native_starts": 0,
+  "child_starts": 0,
+  "games": 0,
+  "training": false,
+  "selection": false,
+  "closed_sample_or_control_reruns": 0,
+  "full_G07_coordinator_integrated": false,
+  "full_acceptance": false
+}
