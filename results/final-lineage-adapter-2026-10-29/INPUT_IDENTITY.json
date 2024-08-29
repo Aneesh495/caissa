@@ -1,0 +1,14 @@
+{
+  "source_commit": "1e89d2b9ce1038bcceb40cf08754dfaa877ec6de",
+  "scope_sha256": "027ec08b97c9889b62090508c536eeec6e1852e636d179d17488fc77774ab40a",
+  "bound_inputs": 762,
+  "full_inputs_sha256": "9910a27fc5c767b85ef9f08062920d0d837636f04f508b2f8e38e5123ee6afd6",
+  "bundle_manifest_sha256": "c9682269de32ce6a6e6a844e9e4febdc5929b5f6b4f6ee50d60c554b65ee7a85",
+  "accepted_lineage_scope_sha256": "f1d3f31e9a00f0357c7901fac96bcc53b666f4e250dc32c7cbbb0f6ac0e9d075",
+  "accepted_lineage_result_sha256": "110fbfbd380be46e28cee8b85328d6864ed44bebaf4add0df94b30ad711acaa6",
+  "closed_G05_source_metadata_reused_without_archive_decoding": true,
+  "new_array_opens": 0,
+  "new_training_or_selection": false,
+  "full_raw_reproduction_available": false,
+  "full_acceptance": false
+}
