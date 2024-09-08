@@ -1,0 +1,130 @@
+[
+  {
+    "bytes": 2110457,
+    "family": "illegal-pv",
+    "files": 23,
+    "manifest_sha256": "1c698a9d18645de5b6ebf435f7a8d2c599d5dafc0bc8ba493edefdce3ffd7767",
+    "recorded_rejection": "illegal semantic PV: independent board rejects move",
+    "variant": 0
+  },
+  {
+    "bytes": 2110457,
+    "family": "illegal-pv",
+    "files": 23,
+    "manifest_sha256": "be63528f02a9d91e014c3802f83ed170efe948e274f12347960f35851914739d",
+    "recorded_rejection": "illegal semantic PV: independent board rejects move",
+    "variant": 1
+  },
+  {
+    "bytes": 2110453,
+    "family": "illegal-pv",
+    "files": 23,
+    "manifest_sha256": "6a0df4016796e0bf20d93656f1895117dc39badc715ae75c6a546fbed5464727",
+    "recorded_rejection": "illegal semantic PV: independent board rejects move",
+    "variant": 2
+  },
+  {
+    "bytes": 2110453,
+    "family": "illegal-pv",
+    "files": 23,
+    "manifest_sha256": "10a6d4726119abd67c8a18e9a401a4f76cef00721a3563effdb5180c4d32e648",
+    "recorded_rejection": "illegal semantic PV: independent board rejects move",
+    "variant": 3
+  },
+  {
+    "bytes": 2114560,
+    "family": "swapped-result-colors",
+    "files": 23,
+    "manifest_sha256": "5a1e8c56c530abecb2a5e21588233c0a971733f977b88e1f48409ca2a7de90ec",
+    "recorded_rejection": "swapped result colors: result colors disagree with replayed terminal position",
+    "variant": 0
+  },
+  {
+    "bytes": 2114560,
+    "family": "swapped-result-colors",
+    "files": 23,
+    "manifest_sha256": "6e10962079d65e75e9ba51923dfc6a758ed1b6823a5ad8544e8ff3c82e7a1e5d",
+    "recorded_rejection": "swapped result colors: game journal identity or candidate color differs",
+    "variant": 1
+  },
+  {
+    "bytes": 2114560,
+    "family": "swapped-result-colors",
+    "files": 23,
+    "manifest_sha256": "aae0b4a350a001189b3a19b2a47739de0829a35dcf514a4c95895149bfee65e9",
+    "recorded_rejection": "swapped result colors: result colors disagree with replayed terminal position",
+    "variant": 2
+  },
+  {
+    "bytes": 2114560,
+    "family": "swapped-result-colors",
+    "files": 23,
+    "manifest_sha256": "19b2745227d7b03015585d0b625cceed242abaaea2119a10e8f872d24e0fb356",
+    "recorded_rejection": "swapped result colors: game journal identity or candidate color differs",
+    "variant": 3
+  },
+  {
+    "bytes": 2110418,
+    "family": "mismatched-network-inference",
+    "files": 23,
+    "manifest_sha256": "b0350255421f9e97c735801272f88e320f2f4316ee043c01d5c4a9af04874116",
+    "recorded_rejection": "mismatched network inference: independent integer interpretation differs",
+    "variant": 0
+  },
+  {
+    "bytes": 2110418,
+    "family": "mismatched-network-inference",
+    "files": 23,
+    "manifest_sha256": "ccd49b04af9d26d126f14374c0a1fe7b8dee1f7ed35efa17651de4b2a0648786",
+    "recorded_rejection": "mismatched network inference: independent integer interpretation differs",
+    "variant": 1
+  },
+  {
+    "bytes": 2110418,
+    "family": "mismatched-network-inference",
+    "files": 23,
+    "manifest_sha256": "1cad8da6b9c230d3e70c89da1dcb229a417911c47e03f4829dfe39bc27bc6760",
+    "recorded_rejection": "mismatched network inference: independent integer interpretation differs",
+    "variant": 2
+  },
+  {
+    "bytes": 2110418,
+    "family": "mismatched-network-inference",
+    "files": 23,
+    "manifest_sha256": "7d1dea039530fa0a88524b1c72c362433b767fc2f0a5c9d81ae9175f4a1a560e",
+    "recorded_rejection": "mismatched network inference: independent integer interpretation differs",
+    "variant": 3
+  },
+  {
+    "bytes": 2110440,
+    "family": "incorrect-draw-claim",
+    "files": 23,
+    "manifest_sha256": "9779882a7d9288df2e3e50823f93aa8869e5a650df3b73e2ff2bc4e855c7d0a9",
+    "recorded_rejection": "incorrect draw claim: independent history reconstruction differs",
+    "variant": 0
+  },
+  {
+    "bytes": 2110441,
+    "family": "incorrect-draw-claim",
+    "files": 23,
+    "manifest_sha256": "f5e9ea589d27c040d31f3b8369bc5b57f036d18aec7e932e2229919c1496eafc",
+    "recorded_rejection": "incorrect draw claim: independent history reconstruction differs",
+    "variant": 1
+  },
+  {
+    "bytes": 2110460,
+    "family": "incorrect-draw-claim",
+    "files": 23,
+    "manifest_sha256": "b78c3ae651cff1108147bc01596eeb59f9343cb548ef86492857d428be93f1b6",
+    "recorded_rejection": "incorrect draw claim: independent history reconstruction differs",
+    "variant": 2
+  },
+  {
+    "bytes": 2110440,
+    "family": "incorrect-draw-claim",
+    "files": 23,
+    "manifest_sha256": "a77c09cac7b249d4ffc4978765ece10969ede2433cfbb490764735947eb82fb3",
+    "recorded_rejection": "incorrect draw claim: independent history reconstruction differs",
+    "variant": 3
+  }
+]
