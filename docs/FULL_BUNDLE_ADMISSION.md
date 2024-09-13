@@ -8,7 +8,27 @@ null suppression, conservative dead material and hash context, then reexecutes
 the pinned saved program. It requires equal-FEN history witnesses and all six
 terminal outcomes. Other semantic domains remain independently required.
 
-The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before domain replay. G01 rules, G02 restoration, G03 draw history, G04 protocol, G05 search, G06 numerical probes, G08/G09 strength journals and G13 performance adapters are implemented. G07 has an original-learning component and a separate full data/learning audit; its full-entry joint adapter remains incomplete. G11 has the historical source/saved-image recovery join, G12 has a browser component and G14 has the combined semantic audit. G10 has a systems-matrix component implementation; its real full-bundle replay is unverified and its performance/race/source join remains incomplete. G15 complete reproduction, G16 release audit and complete campaign coordination remain unfinished. A component is not automatically a full gate, and historical sample acceptance does not bind later product source. Full verification still returns nonzero with `full_acceptance: false`. Passing metadata, existing receipts or admission controls cannot certify a release.
+The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before semantic verification. Its [latest accepted invocation](../results/final-lineage-adapter-2026-10-29/README.md) accepts G01-G07/G09/G11/G12/G13 through the retained final evidence adapters. G07 now joins the historically complete data/learning audit, final source and selected deployment, with unavailable raw inputs stated separately. Final recovery and served-build browser evidence also have accepted adapters. The thread/performance/source observations close their stated R03/R11 requirements; they do not complete the interrupted G10 matrix.
+
+G08, G10, G14, G15 and G16 remain pending in the real report. The original neural requirement failed, the matrix is incomplete, original compiler/runtime closure remains unproven and full historical reproduction is unavailable. G14's exact saved-image archive is retained, but the revised final relationship join and adapter have not run. The [final decision contract](FINAL_DECISION_CONTRACT.md) specifies how these different outcomes must be represented; that design is unexecuted. Complete coordination and release audit remain unfinished. The real process exits2 with `full_acceptance: false`. No component flag, summary count or caller receipt can certify a release.
+
+## Retained final evidence adapters
+
+| Driver | Gates | Accepted relationship |
+| --- | --- | --- |
+| `final-core-runtime-evidence-v1` | G01-G06 | Closed independent runtime results, actual exits/logs, final saved actor and 69 native source files/modes |
+| `final-data-learning-evidence-v1` | G07 | Original complete audit, frozen selection, retained float/inference model and current source; full raw reproduction remains unavailable |
+| `final-external-report-evidence-v1` | G09 | Original accepted 2,000-game neural comparison and its relative statistics, exact conditions and actual stage closure |
+| `final-performance-evidence-v1` | G13 | Passed descriptive performance study and final deployment/source relationships; no inferred G10 or strength pass |
+| `final-recovery-evidence-v1` | G11 | Original recovery plus the separately accepted current arena diagnostic, actual reader/raw/owner closure and unchanged strict historical branch |
+| `final-served-browser-evidence-v1` | G12 | Actual served asset bodies, compiled outputs, independent browser/native evidence and source/process relationships |
+
+These adapters reuse accepted independent semantics through fixed evidence
+identities and actual process/source relationships. They do not restart closed
+samples, replace historical failures or reconstruct retired inputs. Their
+accepted integration runs and genuinely new provenance controls are recorded
+in the linked result directories. The old replay drivers below retain their
+original contracts and are not a reason to rerun an accepted sample.
 
 ## Source identity
 

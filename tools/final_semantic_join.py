@@ -65,6 +65,21 @@ def main(path):
     current_source = values["verification/full_bundle.py"]
     historical_source = values[archive + "ORIGINAL_FULL_BUNDLE.py"]
     e = {"archive": doc(archive + "RESULT.json"), "archive_scope_sha256": scope["input_bindings"][archive + "SCOPE.json"], "owner": doc(archive + "CLOSED.json"), "transport": doc(archive + "TRANSPORT.json"), "ledger": doc(archive + "METADATA_USAGE.json"), "original": doc(archive + "records/ORIGINAL_G14.json"), "config": doc(archive + "raw/CONFIG.json"), "raw_manifest": doc(archive + "raw/MANIFEST.json"), "raw_manifest_sha256": scope["input_bindings"][archive + "raw/MANIFEST.json"], "raw_pins": {n: hashlib.sha256(values[archive + "raw/" + n]).hexdigest() for n in doc(archive + "RESULT.json")["raw_positive_sha256"]}, "original_source_inventory": doc(archive + "raw/SOURCE_INPUTS.json"), "rejection_manifests": doc(archive + "records/REJECTION_MANIFESTS.json"), "cases": {n: doc(archive + "records/" + n + "-RESULT.json") for n in ["positive-full-entry", "missing-replay-output", *FAMILIES, "undeclared-raw-artifact"]}, "boundary": boundary, "current_native_sha256": {n: hashlib.sha256(values[n]).hexdigest() for n in boundary["native_source_sha256"]}, "current_native_modes": {n: "100755" if (ROOT / n).stat().st_mode & 0o111 else "100644" for n in boundary["native_source_modes"]}, "reader_source_sha256": {n: hashlib.sha256(values[n]).hexdigest() for n in READERS}, "current_original_reader_hash": hashlib.sha256(values["verification/semantic_audit.py"]).hexdigest(), "G14_legacy_branch_AST_equal": branch(current_source, "G14") == branch(historical_source, "G14"), "G11_strict_branch_AST_equal": branch(current_source, "G11") == branch(historical_source, "G11"), "accepted_eleven_domain_report": doc(current + "full-entry.log"), "eleven_domain_stage": doc(current + "full-entry.json"), "eleven_domain_log_sha256": scope["input_bindings"][current + "full-entry.log"], "prior_final_adapter_sources_match": all(hashlib.sha256(values[n]).hexdigest() == prior_scope["source_bindings"][n] for n in ["verification/final_evidence_bundle.py", "verification/final_core_bundle.py"])}
+    prior_work = "work/final-lineage-adapter-1-2026-10-29/"
+    e.update(
+        original_result_sha256=scope["input_bindings"][archive + "records/ORIGINAL_G14.json"],
+        archive_stdout_sha256=scope["input_bindings"][archive + "owner.stdout"],
+        archive_stderr_sha256=scope["input_bindings"][archive + "owner.stderr"],
+        archive_stderr_bytes=len(values[archive + "owner.stderr"]),
+        archive_stdout=doc(archive + "owner.stdout"),
+        eleven_domain_scope_sha256=scope["input_bindings"][prior_work + "SCOPE.json"],
+        eleven_domain_owner=doc(prior_work + "CLOSED.json"),
+        eleven_domain_stdout_sha256=scope["input_bindings"][prior_work + "owner.stdout"],
+        eleven_domain_stderr_sha256=scope["input_bindings"][prior_work + "owner.stderr"],
+        eleven_domain_active=doc(current + "ACTIVE_USAGE.json"),
+        eleven_domain_writes=doc(prior_work + "WRITE_USAGE.json"),
+        eleven_domain_groups=doc(current + "GROUPS.json"),
+    )
     result = validate(e)
     controls = []
     for name, mutate in [
@@ -84,6 +99,14 @@ def main(path):
         ("changed_legacy_G14_branch", lambda x: x.update(G14_legacy_branch_AST_equal=False)),
         ("forged_previous_all_domain_acceptance", lambda x: x["accepted_eleven_domain_report"].update(full_acceptance=True)),
         ("failed_prior_full_entry", lambda x: x["eleven_domain_stage"].update(exit=1)),
+        ("archive_owner_stdout_not_bound", lambda x: x.update(archive_stdout_sha256="0" * 64)),
+        ("archive_independent_result_not_bound", lambda x: x.update(original_result_sha256="0" * 64)),
+        ("wrong_original_profile", lambda x: x["raw_pins"].update({"PROFILE.json": "0" * 64})),
+        ("entry_rejection_only_checks_hashes", lambda x: x["cases"]["illegal-pv"]["stdout"].update(reason="only a wrong manifest hash")),
+        ("native_boundary_promoted_to_compiler_closure", lambda x: x["original"]["saved_native_source_binding"].update(compiler_environment_attribution_required=False)),
+        ("failed_prior_owner", lambda x: x["eleven_domain_owner"].update(owner_exit=1)),
+        ("open_prior_active_ledger", lambda x: x["eleven_domain_active"].update(closed=False)),
+        ("prior_group_not_reaped", lambda x: x["eleven_domain_groups"][0].update(group_absent_after_reap=False)),
     ]:
         forged = copy.deepcopy(e)
         mutate(forged)

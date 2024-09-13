@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T11:37:46-04:00 (America/New_York). Revision 81.
+Updated: 2026-10-29T11:51:31-04:00 (America/New_York). Revision 83.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R12: Finish semantic adapters and the complete coordinator.
 
-Review the committed, unexecuted G14 final relationship join and prepare the explicit G08/G10/G15/G16 decisions. The original G14 archive is now checked and retained locally, with all16original manifests/raw inventories and7recorded full-entry outcomes joined without replays. A new G14 verifier or full-entry owner requires a fresh direct human continuation window because parent1793283600.005172 expired; do not renew it implicitly or bypass the admission guard. Reuse all accepted closed samples/controls. Static review and honest compact documentation remain useful authorized work.
+Continue static source/evidence review and implement the prepared G08/G10/G15/G16 decision relationships without executing verifier or full-entry owners. The revised G14 draft has24planned controls,0run; include its newly referenced owner/log/ledger/group inputs in any future scope. Runtime verification requires the already requested fresh direct human continuation window. Keep all original scopes, failures, sources, samples and parallel limits unchanged; never treat a heartbeat or tool acknowledgement as approval.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -92,7 +92,7 @@ Blocker: The frozen neural sample failed and its completed-game diagnostic was w
 
 ### R05: Bind core correctness to the final engine
 
-Reuse this completed final domain and its now accepted actual coordinator adapter without rerunning samples or controls. Continue R12 remaining G07/G08/G10/G14/G15/G16 decisions and R13 original compiler/runtime provenance.
+Reuse this completed final domain and its now accepted actual coordinator adapter without rerunning samples or controls. Continue R12 remaining G08/G10/G14/G15/G16 decisions and R13 original compiler/runtime provenance.
 
 Completion requires: G01-G06 evidence and independent readers agree on the final identity, reject incorrect evidence, and show actual runtime completion where required.
 
@@ -114,7 +114,7 @@ Blocker: Full raw reproduction remains unavailable and belongs to R14/G15; this 
 
 ### R07: Bind existing external strength to the final report
 
-Reuse this completed final domain and its now accepted actual coordinator adapter without rerunning samples or controls. Continue R12 remaining G07/G08/G10/G14/G15/G16 decisions and R13 original compiler/runtime provenance.
+Reuse this completed final domain and its now accepted actual coordinator adapter without rerunning samples or controls. Continue R12 remaining G08/G10/G14/G15/G16 decisions and R13 original compiler/runtime provenance.
 
 Completion requires: The report states opponent versions, settings, time control, hardware, results, uncertainty and tested Caissa identity without an unsupported absolute rating.
 
@@ -156,7 +156,7 @@ Existing evidence: `results/browser-capture-amendment-2026-10-26`; `results/fina
 
 ### R11: Bind the passed performance study to final deployment
 
-Reuse this completed final domain and its now accepted actual coordinator adapter without rerunning samples or controls. Continue R12 remaining G07/G08/G10/G14/G15/G16 decisions and R13 original compiler/runtime provenance.
+Reuse this completed final domain and its now accepted actual coordinator adapter without rerunning samples or controls. Continue R12 remaining G08/G10/G14/G15/G16 decisions and R13 original compiler/runtime provenance.
 
 Completion requires: G13 final identity joins close without claiming that performance numbers certify race safety or playing strength.
 
@@ -166,13 +166,13 @@ Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-ev
 
 ### R12: Finish semantic adapters and the complete coordinator
 
-Review the committed, unexecuted G14 final relationship join and prepare the explicit G08/G10/G15/G16 decisions. The original G14 archive is now checked and retained locally, with all16original manifests/raw inventories and7recorded full-entry outcomes joined without replays. A new G14 verifier or full-entry owner requires a fresh direct human continuation window because parent1793283600.005172 expired; do not renew it implicitly or bypass the admission guard. Reuse all accepted closed samples/controls. Static review and honest compact documentation remain useful authorized work.
+Continue static source/evidence review and implement the prepared G08/G10/G15/G16 decision relationships without executing verifier or full-entry owners. The revised G14 draft has24planned controls,0run; include its newly referenced owner/log/ledger/group inputs in any future scope. Runtime verification requires the already requested fresh direct human continuation window. Keep all original scopes, failures, sources, samples and parallel limits unchanged; never treat a heartbeat or tool acknowledgement as approval.
 
 Completion requires: The full coordinator reads real artifacts, rejects stale/forged/mismatched inputs, preserves failed gates and cannot report full acceptance from component pass flags.
 
 Dependencies: R02, R05, R06, R09, R10, R11.
 
-Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`; `results/final-data-learning-lineage-2026-10-29`; `results/final-lineage-adapter-2026-10-29`; `results/final-semantic-archive-2026-10-29`.
+Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`; `results/final-data-learning-lineage-2026-10-29`; `results/final-lineage-adapter-2026-10-29`; `results/final-semantic-archive-2026-10-29`; `docs/FINAL_DECISION_CONTRACT.md`.
 
 Blocker: Human continuation parent expired October29at10:20EDT. New verification owners need direct human renewal; no new scope, native, match or rating allowance was admitted. G14 source join and final failure/reproduction/release decisions are still unverified.
 
