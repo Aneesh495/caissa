@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T11:51:31-04:00 (America/New_York). Revision 83.
+Updated: 2026-10-29T12:43:02-04:00 (America/New_York). Revision 85.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R12: Finish semantic adapters and the complete coordinator.
 
-Continue static source/evidence review and implement the prepared G08/G10/G15/G16 decision relationships without executing verifier or full-entry owners. The revised G14 draft has24planned controls,0run; include its newly referenced owner/log/ledger/group inputs in any future scope. Runtime verification requires the already requested fresh direct human continuation window. Keep all original scopes, failures, sources, samples and parallel limits unchanged; never treat a heartbeat or tool acknowledgement as approval.
+Statically review the unexecuted decision draft and prepare complete projection and G14 dispatch. G08/G10/G15 readers bind fixed metadata; G16 only blocks release and cannot certify an audit. Future runtime verification needs the pending direct human renewal, fresh source/input/numeric scopes and new controls. Never use inline calls or another launcher to bypass expiry.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -64,7 +64,7 @@ Completion requires: Every comparison has independently checked success/failure 
 
 Dependencies: R01.
 
-Existing evidence: `results/systems-matrix-adapter-2026-10-26`; `results/heuristics-original-2026-10-27`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-2-ms-100.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-2-ms-400.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-4-ms-100.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-4-ms-400.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-8-ms-100.log`; `results/systems-matrix-admission-2026-10-28`.
+Existing evidence: `results/systems-matrix-adapter-2026-10-26`; `results/heuristics-original-2026-10-27`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-2-ms-100.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-2-ms-400.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-4-ms-100.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-4-ms-400.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-8-ms-100.log`; `results/systems-matrix-admission-2026-10-28`; `verification/final_gate_decisions.py`.
 
 Blocker: The sixth parallel comparison is incomplete at the original active cap. Historical heuristic raw inputs were retired. Synthetic admission success is not actual matrix or full G10 acceptance.
 
@@ -166,13 +166,13 @@ Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-ev
 
 ### R12: Finish semantic adapters and the complete coordinator
 
-Continue static source/evidence review and implement the prepared G08/G10/G15/G16 decision relationships without executing verifier or full-entry owners. The revised G14 draft has24planned controls,0run; include its newly referenced owner/log/ledger/group inputs in any future scope. Runtime verification requires the already requested fresh direct human continuation window. Keep all original scopes, failures, sources, samples and parallel limits unchanged; never treat a heartbeat or tool acknowledgement as approval.
+Statically review the unexecuted decision draft and prepare complete projection and G14 dispatch. G08/G10/G15 readers bind fixed metadata; G16 only blocks release and cannot certify an audit. Future runtime verification needs the pending direct human renewal, fresh source/input/numeric scopes and new controls. Never use inline calls or another launcher to bypass expiry.
 
 Completion requires: The full coordinator reads real artifacts, rejects stale/forged/mismatched inputs, preserves failed gates and cannot report full acceptance from component pass flags.
 
 Dependencies: R02, R05, R06, R09, R10, R11.
 
-Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`; `results/final-data-learning-lineage-2026-10-29`; `results/final-lineage-adapter-2026-10-29`; `results/final-semantic-archive-2026-10-29`; `docs/FINAL_DECISION_CONTRACT.md`.
+Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`; `results/final-data-learning-lineage-2026-10-29`; `results/final-lineage-adapter-2026-10-29`; `results/final-semantic-archive-2026-10-29`; `docs/FINAL_DECISION_CONTRACT.md`; `verification/final_gate_decisions.py`; `config/final-gate-decisions-v1.json`.
 
 Blocker: Human continuation parent expired October29at10:20EDT. New verification owners need direct human renewal; no new scope, native, match or rating allowance was admitted. G14 source join and final failure/reproduction/release decisions are still unverified.
 

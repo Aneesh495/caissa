@@ -1,0 +1,305 @@
+{
+  "execution_authority": false,
+  "gates": {
+    "G08": {
+      "metadata_bytes": 26007,
+      "records": {
+        "config/protocol-v4.json": {
+          "bytes": 7261,
+          "sha256": "a8623bf2d59561d434546ad612c939f994a4e699b1c61f4eba5b3114f26528dd"
+        },
+        "results/final-core-runtime-join-2026-10-28/BOUNDARY.json": {
+          "bytes": 10997,
+          "sha256": "c7f46036d528f057c797e87994cfc2e03467f24b16c05d329655e48187199e25"
+        },
+        "results/neural-v4-failure-2026-10-26/HANDOFF.json": {
+          "bytes": 2775,
+          "sha256": "914ce5425b014e0bfbda1dd03890d1ada500d133ca29a7f8208d411270253aa9"
+        },
+        "results/neural-v4-failure-2026-10-26/SUMMARY.json": {
+          "bytes": 768,
+          "sha256": "21ddac11f248eeb2bdcba25d880f004839b3512dda08d260f949c66df7daa171"
+        },
+        "results/neural-v4-failure-2026-10-26/original-ACTIVE_USAGE.json": {
+          "bytes": 117,
+          "sha256": "eecb3425a527af448ab48a02b3d7cf03ad8263dc271d34f1e849316504325680"
+        },
+        "results/neural-v4-failure-2026-10-26/original-FAILED.json": {
+          "bytes": 187,
+          "sha256": "9662e7ca58dc64a7e322ec2ffd3a7e370923261ef7f42acd957e71237f6440b8"
+        },
+        "results/neural-v4-failure-2026-10-26/original-SCOPE.json": {
+          "bytes": 951,
+          "sha256": "b80c2af13f5087d0872f8239a175e681e41fae53085a295bbb0f9449348a87fa"
+        },
+        "results/neural-v4-failure-2026-10-26/recovery-ACTIVE_USAGE.json": {
+          "bytes": 224,
+          "sha256": "5ec0eabb51f8b0b3b4c1338a5846942294f80f64198e1ce934311f30315fbac0"
+        },
+        "results/neural-v4-failure-2026-10-26/recovery-FAILED-001.json": {
+          "bytes": 126,
+          "sha256": "725b408cd355aea3f77d04fc1d8ff462410671b03a4726dbce43cd85281eb9c7"
+        },
+        "results/neural-v4-failure-2026-10-26/recovery-SCOPE.json": {
+          "bytes": 1409,
+          "sha256": "acf1721792801ed3961c1e08720ccd2d585302997799b0162fc1f7a581dd45ab"
+        },
+        "runs/full-neural-strength-v4-wall-recovery-v1/attempts/attempt-001/independent-neural.json": {
+          "bytes": 1192,
+          "sha256": "1edc61c468e7e6b6b8b972e2ba13f72a3e9613d2ad317bd0be24da546698de9e"
+        }
+      }
+    },
+    "G10": {
+      "metadata_bytes": 222613,
+      "records": {
+        ".agent-local/PARALLEL_CONTINUATION_5_CLOSED.json": {
+          "bytes": 582,
+          "sha256": "91e6a86b5e8068cfa79da98bacb6e72540d8131a0203c59bf5096ac828f48216"
+        },
+        "config/protocol-v4.json": {
+          "bytes": 7261,
+          "sha256": "a8623bf2d59561d434546ad612c939f994a4e699b1c61f4eba5b3114f26528dd"
+        },
+        "config/systems-parallel-v1.json": {
+          "bytes": 1516,
+          "sha256": "5b405adcb7edbdc4bbae410612c7867879a83f73e635ed5ca29c26eeee072f48"
+        },
+        "results/final-core-runtime-join-2026-10-28/BOUNDARY.json": {
+          "bytes": 10997,
+          "sha256": "c7f46036d528f057c797e87994cfc2e03467f24b16c05d329655e48187199e25"
+        },
+        "runs/full-parallel-strength-v1/ACTIVE_USAGE.json": {
+          "bytes": 117,
+          "sha256": "4347feeadf7f74346e87a4348af34b63c78bfef378b02d87345e77a8d3cbf20b"
+        },
+        "runs/full-parallel-strength-v1/PARALLEL_CONTINUATION_5.json": {
+          "bytes": 678,
+          "sha256": "ce52bab94e767610930fd5859ac1fbfcbb0c4ee3148478b1b4ce74c28c0ec55a"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-004/independent-threads-2-ms-100.json": {
+          "bytes": 1344,
+          "sha256": "bc3c7684ab999204e7d22a4d17e286d1b410beddfa23702f6c18363b88f94c17"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-004/independent-threads-2-ms-100.log": {
+          "bytes": 2711,
+          "sha256": "4f4cc660bba2b09b9bc8ab341f97b895b5a41bfb65a22c122e5f53d550bdc1c5"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/PROGRESS.json": {
+          "bytes": 897,
+          "sha256": "edfecbba4dc0536892b1370cb44ac4dd5bc55791c82f27fc4a3fd02bd8cc8cca"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-2-ms-100.json": {
+          "bytes": 283,
+          "sha256": "dc17a014035eb8d9d73c79792bb42a8c2b92500fca96daf7b4a4990faa817a4a"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-2-ms-100.log": {
+          "bytes": 2711,
+          "sha256": "4f4cc660bba2b09b9bc8ab341f97b895b5a41bfb65a22c122e5f53d550bdc1c5"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-2-ms-400.json": {
+          "bytes": 1624,
+          "sha256": "e80823b7d2e7f31f3e419fe0be7283ad5b0d6c6026554e00eb1a5afd29671f63"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-2-ms-400.log": {
+          "bytes": 2711,
+          "sha256": "0ff0eded10d25b48fb2ad2c8b9882e45e1c1c3927acc9661bbaccca23d5577a7"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-4-ms-100.json": {
+          "bytes": 1624,
+          "sha256": "9725aec614c49c09cca8b59c29a5213bbcbbf951e8637c38d6984e861ab48bcc"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-4-ms-100.log": {
+          "bytes": 2692,
+          "sha256": "03b73cc017a9d58adb82f5b22c9e87fc8d6b994a9209ec3496c8a29d6bd38fe0"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-4-ms-400.json": {
+          "bytes": 1626,
+          "sha256": "97c931b87b5479019b6287ffea09a5983e176d50cba4bccffe6eb55bbef14b89"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-4-ms-400.log": {
+          "bytes": 2696,
+          "sha256": "36f8b3af6bcf15ac3357cd6da6a2ae49c2d1c3c25a4121219274a5014d829a09"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-8-ms-100.json": {
+          "bytes": 1625,
+          "sha256": "42f21b879f9058aeddefc23b89931ddfcabb6a8503704ca352790cb7ef2142f3"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-8-ms-100.log": {
+          "bytes": 2694,
+          "sha256": "054c75c1092768dae568bd0b637241eccd10de520e34451ea99623a6b056a04c"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/play-threads-8-ms-400.json": {
+          "bytes": 1169,
+          "sha256": "11db0f4e6dc8f1e4591d4e77311c521ecca033e76a53e0180c1d76735ade9ce2"
+        },
+        "runs/full-parallel-strength-v1/attempts/attempt-005/play-threads-8-ms-400.log": {
+          "bytes": 311,
+          "sha256": "cabe4b46b693811af5b465bded306bb20a9e31baade475d942ce94f9a0e81575"
+        },
+        "work/parallel-storage-2026-10-28/PARALLEL_CONTINUATION_5_SCOPE.json": {
+          "bytes": 171453,
+          "sha256": "655f62882061fd8d3ecae4c71489edc689f23977f1024875b465e65a3c72f9dd"
+        },
+        "work/parallel-storage-2026-10-28/WRITE_USAGE_5.json": {
+          "bytes": 3291,
+          "sha256": "ecfc45e099bf84544606e9e3ed6283226cf1a82bcdc90843a814eca8d65d69b3"
+        }
+      }
+    },
+    "G15": {
+      "metadata_bytes": 229113,
+      "records": {
+        "results/build-attribution-2026-10-27/RESULT.json": {
+          "bytes": 2288,
+          "sha256": "05399578c7f9fae3a7c2d870369f6680c036b7e9e2bab8327ee158a39052939b"
+        },
+        "results/final-core-runtime-join-2026-10-28/BOUNDARY.json": {
+          "bytes": 10997,
+          "sha256": "c7f46036d528f057c797e87994cfc2e03467f24b16c05d329655e48187199e25"
+        },
+        "results/final-data-learning-lineage-2026-10-29/AVAILABILITY.json": {
+          "bytes": 20348,
+          "sha256": "2f88c32c1c96f68db38456424f86a13f0c04256da5bbedcb0ee3d5dfc8b16314"
+        },
+        "results/final-data-learning-lineage-2026-10-29/LINEAGE.json": {
+          "bytes": 3315,
+          "sha256": "110fbfbd380be46e28cee8b85328d6864ed44bebaf4add0df94b30ad711acaa6"
+        },
+        "results/full-data-2026-10-25/DATASET.json": {
+          "bytes": 5116,
+          "sha256": "f09cdec986858c5b1aa80b3c97aaa4d825be892fc94e16ac5d835bc3d709f0ce"
+        },
+        "results/full-model-v3-2026-10-25/COMMANDS.jsonl": {
+          "bytes": 23355,
+          "sha256": "f754b72dada7a03fba0aa86fa1aec5cd7524c6fd13f5e3fcd32b2069ba9636f4"
+        },
+        "results/full-model-v3-2026-10-25/MODEL_CAMPAIGN.json": {
+          "bytes": 990,
+          "sha256": "92d62149d3a4de184ad93b9f5f04f77e38386992d04d02bd824b33cf3e5241bd"
+        },
+        "results/full-model-v3-2026-10-25/SELECTION.json": {
+          "bytes": 1813,
+          "sha256": "1cd49b3062986086e74396fce27fbbdf4886a0ce9b5b6b6350533b27e3ac8b84"
+        },
+        "results/g07-full-audit-2026-10-26/ACTIVE_USAGE.json": {
+          "bytes": 116,
+          "sha256": "a061b1dbce83b3554fd6a57bf4893ce618c27ffdd587c46869b00cbb558193f0"
+        },
+        "results/g07-full-audit-2026-10-26/G07.json": {
+          "bytes": 1133,
+          "sha256": "0198865e8367da1110d2cb9f6e92d76647ad1e07e3a188f5daf7e8be6e561025"
+        },
+        "results/g07-full-audit-2026-10-26/MANIFEST.json": {
+          "bytes": 1715,
+          "sha256": "cf890edfcc17afc5f70ec1ed0f6e12ed73c28e778f4a71c79e16ae9215b4ad92"
+        },
+        "results/g07-full-audit-2026-10-26/PLAN.json": {
+          "bytes": 1041,
+          "sha256": "24039cee6cb240b625f5469059481d080db38b573f9f21ce70b21f202fb86d67"
+        },
+        "results/g07-full-audit-2026-10-26/SCOPE.json": {
+          "bytes": 623,
+          "sha256": "7f022d51d3d212bec7e9862a9dc5d348f8dcc4dc483cc1c60e5870e96b5b456e"
+        },
+        "results/g07-full-audit-2026-10-26/SOURCE_INPUTS.json": {
+          "bytes": 28608,
+          "sha256": "d0f338ba635263ac2d750442ccc12096b510514f83e8df5e338ffc8182c0de9a"
+        },
+        "results/g07-full-audit-2026-10-26/data/ACTIVE_USAGE.json": {
+          "bytes": 116,
+          "sha256": "87507a7fc876fbda3e64a6e0a05f5df9cbcdec7d4868ff7eed115b528bac97bc"
+        },
+        "results/g07-full-audit-2026-10-26/data/DATA.json": {
+          "bytes": 983,
+          "sha256": "fad9bfafb110058a469a16cfea7b3063431c3863191a04ac3a1bea59e591a014"
+        },
+        "results/g07-full-audit-2026-10-26/data/SCOPE.json": {
+          "bytes": 650,
+          "sha256": "f55c7f815c3f59c9e34a18d7b57d5353fe197dab5a66152cce1ea2afbebd050b"
+        },
+        "results/g07-full-audit-2026-10-26/data/execution/independent.json": {
+          "bytes": 1493,
+          "sha256": "8ce6d302cb036b4fb61c8356ffa060b7c7e504a5c60a4415070ec03c1834f9ff"
+        },
+        "results/g07-full-audit-2026-10-26/data/execution/independent.log": {
+          "bytes": 760,
+          "sha256": "9df7938e46564b77be0e557c3f46bda19ecd8cdc2fcb95d900d261ecf2a81b2a"
+        },
+        "results/g07-full-audit-2026-10-26/execution/data.json": {
+          "bytes": 1522,
+          "sha256": "13254d00c8cfe3c97f604f0eeb883427df7f686b59aa3d8a8d8b615d1cd64de4"
+        },
+        "results/g07-full-audit-2026-10-26/execution/data.log": {
+          "bytes": 1035,
+          "sha256": "5d2132698d7b02608a877eab5005abf8043e4539d690b305da0b945dec471a5d"
+        },
+        "results/g07-full-audit-2026-10-26/execution/learning.json": {
+          "bytes": 1419,
+          "sha256": "82850cb51f81ca07c24318ba990148cd6eba9570ba58f69a98806ed5bee89004"
+        },
+        "results/g07-full-audit-2026-10-26/execution/learning.log": {
+          "bytes": 14389,
+          "sha256": "da633ff11286a74861806a2c8faf0312f3fabe98a38c0cf5e9f6abe77d05c74a"
+        },
+        "results/g07-full-audit-2026-10-26/learning/LEARNING.json": {
+          "bytes": 13308,
+          "sha256": "d08b70b7c6a3b25aba780ca5599c9ce2bed47bca6b28133a9337f6942ce92a43"
+        },
+        "results/lmr-window-2026-10-25/probe.cpp": {
+          "bytes": 2021,
+          "sha256": "ea4fc7978cee7a2f579435dd55287b0dc03808b68747b09eab9c5149906656a8"
+        },
+        "results/precision-v4-inputs/validation/DATASET.json": {
+          "bytes": 5116,
+          "sha256": "f09cdec986858c5b1aa80b3c97aaa4d825be892fc94e16ac5d835bc3d709f0ce"
+        },
+        "results/precision-v4-inputs/validation/SLICE.json": {
+          "bytes": 1095,
+          "sha256": "fc58d808fd3bede62b31640d5cdf74bd7ccbdfe309f9771fbe8b6395feac6869"
+        },
+        "work/final-data-learning-lineage-1-2026-10-29/AVAILABILITY.json": {
+          "bytes": 20348,
+          "sha256": "2f88c32c1c96f68db38456424f86a13f0c04256da5bbedcb0ee3d5dfc8b16314"
+        },
+        "work/final-data-learning-lineage-1-2026-10-29/CLOSED.json": {
+          "bytes": 478,
+          "sha256": "1a1ba0d442f0f803f0272319692ae19a14ff4ed22765c7bcc062656c5b33c2e2"
+        },
+        "work/final-data-learning-lineage-1-2026-10-29/LINEAGE.json": {
+          "bytes": 3315,
+          "sha256": "110fbfbd380be46e28cee8b85328d6864ed44bebaf4add0df94b30ad711acaa6"
+        },
+        "work/final-data-learning-lineage-1-2026-10-29/METADATA_USAGE.json": {
+          "bytes": 289,
+          "sha256": "50f2d9ba32928717fafb13bb57687e5f4fa01db130851b3e6b26049fd85ecb3a"
+        },
+        "work/final-data-learning-lineage-1-2026-10-29/SCOPE.json": {
+          "bytes": 18215,
+          "sha256": "f1d3f31e9a00f0357c7901fac96bcc53b666f4e250dc32c7cbbb0f6ac0e9d075"
+        },
+        "work/final-data-learning-lineage-1-2026-10-29/original-prepare.py": {
+          "bytes": 21208,
+          "sha256": "2930e4c0e718e9c1ca37b89a0d9e17e9e92043842a57e94f6b385010d8834a94"
+        },
+        "work/final-data-learning-lineage-1-2026-10-29/original-train.py": {
+          "bytes": 19764,
+          "sha256": "0cc0e9b06f40701c7dc4f9f0941d02b7598a5f9298742b198eacac029b15ca65"
+        },
+        "work/final-data-learning-lineage-1-2026-10-29/owner.stderr": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "work/final-data-learning-lineage-1-2026-10-29/owner.stdout": {
+          "bytes": 131,
+          "sha256": "a018aa7a2424e3478c42f59a4fa82228393fbb7d40d5f5a9012b3041f45a66ce"
+        }
+      }
+    }
+  },
+  "historical_failure_log_availability": {
+    "runs/full-neural-strength-v4-wall-recovery-v1/attempts/attempt-001/independent-neural.log": false
+  },
+  "schema": "caissa-frozen-nonpassing-decision-policy-v1",
+  "status": "draft_unexecuted"
+}
