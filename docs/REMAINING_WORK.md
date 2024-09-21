@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T12:43:02-04:00 (America/New_York). Revision 85.
+Updated: 2026-10-29T12:52:40-04:00 (America/New_York). Revision 87.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R12: Finish semantic adapters and the complete coordinator.
 
-Statically review the unexecuted decision draft and prepare complete projection and G14 dispatch. G08/G10/G15 readers bind fixed metadata; G16 only blocks release and cannot certify an audit. Future runtime verification needs the pending direct human renewal, fresh source/input/numeric scopes and new controls. Never use inline calls or another launcher to bypass expiry.
+Statically review the unexecuted projection/G14 adapter and prepare the missing independent audit interface and new integration controls. Keep G14 accepted join roots absent until a real admitted join succeeds. Any intended entry wiring must precede the future G14 source freeze. Runtime work remains stopped pending the existing direct human renewal request; preserve accepted sources, failures, samples and exhausted original parallel limits.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -166,13 +166,13 @@ Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-ev
 
 ### R12: Finish semantic adapters and the complete coordinator
 
-Statically review the unexecuted decision draft and prepare complete projection and G14 dispatch. G08/G10/G15 readers bind fixed metadata; G16 only blocks release and cannot certify an audit. Future runtime verification needs the pending direct human renewal, fresh source/input/numeric scopes and new controls. Never use inline calls or another launcher to bypass expiry.
+Statically review the unexecuted projection/G14 adapter and prepare the missing independent audit interface and new integration controls. Keep G14 accepted join roots absent until a real admitted join succeeds. Any intended entry wiring must precede the future G14 source freeze. Runtime work remains stopped pending the existing direct human renewal request; preserve accepted sources, failures, samples and exhausted original parallel limits.
 
 Completion requires: The full coordinator reads real artifacts, rejects stale/forged/mismatched inputs, preserves failed gates and cannot report full acceptance from component pass flags.
 
 Dependencies: R02, R05, R06, R09, R10, R11.
 
-Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`; `results/final-data-learning-lineage-2026-10-29`; `results/final-lineage-adapter-2026-10-29`; `results/final-semantic-archive-2026-10-29`; `docs/FINAL_DECISION_CONTRACT.md`; `verification/final_gate_decisions.py`; `config/final-gate-decisions-v1.json`.
+Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`; `results/final-data-learning-lineage-2026-10-29`; `results/final-lineage-adapter-2026-10-29`; `results/final-semantic-archive-2026-10-29`; `docs/FINAL_DECISION_CONTRACT.md`; `verification/final_gate_decisions.py`; `config/final-gate-decisions-v1.json`; `verification/final_projection.py`; `verification/final_semantic_bundle.py`; `docs/FINAL_PROJECTION_DRAFT.md`.
 
 Blocker: Human continuation parent expired October29at10:20EDT. New verification owners need direct human renewal; no new scope, native, match or rating allowance was admitted. G14 source join and final failure/reproduction/release decisions are still unverified.
 

@@ -19,6 +19,11 @@ separate reproduction limitations. The G16 helper only blocks release; complete
 projection and independent audit integration remain unfinished. No new scope,
 test or verification owner has been admitted after the continuation window expired.
 
+The [separate projection and G14 draft](FINAL_PROJECTION_DRAFT.md) prepares a
+complete decision inventory from actual adapter calls. Its G14 trust roots are
+absent and its independent final audit interface cannot accept a pass. Neither
+module is imported by this accepted full entry. Both remain unexecuted.
+
 ## Retained final evidence adapters
 
 | Driver | Gates | Accepted relationship |
