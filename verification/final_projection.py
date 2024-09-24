@@ -9,6 +9,8 @@ import json
 from pathlib import Path
 
 from verification.bundle import Bundle
+from verification.final_audit_bundle import validate_projection_audit
+from verification.final_audit_bundle import verify_or_unverified as verify_final_audit
 from verification.final_core_bundle import DRIVERS as CLOSED_DRIVERS
 from verification.final_core_bundle import verify as verify_closed_core
 from verification.final_evidence_bundle import ENGINE, NETWORK
@@ -21,7 +23,6 @@ from verification.full_bundle import GATES, inspect
 from verification.source import require
 
 
-AUDIT_DRIVER = "final-release-audit-v1"
 CLOSED_GATES = {f"G{i:02d}" for i in range(1, 8)} | {"G09", "G11", "G12", "G13"}
 
 
@@ -40,25 +41,10 @@ def normalized_closed_result(result, gate, expected_commit):
             "actual_adapter_result_sha256": hashlib.sha256(raw).hexdigest()}
 
 
-def missing_final_audit(inputs, expected_commit):
-    """Explicit unavailable adapter, never a caller-supplied audit pass."""
-    domain = inputs["domains"]["G16"]
-    require(domain["source_commit"] == expected_commit and domain["driver"] == AUDIT_DRIVER
-            and domain["artifacts"] == []
-            and domain["engine_sha256"] == inputs["engine"]["sha256"] == ENGINE
-            and domain["network_sha256"] == inputs["network"]["artifact"]["sha256"] == NETWORK
-            and set(domain) == {"source_commit", "driver", "artifacts",
-                                "engine_sha256", "network_sha256"},
-            "no independently implemented accepted final audit adapter exists")
-    return {"classification": "unverified", "requirement_satisfied": False,
-            "reason": "independent final source/provenance/security audit adapter missing"}
-
-
 def project(decisions, audit, expected_commit):
     """Internal derived projection of actual same-invocation adapter outputs."""
     release = blocked_release(decisions, expected_commit)
-    require(audit["classification"] == "unverified" and audit["requirement_satisfied"] is False,
-            "unimplemented final audit cannot be promoted by a caller receipt")
+    validate_projection_audit(audit, expected_commit)
     prior_pass = all(d["requirement_satisfied"] for d in decisions.values())
     full_acceptance = prior_pass and audit["requirement_satisfied"]
     release.update(independent_final_audit=audit,
@@ -108,7 +94,8 @@ def verify(root, checkout, expected_commit, expected_inputs_sha256, maximum_seco
         require(inputs["domains"]["G14"]["driver"] == SEMANTIC_DRIVER,
                 "projection cannot rerun a historical semantic audit")
         decisions["G14"] = verify_or_unverified(bundle, inputs, checkout, expected_commit)
-        report = project(decisions, missing_final_audit(inputs, expected_commit), expected_commit)
+        audit = verify_final_audit(bundle, inputs, checkout, expected_commit)
+        report = project(decisions, audit, expected_commit)
         report["inputs_sha256"] = expected_inputs_sha256
         report["verified_relationships"] = admission["verified_relationships"]
         report["actual_closed_adapter_results"] = actual

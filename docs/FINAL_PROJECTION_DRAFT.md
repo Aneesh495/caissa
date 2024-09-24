@@ -31,10 +31,11 @@ inventory coverage is not completion of R12, a passed G14 join or project accept
 There is no new CLI dispatch or runtime acceptance in this increment.
 
 The acceptance expression uses all actual prior requirements and independent
-audit satisfaction. The draft audit interface only represents its absence. It
-rejects an offered audit artifact or caller pass flag because there is no accepted
-independent final audit reader. It cannot enable release. Supporting an actual
-audit pass requires its own source-bound implementation and checked evidence.
+audit satisfaction. The [later audit interface draft](FINAL_AUDIT_INTERFACE_DRAFT.md)
+now specifies a prospective accepted component, but its roots remain absent.
+It rejects offered audit artifacts and caller pass flags. The actual collector,
+independent checker and final source transition are still missing. Supporting a
+real audit pass requires those implementations and independently checked evidence.
 
 ## G14 trust boundary
 
@@ -74,9 +75,10 @@ real final-entry integration remain required.
    process exit/output, owner, groups and closed ledgers, then update completion
    status from that evidence. No such invocation is admitted or performed now.
 
-The final audit interface still requires implementation. The frozen failed
-neural requirement, incomplete matrix and unavailable historical inputs remain
-nonpassing even after coordinator implementation is complete.
+The audit interface and new 23-case synthetic policy controls are prepared and
+unexecuted. The real audit producers, source-transition binding and actual entry
+wiring remain unfinished. The frozen failed neural requirement, incomplete
+matrix and unavailable historical inputs remain nonpassing after implementation.
 
 ## New controls still required
 
