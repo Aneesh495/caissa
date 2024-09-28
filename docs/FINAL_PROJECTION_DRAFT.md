@@ -34,8 +34,10 @@ The acceptance expression uses all actual prior requirements and independent
 audit satisfaction. The [later audit interface draft](FINAL_AUDIT_INTERFACE_DRAFT.md)
 now specifies a prospective accepted component, but its roots remain absent.
 It rejects offered audit artifacts and caller pass flags. The actual collector,
-independent checker and final source transition are still missing. Supporting a
-real audit pass requires those implementations and independently checked evidence.
+independent checker and checked final source relationship are still missing.
+The later [external receipt draft](FINAL_AUDIT_EXTERNAL_ROOT_DRAFT.md) prepares
+the source-freeze ordering without an in-source audit-root edit. It is unexecuted.
+Supporting a real audit pass requires actual producers and independently checked evidence.
 
 ## G14 trust boundary
 
@@ -67,10 +69,12 @@ real final-entry integration remain required.
    complete existing 19 external paths and established output/storage guards.
 4. Execute only the admitted missing join and genuinely new controls. Preserve
    the old pre-admission failures and all earlier closed samples and control sets.
-5. If accepted, commit the real join trust roots. Freeze a separate final
-   integration scope for the projection, immutable fixture evidence and new
-   forgery controls. New source files and the externally pinned full-input
-   declaration must be part of its source/input inventory.
+5. If accepted, commit the real G14 join trust roots. Complete entry/audit source,
+   freeze it and perform the real independent audit under its own admission.
+   After acceptance, pin its private external receipt without changing source
+   or HEAD. Freeze a separate final integration scope with its expected digest,
+   immutable fixture evidence and new forgery controls. New source files and
+   the externally pinned full-input declaration belong in the scope inventory.
 6. Run the actual designated full entry under that admission, check its real
    process exit/output, owner, groups and closed ledgers, then update completion
    status from that evidence. No such invocation is admitted or performed now.

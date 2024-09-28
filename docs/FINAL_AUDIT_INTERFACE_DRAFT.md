@@ -6,8 +6,11 @@ full entry and its eleven-domain result are unchanged.
 
 [The audit interface](../verification/final_audit_bundle.py) now separates an
 independently accepted audit component from project release. Its trusted audit
-root remains `None`. An empty declaration stays unverified; offered audit
+input is absent by default. An empty declaration stays unverified; offered audit
 artifacts, caller pass flags and invented result digests cannot create a pass.
+The later [external receipt draft](FINAL_AUDIT_EXTERNAL_ROOT_DRAFT.md) replaces
+the in-source root constant with a separately admitted expected receipt digest.
+No real receipt exists, and none has been loaded.
 
 The separate projection draft calls this interface and derives release from
 all prior gate requirements plus the audit requirement. Even a future accepted
@@ -43,11 +46,11 @@ inputs and unproven original compiler closure remain separate G15 limitations;
 an audit must disclose them instead of claiming reconstruction. Stockfish stays
 the comparator. The interface supplies no source-originality finding.
 
-The exact-source transition also remains unresolved: committing accepted trust
-roots after an audit changes the adapter source and therefore its inventory.
-The draft still rejects a stale audited commit. A future design must independently
-bind that final source transition before activating roots. No source-guard
-exception, synthetic audit or post-hoc acceptance is introduced here.
+The exact-source transition now has a prepared external-receipt design: audit
+the frozen final code, keep HEAD and source unchanged, then separately pin the
+actual accepted audit receipt in the future final-entry admission. This loader
+and ordering remain unexecuted. The draft still rejects a stale audited commit.
+No source-guard exception, synthetic audit or post-hoc acceptance is introduced.
 
 ## Twenty-three new controls, zero run
 
@@ -72,7 +75,7 @@ No earlier closed control or semantic sample should run again.
 ## Remaining order
 
 Keep the existing renewal question pending. Continue static source and control
-review. Resolve the exact final audit source transition and finish intended entry
+review. Verify the prepared external-receipt boundary and finish intended entry
 wiring before freezing future G14 source inputs. After direct human renewal,
 record each new finite source/input/output/time scope before any execution.
 Do not use these modules as an alternate launcher or inline expiry bypass.

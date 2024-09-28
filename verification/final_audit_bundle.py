@@ -1,19 +1,19 @@
 """Unexecuted interface for an independently accepted final audit component.
 
-No such final audit is accepted. Missing trust roots cannot be supplied by a
-bundle or caller. The future accepted path requires real independent process,
+No such final audit is accepted. Roots must come from an externally pinned
+private receipt, not bundle fields. The future path requires independent process,
 source, input and closure evidence; it does not close other release gates.
 """
 
 import hashlib
 
 from verification.bundle import strict_json
+from verification.final_audit_trust import AuditTrust
 from verification.final_evidence_bundle import ENGINE, NETWORK, owner, source_bytes
 from verification.source import relative_path, require
 
 
 DRIVER = "final-release-audit-v1"
-ACCEPTED_AUDIT = None
 AREAS = {
     "product_source_inventory", "dependency_attribution", "source_similarity",
     "provenance_limitations", "secret_exposure_review", "release_claim_consistency",
@@ -30,7 +30,7 @@ def unverified(expected_commit):
             "reason": "independent final source/provenance/security audit not accepted"}
 
 
-def validate_projection_audit(audit, expected_commit):
+def validate_projection_audit(audit, expected_commit, trust=None):
     """Internal consistency check, never a replacement for artifact admission."""
     require(audit["gate"] == "G16-audit" and audit["source_commit"] == expected_commit
             and audit["engine_sha256"] == ENGINE and audit["network_sha256"] == NETWORK
@@ -42,15 +42,17 @@ def validate_projection_audit(audit, expected_commit):
                 and audit["accepted_audit_sha256"] is None,
                 "unverified audit promoted by a caller flag")
         return
-    require(audit["classification"] == "verified" and ACCEPTED_AUDIT is not None
-            and audit["accepted_audit_sha256"] == ACCEPTED_AUDIT["result_sha256"]
+    require(audit["classification"] == "verified" and isinstance(trust, AuditTrust)
+            and trust.source_commit == expected_commit
+            and audit["accepted_audit_sha256"] == trust.result_sha256
+            and audit["external_trust_receipt_sha256"] == trust.receipt_sha256
             and audit["requirement_satisfied"] is audit["full_gate"] is True,
             "no trusted independently accepted final audit result")
 
 
 class AuditRecords:
-    def __init__(self, bundle, domain):
-        require(ACCEPTED_AUDIT is not None, "final audit trust roots absent")
+    def __init__(self, bundle, domain, trust):
+        require(isinstance(trust, AuditTrust), "external final audit trust roots absent")
         descriptor = bundle.json(bundle.reference(domain["final_audit_evidence"]))
         require(set(descriptor) == {"schema", "gate", "records"}
                 and descriptor["schema"] == "caissa-final-independent-audit-records-v1"
@@ -66,10 +68,11 @@ class AuditRecords:
                              *(x["path"] for x in self.records.values())},
                 "final audit records undeclared or excessive")
         self.bundle, self.cache, self.total = bundle, {}, 0
-        work = ACCEPTED_AUDIT["work"]
+        work = trust.work
         require(work.endswith("/") and relative_path(work[:-1]), "invalid final audit root")
-        for name, digest in (("SCOPE.json", ACCEPTED_AUDIT["scope_sha256"]),
-                             ("AUDIT.json", ACCEPTED_AUDIT["result_sha256"])):
+        for name, digest in (("SCOPE.json", trust.scope_sha256),
+                             ("AUDIT.json", trust.result_sha256),
+                             ("CLOSED.json", trust.owner_closed_sha256)):
             require(self.sha(work + name) == digest, "trusted final audit scope/result changed")
 
     def raw(self, name):
@@ -88,7 +91,7 @@ class AuditRecords:
         return strict_json(self.raw(name))
 
 
-def verify_or_unverified(bundle, inputs, checkout, expected_commit):
+def verify_or_unverified(bundle, inputs, checkout, expected_commit, trust=None):
     domain = inputs["domains"]["G16"]
     require(domain["source_commit"] == expected_commit and domain["driver"] == DRIVER
             and domain["engine_sha256"] == inputs["engine"]["sha256"] == ENGINE
@@ -97,16 +100,20 @@ def verify_or_unverified(bundle, inputs, checkout, expected_commit):
     if domain["artifacts"] == []:
         require(set(domain) == EMPTY_KEYS, "empty audit declaration contains unverified pass fields")
         return unverified(expected_commit)
-    require(ACCEPTED_AUDIT is not None, "offered audit artifacts have no accepted trust roots")
-    records = AuditRecords(bundle, domain)
-    work = ACCEPTED_AUDIT["work"]
+    require(isinstance(trust, AuditTrust), "offered audit artifacts have no external trusted receipt")
+    require(trust.source_commit == expected_commit
+            and trust.source_inventory_sha256 == hashlib.sha256(
+                bundle.bytes("SOURCE_INPUTS.json")).hexdigest(),
+            "external audit root does not cover the current verified source")
+    records = AuditRecords(bundle, domain, trust)
+    work = trust.work
     scope, result = records.doc(work + "SCOPE.json"), records.doc(work + "AUDIT.json")
-    closed = owner(records, work, ACCEPTED_AUDIT["scope_sha256"])
+    closed = owner(records, work, trust.scope_sha256)
     require(closed["owned_group_absent_after_reap"] is True,
             "final audit owner group remains present")
     ledger = records.doc(work + "METADATA_USAGE.json")
     require(ledger["closed"] is True and ledger["failure"] is None
-            and ledger["scope_sha256"] == ACCEPTED_AUDIT["scope_sha256"]
+            and ledger["scope_sha256"] == trust.scope_sha256
             and ledger["native_starts"] == 0 and ledger["child_starts"] == 1,
             "final audit ledger open, failed or actor starts differ")
     require(records.doc(work + "GROUPS.json")
@@ -141,6 +148,7 @@ def verify_or_unverified(bundle, inputs, checkout, expected_commit):
             and result["source_commit"] == expected_commit
             and result["engine_sha256"] == ENGINE and result["network_sha256"] == NETWORK
             and result["source_inventory_sha256"] == records.sha("SOURCE_INPUTS.json")
+            == trust.source_inventory_sha256
             and result["full_acceptance"] is False and result["release_authorized"] is False,
             "final audit scope/result is stale or promoted to project acceptance")
     require(set(result["areas"]) == AREAS and result["unresolved_findings"] == []
@@ -158,7 +166,8 @@ def verify_or_unverified(bundle, inputs, checkout, expected_commit):
              "engine_sha256": ENGINE, "network_sha256": NETWORK,
              "classification": "verified", "requirement_satisfied": True,
              "full_gate": True, "full_acceptance": False,
-             "accepted_audit_sha256": ACCEPTED_AUDIT["result_sha256"],
+             "accepted_audit_sha256": trust.result_sha256,
+             "external_trust_receipt_sha256": trust.receipt_sha256,
              "original_compiler_runtime_closure": False}
-    validate_projection_audit(audit, expected_commit)
+    validate_projection_audit(audit, expected_commit, trust)
     return audit

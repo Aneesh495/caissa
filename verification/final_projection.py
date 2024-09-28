@@ -11,6 +11,7 @@ from pathlib import Path
 from verification.bundle import Bundle
 from verification.final_audit_bundle import validate_projection_audit
 from verification.final_audit_bundle import verify_or_unverified as verify_final_audit
+from verification.final_audit_trust import load_external_trust
 from verification.final_core_bundle import DRIVERS as CLOSED_DRIVERS
 from verification.final_core_bundle import verify as verify_closed_core
 from verification.final_evidence_bundle import ENGINE, NETWORK
@@ -41,10 +42,10 @@ def normalized_closed_result(result, gate, expected_commit):
             "actual_adapter_result_sha256": hashlib.sha256(raw).hexdigest()}
 
 
-def project(decisions, audit, expected_commit):
+def project(decisions, audit, expected_commit, audit_trust=None):
     """Internal derived projection of actual same-invocation adapter outputs."""
     release = blocked_release(decisions, expected_commit)
-    validate_projection_audit(audit, expected_commit)
+    validate_projection_audit(audit, expected_commit, audit_trust)
     prior_pass = all(d["requirement_satisfied"] for d in decisions.values())
     full_acceptance = prior_pass and audit["requirement_satisfied"]
     release.update(independent_final_audit=audit,
@@ -72,7 +73,8 @@ def project(decisions, audit, expected_commit):
             "original_compiler_runtime_closure": False}
 
 
-def verify(root, checkout, expected_commit, expected_inputs_sha256, maximum_seconds=60):
+def verify(root, checkout, expected_commit, expected_inputs_sha256, maximum_seconds=60,
+           *, audit_trust_path=None, expected_audit_trust_sha256=None):
     """Prospective read-only full projection, prohibited until fresh admission."""
     require(expected_inputs_sha256 is not None, "external full-input identity required")
     from tools.heuristic_study import avoid_decisive_matches
@@ -80,6 +82,9 @@ def verify(root, checkout, expected_commit, expected_inputs_sha256, maximum_seco
     avoid_decisive_matches(Path(checkout) / "runs")
     with Bundle(root, maximum_seconds) as bundle:
         admission = inspect(bundle, checkout, expected_commit, expected_inputs_sha256)
+        audit_trust = load_external_trust(
+            checkout, bundle.root, audit_trust_path, expected_audit_trust_sha256,
+            expected_commit, hashlib.sha256(bundle.bytes("SOURCE_INPUTS.json")).hexdigest())
         inputs = bundle.json("FULL_INPUTS.json")
         decisions, actual = {}, {}
         for gate in sorted(CLOSED_GATES):
@@ -94,8 +99,8 @@ def verify(root, checkout, expected_commit, expected_inputs_sha256, maximum_seco
         require(inputs["domains"]["G14"]["driver"] == SEMANTIC_DRIVER,
                 "projection cannot rerun a historical semantic audit")
         decisions["G14"] = verify_or_unverified(bundle, inputs, checkout, expected_commit)
-        audit = verify_final_audit(bundle, inputs, checkout, expected_commit)
-        report = project(decisions, audit, expected_commit)
+        audit = verify_final_audit(bundle, inputs, checkout, expected_commit, audit_trust)
+        report = project(decisions, audit, expected_commit, audit_trust)
         report["inputs_sha256"] = expected_inputs_sha256
         report["verified_relationships"] = admission["verified_relationships"]
         report["actual_closed_adapter_results"] = actual
