@@ -34,6 +34,10 @@ that boundary through a separately admitted expected digest, with unchanged
 audited source and HEAD. The loader and nine additional policy cases remain
 unexecuted; no real receipt or new execution scope has been created.
 
+An additional [18 filesystem cases](FINAL_AUDIT_FILESYSTEM_CONTROLS_DRAFT.md)
+are prepared for the receipt loader. Total prepared policy/filesystem cases are
+50, all unexecuted. Their bounded fixture setup needs its own future admission.
+
 ## Retained final evidence adapters
 
 | Driver | Gates | Accepted relationship |

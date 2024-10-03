@@ -231,3 +231,7 @@ The [external audit receipt draft](FINAL_AUDIT_EXTERNAL_ROOT_DRAFT.md) now
 prepares the final source-freeze relationship without changing audited code to
 install an audit root. Its expected receipt digest must be separately fixed by
 a legitimate future admission. No receipt, audit result or runtime pass exists.
+
+The [filesystem control draft](FINAL_AUDIT_FILESYSTEM_CONTROLS_DRAFT.md) adds
+18 prepared cases for that loader, with no execution or fixture creation. It
+does not replace admitted Bundle forgery or actual full-entry verification.
