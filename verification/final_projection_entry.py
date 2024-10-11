@@ -13,6 +13,7 @@ import os
 from pathlib import Path
 import re
 import resource
+import shutil
 import signal
 import stat
 import struct
@@ -31,7 +32,9 @@ REQUIRED_SOURCES = {
     "verification/final_gate_decisions.py", "verification/final_core_bundle.py",
     "verification/final_evidence_bundle.py", "verification/full_bundle.py",
     "verification/bundle.py", "verification/source.py", "tools/host_lease.py",
-    "tools/heuristic_study.py", "config/final-gate-decisions-v1.json",
+    "tools/heuristic_study.py", "tools/final_projection_stage.py",
+    "tools/campaign_process.py", "tools/parallel_storage_quota.py", "tools/storage_budget.py",
+    "config/final-gate-decisions-v1.json",
 }
 
 
@@ -145,6 +148,13 @@ def admit(scope_name, expected_scope_sha256):
     require(executable.is_file() and executable.stat().st_size <= 32 * 1024**2
             and hashlib.sha256(executable.read_bytes()).hexdigest() == digest(scope["interpreter_sha256"]),
             "entry interpreter identity differs")
+    git_name = shutil.which("git")
+    require(git_name is not None, "admitted source Git executable is unavailable")
+    git = Path(git_name).resolve()
+    require(str(git) == scope["git_executable"] and git.is_file()
+            and git.stat().st_size <= 64 * 1024**2
+            and hashlib.sha256(git.read_bytes()).hexdigest() == digest(scope["git_sha256"]),
+            "entry source Git executable identity differs")
     pins = scope["source_bindings"]
     require(isinstance(pins, dict) and REQUIRED_SOURCES <= set(pins) and len(pins) <= 512,
             "entry source graph is incomplete or excessive")
