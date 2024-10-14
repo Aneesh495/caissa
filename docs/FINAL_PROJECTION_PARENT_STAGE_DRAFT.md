@@ -50,8 +50,9 @@ authorize release itself.
 
 ## Missing outer owner and verification
 
-The real outer owner, admission builder, fixture builder and integration controls
-remain unimplemented. Before execution they must independently validate direct
+The later [outer owner draft](FINAL_PROJECTION_OUTER_OWNER_DRAFT.md) now prepares
+that runtime wrapper, still unexecuted. Real admission/closure and fixture builders
+and integration controls remain unimplemented. Before execution they must independently validate direct
 human authority; meter owner/bootstrap/log/descriptor/ledger/reserve peaks against
 the project and Mac caps with all 19 external paths; freeze exact source and
 input pins; enforce one owner and stage; install process/network/write boundaries;
