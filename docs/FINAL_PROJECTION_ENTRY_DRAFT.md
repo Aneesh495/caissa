@@ -13,7 +13,9 @@ renew an expired parent. This is intended wiring, not accepted runtime wiring.
 ## Required future parent
 
 The later [parent stage bridge](FINAL_PROJECTION_PARENT_STAGE_DRAFT.md) prepares
-one owned stage. The outer parent producer is still missing. Before it can launch this entry, it must:
+one owned stage. The later outer-owner and independent launcher drafts prepare
+the runtime wrappers, still unexecuted. Real admission and closure are absent.
+Before an admitted parent can launch this entry, it must:
 
 1. Record an actual direct human saved-evidence renewal. A scheduled message,
    tool acknowledgement or authored authority JSON cannot supply that authority.

@@ -60,6 +60,8 @@ def run(scope_name, expected_scope_sha256):
     os.umask(0o077)
     require(all(stat.S_ISFIFO(os.fstat(fd).st_mode) for fd in (1, 2)),
             "projection owner output requires externally owned bounded pipes")
+    require(scope["entry_group_policy"] == "inherit_owner_group" and os.getpgrp() == os.getpid(),
+            "projection owner must lead the real launcher's owned process group")
     require({p.name for p in work.iterdir()} == {"SCOPE.json"},
             "fresh projection owner work directory already contains another invocation")
     control, emergency, outside = (scope[k] for k in
@@ -69,6 +71,10 @@ def run(scope_name, expected_scope_sha256):
             and type(outside) is int and 4000000 <= outside <= 8000000
             and type(scope["reserve_bytes"]) is int and scope["reserve_bytes"] == 128000000,
             "prospective metadata, emergency, outside-control and reserve bounds differ")
+    launcher_control, launcher_outside = scope["launcher_control_bytes"], scope["launcher_outside_control_bytes"]
+    require(type(launcher_control) is int and 8000000 <= launcher_control <= 16000000
+            and type(launcher_outside) is int and launcher_outside == 4000000,
+            "separate fully prepaid launcher peak required")
     inventory_name = relative(scope["external_inventory_path"])
     require(inventory_name.startswith(".agent-local/"), "separately pinned private attribution inventory required")
     inventory_raw = private_bytes(inventory_name, 16384)
@@ -154,7 +160,8 @@ def run(scope_name, expected_scope_sha256):
                 actual = footprint([ROOT, *external])
                 mac = shutil.disk_usage(ROOT).used
                 check_admission(actual["charged_bytes"], mac, 0,
-                                control - state["control_used"] + outside, 128000000)
+                                control - state["control_used"] + outside
+                                + launcher_control + launcher_outside, 128000000)
                 observation[0] = {"charged_bytes": actual["charged_bytes"], "mac_used_bytes": mac,
                                   "external_path_count": len(external), "unix": time.time()}
                 last_storage[0] = time.monotonic()
@@ -259,6 +266,12 @@ def run(scope_name, expected_scope_sha256):
                 raise RuntimeError("projection cleanup failed: " + ", ".join(cleanup_errors))
     require(family_cpu() <= family_limit, "projection observed CPU allowance exhausted during closure")
     return {"status": "completed_saved_evidence_component_only", "entry_exit": 2,
+            "scope_sha256": scope_sha,
+            "owner_result_sha256": hashlib.sha256(private_bytes(relative_work + "OWNER_RESULT.json", 4 * 1024**2)).hexdigest(),
+            "owner_ledger_sha256": hashlib.sha256(private_bytes(relative_work + "WRITE_USAGE.json", 262144)).hexdigest(),
+            "campaign_sha256": hashlib.sha256(private_bytes(relative_work + "entry-stage/CAMPAIGN.json", 262144)).hexdigest(),
+            "owner_started_sha256": hashlib.sha256(private_bytes(relative_work + "OWNER_STARTED.json", 8192)).hexdigest(),
+            "entry_admission_sha256": hashlib.sha256(private_bytes(relative_work + "ENTRY_ADMISSION.json", 8192)).hexdigest(),
             "observed_own_and_reaped_child_cpu_seconds": family_cpu(),
             "owner_exit_independently_checked": False,
             "full_R12_complete": False, "full_acceptance": False}
