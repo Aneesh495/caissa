@@ -10,7 +10,9 @@ installed specialized quota. The helper does not admit itself, create authority,
 write a scope or consume an entry token. Direct human renewal remains pending.
 
 The separate seed-builder source is now prepared and remains unexecuted. Its real
-admission and fixture/control owner are still missing. The prospective seed must
+admission and fixture/control owner are still missing. A separate unexecuted
+fixture-scope constructor now prepares only the scope write after real external
+human review; it supplies no approval, actual admission or launch. The prospective seed must
 contain real copied evidence for the eleven accepted adapters and the fixed G08,
 G10 and G15 inventories, exact current source metadata, and empty G14/audit
 declarations. A separately trusted scope must pin every seed path, size and digest,

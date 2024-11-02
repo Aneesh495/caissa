@@ -8,7 +8,9 @@ renewal is still pending. This draft creates no authority or admission.
 thirteen-case control draft. It has no CLI and performs no work on import. A real
 future admitted metadata owner must supply the real host lease, installed exact
 quota and independently pinned scope/source/input/interpreter identities. The
-admission builder and fixture/control owner are still missing.
+fixture-scope constructor is now prepared separately and remains unexecuted.
+Trusted direct-human provenance review, its bounded caller and the fixture/control
+owner are still missing. No admission exists merely because that source exists.
 
 Static review found that the unexecuted projection's driver map contained core,
 external and performance entries but omitted the separate G11/G12 evidence driver
