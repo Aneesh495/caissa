@@ -29,6 +29,7 @@ REQUIRED_SOURCES = {
     "verification/final_audit_bundle.py", "verification/final_audit_trust.py",
     "verification/final_core_bundle.py", "verification/final_evidence_bundle.py",
     "verification/full_bundle.py", "verification/bundle.py", "verification/source.py",
+    "verification/final_semantic_join.py", "tools/heuristic_study.py", "tools/campaign_process.py",
     "config/final-gate-decisions-v1.json",
 }
 
@@ -116,6 +117,77 @@ def observe_free_lease():
         os.close(descriptor)
 
 
+def bind_payload_inputs(request, input_sizes):
+    """Join helper declarations to independently admitted actual input pins."""
+    payload, inputs = request["payload"], request["input_bindings"]
+    work = relative(request["work"])
+    needed = set()
+
+    def record(name, pin):
+        name = relative(name)
+        require(isinstance(pin, dict) and set(pin) == {"bytes", "sha256"}
+                and type(pin["bytes"]) is int and 0 <= pin["bytes"] <= 8 * 1024**2
+                and inputs.get(name) == digest(pin["sha256"])
+                and input_sizes.get(name) == pin["bytes"],
+                "helper record is absent from independently admitted inputs: " + name)
+        needed.add(name)
+
+    if request["operation"] == "build-seed":
+        require(payload["maximum_seed_builds"] == 1 and type(payload["maximum_seed_builds"]) is int
+                and type(payload["maximum_projection_calls"]) is int
+                and payload["maximum_projection_calls"] == 0
+                and payload["seed"] == work + "/output/seed",
+                "seed helper count or owned output boundary differs")
+        files = payload["template_files"]
+        require(isinstance(files, dict) and 3 <= len(files) <= 1024,
+                "bounded exact template declaration required")
+        for name, pin in files.items():
+            record("runs/final-lineage-adapter-2026-10-29/fixture/" + relative(name), pin)
+        require(payload["template_manifest_sha256"] == files["MANIFEST.json"]["sha256"]
+                and payload["template_inputs_sha256"] == files["FULL_INPUTS.json"]["sha256"],
+                "template manifest or full-input pin differs across admission declarations")
+        source = relative(payload["source_inventory_input"])
+        require(source.startswith(".agent-local/")
+                and inputs.get(source) == digest(payload["source_inventory_sha256"]),
+                "current-source declaration is absent from independent input admission")
+        needed.add(source)
+        policy_raw = stable("config/final-gate-decisions-v1.json", 4 * 1024**2)
+        require(hashlib.sha256(policy_raw).hexdigest()
+                == "ff095700d8e720d05e8709284fe482809e64c7603be2d333aa4bfd5af1299cc5",
+                "fixed decision-input policy changed")
+        policy = document(policy_raw)
+        union = {}
+        for gate in ("G08", "G10", "G15"):
+            for name, pin in policy["gates"][gate]["records"].items():
+                require(name not in union or union[name] == pin, "overlapping decision pins differ")
+                union[name] = pin
+        require(payload["decision_records"] == union,
+                "seed payload omits or changes fixed nonpassing decision records")
+        for name, pin in union.items():
+            record(name, pin)
+    else:
+        require(type(payload["maximum_control_invocations"]) is int
+                and payload["maximum_control_invocations"] == 1
+                and type(payload["maximum_projection_calls"]) is int
+                and payload["maximum_projection_calls"] == 13
+                and payload["fixture"] == work + "/output/fixture"
+                and payload["case_archive"] == work + "/output/cases",
+                "Bundle helper count or owned output boundary differs")
+        seed = relative(payload["seed"])
+        require(seed.startswith("work/") and seed != work
+                and not seed.startswith(work + "/") and not work.startswith(seed + "/"),
+                "consumer must use a separate previously admitted seed")
+        files = payload["seed_files"]
+        require(isinstance(files, dict) and 3 <= len(files) <= 1024,
+                "bounded exact independently rehashed seed inventory required")
+        for name, pin in files.items():
+            record(seed + "/" + relative(name), pin)
+        require(payload["seed_manifest_sha256"] == files["MANIFEST.json"]["sha256"]
+                and payload["seed_inputs_sha256"] == files["FULL_INPUTS.json"]["sha256"],
+                "consumer seed manifest or full-input identities disagree")
+    require(needed == set(inputs), "helper dependency inventory is missing or excessive")
+
+
 def construct(request_name, expected_request_sha256, verified_human_message_sha256):
     """Write at most one fixture-owner scope after trusted external human review.
 
@@ -188,6 +260,7 @@ def construct(request_name, expected_request_sha256, verified_human_message_sha2
     require(isinstance(source_pins, dict) and REQUIRED_SOURCES <= set(source_pins)
             and len(source_pins) <= 512 and isinstance(input_pins, dict)
             and 0 < len(input_pins) <= 1024, "bounded exact source and input inventories required")
+    input_sizes = {}
     for pins, maximum, total_bound in [(source_pins, 4 * 1024**2, 32 * 1024**2),
                                        (input_pins, 16 * 1024**2, 64 * 1024**2)]:
         total = 0
@@ -197,6 +270,8 @@ def construct(request_name, expected_request_sha256, verified_human_message_sha2
             total += len(body)
             require(total <= total_bound and hashlib.sha256(body).hexdigest() == digest(expected),
                     "admission source/input bytes or total ceiling differ: " + name)
+            if pins is input_pins:
+                input_sizes[name] = len(body)
     inventory_name = relative(request["external_inventory_path"])
     require(inventory_name.startswith(".agent-local/"), "private separately reviewed attribution required")
     inventory_raw = stable(inventory_name, 16384, private=True)
@@ -230,6 +305,7 @@ def construct(request_name, expected_request_sha256, verified_human_message_sha2
             and payload["parent_deadline_unix"] == authority["deadline_unix"]
             and re.fullmatch("[0-9a-f]{40}", request["product_commit"]),
             "future helper payload must retain the externally fixed source and human window")
+    bind_payload_inputs(request, input_sizes)
     scope = {**request, "schema": "caissa-final-fixture-owner-scope-v1", "status": "admitted",
              "request_path": request_name, "request_sha256": expected_request_sha256,
              "verified_human_message_sha256": verified_human_message_sha256,

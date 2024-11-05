@@ -56,3 +56,14 @@ This is an unexecuted constructor draft, not real admission. The fixture/control
 owner, admission controls, parent/entry/launcher controls, actual G14 roots,
 audit collector/checker and final designated entry remain unfinished. No original
 failure, sample, active/start limit, source guard or accepted gate changes.
+
+Later static review joined each helper's payload inventory to the independent
+top-level input path, actual byte-count and digest pins, with no extra inputs.
+Seed building must cover every retained template file, the
+separate current-source document and every fixed G08/G10/G15 policy record. Bundle
+controls must cover every actual independently rehashed seed file. Manifest and
+full-input identities must agree across both declarations. Helper counts and new
+output locations are fixed to the requested owner's charged output namespace;
+the consumer seed must be outside that fresh owner namespace. This closes a draft
+consistency gap before a future scope write. No check was imported or executed,
+no real request/seed was admitted, and no new control case was counted or passed.
