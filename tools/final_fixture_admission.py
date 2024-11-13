@@ -23,6 +23,7 @@ EXPIRED_PARENT = 1793283600.005172
 REQUIRED_SOURCES = {
     "tools/final_fixture_admission.py", "tools/final_projection_seed.py",
     "tools/final_fixture_admission_call.py",
+    "tools/final_fixture_quota.py",
     "tools/final_projection_bundle_controls.py", "tools/host_lease.py",
     "tools/parallel_storage_quota.py", "tools/storage_budget.py",
     "verification/final_projection.py", "verification/final_projection_entry.py",
@@ -307,11 +308,18 @@ def construct(request_name, expected_request_sha256, verified_human_message_sha2
             and re.fullmatch("[0-9a-f]{40}", request["product_commit"]),
             "future helper payload must retain the externally fixed source and human window")
     bind_payload_inputs(request, input_sizes)
+    from tools.final_fixture_quota import reservation_floor
+    writer_floor = reservation_floor(request)
+    if request["operation"] == "build-seed":
+        require(request["writer_file_bounds"]["output/seed/SOURCE_INPUTS.json"]
+                >= input_sizes[payload["source_inventory_input"]],
+                "current source declaration exceeds its prepaid file bound")
     scope = {**request, "schema": "caissa-final-fixture-owner-scope-v1", "status": "admitted",
              "request_path": request_name, "request_sha256": expected_request_sha256,
              "verified_human_message_sha256": verified_human_message_sha256,
              "parent_deadline_unix": authority["deadline_unix"],
-             "constructor_invocations": 1, "full_R12_complete": False, "full_acceptance": False}
+             "constructor_invocations": 1, "writer_reservation_floor": writer_floor,
+             "full_R12_complete": False, "full_acceptance": False}
     scope_raw = (json.dumps(scope, sort_keys=True, indent=2, allow_nan=False) + "\n").encode()
     require(len(scope_raw) <= 1024**2 and time.time() < request["deadline_unix"]
             and time.monotonic() - started <= 40, "bounded admission preflight exhausted")

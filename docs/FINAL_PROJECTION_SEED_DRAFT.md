@@ -9,8 +9,12 @@ thirteen-case control draft. It has no CLI and performs no work on import. A rea
 future admitted metadata owner must supply the real host lease, installed exact
 quota and independently pinned scope/source/input/interpreter identities. The
 fixture-scope constructor is now prepared separately and remains unexecuted.
-Trusted direct-human provenance review, its bounded caller and the fixture/control
-owner are still missing. No admission exists merely because that source exists.
+The bounded caller and specialized fixture writer are also prepared, unexecuted.
+Actual direct-human provenance review, the fixture/control owner and independent
+transport remain missing. No admission exists merely because those sources exist.
+The helper now requires the exact fixture quota and matching admitted payload;
+its per-file caps and rounded credits must be prepaid before scope growth. See
+[the writer contract](FINAL_FIXTURE_QUOTA_DRAFT.md).
 
 Static review found that the unexecuted projection's driver map contained core,
 external and performance entries but omitted the separate G11/G12 evidence driver
