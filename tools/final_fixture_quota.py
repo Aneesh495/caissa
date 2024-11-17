@@ -18,6 +18,10 @@ from tools.parallel_storage_quota import Quota, RAW_OS_OPEN, ReservedFile, Stora
 MAX_FILE_BYTES = 8 * 1024**2
 INDEX_NAMES = {"decisions/" + gate + "/INDEX.json" for gate in ("G08", "G10", "G15")}
 OWNER_FILES = {"OWNER_STARTED.json", "HELPER_RESULT.json", "OWNER_RESULT.json", "FAILED-owner.json"}
+HISTORICAL_LOCKS = {ROOT / "runs" / name / "OWNER.lock" for name in (
+    "full-neural-strength-v3", "full-external-strength-v3",
+    "full-neural-strength-v4", "full-external-strength-v4",
+)}
 
 
 def writer_layout(scope):
@@ -180,6 +184,7 @@ class FixtureQuota(Quota):
                           "emergency_control_bytes": scope["emergency_control_bytes"],
                           "deadline_unix": scope["deadline_unix"], "reserve_bytes": 128000000})
         self.consumed = set()
+        self.read_only_lock_opens = {}
         self.writer_lock = threading.RLock()
 
     def bind_helper(self, payload, expected_scope_sha256, operation):
@@ -205,6 +210,32 @@ class FixtureQuota(Quota):
         fallback = super().opener(original)
 
         def open_file(file, mode="r", *args, **kwargs):
+            if not isinstance(file, int) and Path(file).absolute() in HISTORICAL_LOCKS and mode == "a":
+                # The unchanged decisive-match guard asks to append-open old
+                # lock files. Supply an existing read-only descriptor instead;
+                # its real flock check still runs, without a historical writer.
+                target = Path(file).absolute()
+                require(self.scope["operation"] == "bundle-controls" and self.old is not None
+                        and target == target.resolve() and "opener" not in kwargs,
+                        "historical lock observation is not admitted")
+                before = target.lstat()
+                require(stat.S_ISREG(before.st_mode) and before.st_nlink == 1
+                        and self.read_only_lock_opens.get(str(target), 0) < 13,
+                        "historical lock observation exceeded or traversed a link")
+                self.read_only_lock_opens[str(target)] = self.read_only_lock_opens.get(str(target), 0) + 1
+
+                def read_only(actual, flags):
+                    require(Path(actual).absolute() == target and flags & os.O_ACCMODE == os.O_RDONLY
+                            and not flags & (os.O_CREAT | os.O_TRUNC | os.O_APPEND),
+                            "historical lock descriptor must remain read-only")
+                    return RAW_OS_OPEN(actual, flags | os.O_NOFOLLOW)
+
+                stream = original(file, "r", *args, opener=read_only, **kwargs)
+                after = os.fstat(stream.fileno())
+                if (before.st_dev, before.st_ino, before.st_nlink) != (after.st_dev, after.st_ino, after.st_nlink):
+                    stream.close()
+                    raise StorageLimit("historical lock descriptor identity changed")
+                return stream
             if not any(flag in mode for flag in "wax+") or isinstance(file, int) or str(file) == os.devnull:
                 return fallback(file, mode, *args, **kwargs)
             with self.writer_lock:

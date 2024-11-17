@@ -10,8 +10,10 @@ future admitted metadata owner must supply the real host lease, installed exact
 quota and independently pinned scope/source/input/interpreter identities. The
 fixture-scope constructor is now prepared separately and remains unexecuted.
 The bounded caller and specialized fixture writer are also prepared, unexecuted.
-Actual direct-human provenance review, the fixture/control owner and independent
-transport remain missing. No admission exists merely because those sources exist.
+The [fixture/control owner source](FINAL_FIXTURE_OWNER_DRAFT.md) is now also
+prepared and unexecuted. Actual direct-human provenance review, trusted bounded
+transport, independent exit closure and new controls remain missing. No admission
+exists merely because those sources exist.
 The helper now requires the exact fixture quota and matching admitted payload;
 its per-file caps and rounded credits must be prepaid before scope growth. See
 [the writer contract](FINAL_FIXTURE_QUOTA_DRAFT.md).

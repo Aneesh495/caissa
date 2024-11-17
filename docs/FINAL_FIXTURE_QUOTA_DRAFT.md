@@ -1,8 +1,9 @@
 # Fixture-owner writer draft
 
 Prepared source only. No module import, syntax/help/test, verifier, constructor,
-owner, scope, token, seed or fixture ran or was created. Direct human renewal
-remains pending. All thirteen Bundle, fifty policy/filesystem and twenty-four
+owner, scope, token, seed or fixture ran or was created by this source. A direct
+two-hour saved-evidence renewal was separately recorded on October 30; exact
+finite admission remains required. All thirteen Bundle, fifty policy/filesystem and twenty-four
 G14 cases remain unexecuted. This source adds no case or passing result.
 
 `tools/final_fixture_quota.py` prepares the specialized writer needed by the
@@ -54,7 +55,8 @@ permit only bounded ledger internals and install the process/network/mutation
 guard before helper execution. These are prospective pinned Python boundaries,
 not an OS sandbox or demonstrated controls.
 
-The actual fixture/control owner wrapper remains missing. It must acquire and
+The [fixture/control owner wrapper](FINAL_FIXTURE_OWNER_DRAFT.md) is now prepared
+separately and remains unexecuted. Its intended execution must acquire and
 check the real host lease, independently recheck actual scope/human/request/source/
 input/interpreter/Git relationships, preserve fixed CPU and wall limits, enforce
 exactly three or thirty-nine read-only Git commands, own/prepay/drain outputs and
@@ -63,3 +65,9 @@ transport still must verify its actual exit and all reaped groups. The quota or 
 future producer catalog cannot certify that closure, admit a consumer, activate
 G14/audit trust or finish R12. Prepare those sources and new controls before the
 future G14 source freeze; execute nothing while renewal is pending.
+
+The later owner preparation additionally handles the unchanged decisive-match
+guard's four historical append-open requests with existing no-follow read-only
+descriptors, at most thirteen per path. The real flock checks remain in that
+unchanged guard. No historical lock writer, missing-file creation, old guard
+invocation or new case execution occurred.

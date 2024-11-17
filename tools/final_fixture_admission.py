@@ -24,6 +24,7 @@ REQUIRED_SOURCES = {
     "tools/final_fixture_admission.py", "tools/final_projection_seed.py",
     "tools/final_fixture_admission_call.py",
     "tools/final_fixture_quota.py",
+    "tools/final_fixture_owner.py", "tools/final_fixture_git.py",
     "tools/final_projection_bundle_controls.py", "tools/host_lease.py",
     "tools/parallel_storage_quota.py", "tools/storage_budget.py",
     "verification/final_projection.py", "verification/final_projection_entry.py",
@@ -190,6 +191,46 @@ def bind_payload_inputs(request, input_sizes):
     require(needed == set(inputs), "helper dependency inventory is missing or excessive")
 
 
+def owner_limits(request):
+    """Finite prospective owner limits, not execution authority."""
+    require(request["operation"] in {"build-seed", "bundle-controls"}
+            and type(request["maximum_owner_starts"]) is int and request["maximum_owner_starts"] == 1
+            and type(request["maximum_owner_cpu_seconds"]) is int
+            and 0 < request["maximum_owner_cpu_seconds"] <= 90
+            and type(request["maximum_family_cpu_seconds"]) is int
+            and request["maximum_owner_cpu_seconds"] < request["maximum_family_cpu_seconds"] <= 180,
+            "one finite owner and observed-family CPU ceiling required")
+    for value in (request["origin_unix"], request["deadline_unix"]):
+        require(type(value) in {int, float} and math.isfinite(value), "invalid fixed owner time")
+    require(0 < request["deadline_unix"] - request["origin_unix"] <= 150
+            and type(request["maximum_owner_pin_read_bytes"]) is int
+            and 0 < request["maximum_owner_pin_read_bytes"] <= 256 * 1024**2
+            and type(request["maximum_owner_output_bytes"]) is int
+            and 4096 <= request["maximum_owner_output_bytes"] <= 1024**2,
+            "fixed wall, explicit pin-read and external output ceilings required")
+    rounded = ((request["maximum_owner_output_bytes"] + 65535) // 65536) * 65536
+    require(type(request["outside_control_bytes"]) is int
+            and request["outside_control_bytes"] >= 4000000 + 2 * (rounded + 8192),
+            "bounded ledger internals and both external owner pipes must be prepaid")
+    require(".git/HEAD" in request["source_bindings"], "separate current HEAD source pin required")
+    payload = request["payload"]
+    require(payload["schema"] == ("caissa-final-projection-seed-build-v1"
+                                   if request["operation"] == "build-seed"
+                                   else "caissa-final-projection-bundle-controls-v1")
+            and payload["product_commit"] == request["product_commit"]
+            and payload["origin_unix"] == request["origin_unix"]
+            and payload["deadline_unix"] == request["deadline_unix"],
+            "fixture helper source and fixed times must match its owner")
+    expected_git = 3 if request["operation"] == "build-seed" else 39
+    require(type(request["maximum_source_git_commands"]) is int
+            and request["maximum_source_git_commands"] == expected_git,
+            "exact fixture source Git budget differs")
+    for key in ("native_starts", "browser_starts", "compiler_starts", "training_starts",
+                "inference_starts", "game_starts", "new_parallel_starts", "extra_parallel_active_seconds",
+                "designated_entry_starts"):
+        require(type(request[key]) is int and request[key] == 0, "fixture owner admits metadata only")
+
+
 def construct(request_name, expected_request_sha256, verified_human_message_sha256):
     """Write at most one fixture-owner scope after trusted external human review.
 
@@ -207,6 +248,7 @@ def construct(request_name, expected_request_sha256, verified_human_message_sha2
     require(hashlib.sha256(raw).hexdigest() == digest(expected_request_sha256),
             "request differs from independent admission pin")
     request = document(raw)
+    owner_limits(request)
     require(request["schema"] == "caissa-final-fixture-admission-request-v1"
             and request["operation"] in {"build-seed", "bundle-controls"}
             and request["root"] == str(ROOT), "unsupported fixture admission request")
