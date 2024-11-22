@@ -1,0 +1,208 @@
+{
+  "Bundle_controls_unexecuted": 13,
+  "G14_controls_unexecuted": 24,
+  "G14_join_accepted": false,
+  "actual_full_entry_starts": 0,
+  "actual_owner_exit": 0,
+  "actual_tool_transport_exit": 0,
+  "case_results": [
+    {
+      "case": "component_cannot_normalize_as_full_gate",
+      "reason": "final closed result is stale, mismatched or only a component",
+      "rejected": true
+    },
+    {
+      "case": "integer_cannot_replace_true_gate_flag",
+      "reason": "final closed result is stale, mismatched or only a component",
+      "rejected": true
+    },
+    {
+      "case": "stale_normalized_result_source",
+      "reason": "final closed result is stale, mismatched or only a component",
+      "rejected": true
+    },
+    {
+      "case": "wrong_normalized_result_engine",
+      "reason": "final closed result is stale, mismatched or only a component",
+      "rejected": true
+    },
+    {
+      "case": "wrong_normalized_result_network",
+      "reason": "final closed result is stale, mismatched or only a component",
+      "rejected": true
+    },
+    {
+      "case": "closed_result_cannot_claim_project_acceptance",
+      "reason": "final closed result is stale, mismatched or only a component",
+      "rejected": true
+    },
+    {
+      "case": "missing_prior_gate",
+      "reason": "release projection requires exactly G01 through G15",
+      "rejected": true
+    },
+    {
+      "case": "unknown_extra_prior_gate",
+      "reason": "release projection requires exactly G01 through G15",
+      "rejected": true
+    },
+    {
+      "case": "wrong_prior_gate_identity",
+      "reason": "release projection contains stale or mismatched decisions",
+      "rejected": true
+    },
+    {
+      "case": "stale_prior_source",
+      "reason": "release projection contains stale or mismatched decisions",
+      "rejected": true
+    },
+    {
+      "case": "wrong_prior_saved_actor",
+      "reason": "release projection contains stale or mismatched decisions",
+      "rejected": true
+    },
+    {
+      "case": "integer_cannot_replace_requirement_bool",
+      "reason": "release projection contains stale or mismatched decisions",
+      "rejected": true
+    },
+    {
+      "case": "failed_category_cannot_claim_satisfied",
+      "reason": "release projection classification contradicts its requirement",
+      "rejected": true
+    },
+    {
+      "case": "G14_unaccepted_artifact",
+      "reason": "unaccepted G14 join artifacts cannot promote the gate",
+      "rejected": true
+    },
+    {
+      "case": "G14_caller_pass_flag",
+      "reason": "unaccepted G14 join artifacts cannot promote the gate",
+      "rejected": true
+    },
+    {
+      "case": "G14_legacy_replay_driver",
+      "reason": "final G14 driver or source differs",
+      "rejected": true
+    },
+    {
+      "case": "audit_artifact_without_accepted_roots",
+      "reason": "offered audit artifacts have no external trusted receipt",
+      "rejected": true
+    },
+    {
+      "case": "audit_caller_pass_flag",
+      "reason": "empty audit declaration contains unverified pass fields",
+      "rejected": true
+    },
+    {
+      "case": "audit_stale_source",
+      "reason": "final audit driver or deployment differs",
+      "rejected": true
+    },
+    {
+      "case": "invented_verified_audit_receipt",
+      "reason": "no trusted independently accepted final audit result",
+      "rejected": true
+    },
+    {
+      "case": "audit_projection_wrong_network",
+      "reason": "final audit projection identity or types differ",
+      "rejected": true
+    },
+    {
+      "case": "unverified_audit_cannot_enable_acceptance",
+      "reason": "unverified audit promoted by a caller flag",
+      "rejected": true
+    },
+    {
+      "case": "all_six_categories_preserved_without_input_mutation",
+      "full_acceptance": false,
+      "synthetic_policy_check": true
+    },
+    {
+      "case": "changed_receipt_cannot_follow_bundle_rehash",
+      "reason": "external audit receipt identity differs",
+      "rejected": true
+    },
+    {
+      "case": "stale_audited_commit",
+      "reason": "external audit receipt names stale audited source",
+      "rejected": true
+    },
+    {
+      "case": "stale_audited_inventory",
+      "reason": "external audit receipt names stale audited source",
+      "rejected": true
+    },
+    {
+      "case": "caller_audit_pass_flag",
+      "reason": "external audit receipt schema or extra pass fields differ",
+      "rejected": true
+    },
+    {
+      "case": "malformed_result_identity",
+      "reason": "artifact SHA256 is malformed",
+      "rejected": true
+    },
+    {
+      "case": "escaped_scope_path",
+      "reason": "source path is not a safe canonical relative name",
+      "rejected": true
+    },
+    {
+      "case": "non_work_scope_root",
+      "reason": "external audit scope must name an actual bounded work scope",
+      "rejected": true
+    },
+    {
+      "case": "duplicate_receipt_key",
+      "reason": "duplicate JSON object key",
+      "rejected": true
+    },
+    {
+      "case": "exact_external_identity_preserved_and_immutable",
+      "real_audit_accepted": false,
+      "synthetic_policy_check": true
+    }
+  ],
+  "controls": 32,
+  "external_trust_controls": 9,
+  "full_R12_complete": false,
+  "full_acceptance": false,
+  "host_lease_released": true,
+  "metadata_ledger_closed_without_failure": true,
+  "native_browser_compiler_training_inference_game_starts": 0,
+  "old_closed_samples_or_controls_reexecuted": 0,
+  "owned_group_absent_after_reap": true,
+  "owner_elapsed_seconds": 0.03879733296344057,
+  "owner_stderr_bytes": 0,
+  "owner_stdout_bytes": 0,
+  "preservation_checks": 2,
+  "projection_controls": 23,
+  "real_audit_accepted": false,
+  "real_domain_results_checked": 0,
+  "rejections": 30,
+  "remaining_policy_filesystem_cases_unexecuted": 18,
+  "schema": "caissa-final-policy-controls-component-v1",
+  "source_commit": "bfeba30836de156557337766eaf7c7535304ff3f",
+  "source_sha256": {
+    "tests/final_audit_trust_policy.py": "938163ea5089b210b1768c769d2f270184786db858fc520ae483926a447033fd",
+    "tests/final_projection_policy.py": "6417f46b407d86bbf5af9c83c7b4bffbc2553178708a245509af861be1b5f103",
+    "tools/final_policy_controls.py": "79b31ef218f2329d909856edd8a4e9f5c550de5b0ded1711180b1bade0ec7c49",
+    "verification/__init__.py": "3c18cdabc8322d6c66bba7cd813b57f60692632abb240348dc330843d6222962",
+    "verification/bundle.py": "006f94caed2dcc6b5f51a3aa1c64bd65aa32fc539b366e3fb0b2496e1d30a113",
+    "verification/final_audit_bundle.py": "389b7d2859418af356ec59352ad374a4a77350a420f78e36426e29d88e8889c9",
+    "verification/final_audit_trust.py": "373b2f8100d96a3d60eefa0a3ebabfaf0f9c55eec660123dc486538247550a8b",
+    "verification/final_core_bundle.py": "ae671676144295902a8355206fe32115d07cdfce38bc5b11cf2f552aab585645",
+    "verification/final_evidence_bundle.py": "bd7aabb35ca03f36e175d1f95331cce0dc5c0be66183101657ede814e80d9ba3",
+    "verification/final_gate_decisions.py": "6a0e30371966c3362a4c1b0f3125ad73262888c529e34479108f50a0fe4a7006",
+    "verification/final_projection.py": "1244590acb51f120f3a1e3d4f74b22afbe17fa58c13c99de3201d43f36d92269",
+    "verification/final_semantic_bundle.py": "0f1baa0c07c94a47d3ce6dcf182aac52ae2b23581c80512d9bcb419b3a72d437",
+    "verification/final_semantic_join.py": "91e09b2644c94055d81d653580052a19ec8995a563187cebbb9f3ca7d1836731",
+    "verification/full_bundle.py": "1878af5bb9008a936a8666136ae4edecbe248d7286a858e24ebf88f6fd79ab58",
+    "verification/source.py": "a1fbfa4094527a5c65b74e90cd7810841ee4118058b6a3802ca3779c5271551a"
+  },
+  "status": "passed_policy_component_only"
+}
