@@ -3,8 +3,8 @@
 Prepared source only. No module import, syntax/help/test, verifier, constructor,
 owner, scope, token, seed or fixture ran or was created by this source. A direct
 two-hour saved-evidence renewal was separately recorded on October 30; exact
-finite admission remains required. The separate32in-memory policy cases are CLOSED; thirteen Bundle, eighteen
-filesystem and twenty-four G14cases remain unexecuted. This writer has not run.
+finite admission remains required. The separate50policy/filesystem cases are CLOSED; thirteen Bundle and
+twenty-four G14cases remain unexecuted. This fixture writer has not run.
 
 `tools/final_fixture_quota.py` prepares the specialized writer needed by the
 future seed/control owner. The closed parallel quota retains its existing source

@@ -3,8 +3,8 @@
 Prepared source only. No import, syntax/help/test, verifier, owner, transport,
 scope, token, seed or fixture was created or run by this source. A new direct human
 two-hour saved-evidence renewal was separately recorded on October 30. Fresh
-finite admission is still required for this owner. The separate32in-memory policy cases are now CLOSED. Thirteen Bundle, eighteen
-filesystem and twenty-four G14cases remain unexecuted. No case was added here.
+finite admission is still required for this owner. The separate50policy/filesystem cases are now CLOSED. Thirteen Bundle and
+twenty-four G14cases remain unexecuted. This fixture owner has not run.
 
 `tools/final_fixture_owner.py` prepares one seed-build or Bundle-control owner
 around the separate constructor, writer and helpers. It cannot renew a parent,

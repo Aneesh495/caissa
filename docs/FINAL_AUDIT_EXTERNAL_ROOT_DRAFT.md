@@ -1,5 +1,7 @@
 # External audit receipt draft
 
+Checked status, October30: all50new policy/filesystem controls are now closed:32in-memory cases and18filesystem cases passed once under fresh finite scopes and actual direct human renewal. See `results/final-policy-controls-2026-10-30` and `results/final-audit-filesystem-controls-2026-10-30`. Actual owners/tool transports exited0 with clean closed ledgers, absent groups and released lease. This is component coverage only. No actual audit, G14 join, Bundle projection or designated entry passed. Thirteen Bundle and24G14cases remain unexecuted. The original preparation notes below describe the earlier unexecuted draft.
+
 Status: prepared and unexecuted. No receipt file, audit result, accepted root,
 scope, owner, import, test or verifier was created or run. The existing renewal
 request is pending. Actual acceptance remains eleven domains and five pending.

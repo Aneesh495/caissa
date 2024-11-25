@@ -1,0 +1,134 @@
+{
+  "Bundle_controls_unexecuted": 13,
+  "G14_controls_unexecuted": 24,
+  "G14_join_accepted": false,
+  "actual_audit_accepted": false,
+  "actual_full_entry_starts": 0,
+  "actual_owner_exit": 0,
+  "actual_synchronized_append_bytes": 1,
+  "actual_tool_exit": 0,
+  "case_results": [
+    {
+      "case": "private_regular_receipt_loads_exact_bytes",
+      "real_audit_accepted": false,
+      "synthetic_fixture": true
+    },
+    {
+      "case": "absent_optional_receipt_stays_unverified",
+      "real_audit_accepted": false,
+      "synthetic_fixture": true
+    },
+    {
+      "case": "path_without_expected_digest",
+      "reason": "external audit receipt path and trusted digest must be supplied together",
+      "rejected": true
+    },
+    {
+      "case": "digest_without_path",
+      "reason": "external audit receipt path and trusted digest must be supplied together",
+      "rejected": true
+    },
+    {
+      "case": "receipt_inside_evidence_bundle",
+      "reason": "audit receipt cannot be supplied inside its evidence bundle",
+      "rejected": true
+    },
+    {
+      "case": "changed_external_digest",
+      "reason": "external audit receipt identity differs",
+      "rejected": true
+    },
+    {
+      "case": "public_receipt_mode",
+      "reason": "external audit receipt is linked, public or excessive",
+      "rejected": true
+    },
+    {
+      "case": "empty_receipt",
+      "reason": "external audit receipt is linked, public or excessive",
+      "rejected": true
+    },
+    {
+      "case": "oversized_receipt",
+      "reason": "external audit receipt is linked, public or excessive",
+      "rejected": true
+    },
+    {
+      "case": "final_component_symlink",
+      "reason": "[Errno 62] Too many levels of symbolic links: 'final-link.json'",
+      "rejected": true
+    },
+    {
+      "case": "parent_component_symlink",
+      "reason": "[Errno 20] Not a directory: 'linked-parent'",
+      "rejected": true
+    },
+    {
+      "case": "hardlinked_receipt",
+      "reason": "external audit receipt is linked, public or excessive",
+      "rejected": true
+    },
+    {
+      "case": "fifo_rejected_without_blocking",
+      "reason": "evidence artifact must be a regular file",
+      "rejected": true
+    },
+    {
+      "case": "directory_not_receipt",
+      "reason": "evidence artifact must be a regular file",
+      "rejected": true
+    },
+    {
+      "case": "outside_private_metadata_namespace",
+      "reason": "external audit receipt must stay in attributed private project metadata",
+      "rejected": true
+    },
+    {
+      "case": "escaped_relative_path",
+      "reason": "source path is not a safe canonical relative name",
+      "rejected": true
+    },
+    {
+      "case": "caller_pass_field_in_file",
+      "reason": "external audit receipt schema or extra pass fields differ",
+      "rejected": true
+    },
+    {
+      "case": "changed_during_actual_descriptor_read",
+      "reason": "external audit receipt changed during read",
+      "rejected": true
+    }
+  ],
+  "controls": 18,
+  "fixture_payload_bytes_written": 11795,
+  "fixtures_retained_private_locally": true,
+  "full_R12_complete": false,
+  "full_acceptance": false,
+  "host_lease_released": true,
+  "metadata_ledger_closed_without_failure": true,
+  "native_browser_compiler_training_inference_game_starts": 0,
+  "old_closed_samples_or_controls_rerun": 0,
+  "owned_group_absent_after_reap": true,
+  "owner_elapsed_seconds": 0.05404958303552121,
+  "owner_stderr_bytes": 0,
+  "owner_stdout_bytes": 0,
+  "preservation_checks": 2,
+  "public_dummy_restored_private": true,
+  "real_audit_receipts_created": 0,
+  "regular_fixture_files": 9,
+  "rejections": 16,
+  "schema": "caissa-final-audit-filesystem-controls-component-v1",
+  "source_commit": "b19e4ddf1c84c33dcea3a90af9f8af590311c75d",
+  "source_sha256": {
+    "tests/final_audit_trust_filesystem.py": "c72a4b3d488af4f75a513b94ff6a923d020682154b5411aa54d6865a5745c63a",
+    "tools/final_audit_filesystem_controls.py": "8fa585ee435682047a92e2c5b9af0fcc21cfa2cf902cacb0aba06f9be506f194",
+    "verification/__init__.py": "3c18cdabc8322d6c66bba7cd813b57f60692632abb240348dc330843d6222962",
+    "verification/bundle.py": "006f94caed2dcc6b5f51a3aa1c64bd65aa32fc539b366e3fb0b2496e1d30a113",
+    "verification/final_audit_trust.py": "373b2f8100d96a3d60eefa0a3ebabfaf0f9c55eec660123dc486538247550a8b",
+    "verification/source.py": "a1fbfa4094527a5c65b74e90cd7810841ee4118058b6a3802ca3779c5271551a"
+  },
+  "status": "passed_synthetic_filesystem_component_only",
+  "synthetic_fifos": 1,
+  "synthetic_hardlink_aliases": 1,
+  "synthetic_symlinks": 2
+}
