@@ -290,7 +290,8 @@ def run(scope_name, expected_scope_sha256, verified_human_message_sha256):
             mac = shutil.disk_usage(ROOT).used
             check_admission(actual["charged_bytes"], mac,
                             scope["data_bytes"] - state["data_used"],
-                            scope["control_bytes"] - state["control_used"] + scope["outside_control_bytes"],
+                            scope["control_bytes"] - state["control_used"] + scope["outside_control_bytes"]
+                            + scope["launcher_control_bytes"] + scope["launcher_outside_control_bytes"],
                             128000000)
             observation = {"charged_bytes": actual["charged_bytes"], "mac_used_bytes": mac,
                            "external_path_count": 19, "unix": time.time()}
