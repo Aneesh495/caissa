@@ -228,7 +228,9 @@ def run(scope_name, expected_scope_sha256, verified_human_message_sha256):
                     and (target == work or str(target.relative_to(work)) in quota.directories)
                     and storage_admitted, "fixture owner directory escaped its exact inventory")
             if not target.exists():
-                require(target not in directories, "fixture directory creation repeated")
+                # Recursive mkdir may first try a child before its parent exists.
+                # Track the bounded name once; deletion and replacement remain
+                # forbidden, so a retry cannot recreate a consumed directory.
                 directories.add(target)
         if event == "open":
             name, mode, flags = args
