@@ -1,6 +1,6 @@
 # Selected original evaluator
 
-Status: development model. Full playing-strength and release acceptance are incomplete. The browser and default UCI session use classical evaluation. The selected neural evaluator is experimental and requires explicit activation.
+Status: experimental model, available in v0.1.0. The browser and default UCI session use classical evaluation. The trained evaluator requires explicit activation.
 
 ## Origin and selection
 
@@ -49,6 +49,6 @@ Wait for `uciok`, `readyok` and `bestmove` at their respective protocol boundari
 
 ## Strength and limitations
 
-The [completed 4000-game comparison](../results/full-neural-v3-2026-10-25/README.md) used the original format 3 executable and network throughout. It scored 1274 wins, 746 draws and 1980 losses, a -61.97 Elo difference against the unchanged classical evaluator with a 95% interval of [-71.25,-52.87]. Independent replay confirmed every game and the failed contribution endpoint. No crashes, illegal moves or time/protocol forfeits occurred. The frozen 2000 external games continue with that same candidate. A later format 4 deployment does not inherit those results as its own measured strength. Neither encoding has an established absolute rating; format 4 has no playing-strength measurement. Earlier negative pilots remain retained.
+The [completed 4000-game comparison](../results/full-neural-v3-2026-10-25/README.md) used the original format 3 executable and network throughout. It scored 1274 wins, 746 draws and 1980 losses, a -61.97 Elo difference against the unchanged classical evaluator with a 95% interval of [-71.25,-52.87]. Independent replay confirmed every game and the failed contribution endpoint. No crashes, illegal moves or time/protocol forfeits occurred. The frozen 2000 external games used that same candidate. In the separate [format 4 experiments](STRENGTH_V4.md), the 3997 completed neural versus classical games gave a diagnostic estimate of -63.86 relative Elo. Three games reached the ply limit and the original full-sample requirement failed. The [v0.1.0 strength benchmark](RELEASE_STRENGTH.md) tests the classical default.
 
-The original teacher is shallow, the labels depend on the declared adjudication policy, and validation loss measures prediction rather than search decisions. Higher integer precision can remove numerical error without improving moves. Selected-model strength, parallel behavior, controlled-host performance, final browser behavior and independent whole-project reproduction must pass their own gates before release.
+The original teacher is shallow, the labels depend on the declared adjudication policy, and validation loss measures prediction rather than search decisions. Higher integer precision can remove numerical error without improving moves. See [build status](BUILD_STATUS.md) for the original research gate outcomes.

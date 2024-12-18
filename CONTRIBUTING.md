@@ -10,4 +10,4 @@ Use new immutable run identities when executable, model, configuration or openin
 
 For service/browser work, run `npm run build` and `node tests/service_integration.mjs` against a live local service. Verify cancellation, stale messages, keyboard input and the exported variation. Keep protocol input, output and worker ownership bounded.
 
-Commit focused changes with the executed checks. Documentation must describe observed behavior and explicitly distinguish diagnostic from full acceptance. Release requires full independent verification, not a manually edited pass flag.
+Commit focused changes with the executed checks. Documentation must describe observed behavior and distinguish the product distribution from full research acceptance. The distribution workflow builds and tests the packaged engine and board. The full research packaging target requires independent verification.

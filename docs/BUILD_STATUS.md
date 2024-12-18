@@ -1,6 +1,22 @@
 # Build status
 
-Status: implemented development system; full acceptance incomplete; no release and no final absolute Elo.
+## v0.1.0 distribution
+
+The [v0.1.0 release](https://github.com/Aneesh495/caissa/releases/tag/v0.1.0)
+packages the classical UCI engine and local board for macOS arm64 and Linux
+x86-64. It includes the original trained model as an optional experiment.
+Both hosted distribution builds passed native tests, perft and a live
+packaged-service test. The source build passed browser checks at desktop and
+mobile widths, including original neural analysis and semantic controls.
+The [release strength report](RELEASE_STRENGTH.md) gives independently
+replayed results for the default engine.
+
+## Original research acceptance
+
+The full research gate remains incomplete. The release uses a separate
+product scope covering the native engine, local board, packaging and a
+bounded default-engine match. The historical neural gain, multicore matrix,
+end-to-end verifier and raw reproduction gaps are retained below.
 
 October 28, 2026: the original parent deadline has expired. The local minimal
 retention cleanup is complete, and the dedicated bulk Drive archive was deleted.
