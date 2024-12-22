@@ -95,7 +95,7 @@ jobs:
       - name: Real browser and independent board/PGN/native reconstruction
         timeout-minutes: 6
         run: |
-          npx playwright install --with-deps chromium
+          npx playwright install --only-shell chromium
           python -m tests.browser_component --engine build/caissa --output runs/ci-browser-component
       - name: Native arena and semantic negative controls
         run: |
