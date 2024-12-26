@@ -115,7 +115,9 @@ async function exercise(mode, width) {
   const c2 = page.locator('[data-square="c2"]'); await c2.focus(); await page.keyboard.press('Enter');
   await page.waitForFunction(() => document.querySelector('[data-square="c2"]').classList.contains('selected'));
   await page.keyboard.press('ArrowUp'); await page.keyboard.press('ArrowUp'); await page.keyboard.press('Enter');
-  await page.waitForFunction(() => document.querySelector('#fen').value.startsWith('rnbqkbnr/pppppppp/8/8/2P5/8/PP1PPPPP/'));
+  await page.waitForFunction(() =>
+    document.querySelector('#fen').value.startsWith('rnbqkbnr/pppppppp/8/8/2P5/8/PP1PPPPP/')
+    && document.activeElement?.getAttribute('data-square') === 'c4');
   const edited = await snapshot(page, 'keyboard-edit', mode, width); assert.equal(edited.focus, 'c4');
   await page.locator('#new-variation').click(); await page.locator('#export-pgn').click();
   await page.waitForFunction(() => document.querySelector('#status').textContent.startsWith('Exported'));
