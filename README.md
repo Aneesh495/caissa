@@ -1,88 +1,66 @@
 # Caissa
 
-An original C++23 UCI chess engine for standard chess and Chess960, with a local analysis board, an experimental incremental neural evaluator and a paired-match laboratory.
+An original C++23 UCI chess engine for standard chess and Chess960. Analyze a
+position in the offline browser board, play the engine's suggested lines, and
+export your variations as PGN.
 
-[Download Caissa v0.1.0](https://github.com/Aneesh495/caissa/releases/tag/v0.1.0) for macOS arm64 or Linux x86-64. Each archive contains the offline engine, the analysis board and an optional original network. Classical evaluation is the default because it won the evaluator comparison. See the [model card](docs/MODEL_CARD.md).
+[macOS arm64](https://github.com/Aneesh495/caissa/releases/download/v0.1.0/caissa-0.1.0-macos-arm64.tar.gz) · [Linux x86-64](https://github.com/Aneesh495/caissa/releases/download/v0.1.0/caissa-0.1.0-linux-x86_64.tar.gz) · [Two-minute demo](docs/DEMO.md) · [Release notes and checksums](https://github.com/Aneesh495/caissa/releases/tag/v0.1.0)
 
-![Live native-engine analysis board](docs/images/live-board.png)
+![Caissa's analysis board showing a mate in three, three candidate lines, and live search statistics](docs/images/release-analysis.png)
 
-## Play or analyze
+## Run it
 
-Point a UCI-compatible chess GUI at `build/caissa` in the extracted release.
-To open the local board, run `node dist/analysis-service/server.js` with Node.js
-24 from that directory, then open [the local board](http://127.0.0.1:8765).
-Import a FEN or PGN, analyze and cancel searches, and edit and export variations.
-See the [quick start](docs/QUICKSTART.md) for command-line and neural options.
-
-## Build from source
-
-Use a C++23 compiler, CMake 3.25 or newer and Ninja. The engine needs no
-Python, network access, reference engine or downloaded weights to play.
+Extract the release and add `build/caissa` to a UCI-compatible chess GUI.
+For the browser board, open a terminal in the extracted directory and run
+the following command with Node.js 24 installed.
 
 ```sh
-make test
-./build/caissa --perft 4
+node dist/analysis-service/server.js
 ```
 
-Perft prints `197281`. For the board, install the pinned JavaScript build
-dependencies with Node.js 24 and start the local service.
-
-```sh
-npm ci --ignore-scripts
-make demo
-```
-
-The experiment tools use uv and Python 3.12. Run `make bootstrap` and
-`make lab-test` to exercise the local laboratory.
+Open [the local board](http://127.0.0.1:8765). It supports FEN and PGN import,
+search cancellation, variation playback, and optional search inspection.
+See the [quick start](docs/QUICKSTART.md) for UCI and neural settings.
 
 ## Playing strength
 
-Caissa v0.1.0 played 192 games at 50 ms per move with both colors per opening.
-Against unrestricted Stockfish 19, it scored **15 wins, 1 draw and 80 losses**,
-for **−286 relative Elo** with a 95% interval of **[−394, −206]**. The 15 wins
-include four Stockfish time forfeits. Against Stockfish 19 at Skill Level 0, it
-scored **93 wins and 3 losses**, for **+597 relative Elo** with a 95% lower
-endpoint of **+442** and an unbounded upper endpoint. See the [match setup,
-forfeit sensitivity and replay instructions](docs/RELEASE_STRENGTH.md).
+The default classical engine played **192 independently replayed games** at
+50 ms per move, with both colors played from each opening.
 
-## Mechanisms
+| Stockfish 19 opponent | Caissa W-D-L | Relative Elo | 95% interval |
+|---|---:|---:|---:|
+| Unrestricted | 15-1-80 | −286 | −394 to −206 |
+| Skill Level 0 | 93-0-3 | +597 | +442 to unbounded |
 
-- [Legal generation](src/movegen.cpp): check and pin filtering, independent mailbox comparison, en passant and overlapping Chess960 castling.
-- [Search](src/search.cpp): iterative PVS, aspiration, quiescence, selective heuristics with off switches, bounded root workers and legal interrupted-search fallback.
-- [Position identity](src/position.cpp): exact reversible state, history-dependent draw decisions and separate safe search keys.
-- [Neural inference](src/network.cpp): original two-perspective king buckets, sparse accumulator updates, two nonlinear dense stages, scalar/NEON/AVX2 arithmetic contracts.
-- [Training](training/train.py): original selfplay labels, functional-input split screening, three independent seeds, validation selection and resumable optimizer/RNG state.
-- [Arena](arena/run.py): color-reversed openings, immutable inputs, independent legality, failure accounting, paired recovery and opening-cluster uncertainty.
-- [Analysis service](analysis-service/server.ts): loopback token/origin boundary, native-process budgets, stale-request cancellation and bounded output.
+Four of the 15 wins against unrestricted Stockfish were time forfeits.
+Scoring those four as Caissa losses gives −346 relative Elo with a 95%
+interval of −470 to −261. The figures describe these match conditions.
+[Benchmark setup and replay](docs/RELEASE_STRENGTH.md)
 
-See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution walkthroughs](docs/WALKTHROUGHS.md), [technical notes](docs/notes/) and [decisions](docs/adr/README.md).
+## How it works
 
-## Historical research results
+- Bitboard move generation handles checks, pins, en passant, and Chess960 castling. Reversible state tracks the history needed for draw decisions. [Move generation](src/movegen.cpp) · [Position state](src/position.cpp)
+- Iterative principal variation search uses quiescence, a transposition table, and bounded root workers. The browser can show completed-depth work and sampled search positions from the native engine. [Search](src/search.cpp) · [Search inspection](docs/notes/search-inspection.md)
+- The experimental evaluator updates two king-relative accumulators as pieces move. Three training seeds used data from 229,582 original self-play games. The selected model lost its matched strength comparison, so the release defaults to classical evaluation. [Neural inference](src/network.cpp) · [Model card](docs/MODEL_CARD.md)
+- The match arena pairs both colors from each opening and independently replays games and result statistics. [Arena](arena/run.py) · [Architecture](docs/ARCHITECTURE.md)
 
-| Check | Observed result | Scope |
-|---|---|---|
-| Full data and learning audit | 229582 completed original games; 10578434 distinct training inputs; every exported row rebuilt and all 240 original checkpoints independently evaluated | [Full G07 join passed](results/g07-full-audit-2026-10-26/README.md); final source binding and portable bulk remain pending |
-| Original learning | Three seeds completed 20000 updates each; all 240 checkpoints independently evaluated | [Validation-only selection](docs/MODEL_CARD.md); no test access or Elo conclusion |
-| Rules | 20 perft fixtures; 100000-position differential campaigns with zero disagreements | Development executables |
-| State restoration | 1000000 seeded transitions per Release/ASan+UBSan/TSan mode, independently replayed | [Selected q4096 network, both platforms](results/precision-v4-followup-2026-10-25/README.md) |
-| Protocol | 10000 adversarial sequences; recorded stop p99 below 50 ms | Frozen local host/load |
-| Integer inference | 100000 probes, bit-identical scalar/native/reference outputs | [Selected q4096 encoding](docs/notes/precision-v4.md), both platforms |
-| Float/integer error | Maximum 10.395 cp, mean 1.108 cp, unchanged limit 32 cp | Same selected float checkpoint; original q1024 failure retained |
-| Warm Stockfish 19 unrestricted | 0 wins, 0 draws, 48 losses | 20 ms/move, small paired diagnostic |
-| Full original neural contribution | 1274W/746D/1980L; -61.97 Elo, 95% interval [-71.25,-52.87] | [4000 games independently replayed](results/full-neural-v3-2026-10-25/README.md); required positive gain failed |
-| Full original external comparison | 2000 games across three settings; unrestricted Stockfish 19 subset: -392.39 relative Elo, 95% interval [-438.13,-353.45] | [Original q1024 candidate](results/full-external-v3-2026-10-25/README.md); no absolute rating |
-| New q4096/deferred neural comparison | 4000 scheduled attempts, 3997 finished games, three unfinished at the original 512-ply ceiling; independent acceptance failed | [Failure preserved](results/neural-v4-failure-2026-10-26); completed-game diagnostic -63.86 relative Elo versus classical, 95% interval [-73.80,-54.07]; not a certified full sample |
-| New q4096/deferred external comparison | All 2000 games independently replayed; unrestricted Stockfish 19 subset: 56W/2D/608L, -411.50 relative Elo, 95% interval [-460.14,-370.68] | [Frozen v4 actor](results/external-v4-2026-10-26); 100 ms, one thread, 16 MiB; no absolute rating |
-| Selected v4 runtime performance | 640 timed searches, 4581 memory observations, 2000 readiness samples and 16 independent scalar/native searches | [Full performance sample passed](results/performance-v4-2026-10-26/README.md); 1/2/4/8 threads, final binding pending; no Elo inference |
-| Larger neural pilot versus classical | 4 wins, 8 draws, 84 losses | 2000 nodes/move, diagnostic data split |
+## Build from source
 
-The original research acceptance remains incomplete. The failed neural gain,
-partial multicore sample and unavailable historical artifacts are recorded in
-the [build status](docs/BUILD_STATUS.md), [findings](docs/FINDINGS.md) and
-[retention record](docs/ARTIFACT_RETENTION.md).
+Use a C++23 compiler, CMake 3.25 or newer, and Ninja.
 
-The [model card](docs/MODEL_CARD.md) records the completed three-seed training, validation-only selection, original failed encoding and subsequent precision experiment. It also gives the explicit ten-percent UCI setting required by the selected model.
+```sh
+make test
+./build/caissa --perft 4  # 197281
+```
 
-[Reproduction](docs/REPRODUCIBILITY.md) explains the bounded demo and clean-checkout verifier. [Experiment protocol](docs/EXPERIMENT_PLAN.md), [artifact contracts](docs/ARTIFACT_FORMAT.md), [limitations](docs/LIMITATIONS.md), [recovery](docs/RECOVERY.md) and [dependency provenance](docs/DEPENDENCIES.md) define the practical boundaries.
+For the local board, use Node.js 24 and run `npm ci --ignore-scripts` followed
+by `make demo`. For the experiment tools, use uv and Python 3.12, then run
+`make bootstrap` and `make lab-test`.
 
-[Browser validation and keyboard recovery](docs/UI_VALIDATION.md) records the fresh-origin, constrained-viewport and real service-restart checks.
+## Research record
+
+The product release is separate from the original research acceptance.
+The neural gain requirement failed, the multicore sample is partial, and
+some historical raw artifacts were retired. The detailed results, negative
+findings, and reproduction instructions remain available.
+[Build status](docs/BUILD_STATUS.md) · [Findings](docs/FINDINGS.md) · [Reproduction](docs/REPRODUCIBILITY.md) · [Artifact retention](docs/ARTIFACT_RETENTION.md)
