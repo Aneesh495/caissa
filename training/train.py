@@ -64,7 +64,7 @@ def main():
             with torch.no_grad():model.embedding.weight[-1].zero_()
             if (step+1)%a.checkpoint_every==0 or step+1==a.steps:
                 value=validation(True);current_hash=state_hash(model)
-                record={'step':step+1,'loss':float(loss),'validation_quantized':value,'gradient_norm':float(norm),'parameters_changed':current_hash!=initial_hash,'parameter_sha256':current_hash,'seconds':time.monotonic()-start,'sampled_positions':(step+1)*a.batch,'qa_training':quantized}
+                record={'step':step+1,'loss':float(loss.detach()),'validation_quantized':value,'gradient_norm':float(norm),'parameters_changed':current_hash!=initial_hash,'parameter_sha256':current_hash,'seconds':time.monotonic()-start,'sampled_positions':(step+1)*a.batch,'qa_training':quantized}
                 log.write(json.dumps(record)+'\n');log.flush();print(json.dumps(record),flush=True)
                 is_best=value<best;best=min(best,value)
                 state={'schema':'caissa-checkpoint-v1','config':config,'model':model.state_dict(),'optimizer':optimizer.state_dict(),'scheduler':scheduler.state_dict(),'sampler':sampler.bit_generator.state,'torch_rng':torch.get_rng_state(),'python_rng':random.getstate(),'numpy_rng':np.random.get_state(),'device_rng':torch.cuda.get_rng_state_all() if a.device=='cuda' else torch.mps.get_rng_state() if a.device=='mps' else None,'step':step+1,'best_validation':best,'initial_hash':initial_hash,'current_hash':current_hash,'updates':updates,'untrained_validation':untrained}

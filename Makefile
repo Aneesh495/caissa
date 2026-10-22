@@ -9,4 +9,4 @@ test: build
 bootstrap:
 	uv sync --extra oracle
 doctor:
-	python3 tools/doctor.py
+	uv run --frozen python tools/doctor.py
