@@ -133,7 +133,7 @@ private:
             limits.milliseconds=time_budget(static_cast<std::int64_t>(remaining),static_cast<std::int64_t>(increment),moves_to_go,overhead_);
             limits.milliseconds=std::min<std::int64_t>(limits.milliseconds,600000);
         } else if(!have_clock&&!have_limit)limits.milliseconds=1000;
-        stop();control_=std::make_shared<SearchControl>();auto control=control_;auto root=position_;auto options=options_;auto table=table_;
+        stop();control_=std::make_shared<SearchControl>();control_->initialize(limits);auto control=control_;auto root=position_;auto options=options_;auto table=table_;
         worker_=std::jthread([this,control,root,options,table,limits] {
             try {
                 Search search(table);auto result=search.run(root,limits,options,control,[&](const SearchInfo& data){info(root,data);});

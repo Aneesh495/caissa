@@ -5,9 +5,20 @@
 #include <thread>
 namespace caissa {
 std::int64_t monotonic_ns() {return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();}
+void SearchControl::initialize(const Limits& limits) {
+    std::call_once(initialize_once,[&] {
+        node_limit=limits.nodes;ponder_budget_ms.store(limits.milliseconds);
+        pondering.store(limits.ponder&&!ponder_hit_requested.load());
+        if(limits.milliseconds>0&&!pondering.load()&&!limits.infinite)
+            deadline_ns.store(monotonic_ns()+limits.milliseconds*1000000);
+        // A hit racing initialization must not be overwritten by the initial ponder state.
+        if(ponder_hit_requested.load())ponderhit();
+    });
+}
 void SearchControl::ponderhit() {
-    pondering.store(false,std::memory_order_release);
-    if(ponder_budget_ms>0) deadline_ns.store(monotonic_ns()+ponder_budget_ms*1000000,std::memory_order_relaxed);
+    ponder_hit_requested.store(true);pondering.store(false,std::memory_order_release);
+    auto budget=ponder_budget_ms.load();
+    if(budget>0)deadline_ns.store(monotonic_ns()+budget*1000000,std::memory_order_relaxed);
 }
 std::int64_t time_budget(std::int64_t remaining,std::int64_t increment,int moves_to_go,int overhead) {
     auto available=std::max<std::int64_t>(1,remaining-overhead);
@@ -177,8 +188,7 @@ private:
 }
 SearchResult Search::run(Position root,const Limits& limits,const SearchOptions& options,std::shared_ptr<SearchControl> control,const InfoCallback& callback) {
     if(options.threads<1||options.threads>8||options.multipv<1||options.multipv>32||limits.depth<1||limits.depth>64)throw InputError("search resources out of bounds");
-    auto start=monotonic_ns();control->node_limit=limits.nodes;control->ponder_budget_ms=limits.milliseconds;control->pondering.store(limits.ponder);
-    if(limits.milliseconds>0&&!limits.ponder&&!limits.infinite)control->deadline_ns.store(start+limits.milliseconds*1000000);
+    auto start=monotonic_ns();control->initialize(limits);
     auto legal=root.legal();SearchResult result;
     auto state=rules(root,legal);if(state.ended()) {result.score=state.terminal==Termination::checkmate?-mate_score:0;return result;}
     if(!limits.root_moves.empty()) std::erase_if(legal,[&](Move m){return std::find(limits.root_moves.begin(),limits.root_moves.end(),m)==limits.root_moves.end();});

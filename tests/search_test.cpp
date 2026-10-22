@@ -36,6 +36,8 @@ int main(){try {
     check(stopped.best.valid(),"stop lost legal fallback");check((monotonic_ns()-start)/1000000<100,"stop latency");
     limits.infinite=false;limits.nodes=250;options.threads=1;
     auto bounded=engine.run(Position::start(),limits,options,std::make_shared<SearchControl>());check(bounded.info.nodes<=250,"node budget exceeded");
+    auto early_hit=std::make_shared<SearchControl>();early_hit->ponderhit();Limits ponder_limits;ponder_limits.ponder=true;ponder_limits.milliseconds=100;early_hit->initialize(ponder_limits);
+    check(!early_hit->pondering.load()&&early_hit->deadline_ns.load()!=INT64_MAX,"early ponder hit was lost");
     check(time_budget(1000,10,30,20)>0&&time_budget(1,0,30,20)==1,"time allocation bounds");
     std::cout<<"exhaustive minimax, mate, MultiPV, cancellation and node budget passed\n";
 }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}}

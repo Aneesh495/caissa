@@ -104,6 +104,7 @@ def integer_reference(path,x):
     raw=Path(path).read_bytes()
     if len(raw)<120 or raw[:8] not in [b'CAISSAN1',b'CAISSAN2']:raise ValueError('invalid network')
     version,fv,nf,width,h1,h2,scale,clip=struct.unpack('<8I',raw[8:40])
+    if raw[:8]!=f'CAISSAN{version}'.encode():raise ValueError('magic/version mismatch')
     if (fv,nf,h1,h2)!=(1,FEATURES,HIDDEN1,HIDDEN2) or width not in [32,64,128] or (version,scale,clip) not in [(1,64,127),(2,1024,2047)]:raise ValueError('architecture mismatch')
     size,crc,reserved=struct.unpack('<QII',raw[104:120])
     if reserved or size!=len(raw)-120 or zlib.crc32(raw[120:])!=crc:raise ValueError('network integrity')
