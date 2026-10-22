@@ -29,6 +29,9 @@ int main(){try {
     Search engine(std::make_shared<TranspositionTable>(1));Limits limits;limits.depth=3;SearchOptions options;options.threads=4;options.multipv=4;
     auto r=engine.run(p,limits,options,std::make_shared<SearchControl>());check(r.score==mate_score-1,"mate in one not found");replay(p,r.pv);
     std::set<std::uint32_t> roots;for(auto& line:r.info.lines){check(roots.insert(line.move.packed()).second,"duplicate MultiPV");replay(p,line.pv);}
+    auto traced_options=options;traced_options.threads=1;traced_options.trace_limit=8;auto traced=engine.run(Position::start(),limits,traced_options,std::make_shared<SearchControl>());
+    check(traced.info.trace.size()<=8,"trace budget exceeded");
+    for(auto& sample:traced.info.trace)check(Position::from_fen(sample.fen).coherent(),"trace FEN invalid");
     auto control=std::make_shared<SearchControl>();limits.depth=64;limits.infinite=true;
     auto future=std::async(std::launch::async,[&]{return engine.run(Position::start(),limits,options,control);});
     std::this_thread::sleep_for(std::chrono::milliseconds(10));auto start=monotonic_ns();control->stop.store(true);

@@ -11,7 +11,7 @@ struct SearchOptions {
     bool table=true, pvs=true, aspiration=true, quiescence=true;
     bool null_move=true, lmr=true, extensions=true, history=true, see=true;
     bool futility=true;
-    int threads=1, multipv=1;
+    int threads=1, multipv=1,trace_limit=0;
     std::shared_ptr<const Network> network;
     bool scalar_network=false;
 };
@@ -42,13 +42,15 @@ struct SearchStats {
     SearchStats& operator+=(const SearchStats& rhs);
 };
 struct PrincipalLine {Move move{};int score=0;Moves pv;Bound bound=Bound::exact;};
+struct TraceSample {std::string fen;int depth,alpha,beta,ply;bool synthetic;};
 struct SearchInfo {
     int depth=0;
-    std::uint64_t nodes=0;
+    std::uint64_t nodes=0,completed_depth_nodes=0;
     std::int64_t elapsed_ms=0;
     int hashfull=0;
     SearchStats stats;
     std::vector<PrincipalLine> lines;
+    std::vector<TraceSample> trace;
 };
 struct SearchResult {Move best{};int score=0;Moves pv;SearchInfo info;bool interrupted=false;};
 using InfoCallback=std::function<void(const SearchInfo&)>;
