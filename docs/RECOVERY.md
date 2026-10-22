@@ -25,3 +25,9 @@ Cancel the current browser request or close its connection. The service owns its
 Evidence run directories are immutable. Fix source, commit and use a new run ID after failure. Pass the trusted checkout and expected commit explicitly to the verifier. Hash repair cannot legitimize a changed chess result. A rejected full gate stays rejected. Only the full verifier and current maintainer audit permit release packaging.
 
 Sources: [corpus](../training/corpus.py), [trainer](../training/train.py), [arena](../arena/run.py), [recovery tests](../tests/recovery.py), [arena recovery](../tests/arena_recovery.py).
+
+## Prepared-data replay
+
+`training.prepare --follow` consumes the fixed pair range while the original corpus writer is active. It never reads a temporary pair. The source SHA inventory, identity aggregates, contributor lineage, counts and histograms commit in one SQLite transaction every 100 pairs. A stopped corpus writer with a missing pair is an error, not successful preparation. The final NumPy arrays are exported only after the full requested range has been consumed.
+
+After interruption, rerun the same preparation command with `--resume`. Completed source bytes are rechecked before reuse, and changed corpus configuration or held-out manifests are rejected. An interrupted array export is regenerated from the committed replay index. `DATASET.json` appears only after complete export and hashes; a completed dataset is immutable. A forced SIGKILL after the first 100-pair transaction reproduced every array and lineage byte and all counts/histograms from an uninterrupted 200-pair preparation.

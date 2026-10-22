@@ -1,6 +1,6 @@
 """Replay, lineage splitting, functional-input deduplication and held-out screening."""
 
-import argparse, hashlib, json, math, sqlite3, time
+import argparse, hashlib, json, math, sqlite3, time, fcntl
 from pathlib import Path
 import chess
 import numpy as np
@@ -56,8 +56,16 @@ def main():
     ap.add_argument(
         "--openings", type=Path, default=Path("config/strength-openings.json")
     )
+    ap.add_argument("--resume", action="store_true")
+    ap.add_argument("--follow", action="store_true")
     a = ap.parse_args()
-    a.output.mkdir(parents=True, exist_ok=False)
+    if a.resume and not (a.output / "identities.sqlite3").exists():
+        raise ValueError("no preparation transaction exists to resume")
+    a.output.mkdir(parents=True, exist_ok=a.resume)
+    writer = (a.output / "PREPARE.lock").open("a")
+    fcntl.flock(writer.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+    if (a.output / "DATASET.json").exists():
+        raise ValueError("prepared dataset is already complete and immutable")
     heldout = set()
     heldout_families = set()
     heldout_inputs = {}
@@ -88,10 +96,10 @@ def main():
     db.execute("PRAGMA journal_mode=WAL")
     db.execute("PRAGMA cache_size=-131072")
     db.execute(
-        "CREATE TABLE positions (input BLOB PRIMARY KEY, position_id BLOB, split INTEGER, fen TEXT, outcome REAL, teacher_cp REAL, teacher_probability REAL, n INTEGER, min_outcome REAL, max_outcome REAL, game TEXT, family TEXT) WITHOUT ROWID"
+        "CREATE TABLE IF NOT EXISTS positions (input BLOB PRIMARY KEY, position_id BLOB, split INTEGER, fen TEXT, outcome REAL, teacher_cp REAL, teacher_probability REAL, n INTEGER, min_outcome REAL, max_outcome REAL, game TEXT, family TEXT) WITHOUT ROWID"
     )
     db.execute(
-        "CREATE TABLE lineage (input BLOB, game TEXT, n INTEGER, first_ply INTEGER, last_ply INTEGER, PRIMARY KEY(input,game)) WITHOUT ROWID"
+        "CREATE TABLE IF NOT EXISTS lineage (input BLOB, game TEXT, n INTEGER, first_ply INTEGER, last_ply INTEGER, PRIMARY KEY(input,game)) WITHOUT ROWID"
     )
     counts = {
         "games": 0,
@@ -117,16 +125,104 @@ def main():
             "search_depth",
         ]
     }
-    source_hash = hashlib.sha256()
-    start = time.monotonic()
-    source_pairs = []
-    for path in sorted(a.corpus.glob("*/*.json")):
-        raw = path.read_bytes()
-        source_hash.update(hashlib.sha256(raw).digest())
-        pair = json.loads(raw)
-        source_pairs.append(
-            {"pair": pair["pair"], "sha256": hashlib.sha256(raw).hexdigest()}
+    corpus_config = json.loads((a.corpus / "CONFIG.json").read_text())
+    preparation_config = {
+        "schema": "caissa-prepare-transaction-v1",
+        "corpus_config": corpus_config,
+        "heldout_inputs": heldout_inputs,
+        "dataset_contract": "caissa-dataset-v2",
+    }
+    db.execute(
+        "CREATE TABLE IF NOT EXISTS sources (pair INTEGER PRIMARY KEY, sha256 TEXT NOT NULL)"
+    )
+    db.execute(
+        "CREATE TABLE IF NOT EXISTS transaction_state (key TEXT PRIMARY KEY,value TEXT NOT NULL)"
+    )
+    previous = db.execute(
+        "SELECT value FROM transaction_state WHERE key='config'"
+    ).fetchone()
+    if previous is not None and json.loads(previous[0]) != preparation_config:
+        raise ValueError("preparation source configuration or held-out bytes changed")
+    if previous is None:
+        db.execute(
+            "INSERT INTO transaction_state VALUES(?,?)",
+            ("config", json.dumps(preparation_config, sort_keys=True)),
         )
+    saved = db.execute(
+        "SELECT value FROM transaction_state WHERE key='progress'"
+    ).fetchone()
+    if saved is not None:
+        state = json.loads(saved[0])
+        counts = state["counts"]
+        hist = state["histograms"]
+    completed_sources = {
+        number: sha for number, sha in db.execute("SELECT pair,sha256 FROM sources")
+    }
+    start = time.monotonic()
+    wall_start = time.time()
+    session_pairs = 0
+
+    def checkpoint():
+        state = {
+            "counts": counts,
+            "histograms": hist,
+            "sources": len(completed_sources),
+        }
+        db.execute(
+            "INSERT INTO transaction_state VALUES(?,?) ON CONFLICT(key) DO UPDATE SET value=excluded.value",
+            ("progress", json.dumps(state, sort_keys=True)),
+        )
+        db.commit()
+        atomic_json(
+            a.output / "PREPARE_PROGRESS.json",
+            {
+                "source_pairs": len(completed_sources),
+                "counts": counts,
+                "seconds_this_session": time.monotonic() - start,
+                "wall_seconds_this_session": time.time() - wall_start,
+            },
+        )
+        print(
+            json.dumps({"source_pairs": len(completed_sources), **counts}), flush=True
+        )
+
+    checkpoint()
+
+    def paths():
+        if not a.follow:
+            yield from sorted(a.corpus.glob("*/*.json"))
+            return
+        for number in range(corpus_config["requested_pairs"]):
+            path = a.corpus / f"{number//256:06d}" / f"{number:09d}.json"
+            while not path.exists():
+                with (a.corpus / "CORPUS.lock").open("a") as lock:
+                    try:
+                        fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    except BlockingIOError:
+                        pass
+                    else:
+                        raise ValueError(
+                            "corpus writer stopped before required pair " + str(number)
+                        )
+                time.sleep(0.2)
+            yield path
+
+    for path in paths():
+        number = int(path.stem)
+        if number in completed_sources:
+            if digest(path) != completed_sources[number]:
+                raise ValueError(
+                    "completed source pair changed during preparation resume"
+                )
+            continue
+        raw = path.read_bytes()
+        pair = json.loads(raw)
+        if (
+            pair["pair"] != number
+            or len(pair["games"]) != 2
+            or [game["reverse"] for game in pair["games"]] != [0, 1]
+        ):
+            raise ValueError("source pair identity differs from journal path")
         if pair.get("schema") != "caissa-selfplay-v1":
             raise ValueError("unsupported corpus journal")
         for g in pair["games"]:
@@ -216,10 +312,22 @@ def main():
                 ]:
                     label = str(value)
                     hist[key][label] = hist[key].get(label, 0) + 1
-        if counts["games"] % 200 == 0:
-            db.commit()
-            print(json.dumps(counts), flush=True)
-    db.commit()
+        sha = hashlib.sha256(raw).hexdigest()
+        db.execute("INSERT INTO sources VALUES(?,?)", (number, sha))
+        completed_sources[number] = sha
+        session_pairs += 1
+        if session_pairs % 100 == 0:
+            checkpoint()
+    checkpoint()
+    source_pairs = [
+        {"pair": number, "sha256": sha}
+        for number, sha in db.execute("SELECT pair,sha256 FROM sources ORDER BY pair")
+    ]
+    source_hash = hashlib.sha256()
+    for row in source_pairs:
+        source_hash.update(bytes.fromhex(row["sha256"]))
+    if a.follow and len(source_pairs) != corpus_config["requested_pairs"]:
+        raise ValueError("follow mode did not consume the complete frozen corpus")
     sizes = {}
     for split, name in [(0, "train"), (1, "validation"), (2, "test")]:
         n = db.execute(
@@ -306,6 +414,7 @@ def main():
         "histograms": hist,
         "histogram_scope": "eligible raw observations after held-out family/input screening, before duplicate aggregation",
         "seconds": time.monotonic() - start,
+        "timing_scope": "current preparation session; checkpoint progress preserves work from earlier sessions",
         "files": {p.name: digest(p) for p in a.output.glob("*.npy")},
     }
     atomic_json(a.output / "DATASET.json", manifest)
