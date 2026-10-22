@@ -20,7 +20,7 @@ def targets(rows,weight):
 
 def main():
     ap=argparse.ArgumentParser();ap.add_argument('dataset',type=Path);ap.add_argument('output',type=Path);ap.add_argument('--width',type=int,choices=[32,64,128],default=64);ap.add_argument('--seed',type=int,required=True);ap.add_argument('--steps',type=int,default=1000);ap.add_argument('--batch',type=int,default=512);ap.add_argument('--lr',type=float,default=.001);ap.add_argument('--outcome-weight',type=float,default=.5);ap.add_argument('--device',choices=['cpu','mps','cuda'],default='cpu');ap.add_argument('--threads',type=int,default=2);ap.add_argument('--checkpoint-every',type=int,default=100);ap.add_argument('--resume',action='store_true');a=ap.parse_args()
-    if not 1<=a.steps<=1000000 or not 16<=a.batch<=8192 or not 0<=a.outcome_weight<=1:ap.error('training budget outside supported bounds')
+    if not 1<=a.steps<=1000000 or not 16<=a.batch<=8192 or not 0<=a.outcome_weight<=1 or not 1<=a.threads<=8:ap.error('training budget outside supported bounds')
     if a.device=='mps' and not torch.backends.mps.is_available():raise RuntimeError('MPS requested but unavailable')
     if a.device=='cuda' and not torch.cuda.is_available():raise RuntimeError('CUDA requested but unavailable')
     torch.set_num_threads(a.threads);torch.manual_seed(a.seed);random.seed(a.seed);np.random.seed(a.seed)
@@ -93,7 +93,7 @@ def main():
                     best_generation={'path':legacy,'sha256':digest(a.output/legacy)}
                 atomic_json(pointer,{'schema':'caissa-checkpoint-transaction-v1','last':current_generation,'best':best_generation})
                 alias('last.pt',relative);alias('best.pt',best_generation['path'])
-        summary={'status':'diagnostic-learning' if manifest['counts']['distinct_usable_positions']<10000000 or manifest['counts']['completed_games']<100000 else 'full-data-training-completed','seed':a.seed,'steps':a.steps,'updates':updates,'initial_sha256':initial_hash,'final_sha256':state_hash(model),'untrained_validation':untrained,'best_validation':best,'improved':best<untrained,'dataset_sha256':dataset_id,'test_accessed':False,'seconds_this_session':time.monotonic()-start}
+        summary={'status':'diagnostic-learning' if manifest['splits']['train']<10000000 or manifest['counts']['completed_games']<100000 else 'full-data-training-completed','seed':a.seed,'steps':a.steps,'updates':updates,'initial_sha256':initial_hash,'final_sha256':state_hash(model),'untrained_validation':untrained,'best_validation':best,'improved':best<untrained,'dataset_sha256':dataset_id,'test_accessed':False,'seconds_this_session':time.monotonic()-start}
         atomic_json(a.output/'SUMMARY.json',summary);print(json.dumps(summary))
     finally:log.close()
 if __name__=='__main__':main()

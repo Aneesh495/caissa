@@ -74,6 +74,10 @@ def independent_statistics(records):
     for _ in range(20000):
         chosen=clusters[rng.integers(len(clusters),size=len(clusters))];samples.append(float(chosen[:,0].sum()/chosen[:,1].sum()))
     lo,hi=np.quantile(samples,[.025,.975]);mean=sum(values)/len(values)
+    if mean in (0.,1.):
+        total=float(clusters[:,1].sum());squared_weights=sum((float(row[1])/total)**2 for row in clusters)
+        radius=math.sqrt(math.log(2/.05)*squared_weights/2)
+        lo=min(float(lo),max(0.,mean-radius));hi=max(float(hi),min(1.,mean+radius))
     return {'wins':int(wins),'draws':int(draws),'losses':int(losses),'games':int(wins+draws+losses),'unfinished_games':unfinished,'complete_pairs':len(values),'independent_opening_clusters':len(units),'score':mean,'score_95':[float(lo),float(hi)]}
 
 def verify(bundle,checkout,expected,profile):
@@ -92,6 +96,8 @@ def verify(bundle,checkout,expected,profile):
         replay=subprocess.run(command,capture_output=True,text=True,timeout=60)
         if replay.returncode or int(replay.stdout)!=expected_row['nodes']:raise Rejection('independent native perft replay failed')
     acceptance=load(bundle/'ACCEPTANCE.json')
+    trusted_model=checkout/'models/diagnostic-v2.cai'
+    if profile=='diagnostic' and sha(bundle/'network.cai')!=sha(trusted_model):raise Rejection('network identity differs from trusted saved model')
     if profile!=acceptance['profile']:raise Rejection('profile mismatch; diagnostics cannot certify full acceptance')
     commands=[json.loads(l) for l in (bundle/'COMMANDS.jsonl').read_text().splitlines()]
     if not commands or any(c['exit']!=0 for c in commands if c['required']):raise Rejection('missing or failed required execution')

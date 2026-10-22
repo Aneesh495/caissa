@@ -2,7 +2,7 @@
 import queue,subprocess,threading,time
 class EngineFailure(RuntimeError):pass
 class UciClient:
-    def __init__(self,command,options,timeout=10):
+    def __init__(self,command,options,timeout=10,warmup_nodes=0):
         self.process=subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,bufsize=1)
         self.lines=queue.Queue(maxsize=10000);self.timeout=timeout
         def reader():
@@ -21,6 +21,11 @@ class UciClient:
                 if any(c in str(name)+str(value) for c in '\r\n\0'):raise ValueError('invalid option delimiter')
                 self.send(f'setoption name {name} value {str(value).lower() if isinstance(value,bool) else value}')
             self.send('isready');self.until('readyok',timeout)
+            self.warmup_ms=0.
+            if warmup_nodes:
+                start=time.monotonic_ns();self.send('position startpos');self.send(f'go nodes {warmup_nodes}');self.until('bestmove ',timeout)
+                self.warmup_ms=(time.monotonic_ns()-start)/1e6
+                self.send('ucinewgame');self.send('isready');self.until('readyok',timeout)
         except BaseException:self.close();raise
     def send(self,line):
         if len(line)>8192:raise EngineFailure('command too long')
