@@ -1,4 +1,5 @@
 #include "caissa/uci.hpp"
+#include "caissa/protocol_io.hpp"
 #include "caissa/search.hpp"
 #include "caissa/version.hpp"
 #include <charconv>
@@ -19,7 +20,7 @@ std::uint64_t number(std::string_view s,std::uint64_t maximum=1000000000000ULL) 
 bool boolean(const std::string& s) {if(s=="true")return true;if(s=="false")return false;throw InputError("boolean must be true or false");}
 class Session {
 public:
-    explicit Session(std::ostream& output):output_(output),position_(Position::start()),table_(std::make_shared<TranspositionTable>(32)){}
+    explicit Session(ProtocolOutput& output):output_(output),position_(Position::start()),table_(std::make_shared<TranspositionTable>(32)){}
     ~Session(){stop();}
     bool command(const std::string& line) {
         auto t=tokens(line);if(t.empty())return true;auto& cmd=t[0];
@@ -50,11 +51,11 @@ public:
     }
     void error(const std::exception& e){emit("info string error "+std::string(e.what()));}
 private:
-    std::ostream& output_;std::mutex output_mutex_;Position position_;
+    ProtocolOutput& output_;Position position_;
     std::shared_ptr<TranspositionTable> table_;SearchOptions options_;
     std::shared_ptr<SearchControl> control_;std::jthread worker_;
     int overhead_=20;bool chess960_=false,inspect_stats_=false;std::shared_ptr<const Network> loaded_network_;
-    void emit(const std::string& text){std::lock_guard lock(output_mutex_);output_<<text<<'\n'<<std::flush;}
+    void emit(const std::string& text){output_.send(text);}
     void stop(){if(control_)control_->stop.store(true);if(worker_.joinable())worker_.join();control_.reset();}
     void option(const std::vector<std::string>& t) {
         if(t.size()<3||t[1]!="name")throw InputError("setoption requires name");
@@ -156,14 +157,17 @@ private:
 };
 }
 int uci_loop(std::istream& input,std::ostream& output) {
-    Session session(output);std::string line;line.reserve(8192);bool oversized=false;char c;
-    while(input.get(c)) {
-        if(c!='\n') {if(line.size()<8192)line+=c;else oversized=true;continue;}
-        if(oversized){InputError e("command exceeds 8192 bytes");session.error(e);}
-        else try{if(!session.command(line))return 0;}catch(const std::exception& e){session.error(e);}
-        line.clear();oversized=false;
+    ProtocolOutput channel(output);
+    {
+        Session session(channel);std::string line;line.reserve(8192);bool oversized=false,quit=false;
+        read_protocol_input(input,[&](char c) {
+            if(c!='\n'){if(line.size()<8192)line+=c;else oversized=true;return true;}
+            if(oversized){InputError e("command exceeds 8192 bytes");session.error(e);}
+            else try{if(!session.command(line)){quit=true;return false;}}catch(const std::exception& e){session.error(e);}
+            line.clear();oversized=false;return true;
+        },[&]{return channel.failed();});
+        if(!quit&&!line.empty()&&!oversized&&!channel.failed())try{session.command(line);}catch(const std::exception& e){session.error(e);}
     }
-    if(!line.empty()&&!oversized)try{session.command(line);}catch(const std::exception& e){session.error(e);}
-    return 0;
+    return channel.finish()?0:2;
 }
 }
