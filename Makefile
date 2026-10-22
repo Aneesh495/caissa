@@ -69,3 +69,7 @@ release:
 	@test "$(PROFILE)" = full || (echo 'Release requires PROFILE=full and independently verified full evidence'; exit 2)
 	$(MAKE) verify PROFILE=full EVIDENCE=$(EVIDENCE) SOURCE_COMMIT=$(SOURCE_COMMIT) CHECKOUT=$(CHECKOUT)
 	$(PYTHON) -m tools.package_release --evidence $(EVIDENCE) --commit $(SOURCE_COMMIT)
+
+.PHONY: profile
+profile: build
+	$(PYTHON) -m tools.performance --engine $(BUILD)/caissa --network $(NETWORK) --output runs/$(RUN_ID)-profile --load-note 'Host load was not independently checked by this target' --diagnostic
