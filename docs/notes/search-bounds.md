@@ -1,0 +1,11 @@
+# Search bounds and cancellation
+
+`src/search.cpp` implements a side-to-move negamax recurrence. A child score is negated with its window reversed: `[-beta,-alpha]`. A completed fail-high is a lower bound; a fail-low is an upper bound. Principal variation searches first use a unit window and repeat at full width when the score improves alpha without reaching beta. Root moves are each resolved to an exact completed-depth score. Incomplete root iterations never replace the last completed iteration, preserving MultiPV labels and a legal fallback.
+
+Mate is `30000 - ply` for a win. Table storage adds ply to positive mate scores and subtracts it from negative scores, making distance independent of the caller. Retrieval reverses the transform. `tests/core_test.cpp` checks round trips and `tests/table_test.cpp` changes retrieval ply.
+
+The table in `src/table.cpp` has four entries per bucket and 512 mutex stripes. Probe returns a copy while holding the stripe lock; store, clear and occupancy sampling hold the same lock. There are no unsynchronized payload reads. Replacement discounts entries by age and depth. An exact tag match uses the full search-context key from `src/position.cpp`, including reversible history and clock. Configuration changes clear entries.
+
+`SearchControl` owns cancellation, deadline and node tickets. Worker-local history, killers and counter moves are never shared. Root workers consume a bounded atomic work index, share the table, and join at the depth barrier. This is root splitting, with potentially uneven subtree work and no claimed linear scaling. Exception unwinding restores every made move through a scope guard. Cancellation is read at each visited node; time is checked at least every 64 nodes. The protocol thread owns the search thread and joins before changing position or table ownership.
+
+`tests/search_test.cpp` compares nonselective depth-four results against a separate exhaustive minimax using mailbox moves. It also replays PVs, checks mate in one, distinct MultiPV roots, node limits and cancellation. `tools/protocol_audit.py` independently checks emitted moves and records stop latency. These checks establish bounded examples, not full playing strength.
