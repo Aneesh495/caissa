@@ -3,7 +3,8 @@ import queue,subprocess,threading,time
 class EngineFailure(RuntimeError):pass
 class UciClient:
     def __init__(self,command,options,timeout=10,warmup_nodes=0):
-        self.process=subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,bufsize=1)
+        try:self.process=subprocess.Popen(command,stdin=subprocess.PIPE,stdout=subprocess.PIPE,stderr=subprocess.DEVNULL,text=True,bufsize=1)
+        except OSError as e:raise EngineFailure('engine startup failed: '+str(e)) from e
         self.lines=queue.Queue(maxsize=10000);self.timeout=timeout
         def reader():
             try:
