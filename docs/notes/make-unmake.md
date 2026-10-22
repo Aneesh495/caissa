@@ -1,0 +1,7 @@
+# Exact reversible state
+
+`Undo` in `include/caissa/position.hpp` saves distinct touched squares, old pieces, castling origins, en passant, clocks, side, hash, history size and synthetic-search depth. `Position::save_square` deduplicates overlap squares before mutation. Restoring first clears every touched square, then reinstates old pieces, avoiding a temporary overlapping king/rook overwrite in Chess960.
+
+Piece hashes change with `put`; side, rights and literal en passant metadata are removed and restored separately. `recompute_key` walks the entire board independently of incremental hash updates. The repetition key additionally normalizes an unusable en passant marker. History is append-only inside a made move and resized to its previous exact length on undo. A null search move is explicitly synthetic: it does not become a game-history event and its subtree cannot manufacture a game draw claim.
+
+Search owns a saved neural accumulator for each scoped move. Sparse updates use old and new pieces from the same undo record. Both ordinary return and cancellation unwinding restore the position and accumulator. A stale accumulator key throws before inference. `tests/position_test.cpp` checks stacked random restoration and castling overlap; `tests/network_test.cpp` ran one million transitions with full hash recomputation and full feature refresh. Exact state restoration is a prerequisite for trustworthy search and corpus generation. It does not by itself establish that the search chooses strong moves.

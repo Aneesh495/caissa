@@ -1,0 +1,7 @@
+# Bitboards and legal moves
+
+`src/attacks.cpp` creates knight, king, pawn and directional ray tables from square coordinates. Sliding attacks intersect a ray with occupancy, choose its nearest blocker, then remove the ray beyond that blocker. A separate stepping loop checks the result on seeded occupancies. No copied magic numbers or imported engine tables are required.
+
+`src/movegen.cpp` first produces pseudo-legal targets. Checkers determine whether a nonking move must capture a checking piece or block its ray. Absolute pins are found by removing friendly occupancy from the king's sliding view, then requiring exactly one friendly blocker between king and enemy slider. A pinned move must remain on that line. King destinations are checked with the old king removed. En passant always uses make/check/unmake because removing a pawn on a third square can expose an attack. Castling separately checks vacancies, transit squares and final occupancy, including Chess960 overlap cases.
+
+The independent 10x12 mailbox in `src/reference.cpp` uses signed pieces, sentinel borders, coordinate stepping and its own move application. `tools/differential.py` compares this path and optimized bitboards against python-chess. Three initial 100000-position runs had no move-set mismatches. Each run has a seed, executable hash and raw observations. The external oracle is a test dependency, never the runtime move generator. Perft fixtures in `config/perft.json` are frozen from the external oracle; changing the expected values to match Caissa would invalidate the check.
