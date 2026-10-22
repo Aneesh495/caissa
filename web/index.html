@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Caissa | Analysis room</title><link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header><a class="wordmark" href="/">caissa<span>♞</span></a><span class="eyebrow">THE ANALYSIS ROOM</span><span id="engine-label" class="engine-label">Connecting to local engine</span></header>
+<main>
+<section class="board-panel" aria-label="Chess analysis board">
+<div class="panel-heading"><div><p class="eyebrow">FOLLOW THE POSITION</p><h1>A move worth finding.</h1></div><button id="flip" class="quiet" title="Flip board">↕ Flip</button></div>
+<div class="board-frame"><div id="board" role="grid" aria-label="Chessboard. Arrow keys move focus, Enter selects a square."></div></div>
+<div class="position-bar"><span id="turn">White to move</span><span id="move-number">Move 1</span><div class="navigation"><button id="first" title="First position">|‹</button><button id="previous" title="Previous position">‹</button><button id="next" title="Next mainline position">›</button><button id="last" title="Last mainline position">›|</button></div></div>
+<div class="fen-row"><label for="fen">FEN</label><input id="fen" spellcheck="false" aria-label="Position FEN"><button id="load-fen">Load</button><button id="reset" class="quiet">Reset</button></div>
+<p id="status" role="status" aria-live="polite">Loading position.</p>
+</section>
+<aside>
+<section class="analysis-panel"><div class="section-top"><h2>Find the next move</h2><span id="analysis-state" class="badge">READY</span></div>
+<p class="muted">Original Caissa search, running on your machine.</p>
+<div class="resource-grid"><label>Time<select id="time"><option value="1000">1 second</option><option value="3000" selected>3 seconds</option><option value="10000">10 seconds</option><option value="30000">30 seconds</option></select></label><label>Threads<select id="threads"><option>1</option><option selected>2</option><option>4</option></select></label><label>Lines<select id="multipv"><option>1</option><option selected>3</option><option>5</option></select></label><label>Hash<select id="hash"><option>16</option><option selected>32</option><option>64</option><option>128</option></select></label></div>
+<div class="analysis-actions"><button id="analyze" class="primary">Analyze position <span>↗</span></button><button id="cancel" disabled>Stop</button></div>
+<div class="search-stats" aria-label="Search statistics"><div><span>DEPTH / SEL.</span><strong id="depth">0 / 0</strong></div><div><span>NODES</span><strong id="nodes">0</strong></div><div><span>NODES / SEC</span><strong id="nps">0</strong></div></div>
+<div id="lines" class="pv-list"><p class="empty">The board is yours. Start an analysis to explore its possibilities.</p></div>
+</section>
+<section class="history-panel"><div class="section-top"><h2>Evaluation history</h2><span class="muted">White perspective</span></div><svg id="history" viewBox="0 0 440 100" role="img" aria-label="Evaluation history"><path d="M0 50H440" class="zero-line"></path><polyline id="history-line" points="" /></svg></section>
+<section class="moves-panel"><div class="section-top"><h2>Game & variations</h2><button id="new-variation" class="quiet">Promote line</button></div><div id="moves" aria-label="Variation tree"></div><details><summary>Import or export PGN</summary><label for="pgn" class="sr-only">PGN game</label><textarea id="pgn" rows="5" spellcheck="false" placeholder="1. e4 e5 2. Nf3 Nc6 *"></textarea><div class="pgn-actions"><button id="import-pgn">Import PGN</button><button id="export-pgn">Export current tree</button></div></details></section>
+</aside>
+</main>
+<footer><span>CAISSA / LOCAL CHESS LABORATORY</span><span>Choose a square. Explore a line. Keep the evidence.</span></footer>
+<dialog id="promotion"><form method="dialog"><h2>Choose a promotion</h2><div><button value="q">Queen</button><button value="r">Rook</button><button value="b">Bishop</button><button value="n">Knight</button></div></form></dialog>
+<script type="module" src="/app.js"></script>
+</body></html>

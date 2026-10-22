@@ -19,15 +19,13 @@ Bitboard Position::checkers(Color c) const {
            (attacks::rook(s,occ)&(pieces(enemy,Kind::rook)|pieces(enemy,Kind::queen)));
 }
 Bitboard Position::pinned(Color c) const {
-    Bitboard result=0,blockers=occupied(c)&~pieces(c,Kind::king);
-    auto enemy=opposite(c);auto k=king(c);
-    auto original=(attacks::bishop(k,occupied())&(pieces(enemy,Kind::bishop)|pieces(enemy,Kind::queen))) |
-                  (attacks::rook(k,occupied())&(pieces(enemy,Kind::rook)|pieces(enemy,Kind::queen)));
-    while(blockers) {
-        auto s=pop_lsb(blockers);auto occ=occupied()&~bit(s);
-        auto revealed=(attacks::bishop(k,occ)&(pieces(enemy,Kind::bishop)|pieces(enemy,Kind::queen))) |
-                      (attacks::rook(k,occ)&(pieces(enemy,Kind::rook)|pieces(enemy,Kind::queen)));
-        if(revealed&~original) result|=bit(s);
+    Bitboard result=0;auto enemy=opposite(c);auto k=king(c);
+    auto transparent=occupied()&~occupied(c);
+    auto candidates=(attacks::bishop(k,transparent)&(pieces(enemy,Kind::bishop)|pieces(enemy,Kind::queen))) |
+                    (attacks::rook(k,transparent)&(pieces(enemy,Kind::rook)|pieces(enemy,Kind::queen)));
+    while(candidates) {
+        auto attacker=pop_lsb(candidates);auto blockers=attacks::between(k,attacker)&occupied();
+        if(std::popcount(blockers)==1&&(blockers&occupied(c)))result|=blockers;
     }
     return result;
 }
@@ -84,10 +82,26 @@ Moves Position::pseudo_legal() const {
     return moves;
 }
 Moves Position::legal() {
-    Moves out;auto all=pseudo_legal();out.reserve(all.size());auto us=side_;
+    Moves out;auto all=pseudo_legal();out.reserve(all.size());auto us=side_;auto k=king(us);
+    auto checks=checkers(us);int count=std::popcount(checks);auto pins=pinned(us);Bitboard evasion=~Bitboard{0};
+    if(count==1){auto checker=static_cast<Square>(std::countr_zero(checks));evasion=attacks::between(k,checker)|bit(checker);}
     for(auto m:all) {
-        auto undo=make(m);bool valid=!in_check(us);unmake(undo);
-        if(valid) out.push_back(m);
+        if(m.flag==MoveFlag::castle){out.push_back(m);continue;}
+        if(m.flag==MoveFlag::en_passant) {
+            auto undo=make(m);bool valid=!in_check(us);unmake(undo);if(valid)out.push_back(m);continue;
+        }
+        if(m.from==k) {
+            auto occ=(occupied()&~bit(k))|bit(m.to);
+            if(!attacked(m.to,opposite(us),occ))out.push_back(m);
+            continue;
+        }
+        if(count>=2||!(evasion&bit(m.to)))continue;
+        if(pins&bit(m.from)) {
+            int ax=file(m.from)-file(k),ay=rank(m.from)-rank(k);
+            int bx=file(m.to)-file(k),by=rank(m.to)-rank(k);
+            if(ax*by!=ay*bx)continue;
+        }
+        out.push_back(m);
     }
     return out;
 }

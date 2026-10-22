@@ -1,0 +1,29 @@
+{
+  "profile": "diagnostic",
+  "candidate": {
+    "name": "Caissa diagnostic neural",
+    "command": [
+      "build/caissa"
+    ],
+    "options": {
+      "Threads": 1,
+      "Hash": 16,
+      "EvalFile": "runs/diagnostic-selected.cai",
+      "Use Neural": true
+    }
+  },
+  "opponent": {
+    "name": "Caissa classical",
+    "command": [
+      "build/caissa"
+    ],
+    "options": {
+      "Threads": 1,
+      "Hash": 16
+    }
+  },
+  "openings": "config/openings.json",
+  "pairs": 48,
+  "nodes": 2000,
+  "max_plies": 512
+}

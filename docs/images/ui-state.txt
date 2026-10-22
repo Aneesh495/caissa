@@ -1,0 +1,177 @@
+Browser tab: 1, Title: "Caissa | Analysis room", URL: "http://127.0.0.1:8765/".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 193-298, 303-357
++				303 cell a8 black rook
++					304 text ♜
++					305 text 8
++				306 cell b8 empty
++				307 cell c8 black bishop
++					308 text ♝
++				309 cell d8 empty
++				310 cell e8 empty
++				311 cell f8 empty
++				312 cell g8 empty
++				313 cell h8 empty
++				314 cell a7 black pawn
++					315 text ♟
++					316 text 7
++				317 cell b7 black pawn
++					318 text ♟
++				319 cell c7 black pawn
++					320 text ♟
++				321 cell d7 empty
++				322 cell e7 black king
++					323 text ♚
++				324 cell f7 black pawn
++					325 text ♟
++				326 cell g7 empty
++				327 cell h7 black pawn
++					328 text ♟
++				329 cell a6 empty
++					330 text 6
++				331 cell b6 empty
++				332 cell c6 empty
++				333 cell d6 empty
++				334 cell e6 empty
++				335 cell f6 empty
++				336 cell g6 empty
++				337 cell h6 empty
++				338 cell a5 empty
++					339 text 5
++				340 cell b5 empty
++				341 cell c5 empty
++				342 cell d5 black knight
++					343 text ♞
++				344 cell e5 empty
++				345 cell f5 empty
++				346 cell g5 empty
++				347 cell h5 empty
++				348 cell a4 empty
++					349 text 4
++				350 cell b4 empty
++				351 cell c4 empty
++				352 cell d4 empty
++				353 cell e4 empty
++				354 cell f4 empty
++				355 cell g4 empty
++				356 cell h4 empty
++				357 cell a3 empty
++					358 text 3
++				359 cell b3 empty
++				360 cell c3 white knight
++					361 text ♞
++				362 cell d3 empty
++				363 cell e3 empty
++				364 cell f3 empty
++				365 cell g3 empty
++				366 cell h3 empty
++				367 cell a2 white pawn
++					368 text ♟
++					369 text 2
++				370 cell b2 white pawn
++					371 text ♟
++				372 cell c2 white pawn
++					373 text ♟
++				374 cell d2 empty
++				375 cell e2 empty
++				376 cell f2 white pawn
++					377 text ♟
++				378 cell g2 white pawn
++					379 text ♟
++				380 cell h2 white pawn
++					381 text ♟
++				382 cell a1 white rook
++					383 text ♜
++					384 text a
++				385 cell b1 empty
++					386 text b
++				387 cell c1 empty
++					388 text c
++				389 cell d1 empty
++					390 text d
++				391 cell e1 white king
++					392 text ♚
++					393 text e
++				394 cell f1 white bishop
++					395 text ♝
++					396 text f
++				397 cell g1 empty
++					398 text g
++				399 cell h1 white rook
++					400 text ♜
++					401 text h
++			402 text White to move
++			403 text Move 13
+~			129 text field (settable) Description: Position FEN, Value: r1b5/ppp1kp1p/8/3n4/8/2N5/PPP2PPP/R3KB1R w KQ - 0 13, ID: fen
++			404 text Exported the actual game tree, including edited variations.
++			405 text READY
++			406 text The board is yours. Start an analysis to explore its possibilities.
++				407 container
++					408 text 1.
++					409 button e4
++				410 container
++					411 text 1…
++					412 button e5
++				413 container
++					414 text 2.
++					415 button Nf3
++				416 container
++					417 text 2…
++					418 button Nc6
++				419 container
++					420 text 2…
++					421 button Nf6
++				422 container
++					423 text 2…
++					424 button Bc5
++					425 text 3.
++					426 button d4
++					427 text 3…
++					428 button exd4
++					429 text 4.
++					430 button Nxd4
++					431 text 4…
++					432 button Bxd4
++					433 text 5.
++					434 button Qxd4
++					435 text 5…
++					436 button Nc6
++					437 text 6.
++					438 button Qxg7
++					439 text 6…
++					440 button Nf6
++					441 text 7.
++					442 button Qxh8+
++					443 text 7…
++					444 button Ke7
++					445 text 8.
++					446 button Qxd8+
++					447 text 8…
++					448 button Kxd8
++					449 text 9.
++					450 button Nc3
++					451 text 9…
++					452 button d5
++					453 text 10.
++					454 button exd5
++					455 text 10…
++					456 button Nxd5
++					457 text 11.
++					458 button Bg5+
++					459 text 11…
++					460 button Nce7
++					461 text 12.
++					462 button Bxe7+
++					463 text 12…
++					464 button Kxe7
++				465 container
++					466 text 3.
++					467 button Bb5
++				468 container
++					469 text 3…
++					470 button a6
+~			190 text entry area (settable) PGN game, ID: pgn, Value: [Result "*"]
+
+1. e4 e5 2. Nf3 Nc6 ( 2... Nf6 ) ( 2... Bc5 3. d4 exd4 4. Nxd4 Bxd4 5. Qxd4 Nc6 6. Qxg7 Nf6 7. Qxh8+ Ke7 8. Qxd8+ Kxd8 9. Nc3 d5 10. exd5 Nxd5 11. Bg5+ Nce7 12. Bxe7+ Kxe7 ) 3. Bb5 a6 *
+
+The focused UI element is 192 button Export current tree, ID: export-pgn

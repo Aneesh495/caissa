@@ -2,6 +2,7 @@
 #include "caissa/uci.hpp"
 #include "caissa/selfplay.hpp"
 #include "caissa/network.hpp"
+#include "caissa/serialization.hpp"
 #include "caissa/position.hpp"
 #include "caissa/reference.hpp"
 #include "caissa/search.hpp"
@@ -28,6 +29,15 @@ void inspect(std::string_view text) {
 int main(int argc,char** argv) {
     try {
         if(argc==1)return uci_loop(std::cin,std::cout);
+        if(argc==2&&std::string_view(argv[1])=="--pgn-json") {
+            std::string input;char c;while(std::cin.get(c)){if(input.size()>=1048576)throw InputError("PGN exceeds 1 MiB");input+=c;}
+            write_game_json(std::cout,Game::parse(input));return 0;
+        }
+        if(argc>=4&&std::string_view(argv[1])=="--move-json") {
+            auto p=Position::from_fen(argv[2],argc>4&&std::string_view(argv[4])=="960");auto move=p.parse_uci(argv[3]);
+            if(!move)throw InputError("illegal requested move");auto text=san(p,*move);p.make(*move);
+            std::cout<<"{\"fen\":"<<json_quote(p.fen())<<",\"san\":"<<json_quote(text)<<"}\n";return 0;
+        }
         if(argc==3&&std::string_view(argv[1])=="--net-probe") {
             auto net=Network::load(argv[2]);std::string line;
             while(std::getline(std::cin,line)) {
