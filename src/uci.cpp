@@ -33,7 +33,7 @@ public:
             emit("option name MultiPV type spin default 1 min 1 max 32");
             emit("option name Move Overhead type spin default 20 min 0 max 1000");
             emit("option name UCI_Chess960 type check default false");emit("option name Ponder type check default false");
-            for(auto name:{"Null Move","LMR","Extensions","PVS","Aspiration","Quiescence","History","SEE","Futility","Use Table"})emit(std::string("option name ")+name+" type check default true");
+            for(auto name:{"Null Move","LMR","Extensions","PVS","Aspiration","Quiescence","History","SEE","Futility","Use Table","Ordering Hints"})emit(std::string("option name ")+name+" type check default true");
             emit("option name EvalFile type string default <empty>");emit("option name Use Neural type check default false");emit("option name Scalar Neural type check default false");
             emit("option name Search Stats type check default false");emit("option name Trace Samples type spin default 0 min 0 max 64");
             emit("option name Clear Hash type button");emit("uciok");
@@ -82,7 +82,7 @@ private:
             else if(name=="Extensions")options_.extensions=v;else if(name=="PVS")options_.pvs=v;
             else if(name=="Aspiration")options_.aspiration=v;else if(name=="Quiescence")options_.quiescence=v;
             else if(name=="History")options_.history=v;else if(name=="SEE")options_.see=v;
-            else if(name=="Futility")options_.futility=v;else if(name=="Use Table")options_.table=v;
+            else if(name=="Futility")options_.futility=v;else if(name=="Use Table")options_.table=v;else if(name=="Ordering Hints")options_.ordering_hints=v;
             else throw InputError("unknown option");
         }
         table_->clear();
@@ -145,7 +145,7 @@ private:
                 while(control->pondering.load()&&!control->stop.load())std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 if(stats_enabled) {
                     auto& s=result.info.stats;std::ostringstream details;
-                    details<<"info string stats qnodes "<<s.qnodes<<" tt_hits "<<s.table_hits<<" tt_cutoffs "<<s.table_cutoffs<<" beta_cutoffs "<<s.beta_cutoffs<<" null_cutoffs "<<s.null_cutoffs<<" lmr "<<s.lmr_searches<<" researches "<<s.researches<<" futility "<<s.futility_skips<<" eval_calls "<<s.evaluator_calls<<" eval_ns "<<s.evaluator_ns<<" completed_depth_nodes "<<result.info.completed_depth_nodes;emit(details.str());
+                    details<<"info string stats qnodes "<<s.qnodes<<" tt_hits "<<s.table_hits<<" ordering_hints "<<s.ordering_hint_hits<<" tt_cutoffs "<<s.table_cutoffs<<" beta_cutoffs "<<s.beta_cutoffs<<" null_cutoffs "<<s.null_cutoffs<<" lmr "<<s.lmr_searches<<" researches "<<s.researches<<" futility "<<s.futility_skips<<" eval_calls "<<s.evaluator_calls<<" eval_ns "<<s.evaluator_ns<<" completed_depth_nodes "<<result.info.completed_depth_nodes;emit(details.str());
                 }
                 for(auto& sample:result.info.trace) {
                     std::ostringstream detail;detail<<"info string trace depth "<<sample.depth<<" ply "<<sample.ply<<" alpha "<<sample.alpha<<" beta "<<sample.beta<<" synthetic "<<sample.synthetic<<" fen "<<sample.fen;emit(detail.str());

@@ -29,7 +29,7 @@ std::int64_t time_budget(std::int64_t remaining,std::int64_t increment,int moves
     return std::clamp<std::int64_t>(allocation,1,std::max<std::int64_t>(1,available/2));
 }
 SearchStats& SearchStats::operator+=(const SearchStats& r) {
-    qnodes+=r.qnodes;table_hits+=r.table_hits;table_cutoffs+=r.table_cutoffs;beta_cutoffs+=r.beta_cutoffs;
+    ordering_hint_hits+=r.ordering_hint_hits;qnodes+=r.qnodes;table_hits+=r.table_hits;table_cutoffs+=r.table_cutoffs;beta_cutoffs+=r.beta_cutoffs;
     null_cutoffs+=r.null_cutoffs;lmr_searches+=r.lmr_searches;researches+=r.researches;futility_skips+=r.futility_skips;
     evaluator_calls+=r.evaluator_calls;evaluator_ns+=r.evaluator_ns;seldepth=std::max(seldepth,r.seldepth);return *this;
 }
@@ -75,6 +75,12 @@ public:
             int score=mate_from_table(entry->score,ply);
             if(entry->depth>=depth&&!pv_node&&(entry->bound==Bound::exact||(entry->bound==Bound::lower&&score>=beta)||(entry->bound==Bound::upper&&score<=alpha))) {
                 ++stats.table_cutoffs;return score;
+            }
+        }
+        if(!hashmove.valid()&&options_.table&&options_.ordering_hints) {
+            auto hint=table_.ordering_hint(p.key());
+            if(hint&&std::find(moves.begin(),moves.end(),*hint)!=moves.end()) {
+                hashmove=*hint;++stats.ordering_hint_hits;
             }
         }
         int evaluation=entry?entry->evaluation:evaluate(p);
@@ -124,6 +130,7 @@ public:
             }
             if(!capture&&!promotion) quiets.push_back(move);
         }
+        if(options_.table&&options_.ordering_hints)table_.store_hint(p.key(),bestmove,depth);
         if(options_.table) table_.store(key,bestmove,best,evaluation,depth,best>=beta?Bound::lower:best<=original_alpha?Bound::upper:Bound::exact,ply);
         return best;
     }
