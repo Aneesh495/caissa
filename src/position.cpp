@@ -31,12 +31,14 @@ std::uint32_t counter(const std::string& s, bool positive) {
 void Position::put(Square s, Piece p) {
     auto old=board_[s];
     if(old) {
+        key_^=mix(static_cast<Key>(old)*64+s);
         auto c=static_cast<std::size_t>(index(color(old)));
         pieces_[c][static_cast<std::size_t>(kind(old))]&=~bit(s);
         colors_[c]&=~bit(s);
     }
     board_[s]=p;
     if(p) {
+        key_^=mix(static_cast<Key>(p)*64+s);
         auto c=static_cast<std::size_t>(index(color(p)));
         pieces_[c][static_cast<std::size_t>(kind(p))]|=bit(s);
         colors_[c]|=bit(s);
@@ -128,14 +130,17 @@ std::string Position::fen() const {
     out+=' ';out+=square_name(ep_);out+=' ';out+=std::to_string(halfmove_);out+=' ';out+=std::to_string(fullmove_);
     return out;
 }
-Key Position::recompute_key() const {
-    Key h=0;
-    for(Square s=0;s<64;++s) if(at(s)) h^=mix(static_cast<Key>(at(s))*64+s);
-    if(side_==Color::black) h^=mix(10000);
+Key Position::metadata_key() const {
+    Key h=side_==Color::black?mix(10000):0;
     for(Color c:{Color::white,Color::black}) for(int w=0;w<2;++w) {
         auto s=rook_right(c,w);if(s<64) h^=mix(11000+static_cast<Key>(index(c)*128+w*64+s));
     }
     if(ep_<64) h^=mix(12000+ep_);
+    return h;
+}
+Key Position::recompute_key() const {
+    Key h=metadata_key();
+    for(Square s=0;s<64;++s) if(at(s)) h^=mix(static_cast<Key>(at(s))*64+s);
     return h;
 }
 Key Position::repetition_key() const {

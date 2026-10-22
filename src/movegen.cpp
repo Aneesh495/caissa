@@ -19,12 +19,17 @@ Bitboard Position::checkers(Color c) const {
            (attacks::rook(s,occ)&(pieces(enemy,Kind::rook)|pieces(enemy,Kind::queen)));
 }
 Bitboard Position::pinned(Color c) const {
-    Bitboard pinned=0, blockers=occupied(c)&~pieces(c,Kind::king);
+    Bitboard result=0,blockers=occupied(c)&~pieces(c,Kind::king);
+    auto enemy=opposite(c);auto k=king(c);
+    auto original=(attacks::bishop(k,occupied())&(pieces(enemy,Kind::bishop)|pieces(enemy,Kind::queen))) |
+                  (attacks::rook(k,occupied())&(pieces(enemy,Kind::rook)|pieces(enemy,Kind::queen)));
     while(blockers) {
-        auto s=pop_lsb(blockers);
-        if(attacked(king(c),opposite(c),occupied()&~bit(s))&&!in_check(c)) pinned|=bit(s);
+        auto s=pop_lsb(blockers);auto occ=occupied()&~bit(s);
+        auto revealed=(attacks::bishop(k,occ)&(pieces(enemy,Kind::bishop)|pieces(enemy,Kind::queen))) |
+                      (attacks::rook(k,occ)&(pieces(enemy,Kind::rook)|pieces(enemy,Kind::queen)));
+        if(revealed&~original) result|=bit(s);
     }
-    return pinned;
+    return result;
 }
 bool Position::can_castle(int wing) const {
     auto rook=rook_right(side_,wing);if(rook==no_square) return false;
@@ -98,6 +103,7 @@ void Position::save_square(Undo& u, Square s) {
 Undo Position::make(Move m) {
     if(!m.valid()||!at(m.from)||color(at(m.from))!=side_) throw InputError("invalid internal move");
     auto u=save_state();auto moving=at(m.from);auto captured=at(m.to);
+    key_^=metadata_key();
     save_square(u,m.from);save_square(u,m.to);
     ep_=no_square;
     if(m.flag==MoveFlag::castle) {
@@ -120,11 +126,11 @@ Undo Position::make(Move m) {
     }
     halfmove_=(captured||kind(moving)==Kind::pawn)?0:halfmove_+1;
     if(side_==Color::black) ++fullmove_;
-    side_=opposite(side_);key_=recompute_key();history_.push_back(repetition_key());
+    side_=opposite(side_);key_^=metadata_key();history_.push_back(repetition_key());
     return u;
 }
 Undo Position::make_null() {
-    auto u=save_state();ep_=no_square;side_=opposite(side_);key_=recompute_key();
+    auto u=save_state();key_^=metadata_key();ep_=no_square;side_=opposite(side_);key_^=metadata_key();
     // Null moves are search artifacts and never enter game repetition history.
     return u;
 }
