@@ -34,6 +34,13 @@ SearchStats& SearchStats::operator+=(const SearchStats& r) {
     evaluator_calls+=r.evaluator_calls;evaluator_ns+=r.evaluator_ns;seldepth=std::max(seldepth,r.seldepth);return *this;
 }
 namespace {
+int evaluation_of(const Position& p,const SearchOptions& options,const Accumulator* accumulator) {
+    if(!options.network||options.neural_weight==0)return classical(p);
+    int neural=options.network->evaluate(p,*accumulator,options.scalar_network);
+    if(options.neural_weight==100)return neural;
+    int baseline=classical(p);
+    return (neural*options.neural_weight+baseline*(100-options.neural_weight))/100;
+}
 struct Abort {};
 struct Guard {
     Position& p;Undo undo;Accumulator* accumulator;Accumulator saved;
@@ -148,7 +155,7 @@ private:
         stats.seldepth=std::max(stats.seldepth,ply);
     }
     int evaluate(const Position& p) {
-        auto begin=monotonic_ns();int score=options_.network?options_.network->evaluate(p,accumulator_,options_.scalar_network):classical(p);++stats.evaluator_calls;
+        auto begin=monotonic_ns();int score=evaluation_of(p,options_,&accumulator_);++stats.evaluator_calls;
         stats.evaluator_ns+=static_cast<std::uint64_t>(monotonic_ns()-begin);return score;
     }
     bool is_capture(const Position& p,Move m) const {return m.flag==MoveFlag::en_passant||(m.flag!=MoveFlag::castle&&p.at(m.to));}
@@ -183,6 +190,7 @@ private:
         int best=claim?0:-infinity;
         if(!check) {best=std::max(best,evaluate(p));if(best>=beta)return best;alpha=std::max(alpha,best);}
         if(qply>=24||ply>=max_ply-2) return check?evaluate(p):best;
+        if(!check)std::erase_if(moves,[&](Move m){return !is_capture(p,m)&&m.promotion==Kind::none;});
         order(p,moves,{}, {},ply);
         for(auto m:moves) {
             if(!check&&!is_capture(p,m)&&m.promotion==Kind::none)continue;
@@ -199,13 +207,14 @@ private:
 };
 }
 SearchResult Search::run(Position root,const Limits& limits,const SearchOptions& options,std::shared_ptr<SearchControl> control,const InfoCallback& callback) {
-    if(options.threads<1||options.threads>8||options.multipv<1||options.multipv>32||options.trace_limit<0||options.trace_limit>64||limits.depth<1||limits.depth>64)throw InputError("search resources out of bounds");
+    if(options.threads<1||options.threads>8||options.multipv<1||options.multipv>32||options.trace_limit<0||options.trace_limit>64||options.neural_weight<0||options.neural_weight>100||limits.depth<1||limits.depth>64)throw InputError("search resources out of bounds");
     auto start=monotonic_ns();control->initialize(limits);
     auto legal=root.legal();SearchResult result;
     auto state=rules(root,legal);if(state.ended()) {result.score=state.terminal==Termination::checkmate?-mate_score:0;return result;}
     if(!limits.root_moves.empty()) std::erase_if(legal,[&](Move m){return std::find(limits.root_moves.begin(),limits.root_moves.end(),m)==limits.root_moves.end();});
     if(legal.empty()) throw InputError("searchmoves contains no legal move");
-    result.best=legal[0];result.score=options.network?options.network->evaluate(root,options.network->refresh(root),options.scalar_network):classical(root);result.pv={result.best};
+    auto root_accumulator=options.network?options.network->refresh(root):Accumulator{};
+    result.best=legal[0];result.score=evaluation_of(root,options,&root_accumulator);result.pv={result.best};
     table_->new_search();std::vector<std::unique_ptr<Worker>> workers;
     for(int i=0;i<options.threads;++i)workers.push_back(std::make_unique<Worker>(*table_,*control,options));
     std::vector<PrincipalLine> prior;
