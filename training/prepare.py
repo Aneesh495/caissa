@@ -226,6 +226,14 @@ def main():
         if pair.get("schema") != "caissa-selfplay-v1":
             raise ValueError("unsupported corpus journal")
         for g in pair["games"]:
+            if (
+                g.get("search_policy", "legacy-v1")
+                != corpus_config.get("search_policy", "legacy-v1")
+                or g["budget_nodes"] != corpus_config["nodes"]
+            ):
+                raise ValueError(
+                    "source game search policy/budget differs from corpus contract"
+                )
             counts["games"] += 1
             if not verify_game(g):
                 counts["unfinished_games"] += 1

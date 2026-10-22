@@ -6,6 +6,7 @@
 #include <exception>
 #include <mutex>
 #include <thread>
+#include <random>
 namespace caissa {
 std::int64_t monotonic_ns() {return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();}
 void SearchControl::initialize(const Limits& limits) {
@@ -213,6 +214,11 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
     auto state=rules(root,legal);if(state.ended()) {result.score=state.terminal==Termination::checkmate?-mate_score:0;return result;}
     if(!limits.root_moves.empty()) std::erase_if(legal,[&](Move m){return std::find(limits.root_moves.begin(),limits.root_moves.end(),m)==limits.root_moves.end();});
     if(legal.empty()) throw InputError("searchmoves contains no legal move");
+    if(options.root_shuffle_seed) {
+        std::mt19937_64 random(options.root_shuffle_seed^root.key());
+        for(std::size_t remaining=legal.size();remaining>1;--remaining)
+            std::swap(legal[remaining-1],legal[static_cast<std::size_t>(random()%remaining)]);
+    }
     auto root_accumulator=options.network?options.network->refresh(root):Accumulator{};
     result.best=legal[0];result.score=evaluation_of(root,options,&root_accumulator);result.pv={result.best};
     table_->new_search();std::vector<std::unique_ptr<Worker>> workers;
