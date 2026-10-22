@@ -10,14 +10,14 @@ bool Position::attacked(Square s, Color by, Bitboard occ) const {
     if(attacks::bishop(s,occ)&(pieces(by,Kind::bishop)|pieces(by,Kind::queen))&live) return true;
     return (attacks::rook(s,occ)&(pieces(by,Kind::rook)|pieces(by,Kind::queen))&live)!=0;
 }
-Bitboard Position::checkers(Color c) const {
-    auto s=king(c);auto enemy=opposite(c);auto occ=occupied();
-    return (attacks::pawn(c,s)&pieces(enemy,Kind::pawn)) |
-           (attacks::knight(s)&pieces(enemy,Kind::knight)) |
-           (attacks::king(s)&pieces(enemy,Kind::king)) |
-           (attacks::bishop(s,occ)&(pieces(enemy,Kind::bishop)|pieces(enemy,Kind::queen))) |
-           (attacks::rook(s,occ)&(pieces(enemy,Kind::rook)|pieces(enemy,Kind::queen)));
+Bitboard Position::attackers_to(Square s,Color by) const {
+    return (attacks::pawn(opposite(by),s)&pieces(by,Kind::pawn)) |
+           (attacks::knight(s)&pieces(by,Kind::knight)) |
+           (attacks::king(s)&pieces(by,Kind::king)) |
+           (attacks::bishop(s,occupied())&(pieces(by,Kind::bishop)|pieces(by,Kind::queen))) |
+           (attacks::rook(s,occupied())&(pieces(by,Kind::rook)|pieces(by,Kind::queen)));
 }
+Bitboard Position::checkers(Color c) const {return attackers_to(king(c),opposite(c));}
 Bitboard Position::pinned(Color c) const {
     Bitboard result=0;auto enemy=opposite(c);auto k=king(c);
     auto transparent=occupied()&~occupied(c);

@@ -1,0 +1,7 @@
+# Learning quality and generalization
+
+`training/model.py` defines the two-perspective sparse transformer and two nonlinear dense stages. `training/train.py` starts from random initialization, combines original-teacher logistic targets with outcomes, and saves optimizer, scheduler, sampler and RNG state. Validation alone selects checkpoints and seeds. `training/prepare.py` groups a game lineage by the first eight opening plies and quarantines canonical board identities shared across splits. Random position splitting would leak related games.
+
+The first diagnostic used 13144 training, 2297 validation and 1557 reserved test positions after replay and deduplication. Three independent seeds changed parameters and improved validation loss. Seed 41 had the lowest validation loss; the test split was not opened for selection. Its subsequent 96-game equal-node comparison scored zero wins, sixteen draws and eighty losses against classical evaluation. This is a negative strength result despite learning and lower validation loss. The default therefore stays classical.
+
+The result is consistent with weak generalization from a small corpus, and coarse quantization made matters worse. It does not establish which factor caused each lost game. The revised q1024 contract reduced maximum observed floating/integer error from 168.7 cp to 11.4 cp on a separate diagnostic run. That numerical improvement has to earn strength independently. The full corpus and seed campaign remain required; a favorable diagnostic cannot replace them.

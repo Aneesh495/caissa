@@ -1,0 +1,7 @@
+# Work ownership and parallel root search
+
+`Search::run` in `src/search.cpp` owns a finite root list for each depth. An atomic index assigns roots to at most eight worker objects. Each worker owns killers, counter moves, history values, statistics and its neural accumulator. The root position is copied before local search. Only cancellation, node tickets, a shared root alpha and the locked transposition table are shared.
+
+With one principal variation, roots that cannot beat shared alpha are screened with a unit window. A root that improves alpha is resolved to an exact score. Completed fail-low roots retain upper-bound labels. Sorting prefers exact results on tied scores. With several principal variations, all roots are resolved at full width so displayed scores have the claimed meaning. Interrupted iterations retain the previous completed depth instead of publishing a mixture of bounds as exact MultiPV results.
+
+This design avoids unsynchronized table reads and establishes real shared work, but roots differ sharply in cost. Thread creation at each depth, table mutex contention and searching early roots before alpha improves can all waste work. Total node count is not useful parallel speedup. The start-position depth-six diagnostic dropped from 82458 to 13037 nodes after root screening while retaining its score. That is a fixed example, not a scaling or strength estimate. The full 1/2/4/8-thread profiles and race campaign are still required.

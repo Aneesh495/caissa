@@ -15,4 +15,5 @@ Evaluation evaluate_terms(const Position& p);
 int classical(const Position& p);
 int piece_value(Kind k);
 int static_exchange(const Position& p,Move move);
+int static_exchange_reference(const Position& p,Move move);
 }

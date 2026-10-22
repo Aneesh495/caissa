@@ -91,7 +91,7 @@ Evaluation evaluate_terms(const Position& p) {
     return result;
 }
 int classical(const Position& p) {return std::clamp(evaluate_terms(p).relative_score,-mate_threshold+1,mate_threshold-1);}
-int static_exchange(const Position& p,Move move) {
+int static_exchange_reference(const Position& p,Move move) {
     if(move.flag==MoveFlag::castle) return 0;
     // A legal recapture sequence is the reference SEE. It includes pins and king safety.
     Position copy=p;int gain=move.flag==MoveFlag::en_passant?100:piece_value(kind(p.at(move.to)));
@@ -112,4 +112,28 @@ int static_exchange(const Position& p,Move move) {
     while(depth>0) {values[static_cast<std::size_t>(depth-1)]=-std::max(-values[static_cast<std::size_t>(depth-1)],values[static_cast<std::size_t>(depth)]);--depth;}
     return values[0];
 }
+int static_exchange(const Position& p,Move move) {
+    if(move.flag==MoveFlag::castle)return 0;
+    Position board=p;int initial=move.flag==MoveFlag::en_passant?100:piece_value(kind(p.at(move.to)));
+    if(move.promotion!=Kind::none)initial+=piece_value(move.promotion)-100;
+    board.make(move);std::array<int,32> gain{};gain[0]=initial;int depth=0;
+    while(depth<30) {
+        auto attackers=board.attackers_to(move.to,board.side());Move chosen;int cheapest=infinity;
+        while(attackers) {
+            auto from=pop_lsb(attackers);auto k=kind(board.at(from));int value=k==Kind::king?20000:piece_value(k);
+            if(value>=cheapest)continue;
+            Move candidate{from,move.to};
+            if(k==Kind::pawn&&(rank(move.to)==0||rank(move.to)==7))candidate.promotion=Kind::queen;
+            auto us=board.side();auto undo=board.make(candidate);bool legal=!board.in_check(us);board.unmake(undo);
+            if(legal){chosen=candidate;cheapest=value;}
+        }
+        if(!chosen.valid())break;
+        ++depth;gain[static_cast<std::size_t>(depth)]=piece_value(kind(board.at(move.to)))-gain[static_cast<std::size_t>(depth-1)];
+        if(chosen.promotion!=Kind::none)gain[static_cast<std::size_t>(depth)]+=piece_value(chosen.promotion)-100;
+        board.make(chosen);
+    }
+    while(depth>0){gain[static_cast<std::size_t>(depth-1)]=-std::max(-gain[static_cast<std::size_t>(depth-1)],gain[static_cast<std::size_t>(depth)]);--depth;}
+    return gain[0];
+}
+
 }
