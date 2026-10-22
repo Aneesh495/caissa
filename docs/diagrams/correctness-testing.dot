@@ -1,0 +1,19 @@
+digraph caissa {
+  graph [rankdir=TB, bgcolor="white", label="Independent verification layers", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  geometry [label="Ray tables vs stepping"];
+  moves [label="Bitboards vs mailbox vs python-chess"];
+  state [label="Million exact undo + accumulator checks"];
+  search [label="PVS vs exhaustive tiny minimax"];
+  protocol [label="Adversarial UCI sequences"];
+  model [label="Native vs NumPy inference"];
+  bundle [label="Rehashed semantic negative controls"];
+  geometry -> moves [label="attack foundation"];
+  moves -> state [label="legal transitions"];
+  state -> search [label="restoration invariant"];
+  search -> protocol [label="real engine interaction"];
+  state -> model [label="sparse update invariant"];
+  protocol -> bundle [label="saved native replay"];
+  model -> bundle [label="semantic inference checks"];
+}

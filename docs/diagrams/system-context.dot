@@ -1,0 +1,17 @@
+digraph caissa {
+  graph [rankdir=LR, bgcolor="white", label="Local execution boundary", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  user [label="UCI client / browser"];
+  uci [label="src/uci.cpp"];
+  http [label="analysis-service/server.ts"];
+  core [label="Original Caissa core"];
+  lab [label="Original selfplay + training"];
+  oracle [label="Isolated legality / match oracles"];
+  user -> uci [label="protocol"];
+  user -> http [label="loopback only"];
+  http -> uci [label="owned process"];
+  uci -> core [label="position + limits"];
+  lab -> core [label="original moves / weights"];
+  core -> oracle [label="diagnostic artifacts only", style=dashed];
+}

@@ -1,0 +1,17 @@
+digraph caissa {
+  graph [rankdir=TB, bgcolor="white", label="Build and local UI deployment", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  cmake [label="CMake C++23 source"];
+  native [label="Native engine executable"];
+  ts [label="Pinned TypeScript build"];
+  server [label="Loopback service"];
+  browser [label="Board + real stream"];
+  budget [label="Token / origin / body / worker limits"];
+  cmake -> native [label="portable scalar + selected SIMD"];
+  ts -> server [label="compiled Node service"];
+  ts -> browser [label="compiled DOM client"];
+  server -> native [label="owned child process"];
+  browser -> server [label="session + request generation"];
+  budget -> server [label="backpressure / teardown"];
+}

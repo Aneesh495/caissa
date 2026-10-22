@@ -1,0 +1,19 @@
+digraph caissa {
+  graph [rankdir=TB, bgcolor="white", label="Reversible state lifetime", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  before [label="Position + accumulator"];
+  save [label="Undo: touched squares / metadata"];
+  make [label="Remove old / add new pieces"];
+  hash [label="Incremental hash / history append"];
+  features [label="Sparse delta or king refresh"];
+  scope [label="Search child"];
+  restore [label="Restore Undo + saved accumulator"];
+  before -> save [label="owned snapshot"];
+  save -> make [label="max four squares"];
+  make -> hash [label="turn / rights / clocks"];
+  hash -> features [label="key ownership"];
+  features -> scope [label="valid child"];
+  scope -> restore [label="normal return or abort"];
+  restore -> before [label="exact equality"];
+}

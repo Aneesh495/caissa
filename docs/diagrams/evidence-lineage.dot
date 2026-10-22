@@ -1,0 +1,20 @@
+digraph caissa {
+  graph [rankdir=TB, bgcolor="white", label="Source-bound evidence", labelloc=t, fontsize=20, fontname="Helvetica", pad="0.3"];
+  node [shape=box, style="rounded,filled", fillcolor="#edf2e5", color="#60734d", fontname="Helvetica", fontsize=11, margin="0.15"];
+  edge [color="#60734d", fontname="Helvetica", fontsize=9];
+  commit [label="Committed clean source + locks"];
+  build [label="Clean checkout native build"];
+  inputs [label="Immutable model / opening inputs"];
+  raw [label="Commands + raw per-unit observations"];
+  manifest [label="Ordinary artifact hashes"];
+  semantics [label="Independent replay and inference"];
+  controls [label="Rehashed semantic mutations"];
+  decision [label="Diagnostic scope / incomplete full gates"];
+  commit -> build [label="trusted expected commit"];
+  build -> raw [label="exact saved executable"];
+  inputs -> raw [label="actual input bytes"];
+  raw -> manifest [label="integrity"];
+  manifest -> semantics [label="hashes are insufficient"];
+  controls -> semantics [label="must reject"];
+  semantics -> decision [label="recomputed quantities"];
+}
