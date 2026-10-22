@@ -1,3 +1,4 @@
+#include "caissa/thread.hpp"
 #include "caissa/protocol_io.hpp"
 #include <atomic>
 #include <cerrno>
@@ -24,7 +25,7 @@ public:
             flags_changed_=true;
             struct sigaction ignore{};ignore.sa_handler=SIG_IGN;sigemptyset(&ignore.sa_mask);
             if(sigaction(SIGPIPE,&ignore,&old_signal_)!=0){failed_.store(true);return;}
-            signal_changed_=true;writer_=std::jthread([this]{write_loop();});
+            signal_changed_=true;writer_=JoiningThread([this]{write_loop();});
         }
 #endif
     }
@@ -65,7 +66,7 @@ private:
     std::mutex mutex_;std::condition_variable wake_;std::deque<Message> queue_;
     std::size_t queued_bytes_=0;std::uint64_t dropped_info_=0;
     bool stopping_=false;std::chrono::steady_clock::time_point finish_deadline_{};
-    std::atomic<bool> failed_{false};std::jthread writer_;
+    std::atomic<bool> failed_{false};JoiningThread writer_;
 #if defined(__unix__) || defined(__APPLE__)
     struct sigaction old_signal_{};
 #endif
