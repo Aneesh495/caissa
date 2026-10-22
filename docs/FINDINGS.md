@@ -1,0 +1,17 @@
+# Findings
+
+Correctness, throughput, validation loss and match strength are separate measurements.
+
+The legal generator agreed with the independent mailbox and Python oracle across the recorded reachable-position campaigns. Exact restoration and accumulator refresh checks exercised captures, promotions, king buckets, en passant and Chess960 overlap. Those results remain tied to their actual executables; final-source acceptance must rerun or explicitly establish an unchanged relevant input boundary.
+
+The original coarse q64 network export produced excessive float/integer errors. The q1024 v2 contract reduced the measured 100000-probe maximum to 11.3652 cp and mean to 1.5691 cp. Integer native/scalar/NumPy outputs agreed exactly. This supports the numerical implementation on those probes, not playing strength or a universally established float error bound.
+
+Three larger diagnostic seeds completed 20000 updates each. The selected seed was 17 at saved step 750, with validation loss 0.580516 versus untrained 0.695267. Later updates worsened held-out loss despite lower training loss. Selection retained the early checkpoint instead of the final checkpoint. The test arrays were not opened. This dataset predates functional-input reflection screening and remains diagnostic.
+
+The selected larger diagnostic network scored 4 wins, 8 draws and 84 losses against the unchanged classical evaluator at 2000 nodes per move. The estimated difference was -416.56 Elo with 95% interval [-infinity, -254.73], using 12 independent opening clusters. That is a failed neural-contribution result. Increasing data and decreasing validation loss did not establish an improvement in chess decisions.
+
+Warm short external diagnostics scored 42W/3D/3L against Stockfish 19 with its 1320 strength setting and 0W/0D/48L against unrestricted Stockfish 19. Both used one thread, 16 MiB, 20 ms per move, a one-node warmup and color-reversed openings. The former gives +394.11 relative Elo with interval [292.96, 544.69]. It does not establish a 1714 absolute engine rating. The unrestricted sample has no finite maximum-likelihood difference; its guarded upper 95% limit is -76.21. Forty-eight losses do not demonstrate proximity to Stockfish.
+
+Cold-start matches contained opponent time forfeits. They remain recorded but cannot be sold as on-board strength gains. Warmup was introduced in separate run identities; the earlier games were not edited or discarded. Degenerate bootstrap samples initially yielded misleading zero-width uncertainty, so statistics version 2 adds a conservative bounded-score guard. Old summaries remain available.
+
+The present conclusion is narrow: Caissa runs as an original engine and diagnostic laboratory, while its learned-strength objective has not passed. The classical default preserves the stronger observed evaluator.

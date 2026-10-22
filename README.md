@@ -1,14 +1,66 @@
 # Caissa
 
-An original C++23 chess engine and a laboratory for testing incremental neural evaluation under controlled search budgets.
+An original C++23 chess engine with incremental neural evaluation, a paired-match laboratory and a local analysis board.
 
-Development is in progress. See [build status](docs/BUILD_STATUS.md) for executed checks and incomplete work. No playing strength or trained-network claim is available yet.
+**Development build. Full acceptance is incomplete. No absolute Elo rating or Stockfish-level strength is established.** Classical evaluation is the default because the trained diagnostic networks lost their matched comparisons. See [build status](docs/BUILD_STATUS.md) and [findings](docs/FINDINGS.md).
+
+![Live native-engine analysis board](docs/images/live-board.png)
+
+## Run
+
+Native prerequisites: C++23 compiler, CMake 3.25 or newer and Ninja. The laboratory uses uv, Python 3.12 and Node 24. Apple arm64 and Ubuntu x86-64 builds run in [CI](https://github.com/Aneesh495/caissa-chess/actions/workflows/ci.yml).
 
 ```sh
+make bootstrap
 make test
-./build/caissa --version
+make lab-test
+make demo
 ```
 
-The native executable uses the C++ standard library. Python/PyTorch are reserved for training and independent verification. No external chess engine is part of Caissa's runtime.
+Open `http://127.0.0.1:8765`. Import a FEN or PGN, select a legal move, analyze, cancel, edit a variation and export the actual tree. The native engine needs no Python, network, reference engine or downloaded weights to play.
 
-See the [contract](docs/SPECIFICATION.md) and [dependency provenance](docs/DEPENDENCIES.md).
+For a bounded command-line example:
+
+```sh
+./build/caissa --perft 4
+./build/caissa --search 4
+./build/caissa
+```
+
+The first command prints `197281`. The last command starts UCI:
+
+```text
+uci
+isready
+position startpos moves e2e4 e7e5
+go nodes 10000
+quit
+```
+
+## Mechanisms
+
+- [Legal generation](src/movegen.cpp): check and pin filtering, independent mailbox comparison, en passant and overlapping Chess960 castling.
+- [Search](src/search.cpp): iterative PVS, aspiration, quiescence, selective heuristics with off switches, bounded root workers and legal interrupted-search fallback.
+- [Position identity](src/position.cpp): exact reversible state, history-dependent draw decisions and separate safe search keys.
+- [Neural inference](src/network.cpp): original two-perspective king buckets, sparse accumulator updates, two nonlinear dense stages, scalar/NEON/AVX2 arithmetic contracts.
+- [Training](training/train.py): original selfplay labels, functional-input split screening, three independent seeds, validation selection and resumable optimizer/RNG state.
+- [Arena](arena/run.py): color-reversed openings, immutable inputs, independent legality, failure accounting, paired recovery and opening-cluster uncertainty.
+- [Analysis service](analysis-service/server.ts): loopback token/origin boundary, native-process budgets, stale-request cancellation and bounded output.
+
+See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution walkthroughs](docs/WALKTHROUGHS.md), [technical notes](docs/notes/) and [decisions](docs/adr/README.md).
+
+## Executed diagnostics
+
+| Check | Observed result | Scope |
+|---|---|---|
+| Rules | 20 perft fixtures; 100000-position differential campaigns with zero disagreements | Development executables |
+| State restoration | 1000000 seeded transitions, incremental/full accumulator agreement | Diagnostic network |
+| Protocol | 10000 adversarial sequences; recorded stop p99 below 50 ms | Frozen local host/load |
+| Integer inference | 100000 independent probes, bit-identical scalar/native/reference outputs | Saved diagnostic v2 network |
+| Float/integer error | Maximum 11.37 cp, mean 1.57 cp | Diagnostic measurement, no full-model bound |
+| Warm Stockfish 19 unrestricted | 0 wins, 0 draws, 48 losses | 20 ms/move, small paired diagnostic |
+| Larger neural pilot versus classical | 4 wins, 8 draws, 84 losses | 2000 nodes/move, diagnostic data split |
+
+These checks establish specific behavior. They do not certify the full learning corpus, a positive learned contribution, the full external campaign or a release. Opponent strength settings are not a calibrated absolute rating pool.
+
+[Reproduction](docs/REPRODUCIBILITY.md) explains the bounded demo and clean-checkout verifier. [Experiment protocol](docs/EXPERIMENT_PLAN.md), [artifact contracts](docs/ARTIFACT_FORMAT.md), [limitations](docs/LIMITATIONS.md), [recovery](docs/RECOVERY.md) and [dependency provenance](docs/DEPENDENCIES.md) define the practical boundaries.
