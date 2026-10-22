@@ -44,6 +44,7 @@ private:
     int scale_=64,clip_=127;
     void add(std::array<std::int32_t,transformer_width>& accumulator,int feature,int sign)const;
 };
+// Dot inputs are clipped activations in [0,2047] and arbitrary int16 weights.
 std::int64_t dot_scalar(const std::int16_t* a,const std::int16_t* b,std::size_t count);
 std::int64_t dot_native(const std::int16_t* a,const std::int16_t* b,std::size_t count);
 std::string_view native_kernel();
