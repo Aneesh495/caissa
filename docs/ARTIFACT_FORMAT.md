@@ -11,3 +11,11 @@ Selfplay journals use `caissa-selfplay-v1`: pair identity, immutable command/con
 Training uses immutable `checkpoints/step-N.pt` generations with full optimizer, scheduler and RNG state. `CHECKPOINTS.json` atomically selects last and best files by relative path and SHA256. Aliases can be repaired after interruption. Arena games are committed before pairs; derived PGNs can be rebuilt from already committed moves without replaying a game or changing its outcome.
 
 Network binary contracts are specified in [quantization](notes/quantization.md) and [incremental features](notes/incremental-features.md). Model format compatibility is checked before search. Unsupported feature versions, active widths, numerical version combinations, lengths, biases and checksums are rejected.
+
+## Prepared dataset v2
+
+Each split has uint16 features shaped `[N,2,32]`, float32 targets `[N,3]` and an input-SHA-sorted identity journal. Targets are mean side-to-move outcome, mean original-teacher cp and mean original-teacher win probability. The last quantity is averaged before mixing with outcomes; sigmoid of mean cp is a different target and is not substituted. Padding feature 12288 contributes zero.
+
+The input identity hashes mover-oriented board placement. Rights, en passant and clocks are omitted by the evaluator, so they cannot distinguish data splits. Color reflection collapses identical inputs. Same-split duplicate observations aggregate targets; any cross-split identity is quarantined. Identity records retain representative position/game/family and every contributing game with count and ply range. The source-pair inventory hashes actual original paired journals. Frozen studies include their history positions, not only their initial FENs.
+
+`python -m verification.dataset DATASET CORPUS` independently replays the original games, rebuilds functional identities and target aggregates in a private temporary database, reconstructs sparse features through a separate board oracle and checks contributor provenance. It does not import preparation or training functions. `--require-full` enforces the full game/input floors and complete frozen pair request. The verifier rejects rehashed feature and target corruption and inconsistent lineage records. Raw distribution histograms explicitly describe eligible observations before deduplication.
