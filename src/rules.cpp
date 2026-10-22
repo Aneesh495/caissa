@@ -15,6 +15,7 @@ bool proven_dead(const Position& p) {
 RuleState rules(Position& p,const Moves& legal_moves) {
     RuleState state;
     if(legal_moves.empty()) {state.terminal=p.in_check(p.side())?Termination::checkmate:Termination::stalemate;return state;}
+    if(p.synthetic_search_path()){if(proven_dead(p))state.terminal=Termination::proven_dead;return state;}
     if(p.halfmove()>=150) {state.terminal=Termination::seventy_five;return state;}
     int count=p.repetitions();
     if(count>=5) {state.terminal=Termination::fivefold;return state;}

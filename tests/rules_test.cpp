@@ -26,5 +26,8 @@ int main(){try {
     auto ep=Position::from_fen("4k3/8/8/r4pPK/8/8/8/8 w - f6 0 1");
     auto noep=Position::from_fen("4k3/8/8/r4pPK/8/8/8/8 w - - 0 1");
     check(ep.key()!=noep.key()&&ep.repetition_key()==noep.repetition_key(),"illegal EP identity");
+    auto artificial=Position::from_fen("7k/8/8/8/8/8/8/R3K3 w - - 100 1");auto saved_key=artificial.search_key();
+    auto nu=artificial.make_null();check(artificial.synthetic_search_path()&&!rules(artificial).claimable(),"null search fabricated game draw");
+    artificial.unmake(nu);check(!artificial.synthetic_search_path()&&artificial.search_key()==saved_key&&rules(artificial).fifty_move_claim,"null undo context");
     std::cout<<"draw claims, history identity, clocks and mate precedence passed\n";
 }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}}

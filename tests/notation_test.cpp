@@ -10,5 +10,8 @@ int main(){try {
     auto p=Position::start();for(auto text:{"e4","e5","Nf3","Nc6","Bc4","Nf6","O-O"}){auto m=parse_san(p,text);if(!m)throw std::runtime_error("SAN move missing");p.make(*m);}
     bool rejected=false;try{Game::parse("1. e4 (1. d4 *");}catch(const InputError&){rejected=true;}if(!rejected)throw std::runtime_error("malformed variation accepted");
     rejected=false;try{Game::parse("1. e5 *");}catch(const InputError&){rejected=true;}if(!rejected)throw std::runtime_error("illegal SAN accepted");
+    auto variant=Game::parse("[FEN \"4k3/8/8/8/8/8/8/5KR1 w G - 0 1\"]\n[Variant \"Chess960\"]\n1. O-O *");
+    if(variant.nodes.size()!=2||!variant.initial.chess960())throw std::runtime_error("variant tag order");
+    auto initial=Position::start();if(parse_san(initial,"e4#"))throw std::runtime_error("incorrect mate marker accepted");
     std::cout<<"SAN, nested variations, comments and deterministic PGN export passed\n";
 }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}}

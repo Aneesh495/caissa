@@ -90,7 +90,14 @@ std::string quote(std::string_view s){std::string result;for(char c:s){if(c=='"'
 }
 std::optional<Move> parse_san(Position& p,std::string_view token) {
     auto wanted=normalize(token);std::optional<Move> found;
-    for(auto m:p.legal())if(normalize(san(p,m))==wanted){if(found)return std::nullopt;found=m;}return found;
+    std::string requested(token);while(!requested.empty()&&(requested.back()=='!'||requested.back()=='?'))requested.pop_back();
+    for(auto m:p.legal()) {
+        auto canonical=san(p,m);if(normalize(canonical)!=wanted)continue;
+        if(!requested.empty()&&requested.back()=='#'&&(canonical.empty()||canonical.back()!='#'))continue;
+        if(!requested.empty()&&requested.back()=='+'&&(canonical.empty()||(canonical.back()!='+'&&canonical.back()!='#')))continue;
+        if(found)return std::nullopt;found=m;
+    }
+    return found;
 }
 std::size_t Game::append(std::size_t parent,Move move) {
     if(parent>=nodes.size()||nodes.size()>=8192)throw InputError("variation node limit exceeded");
@@ -111,8 +118,11 @@ Game Game::parse(std::string_view source) {
         if(t.kind==TokenKind::tag) {
             if(started)Lexer::fail("tag after movetext",t.offset);auto [key,value]=parse_tag(t);
             if(game.tags.contains(key))Lexer::fail("duplicate tag",t.offset);game.tags.emplace(std::move(key),std::move(value));
+            continue;
+        }
+        if(!started) {
             bool variant=game.tags.contains("Variant")&&(game.tags.at("Variant")=="Chess960"||game.tags.at("Variant")=="Fischerandom");
-            if(game.tags.contains("FEN"))game.initial=Position::from_fen(game.tags.at("FEN"),variant);else game.initial=Position::from_fen(start_fen,variant);p=game.initial;continue;
+            game.initial=Position::from_fen(game.tags.contains("FEN")?game.tags.at("FEN"):std::string(start_fen),variant);p=game.initial;started=true;
         }
         if(t.kind==TokenKind::comment){if(!game.nodes[current].comment.empty())game.nodes[current].comment+=' ';game.nodes[current].comment+=t.value;continue;}
         if(t.kind==TokenKind::number)continue;
@@ -125,6 +135,10 @@ Game Game::parse(std::string_view source) {
         }
         if(t.value=="e.p.")continue;started=true;auto move=parse_san(p,t.value);if(!move)Lexer::fail("illegal or ambiguous SAN "+t.value,t.offset);
         current=game.append(current,*move);p.make(*move);
+    }
+    if(!started&&game.tags.contains("FEN")) {
+        bool variant=game.tags.contains("Variant")&&(game.tags.at("Variant")=="Chess960"||game.tags.at("Variant")=="Fischerandom");
+        game.initial=Position::from_fen(game.tags.at("FEN"),variant);
     }
     if(!stack.empty())throw InputError("PGN has unclosed variation");
     if(game.tags.contains("Result")&&game.tags.at("Result")!=game.result)throw InputError("PGN result tag disagrees with movetext");

@@ -157,6 +157,7 @@ Key Position::repetition_key() const {
 }
 Key Position::search_key() const {
     Key context=mix(halfmove_+20000);
+    if(synthetic_depth_)context^=mix(30000+static_cast<Key>(synthetic_depth_));
     auto count=std::min(history_.size(),static_cast<std::size_t>(halfmove_)+1);
     for(std::size_t i=history_.size()-count;i<history_.size();++i) context=mix(context^history_[i]);
     return key_^context;
