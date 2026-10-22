@@ -1,5 +1,7 @@
 #include "caissa/version.hpp"
 #include "caissa/uci.hpp"
+#include "caissa/selfplay.hpp"
+#include "caissa/network.hpp"
 #include "caissa/position.hpp"
 #include "caissa/reference.hpp"
 #include "caissa/search.hpp"
@@ -11,7 +13,7 @@ using namespace caissa;
 namespace {
 int parse_depth(std::string_view s) {
     int depth=-1;auto [p,e]=std::from_chars(s.data(),s.data()+s.size(),depth);
-    if(e!=std::errc{}||p!=s.data()+s.size()||depth<0||depth>12) throw InputError("invalid depth");return depth;
+    if(e!=std::errc{}||p!=s.data()+s.size()||depth<0||depth>80) throw InputError("invalid depth");return depth;
 }
 void inspect(std::string_view text) {
     bool c960=text.starts_with("960|");if(c960) text.remove_prefix(4);
@@ -26,6 +28,18 @@ void inspect(std::string_view text) {
 int main(int argc,char** argv) {
     try {
         if(argc==1)return uci_loop(std::cin,std::cout);
+        if(argc==3&&std::string_view(argv[1])=="--net-probe") {
+            auto net=Network::load(argv[2]);std::string line;
+            while(std::getline(std::cin,line)) {
+                auto p=Position::from_fen(line);auto acc=net->refresh(p);
+                std::cout<<"{\"scalar\":"<<net->evaluate(p,acc,true)<<",\"native\":"<<net->evaluate(p,acc,false)<<"}\n"<<std::flush;
+            }
+            return 0;
+        }
+        if(argc==6&&std::string_view(argv[1])=="--selfplay-pair") {
+            std::uint64_t pair=std::stoull(argv[2]),seed=std::stoull(argv[3]),nodes=std::stoull(argv[4]);
+            int opening=parse_depth(argv[5]);selfplay_pair(std::cout,pair,seed,nodes,opening,512);return 0;
+        }
         if(argc==2&&std::string_view(argv[1])=="--version") {std::cout<<version()<<'\n';return 0;}
         if(argc>=3&&(std::string_view(argv[1])=="--perft"||std::string_view(argv[1])=="--divide")) {
             int d=parse_depth(argv[2]);auto p=Position::from_fen(argc>3?argv[3]:start_fen,argc>4&&std::string_view(argv[4])=="960");

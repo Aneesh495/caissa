@@ -1,0 +1,9 @@
+# Incremental features
+
+`src/network.cpp` defines a feature by perspective, king bucket, relative piece color, piece kind and square. Black perspective reflects ranks with XOR 56. The oriented king divides the board into a 4 by 4 grid of two-square buckets. The feature index is `((bucket*12 + relative_color*6 + kind-1)*64 + oriented_square)`. Kings are active pieces too; no dormant feature rows are counted as trained evidence.
+
+Each perspective owns a 64-element signed accumulator, equal to the transformer bias plus the sum of active feature rows. The mover's perspective is concatenated before the opponent's. Two clipped nonlinear dense stages of widths 32 and 16 precede a linear scalar output. Width 64 is the initial diagnostic architecture. A throughput/strength width pilot remains required before selecting a full model; parameter count alone supplies no reason to keep it.
+
+An undo record contains every distinct touched square and its old piece. Quiet moves touch two squares, captures replace the destination feature, en passant removes a third square, promotions replace pawn kind, and Chess960 castling can touch two to four distinct squares. `Network::update` subtracts old and adds new features. If a perspective's king bucket changes, that perspective is rebuilt from the new board. The other perspective still receives sparse updates. Search null moves change score orientation and ownership key without changing active rows.
+
+`Accumulator::position_key` rejects stale ownership. A search scope saves the old accumulator alongside the position undo. `tests/network_test.cpp` executed one million seeded transitions, comparing incremental and full refresh, scalar and NEON inference, FEN restoration and full hash recomputation. This diagnostic used a random untrained model; it establishes arithmetic and state checks, not learning or strength.
