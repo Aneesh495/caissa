@@ -28,7 +28,8 @@ def run_pair(engine,root,pair,nodes,seed,timeout):
     if len(games)!=2 or [g['reverse'] for g in games]!=[0,1] or any(g['pair']!=pair for g in games):raise ValueError('paired output identity')
     for g in games:
         if g['complete']!=(g['result']!='*'):raise ValueError('completion/result disagreement')
-        if not g['moves'] or not g['positions']:raise ValueError('empty useful work')
+        if not g['moves']:raise ValueError('empty game transcript')
+        if not g['positions'] and not g['complete']:raise ValueError('unfinished game has no search samples')
     item={'schema':SCHEMA,'pair':pair,'command':command,'exit':result.returncode,'seconds':time.monotonic()-start,'games':games}
     atomic_json(path,item);return pair,sum(g['complete'] for g in games),sum(len(g['positions']) for g in games)
 
