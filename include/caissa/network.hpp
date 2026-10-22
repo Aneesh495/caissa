@@ -7,7 +7,10 @@ namespace caissa {
 inline constexpr int feature_version=1;
 inline constexpr int king_buckets=16;
 inline constexpr int feature_count=king_buckets*12*64;
-inline constexpr int transformer_width=64,dense1_width=32,dense2_width=16;
+#ifndef CAISSA_NETWORK_WIDTH
+#define CAISSA_NETWORK_WIDTH 64
+#endif
+inline constexpr int transformer_width=CAISSA_NETWORK_WIDTH,dense1_width=32,dense2_width=16;
 inline constexpr int network_scale=64,network_clip=127;
 struct Accumulator {
     std::array<std::array<std::int32_t,transformer_width>,2> values{};

@@ -9,6 +9,7 @@
 #include <algorithm>
 #include <charconv>
 #include <iostream>
+#include <chrono>
 #include <string_view>
 using namespace caissa;
 namespace {
@@ -29,6 +30,15 @@ void inspect(std::string_view text) {
 int main(int argc,char** argv) {
     try {
         if(argc==1)return uci_loop(std::cin,std::cout);
+        if(argc==4&&std::string_view(argv[1])=="--eval-bench") {
+            auto net=Network::load(argv[2]);auto calls=std::stoull(argv[3]);if(calls<100||calls>10000000)throw InputError("evaluation calls outside bounds");
+            auto p=Position::start();auto accumulator=net->refresh(p);std::int64_t signature=0;
+            for(int i=0;i<128;++i)signature+=net->evaluate(p,accumulator);
+            auto begin=monotonic_ns();for(std::uint64_t i=0;i<calls;++i)signature+=net->evaluate(p,accumulator,true);auto scalar=monotonic_ns()-begin;
+            begin=monotonic_ns();for(std::uint64_t i=0;i<calls;++i)signature+=net->evaluate(p,accumulator,false);auto native=monotonic_ns()-begin;
+            begin=monotonic_ns();for(std::uint64_t i=0;i<calls;++i)signature+=classical(p);auto baseline=monotonic_ns()-begin;
+            std::cout<<"{\"calls\":"<<calls<<",\"width\":"<<transformer_width<<",\"scalar_ns_per_call\":"<<static_cast<double>(scalar)/static_cast<double>(calls)<<",\"native_ns_per_call\":"<<static_cast<double>(native)/static_cast<double>(calls)<<",\"classical_ns_per_call\":"<<static_cast<double>(baseline)/static_cast<double>(calls)<<",\"signature\":"<<signature<<"}\n";return 0;
+        }
         if(argc==2&&std::string_view(argv[1])=="--pgn-json") {
             std::string input;char c;while(std::cin.get(c)){if(input.size()>=1048576)throw InputError("PGN exceeds 1 MiB");input+=c;}
             write_game_json(std::cout,Game::parse(input));return 0;

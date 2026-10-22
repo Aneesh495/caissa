@@ -39,12 +39,14 @@ def features(fen):
 
 def ste_round(x):return x+(x.round()-x).detach()
 class CaissaNet(nn.Module):
-    def __init__(self,version=2):
+    def __init__(self,version=2,width=64):
         super().__init__()
+        if width not in [32,64,128]:raise ValueError("unsupported active width")
+        self.width=width
         self.version=version;self.scale=64 if version==1 else 1024;self.clip=127/64 if version==1 else 2047/1024
-        self.embedding=nn.Embedding(FEATURES+1,WIDTH,padding_idx=FEATURES)
-        self.bias0=nn.Parameter(torch.full((WIDTH,),.25))
-        self.dense1=nn.Linear(WIDTH*2,HIDDEN1)
+        self.embedding=nn.Embedding(FEATURES+1,self.width,padding_idx=FEATURES)
+        self.bias0=nn.Parameter(torch.full((self.width,),.25))
+        self.dense1=nn.Linear(self.width*2,HIDDEN1)
         self.dense2=nn.Linear(HIDDEN1,HIDDEN2)
         self.output=nn.Linear(HIDDEN2,1)
         with torch.no_grad():
@@ -91,7 +93,7 @@ def export_network(model,path,identity):
     for layer in [model.dense1,model.dense2,model.output]:
         chunks.append(quantize(layer.weight,scale,'<i2',32767));chunks.append(quantize(layer.bias,scale*scale,'<i4',bias_limit))
     payload=b''.join(chunks)
-    header=(b'CAISSAN1' if model.version==1 else b'CAISSAN2')+struct.pack('<8I',model.version,1,FEATURES,WIDTH,HIDDEN1,HIDDEN2,scale,clip)+identity.encode()+struct.pack('<QII',len(payload),zlib.crc32(payload),0)
+    header=(b'CAISSAN1' if model.version==1 else b'CAISSAN2')+struct.pack('<8I',model.version,1,FEATURES,model.width,HIDDEN1,HIDDEN2,scale,clip)+identity.encode()+struct.pack('<QII',len(payload),zlib.crc32(payload),0)
     assert len(header)==120
     path=Path(path);path.parent.mkdir(parents=True,exist_ok=True)
     temp=path.with_suffix(path.suffix+'.tmp');temp.write_bytes(header+payload);temp.replace(path)
@@ -102,16 +104,16 @@ def integer_reference(path,x):
     raw=Path(path).read_bytes()
     if len(raw)<120 or raw[:8] not in [b'CAISSAN1',b'CAISSAN2']:raise ValueError('invalid network')
     version,fv,nf,width,h1,h2,scale,clip=struct.unpack('<8I',raw[8:40])
-    if (fv,nf,width,h1,h2)!=(1,FEATURES,WIDTH,HIDDEN1,HIDDEN2) or (version,scale,clip) not in [(1,64,127),(2,1024,2047)]:raise ValueError('architecture mismatch')
+    if (fv,nf,h1,h2)!=(1,FEATURES,HIDDEN1,HIDDEN2) or width not in [32,64,128] or (version,scale,clip) not in [(1,64,127),(2,1024,2047)]:raise ValueError('architecture mismatch')
     size,crc,reserved=struct.unpack('<QII',raw[104:120])
     if reserved or size!=len(raw)-120 or zlib.crc32(raw[120:])!=crc:raise ValueError('network integrity')
     offset=120
     def read(dtype,shape):
         nonlocal offset
         n=math.prod(shape);dt=np.dtype(dtype);v=np.frombuffer(raw,dtype=dt,count=n,offset=offset).reshape(shape).astype(np.int64);offset+=n*dt.itemsize;return v
-    emb=read('<i2',(FEATURES,WIDTH));emb=np.concatenate([emb,np.zeros((1,WIDTH),np.int64)])
-    bias=read('<i4',(WIDTH,));y=(emb[x].sum(axis=-2)+bias).clip(0,clip).reshape(len(x),WIDTH*2)
-    for nin,nout in [(WIDTH*2,HIDDEN1),(HIDDEN1,HIDDEN2),(HIDDEN2,1)]:
+    emb=read('<i2',(FEATURES,width));emb=np.concatenate([emb,np.zeros((1,width),np.int64)])
+    bias=read('<i4',(width,));y=(emb[x].sum(axis=-2)+bias).clip(0,clip).reshape(len(x),width*2)
+    for nin,nout in [(width*2,HIDDEN1),(HIDDEN1,HIDDEN2),(HIDDEN2,1)]:
         w=read('<i2',(nout,nin));b=read('<i4',(nout,));z=y@w.T+b
         if nout==1:
             z=z*400;return (np.sign(z)*((np.abs(z)+scale*scale//2)//(scale*scale))).clip(-29871,29871).reshape(-1)
