@@ -1,0 +1,11 @@
+/build*/
+/.venv/
+/.agent-local/
+/data/
+/runs/
+__pycache__/
+*.pyc
+/node_modules/
+/dist/
+*.tmp
+.DS_Store
