@@ -20,14 +20,15 @@ namespace {
 class Reader {
 public:
     explicit Reader(std::span<const std::uint8_t> data):data_(data){}
+    void bias_limit(std::int32_t value){bias_limit_=value;}
     std::uint32_t u32(){std::uint32_t v=0;for(int i=0;i<4;++i)v|=static_cast<std::uint32_t>(byte())<<(8*i);return v;}
     std::uint64_t u64(){auto lo=u32();return lo|(static_cast<std::uint64_t>(u32())<<32);}
     std::int16_t i16(){std::uint16_t v=byte();v=static_cast<std::uint16_t>(v|(static_cast<std::uint16_t>(byte())<<8));return std::bit_cast<std::int16_t>(v);}
-    std::int32_t i32(){auto v=std::bit_cast<std::int32_t>(u32());if(v<-(1<<20)||v>(1<<20))throw InputError("network bias exceeds arithmetic contract");return v;}
+    std::int32_t i32(){auto v=std::bit_cast<std::int32_t>(u32());if(v< -bias_limit_||v>bias_limit_)throw InputError("network bias exceeds arithmetic contract");return v;}
     std::string text(std::size_t n){std::string s;for(std::size_t i=0;i<n;++i)s+=static_cast<char>(byte());return s;}
     std::size_t consumed()const{return offset_;}
 private:
-    std::span<const std::uint8_t> data_;std::size_t offset_=0;
+    std::span<const std::uint8_t> data_;std::size_t offset_=0;std::int32_t bias_limit_=1<<20;
     std::uint8_t byte(){if(offset_>=data_.size())throw InputError("truncated network");return data_[offset_++];}
 };
 int rounded(std::int64_t value,int divisor) {return static_cast<int>(value>=0?(value+divisor/2)/divisor:-((-value+divisor/2)/divisor));}
@@ -38,8 +39,13 @@ std::shared_ptr<const Network> Network::load(const std::filesystem::path& path) 
     if(ec||size!=120+payload_bytes)throw InputError("network length incompatible or truncated");
     std::ifstream input(path,std::ios::binary);std::vector<std::uint8_t> bytes(static_cast<std::size_t>(size));
     if(!input.read(reinterpret_cast<char*>(bytes.data()),static_cast<std::streamsize>(bytes.size())))throw InputError("network read failed");
-    Reader reader(bytes);if(reader.text(8)!="CAISSAN1"||reader.u32()!=1||reader.u32()!=feature_version||reader.u32()!=feature_count||reader.u32()!=transformer_width||reader.u32()!=dense1_width||reader.u32()!=dense2_width||reader.u32()!=network_scale||reader.u32()!=network_clip)throw InputError("network feature or architecture mismatch");
-    auto net=std::shared_ptr<Network>(new Network);net->identity_=reader.text(64);
+    Reader reader(bytes);auto magic=reader.text(8);auto version=reader.u32();
+    if(!((magic=="CAISSAN1"&&version==1)||(magic=="CAISSAN2"&&version==2)))throw InputError("unsupported network format version");
+    if(reader.u32()!=feature_version||reader.u32()!=feature_count||reader.u32()!=transformer_width||reader.u32()!=dense1_width||reader.u32()!=dense2_width)throw InputError("network feature or architecture mismatch");
+    auto scale=reader.u32(),clip=reader.u32();
+    if((version==1&&(scale!=64||clip!=127))||(version==2&&(scale!=1024||clip!=2047)))throw InputError("network numerical contract mismatch");
+    reader.bias_limit(version==1?1<<20:1<<28);
+    auto net=std::shared_ptr<Network>(new Network);net->scale_=static_cast<int>(scale);net->clip_=static_cast<int>(clip);net->identity_=reader.text(64);
     if(!std::all_of(net->identity_.begin(),net->identity_.end(),[](char c){return (c>='0'&&c<='9')||(c>='a'&&c<='f');}))throw InputError("invalid training identity");
     if(reader.u64()!=payload_bytes)throw InputError("network payload declaration mismatch");
     net->checksum_=reader.u32();if(reader.u32()!=0)throw InputError("unsupported network header extension");
@@ -84,12 +90,12 @@ int Network::evaluate(const Position& p,const Accumulator& a,bool scalar)const {
     std::array<std::int16_t,transformer_width*2> input{};
     int first=index(p.side());
     for(int perspective=0;perspective<2;++perspective)for(std::size_t j=0;j<transformer_width;++j)
-        input[static_cast<std::size_t>(perspective)*transformer_width+j]=static_cast<std::int16_t>(std::clamp(a.values[static_cast<std::size_t>(first^perspective)][j],0,network_clip));
+        input[static_cast<std::size_t>(perspective)*transformer_width+j]=static_cast<std::int16_t>(std::clamp(a.values[static_cast<std::size_t>(first^perspective)][j],0,clip_));
     std::array<std::int16_t,dense1_width> hidden1{};
-    for(std::size_t i=0;i<dense1_width;++i)hidden1[i]=static_cast<std::int16_t>(std::clamp(rounded(dot(input.data(),weights1_.data()+i*input.size(),input.size())+bias1_[i],network_scale),0,network_clip));
+    for(std::size_t i=0;i<dense1_width;++i)hidden1[i]=static_cast<std::int16_t>(std::clamp(rounded(dot(input.data(),weights1_.data()+i*input.size(),input.size())+bias1_[i],scale_),0,clip_));
     std::array<std::int16_t,dense2_width> hidden2{};
-    for(std::size_t i=0;i<dense2_width;++i)hidden2[i]=static_cast<std::int16_t>(std::clamp(rounded(dot(hidden1.data(),weights2_.data()+i*hidden1.size(),hidden1.size())+bias2_[i],network_scale),0,network_clip));
+    for(std::size_t i=0;i<dense2_width;++i)hidden2[i]=static_cast<std::int16_t>(std::clamp(rounded(dot(hidden1.data(),weights2_.data()+i*hidden1.size(),hidden1.size())+bias2_[i],scale_),0,clip_));
     auto value=dot(hidden2.data(),weights3_.data(),hidden2.size())+bias3_;
-    return std::clamp(rounded(value*400,network_scale*network_scale),-mate_threshold+1,mate_threshold-1);
+    return std::clamp(rounded(value*400,scale_*scale_),-mate_threshold+1,mate_threshold-1);
 }
 }
