@@ -1,0 +1,30 @@
+{
+  "schema":"caissa-studies-v1",
+  "provenance":"Authored structural and rule studies; no imported game dataset or engine evaluation labels",
+  "positions":[
+    {"id":"mate-ne","kind":"tactic","fen":"7k/8/5KQ1/8/8/8/8/8 w - - 0 1"},
+    {"id":"mate-nw","kind":"tactic","fen":"k7/8/1QK5/8/8/8/8/8 w - - 0 1"},
+    {"id":"stalemate","kind":"endgame","fen":"7k/5K2/6Q1/8/8/8/8/8 b - - 0 1"},
+    {"id":"ep-pin","kind":"tactic","fen":"4k3/8/8/r4pPK/8/8/8/8 w - f6 0 1","forbidden":"g5f6"},
+    {"id":"ep-legal","kind":"rules","fen":"4k3/8/8/5pP1/8/8/8/4K3 w - f6 0 1","required":"g5f6"},
+    {"id":"castle-clear","kind":"rules","fen":"r3k2r/8/8/8/8/8/8/R3K2R w KQkq - 0 1","required":"e1g1"},
+    {"id":"castle-transit-attack","kind":"rules","fen":"r3kr1r/8/8/8/8/8/8/R3K2R w KQkq - 0 1","forbidden":"e1g1"},
+    {"id":"double-check","kind":"tactic","fen":"4k3/8/8/8/1b6/8/4r3/4K1N1 w - - 0 1"},
+    {"id":"underpromotion","kind":"tactic","fen":"4k3/P7/8/8/8/8/8/4K3 w - - 0 1","required":"a7a8n"},
+    {"id":"promotion-capture","kind":"tactic","fen":"1r2k3/P7/8/8/8/8/8/4K3 w - - 0 1","required":"a7b8b"},
+    {"id":"opposition-white","kind":"zugzwang-study","fen":"8/8/8/4k3/8/4K3/4P3/8 w - - 0 1"},
+    {"id":"opposition-black","kind":"zugzwang-study","fen":"8/8/8/4k3/8/4K3/4P3/8 b - - 0 1"},
+    {"id":"rook-pawn-ending","kind":"endgame","fen":"8/8/8/8/8/k7/p1R5/K7 b - - 0 1"},
+    {"id":"repetition-start","kind":"repetition","fen":"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1","history":["g1f3","g8f6","f3g1","f6g8","g1f3","g8f6","f3g1","f6g8"]},
+    {"id":"clock-99","kind":"repetition","fen":"7k/8/8/8/8/8/8/R3K3 w - - 99 1"},
+    {"id":"clock-100","kind":"repetition","fen":"7k/8/8/8/8/8/8/R3K3 w - - 100 1"},
+    {"id":"clock-149","kind":"repetition","fen":"7k/8/8/8/8/8/8/R3K3 w - - 149 1"},
+    {"id":"clock-150","kind":"repetition","fen":"7k/8/8/8/8/8/8/R3K3 w - - 150 1"},
+    {"id":"960-swap-kingside","kind":"chess960","fen":"4k3/8/8/8/8/8/8/5KR1 w G - 0 1","chess960":true,"required":"f1g1"},
+    {"id":"960-rook-only","kind":"chess960","fen":"4k3/8/8/8/8/8/8/6KR w H - 0 1","chess960":true,"required":"g1h1"},
+    {"id":"960-king-only","kind":"chess960","fen":"4k3/8/8/8/8/8/8/4KR2 w F - 0 1","chess960":true,"required":"e1f1"},
+    {"id":"960-swap-queenside","kind":"chess960","fen":"4k3/8/8/8/8/8/8/2RK4 w C - 0 1","chess960":true,"required":"d1c1"},
+    {"id":"lone-bishop","kind":"endgame","fen":"7k/8/8/8/8/8/8/2B1K3 w - - 0 1"},
+    {"id":"two-knights","kind":"endgame","fen":"7k/8/8/8/8/8/8/NN2K3 w - - 0 1"}
+  ]
+}
