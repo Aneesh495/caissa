@@ -9,6 +9,8 @@
 #include <algorithm>
 #include <charconv>
 #include <iostream>
+#include <iomanip>
+#include <sstream>
 #include <chrono>
 #include <string_view>
 using namespace caissa;
@@ -17,6 +19,7 @@ std::uint64_t parse_u64(std::string_view text) {
     std::uint64_t value=0;auto [end,error]=std::from_chars(text.data(),text.data()+text.size(),value);
     if(error!=std::errc{}||end!=text.data()+text.size())throw InputError("invalid unsigned integer");return value;
 }
+std::string key_text(Key key){std::ostringstream text;text<<std::hex<<std::setw(16)<<std::setfill('0')<<key;return text.str();}
 int parse_depth(std::string_view s) {
     int depth=-1;auto [p,e]=std::from_chars(s.data(),s.data()+s.size(),depth);
     if(e!=std::errc{}||p!=s.data()+s.size()||depth<0||depth>80) throw InputError("invalid depth");return depth;
@@ -26,7 +29,7 @@ void inspect(std::string_view text) {
     auto p=Position::from_fen(text,c960);auto moves=p.legal();auto ref=reference::legal(p);
     auto sort=[](Moves& list){std::sort(list.begin(),list.end(),[](Move a,Move b){return a.packed()<b.packed();});};
     sort(moves);sort(ref);if(moves!=ref) throw std::logic_error("mailbox and bitboard move sets disagree");
-    std::cout<<"{\"fen\":\""<<p.fen()<<"\",\"key\":"<<p.key()<<",\"repetition_key\":"<<p.repetition_key()<<",\"check\":"<<(p.in_check(p.side())?"true":"false")<<",\"moves\":[";
+    std::cout<<"{\"fen\":\""<<p.fen()<<"\",\"key\":"<<json_quote(key_text(p.key()))<<",\"repetition_key\":"<<json_quote(key_text(p.repetition_key()))<<",\"check\":"<<(p.in_check(p.side())?"true":"false")<<",\"moves\":[";
     bool first=true;for(auto m:moves){if(!first)std::cout<<',';first=false;std::cout<<'"'<<p.uci(m)<<'"';}
     std::cout<<"]}\n"<<std::flush;
 }

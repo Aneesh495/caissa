@@ -1,4 +1,4 @@
-interface TreeNode { id: number; parent: number; fen: string; san: string; uci: string; comment: string; children: number[]; }
+interface TreeNode { id: number; parent: number; fen: string; san: string; uci: string; comment: string; children: number[]; nags: number[]; }
 interface Game { initial: string; chess960: boolean; result: string; tags: Record<string, string>; nodes: TreeNode[]; pgn?: string; }
 interface PositionState { fen: string; check: boolean; moves: string[]; }
 interface Line { depth?: number; seldepth?: number; multipv?: number; scoreType?: string; score?: number; nodes?: number; nps?: number; pv?: string[]; bound?: string; }
@@ -7,7 +7,7 @@ const START = 'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1';
 const symbols: Record<string, string> = { K: '♚', Q: '♛', R: '♜', B: '♝', N: '♞', P: '♟', k: '♚', q: '♛', r: '♜', b: '♝', n: '♞', p: '♟' };
 const names: Record<string, string> = { k: 'king', q: 'queen', r: 'rook', b: 'bishop', n: 'knight', p: 'pawn' };
 function element<T extends HTMLElement>(id: string): T { const found = document.getElementById(id); if (!found) throw new Error(`Missing element ${id}`); return found as T; }
-function emptyGame(fen = START): Game { return { initial: fen, chess960: false, result: '*', tags: {}, nodes: [{ id: 0, parent: 0, fen, san: '', uci: '', comment: '', children: [] }] }; }
+function emptyGame(fen = START, chess960 = false): Game { return { initial: fen, chess960, result: '*', tags: {}, nodes: [{ id: 0, parent: 0, fen, san: '', uci: '', comment: '', children: [], nags: [] }] }; }
 let game = emptyGame(), current = 0, flipped = false, selected: string | undefined, legal: string[] = [], session: Session;
 let generation = 0, playing = 0, active: AbortController | undefined;
 const variations = new Map<number, Line>();
@@ -60,6 +60,7 @@ function drawBoard(focus?: string): void {
     }); board.append(button);
   }
   element('turn').textContent = side === 'w' ? 'White to move' : 'Black to move';
+  element<HTMLSelectElement>('variant').value = game.chess960 ? 'chess960' : 'standard';
   element('move-number').textContent = 'Move ' + node().fen.split(' ')[5]; element<HTMLInputElement>('fen').value = node().fen;
   if (focus) (board.querySelector(`[data-square="${focus}"]`) as HTMLButtonElement | null)?.focus();
 }
@@ -93,7 +94,7 @@ async function appendMove(move: string, playbackId?: number): Promise<void> {
   let child = before.children.find((id) => node(id).uci === move);
   if (child === undefined) {
     if (game.nodes.length >= 2000) throw new Error('Variation limit reached. Export this game before continuing.');
-    child = game.nodes.length; game.nodes.push({ id: child, parent, fen: value.fen, san: value.san, uci: move, comment: '', children: [] }); before.children.push(child); game.result = '*';
+    child = game.nodes.length; game.nodes.push({ id: child, parent, fen: value.fen, san: value.san, uci: move, comment: '', children: [], nags: [] }); before.children.push(child); game.result = '*';
   }
   await selectNode(child, playbackId === undefined);
 }
@@ -174,18 +175,19 @@ function pgnText(): string {
     for (;;) {
       const entry = node(child), parent = node(entry.parent), fields = parent.fen.split(' ');
       text += `${fields[5]}${fields[1] === 'w' ? '.' : '...'} ${entry.san} `;
-      if (entry.comment) text += `{${entry.comment.replace(/[{}]/g, '')}} `;
+      if (entry.nags?.length) text += entry.nags.map((n) => '$' + n).join(' ') + ' ';
+      if (entry.comment) text += `{${entry.comment.replaceAll('}', ']')}} `;
       if (parent.children[0] === child) for (const sibling of parent.children.slice(1)) text += `( ${branch(sibling, nesting + 1)}) `;
       const next = entry.children[0]; if (next === undefined) break; child = next;
     }
     return text;
   }
-  const child = node(0).children[0]; return output + (child === undefined ? '' : branch(child)) + game.result;
+  const child = node(0).children[0]; return output + (node(0).comment ? '{' + node(0).comment.replaceAll('}', ']') + '} ' : '') + (child === undefined ? '' : branch(child)) + game.result;
 }
 element('analyze').addEventListener('click', () => safe(startAnalysis)); element('cancel').addEventListener('click', () => { cancel(); status('Analysis stopped. The last completed lines are retained.'); });
 element('flip').addEventListener('click', () => { flipped = !flipped; drawBoard(); });
 element('reset').addEventListener('click', () => safe(async () => { game = emptyGame(); evaluations = []; drawHistory(); await selectNode(0); }));
-element('load-fen').addEventListener('click', () => safe(async () => { const value = await api<PositionState>('state', { fen: element<HTMLInputElement>('fen').value }); game = emptyGame(value.fen); evaluations = []; drawHistory(); await selectNode(0); }));
+element('load-fen').addEventListener('click', () => safe(async () => { const chess960 = element<HTMLSelectElement>('variant').value === 'chess960'; const value = await api<PositionState>('state', { fen: element<HTMLInputElement>('fen').value, chess960 }); game = emptyGame(value.fen, chess960); evaluations = []; drawHistory(); await selectNode(0); }));
 element('import-pgn').addEventListener('click', () => safe(async () => { const value = await api<Game>('pgn', { pgn: element<HTMLTextAreaElement>('pgn').value }); game = value; evaluations = []; drawHistory(); await selectNode(0); status(`Imported ${game.nodes.length - 1} moves and variations.`); }));
 element('export-pgn').addEventListener('click', () => safe(async () => { const value = await api<Game>('pgn', { pgn: pgnText() }); element<HTMLTextAreaElement>('pgn').value = value.pgn ?? ''; status('Exported the actual game tree, including edited variations.'); }));
 element('new-variation').addEventListener('click', () => { let id = current; while (id) { const entry = node(id), parent = node(entry.parent); parent.children = [id, ...parent.children.filter((child) => child !== id)]; id = entry.parent; } drawMoves(); save(); status('Selected variation is now the main line.'); });

@@ -11,7 +11,7 @@
 <div class="panel-heading"><div><p class="eyebrow">FOLLOW THE POSITION</p><h1>A move worth finding.</h1></div><button id="flip" class="quiet" title="Flip board">↕ Flip</button></div>
 <div class="board-frame"><div id="board" role="grid" aria-label="Chessboard. Arrow keys move focus, Enter selects a square."></div></div>
 <div class="position-bar"><span id="turn">White to move</span><span id="move-number">Move 1</span><div class="navigation"><button id="first" title="First position">|‹</button><button id="previous" title="Previous position">‹</button><button id="next" title="Next mainline position">›</button><button id="last" title="Last mainline position">›|</button></div></div>
-<div class="fen-row"><label for="fen">FEN</label><input id="fen" spellcheck="false" aria-label="Position FEN"><button id="load-fen">Load</button><button id="reset" class="quiet">Reset</button></div>
+<div class="fen-row"><label for="fen">FEN</label><select id="variant" aria-label="Chess variant"><option value="standard">Standard</option><option value="chess960">Chess960</option></select><input id="fen" spellcheck="false" aria-label="Position FEN"><button id="load-fen">Load</button><button id="reset" class="quiet">Reset</button></div>
 <p id="status" role="status" aria-live="polite">Loading position.</p>
 </section>
 <aside>

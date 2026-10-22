@@ -20,7 +20,7 @@ void write_game_json(std::ostream& out,const Game& game) {
         out<<"{\"id\":"<<i<<",\"parent\":"<<node.parent<<",\"fen\":"<<json_quote(p.fen())<<",\"san\":";
         auto before=i?game.position_at(node.parent):game.initial;
         out<<json_quote(i?san(before,node.move):"")<<",\"uci\":"<<json_quote(i?before.uci(node.move):"")<<",\"comment\":"<<json_quote(node.comment)<<",\"children\":[";
-        for(std::size_t j=0;j<node.children.size();++j){if(j)out<<',';out<<node.children[j];}out<<"]}";
+        for(std::size_t j=0;j<node.children.size();++j){if(j)out<<',';out<<node.children[j];}out<<"],\"nags\":[";for(std::size_t j=0;j<node.nags.size();++j){if(j)out<<',';out<<node.nags[j];}out<<"]}";
     }
     out<<"]}\n";
 }

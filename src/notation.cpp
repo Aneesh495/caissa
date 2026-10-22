@@ -134,7 +134,11 @@ Game Game::parse(std::string_view source) {
             if(!stack.empty())Lexer::fail("result inside variation unsupported",t.offset);game.result=t.value;ended=true;continue;
         }
         if(t.value=="e.p.")continue;started=true;auto move=parse_san(p,t.value);if(!move)Lexer::fail("illegal or ambiguous SAN "+t.value,t.offset);
-        current=game.append(current,*move);p.make(*move);
+        current=game.append(current,*move);
+        auto marker=t.value.find_last_not_of("!?");auto suffix=marker==std::string::npos?std::string{}:t.value.substr(marker+1);
+        const std::map<std::string,int> annotations{{"!",1},{"?",2},{"!!",3},{"??",4},{"!?",5},{"?!",6}};
+        if(auto annotation=annotations.find(suffix);annotation!=annotations.end())game.nodes[current].nags.push_back(annotation->second);
+        p.make(*move);
     }
     if(!started&&game.tags.contains("FEN")) {
         bool variant=game.tags.contains("Variant")&&(game.tags.at("Variant")=="Chess960"||game.tags.at("Variant")=="Fischerandom");
@@ -149,6 +153,7 @@ std::string Game::pgn()const {
     if(initial.fen()!=start_fen){headers["SetUp"]="1";headers["FEN"]=initial.fen();}
     if(initial.chess960())headers["Variant"]="Chess960";
     for(auto& [key,value]:headers)out<<'['<<key<<" \""<<quote(value)<<"\"]\n";out<<'\n';
+    if(!nodes[0].comment.empty()){auto comment=nodes[0].comment;std::replace(comment.begin(),comment.end(),'}',']');out<<'{'<<comment<<"} ";}
     std::function<void(Position,std::size_t,bool,int)> branch;
     branch=[&](Position p,std::size_t child,bool first,int nesting) {
         if(nesting>64)throw InputError("variation nesting exceeds limit");
