@@ -42,6 +42,7 @@ private:
     std::string identity_;
     std::uint32_t checksum_=0;
     int scale_=64,clip_=127;
+    bool residual_=false;
     void add(std::array<std::int32_t,transformer_width>& accumulator,int feature,int sign)const;
 };
 // Dot inputs are clipped activations in [0,2047] and arbitrary int16 weights.

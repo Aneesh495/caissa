@@ -1,4 +1,5 @@
 #include "caissa/network.hpp"
+#include "caissa/evaluation.hpp"
 #include <algorithm>
 #include <bit>
 #include <fstream>
@@ -40,15 +41,16 @@ std::shared_ptr<const Network> Network::load(const std::filesystem::path& path) 
     std::ifstream input(path,std::ios::binary);std::vector<std::uint8_t> bytes(static_cast<std::size_t>(size));
     if(!input.read(reinterpret_cast<char*>(bytes.data()),static_cast<std::streamsize>(bytes.size())))throw InputError("network read failed");
     Reader reader(bytes);auto magic=reader.text(8);auto version=reader.u32();
-    if(!((magic=="CAISSAN1"&&version==1)||(magic=="CAISSAN2"&&version==2)))throw InputError("unsupported network format version");
+    if(!((magic=="CAISSAN1"&&version==1)||(magic=="CAISSAN2"&&version==2)||(magic=="CAISSAN3"&&version==3)))throw InputError("unsupported network format version");
     if(reader.u32()!=feature_version||reader.u32()!=feature_count||reader.u32()!=transformer_width||reader.u32()!=dense1_width||reader.u32()!=dense2_width)throw InputError("network feature or architecture mismatch");
     auto scale=reader.u32(),clip=reader.u32();
-    if((version==1&&(scale!=64||clip!=127))||(version==2&&(scale!=1024||clip!=2047)))throw InputError("network numerical contract mismatch");
+    if((version==1&&(scale!=64||clip!=127))||(version>=2&&(scale!=1024||clip!=2047)))throw InputError("network numerical contract mismatch");
     reader.bias_limit(version==1?1<<20:1<<28);
-    auto net=std::shared_ptr<Network>(new Network);net->scale_=static_cast<int>(scale);net->clip_=static_cast<int>(clip);net->identity_=reader.text(64);
+    auto net=std::shared_ptr<Network>(new Network);net->residual_=version==3;net->scale_=static_cast<int>(scale);net->clip_=static_cast<int>(clip);net->identity_=reader.text(64);
     if(!std::all_of(net->identity_.begin(),net->identity_.end(),[](char c){return (c>='0'&&c<='9')||(c>='a'&&c<='f');}))throw InputError("invalid training identity");
     if(reader.u64()!=payload_bytes)throw InputError("network payload declaration mismatch");
-    net->checksum_=reader.u32();if(reader.u32()!=0)throw InputError("unsupported network header extension");
+    net->checksum_=reader.u32();auto baseline_contract=reader.u32();
+    if(baseline_contract!=(version==3?classical_contract_version:0))throw InputError("unsupported network baseline contract");
     if(crc32(std::span(bytes).subspan(120))!=net->checksum_)throw InputError("network checksum mismatch");
     net->embedding_.resize(feature_count*transformer_width);
     for(auto& value:net->embedding_)value=reader.i16();for(auto& value:net->bias0_)value=reader.i32();
@@ -96,6 +98,6 @@ int Network::evaluate(const Position& p,const Accumulator& a,bool scalar)const {
     std::array<std::int16_t,dense2_width> hidden2{};
     for(std::size_t i=0;i<dense2_width;++i)hidden2[i]=static_cast<std::int16_t>(std::clamp(rounded(dot(hidden1.data(),weights2_.data()+i*hidden1.size(),hidden1.size())+bias2_[i],scale_),0,clip_));
     auto value=dot(hidden2.data(),weights3_.data(),hidden2.size())+bias3_;
-    return std::clamp(rounded(value*400,scale_*scale_),-mate_threshold+1,mate_threshold-1);
+    return std::clamp(rounded(value*400,scale_*scale_)+(residual_?classical(p):0),-mate_threshold+1,mate_threshold-1);
 }
 }
