@@ -98,6 +98,7 @@ const server = createServer((request, response) => {
     const known = error instanceof RequestError; json(response, known ? error.status : 500, { error: known ? error.message : 'Local service failed.' });
   });
 });
+server.maxConnections = 64;
 server.requestTimeout = 10000; server.headersTimeout = 5000; server.maxHeadersCount = 32;
 server.listen(port, '127.0.0.1', () => console.log(`Caissa analysis: ${allowedOrigin}`));
 for (const signal of ['SIGTERM', 'SIGINT'] as const) process.on(signal, () => { shutdown(); server.close(); setTimeout(() => process.exit(0), 500).unref(); });

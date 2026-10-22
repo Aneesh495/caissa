@@ -55,6 +55,7 @@ export function analyze(request: AnalysisRequest, emit: (event: string, value: u
   child.on('close', cleanup); child.stdin.on('error', () => {});
   const lines = createInterface({ input: child.stdout });
   lines.on('line', (line) => {
+    if (closing && !line.startsWith('bestmove ')) return;
     if (line.length > 8192) { emit('error', { message: 'Oversized engine message.' }); cancel(); return; }
     if (line === 'uciok') {
       child.stdin.write(`setoption name Threads value ${request.threads}\nsetoption name Hash value ${request.hash}\nsetoption name MultiPV value ${request.multipv}\nsetoption name UCI_Chess960 value ${request.chess960}\nisready\n`);

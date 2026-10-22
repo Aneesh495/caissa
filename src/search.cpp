@@ -3,6 +3,8 @@
 #include <algorithm>
 #include <cmath>
 #include <numeric>
+#include <exception>
+#include <mutex>
 #include <thread>
 namespace caissa {
 std::int64_t monotonic_ns() {return std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count();}
@@ -202,13 +204,13 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
     std::vector<PrincipalLine> prior;
     for(auto m:legal)prior.push_back({m,0,{m},Bound::exact});
     for(int depth=1;depth<=limits.depth;++depth) {
-        std::vector<PrincipalLine> current=prior;std::vector<unsigned char> completed(current.size(),0);std::atomic<std::size_t> next{0};std::atomic<int> root_alpha{-infinity};
+        std::vector<PrincipalLine> current=prior;std::vector<unsigned char> completed(current.size(),0);std::atomic<std::size_t> next{0};std::atomic<int> root_alpha{-infinity};std::mutex error_mutex;std::exception_ptr worker_error;
         auto work=[&](int id) {
             auto& worker=*workers[static_cast<std::size_t>(id)];
             while(!control->stop.load(std::memory_order_relaxed)) {
                 auto i=next.fetch_add(1,std::memory_order_relaxed);if(i>=current.size())break;
-                auto move=current[i].move;Position position=root;auto undo=position.make(move);(void)undo;worker.reset(position);
                 try {
+                    auto move=current[i].move;Position position=root;auto undo=position.make(move);(void)undo;worker.reset(position);
                     int alpha=-infinity,beta=infinity,window=25;Bound root_bound=Bound::exact;
                     int shared_alpha=root_alpha.load(std::memory_order_relaxed);int score=-infinity;Moves child;
                     bool screened=options.multipv==1&&options.pvs&&shared_alpha>-infinity;
@@ -230,10 +232,20 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
                     }
                     current[i]={move,score,{move},root_bound};current[i].pv.insert(current[i].pv.end(),child.begin(),child.end());completed[i]=1;
                 }catch(const Abort&) {break;}
+                catch(...) {std::lock_guard lock(error_mutex);if(!worker_error)worker_error=std::current_exception();control->stop.store(true);break;}
             }
         };
         if(options.threads==1)work(0);
-        else {std::vector<JoiningThread> pool;for(int id=0;id<options.threads;++id)pool.emplace_back(work,id);}
+        else {
+            std::vector<JoiningThread> pool;
+            try {
+                for(int id=0;id<options.threads;++id) {
+                    if(options.inject_worker_start_failure_after>=0&&id>=options.inject_worker_start_failure_after)throw std::runtime_error("injected worker startup failure");
+                    pool.emplace_back(work,id);
+                }
+            }catch(...){control->stop.store(true);throw;}
+        }
+        if(worker_error)std::rethrow_exception(worker_error);
         bool complete=std::all_of(completed.begin(),completed.end(),[](auto v){return v!=0;});
         if(!complete) {result.interrupted=true;break;}
         std::stable_sort(current.begin(),current.end(),[](const auto& a,const auto& b){return a.score!=b.score?a.score>b.score:a.bound==Bound::exact&&b.bound!=Bound::exact;});prior=current;

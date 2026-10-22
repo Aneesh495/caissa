@@ -12,6 +12,7 @@ struct SearchOptions {
     bool null_move=true, lmr=true, extensions=true, history=true, see=true;
     bool futility=true;
     int threads=1, multipv=1,trace_limit=0;
+    int inject_worker_start_failure_after=-1;
     std::shared_ptr<const Network> network;
     bool scalar_network=false;
 };
