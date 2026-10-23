@@ -1,0 +1,1 @@
+{"network": {"probes": 100000, "probe_seed": 86028157, "maximum_float_error_cp": 32, "format": 3, "width": 64, "error_contract": "unclamped-quantization-and-clamped-inference"}}

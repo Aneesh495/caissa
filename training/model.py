@@ -173,7 +173,7 @@ def export_network(model, path, identity):
     }
 
 
-def integer_reference(path, x, baseline=None):
+def integer_reference(path, x, baseline=None, clip_output=True):
     """NumPy int64 reference; no calls to native feature or inference functions."""
     raw = Path(path).read_bytes()
     if len(raw) < 120 or raw[:8] not in [b"CAISSAN1", b"CAISSAN2", b"CAISSAN3"]:
@@ -228,6 +228,6 @@ def integer_reference(path, x, baseline=None):
                         "independent residual reference requires classical scores"
                     )
                 score = score + np.asarray(baseline, dtype=np.int64)
-            return score.clip(-29871, 29871)
+            return score.clip(-29871, 29871) if clip_output else score
         y = (np.sign(z) * ((np.abs(z) + scale // 2) // scale)).clip(0, clip)
     raise AssertionError("unreachable")

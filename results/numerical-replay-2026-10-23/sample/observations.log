@@ -1,0 +1,11 @@
+512 probes complete
+10752 probes complete
+20992 probes complete
+31232 probes complete
+41472 probes complete
+51712 probes complete
+61952 probes complete
+72192 probes complete
+82432 probes complete
+92672 probes complete
+{"status": "passed-frozen-error-bound", "probes": 100000, "probe_seed": 86028157, "frozen_maximum_error_cp": 32.0, "float_quantized_cp": {"mean": 1.9895770355350524, "p99": 5.743233947753902, "max": 12.197021484375}, "raw_float_quantized_cp": {"mean": 1.9895770355350524, "p99": 5.743233947753902, "max": 12.197021484375}, "output_clipped_probes": 0, "error_contract": "unclamped-quantization-and-clamped-inference", "engine_sha256": "0a962cec17b53dfe79f5f2a89a556b3bb7e5dfc79dd3e0444c5b9bc004ce3116", "checkpoint_sha256": "ae6fc9aa39b4900d7b932d76e2f72a70a0d4018d565eabe8b22825553a818a31", "positions_sha256": "8be4acd9e6ce2c6be08062e8b73c50e4690c9df98a87a45720eeea87a6b082a1", "seconds": 14.982625000004191, "total_seconds": 20.282348458014894, "wall_seconds": 20.282498121261597, "timing_scope": "seconds is inference only; total_seconds and wall_seconds include model loading and frozen probe construction", "network_sha256": "580ea83d33f54426981adc072042d4555bf26259a859ddafbc0bb0eb2f7b8926", "trained": true, "full_acceptance": false, "probes_sha256": "886acff6b16c306bbb010d29ff0561b1c6a50dc4eee8bae9c58cb5e877f01eae"}
