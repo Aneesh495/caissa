@@ -1,0 +1,12 @@
+{
+  "profile": "diagnostic residual evaluator; legacy split; fixed sample",
+  "files": {
+    "SUMMARY.json": "44573f5c9412dc49651466fa8f01aab814d848bfeb8e26d4b0da753179b5217d",
+    "CONFIG.json": "0cc26d5593f9a887abbcb40a83369bebf2c6ae6bcfff890162e9fe435f34c70a",
+    "raw-games.tar.gz": "dc581578066973f8429b2380c2a16e28079a46f06f852560d8830ce25206ebcd",
+    "SELECTION.json": "e221fe424085827874ea923c62431e161826cdfc8cfc207bad997c6a131e50a1",
+    "PROTOCOL.json": "106f20dd28cfd97bb50ea462acb367e8e30372f69f4c3be0cab43287c27dfd91",
+    "INDEPENDENT.json": "3130862b1b0e12509e544fa4c13b57c25c0b33eb877e02e8c9ce8cb6f2cd2ad2"
+  },
+  "full_acceptance": false
+}

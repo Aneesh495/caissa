@@ -103,7 +103,7 @@ def main():
         {
             "dataset_sha256": dataset_id,
             "schema": "caissa-train-config-v1",
-            "torch": torch.__version__,
+            "torch": str(torch.__version__),
             "network_contract": f"v{a.network_version}-q1024-clip2047-{a.width}-32-16",
             "validation_count": min(8192, manifest["splits"]["validation"]),
             "validation_selection": (
@@ -261,6 +261,27 @@ def main():
 
     start = time.monotonic()
     untrained = validation(False) if first_step == 0 else state["untrained_validation"]
+    initial_path = a.output / "initial.pt"
+    if first_step == 0:
+        save(
+            initial_path,
+            {
+                "schema": "caissa-initial-parameters-v1",
+                "config": config,
+                "model": model.state_dict(),
+                "initial_hash": initial_hash,
+                "untrained_validation": untrained,
+            },
+        )
+        atomic_json(
+            a.output / "INITIAL.json",
+            {
+                "schema": "caissa-initial-identity-v1",
+                "sha256": digest(initial_path),
+                "parameter_sha256": initial_hash,
+                "seed": a.seed,
+            },
+        )
     log = (a.output / "observations.jsonl").open("a" if a.resume else "w")
     try:
         for step in range(first_step, a.steps):
@@ -393,6 +414,9 @@ def main():
             "improved": best < untrained,
             "dataset_sha256": dataset_id,
             "test_accessed": False,
+            "initial_checkpoint_sha256": (
+                digest(initial_path) if initial_path.exists() else None
+            ),
             "seconds_this_session": time.monotonic() - start,
             "training_positions": len(train_x),
             "validation_positions_evaluated": len(validation_indices),

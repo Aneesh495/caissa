@@ -1,0 +1,22 @@
+{
+  "scope": "diagnostic checker observations; model/checkpoint payloads remain in the local run, not a portable full bundle",
+  "files": {
+    "CONTROLS.json": "a5dae93d2ee1254fce5c4c454eded6a6627a667d0c5d86724ab6b20d539bf700",
+    "INDEPENDENT.json": "08576d1ae1e6b1eb0f5acfa8c7ad62daf5bc26d77644823f9759de6072c0de86",
+    "RECOVERY.json": "67f559c40c9719f93e7b2d3f52ecc05457917da3fa91dd99861c10eec6a3c178",
+    "FULL_REFUSED.json": "3e2faccef5631933180afab1ec14c7654f4dadbaa1c0dfcf5d1b30da91035599",
+    "seed41/SUMMARY.json": "ee49f4bb8fc9da20981fb081bb5a6990c8c25b1e69be103639c07eff7ba0972b",
+    "seed41/observations.jsonl": "8db53a15d50ce0320c8d84c931cad95cba4ea06f765a419d6d1a7d3e6da7f4ae",
+    "seed41/CONFIG.json": "ec84b31ebdd4d8a9b17ec1a2bb3c30248df5cf06a67e35cf61d256db4fd1442f",
+    "seed41/INITIAL.json": "f78def9842514fb4740f5f7a2f54ba18e7fe722d832c18e2afe94bc7131b8b73",
+    "seed17/SUMMARY.json": "ca925000205aa51bae2a9f4162ccdf646c5cad2470c1354f370e35a4039554f4",
+    "seed17/observations.jsonl": "b545974eb86258c0f1552334736a10015cd35eb95cfd312c59cf5663b283a8d8",
+    "seed17/CONFIG.json": "fc8764d56843d13b66b2b4c551f4bcfa58e55d64d66f4d1a98291f702178b6f5",
+    "seed17/INITIAL.json": "f55227e7252a133949d1640c4a762395b7cdc17be2b59d4f0d7024ba07b673e2",
+    "seed73/SUMMARY.json": "dbb4f5e69d1eef5a56964037bb2db7c09c31032d54d31e766953a0f6b1a0a0c3",
+    "seed73/observations.jsonl": "330076e0a00664311d67d33fcc998cebc24203414cb49219fb9a60cf7108dc76",
+    "seed73/CONFIG.json": "142241c1e8e41926e651b0e9579d64bca0f1962f8b9fe4a1782aff5d053a961d",
+    "seed73/INITIAL.json": "227062407c30f9476a60076fbd88566177fd82c1c1dc33e02c9c71a299be72b2"
+  },
+  "full_acceptance": false
+}

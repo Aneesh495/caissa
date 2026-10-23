@@ -1,6 +1,6 @@
 # Prospective protocol v2
 
-This version governs new full training, numerical and strength runs. [The machine-readable protocol](../config/protocol-v2.json) is an input to source/evidence identity. Earlier diagnostics remain diagnostics. The original corpus teacher and its numerical labels stay unchanged.
+This retained version was superseded for data acquisition by the stronger original teacher and [counted data protocol](../config/data-generation-v4.json). Its full training and decisive matches were not executed. A new model/strength protocol must be frozen before those runs. [The machine-readable protocol](../config/protocol-v2.json) is an input to source/evidence identity. Earlier diagnostics remain diagnostics. The original corpus teacher and its numerical labels stay unchanged.
 
 The v1 eight-hour generation ceiling was not enforced and elapsed time exceeded it. Historical CPU hours were not captured. Wall duration and monotonic process duration differ on this host. That missing historical measurement cannot be reconstructed from a linear estimate. New sessions record Unix wall time, monotonic duration and reaped-child CPU seconds separately. A started session without a finish record remains incomplete timing evidence.
 

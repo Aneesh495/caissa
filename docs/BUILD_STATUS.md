@@ -19,7 +19,7 @@ The native rules, classical evaluation, PVS search, bounded UCI, Chess960, PGN v
 | G11 Recovery | SIGKILL training/corpus/arena recovery tests executed | Source-bound replay of recovery records |
 | G12 Browser | Fresh-origin import, native analysis/cancel, keyboard variation, 390px viewport, service restart/export and malformed FEN exercised | Repeat against final release source |
 | G13 Performance | Evaluator and protocol timings recorded | Complete frozen scalar/optimized resource profiles |
-| G14 Semantic verifier | Rehashed illegal PV, swapped colors, wrong inference and false draw rejected; separate full-data and strength checkers implemented | Remaining full campaign schema and independent checks |
+| G14 Semantic verifier | Rehashed illegal PV, swapped colors, wrong inference and false draw rejected; separate data, learning and strength checkers implemented | Remaining full campaign schema and independent checks |
 | G15 Reproduction | Clean source diagnostic passed; Linux/macOS CI passes | Full saved-model/game/report reproduction |
 | G16 Release | Blocked by incomplete and failed full gates | All required gates and final identity audit |
 
