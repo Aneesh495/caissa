@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "profile": "diagnostic-learning-domain",
+  "seeds": [
+    17,
+    41,
+    73
+  ],
+  "all_checkpoints_independently_evaluated": 6,
+  "validation_positions_per_checkpoint": 2297,
+  "baseline_scores_independently_checked": 5802,
+  "independent_seed_observations": [
+    {
+      "seed": 17,
+      "recorded_origin": "runs/learning-independent-pilot/seed17",
+      "verified_directory": "runs/learning-independent-pilot/seed17",
+      "initial_parameter_sha256": "c4d15b9351e3f634c2fdb294faae1848ebd552fcc3b1215bb8472edb7682fcca",
+      "initial_checkpoint_sha256": "438424f9010b91f693404e0435c8584d158252b981bd5852c6be93088913cf58",
+      "independent_untrained_validation": 0.8006365937568024,
+      "independent_checkpoint_validation": [
+        {
+          "step": 50,
+          "loss": 0.7635073032802636
+        },
+        {
+          "step": 100,
+          "loss": 0.7512121138284141
+        }
+      ],
+      "selected_checkpoint_step": 100,
+      "final_updates": 100,
+      "replayed_sampler_values": 25600
+    },
+    {
+      "seed": 41,
+      "recorded_origin": "runs/learning-independent-pilot/seed41",
+      "verified_directory": "runs/learning-independent-pilot/seed41",
+      "initial_parameter_sha256": "88582fcad13de992379130100e42bceb63f367d587e05ce20893bfbad06351cd",
+      "initial_checkpoint_sha256": "50998172801fadd45f3590505055cdc0d3d495a2b91d366cc504da88f447ae87",
+      "independent_untrained_validation": 0.8006365937568024,
+      "independent_checkpoint_validation": [
+        {
+          "step": 50,
+          "loss": 0.7697393195650917
+        },
+        {
+          "step": 100,
+          "loss": 0.7544519393714968
+        }
+      ],
+      "selected_checkpoint_step": 100,
+      "final_updates": 100,
+      "replayed_sampler_values": 25600
+    },
+    {
+      "seed": 73,
+      "recorded_origin": "runs/learning-independent-pilot/seed73",
+      "verified_directory": "runs/learning-independent-pilot/seed73",
+      "initial_parameter_sha256": "fc6819a2ae2bcfd3498398408bbff0a48c95c64dbb4431e3b5a1f4d8cd33d228",
+      "initial_checkpoint_sha256": "2ff832935de2632def9ce4dd989e7a1f2a12eaf74811dac33e329a485cea8ac0",
+      "independent_untrained_validation": 0.8006365937568024,
+      "independent_checkpoint_validation": [
+        {
+          "step": 50,
+          "loss": 0.7699745321045454
+        },
+        {
+          "step": 100,
+          "loss": 0.7589988392957356
+        }
+      ],
+      "selected_checkpoint_step": 100,
+      "final_updates": 100,
+      "replayed_sampler_values": 25600
+    }
+  ],
+  "selected_seed": 17,
+  "dataset_sha256": "e8127c2613af6bb37430427232e850f1f6a39eac05552a1d9d3d06cff0b0c2c7",
+  "network_sha256": "9d529f0c09f3d8629729f6073866e28881a19f5b74d308e4701c2fb89837e68c",
+  "test_arrays_opened": false,
+  "full_acceptance": false,
+  "scope": "learning provenance and selection only; original-game replay and playing-strength gates remain separate",
+  "seconds": 15.611703666043468
+}

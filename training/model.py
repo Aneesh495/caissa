@@ -83,6 +83,33 @@ class CaissaNet(nn.Module):
         return result
 
 
+def deployed_logits(prediction, baseline, neural_weight=100, quantized=False):
+    """Train a residual mixture at its declared deployment percentage.
+
+    The 100-percent path preserves existing absolute/residual experiments.
+    Quantized mixtures use straight-through output rounding and percentage
+    truncation. Hidden-layer QAT remains an approximation; native numerical
+    acceptance is checked separately against saved weight bytes.
+    """
+    if type(neural_weight) is not int or not 1 <= neural_weight <= 100:
+        raise ValueError("training neural percentage outside bounds")
+    if neural_weight == 100:
+        return prediction
+    if baseline is None or baseline.shape != prediction.shape:
+        raise ValueError("mixture training requires matching classical baselines")
+    base = baseline.to(prediction)
+    correction = (prediction - base / 400) * 400
+    if quantized:
+        rounded = torch.sign(correction) * torch.floor(torch.abs(correction) + 0.5)
+        correction = correction + (rounded - correction).detach()
+    complete = (correction + base).clamp(-29871, 29871)
+    mixture = (complete * neural_weight + base * (100 - neural_weight)) / 100
+    if quantized:
+        truncated = torch.trunc(mixture)
+        mixture = mixture + (truncated - mixture).detach()
+    return mixture / 400
+
+
 def state_hash(model):
     h = hashlib.sha256()
     for key, value in sorted(model.state_dict().items()):

@@ -5,7 +5,7 @@ from pathlib import Path
 import numpy as np
 import torch
 from training.corpus import atomic_json, digest
-from training.model import CaissaNet, state_hash
+from training.model import CaissaNet, deployed_logits, state_hash
 
 
 def save(path, value):
@@ -52,6 +52,7 @@ def main():
     ap.add_argument("output", type=Path)
     ap.add_argument("--network-version", type=int, choices=[2, 3], default=2)
     ap.add_argument("--baseline-directory", type=Path)
+    ap.add_argument("--neural-weight", type=int, default=100)
     ap.add_argument("--width", type=int, choices=[32, 64, 128], default=64)
     ap.add_argument("--seed", type=int, required=True)
     ap.add_argument("--steps", type=int, default=1000)
@@ -63,6 +64,10 @@ def main():
     ap.add_argument("--checkpoint-every", type=int, default=100)
     ap.add_argument("--resume", action="store_true")
     a = ap.parse_args()
+    if not 1 <= a.neural_weight <= 100 or (
+        a.neural_weight < 100 and a.network_version != 3
+    ):
+        ap.error("mixture training requires residual format3 and percentage1..100")
     if (
         not 1 <= a.steps <= 1000000
         or not 16 <= a.batch <= 8192
@@ -99,6 +104,12 @@ def main():
         if k
         not in ["resume", "output", "dataset", "network_version", "baseline_directory"]
     }
+    if a.neural_weight == 100:
+        # Missing means the historical100-percent objective. Keep legacy
+        # configurations and exact same-host resume trajectories unchanged.
+        del config["neural_weight"]
+    else:
+        config["mixture_contract"] = "residual-output-ste-round-clamp-truncate-v1"
     config.update(
         {
             "dataset_sha256": dataset_id,
@@ -239,18 +250,23 @@ def main():
                 idx = validation_indices[offset : offset + a.batch]
                 x = torch.from_numpy(np.array(val_x[idx], dtype=np.int64)).to(a.device)
                 y = torch.from_numpy(np.array(val_y[idx])).to(a.device)
+                baseline = (
+                    torch.from_numpy(
+                        np.array(baseline_validation[idx], dtype=np.float32)
+                    ).to(a.device)
+                    if baseline_validation is not None
+                    else None
+                )
+                prediction = model(
+                    x,
+                    quantized=quantized,
+                    baseline=baseline,
+                )
+                prediction = deployed_logits(
+                    prediction, baseline, a.neural_weight, quantized
+                )
                 loss = torch.nn.functional.binary_cross_entropy_with_logits(
-                    model(
-                        x,
-                        quantized=quantized,
-                        baseline=(
-                            torch.from_numpy(
-                                np.array(baseline_validation[idx], dtype=np.float32)
-                            ).to(a.device)
-                            if baseline_validation is not None
-                            else None
-                        ),
-                    ),
+                    prediction,
                     targets(y, a.outcome_weight),
                     reduction="sum",
                 )
@@ -292,16 +308,20 @@ def main():
             y = torch.from_numpy(np.array(train_y[indices])).to(a.device)
             optimizer.zero_grad(set_to_none=True)
             quantized = step >= a.steps // 2
+            baseline = (
+                torch.from_numpy(
+                    np.array(baseline_train[indices], dtype=np.float32)
+                ).to(a.device)
+                if baseline_train is not None
+                else None
+            )
             prediction = model(
                 x,
                 quantized=quantized,
-                baseline=(
-                    torch.from_numpy(
-                        np.array(baseline_train[indices], dtype=np.float32)
-                    ).to(a.device)
-                    if baseline_train is not None
-                    else None
-                ),
+                baseline=baseline,
+            )
+            prediction = deployed_logits(
+                prediction, baseline, a.neural_weight, quantized
             )
             loss = torch.nn.functional.binary_cross_entropy_with_logits(
                 prediction, targets(y, a.outcome_weight)

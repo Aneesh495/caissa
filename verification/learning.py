@@ -32,6 +32,12 @@ MAX_CHECKPOINT_BYTES = 128 * 1024 * 1024
 MAX_SAMPLER_VALUES = 100000000
 
 
+class LearningFailure(Rejection):
+    def __init__(self, reason, observed):
+        super().__init__(reason)
+        self.observed = observed
+
+
 def close(actual, expected, message, tolerance=LOSS_TOLERANCE):
     if not isinstance(actual, (int, float)) or not math.isfinite(actual):
         raise Rejection(message + ": nonfinite or missing value")
@@ -146,12 +152,25 @@ def board_from_features(row):
 
 
 def validation_loss(
-    parameters, source_x, source_y, count, outcome_weight, quantized, baseline=None
+    parameters,
+    source_x,
+    source_y,
+    count,
+    outcome_weight,
+    quantized,
+    baseline=None,
+    neural_weight=100,
 ):
     """A separate tensor graph using saved arrays, without the model class."""
     total = 0.0
     scale = 1024
     ceiling = 2047 / scale
+    if (
+        type(neural_weight) is not int
+        or not 1 <= neural_weight <= 100
+        or (neural_weight < 100 and baseline is None)
+    ):
+        raise Rejection("independent mixture objective outside its baseline contract")
     with torch.inference_mode():
         embedding = parameters["embedding.weight"]
         bias = parameters["bias0"]
@@ -180,11 +199,22 @@ def validation_loss(
                         activations = torch.round(activations * scale) / scale
             logits = activations.reshape(-1)
             if baseline is not None:
-                logits = (
-                    logits
-                    + torch.from_numpy(np.array(baseline[start:stop], dtype=np.float32))
-                    / 400
+                base = torch.from_numpy(
+                    np.array(baseline[start:stop], dtype=np.float32)
                 )
+                logits = logits + base / 400
+                if neural_weight < 100:
+                    correction = (logits - base / 400) * 400
+                    if quantized:
+                        magnitude = torch.floor(torch.abs(correction) + 0.5)
+                        correction = torch.where(correction < 0, -magnitude, magnitude)
+                    complete = torch.clamp(correction + base, -29871, 29871)
+                    logits = (
+                        complete * neural_weight + base * (100 - neural_weight)
+                    ) / 100
+                    if quantized:
+                        logits = torch.trunc(logits)
+                    logits = logits / 400
             probabilities = (
                 labels[:, 2]
                 if labels.shape[1] == 3
@@ -443,6 +473,7 @@ def verify_learning(
     baseline_sha = None
     baseline_checked = 0
     seed_observations = []
+    loss_failures = []
     for folder in runs:
         config = load(folder / "CONFIG.json")
         if (
@@ -467,6 +498,12 @@ def verify_learning(
         ):
             raise Rejection("invalid declared learning work")
         if rule:
+            if config.get("neural_weight", 100) != rule["training"].get(
+                "neural_weight", 100
+            ):
+                raise Rejection(
+                    "training mixture objective differs from frozen protocol"
+                )
             for key in [
                 "steps",
                 "batch",
@@ -501,6 +538,12 @@ def verify_learning(
             resolved[role] = checkpoint(path)
         best, last = resolved["best"], resolved["last"]
         version, width = architecture(config, best["model"])
+        if config.get("neural_weight", 100) != 100 and (
+            version != 3
+            or config.get("mixture_contract")
+            != "residual-output-ste-round-clamp-truncate-v1"
+        ):
+            raise Rejection("saved mixture training contract differs")
         if version == 3:
             if baseline is None:
                 raise Rejection("residual learning requires original baseline evidence")
@@ -572,6 +615,7 @@ def verify_learning(
             config["outcome_weight"],
             False,
             baseline_values,
+            config.get("neural_weight", 100),
         )
         close(
             initial["untrained_validation"],
@@ -637,6 +681,7 @@ def verify_learning(
                 config["outcome_weight"],
                 True,
                 baseline_values,
+                config.get("neural_weight", 100),
             )
             close(
                 observations[step]["validation_quantized"],
@@ -680,9 +725,23 @@ def verify_learning(
             or summary["initial_checkpoint_sha256"] != identity["sha256"]
         ):
             raise Rejection("training summary lineage or completed work differs")
-        if not summary["best_validation"] < untrained:
+        if summary.get("improved") is not (
+            summary["best_validation"] < summary["untrained_validation"]
+        ):
             raise Rejection(
-                "learned evaluator did not improve held-out loss over initialization"
+                "saved held-out improvement claim differs from observed losses"
+            )
+        independent_best = dict((step, value) for value, step in losses)[best["step"]]
+        if not independent_best < untrained:
+            # Continue through all seed/checkpoint and export evidence. Retain
+            # the failed learning endpoint at the end, rather than losing the
+            # provenance of later independently trained seeds.
+            loss_failures.append(
+                {
+                    "seed": config["seed"],
+                    "untrained": untrained,
+                    "best_trained": independent_best,
+                }
             )
         seed_observations.append(
             {
@@ -736,7 +795,7 @@ def verify_learning(
     )
     if digest(selection / "selected.cai") != selected_record["network"]["sha256"]:
         raise Rejection("selected numerical export identity differs")
-    return {
+    result = {
         "status": "passed",
         "profile": (
             "full-learning-domain" if require_full else "diagnostic-learning-domain"
@@ -755,6 +814,14 @@ def verify_learning(
         "full_acceptance": False,
         "scope": "learning provenance and selection only; original-game replay and playing-strength gates remain separate",
     }
+    if loss_failures:
+        result["status"] = "failed"
+        result["failed_learning_seeds"] = loss_failures
+        raise LearningFailure(
+            "learned evaluator did not improve held-out loss over initialization",
+            result,
+        )
+    return result
 
 
 def main():
@@ -791,7 +858,17 @@ def main():
         OSError,
         RuntimeError,
     ) as error:
-        print(json.dumps({"status": "rejected", "reason": str(error)}))
+        result = {
+            "status": "rejected",
+            "reason": str(error),
+            "seconds": time.monotonic() - start,
+            "full_acceptance": False,
+        }
+        if isinstance(error, LearningFailure):
+            result["observed"] = error.observed
+        if args.output:
+            args.output.write_text(json.dumps(result, indent=2) + "\n")
+        print(json.dumps(result))
         return 1
 
 

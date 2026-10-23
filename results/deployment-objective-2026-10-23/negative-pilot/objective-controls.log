@@ -1,0 +1,1 @@
+{"status": "passed", "known_output_comparisons": 25, "gradient_percentages": [1, 10, 25, 50, 99], "legacy_default_identity": true, "zero_residual_classical_unchanged": true}

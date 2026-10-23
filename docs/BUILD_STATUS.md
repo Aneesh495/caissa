@@ -12,7 +12,7 @@ The native rules, classical evaluation, PVS search, bounded UCI, Chess960, PGN v
 | G04 Protocol | 10000 sequences independently replayed, stop p99 8.47 ms; six rehashed semantic controls rejected; unread-output bound test | Repeat and bind final executable |
 | G05 Search | Independent tiny minimax, bounds and mate tests; exhaustive neural cutoff controls | Full heuristic strength ablations |
 | G06 Network | 100000 v2 probes bit-identical; maximum observed float error 11.37 cp | Freeze and test final-model error bound |
-| G07 Learning | Three absolute-evaluator diagnostic seeds completed; residual pilot and stronger searched corpus execute | 10 million distinct training inputs after screening; three full runs |
+| G07 Learning | Original diagnostic seeds complete; all three mixture-aware strong-teacher small pilots overfit and are retained as failed; full searched corpus progresses | 10 million distinct training inputs after screening; three full runs |
 | G08 Neural contribution | Failed diagnostic: 4W/8D/84L against classical | Required 4000-game full positive contribution |
 | G09 External strength | Warm short diagnostics include 0W/0D/48L against unrestricted Stockfish 19 | Required 2000-game campaign across three settings/opponents |
 | G10 Parallel systems | Root sharing, cancellation and race-instrumented native checks | Frozen 1/2/4/8 profiles and strength comparisons |

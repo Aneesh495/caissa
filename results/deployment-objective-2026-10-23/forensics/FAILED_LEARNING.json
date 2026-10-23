@@ -1,0 +1,130 @@
+{
+  "status": "rejected",
+  "reason": "learned evaluator did not improve held-out loss over initialization",
+  "seconds": 16.3049464590149,
+  "full_acceptance": false,
+  "observed": {
+    "status": "failed",
+    "profile": "diagnostic-learning-domain",
+    "seeds": [
+      17,
+      41,
+      73
+    ],
+    "all_checkpoints_independently_evaluated": 12,
+    "validation_positions_per_checkpoint": 2563,
+    "baseline_scores_independently_checked": 6237,
+    "independent_seed_observations": [
+      {
+        "seed": 17,
+        "recorded_origin": "runs/deployed-mixture-pilot/seed17",
+        "verified_directory": "runs/deployed-mixture-pilot/seed17",
+        "initial_parameter_sha256": "c4d15b9351e3f634c2fdb294faae1848ebd552fcc3b1215bb8472edb7682fcca",
+        "initial_checkpoint_sha256": "fbdc5be8719d8dafe6ee1519780ee5194477840a750aa1aae8d30b2f754ba501",
+        "independent_untrained_validation": 0.37834247987436864,
+        "independent_checkpoint_validation": [
+          {
+            "step": 250,
+            "loss": 0.3814759472595078
+          },
+          {
+            "step": 500,
+            "loss": 0.39036114219106643
+          },
+          {
+            "step": 750,
+            "loss": 0.39180555345488394
+          },
+          {
+            "step": 1000,
+            "loss": 0.39137125168747144
+          }
+        ],
+        "selected_checkpoint_step": 250,
+        "final_updates": 1000,
+        "replayed_sampler_values": 512000
+      },
+      {
+        "seed": 41,
+        "recorded_origin": "runs/deployed-mixture-pilot/seed41",
+        "verified_directory": "runs/deployed-mixture-pilot/seed41",
+        "initial_parameter_sha256": "88582fcad13de992379130100e42bceb63f367d587e05ce20893bfbad06351cd",
+        "initial_checkpoint_sha256": "1678dc3ae234679c89dd3b5b13aac9f7b482e579901a3e5a24f0bc7d22368a71",
+        "independent_untrained_validation": 0.37834247987436864,
+        "independent_checkpoint_validation": [
+          {
+            "step": 250,
+            "loss": 0.38170144797952854
+          },
+          {
+            "step": 500,
+            "loss": 0.3882881156225201
+          },
+          {
+            "step": 750,
+            "loss": 0.38886578411875505
+          },
+          {
+            "step": 1000,
+            "loss": 0.38943297989518205
+          }
+        ],
+        "selected_checkpoint_step": 250,
+        "final_updates": 1000,
+        "replayed_sampler_values": 512000
+      },
+      {
+        "seed": 73,
+        "recorded_origin": "runs/deployed-mixture-pilot/seed73",
+        "verified_directory": "runs/deployed-mixture-pilot/seed73",
+        "initial_parameter_sha256": "fc6819a2ae2bcfd3498398408bbff0a48c95c64dbb4431e3b5a1f4d8cd33d228",
+        "initial_checkpoint_sha256": "488162964a3bc1415afd7ad7dc0f9311dce793d32f190fce1d04421212a4ba93",
+        "independent_untrained_validation": 0.37834247987436864,
+        "independent_checkpoint_validation": [
+          {
+            "step": 250,
+            "loss": 0.3818241171291737
+          },
+          {
+            "step": 500,
+            "loss": 0.3894911984238269
+          },
+          {
+            "step": 750,
+            "loss": 0.3919635124147008
+          },
+          {
+            "step": 1000,
+            "loss": 0.3922218595498063
+          }
+        ],
+        "selected_checkpoint_step": 250,
+        "final_updates": 1000,
+        "replayed_sampler_values": 512000
+      }
+    ],
+    "selected_seed": 17,
+    "dataset_sha256": "73f27dbfb1ca044bcc86da4387afaaf74e947c3779470bd08fa5f2c8169ac7a0",
+    "network_sha256": "d08f4bc4c463287f8365183d9a23d3f8949a7b2774382dbf01731765192a2752",
+    "test_arrays_opened": false,
+    "full_acceptance": false,
+    "scope": "learning provenance and selection only; original-game replay and playing-strength gates remain separate",
+    "failed_learning_seeds": [
+      {
+        "seed": 17,
+        "untrained": 0.37834247987436864,
+        "best_trained": 0.3814759472595078
+      },
+      {
+        "seed": 41,
+        "untrained": 0.37834247987436864,
+        "best_trained": 0.38170144797952854
+      },
+      {
+        "seed": 73,
+        "untrained": 0.37834247987436864,
+        "best_trained": 0.3818241171291737
+      }
+    ]
+  }
+}
