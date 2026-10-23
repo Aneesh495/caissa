@@ -1,0 +1,14 @@
+{
+  "profile": "diagnostic original full-history parse transport under data load",
+  "engine_sha256": "86592139c797e92576af0b6b828e6b09504a636ec994c64680593429b3a08331",
+  "per_history_median_ms": {
+    "0": 0.056667,
+    "8": 0.32925,
+    "32": 0.113625,
+    "128": 0.590708,
+    "256": 0.369125,
+    "512": 0.566084,
+    "1024": 1.346958
+  },
+  "full_acceptance": false
+}

@@ -1,0 +1,31 @@
+Test project /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-history
+      Start  1: version
+ 1/13 Test  #1: version ..........................   Passed    0.50 sec
+      Start  2: core
+ 2/13 Test  #2: core .............................   Passed    1.36 sec
+      Start  3: position
+ 3/13 Test  #3: position .........................   Passed    0.88 sec
+      Start  4: rules
+ 4/13 Test  #4: rules ............................   Passed    0.47 sec
+      Start  5: evaluation
+ 5/13 Test  #5: evaluation .......................   Passed    0.55 sec
+      Start  6: table
+ 6/13 Test  #6: table ............................   Passed    0.49 sec
+      Start  7: search
+ 7/13 Test  #7: search ...........................   Passed    0.58 sec
+      Start  8: notation
+ 8/13 Test  #8: notation .........................   Passed    0.54 sec
+      Start  9: uci
+ 9/13 Test  #9: uci ..............................   Passed    0.52 sec
+      Start 10: position_line
+10/13 Test #10: position_line ....................   Passed    1.50 sec
+      Start 11: kernels
+11/13 Test #11: kernels ..........................   Passed    0.67 sec
+      Start 12: dense_kernels
+12/13 Test #12: dense_kernels ....................   Passed    0.80 sec
+      Start 13: neural_bounds
+13/13 Test #13: neural_bounds ....................   Passed    1.33 sec
+
+100% tests passed, 0 tests failed out of 13
+
+Total Test time (real) =  10.22 sec

@@ -1,0 +1,1 @@
+{"schema":"caissa-protocol-audit-v2","requested":10000,"engine_sha256":"0a962cec17b53dfe79f5f2a89a556b3bb7e5dfc79dd3e0444c5b9bc004ce3116","seed":32452843,"maximum_seconds":120.0,"maximum_transcript_bytes":536870912,"timestamp_boundary":"send before pipe write; receive after bounded reader queue","stop_p99_limit_ms_exclusive":50,"ponder_sequences":100}

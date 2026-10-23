@@ -1,0 +1,1 @@
+{"phase":"asan-native","pid":19259,"command":["ctest","--test-dir","build-history-asan","--output-on-failure"],"seconds_this_stage":36.52919629099779,"seconds_this_campaign":294.86740895803086,"retained_output_bytes":1291,"discarded_output_bytes":0,"stopping_reason":null}
