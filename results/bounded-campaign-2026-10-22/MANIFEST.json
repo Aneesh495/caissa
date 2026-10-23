@@ -1,0 +1,14 @@
+{
+  "scope": "local diagnostic command receipts; eleven-stage wrapper plus separately executed numerical stage; full data/strength not executed",
+  "files": {
+    "CAMPAIGN.json": "e2a29ecddc68c7f7081f97994a13954195954d7f51c1392b4242b7b6a7c83f19",
+    "CONTROLS.json": "e6bbb8d8688e988cd6f9e79f69672724b2e35180ce08094103d0caed9ab9db12",
+    "CONFIG.json": "11dd3111bb1a7378e19e3f0220e36196d7aa69d19e137c61230d7d3ba46cc69f",
+    "PROCESS_CAMPAIGN.json": "56a0b6655502623c106a7d96297756bfd747af33dfce40bcee2d74ac73d3cefb",
+    "COMMANDS.jsonl": "04746214046ae76bb9c108157cbaaf595f20387e3a5b183de237176e9263313a",
+    "PROCESS_COMMANDS.jsonl": "4ad6b016073e8383d3c6b5f35d7bb6a678f19edfea7f1fbc3674d15df766cd01",
+    "NATIVE_NETWORK.json": "1ef06a812ca319868589d535e4cca7f6088a19c7c11467d5d4948f06d488d69e",
+    "INDEPENDENT.json": "e7041d78424b993c13605f41fc96c9ef21382d5637aee818fd8dd0285b02eda5"
+  },
+  "full_acceptance": false
+}

@@ -116,7 +116,11 @@ def main():
     if a.maximum_error_cp is not None and e.max() > a.maximum_error_cp:
         raise ValueError("frozen float/integer error endpoint exceeded")
     summary = {
-        "status": "parity-passed-error-bound-not-yet-frozen",
+        "status": (
+            "passed-frozen-error-bound"
+            if a.maximum_error_cp is not None
+            else "parity-passed-error-bound-not-yet-frozen"
+        ),
         "probes": len(errors),
         "probe_seed": a.seed,
         "frozen_maximum_error_cp": a.maximum_error_cp,

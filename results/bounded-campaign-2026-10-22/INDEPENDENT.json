@@ -1,0 +1,78 @@
+{
+  "status": "passed",
+  "profile": "diagnostic-learning-domain",
+  "seeds": [
+    17,
+    41,
+    73
+  ],
+  "all_checkpoints_independently_evaluated": 6,
+  "validation_positions_per_checkpoint": 2568,
+  "baseline_scores_independently_checked": 6257,
+  "independent_seed_observations": [
+    {
+      "seed": 17,
+      "initial_parameter_sha256": "c4d15b9351e3f634c2fdb294faae1848ebd552fcc3b1215bb8472edb7682fcca",
+      "initial_checkpoint_sha256": "d019783c9d4cc009a82c4d5008c24ad72f76ed3826f2cff3567cfaeb7f8547d4",
+      "independent_untrained_validation": 0.35093109472147027,
+      "independent_checkpoint_validation": [
+        {
+          "step": 50,
+          "loss": 0.34760884081834575
+        },
+        {
+          "step": 100,
+          "loss": 0.34564518037243425
+        }
+      ],
+      "selected_checkpoint_step": 100,
+      "final_updates": 100,
+      "replayed_sampler_values": 25600
+    },
+    {
+      "seed": 41,
+      "initial_parameter_sha256": "88582fcad13de992379130100e42bceb63f367d587e05ce20893bfbad06351cd",
+      "initial_checkpoint_sha256": "3e3c1ba830b4a20d95cebb51689b143ae1a322c5532b2cc6910eba9f7ae7821d",
+      "independent_untrained_validation": 0.35093109472147027,
+      "independent_checkpoint_validation": [
+        {
+          "step": 50,
+          "loss": 0.3479176027195476
+        },
+        {
+          "step": 100,
+          "loss": 0.3464753334395982
+        }
+      ],
+      "selected_checkpoint_step": 100,
+      "final_updates": 100,
+      "replayed_sampler_values": 25600
+    },
+    {
+      "seed": 73,
+      "initial_parameter_sha256": "fc6819a2ae2bcfd3498398408bbff0a48c95c64dbb4431e3b5a1f4d8cd33d228",
+      "initial_checkpoint_sha256": "664dcc59a5f861730e200ffba3472fbcbefd283f61baed79357f33de641290d5",
+      "independent_untrained_validation": 0.35093109472147027,
+      "independent_checkpoint_validation": [
+        {
+          "step": 50,
+          "loss": 0.3485062658972458
+        },
+        {
+          "step": 100,
+          "loss": 0.3469826496464441
+        }
+      ],
+      "selected_checkpoint_step": 100,
+      "final_updates": 100,
+      "replayed_sampler_values": 25600
+    }
+  ],
+  "selected_seed": 17,
+  "dataset_sha256": "156e201e2bc6fbf266170177f42e791ad891e02bda5607542273229584bccd73",
+  "network_sha256": "320b0ee6e4100dc855c04efbac3e37ee28d35f37f54745d134dd5e2fbc73e12f",
+  "test_arrays_opened": false,
+  "full_acceptance": false,
+  "scope": "learning provenance and selection only; original-game replay and playing-strength gates remain separate",
+  "seconds": 9.364386208995711
+}

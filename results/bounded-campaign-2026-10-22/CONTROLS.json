@@ -1,0 +1,86 @@
+[
+  {
+    "case": "validation-loss",
+    "command": [
+      "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python",
+      "-m",
+      "verification.learning",
+      "--dataset",
+      "runs/bounded-learning-integration/dataset",
+      "--runs",
+      "runs/bounded-learning-integration-negative/validation-loss/seed17",
+      "runs/bounded-learning-integration-negative/validation-loss/seed41",
+      "runs/bounded-learning-integration-negative/validation-loss/seed73",
+      "--selection",
+      "runs/bounded-learning-integration-negative/validation-loss/selection",
+      "--baseline",
+      "runs/bounded-learning-integration/baseline"
+    ],
+    "exit": 1,
+    "expected_reason": "independent saved-checkpoint validation loss differs",
+    "actual": "{\"status\": \"rejected\", \"reason\": \"independent saved-checkpoint validation loss differs\"}"
+  },
+  {
+    "case": "sampler-state",
+    "command": [
+      "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python",
+      "-m",
+      "verification.learning",
+      "--dataset",
+      "runs/bounded-learning-integration/dataset",
+      "--runs",
+      "runs/bounded-learning-integration-negative/sampler-state/seed17",
+      "runs/bounded-learning-integration-negative/sampler-state/seed41",
+      "runs/bounded-learning-integration-negative/sampler-state/seed73",
+      "--selection",
+      "runs/bounded-learning-integration-negative/sampler-state/selection",
+      "--baseline",
+      "runs/bounded-learning-integration/baseline"
+    ],
+    "exit": 1,
+    "expected_reason": "saved sampler state differs",
+    "actual": "{\"status\": \"rejected\", \"reason\": \"saved sampler state differs from exact replayed training draws\"}"
+  },
+  {
+    "case": "optimizer-step",
+    "command": [
+      "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python",
+      "-m",
+      "verification.learning",
+      "--dataset",
+      "runs/bounded-learning-integration/dataset",
+      "--runs",
+      "runs/bounded-learning-integration-negative/optimizer-step/seed17",
+      "runs/bounded-learning-integration-negative/optimizer-step/seed41",
+      "runs/bounded-learning-integration-negative/optimizer-step/seed73",
+      "--selection",
+      "runs/bounded-learning-integration-negative/optimizer-step/selection",
+      "--baseline",
+      "runs/bounded-learning-integration/baseline"
+    ],
+    "exit": 1,
+    "expected_reason": "optimizer step provenance differs",
+    "actual": "{\"status\": \"rejected\", \"reason\": \"optimizer step provenance differs\"}"
+  },
+  {
+    "case": "exported-weight",
+    "command": [
+      "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python",
+      "-m",
+      "verification.learning",
+      "--dataset",
+      "runs/bounded-learning-integration/dataset",
+      "--runs",
+      "runs/bounded-learning-integration-negative/exported-weight/seed17",
+      "runs/bounded-learning-integration-negative/exported-weight/seed41",
+      "runs/bounded-learning-integration-negative/exported-weight/seed73",
+      "--selection",
+      "runs/bounded-learning-integration-negative/exported-weight/selection",
+      "--baseline",
+      "runs/bounded-learning-integration/baseline"
+    ],
+    "exit": 1,
+    "expected_reason": "selected export weights differ",
+    "actual": "{\"status\": \"rejected\", \"reason\": \"selected export weights differ from independently quantized checkpoint\"}"
+  }
+]

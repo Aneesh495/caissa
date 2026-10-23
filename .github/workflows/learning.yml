@@ -1,0 +1,55 @@
+name: learning diagnostic
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: learning-diagnostic-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  original-learning:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          enable-cache: false
+      - name: Pinned laboratory environment
+        timeout-minutes: 15
+        run: uv sync --frozen --extra oracle
+      - name: Build original portable native engine
+        timeout-minutes: 5
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build -j 4
+          ctest --test-dir build --output-on-failure
+      - name: Original data, three seeds and independent semantic checks
+        timeout-minutes: 18
+        run: .venv/bin/python -m tools.learning_demo --engine build/caissa --run-id learning-${{ github.run_id }}
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: original-learning-${{ github.run_id }}
+          path: |
+            runs/learning-*/CONFIG.json
+            runs/learning-*/CAMPAIGN.json
+            runs/learning-*/COMMANDS.jsonl
+            runs/learning-*/*.log
+            runs/learning-*/INDEPENDENT.json
+            runs/learning-*/native-network
+            runs/learning-*/selection
+            runs/learning-*/seed*/CONFIG.json
+            runs/learning-*/seed*/SUMMARY.json
+            runs/learning-*/seed*/INITIAL.json
+            runs/learning-*/seed*/initial.pt
+            runs/learning-*/seed*/CHECKPOINTS.json
+            runs/learning-*/seed*/checkpoints
+            runs/learning-*/seed*/observations.jsonl
+            runs/learning-*/corpus
+            runs/learning-*/dataset
+            runs/learning-*/baseline
+            runs/learning-*-negative/CONTROLS.json
+            runs/learning-*-negative/*/verifier.stdout
+            runs/learning-*-negative/*/verifier.stderr
+          retention-days: 14
