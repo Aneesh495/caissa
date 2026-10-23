@@ -111,15 +111,18 @@ class UciClient:
             self.send("uci")
             self.handshake = self.until("uciok", timeout)
             self.available_options = parse_options(self.handshake)
+            self.configuration_commands = []
             for name, value in options.items():
                 if any(c in str(name) + str(value) for c in "\r\n\0"):
                     raise ValueError("invalid option delimiter")
                 validate_option(name, value, self.available_options)
-                self.send(
+                command = (
                     f"setoption name {name}"
                     if self.available_options[name]["type"] == "button"
                     else f"setoption name {name} value {str(value).lower() if isinstance(value,bool) else value}"
                 )
+                self.send(command)
+                self.configuration_commands.append(command)
             self.send("isready")
             self.until("readyok", timeout)
             self.warmup_ms = 0.0
@@ -166,16 +169,24 @@ class UciClient:
                 raise EngineFailure("engine response timeout")
 
     def play(self, initial, moves, nodes=None, milliseconds=None):
-        self.send(
+        position_command = (
             "position fen " + initial + (" moves " + " ".join(moves) if moves else "")
         )
+        self.send(position_command)
         command = (
             f"go nodes {nodes}" if nodes is not None else f"go movetime {milliseconds}"
         )
         start = time.monotonic_ns()
         self.send(command)
         lines = self.until("bestmove ", max(2.0, (milliseconds or 0) / 1000 + 1))
-        elapsed = (time.monotonic_ns() - start) / 1e6
+        finished = time.monotonic_ns()
+        elapsed = (finished - start) / 1e6
+        self.last_request = {
+            "position": position_command,
+            "go": command,
+            "started_monotonic_ns": start,
+            "completed_monotonic_ns": finished,
+        }
         return lines[-1].split()[1], elapsed, lines
 
     def close(self):

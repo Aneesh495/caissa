@@ -54,6 +54,7 @@ jobs:
         run: |
           python -m arena.run config/arena-ci.json runs/ci-arena --workers 1
           python -m arena.statistics runs/ci-arena
+          python -m tests.strength_controls --campaign runs/ci-arena --output runs/ci-strength-controls
           python -m tools.evidence --checkout . --engine build/caissa --network models/diagnostic-v2.cai --arena runs/ci-arena --output runs/ci-evidence
           python -m verification.verify runs/ci-evidence --checkout . --expected-commit "$GITHUB_SHA" --profile diagnostic
           python -m tools.negative_controls runs/ci-evidence runs/ci-negative --checkout . --expected-commit "$GITHUB_SHA"
