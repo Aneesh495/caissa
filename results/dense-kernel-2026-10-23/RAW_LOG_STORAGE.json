@@ -1,0 +1,8 @@
+{
+  "reason": "The failed compiler output contains original trailing whitespace. Preserve its exact bytes compressed instead of editing failure evidence or disabling diff checks.",
+  "stored": "instrumentation-failed/bench-build.log.gz",
+  "uncompressed_sha256": "f5a23d246ed45c05f2e4d78f6ca10027c0b84c090cc3a6b98e438a9d2406760f",
+  "original_journal_path": "instrumentation-failed/bench-build.log",
+  "decompression": "gzip -dc instrumentation-failed/bench-build.log.gz",
+  "full_acceptance": false
+}

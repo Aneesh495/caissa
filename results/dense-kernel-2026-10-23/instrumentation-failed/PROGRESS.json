@@ -1,0 +1,1 @@
+{"phase":"bench-build","pid":97828,"command":["cmake","--build","build-dense","--target","dense_kernel_bench","-j4"],"seconds_this_stage":8.22373841702938,"seconds_this_campaign":11.129622459004167,"retained_output_bytes":0,"discarded_output_bytes":0,"stopping_reason":null}

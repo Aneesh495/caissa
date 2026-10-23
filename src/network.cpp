@@ -107,9 +107,9 @@ int Network::dense_score(const Position& p,const Accumulator& a,bool scalar)cons
     for(int perspective=0;perspective<2;++perspective)for(std::size_t j=0;j<transformer_width;++j)
         input[static_cast<std::size_t>(perspective)*transformer_width+j]=static_cast<std::int16_t>(std::clamp(a.values[static_cast<std::size_t>(first^perspective)][j],0,clip_));
     std::array<std::int16_t,dense1_width> hidden1{};
-    for(std::size_t i=0;i<dense1_width;++i)hidden1[i]=static_cast<std::int16_t>(std::clamp(rounded(dot(input.data(),weights1_.data()+i*input.size(),input.size())+bias1_[i],scale_),0,clip_));
+    clipped_affine(input.data(),weights1_.data(),bias1_.data(),hidden1.data(),input.size(),hidden1.size(),scale_,clip_,scalar);
     std::array<std::int16_t,dense2_width> hidden2{};
-    for(std::size_t i=0;i<dense2_width;++i)hidden2[i]=static_cast<std::int16_t>(std::clamp(rounded(dot(hidden1.data(),weights2_.data()+i*hidden1.size(),hidden1.size())+bias2_[i],scale_),0,clip_));
+    clipped_affine(hidden1.data(),weights2_.data(),bias2_.data(),hidden2.data(),hidden1.size(),hidden2.size(),scale_,clip_,scalar);
     auto value=dot(hidden2.data(),weights3_.data(),hidden2.size())+bias3_;
     return rounded(value*400,scale_*scale_);
 }

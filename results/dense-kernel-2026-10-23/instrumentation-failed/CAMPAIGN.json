@@ -1,0 +1,1 @@
+{"status":"failed","details":{"exception":"StageFailure('stage bench-build failed: nonzero-exit (exit 1)')"},"seconds_this_campaign":11.566209250013344,"stages_started":2,"utc_unix":1792731651.399798,"full_acceptance":false}

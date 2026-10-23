@@ -1,0 +1,1 @@
+{"profile":"diagnostic four-output NEON dense layers; portable exact fallback","maximum_seconds":900,"previous":"build-bounds/caissa","network":"models/residual-prefix-diagnostic.cai"}

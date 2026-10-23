@@ -1,0 +1,1 @@
+{"profile":"same-process paired dense operator CPU/wall benchmark and ASan/UBSan instrumentation","calls_per_sample":10000,"trials_per_shape":10,"maximum_seconds":600}
