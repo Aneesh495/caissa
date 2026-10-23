@@ -49,7 +49,11 @@ jobs:
           node dist/analysis-service/server.js > runs/service.log 2>&1 &
           SERVICE_PID=$!
           trap 'kill "$SERVICE_PID"' EXIT
-          for i in $(seq 1 30); do curl -fsS http://127.0.0.1:8765/api/session >/dev/null && break || sleep 0.2; done
+          for attempt in $(seq 1 30); do
+            if curl -fsS http://127.0.0.1:8765/api/session >/dev/null; then break; fi
+            if test "$attempt" -eq 30; then echo 'Service readiness deadline exceeded'; exit 1; fi
+            sleep 0.2
+          done
           node tests/service_integration.mjs
       - name: Native arena and semantic negative controls
         run: |

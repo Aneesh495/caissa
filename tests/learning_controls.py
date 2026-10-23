@@ -81,7 +81,8 @@ def main():
             rows[-1]["validation_quantized"] -= 0.05
             path.write_text("".join(json.dumps(row) + "\n" for row in rows))
         elif case in ["sampler-state", "optimizer-step"]:
-            state = checkpoint(folder / "last.pt")
+            transaction = json.loads((folder / "CHECKPOINTS.json").read_text())
+            state = checkpoint(folder / transaction["last"]["path"])
             if case == "sampler-state":
                 state["sampler"]["state"]["state"] += 1
             else:

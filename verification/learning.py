@@ -424,6 +424,18 @@ def verify_learning(
         or selected_record.get("test_accessed") is not False
     ):
         raise Rejection("selection dataset or test-access contract differs")
+    origins = {}
+    for row in selected_record["all_seeds"]:
+        if (
+            row["seed"] in origins
+            or not isinstance(row.get("folder"), str)
+            or not 0 < len(row["folder"]) <= 4096
+            or any(char in row["folder"] for char in "\0\r\n")
+        ):
+            raise Rejection("invalid or duplicated selection origin metadata")
+        origins[row["seed"]] = row["folder"]
+    if len(origins) != len(runs):
+        raise Rejection("selection seed inventory differs from supplied checkpoints")
     rows = []
     seeds = set()
     numerical = None
@@ -433,7 +445,11 @@ def verify_learning(
     seed_observations = []
     for folder in runs:
         config = load(folder / "CONFIG.json")
-        if config["dataset_sha256"] != dataset_sha or config["seed"] in seeds:
+        if (
+            config["dataset_sha256"] != dataset_sha
+            or config["seed"] in seeds
+            or config["seed"] not in origins
+        ):
             raise Rejection("duplicate seed or mismatched training data")
         seeds.add(config["seed"])
         candidate_config = {
@@ -477,7 +493,10 @@ def verify_learning(
                 or digest(path) != pointer[role]["sha256"]
             ):
                 raise Rejection("checkpoint transaction identity differs")
-            if digest(folder / (role + ".pt")) != pointer[role]["sha256"]:
+            alias = folder / (role + ".pt")
+            if (alias.exists() or alias.is_symlink()) and digest(alias) != pointer[
+                role
+            ]["sha256"]:
                 raise Rejection("checkpoint alias differs from transaction")
             resolved[role] = checkpoint(path)
         best, last = resolved["best"], resolved["last"]
@@ -668,6 +687,8 @@ def verify_learning(
         seed_observations.append(
             {
                 "seed": config["seed"],
+                "recorded_origin": origins[config["seed"]],
+                "verified_directory": str(folder),
                 "initial_parameter_sha256": initial_hash,
                 "initial_checkpoint_sha256": identity["sha256"],
                 "independent_untrained_validation": untrained,
@@ -682,7 +703,9 @@ def verify_learning(
         rows.append(
             {
                 "seed": config["seed"],
-                "folder": str(folder),
+                # Origin paths are provenance text. Only the explicit supplied
+                # directory and immutable checkpoint identities locate inputs.
+                "folder": origins[config["seed"]],
                 "validation_loss": summary["best_validation"],
                 "untrained_validation": summary["untrained_validation"],
                 "checkpoint_sha256": pointer["best"]["sha256"],

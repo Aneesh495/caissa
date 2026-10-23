@@ -11,3 +11,5 @@ The first local integration completed eleven stages in about 338 seconds while t
 The owner never retries or resets a scientific budget. A failed run directory remains immutable. Resume the underlying corpus, preparation, training or arena only with its exact saved inputs and budget ledger. A new wrapper cannot erase those cumulative limits. [Recovery instructions](RECOVERY.md) describe those contracts. Capture a stalled phase, try a materially different bounded recovery and stop looping after three failed approaches.
 
 Actual process controls exercised a successful native command, exit 7, an output flood, a child ignoring termination and an orphaned descendant. They checked exact log caps and cleanup. These are synthetic lifecycle tests, not chess or strength evidence.
+
+The [clean Linux run](../results/linux-learning-2026-10-22/MANIFEST.json) subsequently completed all twelve stages in about 91 seconds and retained its artifacts. Downloaded games, data, models and checkpoint generations independently replayed on macOS. This duration is an observed campaign time, not an isolated hardware comparison.

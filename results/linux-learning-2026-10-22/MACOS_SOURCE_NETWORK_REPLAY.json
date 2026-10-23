@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "scope": "downloaded Linux diagnostic source and numerical replay on macOS; not full acceptance",
+  "trusted_producer_commit": "1e5d59ac68282cf46bfcde792ba26309244854e1",
+  "producer_source_files_verified": 53,
+  "independent_integer_probes": 1000,
+  "independent_float64_max_error_cp": 1.4839780690915632,
+  "producer_float32_vs_independent_float64_max_cp": 0.00017279820440307958,
+  "full_acceptance": false
+}

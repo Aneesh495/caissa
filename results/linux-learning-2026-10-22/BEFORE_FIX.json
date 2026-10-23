@@ -1,0 +1,20 @@
+{
+  "command": [
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python",
+    "-m",
+    "verification.learning",
+    "--dataset",
+    "work/linux-learning-39885423740/learning-39885423740/dataset",
+    "--runs",
+    "work/linux-learning-39885423740/learning-39885423740/seed17",
+    "work/linux-learning-39885423740/learning-39885423740/seed41",
+    "work/linux-learning-39885423740/learning-39885423740/seed73",
+    "--selection",
+    "work/linux-learning-39885423740/learning-39885423740/selection",
+    "--baseline",
+    "work/linux-learning-39885423740/learning-39885423740/baseline"
+  ],
+  "exit": 1,
+  "stdout": "{\"status\": \"rejected\", \"reason\": \"[Errno 2] No such file or directory: 'work/linux-learning-39885423740/learning-39885423740/seed17/last.pt'\"}\n",
+  "stderr": ""
+}

@@ -1,0 +1,20 @@
+{
+  "profile": "diagnostic fixed-sample, older training split",
+  "files": {
+    "CAMPAIGN.json": "538deb7c279e783745f4cbbac56cb70495302891e42881ccc4b544e65de6ba39",
+    "CONFIG.json": "a1ae78697b43f395a1625096f616442c2eba43477d20053aacbc921d715f646f",
+    "IDENTITIES.json": "c4f012d2e656da5ec01d8f82f6888386937a3088bd2a380e41da182b1bab5923",
+    "COMMANDS.jsonl": "eb04002de78a21db7116932ac397f1dbc34c57409e97cba0bdd840c4c43a5c00",
+    "nodes/SUMMARY.json": "5d5f4a5165f14cd00039eca38be302a8da6d19d43cf276a73369e1571cd78e16",
+    "nodes/CONFIG.json": "6a784d26179b3b07f5cb99ee8037bebb92a58f0290410e06f7b66c852c57cb01",
+    "nodes/raw-games.tar.gz": "62ff0e087ba2251b63a71bf0561613c074501b7991415846337602e5ce1ba991",
+    "nodes/PROTOCOL.json": "e2e2fc2e32f30b2fe72fd03dd5c6b3878ffc73405790c6aed9fc38ae799e2120",
+    "nodes/INDEPENDENT.json": "de8b387b2e8a8613b87befae635d8809c2e57ee108a975a0720a148d286b4986",
+    "time/SUMMARY.json": "36184f448bdb2a51985ca23af1f6951da9e2713126f306bee7beb036774e5b16",
+    "time/CONFIG.json": "c4af588a5041b6fbedb5369b98a383032ed045871f8e3dd14bb6b6c539666f28",
+    "time/raw-games.tar.gz": "84786b70eb73841df32c7df60d73258e4fac6e3689df9eae0604bb34ef7d26dd",
+    "time/PROTOCOL.json": "e2e2fc2e32f30b2fe72fd03dd5c6b3878ffc73405790c6aed9fc38ae799e2120",
+    "time/INDEPENDENT.json": "a9ad535485354c8e4104a0d24609f53431e08c238285b12f1e59474e252e66a1"
+  },
+  "full_acceptance": false
+}

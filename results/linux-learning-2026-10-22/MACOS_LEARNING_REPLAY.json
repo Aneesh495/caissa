@@ -1,0 +1,84 @@
+{
+  "status": "passed",
+  "profile": "diagnostic-learning-domain",
+  "seeds": [
+    17,
+    41,
+    73
+  ],
+  "all_checkpoints_independently_evaluated": 6,
+  "validation_positions_per_checkpoint": 2568,
+  "baseline_scores_independently_checked": 6257,
+  "independent_seed_observations": [
+    {
+      "seed": 17,
+      "recorded_origin": "runs/learning-39885423740/seed17",
+      "verified_directory": "work/linux-learning-39885423740/learning-39885423740/seed17",
+      "initial_parameter_sha256": "c6416a7933aa934d9ec2fe8c333f89ea18d905efeca5c3771c82cf9cf4071bc2",
+      "initial_checkpoint_sha256": "3cb42e4a68ca0db36ce821794dc2ad1399be0f2158eeecbd1a6109fc9f1eee02",
+      "independent_untrained_validation": 0.35093109472147027,
+      "independent_checkpoint_validation": [
+        {
+          "step": 50,
+          "loss": 0.34760884081834575
+        },
+        {
+          "step": 100,
+          "loss": 0.3456453705131079
+        }
+      ],
+      "selected_checkpoint_step": 100,
+      "final_updates": 100,
+      "replayed_sampler_values": 25600
+    },
+    {
+      "seed": 41,
+      "recorded_origin": "runs/learning-39885423740/seed41",
+      "verified_directory": "work/linux-learning-39885423740/learning-39885423740/seed41",
+      "initial_parameter_sha256": "f12901f343f03a4fc68b1ffa8003e384eb3b9e94140e91f4cbde1c4965ef6534",
+      "initial_checkpoint_sha256": "011f4137cee6e6358eb7ad7181de81b4614616fc6dc5554429312899057b1a20",
+      "independent_untrained_validation": 0.35093109472147027,
+      "independent_checkpoint_validation": [
+        {
+          "step": 50,
+          "loss": 0.3479176027195476
+        },
+        {
+          "step": 100,
+          "loss": 0.34647554140596004
+        }
+      ],
+      "selected_checkpoint_step": 100,
+      "final_updates": 100,
+      "replayed_sampler_values": 25600
+    },
+    {
+      "seed": 73,
+      "recorded_origin": "runs/learning-39885423740/seed73",
+      "verified_directory": "work/linux-learning-39885423740/learning-39885423740/seed73",
+      "initial_parameter_sha256": "b6377f59285186d1a4dc50df320b1cd20820912bad4c91ad651fa5c5077f19fa",
+      "initial_checkpoint_sha256": "bcfdd44efbf64a275571da47fbb97acd3a1905c61256e67e3afd9ddfce534901",
+      "independent_untrained_validation": 0.35093109472147027,
+      "independent_checkpoint_validation": [
+        {
+          "step": 50,
+          "loss": 0.3485062658972458
+        },
+        {
+          "step": 100,
+          "loss": 0.3469821753160233
+        }
+      ],
+      "selected_checkpoint_step": 100,
+      "final_updates": 100,
+      "replayed_sampler_values": 25600
+    }
+  ],
+  "selected_seed": 17,
+  "dataset_sha256": "9e6188899957534d9372110e6f7ea20ceca4fb2f1f8e167b832e3f83cc4f6fcd",
+  "network_sha256": "c310ee025d1218cfde18acbee776d44f6db63320d1653c88596b51b7d761dcce",
+  "test_arrays_opened": false,
+  "full_acceptance": false,
+  "scope": "learning provenance and selection only; original-game replay and playing-strength gates remain separate",
+  "seconds": 13.60752370901173
+}
