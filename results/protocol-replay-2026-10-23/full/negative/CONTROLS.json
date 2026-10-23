@@ -1,0 +1,38 @@
+{
+  "status": "passed",
+  "controls": [
+    {
+      "control": "illegal-bestmove",
+      "exit": 1,
+      "reason": "illegal protocol bestmove"
+    },
+    {
+      "control": "null-in-playable-position",
+      "exit": 1,
+      "reason": "null bestmove in playable position"
+    },
+    {
+      "control": "missing-stop",
+      "exit": 1,
+      "reason": "bestmove has no measured stop request"
+    },
+    {
+      "control": "false-latency",
+      "exit": 1,
+      "reason": "stop-latency summary differs: p99"
+    },
+    {
+      "control": "illegal-pv",
+      "exit": 1,
+      "reason": "illegal protocol principal variation"
+    },
+    {
+      "control": "clock-regression",
+      "exit": 1,
+      "reason": "protocol timestamps are not monotonic integers"
+    }
+  ],
+  "profile": "rehashed protocol semantic controls",
+  "original_transcript_sha256": "961dfd9780757203177560d42249925a7fc708b9458ef2894ecf37dcfa7e7724",
+  "full_acceptance": false
+}

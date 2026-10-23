@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "floor_refusal_exit": 1,
+  "timeout_exit": 1,
+  "timeout_completed": 192,
+  "timeout_engine_exit": -9,
+  "timeout_failure": "TimeoutError('cumulative protocol audit deadline')",
+  "full_acceptance": false
+}

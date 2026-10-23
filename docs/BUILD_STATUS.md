@@ -9,8 +9,8 @@ The native rules, classical evaluation, PVS search, bounded UCI, Chess960, PGN v
 | G01 Rules | 20 exact perft fixtures; multiple independent 100000-position comparisons | Bind final campaign to release source |
 | G02 Restoration | Million-transition diagnostic passed; trained-network refresh checks passed | Final selected model/source campaign |
 | G03 Draw history | Native claim/automatic/mate/history tests and independent draw replay | Final bundle |
-| G04 Protocol | 10000 adversarial sequences, stop p99 below 50 ms; unread-output bound test | Final supported-load campaign |
-| G05 Search | Independent tiny minimax, bounds and mate tests | Full heuristic strength ablations |
+| G04 Protocol | 10000 sequences independently replayed, stop p99 8.47 ms; six rehashed semantic controls rejected; unread-output bound test | Repeat and bind final executable |
+| G05 Search | Independent tiny minimax, bounds and mate tests; exhaustive neural cutoff controls | Full heuristic strength ablations |
 | G06 Network | 100000 v2 probes bit-identical; maximum observed float error 11.37 cp | Freeze and test final-model error bound |
 | G07 Learning | Three absolute-evaluator diagnostic seeds completed; residual pilot and stronger searched corpus execute | 10 million distinct training inputs after screening; three full runs |
 | G08 Neural contribution | Failed diagnostic: 4W/8D/84L against classical | Required 4000-game full positive contribution |
@@ -19,7 +19,7 @@ The native rules, classical evaluation, PVS search, bounded UCI, Chess960, PGN v
 | G11 Recovery | SIGKILL training/corpus/arena recovery tests executed | Source-bound replay of recovery records |
 | G12 Browser | Fresh-origin import, native analysis/cancel, keyboard variation, 390px viewport, service restart/export and malformed FEN exercised | Repeat against final release source |
 | G13 Performance | Evaluator and protocol timings recorded | Complete frozen scalar/optimized resource profiles |
-| G14 Semantic verifier | Rehashed illegal PV, swapped colors, wrong inference and false draw rejected; separate data, learning and strength checkers implemented | Remaining full campaign schema and independent checks |
+| G14 Semantic verifier | Rehashed semantic controls rejected; separate data, learning, strength and protocol checkers execute | Remaining full campaign schema and independent checks |
 | G15 Reproduction | Clean source diagnostic passed; Linux/macOS CI passes | Full saved-model/game/report reproduction |
 | G16 Release | Blocked by incomplete and failed full gates | All required gates and final identity audit |
 

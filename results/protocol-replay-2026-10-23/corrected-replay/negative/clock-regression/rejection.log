@@ -1,0 +1,1 @@
+{"status": "rejected", "reason": "protocol timestamps are not monotonic integers"}
