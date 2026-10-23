@@ -57,7 +57,17 @@ std::shared_ptr<const Network> Network::load(const std::filesystem::path& path) 
     for(auto& value:net->weights1_)value=reader.i16();for(auto& value:net->bias1_)value=reader.i32();
     for(auto& value:net->weights2_)value=reader.i16();for(auto& value:net->bias2_)value=reader.i32();
     for(auto& value:net->weights3_)value=reader.i16();net->bias3_=reader.i32();
-    if(reader.consumed()!=bytes.size())throw InputError("network trailing bytes");return net;
+    if(reader.consumed()!=bytes.size())throw InputError("network trailing bytes");
+    // Every final hidden activation lies in [0,clip]. Signed output weights
+    // therefore bound the dot product independently of earlier hidden layers.
+    std::int64_t low=net->bias3_,high=net->bias3_;
+    for(auto weight:net->weights3_) {
+        low+=static_cast<std::int64_t>(std::min<int>(weight,0))*net->clip_;
+        high+=static_cast<std::int64_t>(std::max<int>(weight,0))*net->clip_;
+    }
+    net->raw_lower_=rounded(low*400,net->scale_*net->scale_);
+    net->raw_upper_=rounded(high*400,net->scale_*net->scale_);
+    return net;
 }
 void Network::add(std::array<std::int32_t,transformer_width>& accumulator,int feature,int sign)const {
     auto offset=static_cast<std::size_t>(feature)*transformer_width;
@@ -86,10 +96,11 @@ void Network::update(const Position& after,const Undo& before,Accumulator& a)con
     }
     a.position_key=after.key();
 }
-int Network::evaluate(const Position& p,const Accumulator& a,bool scalar,int neural_weight)const {
+void Network::validate(const Position& p,const Accumulator& a,int neural_weight)const {
     if(!a.initialized||a.position_key!=p.key())throw std::logic_error("stale neural accumulator");
     if(neural_weight<0||neural_weight>100)throw InputError("neural weight outside percentage bounds");
-    if(neural_weight==0)return classical(p);
+}
+int Network::dense_score(const Position& p,const Accumulator& a,bool scalar)const {
     auto dot=scalar?dot_scalar:dot_native;
     std::array<std::int16_t,transformer_width*2> input{};
     int first=index(p.side());
@@ -100,10 +111,33 @@ int Network::evaluate(const Position& p,const Accumulator& a,bool scalar,int neu
     std::array<std::int16_t,dense2_width> hidden2{};
     for(std::size_t i=0;i<dense2_width;++i)hidden2[i]=static_cast<std::int16_t>(std::clamp(rounded(dot(hidden1.data(),weights2_.data()+i*hidden1.size(),hidden1.size())+bias2_[i],scale_),0,clip_));
     auto value=dot(hidden2.data(),weights3_.data(),hidden2.size())+bias3_;
-    // The residual and mixture share this exact classical score. Clamping the
-    // complete neural score before mixing preserves the published integer rule.
-    int baseline=(residual_||neural_weight<100)?classical(p):0;
-    int neural=std::clamp(rounded(value*400,scale_*scale_)+(residual_?baseline:0),-mate_threshold+1,mate_threshold-1);
+    return rounded(value*400,scale_*scale_);
+}
+int Network::blend(int raw,int baseline,int neural_weight)const {
+    int neural=std::clamp(raw+(residual_?baseline:0),-mate_threshold+1,mate_threshold-1);
     return neural_weight==100?neural:(neural*neural_weight+baseline*(100-neural_weight))/100;
+}
+ScoreInterval Network::interval(int baseline,int neural_weight)const {
+    if(neural_weight==0)return {baseline,baseline};
+    return {blend(raw_lower_,baseline,neural_weight),blend(raw_upper_,baseline,neural_weight)};
+}
+int Network::evaluate(const Position& p,const Accumulator& a,bool scalar,int neural_weight)const {
+    validate(p,a,neural_weight);
+    int baseline=(residual_||neural_weight<100)?classical(p):0;
+    if(neural_weight==0)return baseline;
+    return blend(dense_score(p,a,scalar),baseline,neural_weight);
+}
+ScoreInterval Network::score_interval(const Position& p,int neural_weight)const {
+    if(neural_weight<0||neural_weight>100)throw InputError("neural weight outside percentage bounds");
+    return interval(classical(p),neural_weight);
+}
+BoundedEvaluation Network::evaluate_at_least(const Position& p,const Accumulator& a,
+                                           int threshold,bool scalar,int neural_weight)const {
+    validate(p,a,neural_weight);
+    int baseline=classical(p);
+    if(neural_weight==0)return {baseline,true};
+    auto range=interval(baseline,neural_weight);
+    if(range.lower>=threshold)return {range.lower,false};
+    return {blend(dense_score(p,a,scalar),baseline,neural_weight),true};
 }
 }

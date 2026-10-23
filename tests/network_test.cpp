@@ -18,6 +18,13 @@ int main(int argc,char** argv){try {
                 int expected=(neural*weight+baseline*(100-weight))/100;
                 if(net->evaluate(p,acc,false,weight)!=expected||net->evaluate(p,acc,true,weight)!=expected)
                     throw std::runtime_error("combined evaluator changed the established blend");
+                auto range=net->score_interval(p,weight);
+                if(range.lower>expected||range.upper<expected)throw std::runtime_error("neural interval excludes the true score");
+                for(int threshold:{range.lower-1,range.lower,range.lower+1,expected-1,expected,expected+1,range.upper+1}) {
+                    auto bounded=net->evaluate_at_least(p,acc,threshold,false,weight);
+                    if(bounded.exact?bounded.score!=expected:bounded.score>expected||bounded.score<threshold)
+                        throw std::runtime_error("neural certified evaluation returned an invalid bound");
+                }
             }
         }
         if(!p.coherent())throw std::runtime_error("incremental board hash mismatch");

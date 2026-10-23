@@ -1,0 +1,19 @@
+[1/19] Building CXX object CMakeFiles/caissa_core.dir/src/version.cpp.o
+[2/19] Building CXX object CMakeFiles/caissa_core.dir/src/attacks.cpp.o
+[3/19] Building CXX object CMakeFiles/caissa_core.dir/src/reference.cpp.o
+[4/19] Building CXX object CMakeFiles/caissa_core.dir/src/position.cpp.o
+[5/19] Building CXX object CMakeFiles/caissa_core.dir/src/movegen.cpp.o
+[6/19] Building CXX object CMakeFiles/caissa_core.dir/src/rules.cpp.o
+[7/19] Building CXX object CMakeFiles/caissa_core.dir/src/evaluation.cpp.o
+[8/19] Building CXX object CMakeFiles/caissa_core.dir/src/table.cpp.o
+[9/19] Building CXX object CMakeFiles/caissa_core.dir/src/network.cpp.o
+[10/19] Building CXX object CMakeFiles/caissa_core.dir/src/selfplay.cpp.o
+[11/19] Building CXX object CMakeFiles/caissa_core.dir/src/uci.cpp.o
+[12/19] Building CXX object CMakeFiles/caissa_core.dir/src/search.cpp.o
+[13/19] Building CXX object CMakeFiles/caissa_core.dir/src/network_kernel.cpp.o
+[14/19] Building CXX object CMakeFiles/caissa_core.dir/src/serialization.cpp.o
+[15/19] Building CXX object CMakeFiles/caissa_core.dir/src/protocol_io.cpp.o
+[16/19] Building CXX object CMakeFiles/caissa_core.dir/src/notation.cpp.o
+[17/19] Linking CXX static library libcaissa_core.a
+[18/19] Building CXX object CMakeFiles/neural_bounds_test.dir/tests/neural_bounds_test.cpp.o
+[19/19] Linking CXX executable neural_bounds_test

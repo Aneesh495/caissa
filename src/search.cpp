@@ -30,6 +30,7 @@ std::int64_t time_budget(std::int64_t remaining,std::int64_t increment,int moves
     return std::clamp<std::int64_t>(allocation,1,std::max<std::int64_t>(1,available/2));
 }
 SearchStats& SearchStats::operator+=(const SearchStats& r) {
+    neural_evaluations+=r.neural_evaluations;neural_bound_cutoffs+=r.neural_bound_cutoffs;
     ordering_hint_hits+=r.ordering_hint_hits;qnodes+=r.qnodes;table_hits+=r.table_hits;table_cutoffs+=r.table_cutoffs;beta_cutoffs+=r.beta_cutoffs;
     null_cutoffs+=r.null_cutoffs;lmr_searches+=r.lmr_searches;researches+=r.researches;futility_skips+=r.futility_skips;
     evaluator_calls+=r.evaluator_calls;evaluator_ns+=r.evaluator_ns;seldepth=std::max(seldepth,r.seldepth);return *this;
@@ -152,8 +153,19 @@ private:
         if((++local_nodes_&63U)==0&&monotonic_ns()>=control_.deadline_ns.load(std::memory_order_relaxed)) {control_.stop.store(true,std::memory_order_relaxed);throw Abort{};}
         stats.seldepth=std::max(stats.seldepth,ply);
     }
-    int evaluate(const Position& p) {
-        auto begin=monotonic_ns();int score=evaluation_of(p,options_,&accumulator_);++stats.evaluator_calls;
+    int evaluate(const Position& p,int stand_pat_beta=infinity) {
+        auto begin=monotonic_ns();int score;
+        if(options_.neural_bounds&&options_.network&&options_.network->residual()&&
+           options_.neural_weight>0&&stand_pat_beta<infinity) {
+            auto result=options_.network->evaluate_at_least(p,accumulator_,stand_pat_beta,
+                                                          options_.scalar_network,options_.neural_weight);
+            score=result.score;
+            if(result.exact)++stats.neural_evaluations;else ++stats.neural_bound_cutoffs;
+        } else {
+            score=evaluation_of(p,options_,&accumulator_);
+            if(options_.network&&options_.neural_weight>0)++stats.neural_evaluations;
+        }
+        ++stats.evaluator_calls;
         stats.evaluator_ns+=static_cast<std::uint64_t>(monotonic_ns()-begin);return score;
     }
     bool is_capture(const Position& p,Move m) const {return m.flag==MoveFlag::en_passant||(m.flag!=MoveFlag::castle&&p.at(m.to));}
@@ -186,7 +198,9 @@ private:
     int quiet(Position& p,int alpha,int beta,int ply,int qply,bool claim,Moves moves,Moves& pv) {
         ++stats.qnodes;bool check=p.in_check(p.side());
         int best=claim?0:-infinity;
-        if(!check) {best=std::max(best,evaluate(p));if(best>=beta)return best;alpha=std::max(alpha,best);}
+        // A certified evaluation lower bound is usable only as a stand-pat
+        // cutoff outside check. Principal/full evaluations remain exact.
+        if(!check) {best=std::max(best,evaluate(p,beta));if(best>=beta)return best;alpha=std::max(alpha,best);}
         if(qply>=24||ply>=max_ply-2) return check?evaluate(p):best;
         if(!check)std::erase_if(moves,[&](Move m){return !is_capture(p,m)&&m.promotion==Kind::none;});
         order(p,moves,{}, {},ply);
