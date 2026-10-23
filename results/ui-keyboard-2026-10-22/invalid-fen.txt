@@ -1,0 +1,232 @@
+Browser tab: 2, Title: "Caissa | Analysis room", URL: "http://127.0.0.1:8766/".
+1 AXWebArea Caissa | Analysis room, URL: 127.0.0.1:8766/
+	2 container
+		3 link Description: caissa♞, Value: 127.0.0.1:8766/
+		4 text Caissa · classical evaluation
+	5 container
+		6 container Chess analysis board
+			7 text FOLLOW THE POSITION
+			8 heading A move worth finding., Value: 1
+				9 text A move worth finding.
+			10 button ↕ Flip, Help: Flip board, ID: flip
+			11 table Description: Chessboard. Arrow keys move focus, Enter selects a square., ID: board
+				480 cell a8 black rook
+					481 text ♜
+					482 text 8
+				483 cell b8 black knight
+					484 text ♞
+				485 cell c8 black bishop
+					486 text ♝
+				487 cell d8 black queen
+					488 text ♛
+				489 cell e8 black king
+					490 text ♚
+				491 cell f8 black bishop
+					492 text ♝
+				493 cell g8 black knight
+					494 text ♞
+				495 cell h8 black rook
+					496 text ♜
+				497 cell a7 black pawn
+					498 text ♟
+					499 text 7
+				500 cell b7 black pawn
+					501 text ♟
+				502 cell c7 empty
+				503 cell d7 black pawn
+					504 text ♟
+				505 cell e7 black pawn
+					506 text ♟
+				507 cell f7 black pawn
+					508 text ♟
+				509 cell g7 black pawn
+					510 text ♟
+				511 cell h7 black pawn
+					512 text ♟
+				513 cell a6 empty
+					514 text 6
+				515 cell b6 empty
+				516 cell c6 empty
+				517 cell d6 empty
+				518 cell e6 empty
+				519 cell f6 empty
+				520 cell g6 empty
+				521 cell h6 empty
+				522 cell a5 empty
+					523 text 5
+				524 cell b5 empty
+				525 cell c5 black pawn
+					526 text ♟
+				527 cell d5 empty
+				528 cell e5 empty
+				529 cell f5 empty
+				530 cell g5 empty
+				531 cell h5 empty
+				532 cell a4 empty
+					533 text 4
+				534 cell b4 empty
+				535 cell c4 empty
+				536 cell d4 empty
+				537 cell e4 white pawn
+					538 text ♟
+				539 cell f4 empty
+				540 cell g4 empty
+				541 cell h4 empty
+				542 cell a3 empty
+					543 text 3
+				544 cell b3 empty
+				545 cell c3 empty
+				546 cell d3 empty
+				547 cell e3 empty
+				548 cell f3 white knight
+					549 text ♞
+				550 cell g3 empty
+				551 cell h3 empty
+				552 cell a2 white pawn
+					553 text ♟
+					554 text 2
+				555 cell b2 white pawn
+					556 text ♟
+				557 cell c2 white pawn
+					558 text ♟
+				559 cell d2 white pawn
+					560 text ♟
+				561 cell e2 empty
+				562 cell f2 white pawn
+					563 text ♟
+				564 cell g2 white pawn
+					565 text ♟
+				566 cell h2 white pawn
+					567 text ♟
+				568 cell a1 white rook
+					569 text ♜
+					570 text a
+				571 cell b1 white knight
+					572 text ♞
+					573 text b
+				574 cell c1 white bishop
+					575 text ♝
+					576 text c
+				577 cell d1 white queen
+					578 text ♛
+					579 text d
+				580 cell e1 white king
+					581 text ♚
+					582 text e
+				583 cell f1 white bishop
+					584 text ♝
+					585 text f
+				586 cell g1 empty
+					587 text g
+				588 cell h1 white rook
+					589 text ♜
+					590 text h
+			591 text Black to move
+			592 text Move 2
+			125 button |‹, Help: First position, ID: first
+			126 button ‹, Help: Previous position, ID: previous
+			127 button ›, Help: Next mainline position, ID: next
+			128 button ›|, Help: Last mainline position, ID: last
+			129 text FEN
+			130 pop up button (collapsed, settable) Description: Chess variant, Value: Standard, ID: variant, Secondary Actions: Expand
+				131 menu
+					132 (selected) Standard
+					133 Chess960
+			134 text field (settable) Description: Position FEN, Value: invalid, ID: fen
+			135 button Load, ID: load-fen
+			136 button Reset, ID: reset
+			607 text Invalid FEN.
+		138 container
+			139 heading Find the next move, Value: 2
+				140 text Find the next move
+			593 text READY
+			142 text Original Caissa search, running on your machine. Time
+			143 pop up button (collapsed, settable) Time, Value: 30 seconds, ID: time, Secondary Actions: Expand
+				144 menu
+					145 1 second
+					146 3 seconds
+					147 10 seconds
+					148 (selected) 30 seconds
+			149 text Threads
+			150 pop up button (collapsed, settable) Threads, Value: 2, ID: threads, Secondary Actions: Expand
+				151 menu
+					152 1
+					153 (selected) 2
+					154 4
+			155 text Lines
+			156 pop up button (collapsed, settable) Lines, Value: 3, ID: multipv, Secondary Actions: Expand
+				157 menu
+					158 1
+					159 (selected) 3
+					160 5
+			161 text Hash
+			162 pop up button (collapsed, settable) Hash, Value: 32, ID: hash, Secondary Actions: Expand
+				163 menu
+					164 16
+					165 (selected) 32
+					166 64
+					167 128
+			168 button Analyze position ↗, ID: analyze
+				169 text Analyze position
+				594 text ↗
+			171 button (disabled) Stop, ID: cancel
+			172 container Search statistics
+				173 text DEPTH / SEL.
+				595 text 6 / 20
+				175 text NODES
+				596 text 176,116
+				177 text NODES / SEC
+				597 text 538,581
+			466 container lines
+				598 text +0.08
+				599 text 1. d7d6 b1c3 b8c6 d2d3 g8f6 h2h3
+				600 button Play line, Help: Add this principal variation to the game
+				601 text +0.08
+				602 text 2. b8c6 b1c3 d7d6 d2d3 g8f6 h2h3
+				603 button Play line, Help: Add this principal variation to the game
+				604 text +0.18
+				605 text 3. e7e6 d2d3 b8c6 c1f4 d7d6 b1c3
+				606 button Play line, Help: Add this principal variation to the game
+		180 container
+			181 heading Evaluation history, Value: 2
+				182 text Evaluation history
+			183 text White perspective
+			184 image Description: Evaluation history, ID: history
+		185 container
+			186 heading Game & variations, Value: 2
+				187 text Game & variations
+			188 button Promote line, ID: new-variation
+			189 container Description: Variation tree, ID: moves
+				327 container
+					328 text 1.
+					329 button e4
+				330 container
+					331 text 1…
+					332 button e5
+				333 container
+					334 text 1…
+					335 button c5
+					336 text 2.
+					337 button Nf3
+				338 container
+					339 text 2.
+					340 button Nf3
+				341 container
+					342 text 2…
+					343 button Nc6
+				344 container
+					345 text 2…
+					346 button Nf6
+			208 button (expanded) Import or export PGN, Secondary Actions: Collapse
+				209 text Import or export PGN
+			476 text PGN game
+			477 text entry area (settable) PGN game, ID: pgn, Value: [Event "Caissa fresh browser audit"]
+[Result "*"]
+
+1. e4 e5 ( 1... c5 2. Nf3 ) 2. Nf3 Nc6 ( 2... Nf6 ) *
+
+			478 button Import PGN, ID: import-pgn
+			479 button Export current tree, ID: export-pgn
+	210 text CAISSA / LOCAL CHESS LABORATORY
+
+The focused UI element is 135 button Load, ID: load-fen

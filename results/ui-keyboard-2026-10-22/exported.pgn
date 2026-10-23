@@ -1,0 +1,4 @@
+[Event "Caissa fresh browser audit"]
+[Result "*"]
+
+1. e4 e5 ( 1... c5 2. Nf3 ) 2. Nf3 Nc6 ( 2... Nf6 ) *

@@ -89,6 +89,7 @@ async function selectNode(id: number, manual = true): Promise<void> {
 }
 async function appendMove(move: string, playbackId?: number): Promise<void> {
   const parent = current, version = generation; const before = node(parent);
+  const boardHadFocus = board.contains(document.activeElement);
   const value = await api<{ fen: string; san: string }>('move', { fen: before.fen, move, chess960: game.chess960 });
   if (version !== generation || parent !== current) return;
   let child = before.children.find((id) => node(id).uci === move);
@@ -97,6 +98,9 @@ async function appendMove(move: string, playbackId?: number): Promise<void> {
     child = game.nodes.length; game.nodes.push({ id: child, parent, fen: value.fen, san: value.san, uci: move, comment: '', children: [], nags: [] }); before.children.push(child); game.result = '*';
   }
   await selectNode(child, playbackId === undefined);
+  // Replacing the squares detaches the focused button. Restore the destination
+  // only if the user has not moved focus to another control during the request.
+  if (current === child && boardHadFocus && (document.activeElement === document.body || board.contains(document.activeElement))) drawBoard(move.slice(2, 4));
 }
 function drawMoves(): void {
   const target = element('moves'); target.replaceChildren();

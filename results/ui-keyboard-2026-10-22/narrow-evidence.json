@@ -1,0 +1,10 @@
+{
+  "depth": "6 / 20",
+  "engine": "Caissa · classical evaluation",
+  "fen": "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2",
+  "nodes": "176,116",
+  "pgn": "[Event \"Caissa fresh browser audit\"]\n[Result \"*\"]\n\n1. e4 e5 ( 1... c5 2. Nf3 ) 2. Nf3 Nc6 ( 2... Nf6 ) *\n",
+  "scrollWidth": 390,
+  "state": "READY",
+  "width": 390
+}

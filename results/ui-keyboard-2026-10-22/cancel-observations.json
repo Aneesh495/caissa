@@ -1,0 +1,22 @@
+{
+  "before": {
+    "depth": "6 / 20",
+    "fen": "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2",
+    "nodes": "169,824",
+    "pvs": [
+      "1. d7d6 b1c3 b8c6 d2d3 g8f6 h2h3",
+      "2. b8c6 d2d4 e7e6 b1c3 b7b6 c1f4",
+      "3. e7e6 d2d3 b8c6 c1f4 d7d6 b1c3"
+    ],
+    "state": "SEARCHING"
+  },
+  "after": {
+    "analyzeEnabled": true,
+    "fen": "rnbqkbnr/pp1ppppp/8/2p5/4P3/5N2/PPPP1PPP/RNBQKB1R b KQkq - 1 2",
+    "state": "READY",
+    "stopDisabled": true
+  },
+  "keyboard": "Escape",
+  "requestedMilliseconds": 30000,
+  "observedUiTransitionMilliseconds": 602.3752499967813
+}
