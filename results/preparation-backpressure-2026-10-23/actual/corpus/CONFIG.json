@@ -1,0 +1,1 @@
+{"schema":"caissa-selfplay-v1","engine_sha256":"cd33e7f3f925bb522569c34283cc9f20c710d9e1bc50760bda62ccacbf2994ed","seed":271828,"nodes":2000,"requested_pairs":320,"max_plies":512,"opening_policy":"random-16-to-32-plies; seeded-root-order-v2; single principal variation","outcome_perspective":"white","search_score_perspective":"side-to-move","search_policy":"searched-v2"}
