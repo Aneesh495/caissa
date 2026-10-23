@@ -155,6 +155,12 @@ def main():
         state = json.loads(saved[0])
         counts = state["counts"]
         hist = state["histograms"]
+    split_names = ("train", "validation", "test")
+    for split, name in enumerate(split_names):
+        if "distinct_" + name + "_inputs" not in counts:
+            counts["distinct_" + name + "_inputs"] = db.execute(
+                "SELECT count(*) FROM positions WHERE split=?", (split,)
+            ).fetchone()[0]
     completed_sources = {
         number: sha for number, sha in db.execute("SELECT pair,sha256 FROM sources")
     }
@@ -162,7 +168,11 @@ def main():
     wall_start = time.time()
     session_pairs = 0
 
+    last_checkpoint_count = -1
+    last_checkpoint_time = 0.0
+
     def checkpoint():
+        nonlocal last_checkpoint_count, last_checkpoint_time
         state = {
             "counts": counts,
             "histograms": hist,
@@ -176,12 +186,17 @@ def main():
         atomic_json(
             a.output / "PREPARE_PROGRESS.json",
             {
+                "schema": "caissa-preparation-progress-v2",
+                "corpus_root": str(a.corpus.resolve()),
+                "corpus_config_sha256": digest(a.corpus / "CONFIG.json"),
                 "source_pairs": len(completed_sources),
                 "counts": counts,
                 "seconds_this_session": time.monotonic() - start,
                 "wall_seconds_this_session": time.time() - wall_start,
             },
         )
+        last_checkpoint_count = len(completed_sources)
+        last_checkpoint_time = time.time()
         print(
             json.dumps({"source_pairs": len(completed_sources), **counts}), flush=True
         )
@@ -195,12 +210,26 @@ def main():
         for number in range(corpus_config["requested_pairs"]):
             path = a.corpus / f"{number//256:06d}" / f"{number:09d}.json"
             while not path.exists():
+                if (
+                    len(completed_sources) != last_checkpoint_count
+                    and time.time() - last_checkpoint_time >= 1
+                ):
+                    checkpoint()
                 with (a.corpus / "CORPUS.lock").open("a") as lock:
                     try:
                         fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
                     except BlockingIOError:
                         pass
                     else:
+                        summary_path = a.corpus / "SUMMARY.json"
+                        if summary_path.exists():
+                            summary = json.loads(summary_path.read_text())
+                            if (
+                                summary.get("status") == "completed"
+                                and summary.get("completion_mode") == "screened-target"
+                                and summary["pairs"] == number
+                            ):
+                                return
                         raise ValueError(
                             "corpus writer stopped before required pair " + str(number)
                         )
@@ -273,11 +302,13 @@ def main():
                             (outcome, teacher, probability, outcome, outcome, identity),
                         )
                     elif row[0] != -1:
+                        counts["distinct_" + split_names[row[0]] + "_inputs"] -= 1
                         db.execute(
                             "UPDATE positions SET split=-1 WHERE input=?", (identity,)
                         )
                         counts["cross_split_conflicts"] += 1
                 else:
+                    counts["distinct_" + split_names[split] + "_inputs"] += 1
                     db.execute(
                         "INSERT INTO positions VALUES(?,?,?,?,?,?,?,?,?,?,?,?)",
                         (
@@ -335,13 +366,28 @@ def main():
     for row in source_pairs:
         source_hash.update(bytes.fromhex(row["sha256"]))
     if a.follow and len(source_pairs) != corpus_config["requested_pairs"]:
-        raise ValueError("follow mode did not consume the complete frozen corpus")
+        summary = json.loads((a.corpus / "SUMMARY.json").read_text())
+        if (
+            summary.get("status") != "completed"
+            or summary.get("completion_mode") != "screened-target"
+            or summary["pairs"] != len(source_pairs)
+        ):
+            raise ValueError(
+                "follow mode did not consume a completed declared acquisition"
+            )
+        proof = summary["completion_proof"]
+        if proof["source_pairs"] != len(source_pairs) or proof["counts"] != counts:
+            raise ValueError(
+                "screened completion proof differs from actual replayed transaction"
+            )
     sizes = {}
     for split, name in [(0, "train"), (1, "validation"), (2, "test")]:
         n = db.execute(
             "SELECT count(*) FROM positions WHERE split=?", (split,)
         ).fetchone()[0]
         sizes[name] = n
+        if counts["distinct_" + name + "_inputs"] != n:
+            raise ValueError("online distinct split counter differs from actual index")
         if n == 0:
             raise ValueError("empty required split " + name)
         x = np.lib.format.open_memmap(
@@ -422,6 +468,8 @@ def main():
         "histograms": hist,
         "histogram_scope": "eligible raw observations after held-out family/input screening, before duplicate aggregation",
         "seconds": time.monotonic() - start,
+        "parent_cpu_seconds_this_session": time.process_time(),
+        "wall_seconds_this_session": time.time() - wall_start,
         "timing_scope": "current preparation session; checkpoint progress preserves work from earlier sessions",
         "files": {p.name: digest(p) for p in a.output.glob("*.npy")},
     }

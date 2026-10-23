@@ -94,6 +94,10 @@ def main():
     ap.add_argument(
         "--policy", choices=["legacy-v1", "searched-v2"], default="legacy-v1"
     )
+    ap.add_argument("--stop-prepared", type=Path)
+    ap.add_argument("--target-training-inputs", type=int, default=10100000)
+    ap.add_argument("--minimum-training-inputs", type=int, default=10000000)
+    ap.add_argument("--minimum-completed-games", type=int, default=100000)
     ap.add_argument("--max-child-cpu-seconds", type=float, default=0)
     ap.add_argument("--max-seconds", type=float, default=0)
     ap.add_argument("--max-gib", type=float, default=40)
@@ -107,6 +111,12 @@ def main():
         or a.max_gib == 0
     ):
         ap.error("finite nonnegative operational budgets required")
+    if (
+        a.stop_prepared is not None
+        and not 0 < a.minimum_training_inputs <= a.target_training_inputs
+        or a.minimum_completed_games < 1
+    ):
+        ap.error("invalid screened data acquisition target")
     if not 1 <= a.workers <= 8 or not 1 <= a.pairs <= 500000:
         ap.error("resource bounds exceeded")
     a.output.mkdir(parents=True, exist_ok=True)
@@ -135,6 +145,7 @@ def main():
             raise ValueError("resume configuration or executable identity changed")
     else:
         atomic_json(cfg, config)
+    config_sha = digest(cfg)
     done = set()
     completed = 0
     samples = 0
@@ -171,7 +182,11 @@ def main():
         if event["event"] == "finished"
     )
     origin = min(
-        (event["utc_unix"] for event in history if event["event"] == "started"),
+        (
+            event.get("campaign_wall_origin_unix", event["utc_unix"])
+            for event in history
+            if event["event"] == "started"
+        ),
         default=time.time(),
     )
     start = time.monotonic()
@@ -197,6 +212,18 @@ def main():
             "max_child_cpu_seconds": a.max_child_cpu_seconds,
             "previous_child_cpu_seconds": previous_child_cpu,
             "campaign_wall_origin_unix": origin,
+            "stop_prepared": (
+                str(a.stop_prepared) if a.stop_prepared is not None else None
+            ),
+            "target_training_inputs": (
+                a.target_training_inputs if a.stop_prepared is not None else None
+            ),
+            "minimum_training_inputs": (
+                a.minimum_training_inputs if a.stop_prepared is not None else None
+            ),
+            "minimum_completed_games": (
+                a.minimum_completed_games if a.stop_prepared is not None else None
+            ),
             "max_gib": a.max_gib,
             "min_free_gib": a.min_free_gib,
             "timing_note": "wall seconds and monotonic seconds recorded separately; CPU counts only reaped children in this session",
@@ -209,6 +236,21 @@ def main():
 
     signal.signal(signal.SIGTERM, interrupted)
     signal.signal(signal.SIGINT, interrupted)
+
+    def prepared_progress():
+        if a.stop_prepared is None or not a.stop_prepared.exists():
+            return None
+        marker = json.loads(a.stop_prepared.read_text())
+        if (
+            marker.get("corpus_root") != str(a.output.resolve())
+            or marker.get("corpus_config_sha256") != config_sha
+        ):
+            return None
+        if not isinstance(marker.get("source_pairs"), int) or marker[
+            "source_pairs"
+        ] > len(done):
+            return None
+        return marker
 
     def budget():
         if stop_reason:
@@ -229,6 +271,16 @@ def main():
             return "output-byte-budget"
         if shutil.disk_usage(a.output).free < a.min_free_gib * 1024**3:
             return "free-space-budget"
+        marker = prepared_progress()
+        if (
+            marker is not None
+            and marker["counts"].get("distinct_train_inputs", 0)
+            >= a.target_training_inputs
+            and marker["counts"]["completed_games"] >= a.minimum_completed_games
+            and marker["counts"].get("distinct_validation_inputs", 0) > 0
+            and marker["counts"].get("distinct_test_inputs", 0) > 0
+        ):
+            return "screened-training-target"
         return None
 
     pending = iter(i for i in range(a.pairs) if i not in done)
@@ -287,9 +339,35 @@ def main():
                 }
                 atomic_json(a.output / "PROGRESS.json", summary)
                 print(json.dumps(summary), flush=True)
+    completion_proof = None
+    target_complete = False
+    if stop_reason == "screened-training-target":
+        wait_start = time.time()
+        while stop_reason == "screened-training-target":
+            marker = prepared_progress()
+            if marker is not None and marker["source_pairs"] == len(done):
+                completion_proof = marker
+                target_complete = (
+                    marker["counts"].get("distinct_train_inputs", 0)
+                    >= a.minimum_training_inputs
+                    and marker["counts"]["completed_games"] >= a.minimum_completed_games
+                )
+                if not target_complete:
+                    stop_reason = "screened-target-invalidated-by-later-data"
+                break
+            if a.max_seconds and time.time() - origin >= a.max_seconds:
+                stop_reason = "wall-time-budget"
+                break
+            if time.time() - wait_start > 10800:
+                stop_reason = "preparation-confirmation-timeout"
+                break
+            time.sleep(0.2)
+    complete = len(done) == a.pairs or target_complete
     cpu_end = resource.getrusage(resource.RUSAGE_CHILDREN)
     final = {
-        "status": "completed" if len(done) == a.pairs else "interrupted",
+        "status": "completed" if complete else "interrupted",
+        "completion_mode": "screened-target" if target_complete else "fixed-pairs",
+        "completion_proof": completion_proof,
         "pairs": len(done),
         "completed_games": completed,
         "positions_before_dedup": samples,
@@ -314,10 +392,10 @@ def main():
     }
     journal({"event": "finished", "utc_unix": time.time(), **final})
     atomic_json(
-        a.output / ("SUMMARY.json" if len(done) == a.pairs else "INTERRUPTED.json"),
+        a.output / ("SUMMARY.json" if complete else "INTERRUPTED.json"),
         final,
     )
-    if len(done) != a.pairs:
+    if not complete:
         raise SystemExit(2)
 
 

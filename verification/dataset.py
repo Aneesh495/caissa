@@ -365,12 +365,25 @@ def verify_dataset(
         summary = load(corpus / "SUMMARY.json")
         if (
             summary.get("status", "completed") != "completed"
-            or summary["pairs"] != manifest["corpus_config"]["requested_pairs"]
             or len(source_pairs) != summary["pairs"]
+            or [row["pair"] for row in source_pairs] != list(range(summary["pairs"]))
         ):
             raise Rejection(
-                "full original corpus did not complete its frozen pair request"
+                "full original corpus did not complete its declared acquisition"
             )
+        if summary.get("completion_mode", "fixed-pairs") == "screened-target":
+            proof = summary.get("completion_proof", {})
+            if (
+                proof.get("source_pairs") != len(source_pairs)
+                or proof.get("counts", {}).get("distinct_train_inputs")
+                != counts["train"]
+                or proof.get("counts", {}).get("completed_games") != complete_games
+            ):
+                raise Rejection(
+                    "screened acquisition proof disagrees with independent data reconstruction"
+                )
+        elif summary["pairs"] != manifest["corpus_config"]["requested_pairs"]:
+            raise Rejection("fixed-pair corpus did not complete its frozen request")
     return {
         "status": "passed",
         "profile": "full-data-replay" if require_full else "diagnostic-data-replay",
