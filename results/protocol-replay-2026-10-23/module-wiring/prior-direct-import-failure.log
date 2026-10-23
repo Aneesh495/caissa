@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/protocol_audit.py", line 3, in <module>
+    from tools.protocol_campaign import main
+ModuleNotFoundError: No module named 'tools'

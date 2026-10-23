@@ -16,6 +16,12 @@ sequences, all four search modes and thread settings, 100 ponder sequences and
 stop p99 strictly below 50 ms. Passing this domain checker does not certify the
 remaining project gates or source identity by itself.
 
+`make protocol-audit BUILD=build RUN_ID=unique-name` builds and runs both
+commands. `make stress` also invokes the independent replay. These entry points
+use Python module execution so imports work without a custom `PYTHONPATH`.
+The checker accepts `--engine PATH` as an alternative to an explicit trusted
+SHA256, and compares those actual bytes with the recorded executable identity.
+
 The development sample on executable `f7476637` completed 10000 sequences and
 100 ponder requests. Separate replay checked 3435 legal principal variations,
 10100 best moves and 2611 expected negative-control errors. Stop p99 was
