@@ -12,6 +12,16 @@ Training uses immutable `checkpoints/step-N.pt` generations with full optimizer,
 
 Network binary contracts are specified in [quantization](notes/quantization.md) and [incremental features](notes/incremental-features.md). Model format compatibility is checked before search. Unsupported feature versions, active widths, numerical version combinations, lengths, biases and checksums are rejected.
 
+`verification/network_bytes.py` reads at most 4 MiB, checks the complete wire
+layout and arithmetic limits, and interprets batches of up to 4096 positions
+without importing training code. An explicit `QuantizedNetwork` object holds
+one immutable byte snapshot and its SHA256; callers bind that identity to their
+campaign. The older `infer(path, fen)` entry point still reads current file bytes
+on each call. Native, independent single-position and independent batched outputs
+matched on 2048 trained-model observations. Eight malformed-format controls and
+the twenty-network exhaustive-corner regression also passed. These development
+checks do not replace the final-model 100000-probe floating/error campaign.
+
 ## Prepared dataset v2
 
 Each split has uint16 features shaped `[N,2,32]`, float32 targets `[N,3]` and an input-SHA-sorted identity journal. Targets are mean side-to-move outcome, mean original-teacher cp and mean original-teacher win probability. The last quantity is averaged before mixing with outcomes; sigmoid of mean cp is a different target and is not substituted. Padding feature 12288 contributes zero.
