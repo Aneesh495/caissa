@@ -1,0 +1,9 @@
+{
+  "profile": "diagnostic delayed-consumer recovery",
+  "source_commit": "ec496372f48a8bc68c7309f65cc52dd89395456c",
+  "source_files": {
+    "training/corpus.py": "589fecd7eec8066cec0801f9159ba3ce4579dff644a259c3760d47f9df0b186c",
+    "tests/preparation_backpressure.py": "9521106833d7865c18ecefecb328128e623b6c61d445c41cb5a3cda11ec78318"
+  },
+  "full_acceptance": false
+}

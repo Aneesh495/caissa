@@ -1,0 +1,1 @@
+{"status": "passed", "profile": "diagnostic real backpressure and recovery", "paused_completed_pairs": 128, "completed_pairs": 320, "unchanged_completed_pair_hashes": 128, "cumulative_wall_origin_preserved": true, "prior_measured_child_cpu_preserved": true, "independent_dataset_replay_exit": 0, "seconds": 207.75695087498752, "full_acceptance": false}
