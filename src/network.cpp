@@ -86,8 +86,10 @@ void Network::update(const Position& after,const Undo& before,Accumulator& a)con
     }
     a.position_key=after.key();
 }
-int Network::evaluate(const Position& p,const Accumulator& a,bool scalar)const {
+int Network::evaluate(const Position& p,const Accumulator& a,bool scalar,int neural_weight)const {
     if(!a.initialized||a.position_key!=p.key())throw std::logic_error("stale neural accumulator");
+    if(neural_weight<0||neural_weight>100)throw InputError("neural weight outside percentage bounds");
+    if(neural_weight==0)return classical(p);
     auto dot=scalar?dot_scalar:dot_native;
     std::array<std::int16_t,transformer_width*2> input{};
     int first=index(p.side());
@@ -98,6 +100,10 @@ int Network::evaluate(const Position& p,const Accumulator& a,bool scalar)const {
     std::array<std::int16_t,dense2_width> hidden2{};
     for(std::size_t i=0;i<dense2_width;++i)hidden2[i]=static_cast<std::int16_t>(std::clamp(rounded(dot(hidden1.data(),weights2_.data()+i*hidden1.size(),hidden1.size())+bias2_[i],scale_),0,clip_));
     auto value=dot(hidden2.data(),weights3_.data(),hidden2.size())+bias3_;
-    return std::clamp(rounded(value*400,scale_*scale_)+(residual_?classical(p):0),-mate_threshold+1,mate_threshold-1);
+    // The residual and mixture share this exact classical score. Clamping the
+    // complete neural score before mixing preserves the published integer rule.
+    int baseline=(residual_||neural_weight<100)?classical(p):0;
+    int neural=std::clamp(rounded(value*400,scale_*scale_)+(residual_?baseline:0),-mate_threshold+1,mate_threshold-1);
+    return neural_weight==100?neural:(neural*neural_weight+baseline*(100-neural_weight))/100;
 }
 }

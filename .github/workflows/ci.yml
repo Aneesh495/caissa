@@ -32,6 +32,7 @@ jobs:
           ctest --test-dir build --output-on-failure
           python tools/check_perft.py
           ./build/network_test models/diagnostic-v2.cai 10000
+          ./build/network_test models/residual-prefix-diagnostic.cai 10000
           python tests/format_controls.py --network models/diagnostic-v2.cai
           python -m tests.statistics_test
           python -m tests.residual_contract

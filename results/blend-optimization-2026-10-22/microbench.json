@@ -1,0 +1,66 @@
+{
+  "profile": "diagnostic hot-start-position microbenchmark",
+  "load": "Concurrent original-data generation and preparation plus bounded learning demonstration; no isolated-host claim",
+  "rows": [
+    {
+      "repeat": 0,
+      "calls": 100000,
+      "width": 64,
+      "neural_weight": 10,
+      "scalar_ns_per_call": 10667.5,
+      "native_ns_per_call": 5506.79,
+      "legacy_blend_ns_per_call": 6344.77,
+      "legacy_blend_signature": 1400000,
+      "classical_ns_per_call": 1049.93,
+      "signature": 4004352
+    },
+    {
+      "repeat": 1,
+      "calls": 100000,
+      "width": 64,
+      "neural_weight": 10,
+      "scalar_ns_per_call": 9363.46,
+      "native_ns_per_call": 6915.78,
+      "legacy_blend_ns_per_call": 8704.47,
+      "legacy_blend_signature": 1400000,
+      "classical_ns_per_call": 1573.15,
+      "signature": 4004352
+    },
+    {
+      "repeat": 2,
+      "calls": 100000,
+      "width": 64,
+      "neural_weight": 10,
+      "scalar_ns_per_call": 12028.5,
+      "native_ns_per_call": 6356.85,
+      "legacy_blend_ns_per_call": 7656.43,
+      "legacy_blend_signature": 1400000,
+      "classical_ns_per_call": 1729.72,
+      "signature": 4004352
+    },
+    {
+      "repeat": 3,
+      "calls": 100000,
+      "width": 64,
+      "neural_weight": 10,
+      "scalar_ns_per_call": 11710.5,
+      "native_ns_per_call": 7395.16,
+      "legacy_blend_ns_per_call": 6146.13,
+      "legacy_blend_signature": 1400000,
+      "classical_ns_per_call": 1288.6,
+      "signature": 4004352
+    },
+    {
+      "repeat": 4,
+      "calls": 100000,
+      "width": 64,
+      "neural_weight": 10,
+      "scalar_ns_per_call": 11550.9,
+      "native_ns_per_call": 7173.85,
+      "legacy_blend_ns_per_call": 7913.89,
+      "legacy_blend_signature": 1400000,
+      "classical_ns_per_call": 1068.03,
+      "signature": 4004352
+    }
+  ]
+}

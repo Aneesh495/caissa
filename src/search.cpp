@@ -37,10 +37,7 @@ SearchStats& SearchStats::operator+=(const SearchStats& r) {
 namespace {
 int evaluation_of(const Position& p,const SearchOptions& options,const Accumulator* accumulator) {
     if(!options.network||options.neural_weight==0)return classical(p);
-    int neural=options.network->evaluate(p,*accumulator,options.scalar_network);
-    if(options.neural_weight==100)return neural;
-    int baseline=classical(p);
-    return (neural*options.neural_weight+baseline*(100-options.neural_weight))/100;
+    return options.network->evaluate(p,*accumulator,options.scalar_network,options.neural_weight);
 }
 struct Abort {};
 struct Guard {

@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "profile": "diagnostic optimization parity",
+  "evaluation_comparisons": 3840,
+  "fixed_node_search_comparisons": 32,
+  "nodes_per_search": 10000,
+  "weights": [
+    0,
+    10,
+    25,
+    50,
+    100
+  ],
+  "synthetic_extreme_bias_controls": 2,
+  "positions_sha256": "e0df407650d218852146c425abccbe990296423fe426bf0b6bd7ad3a60becae2",
+  "previous_sha256": "cd33e7f3f925bb522569c34283cc9f20c710d9e1bc50760bda62ccacbf2994ed",
+  "engine_sha256": "b10a859a4153c4eb25e5029fc6f26b0a41abcbe847d5493007697958e64a74d5",
+  "network_sha256": "580ea83d33f54426981adc072042d4555bf26259a859ddafbc0bb0eb2f7b8926",
+  "full_acceptance": false
+}
