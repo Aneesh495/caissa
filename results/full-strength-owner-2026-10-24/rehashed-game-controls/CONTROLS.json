@@ -1,0 +1,22 @@
+[
+  {
+    "case": "illegal-pv",
+    "subprocess_exit": 1,
+    "reason": "arena principal variation has malformed notation"
+  },
+  {
+    "case": "wrong-budget",
+    "subprocess_exit": 1,
+    "reason": "recorded UCI budget/history differs from actual match position"
+  },
+  {
+    "case": "swapped-colors",
+    "subprocess_exit": 1,
+    "reason": "swapped result colors or pair ordering"
+  },
+  {
+    "case": "missing-observation",
+    "subprocess_exit": 1,
+    "reason": "played move has no matching raw protocol observation"
+  }
+]

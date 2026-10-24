@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "actual_configured_actor_searches": 8,
+  "network_sha256": "580ea83d33f54426981adc072042d4555bf26259a859ddafbc0bb0eb2f7b8926",
+  "scope": "Actual one-thousand-node transport probes with proposed full actor options; no full strength sample",
+  "full_acceptance": false
+}

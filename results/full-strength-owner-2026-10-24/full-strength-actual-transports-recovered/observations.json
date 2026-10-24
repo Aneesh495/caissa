@@ -1,0 +1,596 @@
+[
+  {
+    "setting": null,
+    "role": "candidate",
+    "actor": {
+      "name": "Caissa validation-selected original model",
+      "command": [
+        "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-tactical/caissa"
+      ],
+      "options": {
+        "Threads": 1,
+        "Hash": 16,
+        "Ordering Hints": false,
+        "Neural Bounds": false,
+        "Evaluation Cache": true,
+        "Tactical Generation": true,
+        "EvalFile": "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/residual-prefix-diagnostic.cai",
+        "Use Neural": true,
+        "Neural Weight": 10
+      }
+    },
+    "executable_sha256": "b3f835804a014b4a6970bbe971c3129aa5fbd5229b102e7e34ae374430f621fd",
+    "bestmove": "e2e3",
+    "elapsed_ms": 0.998958,
+    "actual_request": {
+      "position": "position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "go": "go nodes 1000",
+      "started_monotonic_ns": 396028689226250,
+      "completed_monotonic_ns": 396028690225208
+    },
+    "actual_uci": [
+      "info depth 1 seldepth 1 multipv 1 score cp 35 nodes 24 time 0 nps 24000 hashfull 0 pv e2e3",
+      "info depth 2 seldepth 4 multipv 1 score cp 12 nodes 98 time 0 nps 98000 hashfull 0 pv e2e3 e7e6",
+      "info depth 3 seldepth 5 multipv 1 score cp 35 nodes 648 time 0 nps 648000 hashfull 0 pv e2e3 e7e6 b1c3",
+      "bestmove e2e3 ponder e7e6"
+    ],
+    "handshake": [
+      "id name Caissa 0.1.0-dev",
+      "id author Aneesh Krishna",
+      "option name Hash type spin default 32 min 1 max 1024",
+      "option name Threads type spin default 1 min 1 max 8",
+      "option name MultiPV type spin default 1 min 1 max 32",
+      "option name Move Overhead type spin default 20 min 0 max 1000",
+      "option name UCI_Chess960 type check default false",
+      "option name Ponder type check default false",
+      "option name Null Move type check default true",
+      "option name LMR type check default true",
+      "option name Extensions type check default true",
+      "option name PVS type check default true",
+      "option name Aspiration type check default true",
+      "option name Quiescence type check default true",
+      "option name History type check default true",
+      "option name SEE type check default true",
+      "option name Futility type check default true",
+      "option name Use Table type check default true",
+      "option name Ordering Hints type check default false",
+      "option name Neural Bounds type check default false",
+      "option name Evaluation Cache type check default false",
+      "option name Tactical Generation type check default false",
+      "option name Neural Weight type spin default 100 min 0 max 100",
+      "option name EvalFile type string default <empty>",
+      "option name Use Neural type check default false",
+      "option name Scalar Neural type check default false",
+      "option name Search Stats type check default false",
+      "option name Trace Samples type spin default 0 min 0 max 64",
+      "option name Clear Hash type button",
+      "uciok"
+    ],
+    "configured_commands": [
+      "setoption name Threads value 1",
+      "setoption name Hash value 16",
+      "setoption name Ordering Hints value false",
+      "setoption name Neural Bounds value false",
+      "setoption name Evaluation Cache value true",
+      "setoption name Tactical Generation value true",
+      "setoption name EvalFile value /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/residual-prefix-diagnostic.cai",
+      "setoption name Use Neural value true",
+      "setoption name Neural Weight value 10"
+    ]
+  },
+  {
+    "setting": null,
+    "role": "opponent",
+    "actor": {
+      "name": "Caissa unchanged classical contract1",
+      "command": [
+        "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-tactical/caissa"
+      ],
+      "options": {
+        "Threads": 1,
+        "Hash": 16,
+        "Ordering Hints": false,
+        "Neural Bounds": false,
+        "Evaluation Cache": true,
+        "Tactical Generation": true,
+        "Use Neural": false
+      }
+    },
+    "executable_sha256": "b3f835804a014b4a6970bbe971c3129aa5fbd5229b102e7e34ae374430f621fd",
+    "bestmove": "e2e3",
+    "elapsed_ms": 0.635,
+    "actual_request": {
+      "position": "position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "go": "go nodes 1000",
+      "started_monotonic_ns": 396028729908458,
+      "completed_monotonic_ns": 396028730543458
+    },
+    "actual_uci": [
+      "info depth 1 seldepth 1 multipv 1 score cp 37 nodes 24 time 0 nps 24000 hashfull 0 pv e2e3",
+      "info depth 2 seldepth 4 multipv 1 score cp 12 nodes 95 time 0 nps 95000 hashfull 0 pv e2e3 e7e6",
+      "info depth 3 seldepth 6 multipv 1 score cp 32 nodes 656 time 0 nps 656000 hashfull 0 pv e2e3 e7e6 b1c3",
+      "bestmove e2e3 ponder e7e6"
+    ],
+    "handshake": [
+      "id name Caissa 0.1.0-dev",
+      "id author Aneesh Krishna",
+      "option name Hash type spin default 32 min 1 max 1024",
+      "option name Threads type spin default 1 min 1 max 8",
+      "option name MultiPV type spin default 1 min 1 max 32",
+      "option name Move Overhead type spin default 20 min 0 max 1000",
+      "option name UCI_Chess960 type check default false",
+      "option name Ponder type check default false",
+      "option name Null Move type check default true",
+      "option name LMR type check default true",
+      "option name Extensions type check default true",
+      "option name PVS type check default true",
+      "option name Aspiration type check default true",
+      "option name Quiescence type check default true",
+      "option name History type check default true",
+      "option name SEE type check default true",
+      "option name Futility type check default true",
+      "option name Use Table type check default true",
+      "option name Ordering Hints type check default false",
+      "option name Neural Bounds type check default false",
+      "option name Evaluation Cache type check default false",
+      "option name Tactical Generation type check default false",
+      "option name Neural Weight type spin default 100 min 0 max 100",
+      "option name EvalFile type string default <empty>",
+      "option name Use Neural type check default false",
+      "option name Scalar Neural type check default false",
+      "option name Search Stats type check default false",
+      "option name Trace Samples type spin default 0 min 0 max 64",
+      "option name Clear Hash type button",
+      "uciok"
+    ],
+    "configured_commands": [
+      "setoption name Threads value 1",
+      "setoption name Hash value 16",
+      "setoption name Ordering Hints value false",
+      "setoption name Neural Bounds value false",
+      "setoption name Evaluation Cache value true",
+      "setoption name Tactical Generation value true",
+      "setoption name Use Neural value false"
+    ]
+  },
+  {
+    "setting": 0,
+    "role": "candidate",
+    "actor": {
+      "name": "Caissa validation-selected original model",
+      "command": [
+        "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-tactical/caissa"
+      ],
+      "options": {
+        "Threads": 1,
+        "Hash": 16,
+        "Ordering Hints": false,
+        "Neural Bounds": false,
+        "Evaluation Cache": true,
+        "Tactical Generation": true,
+        "EvalFile": "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/residual-prefix-diagnostic.cai",
+        "Use Neural": true,
+        "Neural Weight": 10
+      }
+    },
+    "executable_sha256": "b3f835804a014b4a6970bbe971c3129aa5fbd5229b102e7e34ae374430f621fd",
+    "bestmove": "e2e3",
+    "elapsed_ms": 0.959208,
+    "actual_request": {
+      "position": "position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "go": "go nodes 1000",
+      "started_monotonic_ns": 396028790951000,
+      "completed_monotonic_ns": 396028791910208
+    },
+    "actual_uci": [
+      "info depth 1 seldepth 1 multipv 1 score cp 35 nodes 24 time 0 nps 24000 hashfull 0 pv e2e3",
+      "info depth 2 seldepth 4 multipv 1 score cp 12 nodes 98 time 0 nps 98000 hashfull 0 pv e2e3 e7e6",
+      "info depth 3 seldepth 5 multipv 1 score cp 35 nodes 648 time 0 nps 648000 hashfull 0 pv e2e3 e7e6 b1c3",
+      "bestmove e2e3 ponder e7e6"
+    ],
+    "handshake": [
+      "id name Caissa 0.1.0-dev",
+      "id author Aneesh Krishna",
+      "option name Hash type spin default 32 min 1 max 1024",
+      "option name Threads type spin default 1 min 1 max 8",
+      "option name MultiPV type spin default 1 min 1 max 32",
+      "option name Move Overhead type spin default 20 min 0 max 1000",
+      "option name UCI_Chess960 type check default false",
+      "option name Ponder type check default false",
+      "option name Null Move type check default true",
+      "option name LMR type check default true",
+      "option name Extensions type check default true",
+      "option name PVS type check default true",
+      "option name Aspiration type check default true",
+      "option name Quiescence type check default true",
+      "option name History type check default true",
+      "option name SEE type check default true",
+      "option name Futility type check default true",
+      "option name Use Table type check default true",
+      "option name Ordering Hints type check default false",
+      "option name Neural Bounds type check default false",
+      "option name Evaluation Cache type check default false",
+      "option name Tactical Generation type check default false",
+      "option name Neural Weight type spin default 100 min 0 max 100",
+      "option name EvalFile type string default <empty>",
+      "option name Use Neural type check default false",
+      "option name Scalar Neural type check default false",
+      "option name Search Stats type check default false",
+      "option name Trace Samples type spin default 0 min 0 max 64",
+      "option name Clear Hash type button",
+      "uciok"
+    ],
+    "configured_commands": [
+      "setoption name Threads value 1",
+      "setoption name Hash value 16",
+      "setoption name Ordering Hints value false",
+      "setoption name Neural Bounds value false",
+      "setoption name Evaluation Cache value true",
+      "setoption name Tactical Generation value true",
+      "setoption name EvalFile value /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/residual-prefix-diagnostic.cai",
+      "setoption name Use Neural value true",
+      "setoption name Neural Weight value 10"
+    ]
+  },
+  {
+    "setting": 0,
+    "role": "opponent",
+    "actor": {
+      "name": "Stockfish 19 Skill Level 0",
+      "command": [
+        "/opt/homebrew/Cellar/stockfish/19/bin/stockfish"
+      ],
+      "options": {
+        "Threads": 1,
+        "Hash": 16,
+        "UCI_LimitStrength": false,
+        "Skill Level": 0
+      }
+    },
+    "executable_sha256": "dc2f18c34ae962dff591b66147d220ec06e61d756b93d8a4f5e04fd8e55c251f",
+    "bestmove": "d2d4",
+    "elapsed_ms": 1.790916,
+    "actual_request": {
+      "position": "position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "go": "go nodes 1000",
+      "started_monotonic_ns": 396029093625000,
+      "completed_monotonic_ns": 396029095415916
+    },
+    "actual_uci": [
+      "info string Available processors: 0-7",
+      "info string Using 1 thread",
+      "info string NNUE evaluation using nn-1a298aa575a0.nnue (109MiB, (86896, 1024, 32, 32, 1))",
+      "info string Network replica 1: Shared memory.",
+      "info depth 1 seldepth 2 multipv 1 score cp 30 nodes 83 nps 83000 hashfull 0 tbhits 0 time 1 pv d2d4",
+      "info depth 2 seldepth 3 multipv 1 score cp 29 nodes 572 nps 286000 hashfull 0 tbhits 0 time 2 pv d2d4 d7d6",
+      "info depth 3 seldepth 4 multipv 1 score cp 40 nodes 999 nps 499500 hashfull 0 tbhits 0 time 2 pv d2d4",
+      "info depth 4 seldepth 4 multipv 1 score cp 40 nodes 1000 nps 500000 hashfull 0 tbhits 0 time 2 pv d2d4 d7d6",
+      "bestmove d2d4 ponder d7d6"
+    ],
+    "handshake": [
+      "Stockfish 19 by the Stockfish developers (see AUTHORS file)",
+      "id name Stockfish 19",
+      "id author the Stockfish developers (see AUTHORS file)",
+      "",
+      "option name Debug Log File type string default <empty>",
+      "option name NumaPolicy type string default auto",
+      "option name Threads type spin default 1 min 1 max 1024",
+      "option name Hash type spin default 16 min 1 max 33554432",
+      "option name Clear Hash type button",
+      "option name Ponder type check default false",
+      "option name MultiPV type spin default 1 min 1 max 256",
+      "option name Skill Level type spin default 20 min 0 max 20",
+      "option name Move Overhead type spin default 10 min 0 max 5000",
+      "option name nodestime type spin default 0 min 0 max 10000",
+      "option name UCI_Chess960 type check default false",
+      "option name UCI_LimitStrength type check default false",
+      "option name UCI_Elo type spin default 1320 min 1320 max 3190",
+      "option name UCI_ShowWDL type check default false",
+      "option name SyzygyPath type string default <empty>",
+      "option name SyzygyProbeDepth type spin default 1 min 1 max 100",
+      "option name Syzygy50MoveRule type check default true",
+      "option name SyzygyProbeLimit type spin default 7 min 0 max 7",
+      "option name EvalFile type string default nn-1a298aa575a0.nnue",
+      "uciok"
+    ],
+    "configured_commands": [
+      "setoption name Threads value 1",
+      "setoption name Hash value 16",
+      "setoption name UCI_LimitStrength value false",
+      "setoption name Skill Level value 0"
+    ]
+  },
+  {
+    "setting": 1,
+    "role": "candidate",
+    "actor": {
+      "name": "Caissa validation-selected original model",
+      "command": [
+        "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-tactical/caissa"
+      ],
+      "options": {
+        "Threads": 1,
+        "Hash": 16,
+        "Ordering Hints": false,
+        "Neural Bounds": false,
+        "Evaluation Cache": true,
+        "Tactical Generation": true,
+        "EvalFile": "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/residual-prefix-diagnostic.cai",
+        "Use Neural": true,
+        "Neural Weight": 10
+      }
+    },
+    "executable_sha256": "b3f835804a014b4a6970bbe971c3129aa5fbd5229b102e7e34ae374430f621fd",
+    "bestmove": "e2e3",
+    "elapsed_ms": 1.4415,
+    "actual_request": {
+      "position": "position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "go": "go nodes 1000",
+      "started_monotonic_ns": 396029459214666,
+      "completed_monotonic_ns": 396029460656166
+    },
+    "actual_uci": [
+      "info depth 1 seldepth 1 multipv 1 score cp 35 nodes 24 time 0 nps 24000 hashfull 0 pv e2e3",
+      "info depth 2 seldepth 4 multipv 1 score cp 12 nodes 98 time 0 nps 98000 hashfull 0 pv e2e3 e7e6",
+      "info depth 3 seldepth 5 multipv 1 score cp 35 nodes 648 time 0 nps 648000 hashfull 0 pv e2e3 e7e6 b1c3",
+      "bestmove e2e3 ponder e7e6"
+    ],
+    "handshake": [
+      "id name Caissa 0.1.0-dev",
+      "id author Aneesh Krishna",
+      "option name Hash type spin default 32 min 1 max 1024",
+      "option name Threads type spin default 1 min 1 max 8",
+      "option name MultiPV type spin default 1 min 1 max 32",
+      "option name Move Overhead type spin default 20 min 0 max 1000",
+      "option name UCI_Chess960 type check default false",
+      "option name Ponder type check default false",
+      "option name Null Move type check default true",
+      "option name LMR type check default true",
+      "option name Extensions type check default true",
+      "option name PVS type check default true",
+      "option name Aspiration type check default true",
+      "option name Quiescence type check default true",
+      "option name History type check default true",
+      "option name SEE type check default true",
+      "option name Futility type check default true",
+      "option name Use Table type check default true",
+      "option name Ordering Hints type check default false",
+      "option name Neural Bounds type check default false",
+      "option name Evaluation Cache type check default false",
+      "option name Tactical Generation type check default false",
+      "option name Neural Weight type spin default 100 min 0 max 100",
+      "option name EvalFile type string default <empty>",
+      "option name Use Neural type check default false",
+      "option name Scalar Neural type check default false",
+      "option name Search Stats type check default false",
+      "option name Trace Samples type spin default 0 min 0 max 64",
+      "option name Clear Hash type button",
+      "uciok"
+    ],
+    "configured_commands": [
+      "setoption name Threads value 1",
+      "setoption name Hash value 16",
+      "setoption name Ordering Hints value false",
+      "setoption name Neural Bounds value false",
+      "setoption name Evaluation Cache value true",
+      "setoption name Tactical Generation value true",
+      "setoption name EvalFile value /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/residual-prefix-diagnostic.cai",
+      "setoption name Use Neural value true",
+      "setoption name Neural Weight value 10"
+    ]
+  },
+  {
+    "setting": 1,
+    "role": "opponent",
+    "actor": {
+      "name": "Stockfish 19 UCI_Elo 2000",
+      "command": [
+        "/opt/homebrew/Cellar/stockfish/19/bin/stockfish"
+      ],
+      "options": {
+        "Threads": 1,
+        "Hash": 16,
+        "UCI_LimitStrength": true,
+        "UCI_Elo": 2000
+      }
+    },
+    "executable_sha256": "dc2f18c34ae962dff591b66147d220ec06e61d756b93d8a4f5e04fd8e55c251f",
+    "bestmove": "d2d4",
+    "elapsed_ms": 1.640292,
+    "actual_request": {
+      "position": "position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "go": "go nodes 1000",
+      "started_monotonic_ns": 396029661074166,
+      "completed_monotonic_ns": 396029662714458
+    },
+    "actual_uci": [
+      "info string Available processors: 0-7",
+      "info string Using 1 thread",
+      "info string NNUE evaluation using nn-1a298aa575a0.nnue (109MiB, (86896, 1024, 32, 32, 1))",
+      "info string Network replica 1: Shared memory.",
+      "info depth 1 seldepth 2 multipv 1 score cp 30 nodes 83 nps 83000 hashfull 0 tbhits 0 time 1 pv d2d4",
+      "info depth 2 seldepth 3 multipv 1 score cp 29 nodes 572 nps 572000 hashfull 0 tbhits 0 time 1 pv d2d4 d7d6",
+      "info depth 3 seldepth 4 multipv 1 score cp 40 nodes 999 nps 999000 hashfull 0 tbhits 0 time 1 pv d2d4",
+      "info depth 4 seldepth 4 multipv 1 score cp 40 nodes 1000 nps 1000000 hashfull 0 tbhits 0 time 1 pv d2d4 d7d6",
+      "bestmove d2d4 ponder d7d6"
+    ],
+    "handshake": [
+      "Stockfish 19 by the Stockfish developers (see AUTHORS file)",
+      "id name Stockfish 19",
+      "id author the Stockfish developers (see AUTHORS file)",
+      "",
+      "option name Debug Log File type string default <empty>",
+      "option name NumaPolicy type string default auto",
+      "option name Threads type spin default 1 min 1 max 1024",
+      "option name Hash type spin default 16 min 1 max 33554432",
+      "option name Clear Hash type button",
+      "option name Ponder type check default false",
+      "option name MultiPV type spin default 1 min 1 max 256",
+      "option name Skill Level type spin default 20 min 0 max 20",
+      "option name Move Overhead type spin default 10 min 0 max 5000",
+      "option name nodestime type spin default 0 min 0 max 10000",
+      "option name UCI_Chess960 type check default false",
+      "option name UCI_LimitStrength type check default false",
+      "option name UCI_Elo type spin default 1320 min 1320 max 3190",
+      "option name UCI_ShowWDL type check default false",
+      "option name SyzygyPath type string default <empty>",
+      "option name SyzygyProbeDepth type spin default 1 min 1 max 100",
+      "option name Syzygy50MoveRule type check default true",
+      "option name SyzygyProbeLimit type spin default 7 min 0 max 7",
+      "option name EvalFile type string default nn-1a298aa575a0.nnue",
+      "uciok"
+    ],
+    "configured_commands": [
+      "setoption name Threads value 1",
+      "setoption name Hash value 16",
+      "setoption name UCI_LimitStrength value true",
+      "setoption name UCI_Elo value 2000"
+    ]
+  },
+  {
+    "setting": 2,
+    "role": "candidate",
+    "actor": {
+      "name": "Caissa validation-selected original model",
+      "command": [
+        "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-tactical/caissa"
+      ],
+      "options": {
+        "Threads": 1,
+        "Hash": 16,
+        "Ordering Hints": false,
+        "Neural Bounds": false,
+        "Evaluation Cache": true,
+        "Tactical Generation": true,
+        "EvalFile": "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/residual-prefix-diagnostic.cai",
+        "Use Neural": true,
+        "Neural Weight": 10
+      }
+    },
+    "executable_sha256": "b3f835804a014b4a6970bbe971c3129aa5fbd5229b102e7e34ae374430f621fd",
+    "bestmove": "e2e3",
+    "elapsed_ms": 0.944459,
+    "actual_request": {
+      "position": "position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "go": "go nodes 1000",
+      "started_monotonic_ns": 396029961341791,
+      "completed_monotonic_ns": 396029962286250
+    },
+    "actual_uci": [
+      "info depth 1 seldepth 1 multipv 1 score cp 35 nodes 24 time 0 nps 24000 hashfull 0 pv e2e3",
+      "info depth 2 seldepth 4 multipv 1 score cp 12 nodes 98 time 0 nps 98000 hashfull 0 pv e2e3 e7e6",
+      "info depth 3 seldepth 5 multipv 1 score cp 35 nodes 648 time 0 nps 648000 hashfull 0 pv e2e3 e7e6 b1c3",
+      "bestmove e2e3 ponder e7e6"
+    ],
+    "handshake": [
+      "id name Caissa 0.1.0-dev",
+      "id author Aneesh Krishna",
+      "option name Hash type spin default 32 min 1 max 1024",
+      "option name Threads type spin default 1 min 1 max 8",
+      "option name MultiPV type spin default 1 min 1 max 32",
+      "option name Move Overhead type spin default 20 min 0 max 1000",
+      "option name UCI_Chess960 type check default false",
+      "option name Ponder type check default false",
+      "option name Null Move type check default true",
+      "option name LMR type check default true",
+      "option name Extensions type check default true",
+      "option name PVS type check default true",
+      "option name Aspiration type check default true",
+      "option name Quiescence type check default true",
+      "option name History type check default true",
+      "option name SEE type check default true",
+      "option name Futility type check default true",
+      "option name Use Table type check default true",
+      "option name Ordering Hints type check default false",
+      "option name Neural Bounds type check default false",
+      "option name Evaluation Cache type check default false",
+      "option name Tactical Generation type check default false",
+      "option name Neural Weight type spin default 100 min 0 max 100",
+      "option name EvalFile type string default <empty>",
+      "option name Use Neural type check default false",
+      "option name Scalar Neural type check default false",
+      "option name Search Stats type check default false",
+      "option name Trace Samples type spin default 0 min 0 max 64",
+      "option name Clear Hash type button",
+      "uciok"
+    ],
+    "configured_commands": [
+      "setoption name Threads value 1",
+      "setoption name Hash value 16",
+      "setoption name Ordering Hints value false",
+      "setoption name Neural Bounds value false",
+      "setoption name Evaluation Cache value true",
+      "setoption name Tactical Generation value true",
+      "setoption name EvalFile value /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/residual-prefix-diagnostic.cai",
+      "setoption name Use Neural value true",
+      "setoption name Neural Weight value 10"
+    ]
+  },
+  {
+    "setting": 2,
+    "role": "opponent",
+    "actor": {
+      "name": "Stockfish 19 unrestricted",
+      "command": [
+        "/opt/homebrew/Cellar/stockfish/19/bin/stockfish"
+      ],
+      "options": {
+        "Threads": 1,
+        "Hash": 16,
+        "UCI_LimitStrength": false,
+        "Skill Level": 20
+      }
+    },
+    "executable_sha256": "dc2f18c34ae962dff591b66147d220ec06e61d756b93d8a4f5e04fd8e55c251f",
+    "bestmove": "e2e4",
+    "elapsed_ms": 3.676792,
+    "actual_request": {
+      "position": "position fen rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "go": "go nodes 1000",
+      "started_monotonic_ns": 396030153174833,
+      "completed_monotonic_ns": 396030156851625
+    },
+    "actual_uci": [
+      "info string Available processors: 0-7",
+      "info string Using 1 thread",
+      "info string NNUE evaluation using nn-1a298aa575a0.nnue (109MiB, (86896, 1024, 32, 32, 1))",
+      "info string Network replica 1: Shared memory.",
+      "info depth 1 seldepth 2 multipv 1 score cp 30 nodes 20 nps 20000 hashfull 0 tbhits 0 time 1 pv d2d4",
+      "info depth 2 seldepth 3 multipv 1 score cp 29 nodes 148 nps 148000 hashfull 0 tbhits 0 time 1 pv e2e4",
+      "info depth 3 seldepth 5 multipv 1 score cp 19 upperbound nodes 1005 nps 251250 hashfull 0 tbhits 0 time 4 pv e2e4 g8f6",
+      "bestmove e2e4 ponder g8f6"
+    ],
+    "handshake": [
+      "Stockfish 19 by the Stockfish developers (see AUTHORS file)",
+      "id name Stockfish 19",
+      "id author the Stockfish developers (see AUTHORS file)",
+      "",
+      "option name Debug Log File type string default <empty>",
+      "option name NumaPolicy type string default auto",
+      "option name Threads type spin default 1 min 1 max 1024",
+      "option name Hash type spin default 16 min 1 max 33554432",
+      "option name Clear Hash type button",
+      "option name Ponder type check default false",
+      "option name MultiPV type spin default 1 min 1 max 256",
+      "option name Skill Level type spin default 20 min 0 max 20",
+      "option name Move Overhead type spin default 10 min 0 max 5000",
+      "option name nodestime type spin default 0 min 0 max 10000",
+      "option name UCI_Chess960 type check default false",
+      "option name UCI_LimitStrength type check default false",
+      "option name UCI_Elo type spin default 1320 min 1320 max 3190",
+      "option name UCI_ShowWDL type check default false",
+      "option name SyzygyPath type string default <empty>",
+      "option name SyzygyProbeDepth type spin default 1 min 1 max 100",
+      "option name Syzygy50MoveRule type check default true",
+      "option name SyzygyProbeLimit type spin default 7 min 0 max 7",
+      "option name EvalFile type string default nn-1a298aa575a0.nnue",
+      "uciok"
+    ],
+    "configured_commands": [
+      "setoption name Threads value 1",
+      "setoption name Hash value 16",
+      "setoption name UCI_LimitStrength value false",
+      "setoption name Skill Level value 20"
+    ]
+  }
+]

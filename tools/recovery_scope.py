@@ -33,14 +33,19 @@ class RecoveryScope:
         additional_gib,
         *,
         resume=False,
+        maximum_authorized_seconds=21600,
     ):
         self.root, self.data_root = Path(root), Path(data_root)
         self.root.mkdir(parents=True, exist_ok=resume)
         self.lock = (self.root / "OWNER.lock").open("a")
         fcntl.flock(self.lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-        if not math.isfinite(maximum_seconds) or not 0 < maximum_seconds <= 21600:
+        if (
+            maximum_authorized_seconds not in (21600, 43200)
+            or not math.isfinite(maximum_seconds)
+            or not 0 < maximum_seconds <= maximum_authorized_seconds
+        ):
             raise ValueError(
-                "one finite recovery deadline of at most six hours is required"
+                "one finite deadline within the declared authorization is required"
             )
         self.start = time.monotonic()
         self.maximum_seconds = maximum_seconds
@@ -90,7 +95,7 @@ class RecoveryScope:
 
     def check(self):
         if self.remaining() <= 0:
-            raise TimeoutError("original six-hour recovery deadline exhausted")
+            raise TimeoutError("original cumulative recovery deadline exhausted")
         if shutil.disk_usage(self.root).free < self.reserve:
             raise ValueError("recovery disk reserve exhausted")
         if time.monotonic() - self.last_size_check >= 5:

@@ -96,6 +96,13 @@ def frozen_rule(path, expected):
     ):
         raise ValueError("full data endpoints were weakened")
     matches = rule["matches"]
+    if rule.get("search_optimizations") != {
+        "evaluation_cache": True,
+        "tactical_generation": True,
+        "neural_bounds": False,
+        "ordering_hints": False,
+    }:
+        raise ValueError("full exact search optimization contract differs")
     if (
         matches["neural_pairs"] < 2000
         or sum(matches["external_pairs"]) < 1000

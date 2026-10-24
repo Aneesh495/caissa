@@ -38,6 +38,20 @@ def main():
     path.write_text(json.dumps(active) + "\n")
     assert frozen_rule(path, hashlib.sha256(path.read_bytes()).hexdigest()) == active
     cases = [
+        (
+            "exact-cache-changed",
+            "search_optimizations",
+            "evaluation_cache",
+            False,
+            "optimization contract",
+        ),
+        (
+            "leaf-generation-changed",
+            "search_optimizations",
+            "tactical_generation",
+            False,
+            "optimization contract",
+        ),
         ("seed-replacement", "training", "seeds", [17, 41, 99], "seed inventory"),
         ("updates-reduced", "training", "steps", 19999, "update budget"),
         ("batch-reduced", "training", "batch", 1024, "update budget"),
