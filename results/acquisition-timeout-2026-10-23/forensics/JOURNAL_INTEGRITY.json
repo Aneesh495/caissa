@@ -1,0 +1,7 @@
+{
+  "status": "completed frozen-journal integrity audit; acquisition remains failed",
+  "completed_pairs_unchanged": 114791,
+  "manifest_sha256": "a68c2b878fb2fbf7fcc738096396fa952408053f283c0fcf6c2ec2bf4a22e774",
+  "seconds": 22.168199500010815,
+  "full_acceptance": false
+}

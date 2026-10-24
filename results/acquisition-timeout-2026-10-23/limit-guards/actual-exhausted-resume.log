@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/training/corpus.py", line 569, in <module>
+    main()
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/training/corpus.py", line 214, in main
+    confirmation_deadline = enforce_resume_limits(history, vars(a), time.time())
+                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/training/corpus.py", line 22, in enforce_resume_limits
+    raise ValueError(
+ValueError: acquisition budget already exhausted; a restart cannot reset it

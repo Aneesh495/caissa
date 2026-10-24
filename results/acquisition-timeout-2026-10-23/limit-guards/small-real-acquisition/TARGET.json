@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "profile": "diagnostic",
+  "pairs": 56,
+  "maximum_pairs": 5000,
+  "actual_train_inputs": 5410,
+  "source_and_preparation_confirm_same_boundary": true,
+  "independent_replay": "passed",
+  "resumed_completed_pair_bytes_preserved": 0,
+  "cumulative_budget_recovery": false,
+  "full_acceptance": false
+}
