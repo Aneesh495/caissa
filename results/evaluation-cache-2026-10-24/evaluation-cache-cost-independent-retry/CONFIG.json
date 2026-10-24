@@ -1,0 +1,1 @@
+{"scope":"Gracefully close idle peers before forced signals; preserve prior close failure and all original sample data","original_origin_unix":1792815209.760074,"original_maximum_seconds":900}

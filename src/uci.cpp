@@ -37,6 +37,7 @@ public:
             for(auto name:{"Null Move","LMR","Extensions","PVS","Aspiration","Quiescence","History","SEE","Futility","Use Table"})emit(std::string("option name ")+name+" type check default true");
             emit("option name Ordering Hints type check default false");
             emit("option name Neural Bounds type check default false");
+            emit("option name Evaluation Cache type check default false");
             emit("option name Neural Weight type spin default 100 min 0 max 100");
             emit("option name EvalFile type string default <empty>");emit("option name Use Neural type check default false");emit("option name Scalar Neural type check default false");
             emit("option name Search Stats type check default false");emit("option name Trace Samples type spin default 0 min 0 max 64");
@@ -87,7 +88,7 @@ private:
             else if(name=="Extensions")options_.extensions=v;else if(name=="PVS")options_.pvs=v;
             else if(name=="Aspiration")options_.aspiration=v;else if(name=="Quiescence")options_.quiescence=v;
             else if(name=="History")options_.history=v;else if(name=="SEE")options_.see=v;
-            else if(name=="Futility")options_.futility=v;else if(name=="Use Table")options_.table=v;else if(name=="Ordering Hints")options_.ordering_hints=v;else if(name=="Neural Bounds")options_.neural_bounds=v;
+            else if(name=="Futility")options_.futility=v;else if(name=="Use Table")options_.table=v;else if(name=="Ordering Hints")options_.ordering_hints=v;else if(name=="Neural Bounds")options_.neural_bounds=v;else if(name=="Evaluation Cache")options_.evaluation_cache=v;
             else throw InputError("unknown option");
         }
         table_->clear();
@@ -152,7 +153,7 @@ private:
                 while(control->pondering.load()&&!control->stop.load())std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 if(stats_enabled) {
                     auto& s=result.info.stats;std::ostringstream details;
-                    details<<"info string stats visited_nodes "<<result.info.nodes<<" table_bytes "<<table->bytes()<<" elapsed_ms "<<result.info.elapsed_ms<<" qnodes "<<s.qnodes<<" tt_hits "<<s.table_hits<<" ordering_hints "<<s.ordering_hint_hits<<" tt_cutoffs "<<s.table_cutoffs<<" beta_cutoffs "<<s.beta_cutoffs<<" null_cutoffs "<<s.null_cutoffs<<" lmr "<<s.lmr_searches<<" researches "<<s.researches<<" futility "<<s.futility_skips<<" eval_calls "<<s.evaluator_calls<<" eval_ns "<<s.evaluator_ns<<" neural_evaluations "<<s.neural_evaluations<<" neural_bound_cutoffs "<<s.neural_bound_cutoffs<<" completed_depth_nodes "<<result.info.completed_depth_nodes;emit(details.str());
+                    details<<"info string stats visited_nodes "<<result.info.nodes<<" table_bytes "<<table->bytes()<<" elapsed_ms "<<result.info.elapsed_ms<<" qnodes "<<s.qnodes<<" tt_hits "<<s.table_hits<<" ordering_hints "<<s.ordering_hint_hits<<" tt_cutoffs "<<s.table_cutoffs<<" beta_cutoffs "<<s.beta_cutoffs<<" null_cutoffs "<<s.null_cutoffs<<" lmr "<<s.lmr_searches<<" researches "<<s.researches<<" futility "<<s.futility_skips<<" eval_calls "<<s.evaluator_calls<<" eval_ns "<<s.evaluator_ns<<" evaluation_cache_hits "<<s.evaluation_cache_hits<<" evaluation_cache_bytes "<<s.evaluation_cache_bytes<<" neural_evaluations "<<s.neural_evaluations<<" neural_bound_cutoffs "<<s.neural_bound_cutoffs<<" completed_depth_nodes "<<result.info.completed_depth_nodes;emit(details.str());
                 }
                 for(auto& sample:result.info.trace) {
                     std::ostringstream detail;detail<<"info string trace depth "<<sample.depth<<" ply "<<sample.ply<<" alpha "<<sample.alpha<<" beta "<<sample.beta<<" synthetic "<<sample.synthetic<<" fen "<<sample.fen;emit(detail.str());

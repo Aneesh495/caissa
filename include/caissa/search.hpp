@@ -10,7 +10,7 @@ namespace caissa {
 struct SearchOptions {
     bool table=true, pvs=true, aspiration=true, quiescence=true;
     bool null_move=true, lmr=true, extensions=true, history=true, see=true;
-    bool futility=true, ordering_hints=false, neural_bounds=false;
+    bool futility=true, ordering_hints=false, neural_bounds=false, evaluation_cache=false;
     int threads=1, multipv=1,trace_limit=0;
     int inject_worker_start_failure_after=-1;
     std::shared_ptr<const Network> network;
@@ -42,6 +42,7 @@ struct SearchStats {
     std::uint64_t null_cutoffs=0,lmr_searches=0,researches=0,futility_skips=0;
     std::uint64_t evaluator_calls=0,evaluator_ns=0,ordering_hint_hits=0;
     std::uint64_t neural_evaluations=0,neural_bound_cutoffs=0;
+    std::uint64_t evaluation_cache_hits=0,evaluation_cache_bytes=0;
     int seldepth=0;
     SearchStats& operator+=(const SearchStats& rhs);
 };
