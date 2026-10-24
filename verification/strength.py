@@ -46,6 +46,39 @@ def principal_variations(board, lines):
                 replay.push(move)
 
 
+def full_actor_options(candidate, opponent, protocol, neural):
+    """Interpret the full option inventory independently of the arena owner."""
+    if protocol.get("schema") != "caissa-experiment-protocol-v3":
+        return
+    rules = protocol["matches"]
+    common = {
+        "Threads": rules["threads"],
+        "Hash": rules["hash_mib"],
+        "Neural Bounds": False,
+        "Ordering Hints": False,
+        "Evaluation Cache": True,
+        "Tactical Generation": True,
+    }
+    options = candidate["options"]
+    expected = {
+        **common,
+        "Use Neural": True,
+        "Neural Weight": protocol["network"]["neural_weight"],
+    }
+    if (
+        {key: value for key, value in options.items() if key != "EvalFile"} != expected
+        or not isinstance(options.get("EvalFile"), str)
+        or not 1 <= len(options["EvalFile"]) <= 4096
+    ):
+        raise Rejection(
+            "full candidate option inventory differs from frozen original-engine contract"
+        )
+    if neural and opponent["options"] != {**common, "Use Neural": False}:
+        raise Rejection(
+            "full classical control option inventory differs from frozen original-engine contract"
+        )
+
+
 def validate_observations(game, config, require_requests=False):
     board = chess.Board(game["initial"])
     observations = {}
@@ -200,6 +233,7 @@ def verify_campaign(
         if protocol is None:
             raise Rejection("full strength verification requires the frozen protocol")
         rules = protocol["matches"]
+        full_actor_options(candidate, opponent, protocol, neural)
         if protocol.get("schema") == "caissa-experiment-protocol-v3":
             optimizations = protocol.get("search_optimizations")
             expected = {
