@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tests/recovery_scope.py", line 143, in <module>
+    main()
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tests/recovery_scope.py", line 75, in main
+    tiny = RecoveryScope(root / "tiny", {}, 30, data, 0, 1 / 1024**3)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/recovery_scope.py", line 76, in __init__
+    self.check()
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/recovery_scope.py", line 95, in check
+    raise ValueError("recovery additional disk ceiling exhausted")
+ValueError: recovery additional disk ceiling exhausted

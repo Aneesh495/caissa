@@ -416,6 +416,19 @@ def main():
                     (split,),
                 )
             ):
+                if i % 16384 == 0:
+                    atomic_json(
+                        a.output / "EXPORT_PROGRESS.json",
+                        {
+                            "phase": "exporting",
+                            "split": name,
+                            "completed_inputs": i,
+                            "total_inputs": n,
+                            "source_pairs": len(source_pairs),
+                            "seconds_this_session": time.monotonic() - start,
+                            "wall_seconds_this_session": time.time() - wall_start,
+                        },
+                    )
                 x[i] = features(fen)
                 y[i] = [outcome / count, teacher / count, probability / count]
                 contributors = [

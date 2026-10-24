@@ -1,0 +1,1 @@
+{"status":"failed","details":{"type":"StageFailure","reason":"stage scope-controls failed: nonzero-exit (exit 1)"},"seconds_this_campaign":0.09715970797697082,"stages_started":1,"utc_unix":1792806894.272575,"full_acceptance":false}

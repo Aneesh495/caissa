@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "real_original_pairs": 56,
+  "controls": [
+    {
+      "case": "rehashed-weakened-floor",
+      "reason": "recovery weakens mandatory data endpoints"
+    },
+    {
+      "case": "external-protocol-identity",
+      "reason": "fixed-prefix protocol differs from its external frozen identity"
+    },
+    {
+      "case": "extra-original-pair",
+      "reason": "recovery corpus gained or lost original pair journals"
+    },
+    {
+      "case": "erased-original-failure",
+      "reason": "recovery original failure was replaced with a completion receipt"
+    },
+    {
+      "case": "new-acquisition-session",
+      "reason": "original failed acquisition history changed"
+    },
+    {
+      "case": "searched-quality-floor",
+      "reason": "original teacher searched-depth fraction failed its frozen endpoint"
+    },
+    {
+      "case": "actual-small-corpus-full-refusal",
+      "reason": "full original game/training-input floors not met"
+    }
+  ],
+  "synthetic_metadata": "Only the failed-owner fixture is synthetic; original games and prepared arrays are unchanged",
+  "full_acceptance": false
+}
