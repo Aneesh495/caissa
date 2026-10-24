@@ -73,7 +73,7 @@ release:
 
 .PHONY: profile
 profile: build
-	$(PYTHON) -m tools.performance --engine $(BUILD)/caissa --network $(NETWORK) --output runs/$(RUN_ID)-profile --load-note 'Host load was not independently checked by this target' --diagnostic
+	$(PYTHON) -m tools.performance --engine $(BUILD)/caissa --network $(NETWORK) --output runs/$(RUN_ID)-profile --load-note 'Host load was not independently checked by this target' --diagnostic --exact-optimizations --maximum-seconds 1800
 
 .PHONY: learning-audit
 learning-audit: build
