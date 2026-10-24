@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "controls": [
+    {
+      "case": "inactive-proposal",
+      "reason": "full model protocol is not frozen"
+    },
+    {
+      "case": "missing-data-identity",
+      "reason": "full model data/finalization identity is absent: dataset_sha256"
+    },
+    {
+      "case": "seed-replacement",
+      "reason": "full seed inventory or declared update budget differs"
+    },
+    {
+      "case": "updates-reduced",
+      "reason": "full seed inventory or declared update budget differs"
+    },
+    {
+      "case": "batch-reduced",
+      "reason": "full seed inventory or declared update budget differs"
+    },
+    {
+      "case": "mixture-changed",
+      "reason": "full training numerical settings differ"
+    },
+    {
+      "case": "architecture-changed",
+      "reason": "full residual architecture or deployed mixture differs"
+    },
+    {
+      "case": "probes-reduced",
+      "reason": "full numerical sample or error endpoint differs"
+    },
+    {
+      "case": "error-weakened",
+      "reason": "full numerical sample or error endpoint differs"
+    },
+    {
+      "case": "budget-expanded",
+      "reason": "full model cumulative resources or restoration sample differs"
+    },
+    {
+      "case": "early-stop",
+      "reason": "full model cumulative resources or restoration sample differs"
+    },
+    {
+      "case": "transitions-reduced",
+      "reason": "full model cumulative resources or restoration sample differs"
+    },
+    {
+      "case": "data-floor-reduced",
+      "reason": "full data endpoints were weakened"
+    },
+    {
+      "case": "neural-sample-reduced",
+      "reason": "full strength sample or neural-gain endpoint was weakened"
+    },
+    {
+      "case": "external-sample-reduced",
+      "reason": "full strength sample or neural-gain endpoint was weakened"
+    },
+    {
+      "case": "gain-weakened",
+      "reason": "full strength sample or neural-gain endpoint was weakened"
+    },
+    {
+      "case": "lower-weakened",
+      "reason": "full strength sample or neural-gain endpoint was weakened"
+    }
+  ],
+  "scope": "Frozen contract checks only; no full learning or strength observation",
+  "full_acceptance": false
+}
