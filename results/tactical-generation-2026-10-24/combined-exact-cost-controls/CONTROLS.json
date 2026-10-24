@@ -1,0 +1,42 @@
+{
+  "status": "passed",
+  "controls": [
+    {
+      "case": "illegal-pv",
+      "rejected": true,
+      "reason": "cost observation contains illegal PV",
+      "rehashed_observations_sha256": "c5442ba84a8719f6c07d1944828d5cf530e1b641e617c38830961d7964ed1280"
+    },
+    {
+      "case": "changed-budget",
+      "rejected": true,
+      "reason": "cost request changed its position or node budget",
+      "rehashed_observations_sha256": "94cc200b2e8c1f9d8d638d2bf403c21b5c9432c6af1821282861d6bec53eb05f"
+    },
+    {
+      "case": "changed-parsed-score",
+      "rejected": true,
+      "reason": "cost parsed fields differ from actual saved native output",
+      "rehashed_observations_sha256": "5867562bf56d48c5074de9bb394e76c2ba4505ed22db82ff6c10bb63e9f73410"
+    },
+    {
+      "case": "false-completed-fallback",
+      "rejected": true,
+      "reason": "missing PV concealed a completed depth",
+      "rehashed_observations_sha256": "fdacf5bb80e085c4a2f8888580085dd8e9c4b1ee07a353c75c2daa6543db2887"
+    },
+    {
+      "case": "fabricated-time-ratio",
+      "rejected": true,
+      "reason": "independent cost ratio differs",
+      "rehashed_observations_sha256": "cc34c744d2eab865b70da9d00525a466cba8e19562efd0f39bed44ffd0c50b80"
+    },
+    {
+      "case": "changed-mode",
+      "rejected": true,
+      "reason": "unsupported exact cost mode/resource contract",
+      "rehashed_observations_sha256": "cc34c744d2eab865b70da9d00525a466cba8e19562efd0f39bed44ffd0c50b80"
+    }
+  ],
+  "full_acceptance": false
+}

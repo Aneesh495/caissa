@@ -41,69 +41,99 @@ bool Position::can_castle(int wing) const {
     auto final_occupancy=(occupied()&~bit(k)&~bit(rook))|bit(rt)|bit(kt);
     return !attacked(kt,opposite(side_),final_occupancy);
 }
-Moves Position::pseudo_legal() const {
-    Moves moves;moves.reserve(64);
-    auto ours=occupied(side_), enemy=occupied(opposite(side_));
-    auto forbidden=ours|pieces(opposite(side_),Kind::king);
-    auto add_pawn=[&](Square from,Square to,MoveFlag flag) {
-        if(rank(to)==0||rank(to)==7) for(Kind k:{Kind::queen,Kind::rook,Kind::bishop,Kind::knight}) moves.push_back({from,to,k,flag});
-        else moves.push_back({from,to,Kind::none,flag});
-    };
-    auto pawns=pieces(side_,Kind::pawn);
-    int step=side_==Color::white?8:-8, home=side_==Color::white?1:6;
-    while(pawns) {
-        auto s=pop_lsb(pawns);auto t=static_cast<Square>(static_cast<int>(s)+step);
-        if(t<64&&!at(t)) {
-            add_pawn(s,t,MoveFlag::normal);
-            auto twice=static_cast<Square>(static_cast<int>(t)+step);
-            if(rank(s)==home&&!at(twice)) moves.push_back({s,twice,Kind::none,MoveFlag::double_push});
+namespace {
+enum class Generation {all,tactical};
+// Returning true from the consumer stops enumeration. Full collection, tactical
+// collection and availability share one stable pseudo-move order.
+template<class Consumer>
+bool enumerate(const Position& p,Generation generation,Consumer&& consume) {
+    auto us=p.side(),them=opposite(us);auto enemy=p.occupied(them);
+    auto forbidden=p.occupied(us)|p.pieces(them,Kind::king);
+    auto pawn=[&](Square from,Square to,MoveFlag flag) {
+        if(rank(to)==0||rank(to)==7) {
+            for(Kind k:{Kind::queen,Kind::rook,Kind::bishop,Kind::knight})
+                if(consume(Move{from,to,k,flag}))return true;
+            return false;
         }
-        auto targets=attacks::pawn(side_,s)&enemy&~pieces(opposite(side_),Kind::king);
-        while(targets) add_pawn(s,pop_lsb(targets),MoveFlag::normal);
-        if(ep_<64&&(attacks::pawn(side_,s)&bit(ep_))) moves.push_back({s,ep_,Kind::none,MoveFlag::en_passant});
+        return consume(Move{from,to,Kind::none,flag});
+    };
+    auto pawns=p.pieces(us,Kind::pawn);int step=us==Color::white?8:-8,home=us==Color::white?1:6;
+    while(pawns) {
+        auto from=pop_lsb(pawns);auto to=static_cast<Square>(static_cast<int>(from)+step);
+        if(to<64&&!p.at(to)) {
+            bool promotion=rank(to)==0||rank(to)==7;
+            if((generation==Generation::all||promotion)&&pawn(from,to,MoveFlag::normal))return true;
+            if(generation==Generation::all&&rank(from)==home) {
+                auto twice=static_cast<Square>(static_cast<int>(to)+step);
+                if(!p.at(twice)&&consume(Move{from,twice,Kind::none,MoveFlag::double_push}))return true;
+            }
+        }
+        auto targets=attacks::pawn(us,from)&enemy&~p.pieces(them,Kind::king);
+        while(targets)if(pawn(from,pop_lsb(targets),MoveFlag::normal))return true;
+        if(p.ep()<64&&(attacks::pawn(us,from)&bit(p.ep()))&&consume(Move{from,p.ep(),Kind::none,MoveFlag::en_passant}))return true;
     }
-    for(Kind k:{Kind::knight,Kind::bishop,Kind::rook,Kind::queen,Kind::king}) {
-        auto bb=pieces(side_,k);
-        while(bb) {
-            auto s=pop_lsb(bb);Bitboard targets=0;
-            switch(k) {
-                case Kind::knight: targets=attacks::knight(s);break;
-                case Kind::bishop: targets=attacks::bishop(s,occupied());break;
-                case Kind::rook: targets=attacks::rook(s,occupied());break;
-                case Kind::queen: targets=attacks::queen(s,occupied());break;
-                case Kind::king: targets=attacks::king(s);break;
-                default: break;
+    for(Kind kind:{Kind::knight,Kind::bishop,Kind::rook,Kind::queen,Kind::king}) {
+        auto pieces=p.pieces(us,kind);
+        while(pieces) {
+            auto from=pop_lsb(pieces);Bitboard targets=0;
+            switch(kind) {
+                case Kind::knight:targets=attacks::knight(from);break;
+                case Kind::bishop:targets=attacks::bishop(from,p.occupied());break;
+                case Kind::rook:targets=attacks::rook(from,p.occupied());break;
+                case Kind::queen:targets=attacks::queen(from,p.occupied());break;
+                case Kind::king:targets=attacks::king(from);break;
+                default:break;
             }
             targets&=~forbidden;
-            while(targets) moves.push_back({s,pop_lsb(targets)});
+            if(generation==Generation::tactical)targets&=enemy;
+            while(targets)if(consume(Move{from,pop_lsb(targets)}))return true;
         }
     }
-    for(int wing=0;wing<2;++wing) if(can_castle(wing)) moves.push_back({king(side_),rook_right(side_,wing),Kind::none,MoveFlag::castle});
-    return moves;
+    if(generation==Generation::all)for(int wing=0;wing<2;++wing)
+        if(p.can_castle(wing)&&consume(Move{p.king(us),p.rook_right(us,wing),Kind::none,MoveFlag::castle}))return true;
+    return false;
+}
+struct Legality {
+    Color us;Square king;int checks;Bitboard pins,evasion;
+    explicit Legality(const Position& p):us(p.side()),king(p.king(us)) {
+        auto attackers=p.checkers(us);checks=std::popcount(attackers);pins=p.pinned(us);evasion=~Bitboard{0};
+        if(checks==1){auto from=static_cast<Square>(std::countr_zero(attackers));evasion=attacks::between(king,from)|bit(from);}
+    }
+    bool allows(Position& p,Move m) const {
+        if(m.flag==MoveFlag::castle)return true;
+        if(m.flag==MoveFlag::en_passant) {
+            auto undo=p.make(m);bool legal=!p.in_check(us);p.unmake(undo);return legal;
+        }
+        if(m.from==king) {
+            auto occupancy=(p.occupied()&~bit(king))|bit(m.to);
+            return !p.attacked(m.to,opposite(us),occupancy);
+        }
+        if(checks>=2||!(evasion&bit(m.to)))return false;
+        if(pins&bit(m.from)) {
+            int ax=file(m.from)-file(king),ay=rank(m.from)-rank(king);
+            int bx=file(m.to)-file(king),by=rank(m.to)-rank(king);
+            if(ax*by!=ay*bx)return false;
+        }
+        return true;
+    }
+};
+}
+Moves Position::pseudo_legal() const {
+    Moves moves;moves.reserve(64);
+    enumerate(*this,Generation::all,[&](Move m){moves.push_back(m);return false;});return moves;
 }
 Moves Position::legal() {
-    Moves out;auto all=pseudo_legal();out.reserve(all.size());auto us=side_;auto k=king(us);
-    auto checks=checkers(us);int count=std::popcount(checks);auto pins=pinned(us);Bitboard evasion=~Bitboard{0};
-    if(count==1){auto checker=static_cast<Square>(std::countr_zero(checks));evasion=attacks::between(k,checker)|bit(checker);}
-    for(auto m:all) {
-        if(m.flag==MoveFlag::castle){out.push_back(m);continue;}
-        if(m.flag==MoveFlag::en_passant) {
-            auto undo=make(m);bool valid=!in_check(us);unmake(undo);if(valid)out.push_back(m);continue;
-        }
-        if(m.from==k) {
-            auto occ=(occupied()&~bit(k))|bit(m.to);
-            if(!attacked(m.to,opposite(us),occ))out.push_back(m);
-            continue;
-        }
-        if(count>=2||!(evasion&bit(m.to)))continue;
-        if(pins&bit(m.from)) {
-            int ax=file(m.from)-file(k),ay=rank(m.from)-rank(k);
-            int bx=file(m.to)-file(k),by=rank(m.to)-rank(k);
-            if(ax*by!=ay*bx)continue;
-        }
-        out.push_back(m);
-    }
-    return out;
+    Legality legality(*this);Moves moves;moves.reserve(64);
+    enumerate(*this,Generation::all,[&](Move m){if(legality.allows(*this,m))moves.push_back(m);return false;});return moves;
+}
+Moves Position::legal_tactical() {
+    Legality legality(*this);Moves moves;moves.reserve(16);
+    enumerate(*this,Generation::tactical,[&](Move m){if(legality.allows(*this,m))moves.push_back(m);return false;});return moves;
+}
+MoveAvailability Position::availability() {
+    Legality legality(*this);
+    bool any=enumerate(*this,Generation::all,[&](Move m){return legality.allows(*this,m);});
+    return MoveAvailability(key_,legality.checks>0,any);
 }
 Undo Position::save_state() const {
     Undo u;u.castling=castling_;u.ep=ep_;u.halfmove=halfmove_;u.fullmove=fullmove_;

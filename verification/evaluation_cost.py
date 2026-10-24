@@ -105,6 +105,15 @@ def verify(
         "neural-exact": [100, False, False],
         "neural-cache": [100, False, True],
     }
+    variant = config.get("exact_comparison", "cache")
+    require(
+        variant in ("cache", "combined"), "unsupported exact optimization comparison"
+    )
+    if variant == "combined":
+        modes = {}
+        for prefix, weight in [("classical", 0), ("mixture", 10), ("neural", 100)]:
+            modes[prefix + "-exact"] = [weight, False, False, False]
+            modes[prefix + "-combined"] = [weight, False, True, True]
     require(
         config["modes"] == modes
         and config["threads"] == 1
@@ -161,7 +170,8 @@ def verify(
         ) as replay_log,
     ):
         clients = {}
-        for name, (weight, bounded, cached) in modes.items():
+        for name, setting in modes.items():
+            weight, bounded, cached = setting[:3]
             options = {
                 "Hash": 16,
                 "Threads": 1,
@@ -169,6 +179,8 @@ def verify(
                 "Evaluation Cache": cached,
                 "Neural Bounds": bounded,
             }
+            if len(setting) == 4:
+                options["Tactical Generation"] = setting[3]
             if weight:
                 options.update(
                     {
@@ -276,7 +288,7 @@ def verify(
                     for r in rows
                     if r["repeat"] == repeat and r["position"] == position["id"]
                 }
-                left, right = pair[prefix + "-cache"], pair[prefix + "-exact"]
+                left, right = pair[prefix + "-" + variant], pair[prefix + "-exact"]
                 require(
                     left["bestmove"] == right["bestmove"]
                     and all(
@@ -298,7 +310,9 @@ def verify(
         for key, value in ratios[prefix].items():
             require(
                 abs(
-                    summary["paired_cache_over_exact_roundtrip_ratio"][prefix][key]
+                    summary["paired_" + variant + "_over_exact_roundtrip_ratio"][
+                        prefix
+                    ][key]
                     - value
                 )
                 < 1e-12,
@@ -312,7 +326,7 @@ def verify(
         ),
         "engine_sha256": sha(engine),
         "network_sha256": sha(network),
-        "paired_cache_over_exact_roundtrip_ratio": ratios,
+        "paired_" + variant + "_over_exact_roundtrip_ratio": ratios,
         "scope": "Exact fixed-node semantics and observed cost recomputation; no Elo or full systems acceptance",
         "full_acceptance": False,
     }

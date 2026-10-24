@@ -12,18 +12,27 @@ bool proven_dead(const Position& p) {
     constexpr Bitboard light=0x55aa55aa55aa55aaULL;
     return !(bishops&light)||!(bishops&~light);
 }
-RuleState rules(Position& p,const Moves& legal_moves) {
+namespace {
+RuleState continuing_rules(Position& p) {
     RuleState state;
-    if(legal_moves.empty()) {state.terminal=p.in_check(p.side())?Termination::checkmate:Termination::stalemate;return state;}
     if(p.synthetic_search_path()){if(proven_dead(p))state.terminal=Termination::proven_dead;return state;}
-    if(p.halfmove()>=150) {state.terminal=Termination::seventy_five;return state;}
+    if(p.halfmove()>=150){state.terminal=Termination::seventy_five;return state;}
     int count=p.repetitions();
-    if(count>=5) {state.terminal=Termination::fivefold;return state;}
-    if(proven_dead(p)) {state.terminal=Termination::proven_dead;return state;}
-    state.threefold_claim=count>=3;state.fifty_move_claim=p.halfmove()>=100;
-    return state;
+    if(count>=5){state.terminal=Termination::fivefold;return state;}
+    if(proven_dead(p)){state.terminal=Termination::proven_dead;return state;}
+    state.threefold_claim=count>=3;state.fifty_move_claim=p.halfmove()>=100;return state;
 }
-RuleState rules(Position& p) {return rules(p,p.legal());}
+}
+RuleState rules(Position& p,const Moves& legal_moves) {
+    if(legal_moves.empty()){RuleState state;state.terminal=p.in_check(p.side())?Termination::checkmate:Termination::stalemate;return state;}
+    return continuing_rules(p);
+}
+RuleState rules(Position& p,const MoveAvailability& availability) {
+    if(availability.position_key()!=p.key())throw InputError("legal availability belongs to a different position");
+    if(!availability.any()){RuleState state;state.terminal=availability.checked()?Termination::checkmate:Termination::stalemate;return state;}
+    return continuing_rules(p);
+}
+RuleState rules(Position& p){return rules(p,p.availability());}
 Moves claim_by_move(Position& p) {
     Moves result;
     if(rules(p).ended()) return result;

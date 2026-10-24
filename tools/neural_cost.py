@@ -31,7 +31,12 @@ def main():
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--load-note", required=True)
     parser.add_argument("--cache-comparison", action="store_true")
+    parser.add_argument("--combined-comparison", action="store_true")
     args = parser.parse_args()
+    if args.cache_comparison and args.combined_comparison:
+        parser.error("select one exact optimization comparison")
+    exact_comparison = args.cache_comparison or args.combined_comparison
+    variant = "combined" if args.combined_comparison else "cache"
     if not 1000 <= args.nodes <= 100000 or not 1 <= args.repeats <= 10:
         parser.error("fixed workload exceeds diagnostic bounds")
     positions = json.loads(args.positions.read_text())["positions"]
@@ -59,6 +64,11 @@ def main():
             "neural-exact": (100, False, False),
             "neural-cache": (100, False, True),
         }
+    if args.combined_comparison:
+        modes = {}
+        for prefix, weight in [("classical", 0), ("mixture", 10), ("neural", 100)]:
+            modes[prefix + "-exact"] = (weight, False, False, False)
+            modes[prefix + "-combined"] = (weight, False, True, True)
     config = {
         "schema": "caissa-neural-cost-v1",
         "profile": "diagnostic",
@@ -75,6 +85,8 @@ def main():
         "platform": platform.platform(),
         "full_acceptance": False,
     }
+    if args.combined_comparison:
+        config["exact_comparison"] = "combined"
     atomic(args.output / "CONFIG.json", config)
     start = time.monotonic()
     rng = random.Random(config["seed"])
@@ -85,8 +97,10 @@ def main():
             options = {"Threads": 1, "Hash": 16, "Search Stats": True}
             if setting:
                 weight, bounded = setting[:2]
-                if len(setting) == 3:
+                if len(setting) >= 3:
                     options["Evaluation Cache"] = setting[2]
+                if len(setting) == 4:
+                    options["Tactical Generation"] = setting[3]
                 if weight:
                     options.update(
                         {
@@ -167,14 +181,14 @@ def main():
             "evaluation_requests": sum(s["eval_calls"] for s in stats),
         }
     result_key = (
-        "paired_cache_over_exact_roundtrip_ratio"
-        if args.cache_comparison
+        "paired_" + variant + "_over_exact_roundtrip_ratio"
+        if exact_comparison
         else "paired_bounds_over_exact_roundtrip_ratio"
     )
     summary[result_key] = {}
     for prefix in (
         ["classical", "mixture", "neural"]
-        if args.cache_comparison
+        if exact_comparison
         else ["mixture", "neural"]
     ):
         ratios = []
@@ -186,10 +200,10 @@ def main():
                     if r["repeat"] == repeat and r["position"] == position["id"]
                 }
                 varied = pair[
-                    prefix + ("-cache" if args.cache_comparison else "-bounds")
+                    prefix + ("-" + variant if exact_comparison else "-bounds")
                 ]
                 exact = pair[prefix + "-exact"]
-                if args.cache_comparison:
+                if exact_comparison:
                     if (
                         any(
                             varied["observed"].get(key) != exact["observed"].get(key)
