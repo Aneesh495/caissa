@@ -3,6 +3,8 @@ export const statisticNames = [
   'ordering_hints', 'tt_cutoffs', 'beta_cutoffs', 'null_cutoffs', 'lmr',
   'researches', 'futility', 'eval_calls', 'eval_ns', 'evaluation_cache_hits',
   'evaluation_cache_bytes', 'neural_evaluations', 'neural_bound_cutoffs',
+  'accumulator_pushes', 'accumulator_materializations', 'accumulator_copies',
+  'accumulator_refreshes', 'accumulator_delta_squares',
   'completed_depth_nodes',
 ] as const;
 export type SearchStatistics = Record<typeof statisticNames[number], number>;
@@ -33,6 +35,9 @@ export function parseStatistics(line: string): SearchStatistics {
     eval_calls: counter('eval_calls'), eval_ns: counter('eval_ns'), evaluation_cache_hits: counter('evaluation_cache_hits'),
     evaluation_cache_bytes: counter('evaluation_cache_bytes'), neural_evaluations: counter('neural_evaluations'),
     neural_bound_cutoffs: counter('neural_bound_cutoffs'), completed_depth_nodes: counter('completed_depth_nodes'),
+    accumulator_pushes: counter('accumulator_pushes'), accumulator_materializations: counter('accumulator_materializations'),
+    accumulator_copies: counter('accumulator_copies'), accumulator_refreshes: counter('accumulator_refreshes'),
+    accumulator_delta_squares: counter('accumulator_delta_squares'),
   };
   if (statistics.completed_depth_nodes > statistics.visited_nodes || statistics.qnodes > statistics.visited_nodes || statistics.tt_cutoffs > statistics.tt_hits) throw new Error('Inconsistent search statistics.');
   return statistics;
