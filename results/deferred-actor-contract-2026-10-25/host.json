@@ -1,0 +1,1 @@
+{"command": [".venv/bin/python", "-m", "tests.full_strength"], "exit": 0, "maximum_seconds": 30}
