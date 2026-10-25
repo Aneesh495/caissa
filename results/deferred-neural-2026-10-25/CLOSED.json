@@ -1,0 +1,30 @@
+{
+  "schema": "caissa-closed-deferred-scope-v1",
+  "status": "completed-development-diagnostic",
+  "source_commit": "113c5dbee14fd0b4262ed30e7b256c8e36afee9b",
+  "workflow_run": 40179372115,
+  "profile_sha256": "91add4ccf9a33f46358ca5381f2dbf1679eae02697a0c891b452e8749ad4821a",
+  "original_origin_unix": 1792919134,
+  "original_deadline_unix": 1792929934,
+  "closed_unix": 1792920275.833484,
+  "jobs_used_per_platform": 1,
+  "maximum_jobs_per_platform": 3,
+  "maximum_job_seconds": 1800,
+  "maximum_cumulative_job_seconds_per_platform": 5400,
+  "platforms": {
+    "linux": {
+      "artifact_sha256": "17956f797c4b4f503bde5e31340507e08e2d480141339b4905c4dd4c1153833f",
+      "engine_sha256": "88a9ca56fe74e8e3050600a3b01d2c99c54ac8aab60d7686e6a82796eba9d543",
+      "reference_sha256": "624b9c394141b7b6d34a5351f1697d2c2f37d26031826c9efa8b1c7f32ad275d",
+      "seconds_this_campaign": 554.433279134
+    },
+    "macos": {
+      "artifact_sha256": "0d1d7076233a6175ec8b2bcbb726602ae0733bc427d5af95ecc5c668af0fc0c3",
+      "engine_sha256": "6e726cb7301dbbd07ef867f140550033b0e7f634beff8f38adf25337315ec433",
+      "reference_sha256": "3486153f001414aef60688a73e434800f681401b891869dde8f4fb82d7695eee",
+      "seconds_this_campaign": 447.882321833
+    }
+  },
+  "full_acceptance": false,
+  "strength": "No new games or Elo estimate; fixed originalq1024full-neural failure and external sample remain unchanged."
+}
