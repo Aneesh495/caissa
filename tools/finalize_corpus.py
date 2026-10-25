@@ -89,6 +89,9 @@ def execute(args):
         raise ValueError(
             "recovery owner code changed; use its archived source to resume"
         )
+    from tools.power_guard import PowerGuard
+
+    power = PowerGuard(rule.get("host_policy"))
     scope = RecoveryScope(
         output,
         bindings,
@@ -97,10 +100,18 @@ def execute(args):
         rule["minimum_free_gib"],
         rule["maximum_additional_disk_gib"],
         resume=args.resume,
+        maximum_authorized_seconds=86400 if rule["schema"].endswith("v2") else 21600,
+        maximum_active_seconds=rule.get("maximum_active_seconds"),
     )
     campaign = None
     corpus_lock = None
     try:
+        power.start(output)
+
+        def resource_check():
+            scope.check()
+            power.check()
+
         corpus_lock = (corpus / "CORPUS.lock").open("a")
         fcntl.flock(corpus_lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
         source = output / "source"
@@ -131,7 +142,10 @@ def execute(args):
             },
             scope.remaining(),
             absolute_deadline=scope.deadline,
-            resource_guard=scope.check,
+            resource_guard=resource_check,
+            maximum_wall_seconds=(
+                scope.deadline - time.time() if rule["schema"].endswith("v2") else None
+            ),
         )
         archive_source(root, source, commit, inputs["files"])
         scope.check()
@@ -203,7 +217,52 @@ def execute(args):
             "--wall-deadline-unix",
             str(scope.deadline),
         ]
-        campaign.run("independent-data", command, scope.remaining(), cwd=source)
+        if rule["schema"].endswith("v2"):
+            command.extend(
+                ["--max-wall-seconds", str(max(1, scope.deadline - time.time()))]
+            )
+        previous_progress = output / "INDEPENDENT_PROGRESS.json"
+        if args.resume and previous_progress.exists():
+            from verification.dataset_index import snapshot
+
+            prior = json.loads(previous_progress.read_text())
+            if prior.get("index"):
+                index = Path(prior["index"]).resolve()
+                if not index.is_relative_to(scratch.resolve()):
+                    raise ValueError(
+                        "independent resume index escaped its original scope"
+                    )
+                with (index / "OWNER.lock").open("a") as lock:
+                    fcntl.flock(lock.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    pinned = snapshot(index, scope.check)
+                atomic(
+                    campaign.output / "INDEX_RESUME.json",
+                    {
+                        "index": str(index),
+                        "stopped_index_sha256": pinned,
+                        "source_commit": commit,
+                        "global_deadline_unix": scope.deadline,
+                    },
+                )
+                command.extend(
+                    [
+                        "--resume-index",
+                        str(index),
+                        "--expected-index-state-sha256",
+                        pinned,
+                    ]
+                )
+        campaign.run(
+            "independent-data",
+            command,
+            scope.remaining(),
+            cwd=source,
+            wall_timeout=(
+                max(1, scope.deadline - time.time())
+                if rule["schema"].endswith("v2")
+                else None
+            ),
+        )
         verified = json.loads((campaign.output / "independent-data.log").read_text())
         if (
             verified["status"] != "passed"
@@ -251,9 +310,12 @@ def execute(args):
         )
         raise
     finally:
-        if corpus_lock is not None:
-            corpus_lock.close()
-        scope.close()
+        try:
+            power.close()
+        finally:
+            if corpus_lock is not None:
+                corpus_lock.close()
+            scope.close()
 
 
 def main():

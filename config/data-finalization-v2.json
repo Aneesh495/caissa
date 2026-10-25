@@ -1,0 +1,52 @@
+{
+  "schema": "caissa-fixed-prefix-finalization-v2",
+  "status": "frozen",
+  "purpose": "Independently verify the unchanged exported corpus after the first six-hour recovery expired during host sleep; preserve the original acquisition and recovery failures",
+  "maximum_wall_seconds": 86400,
+  "maximum_new_games": 0,
+  "corpus_config_sha256": "29ece37659b297d24bda565a139e442a1d571ba3058ae9bb23f9de3dba1d8cb9",
+  "pair_hash_manifest_sha256": "a68c2b878fb2fbf7fcc738096396fa952408053f283c0fcf6c2ec2bf4a22e774",
+  "completed_pairs": 114791,
+  "minimum_training_inputs": 10000000,
+  "minimum_completed_games": 100000,
+  "minimum_completed_search_fraction": 0.95,
+  "minimum_free_gib": 10,
+  "maximum_additional_disk_gib": 20,
+  "teacher_sha256": "cd33e7f3f925bb522569c34283cc9f20c710d9e1bc50760bda62ccacbf2994ed",
+  "prior_protocol": "config/data-generation-v5.json",
+  "prior_failure": "preparation-confirmation-timeout",
+  "operations": [
+    "Verify exact fixed prefix against the preserved pre-restart SHA256 manifest",
+    "Reuse the existing byte-pinned exported arrays; never resample or change labels",
+    "Independently replay all original games and reconstruct the complete deduplication, split, feature, target and contributor records",
+    "Record separate finalization and verification receipts while preserving all earlier failed receipts"
+  ],
+  "restart_rule": "Original acquisition stays stopped. A separately authorized finalization deadline is fixed once and never reset by process replacement. A new failure remains failed.",
+  "full_acceptance": false,
+  "campaign_output": "runs/searched-full-v3-finalization-v2",
+  "prior_interrupted_sha256": "ce6a5497a1ed4221d76b53126cf6f3f604bdffc76f4d21f6efcc5b2fc49d9fd2",
+  "prior_sessions_sha256": "257987f21a9bdb3ee7a097e31180cf0fda668eea39beaaef620a23ab12e59bd6",
+  "heldout_inputs": {
+    "config/studies.json": "003444606138bc2702cf8981562bfec488b53498846602919c6f459cd8543f41",
+    "config/strength-openings.json": "61b8c8812a107e0ea0b6e8a763a0d52d088b6b8480a0879a4952c4689bae71a8"
+  },
+  "authorization_scope": "The human directed active continuation after the exhausted six-hour run and asked to stop repeating that prompt. New separately declared24-hour wall/six-hour cumulative active budget. Earlier acquisition and six-hour recovery failures remain failed. No automatic renewal.",
+  "source_policy": "Archive committed code and holdouts before running export/replay. Later working-tree changes cannot alter stages.",
+  "maximum_attempts": 3,
+  "exclusions": "No new generation, model training, model selection, opponent match or release runs inside this finalization budget. Those retain their separate experiment contracts.",
+  "host_policy": {
+    "platform": "darwin",
+    "require_ac_power": false,
+    "scoped_caffeinate_flags": "-di",
+    "check_interval_seconds": 5
+  },
+  "checkpoint_policy": "Full-synchronous WAL; expected inputs, contributors, cursor, counters and prefix digest commit together. Resume requires the externally pinned bytes of the owned stopped index and identical source/data bindings. The old malformed journal-OFF index is not reusable.",
+  "prior_finalization_failure": {
+    "path": "runs/searched-full-v3-finalization-v1/FAILED.json",
+    "sha256": "207cd22dc563c0585708fae2bc2e1ee43a2c25ae722b6daaec2eb27cc154ed6b",
+    "scope_sha256": "7d8f08bdb12fa760be9cb01d6b8a461a14b8c116df3327b562f571184d5cc1a1"
+  },
+  "exported_dataset_sha256": "f09cdec986858c5b1aa80b3c97aaa4d825be892fc94e16ac5d835bc3d709f0ce",
+  "maximum_active_seconds": 21600,
+  "resource_basis": "The failed original replay used1756.62childCPU seconds and6120.11active seconds for98816pairs before sleep consumed its wall budget. Full-synchronous WAL adds write cost and complete array checks remain. Six cumulative active hours and24wall hours are bounded allowances; stage/attempt replacement cannot reset either ceiling."
+}

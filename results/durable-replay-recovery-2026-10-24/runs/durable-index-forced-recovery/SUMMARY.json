@@ -1,0 +1,24 @@
+{
+  "status": "passed",
+  "actual_interruption_exit": -9,
+  "committed_pair_cursor": 1,
+  "stopped_index_sha256": "e18104653d298ed82cdddd14d85f840d50df7a3cb4830eb5a68a4ba1371f70d0",
+  "completed_index_sha256": "cd7d3ea1215513f6f927d503b7932e4ec633d9755f5ca15615545c4cadf09def",
+  "independent_result": {
+    "status": "passed",
+    "profile": "diagnostic-data-replay",
+    "source_pairs": 200,
+    "completed_games": 400,
+    "unfinished_games": 0,
+    "raw_samples": 28088,
+    "independently_rebuilt_splits": {
+      "train": 17654,
+      "validation": 2563,
+      "test": 2108
+    },
+    "dataset_sha256": "73f27dbfb1ca044bcc86da4387afaaf74e947c3779470bd08fa5f2c8169ac7a0"
+  },
+  "wrong_pin_exit": 1,
+  "unpinned_exit": 1,
+  "full_acceptance": false
+}

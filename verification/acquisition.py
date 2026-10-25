@@ -32,7 +32,11 @@ def protocol(path, expected):
     )
     rule = read_json(Path(path).read_text())
     require(
-        rule["schema"] == "caissa-fixed-prefix-finalization-v1"
+        rule["schema"]
+        in (
+            "caissa-fixed-prefix-finalization-v1",
+            "caissa-fixed-prefix-finalization-v2",
+        )
         and rule["status"] == "frozen",
         "fixed-prefix recovery protocol is inactive or unsupported",
     )
@@ -42,10 +46,18 @@ def protocol(path, expected):
     )
     require(
         type(rule["maximum_wall_seconds"]) is int
-        and 0 < rule["maximum_wall_seconds"] <= 21600
+        and 0
+        < rule["maximum_wall_seconds"]
+        <= (86400 if rule["schema"].endswith("v2") else 21600)
         and rule["maximum_new_games"] == 0,
         "recovery would extend its authorized resource or generation scope",
     )
+    if rule["schema"].endswith("v2"):
+        require(
+            type(rule.get("maximum_active_seconds")) is int
+            and 0 < rule["maximum_active_seconds"] <= 21600,
+            "recovery cumulative active ceiling exceeds its declared scope",
+        )
     require(
         rule["minimum_training_inputs"] >= 10000000
         and rule["minimum_completed_games"] >= 100000

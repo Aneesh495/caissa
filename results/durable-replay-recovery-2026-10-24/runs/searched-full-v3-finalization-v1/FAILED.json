@@ -1,0 +1,1 @@
+{"type":"StageFailure","reason":"stage independent-data failed: campaign-timeout (exit -15)","observed_unix":1792829661.982701,"original_deadline_unix":1792828760.004192,"full_acceptance":false}

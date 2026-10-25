@@ -1,0 +1,10 @@
+{
+  "observed_unix": 1792885351.6622689,
+  "old_index_bytes": 3220332544,
+  "query": "read-only immutable sqlite_master table names",
+  "actual_error": "database disk image is malformed",
+  "old_index_reusable": false,
+  "last_reported_games": 197632,
+  "old_recovery_budget_status": "exhausted; cannot extend or reset",
+  "full_replay_restarted": false
+}
