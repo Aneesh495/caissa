@@ -91,8 +91,17 @@ def options(mode):
 
 
 def avoid_decisive_matches(root=Path("runs")):
-    for name in ("full-neural-strength-v3", "full-external-strength-v3"):
-        path = root / name / "OWNER.lock"
+    paths = [
+        root / name / "OWNER.lock"
+        for name in (
+            "full-neural-strength-v3",
+            "full-external-strength-v3",
+            "full-neural-strength-v4",
+            "full-external-strength-v4",
+        )
+    ]
+    paths.append(root / "TIMED_STRENGTH.lock")
+    for path in paths:
         if path.exists():
             with path.open("a") as stream:
                 try:

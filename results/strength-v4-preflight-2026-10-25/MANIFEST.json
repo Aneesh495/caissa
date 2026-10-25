@@ -1,0 +1,33 @@
+{
+  "files": {
+    "README.md": "e2537dca7fe8fa1a9858a6fff69e68042cbbdbf2b6ec085dd43e35173f39a957",
+    "SCOPE.json": "ddea6997fbe26e13e332dac8370141344e00aa8012880991af101d17b7dde2bc",
+    "actual-actor-preflight-001/CONFIG.json": "02e4d906fed6d1b314614107db1a907fb22da35fce943e35b8e98a1a743bf9ee",
+    "actual-actor-preflight-001/DEPLOYMENT_LINEAGE.json": "d9a394b2052b83449901905acc624e186f7f5b91040fcd416b08b4fb1886aaed",
+    "actual-actor-preflight-001/PREFLIGHT.json": "282000e30d50f7baffb65b13343424ebdcc1cdbf70786cfe96630f157e1c88d6",
+    "actual-actor-preflight-001/PROGRESS.json": "298774184a934e58afa90b6e6ede73ec49e5aeec4abf3082a774caf7d9534c83",
+    "actual-actor-preflight-001/candidate-PREFLIGHT.json": "6a26c61f4912a2bb3773a2f9910ac8f50dd36a9cec2adc719c974d239f098d2c",
+    "actual-actor-preflight-001/opponent-PREFLIGHT.json": "b2d7767294544817fbd6fdf2b8cf5254deed57620890446450ecb6a567790690",
+    "actual-preflight-command.json": "bc27463e6513395a78675a7f775f4c86206488e71ff4bb81f4ba55756891485c",
+    "actual-preflight.log": "e0d39e9653f7b5301c4cd51406d6f445914cf0a6310b1cad6921728823ad36bd",
+    "arena-options.json": "4b34b13960f327599fd6029beb6dc49230b3b05f1109cfb618b4eed382979f6e",
+    "arena-options.log": "8834a22236bdd23410f170fc675137a6c1f46eb469d4d55d3aa1d8d6b115e0a4",
+    "contract-attempt-001/CONTROLS.json": "06dc34c7cb7f8de7b279cfd4dbed15d47ce66cd18b6551e74e05e0c6540bff45",
+    "contract-attempt-001/PROFILE.json": "15f27915b5f43b8dab5719650b506f2f8547311012223518b7a00713c8d97c92",
+    "contract-attempt-001/REAL_LINEAGE.json": "d9a394b2052b83449901905acc624e186f7f5b91040fcd416b08b4fb1886aaed",
+    "deferred-actors.json": "4bacaf4bdfb8f72bb7cb6f0bc6596012e81e24028e028bdc587bb7bc3eeea2cb",
+    "deferred-actors.log": "692e65631aaf50c5f4ade96e682cd920bde3d02ef5f8d72fae2a95ca0c84b073",
+    "heuristic-guard.json": "7f2e6a72d99e06225c432e6dfd8161c97f18f2499e0729d7ae61f443defff9b4",
+    "heuristic-guard.log": "67d41e2ed767a2695208d00e1407c400610c4dac2737c3c89165f4758a87a07d",
+    "host.json": "436018567950994a480d130262c78a179c08e781474e859e2f10b0a26ee90666",
+    "host.log": "14a84a20b606e5c8b7c4b5416c6165405799dc85d55f16fbc254f03565176d1b",
+    "legacy-actors.json": "66b5a714f5d959fb2dfe8d562798e51d1a8070ffabbe171c82d58577dbd4cb89",
+    "legacy-actors.log": "80dca054f98ab55a7295de9eff2798634b4da0e7a2f77425f1cdff7b878ccc22",
+    "published-contract/CONTROLS.json": "06dc34c7cb7f8de7b279cfd4dbed15d47ce66cd18b6551e74e05e0c6540bff45",
+    "published-contract/PROFILE.json": "15f27915b5f43b8dab5719650b506f2f8547311012223518b7a00713c8d97c92",
+    "published-contract/REAL_LINEAGE.json": "566f43a9de04896d6e39ff07cea4d14623e8a58c8eadf72f05bd8b94dd2748e8",
+    "published-contract.json": "900def2ce16b56f926ad2b905ea467b63112b8f0ad58db10ed36e7f9c28e79f2",
+    "published-contract.log": "3a8045a398b5f7ae7596d8a419cc94802601a9a9b2a9de9fce5cea00d7a42fa4"
+  },
+  "full_acceptance": false
+}

@@ -270,6 +270,15 @@ def verify_campaign(
             raise Rejection("full strength verification requires the frozen protocol")
         rules = protocol["matches"]
         full_actor_options(candidate, opponent, protocol, neural)
+        if protocol.get("schema") == "caissa-experiment-protocol-v4":
+            actor = protocol.get("strength_actor", {})
+            if (
+                actor.get("engine_sha256") != expected_engine
+                or actor.get("network_sha256") != expected_network
+            ):
+                raise Rejection(
+                    "full v4 actor differs from the prospective deployment identity"
+                )
         if protocol.get("schema") in {
             "caissa-experiment-protocol-v3",
             "caissa-experiment-protocol-v4",
