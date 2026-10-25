@@ -57,6 +57,7 @@ jobs:
         run: |
           npm ci --ignore-scripts
           npm run build
+          node tests/service_workers.mjs
           node dist/analysis-service/server.js > runs/service.log 2>&1 &
           SERVICE_PID=$!
           trap 'kill "$SERVICE_PID"' EXIT
