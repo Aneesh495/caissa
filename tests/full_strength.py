@@ -120,6 +120,8 @@ def main():
         (214, "python -m tools.network_audit --network candidate.cai"),
         (215, "python -m tests.precision_export --checkpoint selected.pt"),
         (216, "python -m training.export selected.pt candidate.cai"),
+        (222, "python -m tools.precision_followup --protocol profile.json"),
+        (223, "python -m verification.deployment_loss --slice validation"),
         (219, "python -P -c import_runpy /archived/source training.train data"),
         (220, "python -I -B -W ignore /archived/source/training/train.py data"),
     ]:
@@ -163,6 +165,8 @@ def main():
         214,
         215,
         216,
+        222,
+        223,
         219,
         220,
     ]

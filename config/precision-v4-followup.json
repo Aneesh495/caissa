@@ -1,0 +1,33 @@
+{
+  "schema": "caissa-precision-followup-v1",
+  "status": "frozen",
+  "original_profile_sha256": "624a0f1700657e2f23ea28c12e800139be10921ba7286395da75fdca62ccfab9",
+  "original_origin_unix": 1792906174.2199628,
+  "original_deadline_unix": 1792913374.2199628,
+  "scope": "Conjunctive deployed validation-loss, address/undefined-behavior and thread instrumentation checks. No change to native source, model, selection or successful numerical observations. The original precision origin, deadline and cumulative hosted ceilings are unchanged.",
+  "validation": {
+    "rows": 8192,
+    "slice_sha256": "fc58d808fd3bede62b31640d5cdf74bd7ccbdfe309f9771fbe8b6395feac6869",
+    "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+    "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+    "neural_weight": 10,
+    "outcome_weight": 0.5,
+    "minimum_loss_improvement_exclusive": 0,
+    "selection_unchanged": true,
+    "test_arrays_opened": false
+  },
+  "sanitizers": {
+    "address": true,
+    "undefined_behavior": true,
+    "required_native_cases": 18,
+    "selected_model_transitions": 1000000,
+    "thread": true
+  },
+  "resources": {
+    "maximum_job_seconds": 1800,
+    "maximum_validation_seconds": 120,
+    "maximum_sanitizer_test_seconds": 600,
+    "maximum_workflow_run_number": 3,
+    "job_reruns": false
+  }
+}

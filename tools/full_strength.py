@@ -40,6 +40,8 @@ FORBIDDEN_MODULES = {
     "tools.heuristic_study",
     "verification.heuristic_study",
     "tools.precision_audit",
+    "tools.precision_followup",
+    "verification.deployment_loss",
     "tools.network_audit",
     "tests.precision_export",
     "training.export",

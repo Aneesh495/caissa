@@ -1,0 +1,18 @@
+{
+  "schema": "caissa-validation-prefix-v1",
+  "rows": 8192,
+  "selection": "Same first8192 sorted validation input identities used by the original fixed checkpoint selection; no new model selection",
+  "dataset_sha256": "f09cdec986858c5b1aa80b3c97aaa4d825be892fc94e16ac5d835bc3d709f0ce",
+  "parent_feature_sha256": "552b46878bacf225ad298de3ed435da50b26976174a74297cf4e28c4354f9985",
+  "parent_target_sha256": "858ad89f6b5f618498ba35ee8791976ac7c1e891a0ac3fc27aa9947f4c7ae523",
+  "parent_baseline_sha256": "8082595513244a52b9ea6b297a8fb5fbdf25bf0b3bac2bfc87156ee1c0020d85",
+  "files": {
+    "baselines.npy": "29493e3699efc67793baca22b04127b84149872ef4f8389c722d7b31b14814c3",
+    "features.npy": "dd82e36c18a1c70eaa979a460331b1b93ac48f2eb5b056b6f19f06a2d84a4309",
+    "targets.npy": "146209a4400a0aa1d8ecc4339adf24ad497f7f97000c408167f65e0fdf47ae6f",
+    "identities.jsonl": "414337de03c4f7690f070cc48351fbf402aa335dcf6a4df5eac316f3e2f08819",
+    "DATASET.json": "f09cdec986858c5b1aa80b3c97aaa4d825be892fc94e16ac5d835bc3d709f0ce"
+  },
+  "test_arrays_opened": false,
+  "full_acceptance": false
+}
