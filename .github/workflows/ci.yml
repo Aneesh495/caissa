@@ -54,6 +54,7 @@ jobs:
           python -m tests.bundle_integrity --output runs/ci-bundle-integrity
           python -m tests.acceptance_readiness --output runs/ci-acceptance-readiness
           python -m tests.rules_replay --engine build/caissa --output runs/ci-rules-replay
+          python -m tests.protocol_bundle --engine build/caissa --output runs/ci-protocol-bundle
           python -m training.corpus --engine build/caissa --pairs 50 --nodes 500 --workers 2 --output data/ci-original
           python -m training.prepare data/ci-original data/ci-prepared
           python -m verification.dataset data/ci-prepared data/ci-original
@@ -103,5 +104,6 @@ jobs:
             runs/ci-bundle-integrity/CONTROLS.json
             runs/ci-acceptance-readiness/CONTROLS.json
             runs/ci-rules-replay/
+            runs/ci-protocol-bundle/
             build/Testing/Temporary/LastTest.log
           retention-days: 14

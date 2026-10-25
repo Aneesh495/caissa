@@ -427,6 +427,61 @@ def verify(
                 )
                 review["verified_semantic_gates"] = {"G01": result}
                 del review["pending_semantic_gates"]["G01"]
+        domain = inputs["domains"]["G04"]
+        if domain.get("driver") == "protocol-v2":
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G04"
+                ] = "protocol replay requires an external --replay-output directory"
+            else:
+                from verification.protocol import verify as verify_protocol
+
+                output = Path(replay_output).resolve()
+                require(
+                    not output.is_relative_to(bundle.root),
+                    "full replay must preserve the original evidence",
+                )
+                arguments = domain["uci_transcript"]
+                paths = {
+                    key: bundle.reference(arguments[key])
+                    for key in ["config", "summary", "transcript", "stderr"]
+                }
+                require(
+                    len(set(paths.values())) == 4,
+                    "G04 replay requires distinct raw artifacts",
+                )
+                declared = {bundle.reference(ref) for ref in domain["artifacts"]}
+                require(
+                    set(paths.values()) <= declared,
+                    "G04 replay inputs are absent from its declared raw artifacts",
+                )
+                config = bundle.json(paths["config"])
+                require(
+                    type(config.get("requested")) is int
+                    and config["requested"] >= 10000,
+                    "full protocol workload below 10000 sequences",
+                )
+                require(
+                    config.get("engine_sha256") == inputs["engine"]["sha256"],
+                    "G04 transcript executable differs from full deployment",
+                )
+                destination = output / "G04"
+                destination.mkdir(parents=True, exist_ok=False)
+                for key, filename, maximum in [
+                    ("config", "CONFIG.json", 4 * 1024 * 1024),
+                    ("summary", "summary.json", 4 * 1024 * 1024),
+                    ("transcript", "transcript.jsonl", 512 * 1024 * 1024),
+                    ("stderr", "stderr.log", 1024 * 1024),
+                ]:
+                    (destination / filename).write_bytes(
+                        bundle.bytes(paths[key], maximum)
+                    )
+                result = verify_protocol(
+                    destination, inputs["engine"]["sha256"], full=True, tick=bundle.tick
+                )
+                bundle.tick()
+                review.setdefault("verified_semantic_gates", {})["G04"] = result
+                del review["pending_semantic_gates"]["G04"]
         return review
 
 

@@ -42,7 +42,7 @@ def digest(path):
     return result.hexdigest()
 
 
-def verify(root, expected_engine, full=False):
+def verify(root, expected_engine, full=False, *, tick=None):
     require(
         len(expected_engine) == 64
         and all(c in "0123456789abcdef" for c in expected_engine),
@@ -116,6 +116,8 @@ def verify(root, expected_engine, full=False):
     with path.open() as stream:
         for raw in stream:
             rows += 1
+            if tick is not None and rows % 64 == 1:
+                tick()
             require(rows <= 2000000 and len(raw) <= 20000, "protocol record ceiling")
             row = read_json(raw)
             sending = "send" in row
