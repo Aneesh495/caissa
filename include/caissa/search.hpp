@@ -1,5 +1,6 @@
 #pragma once
 #include "caissa/evaluation.hpp"
+#include "caissa/accumulator_stack.hpp"
 #include "caissa/network.hpp"
 #include "caissa/rules.hpp"
 #include "caissa/table.hpp"
@@ -15,6 +16,7 @@ struct SearchOptions {
     int inject_worker_start_failure_after=-1;
     std::shared_ptr<const Network> network;
     bool scalar_network=false;
+    bool lazy_neural=false;
     int neural_weight=100;
     std::uint64_t root_shuffle_seed=0;
 };
@@ -43,6 +45,7 @@ struct SearchStats {
     std::uint64_t evaluator_calls=0,evaluator_ns=0,ordering_hint_hits=0;
     std::uint64_t neural_evaluations=0,neural_bound_cutoffs=0;
     std::uint64_t evaluation_cache_hits=0,evaluation_cache_bytes=0;
+    AccumulatorWork accumulator_work;
     int seldepth=0;
     SearchStats& operator+=(const SearchStats& rhs);
 };

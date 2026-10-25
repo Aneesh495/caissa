@@ -39,6 +39,7 @@ public:
             emit("option name Neural Bounds type check default false");
             emit("option name Evaluation Cache type check default false");
             emit("option name Tactical Generation type check default false");
+            emit("option name Lazy Neural type check default false");
             emit("option name Neural Weight type spin default 100 min 0 max 100");
             emit("option name EvalFile type string default <empty>");emit("option name Use Neural type check default false");emit("option name Scalar Neural type check default false");
             emit("option name Search Stats type check default false");emit("option name Trace Samples type spin default 0 min 0 max 64");
@@ -74,6 +75,7 @@ private:
         if(name=="EvalFile") {loaded_network_=Network::load(value);if(options_.network)options_.network=loaded_network_;emit("info string network "+loaded_network_->identity());}
         else if(name=="Use Neural") {bool use=boolean(value);if(use&&!loaded_network_)throw InputError("load EvalFile before enabling neural evaluation");options_.network=use?loaded_network_:nullptr;}
         else if(name=="Scalar Neural") options_.scalar_network=boolean(value);
+        else if(name=="Lazy Neural") options_.lazy_neural=boolean(value);
         else if(name=="Neural Weight") options_.neural_weight=static_cast<int>(number(value,100));
         else if(name=="Hash")table_=std::make_shared<TranspositionTable>(static_cast<std::size_t>(number(value,1024)));
         else if(name=="Threads"){auto n=number(value,8);if(n==0)throw InputError("Threads must be positive");options_.threads=static_cast<int>(n);}
@@ -154,7 +156,7 @@ private:
                 while(control->pondering.load()&&!control->stop.load())std::this_thread::sleep_for(std::chrono::milliseconds(1));
                 if(stats_enabled) {
                     auto& s=result.info.stats;std::ostringstream details;
-                    details<<"info string stats visited_nodes "<<result.info.nodes<<" table_bytes "<<table->bytes()<<" elapsed_ms "<<result.info.elapsed_ms<<" qnodes "<<s.qnodes<<" tt_hits "<<s.table_hits<<" ordering_hints "<<s.ordering_hint_hits<<" tt_cutoffs "<<s.table_cutoffs<<" beta_cutoffs "<<s.beta_cutoffs<<" null_cutoffs "<<s.null_cutoffs<<" lmr "<<s.lmr_searches<<" researches "<<s.researches<<" futility "<<s.futility_skips<<" eval_calls "<<s.evaluator_calls<<" eval_ns "<<s.evaluator_ns<<" evaluation_cache_hits "<<s.evaluation_cache_hits<<" evaluation_cache_bytes "<<s.evaluation_cache_bytes<<" neural_evaluations "<<s.neural_evaluations<<" neural_bound_cutoffs "<<s.neural_bound_cutoffs<<" completed_depth_nodes "<<result.info.completed_depth_nodes;emit(details.str());
+                    details<<"info string stats visited_nodes "<<result.info.nodes<<" table_bytes "<<table->bytes()<<" elapsed_ms "<<result.info.elapsed_ms<<" qnodes "<<s.qnodes<<" tt_hits "<<s.table_hits<<" ordering_hints "<<s.ordering_hint_hits<<" tt_cutoffs "<<s.table_cutoffs<<" beta_cutoffs "<<s.beta_cutoffs<<" null_cutoffs "<<s.null_cutoffs<<" lmr "<<s.lmr_searches<<" researches "<<s.researches<<" futility "<<s.futility_skips<<" eval_calls "<<s.evaluator_calls<<" eval_ns "<<s.evaluator_ns<<" evaluation_cache_hits "<<s.evaluation_cache_hits<<" evaluation_cache_bytes "<<s.evaluation_cache_bytes<<" neural_evaluations "<<s.neural_evaluations<<" neural_bound_cutoffs "<<s.neural_bound_cutoffs<<" accumulator_pushes "<<s.accumulator_work.pushes<<" accumulator_materializations "<<s.accumulator_work.materializations<<" accumulator_copies "<<s.accumulator_work.perspective_copies<<" accumulator_refreshes "<<s.accumulator_work.perspective_refreshes<<" accumulator_delta_squares "<<s.accumulator_work.delta_squares<<" completed_depth_nodes "<<result.info.completed_depth_nodes;emit(details.str());
                 }
                 for(auto& sample:result.info.trace) {
                     std::ostringstream detail;detail<<"info string trace depth "<<sample.depth<<" ply "<<sample.ply<<" alpha "<<sample.alpha<<" beta "<<sample.beta<<" synthetic "<<sample.synthetic<<" fen "<<sample.fen;emit(detail.str());

@@ -33,6 +33,7 @@ std::int64_t time_budget(std::int64_t remaining,std::int64_t increment,int moves
 SearchStats& SearchStats::operator+=(const SearchStats& r) {
     neural_evaluations+=r.neural_evaluations;neural_bound_cutoffs+=r.neural_bound_cutoffs;
     evaluation_cache_hits+=r.evaluation_cache_hits;evaluation_cache_bytes+=r.evaluation_cache_bytes;
+    accumulator_work+=r.accumulator_work;
     ordering_hint_hits+=r.ordering_hint_hits;qnodes+=r.qnodes;table_hits+=r.table_hits;table_cutoffs+=r.table_cutoffs;beta_cutoffs+=r.beta_cutoffs;
     null_cutoffs+=r.null_cutoffs;lmr_searches+=r.lmr_searches;researches+=r.researches;futility_skips+=r.futility_skips;
     evaluator_calls+=r.evaluator_calls;evaluator_ns+=r.evaluator_ns;seldepth=std::max(seldepth,r.seldepth);return *this;
@@ -44,24 +45,26 @@ int evaluation_of(const Position& p,const SearchOptions& options,const Accumulat
 }
 struct Abort {};
 struct Guard {
-    Position& p;Undo undo;Accumulator* accumulator;Accumulator saved;
-    Guard(Position& pos,Move move,const Network* net,Accumulator* acc):p(pos),undo(p.make(move)),accumulator(acc) {
-        if(net){saved=*acc;net->update(p,undo,*acc);}
+    Position& p;Undo undo;AccumulatorStack* accumulator;
+    Guard(Position& pos,Move move,AccumulatorStack* acc):p(pos),undo(p.make(move)),accumulator(acc) {
+        try{if(accumulator)accumulator->push(p,undo);}catch(...){p.unmake(undo);throw;}
     }
-    Guard(Position& pos,const Network* net,Accumulator* acc):p(pos),undo(p.make_null()),accumulator(acc) {
-        if(net){saved=*acc;net->update(p,undo,*acc);}
+    Guard(Position& pos,AccumulatorStack* acc):p(pos),undo(p.make_null()),accumulator(acc) {
+        try{if(accumulator)accumulator->push(p,undo);}catch(...){p.unmake(undo);throw;}
     }
-    ~Guard(){p.unmake(undo);if(accumulator)*accumulator=saved;}
+    ~Guard(){p.unmake(undo);if(accumulator)accumulator->pop();}
     Guard(const Guard&)=delete;Guard& operator=(const Guard&)=delete;
 };
 class Worker {
 public:
     Worker(TranspositionTable& table,SearchControl& control,const SearchOptions& options):table_(table),control_(control),options_(options) {
         if(options_.evaluation_cache){evaluation_cache_=std::make_unique<EvaluationCache>();stats.evaluation_cache_bytes=evaluation_cache_->bytes();}
+        if(options_.network&&options_.neural_weight>0)accumulator_=std::make_unique<AccumulatorStack>(*options_.network,options_.lazy_neural);
     }
     SearchStats stats;
     std::vector<TraceSample> trace;
-    void reset(const Position& p){if(options_.network)accumulator_=options_.network->refresh(p);}
+    void reset(const Position& p){if(accumulator_)accumulator_->reset(p);}
+    SearchStats reported_stats()const {auto result=stats;if(accumulator_)result.accumulator_work=accumulator_->work();return result;}
     int visit(Position& p,int depth,int alpha,int beta,int ply,bool allow_null,Move previous,Moves& pv) {
         touch(ply);pv.clear();
         if(depth>=2&&trace.size()<static_cast<std::size_t>(options_.trace_limit))trace.push_back({p.fen(),depth,alpha,beta,ply,p.synthetic_search_path()});
@@ -97,7 +100,7 @@ public:
         bool non_pawn=(p.occupied(p.side())&~p.pieces(p.side(),Kind::pawn)&~p.pieces(p.side(),Kind::king))!=0;
         if(options_.null_move&&allow_null&&!pv_node&&!check&&!claim&&depth>=3&&non_pawn&&p.halfmove()<90&&evaluation>=beta&&std::abs(beta)<mate_threshold) {
             int reduction=2+depth/5;Moves ignored;int score;
-            {Guard guard(p,options_.network.get(),options_.network?&accumulator_:nullptr);score=-visit(p,std::max(0,depth-1-reduction),-beta,-beta+1,ply+1,false,{},ignored);}
+            {Guard guard(p,accumulator_.get());score=-visit(p,std::max(0,depth-1-reduction),-beta,-beta+1,ply+1,false,{},ignored);}
             if(score>=beta) {
                 if(depth>=7) {score=visit(p,depth-reduction,beta-1,beta,ply,false,previous,ignored);}
                 if(score>=beta) {++stats.null_cutoffs;return std::min(score,mate_threshold-1);}
@@ -108,10 +111,10 @@ public:
         for(auto move:moves) {
             bool capture=is_capture(p,move),promotion=move.promotion!=Kind::none;
             if(options_.futility&&!pv_node&&!check&&!claim&&depth<=2&&searched>0&&!capture&&!promotion&&evaluation+110*depth<=alpha&&std::abs(alpha)<mate_threshold) {
-                Guard guard(p,move,options_.network.get(),options_.network?&accumulator_:nullptr);if(!p.in_check(p.side())) {++stats.futility_skips;continue;}
+                Guard guard(p,move,accumulator_.get());if(!p.in_check(p.side())) {++stats.futility_skips;continue;}
             }
             int score;Moves child;bool gives_check;
-            {Guard guard(p,move,options_.network.get(),options_.network?&accumulator_:nullptr);gives_check=p.in_check(p.side());
+            {Guard guard(p,move,accumulator_.get());gives_check=p.in_check(p.side());
                 int extension=options_.extensions&&check&&ply<16&&depth>1?1:0;
                 int next_depth=depth-1+extension;
                 int reduction=0;
@@ -151,7 +154,7 @@ private:
     std::array<std::array<Move,2>,max_ply> killers_{};
     std::array<std::array<Move,64>,64> counters_{};
     std::array<std::array<std::array<int,64>,64>,2> history_{};
-    std::uint64_t local_nodes_=0;Accumulator accumulator_;
+    std::uint64_t local_nodes_=0;std::unique_ptr<AccumulatorStack> accumulator_;
     std::unique_ptr<EvaluationCache> evaluation_cache_;
     struct PreparedPosition {RuleState state;bool checked,tactical_pending;Moves moves;};
     PreparedPosition prepare_position(Position& p,bool leaf) {
@@ -182,12 +185,12 @@ private:
         }
         if(options_.neural_bounds&&options_.network&&options_.network->residual()&&
            options_.neural_weight>0&&stand_pat_beta<infinity) {
-            auto result=options_.network->evaluate_at_least(p,accumulator_,stand_pat_beta,
+            auto result=options_.network->evaluate_at_least(p,accumulator_->get(p),stand_pat_beta,
                                                           options_.scalar_network,options_.neural_weight);
             score=result.score;exact=result.exact;
             if(result.exact)++stats.neural_evaluations;else ++stats.neural_bound_cutoffs;
         } else {
-            score=evaluation_of(p,options_,&accumulator_);
+            score=evaluation_of(p,options_,accumulator_?&accumulator_->get(p):nullptr);
             if(options_.network&&options_.neural_weight>0)++stats.neural_evaluations;
         }
         if(evaluation_cache_&&exact)evaluation_cache_->store(p.key(),score);
@@ -235,7 +238,7 @@ private:
         for(auto m:moves) {
             if(!check&&!is_capture(p,m)&&m.promotion==Kind::none)continue;
             Moves child;int score;
-            {Guard guard(p,m,options_.network.get(),options_.network?&accumulator_:nullptr);touch(ply+1);auto prepared=prepare_position(p,true);auto state=prepared.state;
+            {Guard guard(p,m,accumulator_.get());touch(ply+1);auto prepared=prepare_position(p,true);auto state=prepared.state;
                 if(state.ended()) score=state.terminal==Termination::checkmate?mate_score-ply-1:0;
                 else score=-quiet(p,-beta,-alpha,ply+1,qply+1,state.claimable(),std::move(prepared.moves),child,prepared.checked,prepared.tactical_pending);
             }
@@ -258,7 +261,7 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
         for(std::size_t remaining=legal.size();remaining>1;--remaining)
             std::swap(legal[remaining-1],legal[static_cast<std::size_t>(random()%remaining)]);
     }
-    auto root_accumulator=options.network?options.network->refresh(root):Accumulator{};
+    auto root_accumulator=options.network&&options.neural_weight>0?options.network->refresh(root):Accumulator{};
     result.best=legal[0];result.score=evaluation_of(root,options,&root_accumulator);result.pv={result.best};
     table_->new_search();std::vector<std::unique_ptr<Worker>> workers;
     for(int i=0;i<options.threads;++i)workers.push_back(std::make_unique<Worker>(*table_,*control,options));
@@ -312,14 +315,14 @@ SearchResult Search::run(Position root,const Limits& limits,const SearchOptions&
         std::stable_sort(current.begin(),current.end(),[](const auto& a,const auto& b){return a.score!=b.score?a.score>b.score:a.bound==Bound::exact&&b.bound!=Bound::exact;});prior=current;
         result.best=current[0].move;result.score=state.claimable()?std::max(0,current[0].score):current[0].score;result.pv=current[0].pv;
         SearchInfo info;info.depth=depth;info.nodes=control->nodes.load();info.completed_depth_nodes=info.nodes;info.elapsed_ms=(monotonic_ns()-start)/1000000;info.hashfull=table_->hashfull();
-        for(auto& worker:workers)info.stats+=worker->stats;
+        for(auto& worker:workers)info.stats+=worker->reported_stats();
         info.lines.assign(current.begin(),current.begin()+static_cast<std::ptrdiff_t>(std::min(current.size(),static_cast<std::size_t>(options.multipv))));result.info=info;
         if(callback)callback(info);
         if(control->stop.load()||monotonic_ns()>=control->deadline_ns.load())break;
     }
     result.info.nodes=control->nodes.load();if(limits.nodes)result.info.nodes=std::min(result.info.nodes,limits.nodes);
     result.info.elapsed_ms=(monotonic_ns()-start)/1000000;
-    result.info.stats={};for(auto& worker:workers){result.info.stats+=worker->stats;result.info.trace.insert(result.info.trace.end(),worker->trace.begin(),worker->trace.end());}
+    result.info.stats={};for(auto& worker:workers){result.info.stats+=worker->reported_stats();result.info.trace.insert(result.info.trace.end(),worker->trace.begin(),worker->trace.end());}
     return result;
 }
 }
