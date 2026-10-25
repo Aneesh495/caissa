@@ -8,6 +8,8 @@ The current core maintains its ordered reversible-history score fingerprint incr
 
 The browser can now display optional native search counters and bounded position samples. Actual one/four-thread streams, a 10000-node inspection parity case, ten malformed telemetry controls, cancellation, terminal zero-work output, stale-position clearing and a 390-pixel keyboard/browser flow passed. [The inspection study](notes/search-inspection.md) preserves the original driver timeout and source-bound development evidence. This does not replace the final release browser or strength campaigns.
 
+[The data coverage report](notes/data-coverage.md) scanned every exported input, bound all six array hashes and plotted raw corpus and split distributions. It reports 13216293 unique usable input rows, including 10578434 training rows, with closely matched fixed-bin marginals across splits. This is data-only analysis; full original-data reconstruction, learned validation improvement and playing strength remain separate gates.
+
 | Gate | Current evidence | Remaining work |
 |---|---|---|
 | G01 Rules | 20 exact perft fixtures; multiple independent 100000-position comparisons | Bind final campaign to release source |

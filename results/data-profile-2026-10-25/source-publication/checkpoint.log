@@ -1,0 +1,41 @@
+ .github/workflows/ci.yml                           |   1 +
+ docs/notes/data-coverage.md                        |  17 ++
+ pyproject.toml                                     |   1 +
+ results/data-profile-2026-10-25/MANIFEST.json      |  14 +
+ results/data-profile-2026-10-25/SOURCE_INPUTS.json |  11 +
+ .../development/CAMPAIGN.json                      |   1 +
+ .../development/COMMANDS.jsonl                     |   6 +
+ .../development/CONFIG.json                        |   1 +
+ .../development/PROGRESS.json                      |   1 +
+ .../development/isolated-plot-dependencies.json    |   1 +
+ .../development/isolated-plot-dependencies.log     |  15 ++
+ .../development/pilot/CONFIG.json                  |   1 +
+ .../development/pilot/PROFILE.json                 |   1 +
+ .../development/pilot/PROGRESS.json                |   1 +
+ .../development/profile-controls.json              |   1 +
+ .../development/profile-controls.log               |   1 +
+ tests/data_profile.py                              | 147 +++++++++++
+ tools/plot_data_profile.py                         | 116 ++++++++
+ training/data_profile.py                           | 293 +++++++++++++++++++++
+ 19 files changed, 630 insertions(+)
+[main deab2c6] Profile original dataset coverage and split targets
+ 19 files changed, 630 insertions(+)
+ create mode 100644 docs/notes/data-coverage.md
+ create mode 100644 results/data-profile-2026-10-25/MANIFEST.json
+ create mode 100644 results/data-profile-2026-10-25/SOURCE_INPUTS.json
+ create mode 100644 results/data-profile-2026-10-25/development/CAMPAIGN.json
+ create mode 100644 results/data-profile-2026-10-25/development/COMMANDS.jsonl
+ create mode 100644 results/data-profile-2026-10-25/development/CONFIG.json
+ create mode 100644 results/data-profile-2026-10-25/development/PROGRESS.json
+ create mode 100644 results/data-profile-2026-10-25/development/isolated-plot-dependencies.json
+ create mode 100644 results/data-profile-2026-10-25/development/isolated-plot-dependencies.log
+ create mode 100644 results/data-profile-2026-10-25/development/pilot/CONFIG.json
+ create mode 100644 results/data-profile-2026-10-25/development/pilot/PROFILE.json
+ create mode 100644 results/data-profile-2026-10-25/development/pilot/PROGRESS.json
+ create mode 100644 results/data-profile-2026-10-25/development/profile-controls.json
+ create mode 100644 results/data-profile-2026-10-25/development/profile-controls.log
+ create mode 100644 tests/data_profile.py
+ create mode 100644 tools/plot_data_profile.py
+ create mode 100644 training/data_profile.py
+To https://github.com/Aneesh495/caissa.git
+   56fc447..deab2c6  main -> main

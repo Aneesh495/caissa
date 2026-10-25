@@ -1,0 +1,11 @@
+{
+  "profile_sha256": "b1381594cce11c27517c05a14b6e64ede133b96475a1c01e6c4b1fb261ef2e55",
+  "matplotlib": "3.11.2",
+  "plots": {
+    "split-distributions.svg": "10aec05b00104414306a6d7a13da06549a3bdf1948f1c7f60462fbc7a1df6630",
+    "split-distributions.png": "d9b0a1a95fe33968f5ec1bf089698e036cf84aa36d08306a1b6dfa21eab1cfb0",
+    "corpus-coverage.png": "f8643f30feac870984a3897b7188de48ab212767483d67f91555085f4de241a2",
+    "corpus-coverage.svg": "d2453756033d81d8fe9cf879769103447c2eed859b64c39aab6930a6b8b9afdb"
+  },
+  "full_acceptance": false
+}
