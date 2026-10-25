@@ -1,0 +1,30 @@
+{
+  "files": {
+    "ACTIVE_USAGE.json": "a9b50d2c597b56d15d031f4a54a6ea5400708177ffceb3ca1cdfa7962c3ee6ef",
+    "NATIVE_INPUTS.json": "afa73a5b0b42aeb9a1b6fa178445d347664ccd19c08704ff880af4d954ff3909",
+    "POWER_ADMISSION.json": "36aeaa67768f177644e8767987e473ff25a78e7f428c60743fd871c2eaee70bd",
+    "POWER_SAMPLES.jsonl": "8f8e7195d03f233b7d598dd4278b6c3a11f524f01dccb8bab2d274bd9d0fd380",
+    "PROFILE.json": "6cde330d87e49084135760cb737f3c2756a594a69b4ed709e21b98df5f9e584c",
+    "RAW_RETENTION.json": "f6f7d6095c1ab0ece7d5cef50a49d85962a20fef8ce8fb5c5217d5481bca1660",
+    "README.md": "b84308825687dfa98bce4f1e39f866ced204208224e6eec098ae7244a4eeafbc",
+    "RESTORATION_CAMPAIGN.json": "d33aa463bf50b2004c2246bd059946a81e979b7a4ee66662a5f96755262979d5",
+    "SCOPE.json": "ec84e3555c3cde5819325e998d06cc048c4cee13b83e262832fc2751ec19bbcc",
+    "SOURCE_INPUTS.json": "0fd48110fc5d6a07e0e0e363f3b463833773e283885b612823284dcdb7dea628",
+    "independent/CONFIG.json": "4f41757fd9078a705b91f54468a62b880aa1c98c8f3274a206fc099478531e76",
+    "independent/RESTORATION.json": "ee16389abac4393fb29a43c357316f0724de0d6435334ace37088aa4d0e617e2",
+    "independent/caissa": "6367791af1dced8934be6c949bde56efaa9a27f09c7b02c5c6eb819aad0e766d",
+    "independent/native-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "independent/selected.cai": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+    "producer/CONFIG.json": "1a44e5d208e8c13a48a289a7dea93a47a489902b00a532ceda38dff1c2e4a1b5",
+    "producer/SUMMARY.json": "594f7d5f921e0ce6de8cb3a27d1387717ab51920bf3ecc727fe0d4f4c3bc0c8f",
+    "producer/native-stderr.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stages/CAMPAIGN.json": "904ffed6c2b0ee4c7f60112abea6fdd2c6c1c0ad051b54f58a40f0165e92d499",
+    "stages/COMMANDS.jsonl": "688a9977db1092eae7b7ddea4a92bb06b363d2c558951d2fb4bcde1845e0150c",
+    "stages/CONFIG.json": "c9c32f95e486940ad59b8530493ceb7d6483ef26e669f97e89a5ebfb6e0346ab",
+    "stages/independent-million.json": "9d435e2d83cf2e8438693f85bf7b8831c524faec6621f5ec219c2fa65e8a4a44",
+    "stages/independent-million.log": "c8013b4a07a4fffaa10f6493f98897a803776312c85994c06679789a0c4118ee",
+    "stages/observe-million.json": "df323c22378e9dfedb20b0fb958a21be696524336ff86f7db5d5e0fc8070266c",
+    "stages/observe-million.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "full_acceptance": false
+}

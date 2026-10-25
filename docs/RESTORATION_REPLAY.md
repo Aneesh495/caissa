@@ -65,3 +65,13 @@ strength scope is reopened.
 G02 verifies state restoration and the selected evaluator's exact behavior.
 It does not establish neural playing strength, finish other gates or produce
 an absolute Elo estimate.
+
+The [full development sample](../results/restoration-full-2026-10-25/README.md)
+completed1000000 pairs,1040911 independent full-state reconstructions and
+3040911 fresh native requests for the archived abbe/636 actor. The actual
+producer and independent stages used296.80 and663.94seconds. The original
+7200-second scope closed after961.17seconds and one attempt. Exact saved
+program/model and receipts are portable; the5.349GB raw journal is retained
+locally and separately indexed, with bulk distribution still pending.
+Later native commands create different program identities and need explicit
+final deployment binding. This observation does not turn other gates green.

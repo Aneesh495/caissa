@@ -1,0 +1,139 @@
+[  6%] Building CXX object CMakeFiles/caissa_core.dir/src/position_line.cpp.o
+[  6%] Building CXX object CMakeFiles/caissa_core.dir/src/version.cpp.o
+[  6%] Building CXX object CMakeFiles/caissa_core.dir/src/attacks.cpp.o
+[  6%] Building CXX object CMakeFiles/caissa_core.dir/src/position.cpp.o
+[  7%] Building CXX object CMakeFiles/caissa_core.dir/src/movegen.cpp.o
+[  9%] Building CXX object CMakeFiles/caissa_core.dir/src/reference.cpp.o
+[ 10%] Building CXX object CMakeFiles/caissa_core.dir/src/rules.cpp.o
+[ 12%] Building CXX object CMakeFiles/caissa_core.dir/src/evaluation.cpp.o
+[ 14%] Building CXX object CMakeFiles/caissa_core.dir/src/table.cpp.o
+[ 15%] Building CXX object CMakeFiles/caissa_core.dir/src/search.cpp.o
+[ 17%] Building CXX object CMakeFiles/caissa_core.dir/src/uci.cpp.o
+[ 18%] Building CXX object CMakeFiles/caissa_core.dir/src/selfplay.cpp.o
+[ 20%] Building CXX object CMakeFiles/caissa_core.dir/src/network.cpp.o
+[ 21%] Building CXX object CMakeFiles/caissa_core.dir/src/network_kernel.cpp.o
+[ 23%] Building CXX object CMakeFiles/caissa_core.dir/src/accumulator_stack.cpp.o
+[ 25%] Building CXX object CMakeFiles/caissa_core.dir/src/state_probe.cpp.o
+[ 26%] Building CXX object CMakeFiles/caissa_core.dir/src/notation.cpp.o
+[ 28%] Building CXX object CMakeFiles/caissa_core.dir/src/serialization.cpp.o
+[ 29%] Building CXX object CMakeFiles/caissa_core.dir/src/protocol_io.cpp.o
+/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/src/state_probe.cpp:57:70: error: invalid operands to binary expression ('std::span<const Key>' (aka 'span<const unsigned long long>') and 'const std::span<const Key>' (aka 'const span<const unsigned long long>'))
+   57 |         const bool restored=position_.fen()==fen&&position_.history()==history&&position_.key()==key&&position_.search_key()==search&&position_.coherent();
+      |                                                   ~~~~~~~~~~~~~~~~~~~^ ~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__variant/monostate.h:28:45: note: candidate function not viable: no known conversion from 'std::span<const Key>' (aka 'span<const unsigned long long>') to 'monostate' for 1st argument
+   28 | _LIBCPP_HIDE_FROM_ABI inline constexpr bool operator==(monostate, monostate) noexcept { return true; }
+      |                                             ^          ~~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/error_condition.h:95:35: note: candidate function not viable: no known conversion from 'std::span<const Key>' (aka 'span<const unsigned long long>') to 'const error_condition' for 1st argument
+   95 | inline _LIBCPP_HIDE_FROM_ABI bool operator==(const error_condition& __x, const error_condition& __y) _NOEXCEPT {
+      |                                   ^          ~~~~~~~~~~~~~~~~~~~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/error_code.h:91:35: note: candidate function not viable: no known conversion from 'std::span<const Key>' (aka 'span<const unsigned long long>') to 'const error_code' for 1st argument
+   91 | inline _LIBCPP_HIDE_FROM_ABI bool operator==(const error_code& __x, const error_code& __y) _NOEXCEPT {
+      |                                   ^          ~~~~~~~~~~~~~~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/error_code.h:95:35: note: candidate function not viable: no known conversion from 'std::span<const Key>' (aka 'span<const unsigned long long>') to 'const error_code' for 1st argument
+   95 | inline _LIBCPP_HIDE_FROM_ABI bool operator==(const error_code& __x, const error_condition& __y) _NOEXCEPT {
+      |                                   ^          ~~~~~~~~~~~~~~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__system_error/error_code.h:95:35: note: candidate function (with reversed parameter order) not viable: no known conversion from 'std::span<const Key>' (aka 'span<const unsigned long long>') to 'const error_condition' for 1st argument
+   95 | inline _LIBCPP_HIDE_FROM_ABI bool operator==(const error_code& __x, const error_condition& __y) _NOEXCEPT {
+      |                                   ^          ~~~~~~~~~~~~~~~~~~~~~
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/pair.h:455:1: note: candidate template ignored: could not match 'pair' against 'std::span'
+  455 | operator==(const pair<_T1, _T2>& __x, const pair<_U1, _U2>& __y)
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__utility/pair.h:455:1: note: candidate template ignored: could not match 'pair' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/reverse_iterator.h:203:1: note: candidate template ignored: could not match 'reverse_iterator' against 'std::span'
+  203 | operator==(const reverse_iterator<_Iter1>& __x, const reverse_iterator<_Iter2>& __y)
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/wrap_iter.h:126:1: note: candidate template ignored: could not match '__wrap_iter' against 'std::span'
+  126 | operator==(const __wrap_iter<_Iter1>& __x, const __wrap_iter<_Iter1>& __y) _NOEXCEPT {
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/wrap_iter.h:132:1: note: candidate template ignored: could not match '__wrap_iter' against 'std::span'
+  132 | operator==(const __wrap_iter<_Iter1>& __x, const __wrap_iter<_Iter2>& __y) _NOEXCEPT {
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/wrap_iter.h:132:1: note: candidate template ignored: could not match '__wrap_iter' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/array:479:1: note: candidate template ignored: could not match 'array' against 'std::span'
+  479 | operator==(const array<_Tp, _Size>& __x, const array<_Tp, _Size>& __y) {
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/optional:1453:38: note: candidate template ignored: could not match 'optional' against 'std::span'
+ 1453 | _LIBCPP_HIDE_FROM_ABI constexpr bool operator==(const optional<_Tp>& __x, const optional<_Up>& __y) {
+      |                                      ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/optional:1453:38: note: candidate template ignored: could not match 'optional' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/optional:1539:38: note: candidate template ignored: could not match 'optional' against 'std::span'
+ 1539 | _LIBCPP_HIDE_FROM_ABI constexpr bool operator==(const optional<_Tp>& __x, nullopt_t) noexcept {
+      |                                      ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/optional:1539:38: note: candidate template ignored: could not match 'optional' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/optional:1616:38: note: candidate template ignored: could not match 'optional' against 'std::span'
+ 1616 | _LIBCPP_HIDE_FROM_ABI constexpr bool operator==(const optional<_Tp>& __x, const _Up& __v) {
+      |                                      ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/optional:1616:38: note: candidate template ignored: could not match 'optional' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/optional:1627:38: note: candidate template ignored: could not match 'optional' against 'std::span'
+ 1627 | _LIBCPP_HIDE_FROM_ABI constexpr bool operator==(const _Tp& __v, const optional<_Up>& __x) {
+      |                                      ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/optional:1627:38: note: candidate template ignored: could not match 'optional' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator.h:150:1: note: candidate template ignored: could not match 'allocator' against 'std::span'
+  150 | operator==(const allocator<_Tp>&, const allocator<_Up>&) _NOEXCEPT {
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/allocator.h:150:1: note: candidate template ignored: could not match 'allocator' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/tuple:1194:1: note: candidate template ignored: could not match 'tuple' against 'std::span'
+ 1194 | operator==(const tuple<_Tp...>& __x, const tuple<_Up...>& __y) {
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/tuple:1194:1: note: candidate template ignored: could not match 'tuple' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string_view:756:1: note: candidate template ignored: could not match 'basic_string_view' against 'std::span'
+  756 | operator==(basic_string_view<_CharT, _Traits> __lhs,
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string_view:756:1: note: candidate template ignored: could not match 'basic_string_view' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string:3573:1: note: candidate template ignored: could not match 'basic_string' against 'std::span'
+ 3573 | operator==(const basic_string<_CharT, _Traits, _Allocator>& __lhs,
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string:3581:1: note: candidate template ignored: could not match 'basic_string' against 'std::span'
+ 3581 | operator==(const basic_string<_CharT, _Traits, _Allocator>& __lhs,
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/string:3581:1: note: candidate template ignored: could not match 'basic_string' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__vector/comparison.h:27:1: note: candidate template ignored: could not match 'vector' against 'std::span'
+   27 | operator==(const vector<_Tp, _Allocator>& __x, const vector<_Tp, _Allocator>& __y) {
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/move_iterator.h:255:1: note: candidate template ignored: could not match 'move_iterator' against 'std::span'
+  255 | operator==(const move_iterator<_Iter1>& __x, const move_iterator<_Iter2>& __y) {
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/move_iterator.h:255:1: note: candidate template ignored: could not match 'move_iterator' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__iterator/istreambuf_iterator.h:96:1: note: candidate template ignored: could not match 'istreambuf_iterator' against 'std::span'
+   96 | operator==(const istreambuf_iterator<_CharT, _Traits>& __a, const istreambuf_iterator<_CharT, _Traits>& __b) {
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__ios/fpos.h:65:35: note: candidate template ignored: could not match 'fpos' against 'std::span'
+   65 | inline _LIBCPP_HIDE_FROM_ABI bool operator==(const fpos<_StateT>& __x, const fpos<_StateT>& __y) {
+      |                                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/unique_ptr.h:638:1: note: candidate template ignored: could not match 'unique_ptr' against 'std::span'
+  638 | operator==(const unique_ptr<_T1, _D1>& __x, const unique_ptr<_T2, _D2>& __y) {
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/unique_ptr.h:638:1: note: candidate template ignored: could not match 'unique_ptr' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/unique_ptr.h:684:1: note: candidate template ignored: could not match 'unique_ptr' against 'std::span'
+  684 | operator==(const unique_ptr<_T1, _D1>& __x, nullptr_t) _NOEXCEPT {
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/unique_ptr.h:684:1: note: candidate template ignored: could not match 'unique_ptr' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:966:35: note: candidate template ignored: could not match 'shared_ptr' against 'std::span'
+  966 | inline _LIBCPP_HIDE_FROM_ABI bool operator==(const shared_ptr<_Tp>& __x, const shared_ptr<_Up>& __y) _NOEXCEPT {
+      |                                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:966:35: note: candidate template ignored: could not match 'shared_ptr' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:1012:35: note: candidate template ignored: could not match 'shared_ptr' against 'std::span'
+ 1012 | inline _LIBCPP_HIDE_FROM_ABI bool operator==(const shared_ptr<_Tp>& __x, nullptr_t) _NOEXCEPT {
+      |                                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__memory/shared_ptr.h:1012:35: note: candidate template ignored: could not match 'shared_ptr' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/function.h:779:35: note: candidate template ignored: could not match 'function' against 'std::span'
+  779 | inline _LIBCPP_HIDE_FROM_ABI bool operator==(const function<_Rp(_ArgTypes...)>& __f, nullptr_t) _NOEXCEPT {
+      |                                   ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/__functional/function.h:779:35: note: candidate template ignored: could not match 'function' against 'std::span'
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/unordered_map:1623:28: note: candidate template ignored: could not match 'unordered_map' against 'std::span'
+ 1623 | _LIBCPP_HIDE_FROM_ABI bool operator==(const unordered_map<_Key, _Tp, _Hash, _Pred, _Alloc>& __x,
+      |                            ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/unordered_map:2291:28: note: candidate template ignored: could not match 'unordered_multimap' against 'std::span'
+ 2291 | _LIBCPP_HIDE_FROM_ABI bool operator==(const unordered_multimap<_Key, _Tp, _Hash, _Pred, _Alloc>& __x,
+      |                            ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/map:1558:1: note: candidate template ignored: could not match 'map' against 'std::span'
+ 1558 | operator==(const map<_Key, _Tp, _Compare, _Allocator>& __x, const map<_Key, _Tp, _Compare, _Allocator>& __y) {
+      | ^
+/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/usr/include/c++/v1/map:2083:1: note: candidate template ignored: could not match 'multimap' against 'std::span'
+ 2083 | operator==(const multimap<_Key, _Tp, _Compare, _Allocator>& __x, const multimap<_Key, _Tp, _Compare, _Allocator>& __y) {
+      | ^
+1 error generated.
+make[2]: *** [CMakeFiles/caissa_core.dir/src/state_probe.cpp.o] Error 1
+make[2]: *** Waiting for unfinished jobs....
+make[1]: *** [CMakeFiles/caissa_core.dir/all] Error 2
+make: *** [all] Error 2

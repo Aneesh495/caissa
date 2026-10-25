@@ -1,0 +1,1 @@
+{"phase":"full-history-controls","pid":68380,"command":[".venv/bin/python","-m","tests.draw_history","--engine","build-draw-history/caissa","--output","runs/draw-history-development-v1/semantic-attempt-001"],"seconds_this_stage":0.001169791998108849,"seconds_this_campaign":0.0018096249987138435,"retained_output_bytes":0,"discarded_output_bytes":0,"stopping_reason":null}

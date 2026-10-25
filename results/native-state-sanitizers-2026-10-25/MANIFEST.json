@@ -1,0 +1,12 @@
+{
+  "files": {
+    "ARTIFACT_CHECK.json": "7a9b935fce792c7bc76bd396edbb8e5997e4fb5b6e896b4ab2ea2cb45035353e",
+    "DOWNLOADS.json": "7cb4e01be5705c02a71d287a0f34e9c3384eebfce38486fa7d5b6df9251ea80f",
+    "README.md": "c435f7eb6074fa67559bbcfe19b3a178754ab3c59e72e4df07236796c6c447bb",
+    "linux-asan.zip": "3741119c751be4c44d54ac91094d6f92ea9a0861b101bbd4637b231eac21cab6",
+    "linux-tsan.zip": "05b52a02c78c048b68a8276ab4d9bc36cd50f29b605b83e347a91f90bead1757",
+    "mac-asan.zip": "b17ff8e21124193ba62459c1a2fff4a778e7de2587d79a5ee653e091e691dd15",
+    "mac-tsan.zip": "112db0e57f2f155965e1811bde083c7401b5d561e4d75bf65d8800ed6c2bd654"
+  },
+  "full_acceptance": false
+}

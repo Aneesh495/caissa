@@ -1,0 +1,5 @@
+# Independent draw-history sample
+
+Source d2e2d9668351891afddccc5cdf8f86f8c549e41f and saved native c82d1fa80ceaae20a96d3d188d09aa91079e2cde611b55b3a5ce4f3ccc42dbf4 passed92 histories and2195 observations through the frozen v2 profile. All six terminal outcomes and actual equal-FEN threefold/fivefold and transposition-context witnesses passed. Twelve rehashed semantic/full-entry controls exited1 for their expected reasons. The real full entry certified only G03 and returned incomplete with the other15 semantic gates pending. All actual observation and replay journals are included.
+
+The original build rejected an invalid span comparison and was corrected to own the history snapshot. The first observation rejected two EP fixtures with clock99. Both failures, the old profile and first partial raw journal are retained. V2 changes only those illegal EP clocks to zero inside the original1800-second development scope. No strength, model selection or experiment budget changed. Hosted checks for the new rules command are separate and pending at publication.

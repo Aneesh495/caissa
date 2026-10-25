@@ -1,0 +1,1 @@
+{"reason":"native draw path rejected: {'error': 'en passant requires a zero halfmove clock'}","observations":94,"histories":22,"last":{"case":"ep-legal","command":"reset 4k3/8/8/5pP1/8/8/8/4K3 w - f6 99 50"}}

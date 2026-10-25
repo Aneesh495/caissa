@@ -1,0 +1,8 @@
+{
+  "path_from_repository_root": "runs/restoration-full-v1/attempts/attempt-001/producer/observations.jsonl",
+  "bytes": 5349131147,
+  "sha256": "46b7378b5432b26733d12427d4cde1960f6f0e495814e93e41be4868c44f204e",
+  "raw_in_this_distribution": false,
+  "scope": "Full5.349GB original observations remain local. The committed receipts and exact saved runtime are compact proof, not a portable replacement for the full raw journal. Bulk raw distribution remains pending.",
+  "full_acceptance": false
+}

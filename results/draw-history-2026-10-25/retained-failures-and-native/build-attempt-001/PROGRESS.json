@@ -1,0 +1,1 @@
+{"phase":"compile","pid":65754,"command":["/opt/homebrew/bin/cmake","--build","build-draw-history","-j","4"],"seconds_this_stage":2.096964124997612,"seconds_this_campaign":3.2704945410005166,"retained_output_bytes":1328,"discarded_output_bytes":0,"stopping_reason":null}

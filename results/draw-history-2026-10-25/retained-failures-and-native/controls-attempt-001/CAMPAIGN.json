@@ -1,0 +1,1 @@
+{"status":"failed","details":{"error":"StageFailure('stage full-history-controls failed: nonzero-exit (exit 1)')"},"seconds_this_campaign":0.3137569579994306,"stages_started":1,"utc_unix":1792935029.839259,"full_acceptance":false}

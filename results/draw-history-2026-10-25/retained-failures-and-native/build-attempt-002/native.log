@@ -1,0 +1,45 @@
+Test project /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-draw-history
+      Start  1: version
+ 1/20 Test  #1: version ..........................   Passed    0.26 sec
+      Start  2: core
+ 2/20 Test  #2: core .............................   Passed    0.18 sec
+      Start  3: position
+ 3/20 Test  #3: position .........................   Passed    0.20 sec
+      Start  4: rules
+ 4/20 Test  #4: rules ............................   Passed    0.20 sec
+      Start  5: evaluation
+ 5/20 Test  #5: evaluation .......................   Passed    0.16 sec
+      Start  6: table
+ 6/20 Test  #6: table ............................   Passed    0.15 sec
+      Start  7: search
+ 7/20 Test  #7: search ...........................   Passed    0.26 sec
+      Start  8: notation
+ 8/20 Test  #8: notation .........................   Passed    0.15 sec
+      Start  9: uci
+ 9/20 Test  #9: uci ..............................   Passed    0.17 sec
+      Start 10: position_line
+10/20 Test #10: position_line ....................   Passed    0.22 sec
+      Start 11: kernels
+11/20 Test #11: kernels ..........................   Passed    0.20 sec
+      Start 12: dense_kernels
+12/20 Test #12: dense_kernels ....................   Passed    0.20 sec
+      Start 13: neural_bounds
+13/20 Test #13: neural_bounds ....................   Passed    0.29 sec
+      Start 14: evaluation_cache
+14/20 Test #14: evaluation_cache .................   Passed    2.31 sec
+      Start 15: tactical_generation
+15/20 Test #15: tactical_generation ..............   Passed    1.31 sec
+      Start 16: search_context
+16/20 Test #16: search_context ...................   Passed    1.52 sec
+      Start 17: lmr_window
+17/20 Test #17: lmr_window .......................   Passed    0.23 sec
+      Start 18: network_precision
+18/20 Test #18: network_precision ................   Passed    0.23 sec
+      Start 19: accumulator_stack
+19/20 Test #19: accumulator_stack ................   Passed    0.94 sec
+      Start 20: state_probe
+20/20 Test #20: state_probe ......................   Passed    0.24 sec
+
+100% tests passed, 0 tests failed out of 20
+
+Total Test time (real) =   9.44 sec

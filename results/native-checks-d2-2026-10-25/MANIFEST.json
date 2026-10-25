@@ -1,0 +1,11 @@
+{
+  "files": {
+    "NATIVE_CHECKS.json": "d96562d83728baec705321e203e52e58bdd096ea53cbfdea31fcb4391392d0e1",
+    "PUBLICATION_CHECK.json": "cf932c7427c8058793b55d5cfbb000552df23136bf2ccdca1e72be1759f977f2",
+    "RAW.zip": "23187788de5b786aa86baf9925bd73953e2a8bd26cabb7db798e7b4991e5513e",
+    "RAW_INDEX.json": "40151f869a29a998f856e1a357113241567b1bc7ea6e6afe2845a4df707fd1fc",
+    "README.md": "5cbeb3aba7a571a429509a5dfb8cbffb7f881744113dcf508309579e445ded2d",
+    "SCOPE.json": "3c5709487e9f22185379e8bae78c79dacffaa7955f718ae1155bba80af7f39bb"
+  },
+  "full_acceptance": false
+}

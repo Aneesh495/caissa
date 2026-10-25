@@ -1,0 +1,1 @@
+{"phase":"native","pid":66661,"command":["/opt/homebrew/bin/ctest","--test-dir","build-draw-history","--output-on-failure"],"seconds_this_stage":9.42849233400193,"seconds_this_campaign":17.428090667002834,"retained_output_bytes":2090,"discarded_output_bytes":0,"stopping_reason":null}

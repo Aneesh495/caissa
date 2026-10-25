@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "files": 72,
+  "raw_bytes": 131257884,
+  "zip_bytes": 13519203,
+  "zip_sha256": "23187788de5b786aa86baf9925bd73953e2a8bd26cabb7db798e7b4991e5513e",
+  "exact_raw_decode": true,
+  "maximum_seconds": 180,
+  "seconds": 1.9472089999981108,
+  "full_acceptance": false
+}
