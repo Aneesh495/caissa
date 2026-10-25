@@ -220,9 +220,21 @@ def verify(
     network = QuantizedNetwork(network_path)
     state = checkpoint(checkpoint_path)
     version, width = architecture(state["config"], state["model"])
-    verify_export(network_path, state, identities["checkpoint_sha256"])
+    wire_format = config.get("export_format", version)
+    if wire_format != version:
+        require(
+            type(wire_format) is int
+            and wire_format == 4
+            and version == 3
+            and config.get("export_contract")
+            == "v3-float-to-v4-q4096-same-activation-ceiling-v1",
+            "numerical conversion changed trained float semantics",
+        )
+    verify_export(
+        network_path, state, identities["checkpoint_sha256"], export_format=wire_format
+    )
     require(
-        (network.version, network.width) == (version, width),
+        (network.version, network.width) == (wire_format, width),
         "saved numerical architecture differs",
     )
     if full:
@@ -242,9 +254,17 @@ def verify(
             "full numerical endpoint was weakened",
         )
         require(
-            (version, width) == (rule["format"], rule["width"]),
+            (wire_format, width) == (rule["format"], rule["width"]),
             "full numerical architecture differs",
         )
+        if wire_format == 4:
+            require(
+                rule.get("training_format") == 3
+                and rule.get("export_contract") == config.get("export_contract")
+                and rule.get("scale") == 4096
+                and rule.get("clip") == 8188,
+                "full precision conversion contract differs",
+            )
         require(
             rule.get("error_contract") == config["error_contract"],
             "full numerical clamp/precision endpoints differ",

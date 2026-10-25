@@ -1,0 +1,42 @@
+{
+  "schema": "caissa-precision-profile-v1",
+  "status": "frozen",
+  "purpose": "Test one higher-resolution export of the unchanged validation-selected original float checkpoint. Retain the failed q1024 result and every new failure.",
+  "selection": "Reuse exactly the existing v3 validation-only selection, seed73 step2750. No new seed, checkpoint, float parameter, mixture or model is selected using precision probes or match outcomes. No training or calibration occurs in this profile.",
+  "training_format": 3,
+  "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+  "previous_network_sha256": "c251670ec53ba38a680c16cc6199be48f89cc829dd5483197e6d4b39ac6debf6",
+  "model_campaign_sha256": "92d62149d3a4de184ad93b9f5f04f77e38386992d04d02bd824b33cf3e5241bd",
+  "network": {
+    "format": 4,
+    "training_format": 3,
+    "export_contract": "v3-float-to-v4-q4096-same-activation-ceiling-v1",
+    "width": 64,
+    "scale": 4096,
+    "clip": 8188,
+    "classical_contract": 1,
+    "neural_weight": 10,
+    "maximum_float_error_cp": 32,
+    "probes": 100000,
+    "probe_seed": 32452867,
+    "error_contract": "unclamped-quantization-and-clamped-inference"
+  },
+  "resources": {
+    "hosted_platforms": [
+      "ubuntu-24.04",
+      "macos-15"
+    ],
+    "maximum_job_seconds": 1800,
+    "maximum_jobs_per_platform": 3,
+    "maximum_cumulative_job_seconds_per_platform": 5400,
+    "origin_unix": 1792906174.2199628,
+    "deadline_unix": 1792913374.2199628,
+    "maximum_producer_seconds": 600,
+    "maximum_independent_seconds": 600,
+    "threads": 2,
+    "maximum_artifact_bytes_per_host": 2147483648
+  },
+  "arithmetic": "8188/4096 equals 2047/1024 exactly, so the real activation ceiling is unchanged. Int16 weights and bounded int32 biases remain. NEON high-resolution chunks use at most eight products per int32 lane, then widen to int64. File layout and payload size do not increase.",
+  "failure_policy": "A failure remains failed. Never increase 32 cp, shrink 100000 probes, pick a favorable replacement seed or overwrite v3 evidence. This new encoding experiment has its own original wall deadline and at most three 1800-second hosted executions per platform, totaling at most 5400 job seconds per platform. GitHub job reruns are refused. No earlier scope is reset or extended and no current timed match actor changes.",
+  "acceptance_scope": "Export identity, integer arithmetic and numerical accuracy only. No Elo, full strength, final-source or release pass follows. Any later strength comparison requires its own prospectively frozen immutable actors and unchanged classical control."
+}

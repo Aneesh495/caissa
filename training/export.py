@@ -8,6 +8,12 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("checkpoint", type=Path)
     ap.add_argument("output", type=Path)
+    ap.add_argument(
+        "--export-format",
+        type=int,
+        choices=[4],
+        help="Explicit experimental precision conversion; trained float parameters stay unchanged",
+    )
     a = ap.parse_args()
     checkpoint = torch.load(a.checkpoint, map_location="cpu", weights_only=False)
     if checkpoint.get("schema") != "caissa-checkpoint-v1":
@@ -22,7 +28,10 @@ def main():
     print(
         json.dumps(
             export_network(
-                model, a.output, hashlib.sha256(a.checkpoint.read_bytes()).hexdigest()
+                model,
+                a.output,
+                hashlib.sha256(a.checkpoint.read_bytes()).hexdigest(),
+                a.export_format,
             )
         )
     )

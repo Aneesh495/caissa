@@ -19,6 +19,7 @@ def main():
     ap.add_argument("--seed", type=int, default=67867967)
     ap.add_argument("--maximum-error-cp", type=float)
     ap.add_argument("--max-seconds", type=float, default=900)
+    ap.add_argument("--export-format", type=int, choices=[4])
     ap.add_argument("--output", type=Path, required=True)
     a = ap.parse_args()
     if not 1 <= a.probes <= 1000000 or not 1 <= a.max_seconds <= 3600:
@@ -42,12 +43,19 @@ def main():
         model.load_state_dict(state["model"])
     elif a.untrained_seed is not None:
         torch.manual_seed(a.untrained_seed)
+        wire_version = int.from_bytes(a.network.read_bytes()[8:12], "little")
         model = CaissaNet(
-            version=int.from_bytes(a.network.read_bytes()[8:12], "little")
+            version=3 if wire_version == 4 and a.export_format == 4 else wire_version
         )
     else:
         ap.error("provide saved checkpoint or explicitly labeled untrained seed")
     model.eval()
+    wire_format = int.from_bytes(a.network.read_bytes()[8:12], "little")
+    if a.export_format is None:
+        if wire_format != model.version:
+            raise ValueError("numerical audit needs an explicit precision conversion")
+    elif model.version != 3 or wire_format != 4:
+        raise ValueError("unsupported float-to-integer precision conversion")
     rng = random.Random(a.seed)
     b = chess.Board()
     fens = []
@@ -83,6 +91,13 @@ def main():
         "error_contract": "unclamped-quantization-and-clamped-inference",
         "trained": a.checkpoint is not None,
     }
+    if a.export_format == 4:
+        configuration.update(
+            {
+                "export_format": 4,
+                "export_contract": "v3-float-to-v4-q4096-same-activation-ceiling-v1",
+            }
+        )
     (a.output / "CONFIG.json").write_text(json.dumps(configuration, indent=2) + "\n")
     p = subprocess.Popen(
         [a.engine, "--net-probe", str(a.network)],

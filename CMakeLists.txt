@@ -120,3 +120,8 @@ add_executable(lmr_window_test tests/lmr_window_test.cpp)
 target_link_libraries(lmr_window_test PRIVATE caissa_core)
 add_test(NAME lmr_window COMMAND lmr_window_test)
 set_tests_properties(lmr_window PROPERTIES TIMEOUT 30)
+
+add_executable(network_precision_test tests/network_precision_test.cpp)
+target_link_libraries(network_precision_test PRIVATE caissa_core)
+add_test(NAME network_precision COMMAND network_precision_test)
+set_tests_properties(network_precision PROPERTIES TIMEOUT 60)

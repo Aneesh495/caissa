@@ -118,9 +118,16 @@ def state_hash(model):
     return h.hexdigest()
 
 
-def export_network(model, path, identity):
-    scale = model.scale
-    clip = 127 if model.version == 1 else 2047
+def export_network(model, path, identity, export_format=None):
+    version = model.version if export_format is None else export_format
+    if type(version) is not int or not (
+        version == model.version or (model.version == 3 and version == 4)
+    ):
+        raise ValueError("export format does not preserve the trained model semantics")
+    # Format four changes only the integer lattice. Keep the exact real cap:
+    # 8188/4096 == 2047/1024, not the slightly larger 8191/4096.
+    scale = 4096 if version == 4 else model.scale
+    clip = 8188 if version == 4 else (127 if version == 1 else 2047)
     bias_limit = (1 << 20) if model.version == 1 else (1 << 28)
     if len(identity) != 64 or any(c not in "0123456789abcdef" for c in identity):
         raise ValueError("training identity must be SHA256 hex")
@@ -142,10 +149,10 @@ def export_network(model, path, identity):
         chunks.append(quantize(layer.bias, scale * scale, "<i4", bias_limit))
     payload = b"".join(chunks)
     header = (
-        f"CAISSAN{model.version}".encode()
+        f"CAISSAN{version}".encode()
         + struct.pack(
             "<8I",
-            model.version,
+            version,
             1,
             FEATURES,
             model.width,
@@ -156,7 +163,7 @@ def export_network(model, path, identity):
         )
         + identity.encode()
         + struct.pack(
-            "<QII", len(payload), zlib.crc32(payload), 1 if model.version == 3 else 0
+            "<QII", len(payload), zlib.crc32(payload), 1 if version >= 3 else 0
         )
     )
     assert len(header) == 120
@@ -176,7 +183,12 @@ def export_network(model, path, identity):
 def integer_reference(path, x, baseline=None, clip_output=True):
     """NumPy int64 reference; no calls to native feature or inference functions."""
     raw = Path(path).read_bytes()
-    if len(raw) < 120 or raw[:8] not in [b"CAISSAN1", b"CAISSAN2", b"CAISSAN3"]:
+    if len(raw) < 120 or raw[:8] not in [
+        b"CAISSAN1",
+        b"CAISSAN2",
+        b"CAISSAN3",
+        b"CAISSAN4",
+    ]:
         raise ValueError("invalid network")
     version, fv, nf, width, h1, h2, scale, clip = struct.unpack("<8I", raw[8:40])
     if raw[:8] != f"CAISSAN{version}".encode():
@@ -185,12 +197,12 @@ def integer_reference(path, x, baseline=None, clip_output=True):
         (fv, nf, h1, h2) != (1, FEATURES, HIDDEN1, HIDDEN2)
         or width not in [32, 64, 128]
         or (version, scale, clip)
-        not in [(1, 64, 127), (2, 1024, 2047), (3, 1024, 2047)]
+        not in [(1, 64, 127), (2, 1024, 2047), (3, 1024, 2047), (4, 4096, 8188)]
     ):
         raise ValueError("architecture mismatch")
     size, crc, reserved = struct.unpack("<QII", raw[104:120])
     if (
-        reserved != (1 if version == 3 else 0)
+        reserved != (1 if version >= 3 else 0)
         or size != len(raw) - 120
         or zlib.crc32(raw[120:]) != crc
     ):
@@ -222,7 +234,7 @@ def integer_reference(path, x, baseline=None, clip_output=True):
             score = (
                 np.sign(z) * ((np.abs(z) + scale * scale // 2) // (scale * scale))
             ).reshape(-1)
-            if version == 3:
+            if version >= 3:
                 if baseline is None:
                     raise ValueError(
                         "independent residual reference requires classical scores"

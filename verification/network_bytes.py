@@ -40,7 +40,7 @@ class QuantizedNetwork:
         version, feature, count, width, h1, h2, scale, clip = struct.unpack_from(
             "<8I", raw, 8
         )
-        if raw[:8] != f"CAISSAN{version}".encode() or version not in [1, 2, 3]:
+        if raw[:8] != f"CAISSAN{version}".encode() or version not in [1, 2, 3, 4]:
             raise ValueError("network magic/version mismatch")
         if (feature, count, h1, h2) != (1, 12288, 32, 16) or width not in [32, 64, 128]:
             raise ValueError("unsupported independent network layout")
@@ -48,6 +48,7 @@ class QuantizedNetwork:
             (1, 64, 127),
             (2, 1024, 2047),
             (3, 1024, 2047),
+            (4, 4096, 8188),
         ]:
             raise ValueError("unsupported numerical contract")
         length, checksum, reserved = struct.unpack_from("<QII", raw, 104)
@@ -64,7 +65,7 @@ class QuantizedNetwork:
         if (
             length != len(raw) - 120
             or length != expected
-            or reserved != (1 if version == 3 else 0)
+            or reserved != (1 if version >= 3 else 0)
             or checksum != zlib.crc32(raw[120:])
         ):
             raise ValueError("network payload integrity or layout")
@@ -124,7 +125,7 @@ class QuantizedNetwork:
                 activations = signed_round(values, self.scale).clip(0, self.clip)
             else:
                 scores = signed_round(values[:, 0] * 400, self.scale * self.scale)
-        if self.version == 3:
+        if self.version >= 3:
             baseline = np.asarray(baseline)
             if (
                 baseline.shape != (len(features),)
@@ -139,7 +140,7 @@ class QuantizedNetwork:
 
     def infer(self, fen):
         baseline = None
-        if self.version == 3:
+        if self.version >= 3:
             from verification.classical import evaluate
 
             baseline = np.array([evaluate(fen)], dtype=np.int64)

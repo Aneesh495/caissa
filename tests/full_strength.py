@@ -116,6 +116,10 @@ def main():
         (210, "python -m tools.plot_data_profile observations.json"),
         (211, "python -m tools.heuristic_study --engine caissa"),
         (212, "python -m verification.heuristic_study evidence"),
+        (213, "python -m tools.precision_audit --engine caissa"),
+        (214, "python -m tools.network_audit --network candidate.cai"),
+        (215, "python -m tests.precision_export --checkpoint selected.pt"),
+        (216, "python -m training.export selected.pt candidate.cai"),
     ]:
         rows.append(
             {"pid": pid, "ppid": 1, "state": "R", "cpu": 100, "command": command}
@@ -141,6 +145,10 @@ def main():
         210,
         211,
         212,
+        213,
+        214,
+        215,
+        216,
     ]
     with tempfile.TemporaryDirectory(prefix="caissa-strength-ceilings-") as folder:
         base = Path(folder)
