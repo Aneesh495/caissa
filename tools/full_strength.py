@@ -42,6 +42,7 @@ FORBIDDEN_MODULES = {
     "tools.precision_audit",
     "tools.precision_followup",
     "verification.deployment_loss",
+    "verification.precision_systems",
     "tools.network_audit",
     "tests.precision_export",
     "training.export",
