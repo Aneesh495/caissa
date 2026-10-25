@@ -45,6 +45,7 @@ jobs:
           python -m tests.full_strength
           python -m tests.full_actor_contract
           python -m tests.full_model_protocol --output runs/ci-full-model-controls
+          python -m tests.project_continuation
           python -m training.corpus --engine build/caissa --pairs 50 --nodes 500 --workers 2 --output data/ci-original
           python -m training.prepare data/ci-original data/ci-prepared
           python -m verification.dataset data/ci-prepared data/ci-original

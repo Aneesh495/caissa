@@ -1,0 +1,1 @@
+{"phase":"power","pid":50353,"command":["/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python","-m","tests.power_guard"],"seconds_this_stage":0.001471542000217596,"seconds_this_campaign":1.011006707999968,"retained_output_bytes":331,"discarded_output_bytes":0,"stopping_reason":null}

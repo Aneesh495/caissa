@@ -14,6 +14,7 @@ from pathlib import Path
 
 from tools.campaign_process import Campaign, StageFailure, atomic
 from tools.finalize_corpus import archive_source
+from tools.power_guard import BATTERY_POLICY, PowerGuard
 from tools.recovery_scope import RecoveryScope
 from verification.acquisition import sha
 from verification.protocol import read_json
@@ -78,7 +79,9 @@ def frozen_rule(path, expected):
     ):
         raise ValueError("full numerical sample or error endpoint differs")
     if (
-        resources["maximum_wall_seconds"] != 21600
+        resources["maximum_wall_seconds"] != 86400
+        or resources["maximum_active_seconds"] != 21600
+        or resources["host_policy"] != BATTERY_POLICY
         or resources["maximum_additional_disk_gib"] != 20
         or resources["minimum_free_gib"] != 10
         or resources["maximum_attempts"] != 3
@@ -173,6 +176,7 @@ def execute(args):
         "source_commit": commit,
         "workflow_sha256": inputs["files"]["tools/full_learning.py"],
     }
+    power = PowerGuard(resources["host_policy"])
     scope = RecoveryScope(
         output,
         bindings,
@@ -181,9 +185,17 @@ def execute(args):
         resources["minimum_free_gib"],
         resources["maximum_additional_disk_gib"],
         resume=args.resume,
+        maximum_authorized_seconds=86400,
+        maximum_active_seconds=resources["maximum_active_seconds"],
     )
     campaign = None
     try:
+        power.start(output)
+
+        def resource_check():
+            scope.check()
+            power.check()
+
         if not args.resume:
             atomic(output / "SOURCE_INPUTS.json", inputs)
             (output / "inputs").mkdir()
@@ -207,18 +219,20 @@ def execute(args):
             },
             scope.remaining(),
             absolute_deadline=scope.deadline,
-            resource_guard=scope.check,
+            resource_guard=resource_check,
+            maximum_wall_seconds=max(1, scope.deadline - time.time()),
         )
         source = output / "source"
         archive_source(root, source, commit, inputs["files"])
 
         def run(name, module, arguments):
-            scope.check()
+            resource_check()
             return campaign.run(
                 name,
                 [sys.executable, "-m", module, *map(str, arguments)],
                 scope.remaining(),
                 cwd=source,
+                wall_timeout=max(1, scope.deadline - time.time()),
             )
 
         build = output / "build"
@@ -427,6 +441,7 @@ def execute(args):
                 str(resources["native_transitions"]),
             ],
             scope.remaining(),
+            wall_timeout=max(1, scope.deadline - time.time()),
         )
         scope.check()
         result = {
@@ -472,7 +487,10 @@ def execute(args):
         )
         raise
     finally:
-        scope.close()
+        try:
+            power.close()
+        finally:
+            scope.close()
 
 
 def main():

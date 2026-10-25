@@ -17,6 +17,7 @@ from pathlib import Path
 from tools.campaign_process import Campaign, StageFailure, atomic
 from tools.finalize_corpus import archive_source
 from tools.full_learning import frozen_rule
+from tools.power_guard import PowerGuard
 from tools.recovery_scope import RecoveryScope
 from verification.acquisition import sha
 from verification.protocol import read_json
@@ -34,6 +35,10 @@ FORBIDDEN_MODULES = {
     "tools.full_strength",
     "tools.performance",
     "tools.neural_cost",
+    "verification.learning",
+    "verification.numerical",
+    "verification.performance",
+    "verification.native_build",
 }
 COMPILERS = {
     "clang",
@@ -47,6 +52,7 @@ COMPILERS = {
     "ninja",
     "make",
     "cmake",
+    "ctest",
 }
 
 
@@ -92,18 +98,32 @@ def offenders(rows, owner):
             if "-m" in tokens and tokens.index("-m") + 1 < len(tokens)
             else None
         )
-        if executable in COMPILERS or module in FORBIDDEN_MODULES:
+        # Resumed owners use an explicit archived-source runpy launcher rather
+        # than -m. Direct source paths are also recognized for known producers.
+        python_work = executable.startswith("python") and any(
+            token in FORBIDDEN_MODULES
+            or any(
+                token == name.replace(".", "/") + ".py"
+                or token.endswith("/" + name.replace(".", "/") + ".py")
+                for name in FORBIDDEN_MODULES
+            )
+            for token in tokens[1:]
+        )
+        if executable in COMPILERS or module in FORBIDDEN_MODULES or python_work:
             found.append(row)
     return found
 
 
 class HostGuard:
-    def __init__(self, output, scope):
+    def __init__(self, output, scope, power=None):
         self.output, self.scope = output, scope
+        self.power = power
         self.last = -1e9
 
     def check(self):
         self.scope.check()
+        if self.power is not None:
+            self.power.check()
         if time.monotonic() - self.last < 5:
             return
         rows = process_rows()
@@ -272,8 +292,8 @@ def execute(args):
         "workflow_sha256": inputs["files"]["tools/full_strength.py"],
     }
     ceiling = rule["matches"]["maximum_" + args.kind + "_campaign_wall_seconds"]
-    # Strength has a separate prospectively frozen twelve-hour budget. The
-    # corpus and model owners retain their existing six-hour authorization.
+    # Strength retains its separate prospectively frozen twelve-hour budget.
+    power = PowerGuard(rule["model_campaign"]["host_policy"])
     scope = RecoveryScope(
         output,
         bindings,
@@ -286,6 +306,7 @@ def execute(args):
     )
     campaign = None
     try:
+        power.start(output)
         if not args.resume:
             atomic(output / "SOURCE_INPUTS.json", inputs)
             (output / "inputs").mkdir()
@@ -303,7 +324,7 @@ def execute(args):
                 raise ValueError("strength opening bytes changed on resume")
         else:
             shutil.copy2(original_openings, openings)
-        host = HostGuard(output, scope)
+        host = HostGuard(output, scope, power)
         atomic(
             output / ("HOST_START_" + str(len(attempts) + 1) + ".json"),
             {
@@ -441,7 +462,10 @@ def execute(args):
         )
         raise
     finally:
-        scope.close()
+        try:
+            power.close()
+        finally:
+            scope.close()
 
 
 def main():
