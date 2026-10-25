@@ -1,5 +1,7 @@
 # Findings
 
+The [full original neural comparison](../results/full-neural-v3-2026-10-25/README.md) completed all 4000 games with 1274 wins, 746 draws and 1980 losses. Independent replay measured -61.97 Elo relative to the unchanged classical evaluator, with a 95% opening-cluster interval of [-71.25,-52.87]. There were no crashes, illegal moves or time/protocol forfeits. The required +50 gain failed. Validation-loss improvement therefore did not establish stronger equal-time chess, even on the full corpus. The experiment does not identify evaluation quality, quantization or execution cost as the sole cause. Classical remains the default; the q4096 encoding has not inherited this measurement or demonstrated a positive gain.
+
 Correctness, throughput, validation loss and match strength are separate measurements.
 
 The legal generator agreed with the independent mailbox and Python oracle across the recorded reachable-position campaigns. Exact restoration and accumulator refresh checks exercised captures, promotions, king buckets, en passant and Chess960 overlap. Those results remain tied to their actual executables; final-source acceptance must rerun or explicitly establish an unchanged relevant input boundary.

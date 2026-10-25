@@ -2,7 +2,7 @@
 
 An original C++23 chess engine with incremental neural evaluation, a paired-match laboratory and a local analysis board.
 
-**Development build. Full acceptance is incomplete. No absolute Elo rating or Stockfish-level strength is established.** Classical evaluation is the default because the trained diagnostic networks lost their matched comparisons. See [build status](docs/BUILD_STATUS.md) and [findings](docs/FINDINGS.md).
+**Development build. Full acceptance is incomplete. No absolute Elo rating or Stockfish-level strength is established.** Classical evaluation is the default because the selected neural evaluator lost its full matched comparison. See [build status](docs/BUILD_STATUS.md) and [findings](docs/FINDINGS.md).
 
 ![Live native-engine analysis board](docs/images/live-board.png)
 
@@ -61,6 +61,7 @@ See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution w
 | Integer inference | 100000 probes, bit-identical scalar/native/reference outputs | [Selected q4096 encoding](docs/notes/precision-v4.md), both platforms |
 | Float/integer error | Maximum 10.395 cp, mean 1.108 cp, unchanged limit 32 cp | Same selected float checkpoint; original q1024 failure retained |
 | Warm Stockfish 19 unrestricted | 0 wins, 0 draws, 48 losses | 20 ms/move, small paired diagnostic |
+| Full original neural contribution | 1274W/746D/1980L; -61.97 Elo, 95% interval [-71.25,-52.87] | [4000 games independently replayed](results/full-neural-v3-2026-10-25/README.md); required positive gain failed |
 | Larger neural pilot versus classical | 4 wins, 8 draws, 84 losses | 2000 nodes/move, diagnostic data split |
 
 These checks establish specific behavior. The data-domain pass does not certify a positive learned contribution, the full external campaign or a release. Opponent strength settings are not a calibrated absolute rating pool.

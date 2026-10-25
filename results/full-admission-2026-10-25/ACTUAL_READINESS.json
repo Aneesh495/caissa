@@ -1,0 +1,46 @@
+{
+  "command": [
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python",
+    "-m",
+    "tools.acceptance",
+    "--run-id",
+    "full-readiness-42d659b39261",
+    "--profile",
+    "full"
+  ],
+  "exit": 2,
+  "stdout": {
+    "source_commit": "42d659b39261857dc4c436090e59fe18cc2a2440",
+    "profile": "full",
+    "status": "blocked",
+    "full_acceptance": false,
+    "protocol": "config/protocol-v3.json",
+    "protocol_sha256": "4cf0545699ab141dafe4e3f67fcbdb7b996cbec2b8e0b246fc2137a5dc963f62",
+    "dataset_path": "data/searched-full-v3-prepared/DATASET.json",
+    "dataset_sha256": "f09cdec986858c5b1aa80b3c97aaa4d825be892fc94e16ac5d835bc3d709f0ce",
+    "observed_training_positions": 10578434,
+    "observed_completed_games": 229582,
+    "required_training_positions": 10000000,
+    "required_completed_games": 100000,
+    "recorded_model_campaign": {
+      "path": "runs/searched-full-model-v3/MODEL_CAMPAIGN.json",
+      "sha256": "92d62149d3a4de184ad93b9f5f04f77e38386992d04d02bd824b33cf3e5241bd",
+      "recorded_status": "completed planned model domain campaign with failed gates",
+      "recorded_failed_domains": [
+        "G06 producer numerical endpoint",
+        "G06 independent numerical endpoint"
+      ],
+      "seeds": [
+        17,
+        41,
+        73
+      ],
+      "updates_per_seed": 20000
+    },
+    "metadata_floor_observed": true,
+    "reason": "Metadata readiness only. Full-domain semantic replay, the complete coordinator and remaining required gates are incomplete. Existing failures are preserved."
+  },
+  "stderr": "",
+  "scope": "Actual frozen protocol3 metadata readiness; original numerical failures preserved; no scientific domain executed",
+  "full_acceptance": false
+}

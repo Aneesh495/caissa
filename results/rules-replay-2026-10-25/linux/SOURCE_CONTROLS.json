@@ -1,0 +1,178 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "unchanged",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.source",
+        "/tmp/caissa-source-controls-_1yqr43x/SOURCE_INPUTS.json",
+        "--checkout",
+        "/tmp/caissa-source-controls-_1yqr43x/source",
+        "--expected-commit",
+        "11f203de22907c0d535587bffac57aa0cd1fceea"
+      ],
+      "exit": 0,
+      "observed": {
+        "status": "passed",
+        "source_commit": "11f203de22907c0d535587bffac57aa0cd1fceea",
+        "source_files": 6,
+        "policy": "caissa-source-v2",
+        "full_acceptance": false
+      },
+      "stderr": "",
+      "ordinary_hashes_recomputed": false
+    },
+    {
+      "case": "edited-native-rehashed",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.source",
+        "/tmp/caissa-source-controls-_1yqr43x/SOURCE_INPUTS.json",
+        "--checkout",
+        "/tmp/caissa-source-controls-_1yqr43x/source",
+        "--expected-commit",
+        "11f203de22907c0d535587bffac57aa0cd1fceea"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "source inventory or hashes differ from trusted Git blobs",
+        "full_acceptance": false
+      },
+      "stderr": "",
+      "ordinary_hashes_recomputed": true
+    },
+    {
+      "case": "edited-browser-rehashed",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.source",
+        "/tmp/caissa-source-controls-_1yqr43x/SOURCE_INPUTS.json",
+        "--checkout",
+        "/tmp/caissa-source-controls-_1yqr43x/source",
+        "--expected-commit",
+        "11f203de22907c0d535587bffac57aa0cd1fceea"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "source inventory or hashes differ from trusted Git blobs",
+        "full_acceptance": false
+      },
+      "stderr": "",
+      "ordinary_hashes_recomputed": true
+    },
+    {
+      "case": "edited-native-unrehashed",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.source",
+        "/tmp/caissa-source-controls-_1yqr43x/SOURCE_INPUTS.json",
+        "--checkout",
+        "/tmp/caissa-source-controls-_1yqr43x/source",
+        "--expected-commit",
+        "11f203de22907c0d535587bffac57aa0cd1fceea"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "trusted checkout bytes differ from the expected commit: src/main.cpp",
+        "full_acceptance": false
+      },
+      "stderr": "",
+      "ordinary_hashes_recomputed": false
+    },
+    {
+      "case": "edited-browser-unrehashed",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.source",
+        "/tmp/caissa-source-controls-_1yqr43x/SOURCE_INPUTS.json",
+        "--checkout",
+        "/tmp/caissa-source-controls-_1yqr43x/source",
+        "--expected-commit",
+        "11f203de22907c0d535587bffac57aa0cd1fceea"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "trusted checkout bytes differ from the expected commit: web/index.html",
+        "full_acceptance": false
+      },
+      "stderr": "",
+      "ordinary_hashes_recomputed": false
+    },
+    {
+      "case": "omitted-asset",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.source",
+        "/tmp/caissa-source-controls-_1yqr43x/SOURCE_INPUTS.json",
+        "--checkout",
+        "/tmp/caissa-source-controls-_1yqr43x/source",
+        "--expected-commit",
+        "11f203de22907c0d535587bffac57aa0cd1fceea"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "source inventory or hashes differ from trusted Git blobs",
+        "full_acceptance": false
+      },
+      "stderr": "",
+      "ordinary_hashes_recomputed": false
+    },
+    {
+      "case": "linked-source",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.source",
+        "/tmp/caissa-source-controls-_1yqr43x/SOURCE_INPUTS.json",
+        "--checkout",
+        "/tmp/caissa-source-controls-_1yqr43x/source",
+        "--expected-commit",
+        "11f203de22907c0d535587bffac57aa0cd1fceea"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "trusted checkout source traverses a symbolic link",
+        "full_acceptance": false
+      },
+      "stderr": "",
+      "ordinary_hashes_recomputed": false
+    },
+    {
+      "case": "wrong-commit",
+      "command": [
+        "/opt/hostedtoolcache/Python/3.12.15/x64/bin/python",
+        "-m",
+        "verification.source",
+        "/tmp/caissa-source-controls-_1yqr43x/SOURCE_INPUTS.json",
+        "--checkout",
+        "/tmp/caissa-source-controls-_1yqr43x/source",
+        "--expected-commit",
+        "11f203de22907c0d535587bffac57aa0cd1fceea"
+      ],
+      "exit": 1,
+      "observed": {
+        "status": "rejected",
+        "reason": "source commit mismatch",
+        "full_acceptance": false
+      },
+      "stderr": "",
+      "ordinary_hashes_recomputed": false
+    }
+  ],
+  "legacy_policy_preserved": true,
+  "scope": "Source identity controls on a synthetic Git fixture; no engine or model execution",
+  "full_acceptance": false
+}

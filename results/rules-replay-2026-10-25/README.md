@@ -1,0 +1,9 @@
+# Independent rules-replay adapter controls
+
+Linux and macOS passed the real original-core diagnostic replay at source `a425ef7a963cffb35f081a7dd333a17d25dd6aa8`, [workflow 40176028859](https://github.com/Aneesh495/caissa/actions/runs/40176028859). Each platform replayed all 512 reachable-position observations, independently recomputed all twenty known perft totals through python-chess and checked the copied native executable against those totals. The command's inspection route also compares the original mailbox and bitboard move generators.
+
+Eight rehashed controls were rejected: changed move sets, a shifted reachable walk, duplicate indices, an incorrect known perft total, a false full-work claim, a different engine identity, a full-bundle diagnostic prefix, and replay output inside the original evidence. The [rules profile](../../config/rules-replay-v1.json) still requires 100000 positions and twenty fixtures. The 512-position prefix keeps `full_gate: false`; it does not satisfy full G01 acceptance.
+
+The complete downloaded artifacts are retained as `linux/RAW.zip` and `macos/RAW.zip`, pinned by [archive digests](ARCHIVES.json). They include the actual saved native programs, producer observations, independent responses/perft logs, full-entry metadata fixture and every negative-control exit. Compact `RULES_CONTROLS.json` and `RULES_REPLAY.json` files expose the observed work and rejection reasons. The artifact also preserves the source/lineage/integrity controls and ordinary original-engine integration executed by the same job.
+
+The [adapter contract](../../docs/FULL_BUNDLE_ADMISSION.md) requires the externally pinned full input declaration, exact runtime identities, raw rule references and a separate replay output directory. A full final-source 100000-position campaign and the remaining full semantic gates are still required. No Elo or release claim follows.

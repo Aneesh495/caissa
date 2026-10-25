@@ -1,0 +1,67 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "strict-json",
+      "input": "{\"value\":1,\"value\":2}",
+      "reason": "duplicate JSON object key"
+    },
+    {
+      "case": "strict-json",
+      "input": "{\"value\":NaN}",
+      "reason": "nonfinite JSON value: NaN"
+    },
+    {
+      "case": "strict-json",
+      "input": "{\"value\":1e999}",
+      "reason": "nonfinite JSON number"
+    },
+    {
+      "case": "mutation-after-verification",
+      "reason": "verified metadata bytes changed after manifest validation"
+    },
+    {
+      "case": "metadata-byte-ceiling",
+      "reason": "evidence metadata byte ceiling exceeded"
+    },
+    {
+      "case": "unsafe-relative-path",
+      "path": "../data.json",
+      "reason": "source path is not a safe canonical relative name"
+    },
+    {
+      "case": "unsafe-relative-path",
+      "path": "/data.json",
+      "reason": "source path is not a safe canonical relative name"
+    },
+    {
+      "case": "unsafe-relative-path",
+      "path": "a//data.json",
+      "reason": "source path is not a safe canonical relative name"
+    },
+    {
+      "case": "unsafe-relative-path",
+      "path": "a/./data.json",
+      "reason": "source path is not a safe canonical relative name"
+    },
+    {
+      "case": "unsafe-relative-path",
+      "path": "a\\data.json",
+      "reason": "source path is not a safe canonical relative name"
+    },
+    {
+      "case": "linked-artifact",
+      "reason": "evidence contains a symbolic link"
+    },
+    {
+      "case": "nonregular-nonblocking-read",
+      "reason": "evidence artifact must be a regular file"
+    },
+    {
+      "case": "aliased-manifest-path",
+      "reason": "source path is not a safe canonical relative name"
+    }
+  ],
+  "scope": "Synthetic artifact integrity controls; no chess or model execution",
+  "full_acceptance": false
+}

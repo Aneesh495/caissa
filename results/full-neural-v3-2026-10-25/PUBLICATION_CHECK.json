@@ -1,0 +1,31 @@
+{
+  "status": "passed cross-receipt and arithmetic checks",
+  "observed": {
+    "wins": 1274,
+    "draws": 746,
+    "losses": 1980,
+    "games": 4000,
+    "unfinished_games": 0,
+    "complete_pairs": 2000,
+    "independent_opening_clusters": 1000,
+    "score": 0.41175,
+    "score_95": [
+      0.398875,
+      0.4245
+    ],
+    "failures": {},
+    "elo_difference": -61.97133120250674,
+    "elo_95": [
+      -71.25118915211876,
+      -52.86705335433566
+    ]
+  },
+  "gain_gate": "failed",
+  "required_gain_elo": 50,
+  "required_lower_elo_exclusive": 0,
+  "classical_default_unchanged": true,
+  "q4096_encoding_strength_measured": false,
+  "absolute_elo": null,
+  "full_acceptance": false,
+  "scope": "Actual full fixed-sample result. Full raw pair/game/PGN bytes remain locally indexed and immutable; portable full distribution pending."
+}
