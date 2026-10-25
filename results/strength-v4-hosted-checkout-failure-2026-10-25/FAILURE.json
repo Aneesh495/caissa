@@ -1,0 +1,40 @@
+{
+  "schema": "caissa-hosted-checkout-failure-v1",
+  "status": "failed",
+  "runs": [
+    40203647395,
+    40204698873
+  ],
+  "platforms": [
+    "ubuntu-24.04",
+    "macos-15"
+  ],
+  "failing_check": "published original actor lineage",
+  "missing_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+  "cause": "Default shallow actions/checkout does not contain the hard-pinned compiled source. git ls-tree exits 128 before native-input equality can be evaluated.",
+  "actor_or_model_failure_established": false,
+  "checks_weakened": false,
+  "logs": [
+    {
+      "file": "v4-source-ci-failed-40203647395-121199888002.log",
+      "bytes": 456191,
+      "sha256": "1f839c8bf8345a0b400a51b3b532d25f637379ce9d3ae6505d541171cc976e60"
+    },
+    {
+      "file": "v4-source-ci-failed-40203647395-121199888121.log",
+      "bytes": 52385,
+      "sha256": "a5824e51fbe77f931ac35df3f355e28a08d4a1217f025abdba15dfbb057fed68"
+    },
+    {
+      "file": "journal-ci-failed-40204698873-121203048243.log",
+      "bytes": 455383,
+      "sha256": "46b3dc03bb8995a18e10c3372bc71ddc7ef561f7d20e841b047fb9eba9df0b57"
+    },
+    {
+      "file": "journal-ci-failed-40204698873-121203048400.log",
+      "bytes": 53371,
+      "sha256": "83b17b232348f0d182ef9bf452092ec4539c270c14402ea64ca150741020f14d"
+    }
+  ],
+  "full_acceptance": false
+}
