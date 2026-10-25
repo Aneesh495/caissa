@@ -12,7 +12,7 @@ struct Undo {
     Castling castling{};
     Square ep=no_square;
     std::uint32_t halfmove=0, fullmove=1;
-    Key key=0;
+    Key key=0, history_context=0;
     std::size_t history_size=0;
     Color side=Color::white;
     int synthetic_depth=0;
@@ -75,11 +75,12 @@ private:
     Castling castling_{{{no_square,no_square},{no_square,no_square}}};
     Square ep_=no_square;
     std::uint32_t halfmove_=0, fullmove_=1;
-    Key key_=0;
+    Key key_=0, history_context_=0;
     bool chess960_=false;
     int synthetic_depth_=0;
     std::vector<Key> history_;
     Key metadata_key() const;
+    void append_history();
     void put(Square s, Piece p);
     void save_square(Undo& u, Square s);
     Undo save_state() const;

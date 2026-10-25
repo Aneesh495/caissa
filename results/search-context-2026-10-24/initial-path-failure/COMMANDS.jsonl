@@ -1,0 +1,4 @@
+{"event":"campaign-started","utc_unix":1792889516.612973,"maximum_seconds":1800}
+{"event":"stage-started","stage":"release-configure","sequence":1,"command":["cmake","-S",".","-B","build-search-context","-DCMAKE_BUILD_TYPE=Release"],"utc_unix":1792889516.613184,"timeout_seconds":90,"wall_timeout_seconds":90,"maximum_output_bytes":33554432}
+{"event":"stage-exception","stage":"release-configure","utc_unix":1792889516.616054,"exception":"FileNotFoundError","reason":"[Errno 2] No such file or directory: 'cmake'"}
+{"event":"campaign-finished","status":"failed","details":{"type":"FileNotFoundError","error":"[Errno 2] No such file or directory: 'cmake'"},"seconds_this_campaign":0.003579749999971682,"stages_started":1,"utc_unix":1792889516.616218,"full_acceptance":false}

@@ -4,6 +4,8 @@ Status: implemented development system; full acceptance incomplete; no release a
 
 The native rules, classical evaluation, PVS search, bounded UCI, Chess960, PGN variations, quantized incremental neural evaluator, original selfplay/training, paired arena, independent diagnostic verifier, loopback analysis service and browser board execute. Classical remains the default because the diagnostic neural contribution failed.
 
+The current core maintains its ordered reversible-history score fingerprint incrementally. All 16 Release and all 16 ASan/UBSan cases passed, including a million-transition context reconstruction and sixty mailbox-minimax comparisons. Independent transport reproduced 180 paired cost observations. The loaded-host median runtime ratios were 0.942 classical and 0.957 neural mixture against the previous original executable. [Evidence and limits](notes/search-context.md) distinguish search cost from unmeasured playing strength. Full corpus reconstruction is still running and no final absolute Elo exists.
+
 | Gate | Current evidence | Remaining work |
 |---|---|---|
 | G01 Rules | 20 exact perft fixtures; multiple independent 100000-position comparisons | Bind final campaign to release source |

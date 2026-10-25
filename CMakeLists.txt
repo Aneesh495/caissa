@@ -110,3 +110,8 @@ else()
   add_test(NAME tactical_generation COMMAND tactical_generation_test)
 endif()
 set_tests_properties(tactical_generation PROPERTIES TIMEOUT 180)
+
+add_executable(search_context_test tests/search_context_test.cpp)
+target_link_libraries(search_context_test PRIVATE caissa_core)
+add_test(NAME search_context COMMAND search_context_test)
+set_tests_properties(search_context PROPERTIES TIMEOUT 240)

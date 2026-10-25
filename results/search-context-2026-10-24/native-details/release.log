@@ -1,0 +1,259 @@
+Start testing: Oct 24 20:52 EDT
+----------------------------------------------------------
+1/16 Testing: version
+1/16 Test: version
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/caissa" "--version"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"version" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+Caissa 0.1.0-dev
+<end of output>
+Test time =   0.26 sec
+----------------------------------------------------------
+Test Passed.
+"version" end time: Oct 24 20:52 EDT
+"version" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/16 Testing: core
+2/16 Test: core
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/core_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"core" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+core types and attack tables passed
+<end of output>
+Test time =   0.42 sec
+----------------------------------------------------------
+Test Passed.
+"core" end time: Oct 24 20:52 EDT
+"core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/16 Testing: position
+3/16 Test: position
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/position_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"position" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+FEN, perft, castling, en passant and restoration passed
+<end of output>
+Test time =   0.33 sec
+----------------------------------------------------------
+Test Passed.
+"position" end time: Oct 24 20:52 EDT
+"position" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/16 Testing: rules
+4/16 Test: rules
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/rules_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"rules" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+draw claims, history identity, clocks and mate precedence passed
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"rules" end time: Oct 24 20:52 EDT
+"rules" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/16 Testing: evaluation
+5/16 Test: evaluation
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/evaluation_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"evaluation" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+tapered evaluation, symmetry and exchange tests passed
+<end of output>
+Test time =   0.26 sec
+----------------------------------------------------------
+Test Passed.
+"evaluation" end time: Oct 24 20:52 EDT
+"evaluation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/16 Testing: table
+6/16 Test: table
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/table_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"table" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+locked table replacement, concurrent access and mate scores passed
+<end of output>
+Test time =   0.29 sec
+----------------------------------------------------------
+Test Passed.
+"table" end time: Oct 24 20:52 EDT
+"table" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/16 Testing: search
+7/16 Test: search
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/search_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"search" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+exhaustive minimax, mate, MultiPV, cancellation and node budget passed
+<end of output>
+Test time =   0.31 sec
+----------------------------------------------------------
+Test Passed.
+"search" end time: Oct 24 20:52 EDT
+"search" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/16 Testing: notation
+8/16 Test: notation
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/notation_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"notation" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+SAN, nested variations, comments and deterministic PGN export passed
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"notation" end time: Oct 24 20:52 EDT
+"notation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/16 Testing: uci
+9/16 Test: uci
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/uci_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"uci" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+owned protocol lifecycle, early ponder hit and oversized recovery passed
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"uci" end time: Oct 24 20:52 EDT
+"uci" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/16 Testing: position_line
+10/16 Test: position_line
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/position_line_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"position_line" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+{"status":"passed","divergent_updates":1000,"duplicate_updates":1000,"reused_plies":11043,"unmade_plies":1773,"newly_validated_plies":1970,"long_history":1024}
+<end of output>
+Test time =   0.37 sec
+----------------------------------------------------------
+Test Passed.
+"position_line" end time: Oct 24 20:52 EDT
+"position_line" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/16 Testing: kernels
+11/16 Test: kernels
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/kernel_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"kernels" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+bounded scalar/native integer products and extreme weights passed
+<end of output>
+Test time =   0.30 sec
+----------------------------------------------------------
+Test Passed.
+"kernels" end time: Oct 24 20:52 EDT
+"kernels" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/16 Testing: dense_kernels
+12/16 Test: dense_kernels
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/dense_kernel_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"dense_kernels" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+{"status":"passed","wide_scalar_output_comparisons":204576}
+<end of output>
+Test time =   0.28 sec
+----------------------------------------------------------
+Test Passed.
+"dense_kernels" end time: Oct 24 20:52 EDT
+"dense_kernels" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/16 Testing: neural_bounds
+13/16 Test: neural_bounds
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/neural_bounds_test" "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/residual-prefix-diagnostic.cai"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"neural_bounds" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+{"status":"passed","full_tree_comparisons":64,"reference_qnodes":16816,"certified_cutoffs":1562}
+<end of output>
+Test time =   0.41 sec
+----------------------------------------------------------
+Test Passed.
+"neural_bounds" end time: Oct 24 20:52 EDT
+"neural_bounds" time elapsed: 00:00:00
+----------------------------------------------------------
+
+15/16 Testing: tactical_generation
+15/16 Test: tactical_generation
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/tactical_generation_test" "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/residual-prefix-diagnostic.cai" "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/diagnostic-v2.cai"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"tactical_generation" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+{"status":"passed","move_queries":20000,"search_pairs":168}
+<end of output>
+Test time =   1.42 sec
+----------------------------------------------------------
+Test Passed.
+"tactical_generation" end time: Oct 24 20:52 EDT
+"tactical_generation" time elapsed: 00:00:01
+----------------------------------------------------------
+
+14/16 Testing: evaluation_cache
+14/16 Test: evaluation_cache
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/evaluation_cache_test" "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/residual-prefix-diagnostic.cai" "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/models/diagnostic-v2.cai"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"evaluation_cache" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+{"status":"passed","fixed_node_pairs":120,"evaluation_requests":625195,"cache_hits":236432,"private_bytes_per_worker":524288}
+<end of output>
+Test time =   2.56 sec
+----------------------------------------------------------
+Test Passed.
+"evaluation_cache" end time: Oct 24 20:52 EDT
+"evaluation_cache" time elapsed: 00:00:02
+----------------------------------------------------------
+
+16/16 Testing: search_context
+16/16 Test: search_context
+Command: "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context/search_context_test"
+Directory: /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-search-context
+"search_context" start time: Oct 24 20:52 EDT
+Output:
+----------------------------------------------------------
+{"status":"passed","transitions":1000000,"null_branches":4631,"long_history_plies":1024,"history_clock_minimax_searches":60}
+<end of output>
+Test time =   1.56 sec
+----------------------------------------------------------
+Test Passed.
+"search_context" end time: Oct 24 20:52 EDT
+"search_context" time elapsed: 00:00:01
+----------------------------------------------------------
+
+End testing: Oct 24 20:52 EDT
