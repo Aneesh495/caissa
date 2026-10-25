@@ -26,7 +26,7 @@ def main():
 
     avoid_decisive_matches()
     root, engine = Path.cwd(), args.engine.resolve()
-    profile = root / "config/draw-history-v1.json"
+    profile = root / "config/draw-history-v2.json"
     network = root / "results/precision-v4-2026-10-25/selected-v4.cai"
     owner = Campaign(
         args.output,

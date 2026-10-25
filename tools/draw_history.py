@@ -34,6 +34,7 @@ def main():
     if digest(args.network) != rule["network_sha256"]:
         raise ValueError("draw runtime network differs")
     args.output.mkdir(parents=True, exist_ok=False)
+    (args.output / "profile.json").write_bytes(args.profile.read_bytes())
     started = time.time()
     maximum = rule["maximum_producer_seconds"]
     deadline = started + maximum

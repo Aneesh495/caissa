@@ -8,6 +8,10 @@ on:
       - 'include/**'
       - 'apps/**'
       - 'tests/*_test.cpp'
+      - 'config/draw-history-v*.json'
+      - 'tools/draw_history.py'
+      - 'verification/draw_history.py'
+      - 'tests/draw_history.py'
 permissions:
   contents: read
 concurrency:

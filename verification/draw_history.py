@@ -20,7 +20,7 @@ from verification.bundle import strict_json
 from verification.restoration_state import MASK, Shadow, hexadecimal, mix, require
 from verification.tactical_generation import Probe
 
-PROFILE_SHA256 = "c560c4bd43995d69e2279784dff676b78ebcd37cd4864fda189bbf3bca956455"
+PROFILE_SHA256 = "4512410118ad92190c167232b2082308aa18c42e07b287fa7b281b8ecc90c583"
 
 
 def digest(path):
