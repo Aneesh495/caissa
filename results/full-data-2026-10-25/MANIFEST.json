@@ -1,0 +1,19 @@
+{
+  "schema": "caissa-artifact-hashes-v1",
+  "files": {
+    "ACTIVE_USAGE.json": "02d6693e76883e9831ec36ef189b1a923825083a30ca8c30a7823daad6a09202",
+    "CAMPAIGN.json": "8529bc945163099844aa3dc2e65884807826fc7fb4f25c04270fd539921aa898",
+    "COMMANDS.jsonl": "d77fff07a66f1befd689875c3934146b1ac00f857f59443095f24ccb5652cab0",
+    "DATASET.json": "f09cdec986858c5b1aa80b3c97aaa4d825be892fc94e16ac5d835bc3d709f0ce",
+    "EXPORTED.json": "4f923aabccd89e931a1ea9ccad5a8df7f25df9985428f2011bd0d8cf84bf2818",
+    "FINALIZATION.json": "3ce25ac90fe2b90449502a6e92a051c05dc1bcce30cdc2bbc0b6b766920afa9e",
+    "PAIR_HASHES.jsonl.gz": "55107a9394f9b66b2a49b832f02cf171a1c96cf3ff74d2bf521c07239c29d6cb",
+    "PREFIX_CHECK.json": "03219bdc9bc0153fdae509f46f994318e9922d68541b45103d94ba1670860576",
+    "README.md": "35cb857ba71ec7fb206d4987918a8c47ed37d5001032f3f78ce7fad5ee998c69",
+    "SCOPE.json": "00f94a042d21e72e1d437d54064c382e426f5025dcad512e841260c434d55649",
+    "SOURCE_INPUTS.json": "c9a69e34cf332ee45f5ef332aa72f97add98a389e0eefb188ee44226abdaae10",
+    "independent-data.json": "f907d4586bce78252b52197f84d282c6817c65ae5d3debd8b90d7021536aba3d",
+    "independent-data.log": "5bab4ccf4125dc6e377894dfb45b359d4cac63cb08976b6e3ff9f9a17f714436"
+  },
+  "full_acceptance": false
+}
