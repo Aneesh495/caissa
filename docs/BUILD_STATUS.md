@@ -16,6 +16,16 @@ The subsequent [PVS-off LMR recovery repair](notes/lmr-window-recovery.md) passe
 
 [Deferred neural state](../results/deferred-neural-2026-10-25/README.md) now skips unused sparse-transformer work. Nineteen cases in Release/ASan/UBSan/TSan, one million tree operations and 144 exact search pairs per mode passed on Linux/macOS. Independent raw reconstruction confirmed all 1440 runtime queries and eight semantic rejection controls. At the selected mixture with caching, median wall time fell 8.93% on Linux and 7.03% on macOS against the archived executable. Other groups include neutral/slower outcomes. The new option stays experimental/off, no new strength result follows, and the original full neural failure remains failed.
 
+[The separate v4 strength sequence](STRENGTH_V4.md) is prospectively frozen and
+running from archived source9f3ac86. It uses the actual1ff executable, q4096network52d,
+unchanged validation-selected checkpointC76 and ten-percent mixture. Lazy Neural
+is explicitly enabled in both neural and classical match actors. Its complete
+4000-game comparison precedes the fixed2000 external games. No result is yet
+available for this actor. The original learning receipt and failed q1024 gates
+remain unchanged. [Hosted lineage and journal controls](../results/match-journals-2026-10-25/VERIFICATION.json)
+passed on Linux and macOS, including26 original-byte lineage controls and a real
+four-game pair/game/PGN reconstruction with nine semantic rejections.
+
 | Gate | Current evidence | Remaining work |
 |---|---|---|
 | G01 Rules | Full d2 development sample:100000 reachable comparisons,96589 unique positions and20 independently recomputed perft fixtures passed | Final deployment/bundle source binding |
@@ -25,13 +35,13 @@ The subsequent [PVS-off LMR recovery repair](notes/lmr-window-recovery.md) passe
 | G05 Search | New5803 full core semantics:752exact searches matched53external minimax trees/256430nodes;1344table observations;4LMR regressions;112ablations with40retained differences;12semantic controls | Final deployment binding and dedicated strength ablations |
 | G06 Network | Original q1024 model failed at 57.06 cp. Same-checkpoint q4096 passed 100000 fresh probes on Linux/macOS, maximum 10.395 cp; deployed validation-loss improvement retained; Release/ASan/UBSan/TSan and independent saved-program replay passed | Bind the new encoding to final deployment/strength; old failure stays failed |
 | G07 Learning | Full data passed; all three 20000-update seeds complete; 240 checkpoints independently evaluated; validation-only seed 73 selected with improved loss | Bind full final evidence; portable corpus/checkpoint reproduction remains required |
-| G08 Neural contribution | Full original q1024 comparison completed: 1274W/746D/1980L, -61.97 Elo with 95% interval [-71.25,-52.87]; no forfeits; independent replay confirmed failure | Required +50 gain and positive lower bound remain unmet; newer q4096 encoding has no strength result |
-| G09 External strength | Full original2000 games independently passed; unrestricted Stockfish19:59W/8D/599L, -392.39 Elo95[-438.13,-353.45], no forfeits | New q4096/deferred candidate still unmeasured; no absolute Elo or final-deployment pass |
+| G08 Neural contribution | Full original q1024 comparison completed: 1274W/746D/1980L, -61.97 Elo with 95% interval [-71.25,-52.87]; no forfeits; independent replay confirmed failure | New frozen q4096/deferred4000-game sample is running; required +50 gain and positive lower bound remain unmet |
+| G09 External strength | Full original2000 games independently passed; unrestricted Stockfish19:59W/8D/599L, -392.39 Elo95[-438.13,-353.45], no forfeits | New frozen2000-game sample follows its full neural comparison; no new result, absolute Elo or final-deployment pass |
 | G10 Parallel systems | Root sharing, cancellation and race-instrumented native checks | Frozen 1/2/4/8 profiles and strength comparisons |
 | G11 Recovery | SIGKILL training/corpus/arena recovery tests executed | Source-bound replay of recovery records |
 | G12 Browser | Fresh-origin import, native analysis/cancel, keyboard variation, 390px viewport, service restart/export and malformed FEN exercised | Repeat against final release source |
 | G13 Performance | Auditable 640-search four-evaluator 1/2/4/8 pilot; 5097 RSS and 2000 latency samples independently reconstructed; 16 native scalar probes and 13 rehashed controls | Final selected model under controlled host load |
-| G14 Semantic verifier | Rehashed domain controls; committed product/lineage admission, independent G01/G02/G03/G04/G05 adapters | Complete remaining full-domain adapters and coordinator; final full samples still required |
+| G14 Semantic verifier | Rehashed domain controls; committed product/lineage admission, independent G01/G02/G03/G04/G05 adapters; journal reader and ten new G08/G09 adapter controls passed both hosted platforms | Full-size G08/G09 replay, remaining adapters, coordinator and final samples remain required |
 | G15 Reproduction | Clean source diagnostic passed; Linux/macOS CI passes | Full saved-model/game/report reproduction |
 | G16 Release | Blocked by incomplete and failed full gates | All required gates and final identity audit |
 
