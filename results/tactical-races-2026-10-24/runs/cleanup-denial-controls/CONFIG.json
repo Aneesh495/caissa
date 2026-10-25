@@ -1,0 +1,1 @@
+{"maximum_seconds":120,"scope":"Preserve timeout and nonzero exits when process-group cleanup is denied; does not renew failed corpus or race budgets","full_acceptance":false}

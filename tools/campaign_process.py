@@ -57,6 +57,7 @@ class Campaign:
         *,
         absolute_deadline=None,
         resource_guard=None,
+        maximum_wall_seconds=None,
     ):
         self.output = Path(output)
         if not math.isfinite(maximum_seconds) or not 0 < maximum_seconds <= 7 * 86400:
@@ -67,7 +68,12 @@ class Campaign:
         self.config = config
         self.start = time.monotonic()
         self.deadline = self.start + maximum_seconds
-        self.wall_deadline = time.time() + maximum_seconds
+        wall_budget = (
+            maximum_seconds if maximum_wall_seconds is None else maximum_wall_seconds
+        )
+        if not math.isfinite(wall_budget) or not 0 < wall_budget <= 7 * 86400:
+            raise ValueError("finite campaign wall budget required")
+        self.wall_deadline = time.time() + wall_budget
         if absolute_deadline is not None:
             if not math.isfinite(absolute_deadline):
                 raise ValueError("finite absolute deadline required")
@@ -107,6 +113,7 @@ class Campaign:
         maximum_output_bytes=32 * 1024 * 1024,
         *,
         cwd=None,
+        wall_timeout=None,
     ):
         if self.closed:
             raise ValueError("campaign already closed")
@@ -122,6 +129,9 @@ class Campaign:
             or not 1024 <= maximum_output_bytes <= 1024**3
         ):
             raise ValueError("stage resource bounds exceeded")
+        wall_timeout = timeout if wall_timeout is None else wall_timeout
+        if not math.isfinite(wall_timeout) or not 0 < wall_timeout <= 86400:
+            raise ValueError("finite stage wall timeout required")
         if self.interrupted is not None:
             raise InterruptedError("campaign interrupted before stage start")
         if time.monotonic() >= self.deadline or time.time() >= self.wall_deadline:
@@ -134,7 +144,7 @@ class Campaign:
         wall_started = time.time()
         cpu_before = resource.getrusage(resource.RUSAGE_CHILDREN)
         deadline = min(started + timeout, self.deadline)
-        wall_deadline = min(wall_started + timeout, self.wall_deadline)
+        wall_deadline = min(wall_started + wall_timeout, self.wall_deadline)
         self._event(
             {
                 "event": "stage-started",
@@ -143,6 +153,7 @@ class Campaign:
                 "command": command,
                 "utc_unix": wall_started,
                 "timeout_seconds": timeout,
+                "wall_timeout_seconds": wall_timeout,
                 "maximum_output_bytes": maximum_output_bytes,
             }
         )
@@ -154,6 +165,25 @@ class Campaign:
         discarded = 0
         last_progress = 0
         selector = selectors.DefaultSelector()
+        cleanup_warnings = []
+
+        def signal_owned(signum):
+            nonlocal reason
+            try:
+                group_signal(process.pid, signum)
+                return True
+            except PermissionError:
+                warning = "permission denied signalling owned process group: " + str(
+                    signum
+                )
+                if warning not in cleanup_warnings:
+                    cleanup_warnings.append(warning)
+                # Preserve a timeout or actual nonzero exit as the primary
+                # failure. A denied cleanup can never certify successful exit.
+                if reason is None and process.returncode in (None, 0):
+                    reason = "cleanup-permission-denied"
+                return False
+
         try:
             with path.open("xb") as log:
                 process = subprocess.Popen(
@@ -191,9 +221,9 @@ class Campaign:
                         reason = "descendant-retained-output-pipe"
                     if reason is not None and stopping is None:
                         stopping = now
-                        group_signal(process.pid, signal.SIGTERM)
+                        signal_owned(signal.SIGTERM)
                     if stopping is not None and now - stopping >= 2:
-                        group_signal(process.pid, signal.SIGKILL)
+                        signal_owned(signal.SIGKILL)
                     for key, _ in selector.select(0.1):
                         try:
                             block = os.read(key.fd, 65536)
@@ -235,17 +265,17 @@ class Campaign:
                         reason = reason or "cleanup-timeout"
                         break
                 if process.poll() is None:
-                    group_signal(process.pid, signal.SIGKILL)
+                    signal_owned(signal.SIGKILL)
                 exit_code = process.wait(timeout=5)
                 log.flush()
                 os.fsync(log.fileno())
         except BaseException as error:
             if process is not None:
-                group_signal(process.pid, signal.SIGTERM)
+                signal_owned(signal.SIGTERM)
                 try:
                     process.wait(timeout=2)
                 except subprocess.TimeoutExpired:
-                    group_signal(process.pid, signal.SIGKILL)
+                    signal_owned(signal.SIGKILL)
                     process.wait(timeout=5)
             self._event(
                 {
@@ -264,18 +294,25 @@ class Campaign:
             # A successful parent may leave background descendants after closing
             # stdout. They do not outlive the owned stage process group.
             if process is not None:
-                group_signal(process.pid, signal.SIGTERM)
+                signal_owned(signal.SIGTERM)
                 end = time.monotonic() + 2
                 while time.monotonic() < end:
                     try:
                         os.killpg(process.pid, 0)
                     except ProcessLookupError:
                         break
+                    except PermissionError:
+                        cleanup_warnings.append(
+                            "permission denied inspecting owned process group"
+                        )
+                        if reason is None and process.returncode in (None, 0):
+                            reason = "cleanup-permission-denied"
+                        break
                     if reason is None:
                         reason = "leftover-descendant-process"
                     time.sleep(0.05)
                 else:
-                    group_signal(process.pid, signal.SIGKILL)
+                    signal_owned(signal.SIGKILL)
         cpu_after = resource.getrusage(resource.RUSAGE_CHILDREN)
         record = {
             "event": "stage-finished",
@@ -294,6 +331,7 @@ class Campaign:
             - cpu_before.ru_stime,
             "retained_output_bytes": retained,
             "discarded_output_bytes": discarded,
+            "cleanup_warnings": cleanup_warnings,
             "log": path.name,
             "log_sha256": hashlib.sha256(path.read_bytes()).hexdigest(),
         }
