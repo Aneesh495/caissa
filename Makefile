@@ -5,6 +5,7 @@ PROFILE ?= diagnostic
 CHECKOUT ?= .
 SOURCE_COMMIT ?=
 EVIDENCE ?=
+EVIDENCE_INPUTS_SHA256 ?=
 CORPUS ?= data/demo
 DATASET ?= data/demo-prepared
 TRAIN_DIR ?= runs/demo-training
@@ -65,11 +66,11 @@ acceptance:
 	$(PYTHON) -m tools.acceptance --run-id $(RUN_ID) --profile $(PROFILE)
 verify:
 	@test -n "$(EVIDENCE)" -a -n "$(SOURCE_COMMIT)" || (echo 'EVIDENCE and trusted SOURCE_COMMIT are required'; exit 2)
-	$(PYTHON) -m verification.verify $(EVIDENCE) --checkout $(CHECKOUT) --expected-commit $(SOURCE_COMMIT) --profile $(PROFILE)
+	$(PYTHON) -m verification.verify $(EVIDENCE) --checkout $(CHECKOUT) --expected-commit $(SOURCE_COMMIT) --profile $(PROFILE) $(if $(EVIDENCE_INPUTS_SHA256),--expected-inputs-sha256 $(EVIDENCE_INPUTS_SHA256),)
 release:
 	@test "$(PROFILE)" = full || (echo 'Release requires PROFILE=full and independently verified full evidence'; exit 2)
 	$(MAKE) verify PROFILE=full EVIDENCE=$(EVIDENCE) SOURCE_COMMIT=$(SOURCE_COMMIT) CHECKOUT=$(CHECKOUT)
-	$(PYTHON) -m tools.package_release --evidence $(EVIDENCE) --commit $(SOURCE_COMMIT)
+	$(PYTHON) -m tools.package_release --evidence $(EVIDENCE) --commit $(SOURCE_COMMIT) --inputs-sha256 "$(EVIDENCE_INPUTS_SHA256)"
 
 .PHONY: profile
 profile: build

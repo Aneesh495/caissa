@@ -48,76 +48,10 @@ def load(path, ceiling=4 * 1024 * 1024):
 
 
 def trusted_sources(checkout, commit):
-    require(
-        re.fullmatch("[0-9a-f]{40}", commit) is not None,
-        "native source commit is malformed",
-    )
-    output = subprocess.check_output(
-        ["git", "ls-tree", "-r", "--name-only", "-z", commit], cwd=checkout, timeout=10
-    )
-    require(
-        len(output) <= 1024 * 1024,
-        "native source inventory exceeds bounded Git response",
-    )
-    fixed = {
-        "CMakeLists.txt",
-        "Makefile",
-        "package.json",
-        "package-lock.json",
-        "tsconfig.json",
-        "docs/EXPERIMENT_PLAN.md",
-    }
-    suffixes = {".cpp", ".hpp", ".py", ".ts", ".toml", ".lock", ".yml", ".yaml", ".cai"}
-    paths = sorted(
-        path
-        for path in output.decode().split("\0")
-        if path
-        and (
-            Path(path).suffix in suffixes or path in fixed or path.startswith("config/")
-        )
-        and not path.startswith(("results/", "docs/images/"))
-    )
-    require(
-        0 < len(paths) <= 10000
-        and all(not any(c in path for c in "\r\n") for path in paths),
-        "native source inventory is unsafe or excessive",
-    )
-    queries = "".join(commit + ":" + path + "\n" for path in paths).encode()
-    result = subprocess.run(
-        ["git", "cat-file", "--batch"],
-        input=queries,
-        cwd=checkout,
-        capture_output=True,
-        timeout=15,
-    )
-    require(
-        result.returncode == 0 and len(result.stdout) <= 32 * 1024 * 1024,
-        "native trusted Git blob request failed or exceeded byte ceiling",
-    )
-    cursor = 0
-    identities = {}
-    for path in paths:
-        end = result.stdout.index(b"\n", cursor)
-        fields = result.stdout[cursor:end].split()
-        require(
-            len(fields) == 3 and fields[1] == b"blob",
-            "trusted native source is not a regular Git blob",
-        )
-        size = int(fields[2])
-        require(
-            0 <= size <= 16 * 1024 * 1024,
-            "trusted native source blob exceeds size ceiling",
-        )
-        begin = end + 1
-        end = begin + size
-        require(
-            result.stdout[end : end + 1] == b"\n",
-            "truncated trusted native source response",
-        )
-        identities[path] = hashlib.sha256(result.stdout[begin:end]).hexdigest()
-        cursor = end + 1
-    require(cursor == len(result.stdout), "unexpected trailing trusted Git blob data")
-    return identities
+    # Existing native campaigns retain their original source-selection policy.
+    from verification.source import LEGACY, snapshot
+
+    return snapshot(checkout, commit, LEGACY)
 
 
 def verify(root, checkout, commit, replay_output, maximum_seconds=600):

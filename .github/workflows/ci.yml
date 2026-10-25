@@ -47,6 +47,10 @@ jobs:
           python -m tests.full_actor_contract
           python -m tests.full_model_protocol --output runs/ci-full-model-controls
           python -m tests.project_continuation
+          python -m tests.source_binding --output runs/ci-source-binding
+          python -m tests.full_bundle --output runs/ci-full-bundle
+          python -m tests.bundle_integrity --output runs/ci-bundle-integrity
+          python -m tests.acceptance_readiness --output runs/ci-acceptance-readiness
           python -m training.corpus --engine build/caissa --pairs 50 --nodes 500 --workers 2 --output data/ci-original
           python -m training.prepare data/ci-original data/ci-prepared
           python -m verification.dataset data/ci-prepared data/ci-original
@@ -91,4 +95,8 @@ jobs:
             runs/ci-negative/CONTROLS.json
             runs/ci-arena/SUMMARY.json
             runs/service.log
+            runs/ci-source-binding/CONTROLS.json
+            runs/ci-full-bundle/CONTROLS.json
+            runs/ci-bundle-integrity/CONTROLS.json
+            runs/ci-acceptance-readiness/CONTROLS.json
           retention-days: 14
