@@ -64,6 +64,8 @@ See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution w
 
 These checks establish specific behavior. The data-domain pass does not certify a positive learned contribution, the full external campaign or a release. Opponent strength settings are not a calibrated absolute rating pool.
 
+The [model card](docs/MODEL_CARD.md) records the completed three-seed training, validation-only selection, original failed encoding and subsequent precision experiment. It also gives the explicit ten-percent UCI setting required by the selected model.
+
 [Reproduction](docs/REPRODUCIBILITY.md) explains the bounded demo and clean-checkout verifier. [Experiment protocol](docs/EXPERIMENT_PLAN.md), [artifact contracts](docs/ARTIFACT_FORMAT.md), [limitations](docs/LIMITATIONS.md), [recovery](docs/RECOVERY.md) and [dependency provenance](docs/DEPENDENCIES.md) define the practical boundaries.
 
 [Browser validation and keyboard recovery](docs/UI_VALIDATION.md) records the fresh-origin, constrained-viewport and real service-restart checks.
