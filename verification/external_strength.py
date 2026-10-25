@@ -19,7 +19,7 @@ def external_options(index, rules):
     raise ValueError("unfrozen external opponent setting")
 
 
-def verify(campaigns, openings, expected_engine, expected_network, protocol):
+def verify(campaigns, openings, expected_engine, expected_network, protocol, tick=None):
     rules = protocol["matches"]
     if (
         protocol["status"] != "frozen"
@@ -35,6 +35,8 @@ def verify(campaigns, openings, expected_engine, expected_network, protocol):
         raise ValueError("full external setting inventory or fixed sample changed")
     results = []
     for index, campaign in enumerate(campaigns):
+        if tick is not None:
+            tick()
         identity = read_json((campaign / "CONFIG.json").read_text())
         config = identity["config"]
         candidate, opponent = (
@@ -61,6 +63,7 @@ def verify(campaigns, openings, expected_engine, expected_network, protocol):
             protocol,
             neural=False,
             require_full=True,
+            tick=tick,
         )
         if result["statistics"]["games"] != 2 * rules["external_pairs"][index]:
             raise ValueError("full external completed-game count is too small")

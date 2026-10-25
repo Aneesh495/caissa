@@ -642,6 +642,36 @@ def verify(
                 bundle.tick()
                 review.setdefault("verified_semantic_gates", {})["G04"] = result
                 del review["pending_semantic_gates"]["G04"]
+        for gate in ["G08", "G09"]:
+            domain = inputs["domains"][gate]
+            if domain.get("driver") != "strength-journals-v1":
+                continue
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    gate
+                ] = "strength replay requires an external --replay-output directory"
+                continue
+            from verification.strength_bundle import verify as verify_strength
+            from verification.strength import StrengthFailure
+
+            try:
+                result = verify_strength(
+                    bundle, inputs, gate, Path(replay_output).resolve() / gate
+                )
+            except StrengthFailure as error:
+                review.setdefault("failed_semantic_gates", {})[gate] = {
+                    "status": "failed",
+                    "reason": str(error),
+                    "observed": error.observed,
+                    "full_acceptance": False,
+                }
+                del review["pending_semantic_gates"][gate]
+                continue
+            require(
+                result["full_gate"] is True, "strength full-domain replay incomplete"
+            )
+            review.setdefault("verified_semantic_gates", {})[gate] = result
+            del review["pending_semantic_gates"][gate]
         return review
 
 

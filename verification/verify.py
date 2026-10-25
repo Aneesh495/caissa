@@ -99,12 +99,14 @@ def replay_game(game):
     return board
 
 
-def independent_statistics(records):
+def independent_statistics(records, tick=None):
     units = {}
     wins = losses = draws = unfinished = 0
     seen = set()
     values = []
     for pair in records:
+        if tick is not None:
+            tick()
         if pair["pair"] in seen:
             raise Rejection("duplicated arena pair identity")
         seen.add(pair["pair"])
@@ -138,7 +140,9 @@ def independent_statistics(records):
     )
     rng = np.random.default_rng(104729)
     samples = []
-    for _ in range(20000):
+    for number in range(20000):
+        if tick is not None and number % 128 == 0:
+            tick()
         chosen = clusters[rng.integers(len(clusters), size=len(clusters))]
         samples.append(float(chosen[:, 0].sum() / chosen[:, 1].sum()))
     lo, hi = np.quantile(samples, [0.025, 0.975])
