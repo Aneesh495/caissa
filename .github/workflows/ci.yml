@@ -43,6 +43,7 @@ jobs:
           python -m tests.campaign_cleanup
           python -m tests.power_guard
           python -m tests.full_strength
+          python -m tests.heuristic_study
           python -m tests.full_actor_contract
           python -m tests.full_model_protocol --output runs/ci-full-model-controls
           python -m tests.project_continuation
