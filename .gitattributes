@@ -1,0 +1,2 @@
+# Raw SSE records end with a blank event delimiter. Preserve captured bytes.
+*.sse -text whitespace=-blank-at-eof

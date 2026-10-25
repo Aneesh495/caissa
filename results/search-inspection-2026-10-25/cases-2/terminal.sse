@@ -1,0 +1,9 @@
+event: started
+data: {"engine":"Caissa","evaluation":"classical","milliseconds":250}
+
+event: statistics
+data: {"visited_nodes":0,"table_bytes":16777216,"elapsed_ms":0,"qnodes":0,"tt_hits":0,"ordering_hints":0,"tt_cutoffs":0,"beta_cutoffs":0,"null_cutoffs":0,"lmr":0,"researches":0,"futility":0,"eval_calls":0,"eval_ns":0,"evaluation_cache_hits":0,"evaluation_cache_bytes":0,"neural_evaluations":0,"neural_bound_cutoffs":0,"completed_depth_nodes":0}
+
+event: bestmove
+data: {"move":"0000"}
+

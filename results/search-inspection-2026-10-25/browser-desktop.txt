@@ -1,0 +1,309 @@
+Browser tab: 1, Title: "Caissa | Analysis room", URL: "http://127.0.0.1:8767/".
+0 AXWebArea Caissa | Analysis room, URL: 127.0.0.1:8767/
+	1 container
+		2 link Description: caissa♞, Value: 127.0.0.1:8767/
+		3 text Caissa · classical evaluation
+	4 container
+		5 container Chess analysis board
+			6 text FOLLOW THE POSITION
+			7 heading A move worth finding., Value: 1
+				8 text A move worth finding.
+			9 button ↕ Flip, Help: Flip board, ID: flip
+			10 table Description: Chessboard. Arrow keys move focus, Enter selects a square., ID: board
+				11 cell a8 black rook
+					12 text ♜
+					13 text 8
+				14 cell b8 black knight
+					15 text ♞
+				16 cell c8 black bishop
+					17 text ♝
+				18 cell d8 black queen
+					19 text ♛
+				20 cell e8 black king
+					21 text ♚
+				22 cell f8 black bishop
+					23 text ♝
+				24 cell g8 black knight
+					25 text ♞
+				26 cell h8 black rook
+					27 text ♜
+				28 cell a7 black pawn
+					29 text ♟
+					30 text 7
+				31 cell b7 black pawn
+					32 text ♟
+				33 cell c7 black pawn
+					34 text ♟
+				35 cell d7 black pawn
+					36 text ♟
+				37 cell e7 black pawn
+					38 text ♟
+				39 cell f7 black pawn
+					40 text ♟
+				41 cell g7 black pawn
+					42 text ♟
+				43 cell h7 black pawn
+					44 text ♟
+				45 cell a6 empty
+					46 text 6
+				47 cell b6 empty
+				48 cell c6 empty
+				49 cell d6 empty
+				50 cell e6 empty
+				51 cell f6 empty
+				52 cell g6 empty
+				53 cell h6 empty
+				54 cell a5 empty
+					55 text 5
+				56 cell b5 empty
+				57 cell c5 empty
+				58 cell d5 empty
+				59 cell e5 empty
+				60 cell f5 empty
+				61 cell g5 empty
+				62 cell h5 empty
+				63 cell a4 empty
+					64 text 4
+				65 cell b4 empty
+				66 cell c4 empty
+				67 cell d4 empty
+				68 cell e4 empty
+				69 cell f4 empty
+				70 cell g4 empty
+				71 cell h4 empty
+				72 cell a3 empty
+					73 text 3
+				74 cell b3 empty
+				75 cell c3 empty
+				76 cell d3 empty
+				77 cell e3 empty
+				78 cell f3 empty
+				79 cell g3 empty
+				80 cell h3 empty
+				81 cell a2 white pawn
+					82 text ♟
+					83 text 2
+				84 cell b2 white pawn
+					85 text ♟
+				86 cell c2 white pawn
+					87 text ♟
+				88 cell d2 white pawn
+					89 text ♟
+				90 cell e2 white pawn
+					91 text ♟
+				92 cell f2 white pawn
+					93 text ♟
+				94 cell g2 white pawn
+					95 text ♟
+				96 cell h2 white pawn
+					97 text ♟
+				98 cell a1 white rook
+					99 text ♜
+					100 text a
+				101 cell b1 white knight
+					102 text ♞
+					103 text b
+				104 cell c1 white bishop
+					105 text ♝
+					106 text c
+				107 cell d1 white queen
+					108 text ♛
+					109 text d
+				110 cell e1 white king
+					111 text ♚
+					112 text e
+				113 cell f1 white bishop
+					114 text ♝
+					115 text f
+				116 cell g1 white knight
+					117 text ♞
+					118 text g
+				119 cell h1 white rook
+					120 text ♜
+					121 text h
+			122 text White to move
+			123 text Move 1
+			124 button |‹, Help: First position, ID: first
+			125 button ‹, Help: Previous position, ID: previous
+			126 button ›, Help: Next mainline position, ID: next
+			127 button ›|, Help: Last mainline position, ID: last
+			128 text FEN
+			129 pop up button (collapsed, settable) Description: Chess variant, Value: Standard, ID: variant, Secondary Actions: Expand
+				130 menu
+					131 (selected) Standard
+					132 Chess960
+			133 text field (settable) Description: Position FEN, Value: rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1, ID: fen
+			134 button Load, ID: load-fen
+			135 button Reset, ID: reset
+			211 text Analysis complete. Best move: g1f3.
+		137 container
+			138 heading Find the next move, Value: 2
+				139 text Find the next move
+			212 text READY
+			141 text Original Caissa search, running on your machine. Time
+			142 pop up button (collapsed, settable) Time, Value: 1 second, ID: time, Secondary Actions: Expand
+				143 menu
+					144 (selected) 1 second
+					145 3 seconds
+					146 10 seconds
+					147 30 seconds
+			148 text Threads
+			149 pop up button (collapsed, settable) Threads, Value: 2, ID: threads, Secondary Actions: Expand
+				150 menu
+					151 1
+					152 (selected) 2
+					153 4
+			154 text Lines
+			155 pop up button (collapsed, settable) Lines, Value: 3, ID: multipv, Secondary Actions: Expand
+				156 menu
+					157 1
+					158 (selected) 3
+					159 5
+			160 text Hash
+			161 pop up button (collapsed, settable) Hash, Value: 32, ID: hash, Secondary Actions: Expand
+				162 menu
+					163 16
+					164 (selected) 32
+					165 64
+					166 128
+			167 button Analyze position ↗, ID: analyze
+				168 text Analyze position
+				213 text ↗
+			170 button (disabled) Stop, ID: cancel
+			171 checkbox (settable, integer) Description: Inspect search counters and sample positions, Value: 1, ID: inspect-search
+			172 container Search statistics
+				173 text DEPTH / SEL.
+				214 text 9 / 23
+				175 text NODES
+				215 text 1,381,865
+				177 text NODES / SEC
+				216 text 2,162,543
+			198 container lines
+				217 text +0.24
+				218 text 1. g1f3 b8c6 b1c3 e7e6 a2a3 g8f6 g2g3 h7h6 e2e3
+				219 button Play line, Help: Add this principal variation to the game
+				220 text +0.24
+				221 text 2. h2h3 e7e6 g1f3 b8c6 b1c3 g8f6 a2a3 h7h6 e2e3
+				222 button Play line, Help: Add this principal variation to the game
+				223 text +0.22
+				224 text 3. d2d3 g8f6 g1f3 e7e6 b1c3 b8c6 a2a3 h7h6 b2b4
+				225 button Play line, Help: Add this principal variation to the game
+			208 container inspection-panel
+				209 button (expanded) Search inspection, Secondary Actions: Collapse
+					210 text Search inspection
+				226 text Final search counters. 278 ns per evaluator call. Cutoff categories can overlap; they are not percentages of total work.
+				227 definition list inspection-counters
+					228 container All visited nodes
+						229 text All visited nodes
+					230 text 2,196,415
+					231 container Nodes at completed depth
+						232 text Nodes at completed depth
+					233 text 1,381,865
+					234 container Quiescence nodes
+						235 text Quiescence nodes
+					236 text 1,597,681
+					237 container Hash table memory
+						238 text Hash table memory
+					239 text 32.00 MiB
+					240 container Search elapsed time
+						241 text Search elapsed time
+					242 text 1,000 ms
+					243 container Hash table hits
+						244 text Hash table hits
+					245 text 206,366
+					246 container Hash table cutoffs
+						247 text Hash table cutoffs
+					248 text 151,029
+					249 container Beta cutoffs
+						250 text Beta cutoffs
+					251 text 397,123
+					252 container Null-move cutoffs
+						253 text Null-move cutoffs
+					254 text 4,051
+					255 container Futility skips
+						256 text Futility skips
+					257 text 154,878
+					258 container Late-move reductions
+						259 text Late-move reductions
+					260 text 177,646
+					261 container Full-depth re-searches
+						262 text Full-depth re-searches
+					263 text 2,879
+					264 container Ordering hints
+						265 text Ordering hints
+					266 text 0
+					267 container Evaluator calls
+						268 text Evaluator calls
+					269 text 1,927,179
+					270 container Evaluator time, summed over workers
+						271 text Evaluator time, summed over workers
+					272 text 536.30 ms
+					273 container Static evaluation cache hits
+						274 text Static evaluation cache hits
+					275 text 0
+					276 container Static cache memory
+						277 text Static cache memory
+					278 text 0.00 MiB
+					279 container Neural evaluations
+						280 text Neural evaluations
+					281 text 0
+					282 container Neural bound cutoffs
+						283 text Neural bound cutoffs
+					284 text 0
+				285 container
+					286 button (expanded) Sampled positions (16), Secondary Actions: Collapse
+						287 text Sampled positions (
+						288 text 16
+						289 text )
+					290 text Up to eight samples per worker. Windows use the side-to-move perspective. A sample FEN omits earlier repetition history.
+					291 container inspection-traces
+						324 container
+							325 button (expanded) Sample 1: depth 2, ply 1, Secondary Actions: Collapse
+								326 text Sample 1: depth 2, ply 1
+							327 text Window -32000 to 32000 centipawns, from the side to move. rnbqkbnr/pppppppp/8/8/8/4P3/PPPP1PPP/RNBQKBNR b KQkq - 0 1
+						294 button (collapsed) Sample 2: depth 2, ply 1, Secondary Actions: Expand
+							295 text Sample 2: depth 2, ply 1
+						296 button (collapsed) Sample 3: depth 2, ply 1, Secondary Actions: Expand
+							297 text Sample 3: depth 2, ply 1
+						298 button (collapsed) Sample 4: depth 2, ply 1, Secondary Actions: Expand
+							299 text Sample 4: depth 2, ply 1
+						300 button (collapsed) Sample 5: depth 2, ply 1, Secondary Actions: Expand
+							301 text Sample 5: depth 2, ply 1
+						302 button (collapsed) Sample 6: depth 2, ply 1, Secondary Actions: Expand
+							303 text Sample 6: depth 2, ply 1
+						304 button (collapsed) Sample 7: depth 2, ply 1, Secondary Actions: Expand
+							305 text Sample 7: depth 2, ply 1
+						306 button (collapsed) Sample 8: depth 2, ply 1, Secondary Actions: Expand
+							307 text Sample 8: depth 2, ply 1
+						308 button (collapsed) Sample 9: depth 2, ply 1, Secondary Actions: Expand
+							309 text Sample 9: depth 2, ply 1
+						310 button (collapsed) Sample 10: depth 2, ply 1, Secondary Actions: Expand
+							311 text Sample 10: depth 2, ply 1
+						312 button (collapsed) Sample 11: depth 2, ply 1, Secondary Actions: Expand
+							313 text Sample 11: depth 2, ply 1
+						314 button (collapsed) Sample 12: depth 2, ply 1, Secondary Actions: Expand
+							315 text Sample 12: depth 2, ply 1
+						316 button (collapsed) Sample 13: depth 2, ply 1, Secondary Actions: Expand
+							317 text Sample 13: depth 2, ply 1
+						318 button (collapsed) Sample 14: depth 2, ply 1, Secondary Actions: Expand
+							319 text Sample 14: depth 2, ply 1
+						320 button (collapsed) Sample 15: depth 2, ply 1, Secondary Actions: Expand
+							321 text Sample 15: depth 2, ply 1
+						322 button (collapsed) Sample 16: depth 2, ply 1, Secondary Actions: Expand
+							323 text Sample 16: depth 2, ply 1
+		180 container
+			181 heading Evaluation history, Value: 2
+				182 text Evaluation history
+			183 text White perspective
+			184 image Description: Evaluation history, ID: history
+		185 container
+			186 heading Game & variations, Value: 2
+				187 text Game & variations
+			188 button Promote line, ID: new-variation
+			189 container Description: Variation tree, ID: moves
+				190 text Your lines will appear here.
+			191 button (collapsed) Import or export PGN, Secondary Actions: Expand
+				192 text Import or export PGN
+	193 text CAISSA / LOCAL CHESS LABORATORY
+
+The focused UI element is 325 button (expanded) Sample 1: depth 2, ply 1, Secondary Actions: Collapse

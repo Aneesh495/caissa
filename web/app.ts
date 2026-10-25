@@ -1,3 +1,5 @@
+import type { SearchStatistics, SearchTrace } from '../analysis-service/telemetry.js';
+
 interface TreeNode { id: number; parent: number; fen: string; san: string; uci: string; comment: string; children: number[]; nags: number[]; }
 interface Game { initial: string; chess960: boolean; result: string; tags: Record<string, string>; nodes: TreeNode[]; pgn?: string; }
 interface PositionState { fen: string; check: boolean; moves: string[]; }
@@ -12,6 +14,7 @@ let game = emptyGame(), current = 0, flipped = false, selected: string | undefin
 let generation = 0, playing = 0, active: AbortController | undefined;
 const variations = new Map<number, Line>();
 let evaluations: { node: number; cp: number }[] = [];
+let inspectionPending = false, inspectionComplete = false;
 const board = element('board');
 function status(message: string, error = false): void { const target = element('status'); target.textContent = message; target.classList.toggle('error', error); }
 function safe(work: () => Promise<void>): void { void work().catch((error: unknown) => status(error instanceof Error ? error.message : 'Operation failed.', true)); }
@@ -80,9 +83,55 @@ async function choose(square: string): Promise<void> {
   const piece = pieces(node().fen).get(square); const ours = piece && (node().fen.split(' ')[1] === 'w' ? piece === piece.toUpperCase() : piece === piece.toLowerCase());
   selected = ours && selected !== square ? square : undefined; drawBoard(square);
 }
-function cancel(): void { active?.abort(); active = undefined; element<HTMLButtonElement>('cancel').disabled = true; element<HTMLButtonElement>('analyze').disabled = false; element('analysis-state').textContent = 'READY'; element('analysis-state').classList.remove('active'); }
+const statisticLabels: Record<keyof SearchStatistics, string> = {
+  visited_nodes: 'All visited nodes', completed_depth_nodes: 'Nodes at completed depth', qnodes: 'Quiescence nodes',
+  table_bytes: 'Hash table memory', elapsed_ms: 'Search elapsed time', tt_hits: 'Hash table hits', tt_cutoffs: 'Hash table cutoffs',
+  beta_cutoffs: 'Beta cutoffs', null_cutoffs: 'Null-move cutoffs', futility: 'Futility skips', lmr: 'Late-move reductions',
+  researches: 'Full-depth re-searches', ordering_hints: 'Ordering hints', eval_calls: 'Evaluator calls', eval_ns: 'Evaluator time, summed over workers',
+  evaluation_cache_hits: 'Static evaluation cache hits', evaluation_cache_bytes: 'Static cache memory',
+  neural_evaluations: 'Neural evaluations', neural_bound_cutoffs: 'Neural bound cutoffs',
+};
+function resetInspection(message = 'Start an analysis to collect a search summary.'): void {
+  inspectionPending = false; inspectionComplete = false;
+  element('inspection-panel').hidden = !element<HTMLInputElement>('inspect-search').checked;
+  element('inspection-note').textContent = message; element('inspection-counters').replaceChildren(); element('inspection-traces').replaceChildren(); element('trace-count').textContent = '0';
+}
+function isStatistics(value: unknown): value is SearchStatistics {
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) return false;
+  const entries = Object.entries(value);
+  return entries.length === Object.keys(statisticLabels).length && entries.every(([key, count]) => Object.hasOwn(statisticLabels, key) && typeof count === 'number' && Number.isSafeInteger(count) && count >= 0);
+}
+function showStatistics(value: unknown): void {
+  if (!isStatistics(value)) throw new Error('Invalid search summary from the local engine.');
+  inspectionComplete = true; const target = element('inspection-counters'); target.replaceChildren();
+  for (const key of Object.keys(statisticLabels) as (keyof SearchStatistics)[]) {
+    const label = document.createElement('dt'), result = document.createElement('dd'); label.textContent = statisticLabels[key];
+    const count = value[key];
+    result.textContent = key.endsWith('_bytes') ? `${(count / 1048576).toFixed(2)} MiB` : key === 'eval_ns' ? `${(count / 1000000).toFixed(2)} ms` : key === 'elapsed_ms' ? `${count.toLocaleString()} ms` : count.toLocaleString();
+    target.append(label, result);
+  }
+  const average = value.eval_calls ? `${Math.round(value.eval_ns / value.eval_calls).toLocaleString()} ns per evaluator call.` : 'No evaluator calls were needed.';
+  element('inspection-note').textContent = `Final search counters. ${average} Cutoff categories can overlap; they are not percentages of total work.`;
+}
+function isTrace(value: unknown): value is SearchTrace {
+  if (typeof value !== 'object' || value === null || Array.isArray(value)) return false;
+  const record = value as Record<string, unknown>;
+  return ['depth', 'ply', 'alpha', 'beta'].every((key) => typeof record[key] === 'number' && Number.isSafeInteger(record[key])) && typeof record['synthetic'] === 'boolean' && typeof record['fen'] === 'string' && record['fen'].length <= 256;
+}
+function showTrace(value: unknown): void {
+  const target = element('inspection-traces');
+  if (!isTrace(value) || target.childElementCount >= 32) throw new Error('Invalid or excessive search samples.');
+  const sample = document.createElement('details'), title = document.createElement('summary'), detail = document.createElement('p'), fen = document.createElement('code');
+  title.textContent = `Sample ${target.childElementCount + 1}: depth ${value.depth}, ply ${value.ply}${value.synthetic ? ', null-search branch' : ''}`;
+  detail.textContent = `Window ${value.alpha} to ${value.beta} centipawns, from the side to move. `;
+  fen.textContent = value.fen; sample.append(title, detail, fen); target.append(sample); element('trace-count').textContent = String(target.childElementCount);
+}
+function cancel(): void {
+  if (inspectionPending && !inspectionComplete) element('inspection-note').textContent = 'Analysis stopped before final counters arrived. No completed summary is available.';
+  inspectionPending = false; active?.abort(); active = undefined; element<HTMLButtonElement>('cancel').disabled = true; element<HTMLButtonElement>('analyze').disabled = false; element('analysis-state').textContent = 'READY'; element('analysis-state').classList.remove('active');
+}
 async function selectNode(id: number, manual = true): Promise<void> {
-  if (manual) playing++; generation++; const version = generation; cancel(); current = id; selected = undefined; legal = []; variations.clear(); drawLines(); drawBoard(); drawMoves(); save();
+  if (manual) playing++; generation++; const version = generation; cancel(); resetInspection(); current = id; selected = undefined; legal = []; variations.clear(); drawLines(); drawBoard(); drawMoves(); save();
   const value = await api<PositionState>('state', { fen: node().fen, chess960: game.chess960 });
   if (version !== generation) return; legal = value.moves; drawBoard();
   status(value.moves.length ? (value.check ? 'Check. Find a legal reply.' : 'Select a piece or start an analysis.') : (value.check ? 'Checkmate.' : 'No legal moves.'));
@@ -140,10 +189,11 @@ function drawLines(): void {
 function movePath(): string[] { const path: string[] = []; let id = current; while (id) { const entry = node(id); path.push(entry.uci); id = entry.parent; } return path.reverse(); }
 async function startAnalysis(): Promise<void> {
   cancel(); const controller = new AbortController(); active = controller; const version = generation, capturedNode = current, capturedSide = node().fen.split(' ')[1];
+  resetInspection('Waiting for the finished search summary.'); const inspect = element<HTMLInputElement>('inspect-search').checked; inspectionPending = inspect;
   element<HTMLButtonElement>('cancel').disabled = false; element<HTMLButtonElement>('analyze').disabled = true; element('analysis-state').textContent = 'SEARCHING'; element('analysis-state').classList.add('active');
   const numeric = (id: string): number => Number(element<HTMLSelectElement>(id).value);
   try {
-    const response = await fetch('/api/analyze', { method: 'POST', signal: controller.signal, headers: { 'Content-Type': 'application/json', 'X-Caissa-Token': session.token, 'X-Caissa-Session': session.session }, body: JSON.stringify({ fen: game.initial, moves: movePath(), chess960: game.chess960, milliseconds: numeric('time'), threads: numeric('threads'), hash: numeric('hash'), multipv: numeric('multipv') }) });
+    const response = await fetch('/api/analyze', { method: 'POST', signal: controller.signal, headers: { 'Content-Type': 'application/json', 'X-Caissa-Token': session.token, 'X-Caissa-Session': session.session }, body: JSON.stringify({ fen: game.initial, moves: movePath(), chess960: game.chess960, milliseconds: numeric('time'), threads: numeric('threads'), hash: numeric('hash'), multipv: numeric('multipv'), inspect }) });
     if (!response.ok) { const error = await response.json() as { error: string }; throw new Error(error.error); }
     const reader = response.body?.getReader(); if (!reader) throw new Error('Analysis stream unavailable.');
     const decoder = new TextDecoder(); let buffer = '';
@@ -155,7 +205,10 @@ async function startAnalysis(): Promise<void> {
         const frame = buffer.slice(0, end); buffer = buffer.slice(end + 2);
         if (generation !== version || active !== controller) continue;
         const event = frame.split('\n').find((s) => s.startsWith('event: '))?.slice(7); const raw = frame.split('\n').find((s) => s.startsWith('data: '))?.slice(6); if (!raw) continue;
-        const data = JSON.parse(raw) as Line & { message?: string; move?: string };
+        const payload: unknown = JSON.parse(raw);
+        if (event === 'statistics') { if (inspect) showStatistics(payload); continue; }
+        if (event === 'trace') { if (inspect) showTrace(payload); continue; }
+        const data = payload as Line & { message?: string; move?: string };
         if (event === 'error') throw new Error(data.message ?? 'Engine analysis failed.');
         if (event === 'info') {
           variations.set(data.multipv ?? 1, data); drawLines(); element('depth').textContent = `${data.depth ?? 0} / ${data.seldepth ?? 0}`; element('nodes').textContent = (data.nodes ?? 0).toLocaleString(); element('nps').textContent = (data.nps ?? 0).toLocaleString();
@@ -189,6 +242,7 @@ function pgnText(): string {
   const child = node(0).children[0]; return output + (node(0).comment ? '{' + node(0).comment.replaceAll('}', ']') + '} ' : '') + (child === undefined ? '' : branch(child)) + game.result;
 }
 element('analyze').addEventListener('click', () => safe(startAnalysis)); element('cancel').addEventListener('click', () => { cancel(); status('Analysis stopped. The last completed lines are retained.'); });
+element('inspect-search').addEventListener('change', () => { cancel(); resetInspection(); });
 element('flip').addEventListener('click', () => { flipped = !flipped; drawBoard(); });
 element('reset').addEventListener('click', () => safe(async () => { game = emptyGame(); evaluations = []; drawHistory(); await selectNode(0); }));
 element('load-fen').addEventListener('click', () => safe(async () => { const chess960 = element<HTMLSelectElement>('variant').value === 'chess960'; const value = await api<PositionState>('state', { fen: element<HTMLInputElement>('fen').value, chess960 }); game = emptyGame(value.fen, chess960); evaluations = []; drawHistory(); await selectNode(0); }));

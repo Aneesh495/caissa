@@ -1,0 +1,42 @@
+event: started
+data: {"engine":"Caissa","evaluation":"classical","milliseconds":250}
+
+event: info
+data: {"depth":1,"seldepth":3,"multipv":1,"scoreType":"cp","score":32,"nodes":41,"time":0,"nps":41000,"hashfull":0,"pv":["b1c3"]}
+
+event: info
+data: {"depth":1,"seldepth":3,"multipv":2,"scoreType":"cp","score":28,"nodes":41,"time":0,"nps":41000,"hashfull":0,"pv":["d2d3"]}
+
+event: info
+data: {"depth":2,"seldepth":8,"multipv":1,"scoreType":"cp","score":12,"nodes":1287,"time":1,"nps":1287000,"hashfull":0,"pv":["b1c3","b8c6"]}
+
+event: info
+data: {"depth":2,"seldepth":8,"multipv":2,"scoreType":"cp","score":8,"nodes":1287,"time":1,"nps":1287000,"hashfull":0,"pv":["d2d3","b8c6"]}
+
+event: info
+data: {"depth":3,"seldepth":14,"multipv":1,"scoreType":"cp","score":38,"nodes":5860,"time":4,"nps":1465000,"hashfull":0,"pv":["b1c3","b8c6","c3d5"]}
+
+event: info
+data: {"depth":3,"seldepth":14,"multipv":2,"scoreType":"cp","score":24,"nodes":5860,"time":4,"nps":1465000,"hashfull":0,"pv":["d2d3","b8c6","b1c3"]}
+
+event: info
+data: {"depth":4,"seldepth":14,"multipv":1,"scoreType":"cp","score":12,"nodes":15856,"time":11,"nps":1441454,"hashfull":3,"pv":["b1c3","b8c6","c3d5","c6d4"]}
+
+event: info
+data: {"depth":4,"seldepth":14,"multipv":2,"scoreType":"cp","score":5,"nodes":15856,"time":11,"nps":1441454,"hashfull":3,"pv":["g1f3","d7d6","b1c3","b8c6"]}
+
+event: info
+data: {"depth":5,"seldepth":18,"multipv":1,"scoreType":"cp","score":28,"nodes":86756,"time":65,"nps":1334707,"hashfull":23,"pv":["g1f3","d7d6","b1c3","g8f6","d2d3"]}
+
+event: info
+data: {"depth":5,"seldepth":18,"multipv":2,"scoreType":"cp","score":20,"nodes":86756,"time":65,"nps":1334707,"hashfull":23,"pv":["d2d3","b8c6","g1f3","f7f6","b1c3"]}
+
+event: info
+data: {"depth":6,"seldepth":19,"multipv":1,"scoreType":"cp","score":12,"nodes":237592,"time":183,"nps":1298316,"hashfull":66,"pv":["g1f3","d7d6","b1c3","g8f6","d2d3","b8c6"]}
+
+event: info
+data: {"depth":6,"seldepth":19,"multipv":2,"scoreType":"cp","score":12,"nodes":237592,"time":183,"nps":1298316,"hashfull":66,"pv":["d2d3","b8c6","b1c3","g8f6","g1f3","d7d6"]}
+
+event: bestmove
+data: {"move":"g1f3"}
+

@@ -1,0 +1,18 @@
+{
+  "base_commit": "edc32086463b083dea21f823be06b7da98a0a971",
+  "files": {
+    ".github/workflows/ci.yml": "bd4af7a6119eb53681102d2df64d1fea96173eaca90b92873d70b50f7a92bbc7",
+    "analysis-service/native.ts": "ea876193031aec32396dc53291d856d1cae2667090ed0cc2af9a86c23f964c4b",
+    "analysis-service/server.ts": "267341886e6ea102ba3e255feac5db5427c80f3764cf06ba12968e0631f11c48",
+    "analysis-service/telemetry.ts": "e0bc8ad6bfc1f9511d3bacbd4411f61ddf95d56fdb061999954494ec7a0b1335",
+    "web/app.ts": "c09c38e7578f05b4b7c174758828a89e37a9034bd920f026485872f9d155ce3e",
+    "web/index.html": "0fa5a4ec18041bfa7220c98b59f7205ba4882c9d06dcb87aed696da8c9205649",
+    "web/style.css": "37c6b22cc12ea6a7d15b41f08d97af2b0377212505bdda1fe5d28f9751217f46",
+    "tests/search_inspection.mjs": "772101854bf9db6b53ac66199056526d73ce51ca1fdc1a86644f44f5ef5009ff",
+    ".gitattributes": "bfcc2efe9c6530ace37c76363d0302de8092a0b2521da6b64f5b57cfbea195e7"
+  },
+  "native_engine_sha256": "49057cfe1b03077c49085225cfb5e9dde7cead86c9dda92b6d6c3f9a60505da2",
+  "native_core_source": "d517a9f0557a7f10d119fa0a9d30acc19ee4aa62",
+  "scope": "Optional search inspector; actual native/service/browser development evidence, no final source or strength acceptance",
+  "full_acceptance": false
+}

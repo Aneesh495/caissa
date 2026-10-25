@@ -1,6 +1,7 @@
 import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process';
 import { createInterface } from 'node:readline';
 import { resolve } from 'node:path';
+import { parseStatistics, parseTrace } from './telemetry.js';
 
 export const enginePath = resolve(process.env['CAISSA_ENGINE'] ?? 'build/caissa');
 export class RequestError extends Error {
@@ -32,14 +33,14 @@ export async function nativeJson(args: string[], input = '', timeoutMs = 5000): 
     });
   } finally { commands--; }
 }
-export interface AnalysisRequest { fen: string; moves: string[]; chess960: boolean; threads: number; hash: number; multipv: number; milliseconds: number; }
+export interface AnalysisRequest { fen: string; moves: string[]; chess960: boolean; threads: number; hash: number; multipv: number; milliseconds: number; inspect: boolean; }
 export interface AnalysisHandle { cancel(): void; }
 let activeAnalysis = 0;
 export function analyze(request: AnalysisRequest, emit: (event: string, value: unknown) => boolean, done: () => void): AnalysisHandle {
   if (activeAnalysis >= 2) throw new RequestError('Two analyses are already running. Cancel one and retry.', 429);
   activeAnalysis++;
   const child = spawn(enginePath, [], { stdio: 'pipe' }); children.add(child);
-  let finished = false, initialized = false, closing = false;
+  let finished = false, initialized = false, closing = false, sawStatistics = false, traces = 0;
   const timeout = setTimeout(() => cancel(), request.milliseconds + 3000);
   let killTimer: ReturnType<typeof setTimeout> | undefined;
   function cleanup(): void {
@@ -58,16 +59,30 @@ export function analyze(request: AnalysisRequest, emit: (event: string, value: u
     if (closing && !line.startsWith('bestmove ')) return;
     if (line.length > 8192) { emit('error', { message: 'Oversized engine message.' }); cancel(); return; }
     if (line === 'uciok') {
-      child.stdin.write(`setoption name Threads value ${request.threads}\nsetoption name Hash value ${request.hash}\nsetoption name MultiPV value ${request.multipv}\nsetoption name UCI_Chess960 value ${request.chess960}\nisready\n`);
+      child.stdin.write(`setoption name Threads value ${request.threads}\nsetoption name Hash value ${request.hash}\nsetoption name MultiPV value ${request.multipv}\nsetoption name UCI_Chess960 value ${request.chess960}\nsetoption name Search Stats value ${request.inspect}\nsetoption name Trace Samples value ${request.inspect ? 8 : 0}\nisready\n`);
     } else if (line === 'readyok' && !initialized && !closing) {
       initialized = true;
       child.stdin.write(`position fen ${request.fen}${request.moves.length ? ' moves ' + request.moves.join(' ') : ''}\ngo movetime ${request.milliseconds}\n`);
       emit('started', { engine: 'Caissa', evaluation: 'classical', milliseconds: request.milliseconds });
     } else if (line.startsWith('info depth ')) {
       if (!emit('info', parseInfo(line))) cancel();
+    } else if (request.inspect && (line.startsWith('info string stats ') || line.startsWith('info string trace '))) {
+      try {
+        if (line.startsWith('info string stats ')) {
+          if (sawStatistics) throw new Error('Duplicate search summary.');
+          const statistics = parseStatistics(line); sawStatistics = true;
+          if (!emit('statistics', statistics)) cancel();
+        } else {
+          if (!sawStatistics || ++traces > 8 * request.threads) throw new Error('Search samples exceed the requested limit.');
+          if (!emit('trace', parseTrace(line))) cancel();
+        }
+      } catch (error) {
+        emit('error', { message: error instanceof Error ? error.message : 'Invalid search inspection.' }); cancel();
+      }
     } else if (line.startsWith('info string error ')) {
       emit('error', { message: line.slice(18) }); cancel();
     } else if (line.startsWith('bestmove ')) {
+      if (request.inspect && !sawStatistics) emit('error', { message: 'Engine ended without the requested search summary.' });
       emit('bestmove', { move: line.split(' ')[1] }); cancel();
     }
   });

@@ -1,0 +1,9 @@
+event: started
+data: {"engine":"Caissa","evaluation":"classical","milliseconds":30000}
+
+event: info
+data: {"depth":1,"seldepth":3,"multipv":1,"scoreType":"cp","score":32,"nodes":41,"time":0,"nps":41000,"hashfull":0,"pv":["b1c3"]}
+
+event: info
+data: {"depth":1,"seldepth":3,"multipv":2,"scoreType":"cp","score":28,"nodes":41,"time":0,"nps":41000,"hashfull":0,"pv":["d2d3"]}
+
