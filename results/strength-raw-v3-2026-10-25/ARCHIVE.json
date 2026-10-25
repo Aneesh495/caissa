@@ -1,0 +1,60 @@
+{
+  "format": "concatenated40MiBparts of deterministicgzip/tar",
+  "parts": [
+    {
+      "path": "all-strength-raw.tar.gz.part-000",
+      "bytes": 41943040,
+      "sha256": "854ffe3b52952dca1ba8a71182ccec3eeb85f770498fd9ca839f11800ed6da6c"
+    },
+    {
+      "path": "all-strength-raw.tar.gz.part-001",
+      "bytes": 41943040,
+      "sha256": "5093caa7be058054da620be32a2a1fc23d09001df5a519dfd692312621e485e9"
+    },
+    {
+      "path": "all-strength-raw.tar.gz.part-002",
+      "bytes": 41943040,
+      "sha256": "52ceb32f5846a6c5d650bbcb4cd79ce9c15696e5f186b90d4ec463851e7c73b9"
+    },
+    {
+      "path": "all-strength-raw.tar.gz.part-003",
+      "bytes": 41943040,
+      "sha256": "b57996f22564d485562fa755db7d9c3540e19a65c875963ac43d19c77e3653e8"
+    },
+    {
+      "path": "all-strength-raw.tar.gz.part-004",
+      "bytes": 41943040,
+      "sha256": "0d88da79503972051bdee72365379d9754421c46dc553451939d5f70dda81ba9"
+    },
+    {
+      "path": "all-strength-raw.tar.gz.part-005",
+      "bytes": 41943040,
+      "sha256": "d3d70b10ae634de943c56522744728b532549d1419c9aa6c791a5d42739fee70"
+    },
+    {
+      "path": "all-strength-raw.tar.gz.part-006",
+      "bytes": 41943040,
+      "sha256": "2692116eaea3177ec8f6801c5ef5c69c3a4dccd0798d5bcfa18267dd8a471168"
+    },
+    {
+      "path": "all-strength-raw.tar.gz.part-007",
+      "bytes": 41943040,
+      "sha256": "1dfb795bf976b1325cc520285d1c1cf8e058a6cd087803c3a86100b4bffafe70"
+    },
+    {
+      "path": "all-strength-raw.tar.gz.part-008",
+      "bytes": 41943040,
+      "sha256": "c72c9b4215043c9a5d8fbe4cb5c5b19ce79a237b50d4c47216a96d5ed02c3659"
+    },
+    {
+      "path": "all-strength-raw.tar.gz.part-009",
+      "bytes": 2533044,
+      "sha256": "2aede553b9e46d1901d1d876a27b8c0940855571eb151838b92f70f40f267072"
+    }
+  ],
+  "archive_sha256": "158dfc20d14ceede3551387f91c7d06199771693360a275f0d387aeea3b991d8",
+  "compressed_bytes": 380020404,
+  "raw_index_sha256": "08d0c2508fcfbd06da4a39417bb988f933d7c8e62011794143edbc6417389b15",
+  "maximum_pack_seconds": 300,
+  "full_acceptance": false
+}
