@@ -1,0 +1,84 @@
+name: native state sanitizers
+on:
+  push:
+    paths:
+      - '.github/workflows/native-state-sanitizers.yml'
+      - 'CMakeLists.txt'
+      - 'src/**'
+      - 'include/**'
+      - 'apps/**'
+      - 'tests/*_test.cpp'
+permissions:
+  contents: read
+concurrency:
+  group: native-state-sanitizers-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  instrumented:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+        instrumentation:
+          - kind: address-undefined
+            flag: CAISSA_SANITIZE
+            marker: -fsanitize=address,undefined
+          - kind: thread
+            flag: CAISSA_TSAN
+            marker: -fsanitize=thread
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    env:
+      UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+      TSAN_OPTIONS: halt_on_error=1
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pinned independent oracle
+        run: python -m pip install numpy==2.2.6 chess==1.11.2
+      - name: Build instrumented native source
+        run: |
+          cmake -S . -B build-state -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -D${{ matrix.instrumentation.flag }}=ON
+          cmake --build build-state -j 2
+          mkdir -p runs
+          ctest --test-dir build-state --show-only=json-v1 > runs/native-state-cases.json
+      - name: Verify actual compile flags and program inventory
+        env:
+          SANITIZER_MARKER: ${{ matrix.instrumentation.marker }}
+        run: |
+          python - <<'PY'
+          import hashlib, json, os
+          from pathlib import Path
+          commands = json.loads(Path('build-state/compile_commands.json').read_text())
+          assert commands and all(os.environ['SANITIZER_MARKER'] in row['command'] for row in commands)
+          cases = json.loads(Path('runs/native-state-cases.json').read_text())['tests']
+          expected = {'version','core','position','rules','evaluation','table','search','notation','uci','position_line','kernels','dense_kernels','neural_bounds','evaluation_cache','tactical_generation','search_context','lmr_window','network_precision','accumulator_stack','state_probe'}
+          assert len(cases) == 20 and {case['name'] for case in cases} == expected
+          files = sorted({case['command'][0] for case in cases})
+          record = {'source_commit':os.environ['GITHUB_SHA'],'instrumentation':os.environ['SANITIZER_MARKER'],'programs':{name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in files},'full_acceptance':False}
+          Path('runs/native-state-programs.json').write_text(json.dumps(record,indent=2)+'\n')
+          PY
+      - name: Native cases and independent real-state rejection controls
+        run: |
+          ctest --test-dir build-state --output-on-failure
+          python -m tests.restoration_replay --engine build-state/caissa --output runs/native-state-restoration
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-state-${{ matrix.os }}-${{ matrix.instrumentation.kind }}-${{ github.run_id }}
+          path: |
+            runs/native-state-cases.json
+            runs/native-state-programs.json
+            runs/native-state-restoration/*.json
+            runs/native-state-restoration/*.jsonl
+            runs/native-state-restoration/*.log
+            runs/native-state-restoration/producer/
+            runs/native-state-restoration/independent/RESTORATION.json
+            build-state/compile_commands.json
+            build-state/CMakeCache.txt
+            build-state/Testing/Temporary/LastTest.log
+            build-state/caissa
+            build-state/*_test
+          retention-days: 14
