@@ -1,0 +1,6 @@
+{
+  "initial_copy_interpreter": "system python3",
+  "initial_copy_error": "ModuleNotFoundError: No module named chess",
+  "preserved_completed_copies": true,
+  "recovery": "Use existing project Python; standard-library hashing; no model campaign or scope restarted"
+}

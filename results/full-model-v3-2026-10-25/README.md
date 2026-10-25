@@ -1,0 +1,9 @@
+# Full model v3
+
+All three original seeds completed 20000 optimizer updates on 10578434 distinct training inputs. Independent verification recomputed 240 saved checkpoint validation losses on 8192 predeclared identities and checked 12288 original classical baselines. No test arrays were opened. Validation selected seed 73 at step 2750, loss 0.402051 versus its untrained 0.410214. Later checkpoints overfit and remain retained in the local immutable campaign. Neither lower loss nor training volume establishes Elo.
+
+The 100000-position numerical sample failed its frozen 32 cp maximum float-to-integer error limit. Native/scalar/reference integer outputs agree, but the actual maximum float32 discrepancy was 57.055664 cp, mean 4.830463 and p99 19.420804. Independent float64 recomputation found 57.055354 cp maximum and confirmed the failure. No output clipping concealed these errors. The selected model completed 1000000 state-restoration transitions.
+
+`selected.cai` is the exact failed-numerical experimental network, SHA256 `c251670ec53ba38a680c16cc6199be48f89cc829dd5483197e6d4b39ac6debf6`. It is not installed as the default evaluator or declared release-ready. The planned fixed 4000-game neural and 2000-game external sequence still measures its strength, retaining the numerical failure regardless of match outcome. The original classical comparison remains unchanged.
+
+The original model scope closed at 1077.70 active seconds within its 21600-active/86400-wall ceiling. These compact records include the actual failures, selection, all per-seed observations and independent learning receipt. Full optimizer/checkpoint files and 100000 raw numerical observations remain under the local source-bound campaign; this compact publication alone cannot reproduce missing raw inputs. Complete portable evidence and all remaining gates are release requirements.
