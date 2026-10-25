@@ -1,0 +1,320 @@
+{
+  "modes": {
+    "asan": {
+      "binaries": {
+        "bin/asan/caissa": "2b12d681e875bd7447408f03e39453564fe163692ab2064339ab87aedcd6f953",
+        "bin/asan/core_test": "cce88fa8d9ada735da687cf96efd0e7d9034b103d7c03638cbecd783a7c9fdcc",
+        "bin/asan/dense_kernel_test": "d6e92cfa477a9314a39007873b2cb9fef4ef9db5b561d9b7bfe5d345faf47dd7",
+        "bin/asan/evaluation_cache_test": "7768a30813e98e0d3c48a5802a52a3f457107276b4d10dac324d759aa8f13992",
+        "bin/asan/evaluation_test": "1a44281f08cf2d66a68e45168e81f08442a040762622256a4cb9a0a879b5e969",
+        "bin/asan/kernel_test": "b58de89829940baa30e955affb04613826d015bed2c5b3d15ab47e2bed38fd5f",
+        "bin/asan/lmr_window_test": "7a788f04c9bb2ce9f5fece3a2f9e9ca26d85b73d6a3dcb553ba4fd19127cd96b",
+        "bin/asan/network_precision_test": "5a1dd0139781e251bf3026a26f7c6b349b8d8921a582c397ec1c0aba6fdcf5c5",
+        "bin/asan/network_test": "17e05ffb5db365d50f27b7efb186469f8555dee34571ee70cd111c59fb0d4b35",
+        "bin/asan/neural_bounds_test": "49465678b8faa4ea358c78f47aaa04494c2a496ba47f4ce94e1e9bfaa5f95936",
+        "bin/asan/notation_test": "fb17e8492dad6da01a18b8893d0f41b4d7e8e91fd658c288863f92c3750bfd78",
+        "bin/asan/position_line_test": "f013f72bfbaff6050adf53864187ae2f7057d6e43c44593c60243d9b45d2c447",
+        "bin/asan/position_test": "e18aa16f5e0454f4d926de4fab4d648890df8015014c5d2c0491fc8c646710db",
+        "bin/asan/rules_test": "b0b63ce2b25c70d1f7ee5af22e4601edd3c563b3bd62c4fe71a3a50b1e434998",
+        "bin/asan/search_context_test": "6af62e221d97d5109ad3bb49c39ef4a4743d7c689e832fa1f192c4f780f109b0",
+        "bin/asan/search_test": "2ba65050bed6c8455c26ac640f9797f522d42ac24c5e342ab83366dcb4d67b16",
+        "bin/asan/table_test": "b2fa891b217a861feda475aa0882254b8a0dcb6a3a374f4cf4eb5f8568b94821",
+        "bin/asan/tactical_generation_test": "0ace0d94ed0618c0ab8bf58bf6f0392c3486fc90d292eb44e69ddac8a14a1620",
+        "bin/asan/uci_test": "31e079f4e8cc798f773ab7a0cef475dfab88220d03f2f3f88b9b921693a9351d"
+      },
+      "cases": {
+        "core": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/core_test"
+        ],
+        "dense_kernels": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/dense_kernel_test"
+        ],
+        "evaluation": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/evaluation_test"
+        ],
+        "evaluation_cache": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/evaluation_cache_test",
+          "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai",
+          "/Users/runner/work/caissa/caissa/models/diagnostic-v2.cai"
+        ],
+        "kernels": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/kernel_test"
+        ],
+        "lmr_window": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/lmr_window_test"
+        ],
+        "network_precision": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/network_precision_test"
+        ],
+        "neural_bounds": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/neural_bounds_test",
+          "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai"
+        ],
+        "notation": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/notation_test"
+        ],
+        "position": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/position_test"
+        ],
+        "position_line": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/position_line_test"
+        ],
+        "rules": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/rules_test"
+        ],
+        "search": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/search_test"
+        ],
+        "search_context": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/search_context_test"
+        ],
+        "table": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/table_test"
+        ],
+        "tactical_generation": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/tactical_generation_test",
+          "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai",
+          "/Users/runner/work/caissa/caissa/models/diagnostic-v2.cai"
+        ],
+        "uci": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/uci_test"
+        ],
+        "version": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-asan/caissa",
+          "--version"
+        ]
+      }
+    },
+    "release": {
+      "binaries": {
+        "bin/release/caissa": "3486153f001414aef60688a73e434800f681401b891869dde8f4fb82d7695eee",
+        "bin/release/core_test": "a393f56e79e791acaf779ca7756214e94fd2126a778c7e7b02f54a15b6617553",
+        "bin/release/dense_kernel_test": "83dd7f47c27b5c06d8c3673507fb2777ddae00aaeeed27f7a33a1f965ccec798",
+        "bin/release/evaluation_cache_test": "5b7aedc6ddbea20865eb45f5a67fc4a26d84ef94271e4ca86035f6f7f7c62bdf",
+        "bin/release/evaluation_test": "498abfaa083ede782e925d36158ed812c53dbefa42ec217f9966528098b6c6d5",
+        "bin/release/kernel_test": "a77a2d8dff5a1343cd48c3c8c0d8c0513075eac28f129239730cceb413e778a0",
+        "bin/release/lmr_window_test": "d945e8d25db5274ed47d0f6edcef087c2415b79e865e8fb60ed4b9fca53ef23e",
+        "bin/release/network_precision_test": "d59461197fff2f2ab0c94a484e3815aabda0a4c14de56c3c47bc29686b41b0bd",
+        "bin/release/network_test": "470e4950a205b95d28a91e3a8287e85bb6788ce9817021195c9a012bcf4eb71a",
+        "bin/release/neural_bounds_test": "ef3dee725ee26068bc9f3c2220f0c89d31f809166ba3fab6023bd11e04ca389c",
+        "bin/release/notation_test": "197d7bfb31609b41eef05774623176ce063f3ea1f2d25126026a32dbf3592be4",
+        "bin/release/position_line_test": "b54b27847eba6aa95ff6da8f52ce918197e158d95c51bccb1fda24dc75d472e3",
+        "bin/release/position_test": "fa2afb75c684671707487a6fec0aa7621a0d4a65b7c5b7165ca3132741bde769",
+        "bin/release/rules_test": "721dce7261c3b14a2bce027e9cbe2fb4e655a2aa3e38d048fc811233be6e7b25",
+        "bin/release/search_context_test": "bd89ed3da38fd99f7c1dd572686ef24f480115e049c439f55ebf43bb1905100c",
+        "bin/release/search_test": "7834af78c86321aac6eccb9ce82fb0cedf62e63504bc85da4128eedda8bf4aed",
+        "bin/release/table_test": "2cd31147a357f5ec8336830b4d7de6dd4e4dd25c5fc5aa4ce9597e0a719180cf",
+        "bin/release/tactical_generation_test": "10c1cc949fbba071f722c584a64fcf219c1a79961aad3fb01a6d3dbfa7284ab7",
+        "bin/release/uci_test": "70db6fee6c357c2a9faed717ebe28b37117e732cf942d3001b40bcf621d65c91"
+      },
+      "cases": {
+        "core": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/core_test"
+        ],
+        "dense_kernels": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/dense_kernel_test"
+        ],
+        "evaluation": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/evaluation_test"
+        ],
+        "evaluation_cache": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/evaluation_cache_test",
+          "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai",
+          "/Users/runner/work/caissa/caissa/models/diagnostic-v2.cai"
+        ],
+        "kernels": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/kernel_test"
+        ],
+        "lmr_window": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/lmr_window_test"
+        ],
+        "network_precision": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/network_precision_test"
+        ],
+        "neural_bounds": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/neural_bounds_test",
+          "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai"
+        ],
+        "notation": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/notation_test"
+        ],
+        "position": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/position_test"
+        ],
+        "position_line": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/position_line_test"
+        ],
+        "rules": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/rules_test"
+        ],
+        "search": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/search_test"
+        ],
+        "search_context": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/search_context_test"
+        ],
+        "table": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/table_test"
+        ],
+        "tactical_generation": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/tactical_generation_test",
+          "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai",
+          "/Users/runner/work/caissa/caissa/models/diagnostic-v2.cai"
+        ],
+        "uci": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/uci_test"
+        ],
+        "version": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-release/caissa",
+          "--version"
+        ]
+      }
+    },
+    "tsan": {
+      "binaries": {
+        "bin/tsan/caissa": "cc67ccaaeee71da75a3fcf10461ff409d4e986300bc21f82c9e6a9136fd82f5e",
+        "bin/tsan/core_test": "27e52fa633b7a8a7c8f8cb6846b987ae075dece154674e761f10a5fade75ee8b",
+        "bin/tsan/dense_kernel_test": "81576908f389f749aa41ad577cd1a0cc24d9a0d213095a0514a9f753de6a7dc6",
+        "bin/tsan/evaluation_cache_test": "c805c3e630fab266bc8075f95e2cb6ecb0a3dff073eaf208e2af681c47199cfd",
+        "bin/tsan/evaluation_test": "ee89f005a5e5b5622f1bf58f5715d07ea0ea0e66fdd7397ca6797234fdd01417",
+        "bin/tsan/kernel_test": "b3f534f57391877ad6c3a693ffd15eb4650450ad8709c47ff186727068b38df1",
+        "bin/tsan/lmr_window_test": "c4761248ca10fcc15d247761cbb3ab646c974139d8707f604366b3d43f95c5fc",
+        "bin/tsan/network_precision_test": "4472aead62edb1b81d79ceffe37875637636e574afb21861fc2f2b01a6a87c8f",
+        "bin/tsan/network_test": "3b91327f235b44b20b331ff1397866d57c4740e8b30b52015ff4cf27455a232f",
+        "bin/tsan/neural_bounds_test": "e484fc1f8a8b9243b5dea28aa66eddcfd488b2e8fab5f9cc3a3f52e350c8d0af",
+        "bin/tsan/notation_test": "c75e7f5431b7f6c3ab4b9e156fe80ec8deafe88df3e9cc3995365f3fad50fd76",
+        "bin/tsan/position_line_test": "a0e241f2bd740b7c273c25f2a6e380993caab29f3029cb3dd04f9ceb0382f224",
+        "bin/tsan/position_test": "589e08fe2ead97af2683bcfc720e4baf6ccd048aa9dbabcfbcc5ce79a976aa50",
+        "bin/tsan/rules_test": "416bc0ff8521f760fc2b413b34f52f4032d0e7df3adc80eda7dd7ba2e5404e9c",
+        "bin/tsan/search_context_test": "f49965ebee4888affa8e4552aa0ce39d0dfd28a4595b228f72c05be93894beba",
+        "bin/tsan/search_test": "5515d20b178c225604dcfea447584001549e9dc1be73fe631042b5fe4a256a18",
+        "bin/tsan/table_test": "599628282b04994d7bee91ffea7a0186a6237a80b89cbc38a4bcd0407bfd8bf7",
+        "bin/tsan/tactical_generation_test": "397bf7f9bcc0ec39dd09c9424e3c6846c96b67b6afe8feb46c736695fd79fa20",
+        "bin/tsan/uci_test": "2bf45bd25a15390ae5fbce91744dae959cc420aa1e333994a768e4c7112086d0"
+      },
+      "cases": {
+        "core": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/core_test"
+        ],
+        "dense_kernels": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/dense_kernel_test"
+        ],
+        "evaluation": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/evaluation_test"
+        ],
+        "evaluation_cache": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/evaluation_cache_test",
+          "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai",
+          "/Users/runner/work/caissa/caissa/models/diagnostic-v2.cai"
+        ],
+        "kernels": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/kernel_test"
+        ],
+        "lmr_window": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/lmr_window_test"
+        ],
+        "network_precision": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/network_precision_test"
+        ],
+        "neural_bounds": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/neural_bounds_test",
+          "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai"
+        ],
+        "notation": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/notation_test"
+        ],
+        "position": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/position_test"
+        ],
+        "position_line": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/position_line_test"
+        ],
+        "rules": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/rules_test"
+        ],
+        "search": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/search_test"
+        ],
+        "search_context": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/search_context_test"
+        ],
+        "table": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/table_test"
+        ],
+        "tactical_generation": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/tactical_generation_test",
+          "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai",
+          "/Users/runner/work/caissa/caissa/models/diagnostic-v2.cai"
+        ],
+        "uci": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/uci_test"
+        ],
+        "version": [
+          "/Users/runner/work/caissa/caissa/build-precision-followup-tsan/caissa",
+          "--version"
+        ]
+      }
+    }
+  },
+  "source_commit": "bebc3119b8c0022e307360a0a48ee2714f5f8f08",
+  "source_files": {
+    "CMakeLists.txt": "ff037f6658afc995067cca89b413ef94a86db58463e58a62f16ffe6f2fa19709",
+    "apps/main.cpp": "06db05b8ccc77aa10351bd5facc2ac72418c5417a63b646981ed5e48df548c08",
+    "include/caissa/attacks.hpp": "b2899e24105dbca2e10951d428023d6503502546ff57e82b5414bcc3459f7843",
+    "include/caissa/evaluation.hpp": "409dc019ade17c44ac7a18cf6fb3b093104773d6141555741c4d1166f9486f35",
+    "include/caissa/evaluation_cache.hpp": "dd41ecc1007211ffbd253ba775553467d2f0fa06f277d3691037b8b63c9def28",
+    "include/caissa/network.hpp": "9f0c6f74dfb6b9d61c728095df88246d2b77de99f57f99cf296c6d1d2bb7d6d9",
+    "include/caissa/notation.hpp": "cacdf1045f51bd8636f6e86741aa419c00aa8df14d7629074cff86361dc64090",
+    "include/caissa/position.hpp": "1bb31b83fed35a44fa3cf98f7a2ce60a8cfe7b4a4dcf2f6f0d116862c5b99cde",
+    "include/caissa/position_line.hpp": "d7723f5bac2b9af099d854f87d2098f1db366d785531130a6a89a5017c5924d1",
+    "include/caissa/protocol_io.hpp": "d168ccb5b19c3a66bdc5c6d14cb9925e9311b0748e3b1c0eb25a9381c9e346b1",
+    "include/caissa/reference.hpp": "2d4de68682d0c33f19c37e73b33ab3c39046c106a7448ec41b31d3a5a2fee56f",
+    "include/caissa/rules.hpp": "4a6122d759c4100851730f7940aa3b7b80a811d3b9a323093a56cee4663c5fd6",
+    "include/caissa/search.hpp": "51515e03686b9721d48522db47f3c3d66cb782880e9a71f34a9367fb50fd13e4",
+    "include/caissa/selfplay.hpp": "e18596e3704f26c254dacd17bd86543ddfbc2eaf77f1c8bc9ed61f18313d65e6",
+    "include/caissa/serialization.hpp": "8b4f7e786e048f33f3de126a00974e9561f0eed01da9260a46cc01315464c49d",
+    "include/caissa/table.hpp": "30d6f28f9e332ec28a1b91ecb328ddc0c982bb58f2985811945f1227c8d5b357",
+    "include/caissa/thread.hpp": "a27d03f0af2fc38f81f04ce5a4d475a023e2d6f78f74daa9135367a76c461016",
+    "include/caissa/types.hpp": "47f5b3c4d9f4681abfe8427efd85e35dd00fe3ecea5d262b23759c70c0c05216",
+    "include/caissa/uci.hpp": "aff60ae7c3cdbcd8cfd96dc37c3f3142c73dc0035cb3f460b45b87f6b9d28941",
+    "include/caissa/version.hpp": "c0ae9921991b101cacf4b48076f21636990ef85529d1c73205c0fe312bb6b06a",
+    "models/diagnostic-v2.cai": "3784cff98c0e5a671efb63f4d971b8e0ca676c7789d12bd9d64eb7170ce85c58",
+    "models/residual-prefix-diagnostic.cai": "580ea83d33f54426981adc072042d4555bf26259a859ddafbc0bb0eb2f7b8926",
+    "src/attacks.cpp": "4cf65c477a3f2d6c318e6af41d7d7b3fb5fbd913a8afd405d99645cdf59ce224",
+    "src/evaluation.cpp": "61e31349d81e9126cc13496bd92b7c626283fbadfc825e6dd0de5cd090c30fc3",
+    "src/movegen.cpp": "7355985f72cd0ad3d1e765262c62836e209245a365569efc2a058cf0d6951245",
+    "src/network.cpp": "abaeee9da3a88b99632050c17cfbe1167c3b9706553c0bae2fbcc3601e389171",
+    "src/network_kernel.cpp": "7817152018451c92a1a1a56cf0e5c50e64090d86cea7506a1f609b71f70c325c",
+    "src/notation.cpp": "f76a1aba81d177d2f4d056060f21f28ece4a20c24b4eb26c84f1aaeb807fec3a",
+    "src/position.cpp": "3acf7e8a3b3a9bdad4405523991101aa9ac3e9a837f4c8c7cdab455e506572c5",
+    "src/position_line.cpp": "7950db2476e25e9803e2b0e923bd535cf9d8435cddc513e43f4f75262f7d74bc",
+    "src/protocol_io.cpp": "9b96a0c26e27561b7f0f240125674b6813cc779f2a8799f4574569ccb965b87e",
+    "src/reference.cpp": "a662b94a4d9301885da097770b5729efe7d31ecf916d9d7c142ec90a10c47648",
+    "src/rules.cpp": "8559c3d57fbcc61be7cc8ca543ca90be833b5dab899f112d871ce9b1eb167b1c",
+    "src/search.cpp": "7cf3e71beb1d7a9fddd693b8a9f279e8ee0d8c58961cf25028d0f62c8eb0636d",
+    "src/selfplay.cpp": "c91e30b72628ea4dc6f219937da7b91f5e38e178926efb52eeed4ad68a98e3a9",
+    "src/serialization.cpp": "586eaaf43b00459c70d19d2d9bc8c6604e63b9eb915a7368b4be5943f283616b",
+    "src/table.cpp": "8ce0493211d7dc840300eb23564850b500d2aabb05298aa30078e65e385d799d",
+    "src/uci.cpp": "7e8bd6499df547302d9d9df2735e2419f9e75b1ff7a140163895ecb6a6a51438",
+    "src/version.cpp": "e80d7d88231aba880acdc82abb226dbd16543ad56a0485aad9b8763e1da28ca8",
+    "tests/core_test.cpp": "bac7cf6354746458f5d73d1d704e9405b211511c69801649b858a9e30c0ec807",
+    "tests/dense_kernel_bench.cpp": "67f4ac7339b92594d1328dc8371eafae8e8316889a18ef5abddea494bbb958fb",
+    "tests/dense_kernel_test.cpp": "2900e8d46c4b819fa7ed168c81f0c39f4195880385e4c99aebde6e15e373249c",
+    "tests/evaluation_cache_test.cpp": "8117c19516ae5ec46c52250a6d4dd35a9cb31df7286c09b0360348a968b1381d",
+    "tests/evaluation_test.cpp": "0330b76becddbf3a4bc11da894897cf2b205713d1092e436fe95c2652238eaa5",
+    "tests/kernel_test.cpp": "d43ced2230fa6cd48402abc6468eb67efc59d603f42b8702d567ae2bf1c6c936",
+    "tests/lmr_window_test.cpp": "a47ff9687e8640fc1a8e2eef8d74675686c8b7c0119c22eab95605a11ac97b9d",
+    "tests/network_precision_test.cpp": "e98b9ec20516c7c365d95356e53af9778019c1b0540d3296518e149ca4652d37",
+    "tests/network_test.cpp": "de0040f9dd5b257d8b13d7612e91730fac0b962ae3223dcc06c99e9fb4d0c3c8",
+    "tests/neural_bounds_test.cpp": "bd9b4ee55165351edcc2dc3fabb997fdefe517d9503f6080e3a2b83934420762",
+    "tests/notation_test.cpp": "418e424f563ad2d2b1fe2230007fa46df86e6262914d743b595c7baf3064fa1f",
+    "tests/position_line_test.cpp": "a6b1a966a01f87758aa90f382694c63dff483ef3dd89511080c86d81b7c4dd06",
+    "tests/position_test.cpp": "aaa75d2d0079aabcbbfa7be5a9bd065aea0b1250010ad29c731d0a45437ed7f5",
+    "tests/rules_test.cpp": "f574f6d1c69439f804046a0f3bdd9c1e5976910b0f42e0ee662287062b92bdaa",
+    "tests/search_context_test.cpp": "accddf7be7e5120a16e67e57bcd454da999f8f420597a444f062e809ed46c283",
+    "tests/search_test.cpp": "b95c296b3ea29640e5e5d82b41c1ac1a4c04a924ae527e5632f53e361178e284",
+    "tests/table_test.cpp": "badbc14728d21687427ac0583ef2552ab266d5aa7505970dc1381b49f48d781e",
+    "tests/tactical_generation_test.cpp": "24f5ed4fed400b961733720fd4b8c40656ec8361a80734fd08f345520f9b60a1",
+    "tests/uci_test.cpp": "3f8e83494c78d6ac2b55ae2402b0e192cd4289fe81f75a70ce441fa536d17117"
+  }
+}

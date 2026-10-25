@@ -53,12 +53,13 @@ See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution w
 
 | Check | Observed result | Scope |
 |---|---|---|
-| Full data reconstruction | 229582 completed original games; 10578434 distinct training inputs; every exported row independently rebuilt | [Data domain passed](results/full-data-2026-10-25/README.md); learning and strength remain pending |
+| Full data reconstruction | 229582 completed original games; 10578434 distinct training inputs; every exported row independently rebuilt | [Data domain passed](results/full-data-2026-10-25/README.md); strength remains pending |
+| Original learning | Three seeds completed 20000 updates each; all 240 checkpoints independently evaluated | [Validation-only selection](docs/MODEL_CARD.md); no test access or Elo conclusion |
 | Rules | 20 perft fixtures; 100000-position differential campaigns with zero disagreements | Development executables |
-| State restoration | 1000000 seeded transitions, incremental/full accumulator agreement | Diagnostic network |
+| State restoration | 1000000 seeded transitions per Release/ASan+UBSan/TSan mode, independently replayed | [Selected q4096 network, both platforms](results/precision-v4-followup-2026-10-25/README.md) |
 | Protocol | 10000 adversarial sequences; recorded stop p99 below 50 ms | Frozen local host/load |
-| Integer inference | 100000 independent probes, bit-identical scalar/native/reference outputs | Saved diagnostic v2 network |
-| Float/integer error | Maximum 11.37 cp, mean 1.57 cp | Diagnostic measurement, no full-model bound |
+| Integer inference | 100000 probes, bit-identical scalar/native/reference outputs | [Selected q4096 encoding](docs/notes/precision-v4.md), both platforms |
+| Float/integer error | Maximum 10.395 cp, mean 1.108 cp, unchanged limit 32 cp | Same selected float checkpoint; original q1024 failure retained |
 | Warm Stockfish 19 unrestricted | 0 wins, 0 draws, 48 losses | 20 ms/move, small paired diagnostic |
 | Larger neural pilot versus classical | 4 wins, 8 draws, 84 losses | 2000 nodes/move, diagnostic data split |
 

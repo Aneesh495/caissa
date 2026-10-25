@@ -1,28 +1,7 @@
 name: precision v4
 on:
-  push:
-    paths:
-      - '.github/workflows/precision-v4.yml'
-      - 'config/precision-v4.json'
-      - 'src/network.cpp'
-      - 'src/network_kernel.cpp'
-      - 'include/caissa/network.hpp'
-      - 'training/model.py'
-      - 'training/export.py'
-      - 'verification/learning.py'
-      - 'verification/network_bytes.py'
-      - 'verification/numerical.py'
-      - 'tools/network_audit.py'
-      - 'tools/precision_audit.py'
-      - 'tools/precision_followup.py'
-      - 'verification/deployment_loss.py'
-      - 'verification/precision_systems.py'
-      - 'config/precision-v4-followup.json'
-      - 'tests/precision_export.py'
-      - 'tests/network_precision_test.cpp'
-      - 'tests/dense_kernel_test.cpp'
-      - 'tests/kernel_test.cpp'
-      - 'results/precision-v4-inputs/**'
+  # The frozen three-execution profile is complete. Its original deadline and
+  # cumulative guard remain enforced; ordinary pushes cannot renew this scope.
   workflow_dispatch:
 permissions:
   contents: read

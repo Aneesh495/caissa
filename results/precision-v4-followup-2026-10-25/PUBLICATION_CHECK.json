@@ -1,0 +1,50 @@
+{
+  "status": "passed saved-evidence cross-checks",
+  "observations": {
+    "first-followup/linux": {
+      "validation_rows": 8192,
+      "untrained_loss": 0.41021441125063524,
+      "deployed_loss": 0.40204926053221907,
+      "source_commit": "2fbac399b14bc6e0c51f92e812883abf22f44506",
+      "playing_strength_measured": false
+    },
+    "first-followup/macos": {
+      "validation_rows": 8192,
+      "untrained_loss": 0.41021441125063524,
+      "deployed_loss": 0.40204926053221907,
+      "source_commit": "2fbac399b14bc6e0c51f92e812883abf22f44506",
+      "playing_strength_measured": false
+    },
+    "independent-followup/linux": {
+      "validation_rows": 8192,
+      "untrained_loss": 0.41021441125063524,
+      "deployed_loss": 0.40204926053221907,
+      "source_commit": "bebc3119b8c0022e307360a0a48ee2714f5f8f08",
+      "playing_strength_measured": false,
+      "independent_native_cases": 54,
+      "independent_transitions_per_mode": 1000000,
+      "independent_seconds": 490.1367738099999,
+      "actual_zero_exit_stages": 57
+    },
+    "independent-followup/macos": {
+      "validation_rows": 8192,
+      "untrained_loss": 0.41021441125063524,
+      "deployed_loss": 0.40204926053221907,
+      "source_commit": "bebc3119b8c0022e307360a0a48ee2714f5f8f08",
+      "playing_strength_measured": false,
+      "independent_native_cases": 54,
+      "independent_transitions_per_mode": 1000000,
+      "independent_seconds": 470.3515488339999,
+      "actual_zero_exit_stages": 57
+    }
+  },
+  "hosted_total_seconds_per_platform": {
+    "linux": 1802.0,
+    "macos": 1627.0
+  },
+  "executions_per_platform": 3,
+  "original_deadline_unix": 1792913374.2199628,
+  "budgets_closed": true,
+  "playing_strength_measured": false,
+  "full_acceptance": false
+}

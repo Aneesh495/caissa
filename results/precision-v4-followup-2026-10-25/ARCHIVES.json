@@ -1,0 +1,68 @@
+[
+  {
+    "epoch": "first-followup",
+    "platform": "linux",
+    "run_id": 40167919374,
+    "source_commit": "2fbac399b14bc6e0c51f92e812883abf22f44506",
+    "zip_sha256": "bbed6f202e4118578b62a34fae8c4d14507ca9f4e6c666cdc1afb4605facada0",
+    "parts": [
+      {
+        "path": "first-followup/linux/RAW.zip",
+        "sha256": "bbed6f202e4118578b62a34fae8c4d14507ca9f4e6c666cdc1afb4605facada0",
+        "bytes": 1206952
+      }
+    ]
+  },
+  {
+    "epoch": "first-followup",
+    "platform": "macos",
+    "run_id": 40167919374,
+    "source_commit": "2fbac399b14bc6e0c51f92e812883abf22f44506",
+    "zip_sha256": "667206110b57e37dc04c24c09c2a8e718e0e8e8ac22121484654593a8b351a16",
+    "parts": [
+      {
+        "path": "first-followup/macos/RAW.zip",
+        "sha256": "667206110b57e37dc04c24c09c2a8e718e0e8e8ac22121484654593a8b351a16",
+        "bytes": 1195415
+      }
+    ]
+  },
+  {
+    "epoch": "independent-followup",
+    "platform": "linux",
+    "run_id": 40170041796,
+    "source_commit": "bebc3119b8c0022e307360a0a48ee2714f5f8f08",
+    "zip_sha256": "d7fba572176ec53210172cf1114a944340ed37706b1eb8e1c913f39ed0eae658",
+    "parts": [
+      {
+        "path": "independent-followup/linux/RAW.zip.part000",
+        "sha256": "c5e9e9d53745db141edd20292c449039a63ce779538ffa411196d163e8e9f7f3",
+        "bytes": 41943040
+      },
+      {
+        "path": "independent-followup/linux/RAW.zip.part001",
+        "sha256": "9b4b445c02f39ce7d4c19554b1399ff193237fca2f1d42eaf2efc7240e214252",
+        "bytes": 41943040
+      },
+      {
+        "path": "independent-followup/linux/RAW.zip.part002",
+        "sha256": "33fc9a7aaa01a25ae1b6cfbe5c85c5b4f1998e487537d627cfac0cad1e238ebd",
+        "bytes": 31973181
+      }
+    ]
+  },
+  {
+    "epoch": "independent-followup",
+    "platform": "macos",
+    "run_id": 40170041796,
+    "source_commit": "bebc3119b8c0022e307360a0a48ee2714f5f8f08",
+    "zip_sha256": "a48773255117d0329802cb5783914675c762ba1985532e73009e8d19acb97478",
+    "parts": [
+      {
+        "path": "independent-followup/macos/RAW.zip",
+        "sha256": "a48773255117d0329802cb5783914675c762ba1985532e73009e8d19acb97478",
+        "bytes": 15954447
+      }
+    ]
+  }
+]

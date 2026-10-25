@@ -31,6 +31,8 @@ Two encodings of the same selected float checkpoint are preserved:
 
 Format 4 preserves the real activation cap exactly. It changes the integer lattice and safe SIMD block width, without retraining or selecting another checkpoint. Its fresh probe maximum is not a paired comparison with the earlier failed sample. Both platform artifacts and the exact native executables are recorded in the [precision evidence](../results/precision-v4-2026-10-25/MANIFEST.json). The [precision note](notes/precision-v4.md) explains the arithmetic contract and its limits.
 
+The [deployed-loss follow-up](../results/precision-v4-followup-2026-10-25/README.md) measured actual integer loss 0.402049260532 against the untrained residual's 0.410214411251 on the same original 8192 validation-selection rows. Both platforms also passed Release, address/undefined-behavior and thread instrumentation, then independent exact saved-program replay. These observations preserve the model choice and do not establish playing strength.
+
 For a manual format 4 analysis, use a current build that supports that format and send these UCI options in order:
 
 ```text

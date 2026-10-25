@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "independently_reexecuted_native_cases": 54,
+  "cases_per_mode": 18,
+  "selected_model_transitions_per_mode": 1000000,
+  "modes": [
+    "release",
+    "asan",
+    "tsan"
+  ],
+  "source_commit": "bebc3119b8c0022e307360a0a48ee2714f5f8f08",
+  "programs_sha256": "4574b7bc81f8268faa84fb101694c688c0243b2503cef8d1b40f08e9851267ef",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "full_acceptance": false,
+  "scope": "Exact saved-program replay and instrumentation/identity checks; full thread-strength and whole-project acceptance remain separate"
+}

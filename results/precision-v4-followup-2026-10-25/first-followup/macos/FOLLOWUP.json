@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "reports": {
+    "release": {
+      "status": "passed",
+      "native_cases": 18,
+      "transitions": 1000000,
+      "engine_sha256": "3486153f001414aef60688a73e434800f681401b891869dde8f4fb82d7695eee",
+      "instrumentation": null
+    },
+    "asan": {
+      "status": "passed",
+      "native_cases": 18,
+      "transitions": 1000000,
+      "engine_sha256": "9b46cb3a52c76675c412c0d53538d38ab669eba9ee6553e8d18be9a9fc9afdb9",
+      "instrumentation": "-fsanitize=address,undefined"
+    },
+    "tsan": {
+      "status": "passed",
+      "native_cases": 18,
+      "transitions": 1000000,
+      "engine_sha256": "83d77a8799f2b5073f21ecf2635b73e332ed2005ea4f37c3993d8af8b8275ec9",
+      "instrumentation": "-fsanitize=thread"
+    }
+  },
+  "failed_domains": [],
+  "original_origin_unix": 1792906174.2199628,
+  "original_deadline_unix": 1792913374.2199628,
+  "source_commit": "2fbac399b14bc6e0c51f92e812883abf22f44506",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "protocol_sha256": "52d4f58b0e1bb4e5e08d1314f14dd3e02558d03abd6b4683b8f8d6aa487b0cb5",
+  "model_selection_changed": false,
+  "test_arrays_opened": false,
+  "full_acceptance": false,
+  "playing_strength_measured": false
+}
