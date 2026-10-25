@@ -1,6 +1,6 @@
 # Full evidence admission and remaining semantic replay
 
-The full entry point now checks committed product source, immutable artifact relationships and original experiment lineage before admitting a bundle to domain replay. It still returns nonzero with `full_acceptance: false`. Complete semantic adapters for all sixteen full gates and the complete campaign coordinator remain unfinished. Passing metadata, existing domain receipts or these admission controls cannot certify a release.
+The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before domain replay. A G01 rules adapter is implemented; the remaining full-domain adapters and complete campaign coordinator remain unfinished. Full verification still returns nonzero with `full_acceptance: false`. Passing metadata, existing receipts or admission controls cannot certify a release.
 
 ## Source identity
 
@@ -36,6 +36,10 @@ Format 4 changes the integer encoding of the selected float checkpoint. Admissio
 Equivalently, pass `EVIDENCE_INPUTS_SHA256` to `make verify PROFILE=full`. A consistent declaration returns status `incomplete`, exit 2 and the remaining semantic gates; contradictory inputs return a structured rejection and exit 1. Saved `status: passed` flags cannot enable full acceptance. The full entry point defers while the selected checkout's timed-match owner holds the host. Tests use isolated synthetic metadata fixtures and never run their intentionally nonexecutable runtime artifact.
 
 ## Controls and packaging
+
+G01 can use `driver: rules-v1` and a `rules` object containing exact references named `profile`, `fixtures`, `summary` and `observations`. Include those references in the gate's raw `artifacts` inventory and supply `--replay-output` outside the bundle, or `VERIFY_REPLAY_DIR` to Make. The [rules checker](../verification/rules.py) reconstructs every position in the frozen reachable walk, computes legal sets and check state through python-chess, and reexecutes the exact copied native program. It also recomputes all twenty perft totals through the external oracle before checking native perft. The native inspection route compares the independently authored mailbox and bitboard generators internally.
+
+The [frozen profile](../config/rules-replay-v1.json) retains 100000 comparisons and twenty fixtures. A diagnostic prefix cannot set `full_gate: true`. The [real-core controls](../tests/rules_replay.py) use 512 positions, all twenty perft fixtures and rehashed mutations of move sets, reachable-walk identity, sequence indices, perft totals, completed work and engine identity. Full-entry controls additionally reject the prefix before full replay and reject writing verification output into its original evidence. The full100000-position final-source campaign remains required; these controls do not substitute for it.
 
 [Source controls](../tests/source_binding.py) use a real temporary Git repository and the source-verifier subprocess to check edited native/browser bytes with and without rehashed declarations, omitted assets, a source symlink and a mismatched commit. [Full-input controls](../tests/full_bundle.py) rehash ordinary manifests and the external input pin after changes to selected checkpoints, mixtures, seeds, held-out bytes, runtime identities, CRC and the Elo endpoint. Test-based selection is rejected. A fixture claiming every receipt passed must still return all sixteen semantic gates as incomplete. [Integrity controls](../tests/bundle_integrity.py) cover parser limits, aliased paths, changed verified metadata, links and nonblocking rejection of a FIFO. These controls establish rejection behavior; they are not full experiment results.
 

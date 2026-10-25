@@ -7,12 +7,14 @@ import argparse
 import hashlib
 import json
 import shutil
+import subprocess
 import sys
 from pathlib import Path
 
 import chess
 
 from tools.campaign_process import Campaign, StageFailure
+from tests.full_bundle import fixture, reference, seal
 
 
 def sha(path):
@@ -185,6 +187,88 @@ def main():
             else:
                 raise AssertionError(
                     "rules verifier accepted semantic mutation " + case
+                )
+        # A real-source full bundle must reject a diagnostic prefix before
+        # launching full native replay, and cannot write into its own evidence.
+        commit = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], text=True, timeout=5
+        ).strip()
+        bundle = output / "full-bundle-prefix"
+        inputs = fixture(bundle, root, root, commit)
+        shutil.copy2(engine, bundle / "bin/caissa")
+        inputs["engine"] = reference(bundle, "bin/caissa")
+        for domain in inputs["domains"].values():
+            domain["engine_sha256"] = inputs["engine"]["sha256"]
+        (bundle / "rules").mkdir()
+        for source, name in [
+            (raw / "summary.json", "summary.json"),
+            (raw / "observations.jsonl", "observations.jsonl"),
+            (protocol, "profile.json"),
+            (fixtures, "perft.json"),
+        ]:
+            shutil.copy2(source, bundle / "rules" / name)
+        arguments = {
+            name: reference(bundle, "rules/" + filename)
+            for name, filename in [
+                ("summary", "summary.json"),
+                ("observations", "observations.jsonl"),
+                ("profile", "profile.json"),
+                ("fixtures", "perft.json"),
+            ]
+        }
+        inputs["domains"]["G01"].update(
+            {
+                "driver": "rules-v1",
+                "rules": arguments,
+                "artifacts": list(arguments.values()),
+            }
+        )
+        pin = seal(bundle, inputs)
+        for case, destination, reason in [
+            ("full-adapter-prefix", output / "full-replay", "all100000"),
+            (
+                "full-adapter-output",
+                bundle / "invalid-replay",
+                "preserve the original evidence",
+            ),
+        ]:
+            argv = [
+                py,
+                "-m",
+                "verification.verify",
+                str(bundle),
+                "--checkout",
+                str(root),
+                "--expected-commit",
+                commit,
+                "--profile",
+                "full",
+                "--expected-inputs-sha256",
+                pin,
+                "--replay-output",
+                str(destination),
+            ]
+            try:
+                c.run(case, argv, 30)
+            except StageFailure as error:
+                result = json.loads((output / (case + ".log")).read_text())
+                assert error.record["exit"] == 1 and reason in result["reason"], (
+                    error.record,
+                    result,
+                )
+                assert not destination.exists()
+                results.append(
+                    {
+                        "case": case,
+                        "command": argv,
+                        "exit": 1,
+                        "reason": result["reason"],
+                        "raw_summary_profile_pins_rehashed": True,
+                    }
+                )
+            else:
+                raise AssertionError(
+                    "full adapter accepted a prefix or evidence mutation"
                 )
         result = {
             "status": "passed",
