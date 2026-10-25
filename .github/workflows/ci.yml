@@ -56,6 +56,7 @@ jobs:
           python -m tests.rules_replay --engine build/caissa --output runs/ci-rules-replay
           python -m tests.protocol_bundle --engine build/caissa --output runs/ci-protocol-bundle
           python -m tests.restoration_replay --engine build/caissa --output runs/ci-restoration-replay
+          python -m tests.draw_history --engine build/caissa --output runs/ci-draw-history
           python -m tests.deferred_neural_controls --evidence results/deferred-neural-2026-10-25 --output runs/ci-deferred-controls
           python -m training.corpus --engine build/caissa --pairs 50 --nodes 500 --workers 2 --output data/ci-original
           python -m training.prepare data/ci-original data/ci-prepared
@@ -113,6 +114,12 @@ jobs:
             runs/ci-restoration-replay/*.log
             runs/ci-restoration-replay/producer/
             runs/ci-restoration-replay/independent/RESTORATION.json
+            runs/ci-draw-history/*.json
+            runs/ci-draw-history/*.jsonl
+            runs/ci-draw-history/*.log
+            runs/ci-draw-history/producer/
+            runs/ci-draw-history/independent/DRAW_HISTORY.json
+            runs/ci-draw-history/full-replay/G03/DRAW_HISTORY.json
             runs/ci-deferred-controls/CONTROLS.json
             build/Testing/Temporary/LastTest.log
           retention-days: 14

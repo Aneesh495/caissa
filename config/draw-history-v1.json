@@ -1,0 +1,281 @@
+{
+  "schema": "caissa-draw-history-profile-v1",
+  "seed": 67867967,
+  "random_histories": 64,
+  "maximum_game_ply": 32,
+  "maximum_commands": 10000,
+  "maximum_observation_bytes": 16777216,
+  "maximum_producer_seconds": 180,
+  "maximum_independent_seconds": 240,
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "fixed_cases": [
+    {
+      "name": "repetition-claims-fivefold-and-undo",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "chess960": false,
+      "commands": [
+        "move g1f3",
+        "move g8f6",
+        "move f3g1",
+        "move f6g8",
+        "move g1f3",
+        "move g8f6",
+        "move f3g1",
+        "move f6g8",
+        "move g1f3",
+        "move g8f6",
+        "move f3g1",
+        "move f6g8",
+        "move g1f3",
+        "move g8f6",
+        "move f3g1",
+        "move f6g8",
+        "undo",
+        "undo",
+        "undo",
+        "undo"
+      ]
+    },
+    {
+      "name": "fresh-board-matching-repeated-fen",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 16 9",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "fresh-board-matching-threefold-fen",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 8 5",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "history-A",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "chess960": false,
+      "commands": [
+        "move g1f3",
+        "move g8f6",
+        "move b1c3",
+        "move b8c6"
+      ]
+    },
+    {
+      "name": "history-B",
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "chess960": false,
+      "commands": [
+        "move b1c3",
+        "move b8c6",
+        "move g1f3",
+        "move g8f6"
+      ]
+    },
+    {
+      "name": "clock-0",
+      "fen": "7k/8/8/8/8/8/8/KR6 w - - 0 80",
+      "chess960": false,
+      "commands": [
+        "move b1b2",
+        "undo",
+        "null",
+        "null",
+        "undo",
+        "undo"
+      ]
+    },
+    {
+      "name": "clock-98",
+      "fen": "7k/8/8/8/8/8/8/KR6 w - - 98 80",
+      "chess960": false,
+      "commands": [
+        "move b1b2",
+        "undo",
+        "null",
+        "null",
+        "undo",
+        "undo"
+      ]
+    },
+    {
+      "name": "clock-99",
+      "fen": "7k/8/8/8/8/8/8/KR6 w - - 99 80",
+      "chess960": false,
+      "commands": [
+        "move b1b2",
+        "undo",
+        "null",
+        "null",
+        "undo",
+        "undo"
+      ]
+    },
+    {
+      "name": "clock-100",
+      "fen": "7k/8/8/8/8/8/8/KR6 w - - 100 80",
+      "chess960": false,
+      "commands": [
+        "move b1b2",
+        "undo",
+        "null",
+        "null",
+        "undo",
+        "undo"
+      ]
+    },
+    {
+      "name": "clock-149",
+      "fen": "7k/8/8/8/8/8/8/KR6 w - - 149 80",
+      "chess960": false,
+      "commands": [
+        "move b1b2",
+        "undo",
+        "null",
+        "null",
+        "undo",
+        "undo"
+      ]
+    },
+    {
+      "name": "clock-150",
+      "fen": "7k/8/8/8/8/8/8/KR6 w - - 150 80",
+      "chess960": false,
+      "commands": [
+        "move b1b2",
+        "undo",
+        "null",
+        "null",
+        "undo",
+        "undo"
+      ]
+    },
+    {
+      "name": "clock-151",
+      "fen": "7k/8/8/8/8/8/8/KR6 w - - 151 80",
+      "chess960": false,
+      "commands": [
+        "move b1b2",
+        "undo",
+        "null",
+        "null",
+        "undo",
+        "undo"
+      ]
+    },
+    {
+      "name": "mate-clock150",
+      "fen": "7k/6Q1/5K2/8/8/8/8/8 b - - 150 80",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "stalemate-clock150",
+      "fen": "7k/5K2/6Q1/8/8/8/8/8 b - - 150 80",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "mate-by-move-clock149",
+      "fen": "7k/8/5KQ1/8/8/8/8/8 w - - 149 80",
+      "chess960": false,
+      "commands": [
+        "move g6g7",
+        "undo"
+      ]
+    },
+    {
+      "name": "dead-kings",
+      "fen": "7k/8/8/8/8/8/8/K7 w - - 0 1",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "dead-knight",
+      "fen": "7k/8/8/8/8/8/8/KN6 w - - 0 1",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "dead-bishop",
+      "fen": "7k/8/8/8/8/8/8/KB6 w - - 0 1",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "dead-same-color-bishops",
+      "fen": "7k/8/8/8/8/5b2/8/KB6 w - - 0 1",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "live-two-knights",
+      "fen": "7k/8/8/8/8/8/8/KNN5 w - - 0 1",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "live-opposite-bishops",
+      "fen": "7k/8/8/8/8/4b3/8/KB6 w - - 0 1",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "live-rook",
+      "fen": "7k/8/8/8/8/8/8/KR6 w - - 0 1",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "ep-legal",
+      "fen": "4k3/8/8/5pP1/8/8/8/4K3 w - f6 99 50",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "ep-pinned",
+      "fen": "4r1k1/8/8/3pP3/8/8/8/4K3 w - d6 99 50",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "ep-absent",
+      "fen": "4k3/8/8/5pP1/8/8/8/4K3 w - - 99 50",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "capture-clears-clock",
+      "fen": "7k/8/8/8/8/8/r7/KR6 w - - 99 50",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "pawn-clears-clock",
+      "fen": "7k/8/8/8/8/8/P7/KR6 w - - 99 50",
+      "chess960": false,
+      "commands": []
+    },
+    {
+      "name": "960-overlap-clock99",
+      "fen": "4k3/8/8/8/8/8/8/5KR1 w G - 99 50",
+      "chess960": true,
+      "commands": [
+        "move f1g1",
+        "undo"
+      ]
+    }
+  ],
+  "random_starts": [
+    {
+      "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "chess960": false
+    },
+    {
+      "fen": "4k3/8/8/8/8/8/8/R3K2R w KQ - 98 1",
+      "chess960": false
+    },
+    {
+      "fen": "4k3/8/8/8/8/8/8/5KR1 w G - 98 1",
+      "chess960": true
+    }
+  ]
+}

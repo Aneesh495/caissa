@@ -64,6 +64,7 @@ jobs:
         run: |
           ctest --test-dir build-state --output-on-failure
           python -m tests.restoration_replay --engine build-state/caissa --output runs/native-state-restoration
+          python -m tests.draw_history --engine build-state/caissa --output runs/native-state-draw
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -76,6 +77,12 @@ jobs:
             runs/native-state-restoration/*.log
             runs/native-state-restoration/producer/
             runs/native-state-restoration/independent/RESTORATION.json
+            runs/native-state-draw/*.json
+            runs/native-state-draw/*.jsonl
+            runs/native-state-draw/*.log
+            runs/native-state-draw/producer/
+            runs/native-state-draw/independent/DRAW_HISTORY.json
+            runs/native-state-draw/full-replay/G03/DRAW_HISTORY.json
             build-state/compile_commands.json
             build-state/CMakeCache.txt
             build-state/Testing/Temporary/LastTest.log

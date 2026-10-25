@@ -39,5 +39,9 @@ int main(int argc,char** argv){try {
     auto errors=run(*network,"state\nundo\nmove a1a8\nabsent\n"+std::string(1025,'x')+"\nstate\n");
     require(errors.size()==6&&errors[0]==errors[5],"rejected diagnostic commands changed state");
     for(std::size_t i=1;i<5;++i)require(errors[i].starts_with("{\"error\":"),"malformed diagnostic command was accepted");
+    auto draw=run(*network,"reset 7k/8/8/8/8/8/8/KR6 w - - 99 1\nrules\nstate\nnull\nrules\nundo\nstate\n");
+    require(draw.size()==7&&draw[0]==draw[2]&&draw[2]==draw[6],"rule inspection changed the full native state");
+    require(draw[1].find("\"overloads_equal\":true")!=std::string::npos&&draw[1].find("\"restored\":true")!=std::string::npos,"rule overload or intended-move restoration differs");
+    require(draw[1].find("\"claim_moves\":[]")==std::string::npos&&draw[4].find("\"claim_moves\":[]")!=std::string::npos,"intended claim or synthetic-null boundary differs");
     std::cout<<"{\"status\":\"passed\",\"exact_restores\":"<<restores<<",\"nested_nulls\":2,\"rejections\":4}\n";
 }catch(const std::exception& error){std::cerr<<error.what()<<'\n';return 1;}}
