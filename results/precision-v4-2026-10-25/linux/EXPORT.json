@@ -1,0 +1,39 @@
+{
+  "status": "passed",
+  "original_float_parameters_unchanged": true,
+  "legacy_export_byte_identical": true,
+  "same_real_activation_ceiling": true,
+  "actual_native_integer_comparisons": 1024,
+  "negative_controls": [
+    {
+      "case": "expanded-real-cap",
+      "exit": 1,
+      "stderr": "network numerical contract mismatch\n"
+    },
+    {
+      "case": "old-scale",
+      "exit": 1,
+      "stderr": "network numerical contract mismatch\n"
+    },
+    {
+      "case": "lost-baseline",
+      "exit": 1,
+      "stderr": "unsupported network baseline contract\n"
+    },
+    {
+      "case": "magic-version",
+      "exit": 1,
+      "stderr": "unsupported network format version\n"
+    }
+  ],
+  "network": {
+    "sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+    "identity": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+    "crc32": 4232193732,
+    "bytes": 1582684
+  },
+  "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+  "parameter_sha256": "40c076a5419bd3f1c0906b197bfb58e243116901718137530ec8e1c796a5bbbe",
+  "seconds": 0.4693019390106201,
+  "full_acceptance": false
+}

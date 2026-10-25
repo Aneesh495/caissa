@@ -1,0 +1,295 @@
+Start testing: Oct 25 05:33 UTC
+----------------------------------------------------------
+1/18 Testing: version
+1/18 Test: version
+Command: "/Users/runner/work/caissa/caissa/build/caissa" "--version"
+Directory: /Users/runner/work/caissa/caissa/build
+"version" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+Caissa 0.1.0-dev
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"version" end time: Oct 25 05:33 UTC
+"version" time elapsed: 00:00:00
+----------------------------------------------------------
+
+2/18 Testing: core
+2/18 Test: core
+Command: "/Users/runner/work/caissa/caissa/build/core_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"core" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+core types and attack tables passed
+<end of output>
+Test time =   0.02 sec
+----------------------------------------------------------
+Test Passed.
+"core" end time: Oct 25 05:33 UTC
+"core" time elapsed: 00:00:00
+----------------------------------------------------------
+
+3/18 Testing: position
+3/18 Test: position
+Command: "/Users/runner/work/caissa/caissa/build/position_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"position" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+FEN, perft, castling, en passant and restoration passed
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"position" end time: Oct 25 05:33 UTC
+"position" time elapsed: 00:00:00
+----------------------------------------------------------
+
+4/18 Testing: rules
+4/18 Test: rules
+Command: "/Users/runner/work/caissa/caissa/build/rules_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"rules" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+draw claims, history identity, clocks and mate precedence passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"rules" end time: Oct 25 05:33 UTC
+"rules" time elapsed: 00:00:00
+----------------------------------------------------------
+
+5/18 Testing: evaluation
+5/18 Test: evaluation
+Command: "/Users/runner/work/caissa/caissa/build/evaluation_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"evaluation" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+tapered evaluation, symmetry and exchange tests passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"evaluation" end time: Oct 25 05:33 UTC
+"evaluation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+6/18 Testing: table
+6/18 Test: table
+Command: "/Users/runner/work/caissa/caissa/build/table_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"table" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+locked table replacement, concurrent access and mate scores passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"table" end time: Oct 25 05:33 UTC
+"table" time elapsed: 00:00:00
+----------------------------------------------------------
+
+7/18 Testing: search
+7/18 Test: search
+Command: "/Users/runner/work/caissa/caissa/build/search_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"search" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+exhaustive minimax, mate, MultiPV, cancellation and node budget passed
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"search" end time: Oct 25 05:33 UTC
+"search" time elapsed: 00:00:00
+----------------------------------------------------------
+
+8/18 Testing: notation
+8/18 Test: notation
+Command: "/Users/runner/work/caissa/caissa/build/notation_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"notation" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+SAN, nested variations, comments and deterministic PGN export passed
+<end of output>
+Test time =   0.00 sec
+----------------------------------------------------------
+Test Passed.
+"notation" end time: Oct 25 05:33 UTC
+"notation" time elapsed: 00:00:00
+----------------------------------------------------------
+
+9/18 Testing: uci
+9/18 Test: uci
+Command: "/Users/runner/work/caissa/caissa/build/uci_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"uci" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+owned protocol lifecycle, early ponder hit and oversized recovery passed
+<end of output>
+Test time =   0.01 sec
+----------------------------------------------------------
+Test Passed.
+"uci" end time: Oct 25 05:33 UTC
+"uci" time elapsed: 00:00:00
+----------------------------------------------------------
+
+10/18 Testing: position_line
+10/18 Test: position_line
+Command: "/Users/runner/work/caissa/caissa/build/position_line_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"position_line" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+{"status":"passed","divergent_updates":1000,"duplicate_updates":1000,"reused_plies":11043,"unmade_plies":1773,"newly_validated_plies":1970,"long_history":1024}
+<end of output>
+Test time =   0.07 sec
+----------------------------------------------------------
+Test Passed.
+"position_line" end time: Oct 25 05:33 UTC
+"position_line" time elapsed: 00:00:00
+----------------------------------------------------------
+
+11/18 Testing: kernels
+11/18 Test: kernels
+Command: "/Users/runner/work/caissa/caissa/build/kernel_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"kernels" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+bounded scalar/native integer products and extreme weights passed
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"kernels" end time: Oct 25 05:33 UTC
+"kernels" time elapsed: 00:00:00
+----------------------------------------------------------
+
+12/18 Testing: dense_kernels
+12/18 Test: dense_kernels
+Command: "/Users/runner/work/caissa/caissa/build/dense_kernel_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"dense_kernels" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+{"status":"passed","wide_scalar_output_comparisons":368064}
+<end of output>
+Test time =   0.04 sec
+----------------------------------------------------------
+Test Passed.
+"dense_kernels" end time: Oct 25 05:33 UTC
+"dense_kernels" time elapsed: 00:00:00
+----------------------------------------------------------
+
+13/18 Testing: neural_bounds
+13/18 Test: neural_bounds
+Command: "/Users/runner/work/caissa/caissa/build/neural_bounds_test" "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai"
+Directory: /Users/runner/work/caissa/caissa/build
+"neural_bounds" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+{"status":"passed","full_tree_comparisons":64,"reference_qnodes":16816,"certified_cutoffs":1562}
+<end of output>
+Test time =   0.14 sec
+----------------------------------------------------------
+Test Passed.
+"neural_bounds" end time: Oct 25 05:33 UTC
+"neural_bounds" time elapsed: 00:00:00
+----------------------------------------------------------
+
+14/18 Testing: evaluation_cache
+14/18 Test: evaluation_cache
+Command: "/Users/runner/work/caissa/caissa/build/evaluation_cache_test" "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai" "/Users/runner/work/caissa/caissa/models/diagnostic-v2.cai"
+Directory: /Users/runner/work/caissa/caissa/build
+"evaluation_cache" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+{"status":"passed","fixed_node_pairs":120,"evaluation_requests":625195,"cache_hits":236432,"private_bytes_per_worker":524288}
+<end of output>
+Test time =   2.76 sec
+----------------------------------------------------------
+Test Passed.
+"evaluation_cache" end time: Oct 25 05:33 UTC
+"evaluation_cache" time elapsed: 00:00:02
+----------------------------------------------------------
+
+15/18 Testing: tactical_generation
+15/18 Test: tactical_generation
+Command: "/Users/runner/work/caissa/caissa/build/tactical_generation_test" "/Users/runner/work/caissa/caissa/models/residual-prefix-diagnostic.cai" "/Users/runner/work/caissa/caissa/models/diagnostic-v2.cai"
+Directory: /Users/runner/work/caissa/caissa/build
+"tactical_generation" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+{"status":"passed","move_queries":20000,"search_pairs":168}
+<end of output>
+Test time =   1.45 sec
+----------------------------------------------------------
+Test Passed.
+"tactical_generation" end time: Oct 25 05:33 UTC
+"tactical_generation" time elapsed: 00:00:01
+----------------------------------------------------------
+
+16/18 Testing: search_context
+16/18 Test: search_context
+Command: "/Users/runner/work/caissa/caissa/build/search_context_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"search_context" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+{"status":"passed","transitions":1000000,"null_branches":4631,"long_history_plies":1024,"history_clock_minimax_searches":60}
+<end of output>
+Test time =   1.70 sec
+----------------------------------------------------------
+Test Passed.
+"search_context" end time: Oct 25 05:33 UTC
+"search_context" time elapsed: 00:00:01
+----------------------------------------------------------
+
+17/18 Testing: lmr_window
+17/18 Test: lmr_window
+Command: "/Users/runner/work/caissa/caissa/build/lmr_window_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"lmr_window" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+{"pvs":false,"lmr":false,"expected":-196,"actual":-196,"lmr_searches":0,"researches":0}
+{"pvs":false,"lmr":true,"expected":-196,"actual":-196,"lmr_searches":96,"researches":25}
+{"pvs":true,"lmr":false,"expected":-196,"actual":-196,"lmr_searches":0,"researches":25}
+{"pvs":true,"lmr":true,"expected":-196,"actual":-196,"lmr_searches":47,"researches":34}
+{"status":"passed","oracle_nodes":18642,"native_queries":4}
+<end of output>
+Test time =   0.03 sec
+----------------------------------------------------------
+Test Passed.
+"lmr_window" end time: Oct 25 05:33 UTC
+"lmr_window" time elapsed: 00:00:00
+----------------------------------------------------------
+
+18/18 Testing: network_precision
+18/18 Test: network_precision
+Command: "/Users/runner/work/caissa/caissa/build/network_precision_test"
+Directory: /Users/runner/work/caissa/caissa/build
+"network_precision" start time: Oct 25 05:33 UTC
+Output:
+----------------------------------------------------------
+{"status":"passed","transitions":2048,"nonzero_neural_scores":2048,"contract_rejections":4}
+<end of output>
+Test time =   0.06 sec
+----------------------------------------------------------
+Test Passed.
+"network_precision" end time: Oct 25 05:33 UTC
+"network_precision" time elapsed: 00:00:00
+----------------------------------------------------------
+
+End testing: Oct 25 05:33 UTC

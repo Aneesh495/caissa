@@ -1,0 +1,11 @@
+{
+  "precision_workflow": 40165937624,
+  "binary_retrieval_workflow": 40165937639,
+  "source_commit": "d386b8df2e2c1a9ab2cf67660595fcad90ba8eb4",
+  "note": "Both executables were retrieved from the same-commit correctness job. Each SHA256 exactly equals the executable used by the precision campaign. Neither was executed on the active match host.",
+  "binaries": {
+    "linux": "624b9c394141b7b6d34a5351f1697d2c2f37d26031826c9efa8b1c7f32ad275d",
+    "macos": "3486153f001414aef60688a73e434800f681401b891869dde8f4fb82d7695eee"
+  },
+  "full_acceptance": false
+}

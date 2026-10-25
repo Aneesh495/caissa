@@ -1,0 +1,15 @@
+{
+  "schema": "caissa-artifact-hashes-v1",
+  "files": {
+    "COMMITTED_JOURNALS.json": "5f3a1b383e2f8374eee342c90ce481780ea2cebde99c4fb07dbd43907798184e",
+    "DIAGNOSIS.json": "66962706eca132ae9f0d2e1e5fe924203bbf634fe969d7a1778513d84e9cd6e3",
+    "OFFENDING_COMMAND_EXCERPT.json": "f6a7318a18de42ee4e0f55aa3412bcfac591bad1a59e6a2a52f3e4c76e5857cb",
+    "STOP_STAGE.json": "0fc38f61e99ce26f367d0f2c95de8671bb24be47f3472413dda4886b053433fc",
+    "full-neural-strength-v3/FAILED.json": "bd3a6a3176c2c141fb5b3ce1635d0d50b60ce28fa3ed86b2f7207e342362b6e9",
+    "full-neural-strength-v3/SCOPE.json": "d7e0a21d8b25a74675cf75ef9f1c1e26140644ad89eb09d371fab63333f595a9",
+    "project-continuation-v1/FAILED.json": "7931f55ec58d543477786e4805aafe1c8c8ee4db862d5e5189ff4867db3c699b",
+    "project-continuation-v1/FROZEN.json": "e01c8292119b0bcf40af6c5f9df575b4202380b908191a9b832c7db0e35f1e43",
+    "project-continuation-v1/SCOPE.json": "fc712dc90485cc2edfcb9cf6b04b264a1249ce5c48e24e38cec2699959f86611"
+  },
+  "full_acceptance": false
+}

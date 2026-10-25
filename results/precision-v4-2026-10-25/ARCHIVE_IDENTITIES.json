@@ -1,0 +1,12 @@
+[
+  {
+    "platform": "linux",
+    "artifact_id": 12588347180,
+    "digest": "d0829f4284059318a09b8041aabe298412b715654b5e67df2bbfbe76629f46a3"
+  },
+  {
+    "platform": "macos",
+    "artifact_id": 12587952777,
+    "digest": "c305307ea77b616e8dc9a5c5db04d8c53bc16f93171983e21f7b9e26ef22b6fe"
+  }
+]

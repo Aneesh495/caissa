@@ -1,0 +1,14 @@
+{
+  "status": "completed encoding and numerical experiment",
+  "protocol_sha256": "624a0f1700657e2f23ea28c12e800139be10921ba7286395da75fdca62ccfab9",
+  "source_commit": "d386b8df2e2c1a9ab2cf67660595fcad90ba8eb4",
+  "engine_sha256": "624b9c394141b7b6d34a5351f1697d2c2f37d26031826c9efa8b1c7f32ad275d",
+  "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+  "profile_origin_unix": 1792906174.2199628,
+  "profile_deadline_unix": 1792913374.2199628,
+  "full_acceptance": false,
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "playing_strength_measured": false,
+  "failed_domains": [],
+  "scope": "Higher-precision encoding only; no replacement of the active v3 network, strength actors or failed result"
+}

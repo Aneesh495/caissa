@@ -1,0 +1,29 @@
+{
+  "status": "passed-frozen-error-bound",
+  "probes": 100000,
+  "probe_seed": 32452867,
+  "frozen_maximum_error_cp": 32.0,
+  "float_quantized_cp": {
+    "mean": 1.1076757600256801,
+    "p99": 4.881654052734374,
+    "max": 10.394287109375
+  },
+  "raw_float_quantized_cp": {
+    "mean": 1.1076757600256801,
+    "p99": 4.881654052734374,
+    "max": 10.394287109375
+  },
+  "output_clipped_probes": 0,
+  "error_contract": "unclamped-quantization-and-clamped-inference",
+  "engine_sha256": "3486153f001414aef60688a73e434800f681401b891869dde8f4fb82d7695eee",
+  "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+  "positions_sha256": "ebb26559fc219c63564b86cdf89673731888bc6687cb7e68f04260214f8070a2",
+  "seconds": 19.144724416000145,
+  "total_seconds": 25.414328666000074,
+  "wall_seconds": 25.42703628540039,
+  "timing_scope": "seconds is inference only; total_seconds and wall_seconds include model loading and frozen probe construction",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "trained": true,
+  "full_acceptance": false,
+  "probes_sha256": "5ef808c4c656271103468f538292eb6d347a2c60df3a3ccdf12bbbc208a74241"
+}

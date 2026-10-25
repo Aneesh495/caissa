@@ -1,0 +1,18 @@
+{
+  "unix": 1792906377.414259,
+  "load": [
+    2.93115234375,
+    2.9296875,
+    2.97607421875
+  ],
+  "offenders": [
+    {
+      "pid": 35710,
+      "ppid": 35702,
+      "state": "Ss",
+      "cpu": 0.0,
+      "command": "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.agent-local/checkpoint.py Add explicit q4096 residual encoding and hosted precision audit Python syntax, actionlint, unchanged-profile arithmetic and host controls. Native/float/checkpoint tests run only on hosted runners; current frozen matches unchanged. No numerical pass claimed. CMakeLists.txt include/caissa/network.hpp src/network.cpp src/network_kernel.cpp tests/dense_kernel_test.cpp tests/kernel_test.cpp tests/network_precision_test.cpp tools/network_audit.py tools/precision_audit.py training/export.py training/model.py verification/learning.py verification/network_bytes.py verification/numerical.py tests/precision_export.py tools/full_strength.py tests/full_strength.py config/precision-v4.json .github/workflows/precision-v4.yml docs/notes/precision-v4.md results/precision-v4-inputs"
+    }
+  ],
+  "scope": "Offending command excerpt; full raw host sample retained locally with personal process inventory"
+}
