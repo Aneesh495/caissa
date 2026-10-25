@@ -50,6 +50,9 @@ FORBIDDEN_MODULES = {
     "verification.numerical",
     "verification.performance",
     "verification.native_build",
+    "verification.rules",
+    "tools.differential",
+    "tests.rules_replay",
 }
 COMPILERS = {
     "clang",
