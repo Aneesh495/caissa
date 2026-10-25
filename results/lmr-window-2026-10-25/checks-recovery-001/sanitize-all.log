@@ -1,0 +1,39 @@
+Test project /Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/build-lmr-window-asan
+      Start  1: version
+ 1/17 Test  #1: version ..........................   Passed    0.48 sec
+      Start  2: core
+ 2/17 Test  #2: core .............................   Passed    0.21 sec
+      Start  3: position
+ 3/17 Test  #3: position .........................   Passed    0.34 sec
+      Start  4: rules
+ 4/17 Test  #4: rules ............................   Passed    0.19 sec
+      Start  5: evaluation
+ 5/17 Test  #5: evaluation .......................   Passed    0.22 sec
+      Start  6: table
+ 6/17 Test  #6: table ............................   Passed    0.18 sec
+      Start  7: search
+ 7/17 Test  #7: search ...........................   Passed    0.30 sec
+      Start  8: notation
+ 8/17 Test  #8: notation .........................   Passed    0.19 sec
+      Start  9: uci
+ 9/17 Test  #9: uci ..............................   Passed    0.24 sec
+      Start 10: position_line
+10/17 Test #10: position_line ....................   Passed    0.51 sec
+      Start 11: kernels
+11/17 Test #11: kernels ..........................   Passed    0.27 sec
+      Start 12: dense_kernels
+12/17 Test #12: dense_kernels ....................   Passed    0.31 sec
+      Start 13: neural_bounds
+13/17 Test #13: neural_bounds ....................   Passed    0.84 sec
+      Start 14: evaluation_cache
+14/17 Test #14: evaluation_cache .................   Passed   15.26 sec
+      Start 15: tactical_generation
+15/17 Test #15: tactical_generation ..............   Passed    8.14 sec
+      Start 16: search_context
+16/17 Test #16: search_context ...................   Passed    8.05 sec
+      Start 17: lmr_window
+17/17 Test #17: lmr_window .......................   Passed    0.36 sec
+
+100% tests passed, 0 tests failed out of 17
+
+Total Test time (real) =  36.09 sec

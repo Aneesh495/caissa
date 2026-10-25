@@ -49,10 +49,11 @@ quit
 
 See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution walkthroughs](docs/WALKTHROUGHS.md), [technical notes](docs/notes/) and [decisions](docs/adr/README.md).
 
-## Executed diagnostics
+## Executed checks
 
 | Check | Observed result | Scope |
 |---|---|---|
+| Full data reconstruction | 229582 completed original games; 10578434 distinct training inputs; every exported row independently rebuilt | [Data domain passed](results/full-data-2026-10-25/README.md); learning and strength remain pending |
 | Rules | 20 perft fixtures; 100000-position differential campaigns with zero disagreements | Development executables |
 | State restoration | 1000000 seeded transitions, incremental/full accumulator agreement | Diagnostic network |
 | Protocol | 10000 adversarial sequences; recorded stop p99 below 50 ms | Frozen local host/load |
@@ -61,7 +62,7 @@ See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution w
 | Warm Stockfish 19 unrestricted | 0 wins, 0 draws, 48 losses | 20 ms/move, small paired diagnostic |
 | Larger neural pilot versus classical | 4 wins, 8 draws, 84 losses | 2000 nodes/move, diagnostic data split |
 
-These checks establish specific behavior. They do not certify the full learning corpus, a positive learned contribution, the full external campaign or a release. Opponent strength settings are not a calibrated absolute rating pool.
+These checks establish specific behavior. The data-domain pass does not certify a positive learned contribution, the full external campaign or a release. Opponent strength settings are not a calibrated absolute rating pool.
 
 [Reproduction](docs/REPRODUCIBILITY.md) explains the bounded demo and clean-checkout verifier. [Experiment protocol](docs/EXPERIMENT_PLAN.md), [artifact contracts](docs/ARTIFACT_FORMAT.md), [limitations](docs/LIMITATIONS.md), [recovery](docs/RECOVERY.md) and [dependency provenance](docs/DEPENDENCIES.md) define the practical boundaries.
 

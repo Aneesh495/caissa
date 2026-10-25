@@ -115,3 +115,8 @@ add_executable(search_context_test tests/search_context_test.cpp)
 target_link_libraries(search_context_test PRIVATE caissa_core)
 add_test(NAME search_context COMMAND search_context_test)
 set_tests_properties(search_context PROPERTIES TIMEOUT 240)
+
+add_executable(lmr_window_test tests/lmr_window_test.cpp)
+target_link_libraries(lmr_window_test PRIVATE caissa_core)
+add_test(NAME lmr_window COMMAND lmr_window_test)
+set_tests_properties(lmr_window PROPERTIES TIMEOUT 30)

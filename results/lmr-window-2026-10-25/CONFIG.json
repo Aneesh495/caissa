@@ -1,0 +1,1 @@
+{"purpose":"Investigate missing full-window LMR recovery when PVS is disabled","original_engine":"49057cfe1b03077c49085225cfb5e9dde7cead86c9dda92b6d6c3f9a60505da2","oracle":"independent mailbox minimax, depth4/5, eight fixed king-pawn cases, two-million node limit per case","maximum_seconds":1800}

@@ -1,0 +1,3 @@
+{"pvs":false,"lmr":false,"expected":-196,"actual":-196,"lmr_searches":0,"researches":0}
+{"pvs":false,"lmr":true,"expected":-196,"actual":-139,"lmr_searches":96,"researches":21}
+PVS-off LMR recovery disagrees with independent minimax

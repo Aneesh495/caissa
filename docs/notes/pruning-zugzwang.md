@@ -6,4 +6,6 @@ Null move is disabled in check, near the rule-clock boundary, without nonpawn ma
 
 Late-move reductions apply to sufficiently late quiet moves outside check and checking replies; an improving reduced result is searched again at full depth. Check extensions are bounded by ply. Futility requires a quiet nonpromoting move, a narrow window, a shallow depth and an already searched alternative; it cannot skip a checking move. Quiescence searches all evasions in check and includes promotions, with a finite depth ceiling. The ceiling is an approximation, not an exact tactical proof.
 
+An [LMR/PVS off-switch interaction](lmr-window-recovery.md) was found through the later ablation investigation. When PVS is off, the full-depth recovery now uses a full window. A frozen pawn-ending regression changed from the incorrect -139 cp to the independently enumerated -196 cp. Three other selective-search discrepancies remain recorded; passing the repaired witness does not make LMR exact.
+
 The full study suite and short/long time-control ablations remain necessary. No pruning feature is claimed to improve Elo until its matched results exist. A failed zugzwang or tactical case must be kept as a regression, even if aggregate node speed improves.

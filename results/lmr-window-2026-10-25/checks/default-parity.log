@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tests/lmr_window_parity.py", line 114, in <module>
+    main()
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tests/lmr_window_parity.py", line 51, in main
+    key: stack.enter_context(NativeSession(path, options, deadline))
+                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/verification/native_session.py", line 63, in __init__
+    self.until("readyok")
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/verification/native_session.py", line 152, in until
+    raise ValueError("saved native executable rejected replay: " + line)
+ValueError: saved native executable rejected replay: info string error load EvalFile before enabling neural evaluation

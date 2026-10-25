@@ -119,7 +119,9 @@ public:
                     reduction=std::min(next_depth-1,1+(depth>=6&&searched>=8?1:0)+(pv_node?0:1));
                 if(reduction>0) {
                     ++stats.lmr_searches;score=-visit(p,next_depth-reduction,-alpha-1,-alpha,ply+1,true,move,child);
-                    if(score>alpha) {++stats.researches;score=-visit(p,next_depth,-alpha-1,-alpha,ply+1,true,move,child);}
+                    // Without PVS there is no later principal-window recovery.
+                    // A reduced move that improves alpha needs the full window.
+                    if(score>alpha) {++stats.researches;score=-visit(p,next_depth,options_.pvs?-alpha-1:-beta,-alpha,ply+1,true,move,child);}
                 } else if(options_.pvs&&searched>0) score=-visit(p,next_depth,-alpha-1,-alpha,ply+1,true,move,child);
                 else score=-visit(p,next_depth,-beta,-alpha,ply+1,true,move,child);
                 if(options_.pvs&&searched>0&&score>alpha&&score<beta) {++stats.researches;score=-visit(p,next_depth,-beta,-alpha,ply+1,true,move,child);}
