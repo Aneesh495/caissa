@@ -642,6 +642,32 @@ def verify(
                 bundle.tick()
                 review.setdefault("verified_semantic_gates", {})["G04"] = result
                 del review["pending_semantic_gates"]["G04"]
+        domain = inputs["domains"]["G06"]
+        if domain.get("driver") == "numerical-probes-v1":
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G06"
+                ] = "numerical replay requires an external --replay-output directory"
+            else:
+                from verification.numerical_bundle import (
+                    NumericalEndpointFailure,
+                    verify as verify_numerical,
+                )
+
+                try:
+                    result = verify_numerical(
+                        bundle, inputs, Path(replay_output).resolve() / "G06"
+                    )
+                except NumericalEndpointFailure as error:
+                    review.setdefault("failed_semantic_gates", {})["G06"] = {
+                        "status": "failed",
+                        "reason": str(error),
+                        "observed": error.observed,
+                        "full_acceptance": False,
+                    }
+                else:
+                    review.setdefault("verified_semantic_gates", {})["G06"] = result
+                del review["pending_semantic_gates"]["G06"]
         for gate in ["G08", "G09"]:
             domain = inputs["domains"][gate]
             if domain.get("driver") != "strength-journals-v1":

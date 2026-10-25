@@ -74,7 +74,13 @@ def distribution(values):
 
 @contextlib.contextmanager
 def replay_native(
-    engine, network, positions, *, neural_weight=100, maximum_seconds=120
+    engine,
+    network,
+    positions,
+    *,
+    neural_weight=100,
+    maximum_seconds=120,
+    new_session=True,
 ):
     """Own one original CLI process; bound time, output files and cleanup."""
     require(
@@ -100,7 +106,7 @@ def replay_native(
             stdin=source,
             stdout=output,
             stderr=errors,
-            start_new_session=True,
+            start_new_session=new_session,
         )
         try:
             while process.poll() is None:
@@ -134,11 +140,17 @@ def replay_native(
             }
         finally:
             if process.poll() is None:
-                os.killpg(process.pid, signal.SIGTERM)
+                if new_session:
+                    os.killpg(process.pid, signal.SIGTERM)
+                else:
+                    process.terminate()
                 try:
                     process.wait(timeout=2)
                 except subprocess.TimeoutExpired:
-                    os.killpg(process.pid, signal.SIGKILL)
+                    if new_session:
+                        os.killpg(process.pid, signal.SIGKILL)
+                    else:
+                        process.kill()
                     process.wait(timeout=3)
 
 
@@ -171,6 +183,7 @@ def verify(
     expected_network=None,
     expected_checkpoint=None,
     maximum_seconds=900,
+    native_new_session=True,
 ):
     start = time.monotonic()
     wall = time.time()
@@ -327,7 +340,9 @@ def verify(
     processed = 0
     unique = set()
     with (
-        replay_native(engine, network_path, positions) as (native, receipt),
+        replay_native(
+            engine, network_path, positions, new_session=native_new_session
+        ) as (native, receipt),
         positions.open() as probes,
         observations.open() as saved,
     ):
@@ -542,6 +557,7 @@ def main():
     parser.add_argument("--expected-checkpoint-sha256")
     parser.add_argument("--require-full", action="store_true")
     parser.add_argument("--max-seconds", type=float, default=900)
+    parser.add_argument("--inherit-process-group", action="store_true")
     args = parser.parse_args()
     torch.set_num_threads(2)
     try:
@@ -555,6 +571,7 @@ def main():
             args.expected_network_sha256,
             args.expected_checkpoint_sha256,
             args.max_seconds,
+            native_new_session=not args.inherit_process_group,
         )
         print(json.dumps(result, allow_nan=False))
         return 0
