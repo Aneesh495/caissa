@@ -44,6 +44,7 @@ public:
     std::uint32_t fullmove() const { return fullmove_; }
     bool chess960() const { return chess960_; }
     bool synthetic_search_path() const {return synthetic_depth_>0;}
+    int synthetic_depth() const {return synthetic_depth_;}
     Key key() const { return key_; }
     Key recompute_key() const;
     Key repetition_key() const;

@@ -53,6 +53,9 @@ FORBIDDEN_MODULES = {
     "verification.rules",
     "tools.differential",
     "tests.rules_replay",
+    "tools.restoration",
+    "verification.restoration",
+    "tests.restoration_replay",
 }
 COMPILERS = {
     "clang",
