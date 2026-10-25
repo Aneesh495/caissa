@@ -1,0 +1,483 @@
+﻿2026-10-25T13:30:00.1990570Z Current runner version: '2.338.0'
+2026-10-25T13:30:00.2010920Z ##[group]Runner Image Provisioner
+2026-10-25T13:30:00.2011710Z Hosted Compute Agent
+2026-10-25T13:30:00.2012160Z Version: 20260828.587
+2026-10-25T13:30:00.2012640Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-10-25T13:30:00.2013270Z Build Date: 2026-08-28T16:44:25Z
+2026-10-25T13:30:00.2013830Z Worker ID: {81c782c0-d6d4-4dbc-a92d-9332f4d86f73}
+2026-10-25T13:30:00.2014360Z Azure Region: westus
+2026-10-25T13:30:00.2014800Z ##[endgroup]
+2026-10-25T13:30:00.2015840Z ##[group]Operating System
+2026-10-25T13:30:00.2016370Z macOS
+2026-10-25T13:30:00.2016770Z 15.7.9
+2026-10-25T13:30:00.2017180Z 24G830
+2026-10-25T13:30:00.2017590Z ##[endgroup]
+2026-10-25T13:30:00.2018010Z ##[group]Runner Image
+2026-10-25T13:30:00.2018460Z Image: macos-15-arm64
+2026-10-25T13:30:00.2018900Z Version: 20260907.0337.1
+2026-10-25T13:30:00.2019840Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260907.0337/images/macos/macos-15-arm64-Readme.md
+2026-10-25T13:30:00.2020940Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260907.0337
+2026-10-25T13:30:00.2021770Z ##[endgroup]
+2026-10-25T13:30:00.2022630Z ##[group]GITHUB_TOKEN Permissions
+2026-10-25T13:30:00.2024180Z Contents: read
+2026-10-25T13:30:00.2024640Z Metadata: read
+2026-10-25T13:30:00.2025100Z ##[endgroup]
+2026-10-25T13:30:00.2026700Z Secret source: Actions
+2026-10-25T13:30:00.2027470Z Cache mode: write
+2026-10-25T13:30:00.2028010Z Prepare workflow directory
+2026-10-25T13:30:00.2486910Z Prepare all required actions
+2026-10-25T13:30:00.2578730Z Getting action download info
+2026-10-25T13:30:00.6918180Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-25T13:30:01.1904750Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-25T13:30:01.3133610Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-25T13:30:01.6348370Z Complete job name: instrumented (macos-15, address-undefined, CAISSA_SANITIZE, -fsanitize=address,undefined)
+2026-10-25T13:30:01.7367480Z ##[group]Run actions/checkout@v4
+2026-10-25T13:30:01.7368470Z with:
+2026-10-25T13:30:01.7369070Z   repository: Aneesh495/caissa
+2026-10-25T13:30:01.7371890Z   token: ***
+2026-10-25T13:30:01.7372440Z   ssh-strict: true
+2026-10-25T13:30:01.7373060Z   ssh-user: git
+2026-10-25T13:30:01.7373510Z   persist-credentials: true
+2026-10-25T13:30:01.7373990Z   clean: true
+2026-10-25T13:30:01.7374450Z   sparse-checkout-cone-mode: true
+2026-10-25T13:30:01.7374960Z   fetch-depth: 1
+2026-10-25T13:30:01.7375410Z   fetch-tags: false
+2026-10-25T13:30:01.7375850Z   show-progress: true
+2026-10-25T13:30:01.7376390Z   lfs: false
+2026-10-25T13:30:01.7376820Z   submodules: false
+2026-10-25T13:30:01.7395050Z   set-safe-directory: true
+2026-10-25T13:30:01.7395850Z   allow-unsafe-pr-checkout: false
+2026-10-25T13:30:01.7397170Z env:
+2026-10-25T13:30:01.7397690Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:30:01.7398440Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:30:01.7398930Z ##[endgroup]
+2026-10-25T13:30:02.3010180Z Syncing repository: Aneesh495/caissa
+2026-10-25T13:30:02.3012450Z ##[group]Getting Git version info
+2026-10-25T13:30:02.3013240Z Working directory is '/Users/runner/work/caissa/caissa'
+2026-10-25T13:30:02.3026810Z [command]/opt/homebrew/bin/git version
+2026-10-25T13:30:02.3894710Z git version 2.55.0
+2026-10-25T13:30:02.3918010Z ##[endgroup]
+2026-10-25T13:30:02.3924790Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/29ad6bea-63c5-41b2-9ed6-47494c777e1c/.gitconfig'
+2026-10-25T13:30:02.3934650Z Temporarily overriding HOME='/Users/runner/work/_temp/29ad6bea-63c5-41b2-9ed6-47494c777e1c' before making global git config changes
+2026-10-25T13:30:02.3938050Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T13:30:02.3941230Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/caissa/caissa
+2026-10-25T13:30:02.4095990Z Deleting the contents of '/Users/runner/work/caissa/caissa'
+2026-10-25T13:30:02.4104860Z ##[group]Initializing the repository
+2026-10-25T13:30:02.4112140Z [command]/opt/homebrew/bin/git init /Users/runner/work/caissa/caissa
+2026-10-25T13:30:02.4434980Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-25T13:30:02.4447130Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-25T13:30:02.4449770Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-25T13:30:02.4452260Z hint: call:
+2026-10-25T13:30:02.4453780Z hint:
+2026-10-25T13:30:02.4455410Z hint: 	git config --global init.defaultBranch <name>
+2026-10-25T13:30:02.4457560Z hint:
+2026-10-25T13:30:02.4459420Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-25T13:30:02.4462040Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-25T13:30:02.4464140Z hint:
+2026-10-25T13:30:02.4465330Z hint: 	git branch -m <name>
+2026-10-25T13:30:02.4466650Z hint:
+2026-10-25T13:30:02.4468310Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-25T13:30:02.4470650Z Initialized empty Git repository in /Users/runner/work/caissa/caissa/.git/
+2026-10-25T13:30:02.4478400Z [command]/opt/homebrew/bin/git remote add origin https://github.com/Aneesh495/caissa
+2026-10-25T13:30:02.4534790Z ##[endgroup]
+2026-10-25T13:30:02.4535900Z ##[group]Disabling automatic garbage collection
+2026-10-25T13:30:02.4541570Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-10-25T13:30:02.4613740Z ##[endgroup]
+2026-10-25T13:30:02.4617910Z ##[group]Setting up auth
+2026-10-25T13:30:02.4646640Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T13:30:02.4715450Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T13:30:02.7358940Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T13:30:02.7366900Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T13:30:02.9183150Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-25T13:30:02.9493720Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-25T13:30:03.1154680Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-25T13:30:03.1158040Z ##[endgroup]
+2026-10-25T13:30:03.1159240Z ##[group]Fetching the repository
+2026-10-25T13:30:03.1161540Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +18ebff0f997fd71b6e0d9562c35d53de6a32fe04:refs/remotes/origin/main
+2026-10-25T13:30:29.2863310Z From https://github.com/Aneesh495/caissa
+2026-10-25T13:30:29.2874270Z  * [new ref]         18ebff0f997fd71b6e0d9562c35d53de6a32fe04 -> origin/main
+2026-10-25T13:30:29.2893970Z ##[endgroup]
+2026-10-25T13:30:29.2895620Z ##[group]Determining the checkout info
+2026-10-25T13:30:29.2908640Z ##[endgroup]
+2026-10-25T13:30:29.2953190Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-10-25T13:30:29.3094860Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-25T13:30:29.3197060Z ##[group]Checking out the ref
+2026-10-25T13:30:29.3241300Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-25T13:30:30.4546680Z Updating files:  64% (1669/2572)
+2026-10-25T13:30:30.4907550Z Updating files:  65% (1672/2572)
+2026-10-25T13:30:30.5025860Z Updating files:  66% (1698/2572)
+2026-10-25T13:30:30.5054750Z Updating files:  67% (1724/2572)
+2026-10-25T13:30:30.5096650Z Updating files:  68% (1749/2572)
+2026-10-25T13:30:30.5732060Z Updating files:  69% (1775/2572)
+2026-10-25T13:30:30.8959180Z Updating files:  70% (1801/2572)
+2026-10-25T13:30:31.1821880Z Updating files:  71% (1827/2572)
+2026-10-25T13:30:31.1997310Z Updating files:  72% (1852/2572)
+2026-10-25T13:30:31.2027830Z Updating files:  73% (1878/2572)
+2026-10-25T13:30:31.2091300Z Updating files:  74% (1904/2572)
+2026-10-25T13:30:31.2141470Z Updating files:  75% (1929/2572)
+2026-10-25T13:30:31.2489730Z Updating files:  76% (1955/2572)
+2026-10-25T13:30:31.2566840Z Updating files:  77% (1981/2572)
+2026-10-25T13:30:31.3185350Z Updating files:  78% (2007/2572)
+2026-10-25T13:30:31.3319770Z Updating files:  79% (2032/2572)
+2026-10-25T13:30:31.3367730Z Updating files:  80% (2058/2572)
+2026-10-25T13:30:31.3426890Z Updating files:  81% (2084/2572)
+2026-10-25T13:30:31.3774090Z Updating files:  82% (2110/2572)
+2026-10-25T13:30:31.3903530Z Updating files:  83% (2135/2572)
+2026-10-25T13:30:32.4280970Z Updating files:  84% (2161/2572)
+2026-10-25T13:30:33.6584020Z Updating files:  84% (2165/2572)
+2026-10-25T13:30:34.3174620Z Updating files:  84% (2169/2572)
+2026-10-25T13:30:34.3220920Z Updating files:  85% (2187/2572)
+2026-10-25T13:30:34.3262320Z Updating files:  86% (2212/2572)
+2026-10-25T13:30:34.3808700Z Updating files:  87% (2238/2572)
+2026-10-25T13:30:34.3867720Z Updating files:  88% (2264/2572)
+2026-10-25T13:30:34.3889080Z Updating files:  89% (2290/2572)
+2026-10-25T13:30:34.4151270Z Updating files:  89% (2308/2572)
+2026-10-25T13:30:34.4522520Z Updating files:  90% (2315/2572)
+2026-10-25T13:30:34.5288880Z Updating files:  91% (2341/2572)
+2026-10-25T13:30:34.5373800Z Updating files:  92% (2367/2572)
+2026-10-25T13:30:34.5407860Z Updating files:  93% (2392/2572)
+2026-10-25T13:30:34.5448180Z Updating files:  94% (2418/2572)
+2026-10-25T13:30:34.5487970Z Updating files:  95% (2444/2572)
+2026-10-25T13:30:34.5527810Z Updating files:  96% (2470/2572)
+2026-10-25T13:30:34.5586720Z Updating files:  97% (2495/2572)
+2026-10-25T13:30:34.5641950Z Updating files:  98% (2521/2572)
+2026-10-25T13:30:34.5682990Z Updating files:  99% (2547/2572)
+2026-10-25T13:30:34.5684750Z Updating files: 100% (2572/2572)
+2026-10-25T13:30:34.5687540Z Updating files: 100% (2572/2572), done.
+2026-10-25T13:30:34.5809740Z Switched to a new branch 'main'
+2026-10-25T13:30:34.5848670Z branch 'main' set up to track 'origin/main'.
+2026-10-25T13:30:34.5984560Z ##[endgroup]
+2026-10-25T13:30:34.6279040Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-10-25T13:30:34.6518980Z 18ebff0f997fd71b6e0d9562c35d53de6a32fe04
+2026-10-25T13:30:34.7336680Z ##[group]Run actions/setup-python@v5
+2026-10-25T13:30:34.7337110Z with:
+2026-10-25T13:30:34.7337370Z   python-version: 3.12
+2026-10-25T13:30:34.7337660Z   check-latest: false
+2026-10-25T13:30:34.7340280Z   token: ***
+2026-10-25T13:30:34.7340510Z   update-environment: true
+2026-10-25T13:30:34.7341340Z   allow-prereleases: false
+2026-10-25T13:30:34.7341610Z   freethreaded: false
+2026-10-25T13:30:34.7341900Z env:
+2026-10-25T13:30:34.7342240Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:30:34.7342630Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:30:34.7342870Z ##[endgroup]
+2026-10-25T13:30:35.1346660Z ##[group]Installed versions
+2026-10-25T13:30:35.1448670Z (node:6849) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-25T13:30:35.1455560Z Successfully set up CPython (3.12.10)
+2026-10-25T13:30:35.1462560Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-25T13:30:35.1465590Z ##[endgroup]
+2026-10-25T13:30:35.1690650Z ##[group]Run python -m pip install numpy==2.2.6 chess==1.11.2
+2026-10-25T13:30:35.1691080Z [36;1mpython -m pip install numpy==2.2.6 chess==1.11.2[0m
+2026-10-25T13:30:35.2464640Z shell: /bin/bash -e {0}
+2026-10-25T13:30:35.2465190Z env:
+2026-10-25T13:30:35.2465760Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:30:35.2473840Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:30:35.2474660Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:30:35.2475790Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-25T13:30:35.2476940Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:30:35.2477990Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:30:35.2478990Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:30:35.2479840Z ##[endgroup]
+2026-10-25T13:30:37.3521870Z Collecting numpy==2.2.6
+2026-10-25T13:30:37.4127450Z   Downloading numpy-2.2.6-cp312-cp312-macosx_14_0_arm64.whl.metadata (62 kB)
+2026-10-25T13:30:37.4604930Z Collecting chess==1.11.2
+2026-10-25T13:30:37.4659890Z   Downloading chess-1.11.2.tar.gz (6.1 MB)
+2026-10-25T13:30:37.5434890Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.1/6.1 MB 89.5 MB/s  0:00:00
+2026-10-25T13:30:37.6976910Z   Installing build dependencies: started
+2026-10-25T13:30:38.5926020Z   Installing build dependencies: finished with status 'done'
+2026-10-25T13:30:38.5944230Z   Getting requirements to build wheel: started
+2026-10-25T13:30:39.0433170Z   Getting requirements to build wheel: finished with status 'done'
+2026-10-25T13:30:39.0447570Z   Preparing metadata (pyproject.toml): started
+2026-10-25T13:30:39.2601980Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-10-25T13:30:39.2719030Z Downloading numpy-2.2.6-cp312-cp312-macosx_14_0_arm64.whl (5.1 MB)
+2026-10-25T13:30:39.3768950Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.1/5.1 MB 52.7 MB/s  0:00:00
+2026-10-25T13:30:39.3948200Z Building wheels for collected packages: chess
+2026-10-25T13:30:39.3956790Z   Building wheel for chess (pyproject.toml): started
+2026-10-25T13:30:39.7517510Z   Building wheel for chess (pyproject.toml): finished with status 'done'
+2026-10-25T13:30:39.7620030Z   Created wheel for chess: filename=chess-1.11.2-py3-none-any.whl size=147878 sha256=f0b003f179df436e1f2d8ec8a07dca4edae8b1f0108c87ae994763d838caa4d0
+2026-10-25T13:30:39.7720820Z   Stored in directory: /Users/runner/Library/Caches/pip/wheels/83/1f/4e/8f4300f7dd554eb8de70ddfed96e94d3d030ace10c5b53d447
+2026-10-25T13:30:39.7821670Z Successfully built chess
+2026-10-25T13:30:39.7925140Z Installing collected packages: numpy, chess
+2026-10-25T13:30:42.1291010Z 
+2026-10-25T13:30:42.1301670Z Successfully installed chess-1.11.2 numpy-2.2.6
+2026-10-25T13:30:42.1313500Z 
+2026-10-25T13:30:42.1314990Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-25T13:30:42.1316330Z [notice] To update, run: python -m pip install --upgrade pip
+2026-10-25T13:30:42.3428450Z ##[group]Run cmake -S . -B build-state -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCAISSA_SANITIZE=ON
+2026-10-25T13:30:42.3431420Z [36;1mcmake -S . -B build-state -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCAISSA_SANITIZE=ON[0m
+2026-10-25T13:30:42.3433100Z [36;1mcmake --build build-state -j 2[0m
+2026-10-25T13:30:42.3434000Z [36;1mmkdir -p runs[0m
+2026-10-25T13:30:42.3434940Z [36;1mctest --test-dir build-state --show-only=json-v1 > runs/native-state-cases.json[0m
+2026-10-25T13:30:42.3543520Z shell: /bin/bash -e {0}
+2026-10-25T13:30:42.3543820Z env:
+2026-10-25T13:30:42.3544160Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:30:42.3544480Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:30:42.3544890Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:30:42.3545470Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-25T13:30:42.3546190Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:30:42.3546700Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:30:42.3548500Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:30:42.3549500Z ##[endgroup]
+2026-10-25T13:30:44.8467880Z -- The CXX compiler identification is AppleClang 17.0.0.17000013
+2026-10-25T13:30:45.5480310Z -- Detecting CXX compiler ABI info
+2026-10-25T13:30:46.5494600Z -- Detecting CXX compiler ABI info - done
+2026-10-25T13:30:46.5715010Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-10-25T13:30:46.5726760Z -- Detecting CXX compile features
+2026-10-25T13:30:46.5741160Z -- Detecting CXX compile features - done
+2026-10-25T13:30:46.5845950Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2026-10-25T13:30:46.9253540Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2026-10-25T13:30:46.9354860Z -- Found Threads: TRUE
+2026-10-25T13:30:46.9451050Z -- Configuring done (4.4s)
+2026-10-25T13:30:47.6513380Z -- Generating done (0.7s)
+2026-10-25T13:30:47.6524270Z -- Build files have been written to: /Users/runner/work/caissa/caissa/build-state
+2026-10-25T13:30:47.7351220Z [  1%] Building CXX object CMakeFiles/caissa_core.dir/src/version.cpp.o
+2026-10-25T13:30:47.7427170Z [  3%] Building CXX object CMakeFiles/caissa_core.dir/src/attacks.cpp.o
+2026-10-25T13:30:48.3607900Z [  4%] Building CXX object CMakeFiles/caissa_core.dir/src/position.cpp.o
+2026-10-25T13:30:49.3930600Z [  6%] Building CXX object CMakeFiles/caissa_core.dir/src/position_line.cpp.o
+2026-10-25T13:30:50.3802310Z [  7%] Building CXX object CMakeFiles/caissa_core.dir/src/movegen.cpp.o
+2026-10-25T13:30:50.8331180Z [  9%] Building CXX object CMakeFiles/caissa_core.dir/src/reference.cpp.o
+2026-10-25T13:30:51.8619700Z [ 10%] Building CXX object CMakeFiles/caissa_core.dir/src/rules.cpp.o
+2026-10-25T13:30:52.5067000Z [ 12%] Building CXX object CMakeFiles/caissa_core.dir/src/evaluation.cpp.o
+2026-10-25T13:30:52.5596240Z [ 14%] Building CXX object CMakeFiles/caissa_core.dir/src/table.cpp.o
+2026-10-25T13:30:53.5264470Z [ 15%] Building CXX object CMakeFiles/caissa_core.dir/src/search.cpp.o
+2026-10-25T13:30:53.6276560Z [ 17%] Building CXX object CMakeFiles/caissa_core.dir/src/uci.cpp.o
+2026-10-25T13:30:57.7192050Z [ 18%] Building CXX object CMakeFiles/caissa_core.dir/src/selfplay.cpp.o
+2026-10-25T13:30:59.3978700Z [ 20%] Building CXX object CMakeFiles/caissa_core.dir/src/network.cpp.o
+2026-10-25T13:31:00.2065130Z [ 21%] Building CXX object CMakeFiles/caissa_core.dir/src/network_kernel.cpp.o
+2026-10-25T13:31:01.1849840Z [ 23%] Building CXX object CMakeFiles/caissa_core.dir/src/accumulator_stack.cpp.o
+2026-10-25T13:31:01.2878140Z [ 25%] Building CXX object CMakeFiles/caissa_core.dir/src/state_probe.cpp.o
+2026-10-25T13:31:01.9173420Z [ 26%] Building CXX object CMakeFiles/caissa_core.dir/src/notation.cpp.o
+2026-10-25T13:31:04.0181530Z [ 28%] Building CXX object CMakeFiles/caissa_core.dir/src/serialization.cpp.o
+2026-10-25T13:31:05.2074300Z [ 29%] Building CXX object CMakeFiles/caissa_core.dir/src/protocol_io.cpp.o
+2026-10-25T13:31:07.3609740Z [ 31%] Linking CXX static library libcaissa_core.a
+2026-10-25T13:31:08.8921840Z [ 31%] Built target caissa_core
+2026-10-25T13:31:08.9339740Z [ 32%] Building CXX object CMakeFiles/caissa.dir/apps/main.cpp.o
+2026-10-25T13:31:08.9365570Z [ 34%] Building CXX object CMakeFiles/core_test.dir/tests/core_test.cpp.o
+2026-10-25T13:31:09.9896480Z [ 35%] Linking CXX executable core_test
+2026-10-25T13:31:10.1199610Z [ 35%] Built target core_test
+2026-10-25T13:31:10.1614270Z [ 37%] Building CXX object CMakeFiles/position_test.dir/tests/position_test.cpp.o
+2026-10-25T13:31:11.9500470Z [ 39%] Linking CXX executable caissa
+2026-10-25T13:31:12.0539180Z [ 39%] Built target caissa
+2026-10-25T13:31:12.0790750Z [ 40%] Linking CXX executable position_test
+2026-10-25T13:31:12.1012550Z [ 42%] Building CXX object CMakeFiles/rules_test.dir/tests/rules_test.cpp.o
+2026-10-25T13:31:12.1722550Z [ 42%] Built target position_test
+2026-10-25T13:31:12.2122340Z [ 43%] Building CXX object CMakeFiles/evaluation_test.dir/tests/evaluation_test.cpp.o
+2026-10-25T13:31:13.1200950Z [ 45%] Linking CXX executable rules_test
+2026-10-25T13:31:13.2155730Z [ 45%] Built target rules_test
+2026-10-25T13:31:13.2687420Z [ 46%] Building CXX object CMakeFiles/table_test.dir/tests/table_test.cpp.o
+2026-10-25T13:31:13.3009250Z [ 48%] Linking CXX executable evaluation_test
+2026-10-25T13:31:13.3892240Z [ 48%] Built target evaluation_test
+2026-10-25T13:31:13.4250600Z [ 50%] Building CXX object CMakeFiles/search_test.dir/tests/search_test.cpp.o
+2026-10-25T13:31:14.4875360Z [ 51%] Linking CXX executable table_test
+2026-10-25T13:31:14.5845980Z [ 51%] Built target table_test
+2026-10-25T13:31:14.6350330Z [ 53%] Building CXX object CMakeFiles/network_test.dir/tests/network_test.cpp.o
+2026-10-25T13:31:15.9517880Z [ 54%] Linking CXX executable network_test
+2026-10-25T13:31:15.9628720Z [ 56%] Linking CXX executable search_test
+2026-10-25T13:31:16.0568780Z [ 56%] Built target network_test
+2026-10-25T13:31:16.0596820Z [ 56%] Built target search_test
+2026-10-25T13:31:16.0913530Z [ 57%] Building CXX object CMakeFiles/notation_test.dir/tests/notation_test.cpp.o
+2026-10-25T13:31:16.1021820Z [ 59%] Building CXX object CMakeFiles/uci_test.dir/tests/uci_test.cpp.o
+2026-10-25T13:31:16.9599970Z [ 60%] Linking CXX executable uci_test
+2026-10-25T13:31:17.0649730Z [ 60%] Built target uci_test
+2026-10-25T13:31:17.1075700Z [ 62%] Building CXX object CMakeFiles/position_line_test.dir/tests/position_line_test.cpp.o
+2026-10-25T13:31:17.2597490Z [ 64%] Linking CXX executable notation_test
+2026-10-25T13:31:17.3524520Z [ 64%] Built target notation_test
+2026-10-25T13:31:17.3893100Z [ 65%] Building CXX object CMakeFiles/kernel_test.dir/tests/kernel_test.cpp.o
+2026-10-25T13:31:18.4414630Z [ 67%] Linking CXX executable kernel_test
+2026-10-25T13:31:18.5502040Z [ 67%] Built target kernel_test
+2026-10-25T13:31:18.6066780Z [ 68%] Building CXX object CMakeFiles/dense_kernel_test.dir/tests/dense_kernel_test.cpp.o
+2026-10-25T13:31:19.0410370Z [ 70%] Linking CXX executable position_line_test
+2026-10-25T13:31:19.1443990Z [ 70%] Built target position_line_test
+2026-10-25T13:31:19.1879870Z [ 71%] Building CXX object CMakeFiles/dense_kernel_bench.dir/tests/dense_kernel_bench.cpp.o
+2026-10-25T13:31:19.8295710Z [ 73%] Linking CXX executable dense_kernel_test
+2026-10-25T13:31:19.9088660Z [ 73%] Built target dense_kernel_test
+2026-10-25T13:31:19.9454220Z [ 75%] Building CXX object CMakeFiles/neural_bounds_test.dir/tests/neural_bounds_test.cpp.o
+2026-10-25T13:31:20.5269680Z [ 76%] Linking CXX executable dense_kernel_bench
+2026-10-25T13:31:20.6061260Z [ 76%] Built target dense_kernel_bench
+2026-10-25T13:31:20.6535950Z [ 78%] Building CXX object CMakeFiles/evaluation_cache_test.dir/tests/evaluation_cache_test.cpp.o
+2026-10-25T13:31:22.2367030Z [ 79%] Linking CXX executable neural_bounds_test
+2026-10-25T13:31:22.3635750Z [ 79%] Built target neural_bounds_test
+2026-10-25T13:31:22.3971220Z [ 81%] Building CXX object CMakeFiles/tactical_generation_test.dir/tests/tactical_generation_test.cpp.o
+2026-10-25T13:31:23.1656230Z [ 82%] Linking CXX executable evaluation_cache_test
+2026-10-25T13:31:23.2825860Z [ 82%] Built target evaluation_cache_test
+2026-10-25T13:31:23.3246820Z [ 84%] Building CXX object CMakeFiles/search_context_test.dir/tests/search_context_test.cpp.o
+2026-10-25T13:31:25.5072760Z [ 85%] Linking CXX executable tactical_generation_test
+2026-10-25T13:31:25.6226390Z [ 85%] Built target tactical_generation_test
+2026-10-25T13:31:25.6683560Z [ 87%] Building CXX object CMakeFiles/lmr_window_test.dir/tests/lmr_window_test.cpp.o
+2026-10-25T13:31:26.0755580Z [ 89%] Linking CXX executable search_context_test
+2026-10-25T13:31:26.1768310Z [ 89%] Built target search_context_test
+2026-10-25T13:31:26.2284090Z [ 90%] Building CXX object CMakeFiles/network_precision_test.dir/tests/network_precision_test.cpp.o
+2026-10-25T13:31:27.2249270Z [ 92%] Linking CXX executable lmr_window_test
+2026-10-25T13:31:27.3112340Z [ 92%] Built target lmr_window_test
+2026-10-25T13:31:27.3664380Z [ 93%] Building CXX object CMakeFiles/accumulator_stack_test.dir/tests/accumulator_stack_test.cpp.o
+2026-10-25T13:31:27.9408470Z [ 95%] Linking CXX executable network_precision_test
+2026-10-25T13:31:28.0288350Z [ 95%] Built target network_precision_test
+2026-10-25T13:31:28.0650140Z [ 96%] Building CXX object CMakeFiles/state_probe_test.dir/tests/state_probe_test.cpp.o
+2026-10-25T13:31:29.6099550Z [ 98%] Linking CXX executable state_probe_test
+2026-10-25T13:31:29.7106470Z [ 98%] Built target state_probe_test
+2026-10-25T13:31:30.0502360Z [100%] Linking CXX executable accumulator_stack_test
+2026-10-25T13:31:30.1382430Z [100%] Built target accumulator_stack_test
+2026-10-25T13:31:30.2522860Z ##[group]Run python - <<'PY'
+2026-10-25T13:31:30.2523270Z [36;1mpython - <<'PY'[0m
+2026-10-25T13:31:30.2523540Z [36;1mimport hashlib, json, os[0m
+2026-10-25T13:31:30.2523990Z [36;1mfrom pathlib import Path[0m
+2026-10-25T13:31:30.2524360Z [36;1mcommands = json.loads(Path('build-state/compile_commands.json').read_text())[0m
+2026-10-25T13:31:30.2524980Z [36;1massert commands and all(os.environ['SANITIZER_MARKER'] in row['command'] for row in commands)[0m
+2026-10-25T13:31:30.2526090Z [36;1mcases = json.loads(Path('runs/native-state-cases.json').read_text())['tests'][0m
+2026-10-25T13:31:30.2527360Z [36;1mexpected = {'version','core','position','rules','evaluation','table','search','notation','uci','position_line','kernels','dense_kernels','neural_bounds','evaluation_cache','tactical_generation','search_context','lmr_window','network_precision','accumulator_stack','state_probe'}[0m
+2026-10-25T13:31:30.2528670Z [36;1massert len(cases) == 20 and {case['name'] for case in cases} == expected[0m
+2026-10-25T13:31:30.2529090Z [36;1mfiles = sorted({case['command'][0] for case in cases})[0m
+2026-10-25T13:31:30.2530100Z [36;1mrecord = {'source_commit':os.environ['GITHUB_SHA'],'instrumentation':os.environ['SANITIZER_MARKER'],'programs':{name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in files},'full_acceptance':False}[0m
+2026-10-25T13:31:30.2531470Z [36;1mPath('runs/native-state-programs.json').write_text(json.dumps(record,indent=2)+'\n')[0m
+2026-10-25T13:31:30.2531950Z [36;1mPY[0m
+2026-10-25T13:31:30.2613000Z shell: /bin/bash -e {0}
+2026-10-25T13:31:30.2613430Z env:
+2026-10-25T13:31:30.2613720Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:31:30.2614200Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:31:30.2614570Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:31:30.2615190Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-25T13:31:30.2615790Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:31:30.2616380Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:31:30.2616970Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:31:30.2617470Z   SANITIZER_MARKER: -fsanitize=address,undefined
+2026-10-25T13:31:30.2617880Z ##[endgroup]
+2026-10-25T13:31:30.3965810Z ##[group]Run ctest --test-dir build-state --output-on-failure
+2026-10-25T13:31:30.3966470Z [36;1mctest --test-dir build-state --output-on-failure[0m
+2026-10-25T13:31:30.3967090Z [36;1mpython -m tests.restoration_replay --engine build-state/caissa --output runs/native-state-restoration[0m
+2026-10-25T13:31:30.3968040Z [36;1mpython -m tests.draw_history --engine build-state/caissa --output runs/native-state-draw[0m
+2026-10-25T13:31:30.4013910Z shell: /bin/bash -e {0}
+2026-10-25T13:31:30.4014270Z env:
+2026-10-25T13:31:30.4014680Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:31:30.4015040Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:31:30.4015490Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:31:30.4016100Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-25T13:31:30.4016680Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:31:30.4017700Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:31:30.4018260Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:31:30.4018670Z ##[endgroup]
+2026-10-25T13:31:30.4505660Z Test project /Users/runner/work/caissa/caissa/build-state
+2026-10-25T13:31:30.4522690Z       Start  1: version
+2026-10-25T13:31:31.2861810Z  1/20 Test  #1: version ..........................   Passed    0.83 sec
+2026-10-25T13:31:31.2919980Z       Start  2: core
+2026-10-25T13:31:31.3633280Z  2/20 Test  #2: core .............................   Passed    0.07 sec
+2026-10-25T13:31:31.3634110Z       Start  3: position
+2026-10-25T13:31:31.6271070Z  3/20 Test  #3: position .........................   Passed    0.26 sec
+2026-10-25T13:31:31.6373290Z       Start  4: rules
+2026-10-25T13:31:31.6773300Z  4/20 Test  #4: rules ............................   Passed    0.05 sec
+2026-10-25T13:31:31.6827620Z       Start  5: evaluation
+2026-10-25T13:31:31.7810150Z  5/20 Test  #5: evaluation .......................   Passed    0.10 sec
+2026-10-25T13:31:31.7812830Z       Start  6: table
+2026-10-25T13:31:31.8289300Z  6/20 Test  #6: table ............................   Passed    0.05 sec
+2026-10-25T13:31:31.8357950Z       Start  7: search
+2026-10-25T13:31:32.0842610Z  7/20 Test  #7: search ...........................   Passed    0.24 sec
+2026-10-25T13:31:32.0958140Z       Start  8: notation
+2026-10-25T13:31:32.1555460Z  8/20 Test  #8: notation .........................   Passed    0.07 sec
+2026-10-25T13:31:32.1557290Z       Start  9: uci
+2026-10-25T13:31:32.3232240Z  9/20 Test  #9: uci ..............................   Passed    0.17 sec
+2026-10-25T13:31:32.3233960Z       Start 10: position_line
+2026-10-25T13:31:32.7617890Z 10/20 Test #10: position_line ....................   Passed    0.44 sec
+2026-10-25T13:31:32.7624630Z       Start 11: kernels
+2026-10-25T13:31:32.9914420Z 11/20 Test #11: kernels ..........................   Passed    0.23 sec
+2026-10-25T13:31:33.0016150Z       Start 12: dense_kernels
+2026-10-25T13:31:33.4279010Z 12/20 Test #12: dense_kernels ....................   Passed    0.43 sec
+2026-10-25T13:31:33.4380320Z       Start 13: neural_bounds
+2026-10-25T13:31:34.3098470Z 13/20 Test #13: neural_bounds ....................   Passed    0.89 sec
+2026-10-25T13:31:34.3201000Z       Start 14: evaluation_cache
+2026-10-25T13:31:57.2188990Z 14/20 Test #14: evaluation_cache .................   Passed   22.90 sec
+2026-10-25T13:31:57.2223560Z       Start 15: tactical_generation
+2026-10-25T13:32:08.6738860Z 15/20 Test #15: tactical_generation ..............   Passed   11.45 sec
+2026-10-25T13:32:08.6743150Z       Start 16: search_context
+2026-10-25T13:32:20.6410030Z 16/20 Test #16: search_context ...................   Passed   11.96 sec
+2026-10-25T13:32:20.6502030Z       Start 17: lmr_window
+2026-10-25T13:32:21.0828280Z 17/20 Test #17: lmr_window .......................   Passed    0.44 sec
+2026-10-25T13:32:21.0829770Z       Start 18: network_precision
+2026-10-25T13:32:21.4109190Z 18/20 Test #18: network_precision ................   Passed    0.32 sec
+2026-10-25T13:32:21.4181660Z       Start 19: accumulator_stack
+2026-10-25T13:32:29.7133690Z 19/20 Test #19: accumulator_stack ................   Passed    8.30 sec
+2026-10-25T13:32:29.7139710Z       Start 20: state_probe
+2026-10-25T13:32:30.0072110Z 20/20 Test #20: state_probe ......................   Passed    0.29 sec
+2026-10-25T13:32:30.0082660Z 
+2026-10-25T13:32:30.0083030Z 100% tests passed out of 20
+2026-10-25T13:32:30.0083420Z 
+2026-10-25T13:32:30.0083670Z Total Test time (real) =  59.56 sec
+2026-10-25T13:32:42.8497760Z Traceback (most recent call last):
+2026-10-25T13:32:42.8535230Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-10-25T13:32:42.8536330Z   File "<frozen runpy>", line 88, in _run_code
+2026-10-25T13:32:42.8537580Z   File "/Users/runner/work/caissa/caissa/tests/draw_history.py", line 275, in <module>
+2026-10-25T13:32:42.8538560Z     main()
+2026-10-25T13:32:42.8539770Z   File "/Users/runner/work/caissa/caissa/tests/draw_history.py", line 44, in main
+2026-10-25T13:32:42.8540900Z     owner.run(
+2026-10-25T13:32:42.8541820Z   File "/Users/runner/work/caissa/caissa/tools/campaign_process.py", line 341, in run
+2026-10-25T13:32:42.8542980Z     raise StageFailure(record)
+2026-10-25T13:32:42.8556960Z tools.campaign_process.StageFailure: stage observe failed: nonzero-exit (exit 1)
+2026-10-25T13:32:42.8727440Z ##[error]Process completed with exit code 1.
+2026-10-25T13:32:42.8867180Z ##[group]Run actions/upload-artifact@v4
+2026-10-25T13:32:42.8867540Z with:
+2026-10-25T13:32:42.8867860Z   name: native-state-macos-15-address-undefined-40197868753
+2026-10-25T13:32:42.8870070Z   path: runs/native-state-cases.json
+runs/native-state-programs.json
+runs/native-state-restoration/*.json
+runs/native-state-restoration/*.jsonl
+runs/native-state-restoration/*.log
+runs/native-state-restoration/producer/
+runs/native-state-restoration/independent/RESTORATION.json
+runs/native-state-draw/*.json
+runs/native-state-draw/*.jsonl
+runs/native-state-draw/*.log
+runs/native-state-draw/producer/
+runs/native-state-draw/independent/DRAW_HISTORY.json
+runs/native-state-draw/full-replay/G03/DRAW_HISTORY.json
+build-state/compile_commands.json
+build-state/CMakeCache.txt
+build-state/Testing/Temporary/LastTest.log
+build-state/caissa
+build-state/*_test
+
+2026-10-25T13:32:42.8872200Z   retention-days: 14
+2026-10-25T13:32:42.8872480Z   if-no-files-found: warn
+2026-10-25T13:32:42.8872800Z   compression-level: 6
+2026-10-25T13:32:42.8873070Z   overwrite: false
+2026-10-25T13:32:42.8873290Z   include-hidden-files: false
+2026-10-25T13:32:42.8873560Z env:
+2026-10-25T13:32:42.8873770Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:32:42.8874150Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:32:42.8874500Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:32:42.8875020Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-25T13:32:42.8875540Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:32:42.8875950Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:32:42.8876420Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-25T13:32:42.8876760Z ##[endgroup]
+2026-10-25T13:32:43.3959850Z (node:10138) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-25T13:32:43.3965440Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-25T13:32:43.4416090Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-25T13:32:43.4418620Z The least common ancestor is /Users/runner/work/caissa/caissa. This will be the root directory of the artifact
+2026-10-25T13:32:43.4419180Z With the provided path, there will be 74 files uploaded
+2026-10-25T13:32:43.4419860Z Artifact name is valid!
+2026-10-25T13:32:43.4420180Z Root directory input is valid!
+2026-10-25T13:32:43.8628710Z Beginning upload of artifact content to blob storage
+2026-10-25T13:32:44.7022820Z (node:10138) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-25T13:32:45.6477640Z Uploaded bytes 6522273
+2026-10-25T13:32:45.7290350Z Finished uploading artifact content to blob storage!
+2026-10-25T13:32:45.7291530Z SHA256 digest of uploaded artifact zip is f78cc90b53cb7fcd63c3ddd6ecf145598272e8da16bcc8f6c7a6d81a4f1ad8f0
+2026-10-25T13:32:45.7294570Z Finalizing artifact upload
+2026-10-25T13:32:46.1937640Z Artifact native-state-macos-15-address-undefined-40197868753.zip successfully finalized. Artifact ID 12600518922
+2026-10-25T13:32:46.1938650Z Artifact native-state-macos-15-address-undefined-40197868753 has been successfully uploaded! Final size is 6522273 bytes. Artifact ID is 12600518922
+2026-10-25T13:32:46.1944900Z Artifact download URL: https://github.com/Aneesh495/caissa/actions/runs/40197868753/artifacts/12600518922
+2026-10-25T13:32:46.2129790Z Post job cleanup.
+2026-10-25T13:32:46.3566390Z [command]/opt/homebrew/bin/git version
+2026-10-25T13:32:46.3655540Z git version 2.55.0
+2026-10-25T13:32:46.3699810Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/58066541-c107-4049-b8a2-278b22a68d52/.gitconfig'
+2026-10-25T13:32:46.3719950Z Temporarily overriding HOME='/Users/runner/work/_temp/58066541-c107-4049-b8a2-278b22a68d52' before making global git config changes
+2026-10-25T13:32:46.3721850Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T13:32:46.3724810Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/caissa/caissa
+2026-10-25T13:32:46.3897180Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T13:32:46.4037110Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T13:32:46.5511960Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T13:32:46.5636500Z http.https://github.com/.extraheader
+2026-10-25T13:32:46.5688610Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-25T13:32:46.6052440Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T13:32:46.7788440Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-25T13:32:46.8096930Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-25T13:32:46.9690710Z Cleaning up orphan processes
+2026-10-25T13:32:48.0891450Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

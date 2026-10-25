@@ -1,0 +1,667 @@
+﻿2026-10-25T13:29:58.7507895Z Current runner version: '2.338.0'
+2026-10-25T13:29:58.7546661Z ##[group]Runner Image Provisioner
+2026-10-25T13:29:58.7547709Z Hosted Compute Agent
+2026-10-25T13:29:58.7548261Z Version: 20261021.618
+2026-10-25T13:29:58.7550878Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-25T13:29:58.7551460Z Build Date: 2026-10-21T00:45:21Z
+2026-10-25T13:29:58.7551994Z Worker ID: {54afc400-9390-4a55-aece-aa7f6815b64d}
+2026-10-25T13:29:58.7553200Z Region: centralus
+2026-10-25T13:29:58.7553824Z Cloud: Azure
+2026-10-25T13:29:58.7554324Z ##[endgroup]
+2026-10-25T13:29:58.7555833Z ##[group]Operating System
+2026-10-25T13:29:58.7556449Z Ubuntu
+2026-10-25T13:29:58.7556918Z 24.04.5
+2026-10-25T13:29:58.7557427Z LTS
+2026-10-25T13:29:58.7557877Z ##[endgroup]
+2026-10-25T13:29:58.7558381Z ##[group]Runner Image
+2026-10-25T13:29:58.7559329Z Image: ubuntu-24.04
+2026-10-25T13:29:58.7559836Z Version: 20261012.334.1
+2026-10-25T13:29:58.7560983Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-25T13:29:58.7562427Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-25T13:29:58.7563236Z ##[endgroup]
+2026-10-25T13:29:58.7564402Z ##[group]GITHUB_TOKEN Permissions
+2026-10-25T13:29:58.7566885Z Contents: read
+2026-10-25T13:29:58.7567476Z Metadata: read
+2026-10-25T13:29:58.7568017Z ##[endgroup]
+2026-10-25T13:29:58.7570469Z Secret source: Actions
+2026-10-25T13:29:58.7571328Z Cache mode: write
+2026-10-25T13:29:58.7573434Z Prepare workflow directory
+2026-10-25T13:29:58.8084676Z Prepare all required actions
+2026-10-25T13:29:58.8140729Z Getting action download info
+2026-10-25T13:29:59.0817682Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-25T13:29:59.2173480Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-25T13:29:59.3263195Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-25T13:29:59.5799272Z Complete job name: instrumented (ubuntu-24.04, thread, CAISSA_TSAN, -fsanitize=thread)
+2026-10-25T13:29:59.6710455Z ##[group]Run actions/checkout@v4
+2026-10-25T13:29:59.6711342Z with:
+2026-10-25T13:29:59.6711831Z   repository: Aneesh495/caissa
+2026-10-25T13:29:59.6715295Z   token: ***
+2026-10-25T13:29:59.6715790Z   ssh-strict: true
+2026-10-25T13:29:59.6716199Z   ssh-user: git
+2026-10-25T13:29:59.6716710Z   persist-credentials: true
+2026-10-25T13:29:59.6717205Z   clean: true
+2026-10-25T13:29:59.6717769Z   sparse-checkout-cone-mode: true
+2026-10-25T13:29:59.6718377Z   fetch-depth: 1
+2026-10-25T13:29:59.6718787Z   fetch-tags: false
+2026-10-25T13:29:59.6719238Z   show-progress: true
+2026-10-25T13:29:59.6719665Z   lfs: false
+2026-10-25T13:29:59.6720049Z   submodules: false
+2026-10-25T13:29:59.6720476Z   set-safe-directory: true
+2026-10-25T13:29:59.6720999Z   allow-unsafe-pr-checkout: false
+2026-10-25T13:29:59.6721731Z env:
+2026-10-25T13:29:59.6722419Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:29:59.6723073Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:29:59.6723590Z ##[endgroup]
+2026-10-25T13:29:59.7785606Z Syncing repository: Aneesh495/caissa
+2026-10-25T13:29:59.7788183Z ##[group]Getting Git version info
+2026-10-25T13:29:59.7789119Z Working directory is '/home/runner/work/caissa/caissa'
+2026-10-25T13:29:59.7790392Z [command]/usr/bin/git version
+2026-10-25T13:29:59.7795861Z git version 2.55.0
+2026-10-25T13:29:59.7873771Z ##[endgroup]
+2026-10-25T13:29:59.7933928Z Temporarily overriding HOME='/home/runner/work/_temp/dd4974ec-3070-4df8-8348-d946388ce843' before making global git config changes
+2026-10-25T13:29:59.8009707Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T13:29:59.8014686Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/caissa/caissa
+2026-10-25T13:29:59.8106062Z Deleting the contents of '/home/runner/work/caissa/caissa'
+2026-10-25T13:29:59.8108209Z ##[group]Initializing the repository
+2026-10-25T13:29:59.8110233Z [command]/usr/bin/git init /home/runner/work/caissa/caissa
+2026-10-25T13:29:59.8111858Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-25T13:29:59.8113188Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-25T13:29:59.8114408Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-25T13:29:59.8115416Z hint: call:
+2026-10-25T13:29:59.8116041Z hint:
+2026-10-25T13:29:59.8116874Z hint: 	git config --global init.defaultBranch <name>
+2026-10-25T13:29:59.8117686Z hint:
+2026-10-25T13:29:59.8118471Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-25T13:29:59.8119578Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-25T13:29:59.8120541Z hint:
+2026-10-25T13:29:59.8121107Z hint: 	git branch -m <name>
+2026-10-25T13:29:59.8121613Z hint:
+2026-10-25T13:29:59.8122408Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-25T13:29:59.8123470Z Initialized empty Git repository in /home/runner/work/caissa/caissa/.git/
+2026-10-25T13:29:59.8125111Z [command]/usr/bin/git remote add origin https://github.com/Aneesh495/caissa
+2026-10-25T13:29:59.8127665Z ##[endgroup]
+2026-10-25T13:29:59.8128709Z ##[group]Disabling automatic garbage collection
+2026-10-25T13:29:59.8129625Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-25T13:29:59.8154463Z ##[endgroup]
+2026-10-25T13:29:59.8155590Z ##[group]Setting up auth
+2026-10-25T13:29:59.8162234Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T13:29:59.8213997Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T13:29:59.8599720Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T13:29:59.8633719Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T13:29:59.8817966Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-25T13:29:59.8841531Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-25T13:29:59.9027413Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-25T13:29:59.9057571Z ##[endgroup]
+2026-10-25T13:29:59.9058361Z ##[group]Fetching the repository
+2026-10-25T13:29:59.9065695Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +18ebff0f997fd71b6e0d9562c35d53de6a32fe04:refs/remotes/origin/main
+2026-10-25T13:30:28.0439237Z From https://github.com/Aneesh495/caissa
+2026-10-25T13:30:28.0449300Z  * [new ref]         18ebff0f997fd71b6e0d9562c35d53de6a32fe04 -> origin/main
+2026-10-25T13:30:28.0451582Z ##[endgroup]
+2026-10-25T13:30:28.0452767Z ##[group]Determining the checkout info
+2026-10-25T13:30:28.0453556Z ##[endgroup]
+2026-10-25T13:30:28.0454046Z [command]/usr/bin/git sparse-checkout disable
+2026-10-25T13:30:28.2005097Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-25T13:30:28.2937616Z ##[group]Checking out the ref
+2026-10-25T13:30:28.2949339Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-25T13:30:30.3384548Z Updating files:  84% (2163/2572)
+2026-10-25T13:30:30.6280803Z Updating files:  84% (2169/2572)
+2026-10-25T13:30:30.6302024Z Updating files:  85% (2187/2572)
+2026-10-25T13:30:30.6305565Z Updating files:  86% (2212/2572)
+2026-10-25T13:30:30.6384977Z Updating files:  87% (2238/2572)
+2026-10-25T13:30:30.6401972Z Updating files:  88% (2264/2572)
+2026-10-25T13:30:30.6405171Z Updating files:  89% (2290/2572)
+2026-10-25T13:30:30.6409523Z Updating files:  90% (2315/2572)
+2026-10-25T13:30:30.6436323Z Updating files:  91% (2341/2572)
+2026-10-25T13:30:30.6456865Z Updating files:  92% (2367/2572)
+2026-10-25T13:30:30.6473318Z Updating files:  93% (2392/2572)
+2026-10-25T13:30:30.6483442Z Updating files:  94% (2418/2572)
+2026-10-25T13:30:30.6485539Z Updating files:  95% (2444/2572)
+2026-10-25T13:30:30.6496377Z Updating files:  96% (2470/2572)
+2026-10-25T13:30:30.6509100Z Updating files:  97% (2495/2572)
+2026-10-25T13:30:30.6523649Z Updating files:  98% (2521/2572)
+2026-10-25T13:30:30.6538971Z Updating files:  99% (2547/2572)
+2026-10-25T13:30:30.6544747Z Updating files: 100% (2572/2572)
+2026-10-25T13:30:30.6545331Z Updating files: 100% (2572/2572), done.
+2026-10-25T13:30:30.8045291Z Switched to a new branch 'main'
+2026-10-25T13:30:30.8051141Z branch 'main' set up to track 'origin/main'.
+2026-10-25T13:30:30.8131398Z ##[endgroup]
+2026-10-25T13:30:30.8180080Z [command]/usr/bin/git log -1 --format=%H
+2026-10-25T13:30:30.8210391Z 18ebff0f997fd71b6e0d9562c35d53de6a32fe04
+2026-10-25T13:30:30.9135423Z ##[group]Run actions/setup-python@v5
+2026-10-25T13:30:30.9135778Z with:
+2026-10-25T13:30:30.9136052Z   python-version: 3.12
+2026-10-25T13:30:30.9136323Z   check-latest: false
+2026-10-25T13:30:30.9138375Z   token: ***
+2026-10-25T13:30:30.9138645Z   update-environment: true
+2026-10-25T13:30:30.9138947Z   allow-prereleases: false
+2026-10-25T13:30:30.9139234Z   freethreaded: false
+2026-10-25T13:30:30.9139486Z env:
+2026-10-25T13:30:30.9139750Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:30:30.9140179Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:30:30.9140488Z ##[endgroup]
+2026-10-25T13:30:31.0320143Z ##[group]Installed versions
+2026-10-25T13:30:31.0529131Z (node:2062) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-25T13:30:31.0530017Z Successfully set up CPython (3.12.15)
+2026-10-25T13:30:31.0530931Z ##[endgroup]
+2026-10-25T13:30:31.0531985Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-25T13:30:31.1015032Z ##[group]Run python -m pip install numpy==2.2.6 chess==1.11.2
+2026-10-25T13:30:31.1015701Z [36;1mpython -m pip install numpy==2.2.6 chess==1.11.2[0m
+2026-10-25T13:30:31.1240702Z shell: /usr/bin/bash -e {0}
+2026-10-25T13:30:31.1241069Z env:
+2026-10-25T13:30:31.1241582Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:30:31.1241936Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:30:31.1242462Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:30:31.1243060Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-25T13:30:31.1243503Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:30:31.1244001Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:30:31.1244442Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:30:31.1244826Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-25T13:30:31.1245250Z ##[endgroup]
+2026-10-25T13:30:32.6176662Z Collecting numpy==2.2.6
+2026-10-25T13:30:32.7006043Z   Downloading numpy-2.2.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+2026-10-25T13:30:32.7534907Z Collecting chess==1.11.2
+2026-10-25T13:30:32.7691017Z   Downloading chess-1.11.2.tar.gz (6.1 MB)
+2026-10-25T13:30:32.9728682Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.1/6.1 MB 34.9 MB/s  0:00:00
+2026-10-25T13:30:33.0963251Z   Installing build dependencies: started
+2026-10-25T13:30:33.9014261Z   Installing build dependencies: finished with status 'done'
+2026-10-25T13:30:33.9020123Z   Getting requirements to build wheel: started
+2026-10-25T13:30:34.2849217Z   Getting requirements to build wheel: finished with status 'done'
+2026-10-25T13:30:34.2858273Z   Preparing metadata (pyproject.toml): started
+2026-10-25T13:30:34.4831921Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-10-25T13:30:34.5012997Z Downloading numpy-2.2.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.5 MB)
+2026-10-25T13:30:34.7614306Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.5/16.5 MB 63.4 MB/s  0:00:00
+2026-10-25T13:30:34.7934229Z Building wheels for collected packages: chess
+2026-10-25T13:30:34.7939885Z   Building wheel for chess (pyproject.toml): started
+2026-10-25T13:30:35.0242530Z   Building wheel for chess (pyproject.toml): finished with status 'done'
+2026-10-25T13:30:35.0263751Z   Created wheel for chess: filename=chess-1.11.2-py3-none-any.whl size=147878 sha256=b6e2b253754241d4dd8ca6fd2a5fe6c79265b9017713b888791efe8833e247ac
+2026-10-25T13:30:35.0264675Z   Stored in directory: /home/runner/.cache/pip/wheels/83/1f/4e/8f4300f7dd554eb8de70ddfed96e94d3d030ace10c5b53d447
+2026-10-25T13:30:35.0292936Z Successfully built chess
+2026-10-25T13:30:35.0525557Z Installing collected packages: numpy, chess
+2026-10-25T13:30:36.9234121Z 
+2026-10-25T13:30:36.9246580Z Successfully installed chess-1.11.2 numpy-2.2.6
+2026-10-25T13:30:36.9255114Z 
+2026-10-25T13:30:36.9255458Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-25T13:30:36.9256053Z [notice] To update, run: pip install --upgrade pip
+2026-10-25T13:30:37.0180969Z ##[group]Run cmake -S . -B build-state -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCAISSA_TSAN=ON
+2026-10-25T13:30:37.0181838Z [36;1mcmake -S . -B build-state -DCMAKE_BUILD_TYPE=RelWithDebInfo -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -DCAISSA_TSAN=ON[0m
+2026-10-25T13:30:37.0182643Z [36;1mcmake --build build-state -j 2[0m
+2026-10-25T13:30:37.0182993Z [36;1mmkdir -p runs[0m
+2026-10-25T13:30:37.0183442Z [36;1mctest --test-dir build-state --show-only=json-v1 > runs/native-state-cases.json[0m
+2026-10-25T13:30:37.0225935Z shell: /usr/bin/bash -e {0}
+2026-10-25T13:30:37.0226256Z env:
+2026-10-25T13:30:37.0226598Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:30:37.0226985Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:30:37.0227391Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:30:37.0227995Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-25T13:30:37.0228703Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:30:37.0229287Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:30:37.0229915Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:30:37.0230339Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-25T13:30:37.0230727Z ##[endgroup]
+2026-10-25T13:30:38.5123782Z -- The CXX compiler identification is GNU 13.3.0
+2026-10-25T13:30:38.6213139Z -- Detecting CXX compiler ABI info
+2026-10-25T13:30:38.9218786Z -- Detecting CXX compiler ABI info - done
+2026-10-25T13:30:38.9361385Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-10-25T13:30:38.9686921Z -- Detecting CXX compile features
+2026-10-25T13:30:38.9756434Z -- Detecting CXX compile features - done
+2026-10-25T13:30:39.0693097Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2026-10-25T13:30:39.2481042Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2026-10-25T13:30:39.2562910Z -- Found Threads: TRUE
+2026-10-25T13:30:39.2632946Z -- Configuring done (1.6s)
+2026-10-25T13:30:39.2943436Z -- Generating done (0.0s)
+2026-10-25T13:30:39.3208262Z -- Build files have been written to: /home/runner/work/caissa/caissa/build-state
+2026-10-25T13:30:39.3408464Z [  1%] Building CXX object CMakeFiles/caissa_core.dir/src/version.cpp.o
+2026-10-25T13:30:39.3410007Z [  3%] Building CXX object CMakeFiles/caissa_core.dir/src/attacks.cpp.o
+2026-10-25T13:30:39.5696088Z [  4%] Building CXX object CMakeFiles/caissa_core.dir/src/position.cpp.o
+2026-10-25T13:30:40.0890251Z [  6%] Building CXX object CMakeFiles/caissa_core.dir/src/position_line.cpp.o
+2026-10-25T13:30:41.0550182Z [  7%] Building CXX object CMakeFiles/caissa_core.dir/src/movegen.cpp.o
+2026-10-25T13:30:41.1258010Z [  9%] Building CXX object CMakeFiles/caissa_core.dir/src/reference.cpp.o
+2026-10-25T13:30:42.1112797Z [ 10%] Building CXX object CMakeFiles/caissa_core.dir/src/rules.cpp.o
+2026-10-25T13:30:42.6878494Z [ 12%] Building CXX object CMakeFiles/caissa_core.dir/src/evaluation.cpp.o
+2026-10-25T13:30:43.5154522Z [ 14%] Building CXX object CMakeFiles/caissa_core.dir/src/table.cpp.o
+2026-10-25T13:30:43.6604955Z [ 15%] Building CXX object CMakeFiles/caissa_core.dir/src/search.cpp.o
+2026-10-25T13:30:44.3289798Z [ 17%] Building CXX object CMakeFiles/caissa_core.dir/src/uci.cpp.o
+2026-10-25T13:30:45.4603794Z /home/runner/work/caissa/caissa/src/uci.cpp: In function ‘uint64_t caissa::{anonymous}::number(std::string_view, uint64_t)’:
+2026-10-25T13:30:45.4605347Z /home/runner/work/caissa/caissa/src/uci.cpp:20:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:45.4606265Z    20 |     if(e!=std::errc{}||p!=s.data()+s.size()||value>maximum)throw InputError("invalid or oversized integer");return value;
+2026-10-25T13:30:45.4606815Z       |     ^~
+2026-10-25T13:30:45.4607628Z /home/runner/work/caissa/caissa/src/uci.cpp:20:109: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:45.4609013Z    20 |     if(e!=std::errc{}||p!=s.data()+s.size()||value>maximum)throw InputError("invalid or oversized integer");return value;
+2026-10-25T13:30:45.4609663Z       |                                                                                                             ^~~~~~
+2026-10-25T13:30:45.5132929Z /home/runner/work/caissa/caissa/src/uci.cpp: In member function ‘void caissa::{anonymous}::Session::go(const std::vector<std::__cxx11::basic_string<char> >&)’:
+2026-10-25T13:30:45.5134194Z /home/runner/work/caissa/caissa/src/uci.cpp:135:17: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:45.5135134Z   135 |                 if(limits.root_moves.empty())throw InputError("searchmoves missing legal moves");continue;
+2026-10-25T13:30:45.5135823Z       |                 ^~
+2026-10-25T13:30:45.5136717Z /home/runner/work/caissa/caissa/src/uci.cpp:135:98: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:45.5137597Z   135 |                 if(limits.root_moves.empty())throw InputError("searchmoves missing legal moves");continue;
+2026-10-25T13:30:45.5138264Z       |                                                                                                  ^~~~~~~~
+2026-10-25T13:30:45.5139217Z /home/runner/work/caissa/caissa/src/uci.cpp:137:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:45.5140147Z   137 |             if(i+1>=t.size())throw InputError("go field missing value");auto value=number(t[++i]);
+2026-10-25T13:30:45.5140769Z       |             ^~
+2026-10-25T13:30:45.5141571Z /home/runner/work/caissa/caissa/src/uci.cpp:137:73: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:45.5142641Z   137 |             if(i+1>=t.size())throw InputError("go field missing value");auto value=number(t[++i]);
+2026-10-25T13:30:45.5143328Z       |                                                                         ^~~~
+2026-10-25T13:30:48.9214891Z [ 18%] Building CXX object CMakeFiles/caissa_core.dir/src/selfplay.cpp.o
+2026-10-25T13:30:49.4397440Z [ 20%] Building CXX object CMakeFiles/caissa_core.dir/src/network.cpp.o
+2026-10-25T13:30:50.2339664Z /home/runner/work/caissa/caissa/src/network.cpp: In static member function ‘static std::shared_ptr<const caissa::Network> caissa::Network::load(const std::filesystem::__cxx11::path&)’:
+2026-10-25T13:30:50.2342409Z /home/runner/work/caissa/caissa/src/network.cpp:56:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:50.2354615Z    56 |     for(auto& value:net->embedding_)value=reader.i16();for(auto& value:net->bias0_)value=reader.i32();
+2026-10-25T13:30:50.2355552Z       |     ^~~
+2026-10-25T13:30:50.2356970Z /home/runner/work/caissa/caissa/src/network.cpp:56:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-10-25T13:30:50.2358819Z    56 |     for(auto& value:net->embedding_)value=reader.i16();for(auto& value:net->bias0_)value=reader.i32();
+2026-10-25T13:30:50.2359644Z       |                                                        ^~~
+2026-10-25T13:30:50.2361326Z /home/runner/work/caissa/caissa/src/network.cpp:57:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:50.2362907Z    57 |     for(auto& value:net->weights1_)value=reader.i16();for(auto& value:net->bias1_)value=reader.i32();
+2026-10-25T13:30:50.2378636Z       |     ^~~
+2026-10-25T13:30:50.2379988Z /home/runner/work/caissa/caissa/src/network.cpp:57:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-10-25T13:30:50.2381060Z    57 |     for(auto& value:net->weights1_)value=reader.i16();for(auto& value:net->bias1_)value=reader.i32();
+2026-10-25T13:30:50.2381720Z       |                                                       ^~~
+2026-10-25T13:30:50.2383063Z /home/runner/work/caissa/caissa/src/network.cpp:58:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:50.2384256Z    58 |     for(auto& value:net->weights2_)value=reader.i16();for(auto& value:net->bias2_)value=reader.i32();
+2026-10-25T13:30:50.2388538Z       |     ^~~
+2026-10-25T13:30:50.2389572Z /home/runner/work/caissa/caissa/src/network.cpp:58:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-10-25T13:30:50.2390799Z    58 |     for(auto& value:net->weights2_)value=reader.i16();for(auto& value:net->bias2_)value=reader.i32();
+2026-10-25T13:30:50.2391480Z       |                                                       ^~~
+2026-10-25T13:30:50.2392572Z /home/runner/work/caissa/caissa/src/network.cpp:59:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:50.2393415Z    59 |     for(auto& value:net->weights3_)value=reader.i16();net->bias3_=reader.i32();
+2026-10-25T13:30:50.2394050Z       |     ^~~
+2026-10-25T13:30:50.2394932Z /home/runner/work/caissa/caissa/src/network.cpp:59:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-10-25T13:30:50.2395786Z    59 |     for(auto& value:net->weights3_)value=reader.i16();net->bias3_=reader.i32();
+2026-10-25T13:30:50.2396492Z       |                                                       ^~~
+2026-10-25T13:30:51.1786532Z [ 21%] Building CXX object CMakeFiles/caissa_core.dir/src/network_kernel.cpp.o
+2026-10-25T13:30:51.3790607Z [ 23%] Building CXX object CMakeFiles/caissa_core.dir/src/accumulator_stack.cpp.o
+2026-10-25T13:30:52.0290825Z [ 25%] Building CXX object CMakeFiles/caissa_core.dir/src/state_probe.cpp.o
+2026-10-25T13:30:52.3921053Z [ 26%] Building CXX object CMakeFiles/caissa_core.dir/src/notation.cpp.o
+2026-10-25T13:30:52.8093507Z /home/runner/work/caissa/caissa/src/state_probe.cpp: In member function ‘std::string caissa::{anonymous}::StateProbe::state()’:
+2026-10-25T13:30:52.8094756Z /home/runner/work/caissa/caissa/src/state_probe.cpp:91:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:52.8095526Z    91 |             if(c==Color::black)out<<',';out<<'[';
+2026-10-25T13:30:52.8096034Z       |             ^~
+2026-10-25T13:30:52.8096823Z /home/runner/work/caissa/caissa/src/state_probe.cpp:91:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:52.8097525Z    91 |             if(c==Color::black)out<<',';out<<'[';
+2026-10-25T13:30:52.8098037Z       |                                         ^~~
+2026-10-25T13:30:52.8107707Z /home/runner/work/caissa/caissa/src/state_probe.cpp:99:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:52.8108491Z    99 |             if(c)out<<',';out<<'[';
+2026-10-25T13:30:52.8112630Z       |             ^~
+2026-10-25T13:30:52.8113548Z /home/runner/work/caissa/caissa/src/state_probe.cpp:99:27: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:52.8114758Z    99 |             if(c)out<<',';out<<'[';
+2026-10-25T13:30:52.8115217Z       |                           ^~~
+2026-10-25T13:30:53.0243496Z /home/runner/work/caissa/caissa/src/notation.cpp: In function ‘std::string caissa::san(Position&, Move)’:
+2026-10-25T13:30:53.0244776Z /home/runner/work/caissa/caissa/src/notation.cpp:21:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0245550Z    21 |         if(capture)text+='x';text+=square_name(m.to);
+2026-10-25T13:30:53.0245935Z       |         ^~
+2026-10-25T13:30:53.0246719Z /home/runner/work/caissa/caissa/src/notation.cpp:21:30: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:53.0247465Z    21 |         if(capture)text+='x';text+=square_name(m.to);
+2026-10-25T13:30:53.0247942Z       |                              ^~~~
+2026-10-25T13:30:53.0272921Z /home/runner/work/caissa/caissa/src/notation.cpp: In function ‘std::string caissa::{anonymous}::normalize(std::string_view)’:
+2026-10-25T13:30:53.0273867Z /home/runner/work/caissa/caissa/src/notation.cpp:29:5: warning: this ‘while’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0274828Z    29 |     while(!s.empty()&&(s.back()=='!'||s.back()=='?'||s.back()=='+'||s.back()=='#'))s.pop_back();return s;
+2026-10-25T13:30:53.0286372Z       |     ^~~~~
+2026-10-25T13:30:53.0287665Z /home/runner/work/caissa/caissa/src/notation.cpp:29:97: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘while’
+2026-10-25T13:30:53.0288699Z    29 |     while(!s.empty()&&(s.back()=='!'||s.back()=='?'||s.back()=='+'||s.back()=='#'))s.pop_back();return s;
+2026-10-25T13:30:53.0289349Z       |                                                                                                 ^~~~~~
+2026-10-25T13:30:53.0290421Z /home/runner/work/caissa/caissa/src/notation.cpp: In member function ‘caissa::{anonymous}::Token caissa::{anonymous}::Lexer::next()’:
+2026-10-25T13:30:53.0291467Z /home/runner/work/caissa/caissa/src/notation.cpp:40:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0292553Z    40 |         if(c=='(')return {TokenKind::open,"",begin};if(c==')')return {TokenKind::close,"",begin};
+2026-10-25T13:30:53.0293027Z       |         ^~
+2026-10-25T13:30:53.0293871Z /home/runner/work/caissa/caissa/src/notation.cpp:40:53: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:53.0294716Z    40 |         if(c=='(')return {TokenKind::open,"",begin};if(c==')')return {TokenKind::close,"",begin};
+2026-10-25T13:30:53.0295574Z       |                                                     ^~
+2026-10-25T13:30:53.0354114Z /home/runner/work/caissa/caissa/src/notation.cpp: In function ‘std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > caissa::{anonymous}::parse_tag(const Token&)’:
+2026-10-25T13:30:53.0355477Z /home/runner/work/caissa/caissa/src/notation.cpp:79:5: warning: this ‘while’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0356260Z    79 |     while(i<s.size()&&std::isspace(static_cast<unsigned char>(s[i])))++i;std::size_t begin=i;
+2026-10-25T13:30:53.0356909Z       |     ^~~~~
+2026-10-25T13:30:53.0357661Z /home/runner/work/caissa/caissa/src/notation.cpp:79:74: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘while’
+2026-10-25T13:30:53.0358555Z    79 |     while(i<s.size()&&std::isspace(static_cast<unsigned char>(s[i])))++i;std::size_t begin=i;
+2026-10-25T13:30:53.0359221Z       |                                                                          ^~~
+2026-10-25T13:30:53.0360076Z /home/runner/work/caissa/caissa/src/notation.cpp:81:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0361326Z    81 |     if(begin==i)Lexer::fail("invalid tag name",token.offset);std::string key=s.substr(begin,i-begin);
+2026-10-25T13:30:53.0361924Z       |     ^~
+2026-10-25T13:30:53.0362855Z /home/runner/work/caissa/caissa/src/notation.cpp:81:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:53.0363825Z    81 |     if(begin==i)Lexer::fail("invalid tag name",token.offset);std::string key=s.substr(begin,i-begin);
+2026-10-25T13:30:53.0364476Z       |                                                              ^~~
+2026-10-25T13:30:53.0365241Z /home/runner/work/caissa/caissa/src/notation.cpp:87:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0366130Z    87 |     if(!closed||i!=s.size())Lexer::fail("invalid tag trailer",token.offset);return {key,value};
+2026-10-25T13:30:53.0366726Z       |     ^~
+2026-10-25T13:30:53.0367549Z /home/runner/work/caissa/caissa/src/notation.cpp:87:77: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:53.0368508Z    87 |     if(!closed||i!=s.size())Lexer::fail("invalid tag trailer",token.offset);return {key,value};
+2026-10-25T13:30:53.0369043Z       |                                                                             ^~~~~~
+2026-10-25T13:30:53.0418126Z /home/runner/work/caissa/caissa/src/notation.cpp: In function ‘std::optional<caissa::Move> caissa::parse_san(Position&, std::string_view)’:
+2026-10-25T13:30:53.0419158Z /home/runner/work/caissa/caissa/src/notation.cpp:98:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0419784Z    98 |         if(found)return std::nullopt;found=m;
+2026-10-25T13:30:53.0420214Z       |         ^~
+2026-10-25T13:30:53.0420891Z /home/runner/work/caissa/caissa/src/notation.cpp:98:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:53.0421584Z    98 |         if(found)return std::nullopt;found=m;
+2026-10-25T13:30:53.0422177Z       |                                      ^~~~~
+2026-10-25T13:30:53.0454374Z /home/runner/work/caissa/caissa/src/notation.cpp: In member function ‘caissa::Position caissa::Game::position_at(std::size_t) const’:
+2026-10-25T13:30:53.0455412Z /home/runner/work/caissa/caissa/src/notation.cpp:109:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0456257Z   109 |     if(node>=nodes.size())throw InputError("variation node absent");std::vector<Move> path;
+2026-10-25T13:30:53.0456879Z       |     ^~
+2026-10-25T13:30:53.0457601Z /home/runner/work/caissa/caissa/src/notation.cpp:109:69: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:53.0458465Z   109 |     if(node>=nodes.size())throw InputError("variation node absent");std::vector<Move> path;
+2026-10-25T13:30:53.0459090Z       |                                                                     ^~~
+2026-10-25T13:30:53.0573209Z /home/runner/work/caissa/caissa/src/notation.cpp: In static member function ‘static caissa::Game caissa::Game::parse(std::string_view)’:
+2026-10-25T13:30:53.0574270Z /home/runner/work/caissa/caissa/src/notation.cpp:114:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0575201Z   114 |     if(source.size()>1024*1024)throw InputError("PGN exceeds 1 MiB");Game game;Lexer lexer(source);Position p=game.initial;
+2026-10-25T13:30:53.0575834Z       |     ^~
+2026-10-25T13:30:53.0577461Z /home/runner/work/caissa/caissa/src/notation.cpp:114:70: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:53.0578352Z   114 |     if(source.size()>1024*1024)throw InputError("PGN exceeds 1 MiB");Game game;Lexer lexer(source);Position p=game.initial;
+2026-10-25T13:30:53.0579086Z       |                                                                      ^~~~
+2026-10-25T13:30:53.0629192Z /home/runner/work/caissa/caissa/src/notation.cpp:119:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0630408Z   119 |             if(started)Lexer::fail("tag after movetext",t.offset);auto [key,value]=parse_tag(t);
+2026-10-25T13:30:53.0631083Z       |             ^~
+2026-10-25T13:30:53.0631946Z /home/runner/work/caissa/caissa/src/notation.cpp:119:67: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:53.0633021Z   119 |             if(started)Lexer::fail("tag after movetext",t.offset);auto [key,value]=parse_tag(t);
+2026-10-25T13:30:53.0633798Z       |                                                                   ^~~~
+2026-10-25T13:30:53.0647862Z /home/runner/work/caissa/caissa/src/notation.cpp:120:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0648916Z   120 |             if(game.tags.contains(key))Lexer::fail("duplicate tag",t.offset);game.tags.emplace(std::move(key),std::move(value));
+2026-10-25T13:30:53.0649652Z       |             ^~
+2026-10-25T13:30:53.0650589Z /home/runner/work/caissa/caissa/src/notation.cpp:120:78: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:53.0651567Z   120 |             if(game.tags.contains(key))Lexer::fail("duplicate tag",t.offset);game.tags.emplace(std::move(key),std::move(value));
+2026-10-25T13:30:53.0652358Z       |                                                                              ^~~~
+2026-10-25T13:30:53.0723460Z /home/runner/work/caissa/caissa/src/notation.cpp:134:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0724441Z   134 |             if(!stack.empty())Lexer::fail("result inside variation unsupported",t.offset);game.result=t.value;ended=true;continue;
+2026-10-25T13:30:53.0725259Z       |             ^~
+2026-10-25T13:30:53.0726042Z /home/runner/work/caissa/caissa/src/notation.cpp:134:91: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:53.0727060Z   134 |             if(!stack.empty())Lexer::fail("result inside variation unsupported",t.offset);game.result=t.value;ended=true;continue;
+2026-10-25T13:30:53.0727724Z       |                                                                                           ^~~~
+2026-10-25T13:30:53.0728545Z /home/runner/work/caissa/caissa/src/notation.cpp:136:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0729571Z   136 |         if(t.value=="e.p.")continue;started=true;auto move=parse_san(p,t.value);if(!move)Lexer::fail("illegal or ambiguous SAN "+t.value,t.offset);
+2026-10-25T13:30:53.0730277Z       |         ^~
+2026-10-25T13:30:53.0731102Z /home/runner/work/caissa/caissa/src/notation.cpp:136:37: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:53.0732380Z   136 |         if(t.value=="e.p.")continue;started=true;auto move=parse_san(p,t.value);if(!move)Lexer::fail("illegal or ambiguous SAN "+t.value,t.offset);
+2026-10-25T13:30:53.0733158Z       |                                     ^~~~~~~
+2026-10-25T13:30:53.0977231Z /home/runner/work/caissa/caissa/src/notation.cpp: In member function ‘std::string caissa::Game::pgn() const’:
+2026-10-25T13:30:53.0978452Z /home/runner/work/caissa/caissa/src/notation.cpp:155:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:53.0979728Z   155 |     for(auto& [key,value]:headers)out<<'['<<key<<" \""<<quote(value)<<"\"]\n";out<<'\n';
+2026-10-25T13:30:53.0980297Z       |     ^~~
+2026-10-25T13:30:53.0981078Z /home/runner/work/caissa/caissa/src/notation.cpp:155:79: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-10-25T13:30:53.0981897Z   155 |     for(auto& [key,value]:headers)out<<'['<<key<<" \""<<quote(value)<<"\"]\n";out<<'\n';
+2026-10-25T13:30:53.0982638Z       |                                                                               ^~~
+2026-10-25T13:30:54.7759077Z [ 28%] Building CXX object CMakeFiles/caissa_core.dir/src/serialization.cpp.o
+2026-10-25T13:30:55.1125005Z /home/runner/work/caissa/caissa/src/serialization.cpp: In function ‘void caissa::write_game_json(std::ostream&, const Game&)’:
+2026-10-25T13:30:55.1164523Z /home/runner/work/caissa/caissa/src/serialization.cpp:19:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:55.1193233Z    19 |         if(i)out<<',';auto& node=game.nodes[i];auto p=game.position_at(i);
+2026-10-25T13:30:55.1223059Z       |         ^~
+2026-10-25T13:30:55.1283907Z /home/runner/work/caissa/caissa/src/serialization.cpp:19:23: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:55.1323339Z    19 |         if(i)out<<',';auto& node=game.nodes[i];auto p=game.position_at(i);
+2026-10-25T13:30:55.1352850Z       |                       ^~~~
+2026-10-25T13:30:55.4822386Z [ 29%] Building CXX object CMakeFiles/caissa_core.dir/src/protocol_io.cpp.o
+2026-10-25T13:30:57.0585487Z [ 31%] Linking CXX static library libcaissa_core.a
+2026-10-25T13:30:57.9392821Z [ 31%] Built target caissa_core
+2026-10-25T13:30:57.9469000Z [ 34%] Building CXX object CMakeFiles/core_test.dir/tests/core_test.cpp.o
+2026-10-25T13:30:57.9469794Z [ 34%] Building CXX object CMakeFiles/caissa.dir/apps/main.cpp.o
+2026-10-25T13:30:58.4776128Z [ 35%] Linking CXX executable core_test
+2026-10-25T13:30:58.6708731Z [ 35%] Built target core_test
+2026-10-25T13:30:58.6784792Z [ 37%] Building CXX object CMakeFiles/position_test.dir/tests/position_test.cpp.o
+2026-10-25T13:30:58.8966759Z /home/runner/work/caissa/caissa/apps/main.cpp: In function ‘uint64_t {anonymous}::parse_u64(std::string_view)’:
+2026-10-25T13:30:58.8993666Z /home/runner/work/caissa/caissa/apps/main.cpp:21:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:58.9023336Z    21 |     if(error!=std::errc{}||end!=text.data()+text.size())throw InputError("invalid unsigned integer");return value;
+2026-10-25T13:30:58.9024356Z       |     ^~
+2026-10-25T13:30:58.9026419Z /home/runner/work/caissa/caissa/apps/main.cpp:21:102: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:58.9083523Z    21 |     if(error!=std::errc{}||end!=text.data()+text.size())throw InputError("invalid unsigned integer");return value;
+2026-10-25T13:30:58.9113222Z       |                                                                                                      ^~~~~~
+2026-10-25T13:30:58.9114550Z /home/runner/work/caissa/caissa/apps/main.cpp: In function ‘int {anonymous}::parse_depth(std::string_view)’:
+2026-10-25T13:30:58.9143656Z /home/runner/work/caissa/caissa/apps/main.cpp:26:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:58.9172996Z    26 |     if(e!=std::errc{}||p!=s.data()+s.size()||depth<0||depth>80) throw InputError("invalid depth");return depth;
+2026-10-25T13:30:58.9202952Z       |     ^~
+2026-10-25T13:30:58.9204170Z /home/runner/work/caissa/caissa/apps/main.cpp:26:99: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:58.9223311Z    26 |     if(e!=std::errc{}||p!=s.data()+s.size()||depth<0||depth>80) throw InputError("invalid depth");return depth;
+2026-10-25T13:30:58.9224680Z       |                                                                                                   ^~~~~~
+2026-10-25T13:30:58.9225863Z /home/runner/work/caissa/caissa/apps/main.cpp: In function ‘int main(int, char**)’:
+2026-10-25T13:30:58.9227277Z /home/runner/work/caissa/caissa/apps/main.cpp:72:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:30:58.9228496Z    72 |             if(!move)throw InputError("illegal requested move");auto text=san(p,*move);p.make(*move);
+2026-10-25T13:30:58.9229293Z       |             ^~
+2026-10-25T13:30:58.9231066Z /home/runner/work/caissa/caissa/apps/main.cpp:72:65: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:30:58.9232464Z    72 |             if(!move)throw InputError("illegal requested move");auto text=san(p,*move);p.make(*move);
+2026-10-25T13:30:58.9233684Z       |                                                                 ^~~~
+2026-10-25T13:30:59.8291332Z [ 39%] Linking CXX executable position_test
+2026-10-25T13:30:59.9106401Z [ 39%] Built target position_test
+2026-10-25T13:30:59.9183812Z [ 40%] Building CXX object CMakeFiles/rules_test.dir/tests/rules_test.cpp.o
+2026-10-25T13:31:00.3281829Z [ 42%] Linking CXX executable caissa
+2026-10-25T13:31:00.4695357Z [ 42%] Built target caissa
+2026-10-25T13:31:00.4769241Z [ 43%] Building CXX object CMakeFiles/evaluation_test.dir/tests/evaluation_test.cpp.o
+2026-10-25T13:31:00.6466880Z [ 45%] Linking CXX executable rules_test
+2026-10-25T13:31:00.7243017Z [ 45%] Built target rules_test
+2026-10-25T13:31:00.7319266Z [ 46%] Building CXX object CMakeFiles/table_test.dir/tests/table_test.cpp.o
+2026-10-25T13:31:01.1319655Z [ 48%] Linking CXX executable evaluation_test
+2026-10-25T13:31:01.1880777Z [ 48%] Built target evaluation_test
+2026-10-25T13:31:01.1939197Z [ 50%] Building CXX object CMakeFiles/search_test.dir/tests/search_test.cpp.o
+2026-10-25T13:31:01.4163062Z [ 51%] Linking CXX executable table_test
+2026-10-25T13:31:01.4842852Z [ 51%] Built target table_test
+2026-10-25T13:31:01.4911844Z [ 53%] Building CXX object CMakeFiles/network_test.dir/tests/network_test.cpp.o
+2026-10-25T13:31:02.0519954Z /home/runner/work/caissa/caissa/tests/network_test.cpp: In function ‘int main(int, char**)’:
+2026-10-25T13:31:02.0521794Z /home/runner/work/caissa/caissa/tests/network_test.cpp:8:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:31:02.0523755Z     8 |     if(argc!=3)throw InputError("network_test network transitions");auto net=Network::load(argv[1]);auto p=Position::start();auto acc=net->refresh(p);
+2026-10-25T13:31:02.0524792Z       |     ^~
+2026-10-25T13:31:02.0526030Z /home/runner/work/caissa/caissa/tests/network_test.cpp:8:69: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:31:02.0527628Z     8 |     if(argc!=3)throw InputError("network_test network transitions");auto net=Network::load(argv[1]);auto p=Position::start();auto acc=net->refresh(p);
+2026-10-25T13:31:02.0528734Z       |                                                                     ^~~~
+2026-10-25T13:31:02.4509841Z [ 54%] Linking CXX executable network_test
+2026-10-25T13:31:02.5309943Z [ 54%] Built target network_test
+2026-10-25T13:31:02.5374126Z [ 56%] Building CXX object CMakeFiles/notation_test.dir/tests/notation_test.cpp.o
+2026-10-25T13:31:03.3005709Z [ 57%] Linking CXX executable notation_test
+2026-10-25T13:31:03.3849521Z [ 57%] Built target notation_test
+2026-10-25T13:31:03.3926964Z [ 59%] Building CXX object CMakeFiles/uci_test.dir/tests/uci_test.cpp.o
+2026-10-25T13:31:03.9717395Z [ 60%] Linking CXX executable uci_test
+2026-10-25T13:31:04.0840287Z [ 60%] Built target uci_test
+2026-10-25T13:31:04.0911446Z [ 62%] Building CXX object CMakeFiles/position_line_test.dir/tests/position_line_test.cpp.o
+2026-10-25T13:31:04.2213620Z [ 64%] Linking CXX executable search_test
+2026-10-25T13:31:04.3361080Z [ 64%] Built target search_test
+2026-10-25T13:31:04.3428294Z [ 65%] Building CXX object CMakeFiles/kernel_test.dir/tests/kernel_test.cpp.o
+2026-10-25T13:31:05.4193891Z [ 67%] Linking CXX executable kernel_test
+2026-10-25T13:31:05.4847485Z [ 67%] Built target kernel_test
+2026-10-25T13:31:05.4921908Z [ 68%] Building CXX object CMakeFiles/dense_kernel_test.dir/tests/dense_kernel_test.cpp.o
+2026-10-25T13:31:05.7960612Z [ 70%] Linking CXX executable position_line_test
+2026-10-25T13:31:05.8545593Z [ 70%] Built target position_line_test
+2026-10-25T13:31:05.8607076Z [ 71%] Building CXX object CMakeFiles/dense_kernel_bench.dir/tests/dense_kernel_bench.cpp.o
+2026-10-25T13:31:06.4291579Z [ 73%] Linking CXX executable dense_kernel_test
+2026-10-25T13:31:06.5393411Z [ 73%] Built target dense_kernel_test
+2026-10-25T13:31:06.5481899Z [ 75%] Building CXX object CMakeFiles/neural_bounds_test.dir/tests/neural_bounds_test.cpp.o
+2026-10-25T13:31:07.4139956Z [ 76%] Linking CXX executable dense_kernel_bench
+2026-10-25T13:31:07.5183363Z [ 76%] Built target dense_kernel_bench
+2026-10-25T13:31:07.5259613Z [ 78%] Building CXX object CMakeFiles/evaluation_cache_test.dir/tests/evaluation_cache_test.cpp.o
+2026-10-25T13:31:08.6298158Z [ 79%] Linking CXX executable neural_bounds_test
+2026-10-25T13:31:08.7117128Z [ 79%] Built target neural_bounds_test
+2026-10-25T13:31:08.7177592Z [ 81%] Building CXX object CMakeFiles/tactical_generation_test.dir/tests/tactical_generation_test.cpp.o
+2026-10-25T13:31:09.5391557Z /home/runner/work/caissa/caissa/tests/tactical_generation_test.cpp: In function ‘int main(int, char**)’:
+2026-10-25T13:31:09.5393410Z /home/runner/work/caissa/caissa/tests/tactical_generation_test.cpp:49:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:31:09.5401734Z    49 |         if(!moves.empty())p.make(moves[rng()%moves.size()]);if(i%2500==2499)cases.push_back(p);
+2026-10-25T13:31:09.5403288Z       |         ^~
+2026-10-25T13:31:09.5405003Z /home/runner/work/caissa/caissa/tests/tactical_generation_test.cpp:49:61: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:31:09.5406453Z    49 |         if(!moves.empty())p.make(moves[rng()%moves.size()]);if(i%2500==2499)cases.push_back(p);
+2026-10-25T13:31:09.5407211Z       |                                                             ^~
+2026-10-25T13:31:09.9328868Z [ 82%] Linking CXX executable evaluation_cache_test
+2026-10-25T13:31:10.0191685Z [ 82%] Built target evaluation_cache_test
+2026-10-25T13:31:10.0264503Z [ 84%] Building CXX object CMakeFiles/search_context_test.dir/tests/search_context_test.cpp.o
+2026-10-25T13:31:11.5570768Z [ 85%] Linking CXX executable tactical_generation_test
+2026-10-25T13:31:11.6420683Z [ 85%] Built target tactical_generation_test
+2026-10-25T13:31:11.6485051Z [ 87%] Building CXX object CMakeFiles/lmr_window_test.dir/tests/lmr_window_test.cpp.o
+2026-10-25T13:31:13.1166172Z [ 89%] Linking CXX executable search_context_test
+2026-10-25T13:31:13.2241314Z [ 89%] Built target search_context_test
+2026-10-25T13:31:13.2307009Z [ 90%] Building CXX object CMakeFiles/network_precision_test.dir/tests/network_precision_test.cpp.o
+2026-10-25T13:31:13.4858354Z [ 92%] Linking CXX executable lmr_window_test
+2026-10-25T13:31:13.5677606Z [ 92%] Built target lmr_window_test
+2026-10-25T13:31:13.5740087Z [ 93%] Building CXX object CMakeFiles/accumulator_stack_test.dir/tests/accumulator_stack_test.cpp.o
+2026-10-25T13:31:14.6291402Z [ 95%] Linking CXX executable network_precision_test
+2026-10-25T13:31:14.6965056Z [ 95%] Built target network_precision_test
+2026-10-25T13:31:14.7028659Z [ 96%] Building CXX object CMakeFiles/state_probe_test.dir/tests/state_probe_test.cpp.o
+2026-10-25T13:31:15.3617402Z /home/runner/work/caissa/caissa/tests/state_probe_test.cpp: In function ‘int main(int, char**)’:
+2026-10-25T13:31:15.3643458Z /home/runner/work/caissa/caissa/tests/state_probe_test.cpp:17:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-25T13:31:15.3675360Z    17 |     if(argc!=2)throw InputError("state_probe_test network");auto network=Network::load(argv[1]);
+2026-10-25T13:31:15.3692838Z       |     ^~
+2026-10-25T13:31:15.3693806Z /home/runner/work/caissa/caissa/tests/state_probe_test.cpp:17:61: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-25T13:31:15.3694920Z    17 |     if(argc!=2)throw InputError("state_probe_test network");auto network=Network::load(argv[1]);
+2026-10-25T13:31:15.3695636Z       |                                                             ^~~~
+2026-10-25T13:31:16.2926511Z [ 98%] Linking CXX executable accumulator_stack_test
+2026-10-25T13:31:16.4045844Z [ 98%] Built target accumulator_stack_test
+2026-10-25T13:31:16.4114527Z [100%] Linking CXX executable state_probe_test
+2026-10-25T13:31:16.4909744Z [100%] Built target state_probe_test
+2026-10-25T13:31:17.4365260Z ##[group]Run python - <<'PY'
+2026-10-25T13:31:17.4365678Z [36;1mpython - <<'PY'[0m
+2026-10-25T13:31:17.4366042Z [36;1mimport hashlib, json, os[0m
+2026-10-25T13:31:17.4366358Z [36;1mfrom pathlib import Path[0m
+2026-10-25T13:31:17.4366752Z [36;1mcommands = json.loads(Path('build-state/compile_commands.json').read_text())[0m
+2026-10-25T13:31:17.4367341Z [36;1massert commands and all(os.environ['SANITIZER_MARKER'] in row['command'] for row in commands)[0m
+2026-10-25T13:31:17.4367891Z [36;1mcases = json.loads(Path('runs/native-state-cases.json').read_text())['tests'][0m
+2026-10-25T13:31:17.4368911Z [36;1mexpected = {'version','core','position','rules','evaluation','table','search','notation','uci','position_line','kernels','dense_kernels','neural_bounds','evaluation_cache','tactical_generation','search_context','lmr_window','network_precision','accumulator_stack','state_probe'}[0m
+2026-10-25T13:31:17.4369968Z [36;1massert len(cases) == 20 and {case['name'] for case in cases} == expected[0m
+2026-10-25T13:31:17.4370465Z [36;1mfiles = sorted({case['command'][0] for case in cases})[0m
+2026-10-25T13:31:17.4371232Z [36;1mrecord = {'source_commit':os.environ['GITHUB_SHA'],'instrumentation':os.environ['SANITIZER_MARKER'],'programs':{name:hashlib.sha256(Path(name).read_bytes()).hexdigest() for name in files},'full_acceptance':False}[0m
+2026-10-25T13:31:17.4372238Z [36;1mPath('runs/native-state-programs.json').write_text(json.dumps(record,indent=2)+'\n')[0m
+2026-10-25T13:31:17.4372773Z [36;1mPY[0m
+2026-10-25T13:31:17.4413431Z shell: /usr/bin/bash -e {0}
+2026-10-25T13:31:17.4413803Z env:
+2026-10-25T13:31:17.4414112Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:31:17.4414514Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:31:17.4414867Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:31:17.4415309Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-25T13:31:17.4415806Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:31:17.4416234Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:31:17.4416657Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:31:17.4417037Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-25T13:31:17.4417397Z   SANITIZER_MARKER: -fsanitize=thread
+2026-10-25T13:31:17.4417754Z ##[endgroup]
+2026-10-25T13:31:17.5258699Z ##[group]Run ctest --test-dir build-state --output-on-failure
+2026-10-25T13:31:17.5259190Z [36;1mctest --test-dir build-state --output-on-failure[0m
+2026-10-25T13:31:17.5259726Z [36;1mpython -m tests.restoration_replay --engine build-state/caissa --output runs/native-state-restoration[0m
+2026-10-25T13:31:17.5260355Z [36;1mpython -m tests.draw_history --engine build-state/caissa --output runs/native-state-draw[0m
+2026-10-25T13:31:17.5301422Z shell: /usr/bin/bash -e {0}
+2026-10-25T13:31:17.5301887Z env:
+2026-10-25T13:31:17.5302349Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:31:17.5302691Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:31:17.5303080Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:31:17.5303498Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-25T13:31:17.5304687Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:31:17.5305278Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:31:17.5305691Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:31:17.5306109Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-25T13:31:17.5306423Z ##[endgroup]
+2026-10-25T13:31:17.5382340Z Internal ctest changing into directory: /home/runner/work/caissa/caissa/build-state
+2026-10-25T13:31:17.5388960Z Test project /home/runner/work/caissa/caissa/build-state
+2026-10-25T13:31:17.5474405Z       Start  1: version
+2026-10-25T13:31:17.6991242Z  1/20 Test  #1: version ..........................   Passed    0.15 sec
+2026-10-25T13:31:17.7046381Z       Start  2: core
+2026-10-25T13:31:17.7482747Z  2/20 Test  #2: core .............................   Passed    0.04 sec
+2026-10-25T13:31:17.7483534Z       Start  3: position
+2026-10-25T13:31:18.2432664Z  3/20 Test  #3: position .........................   Passed    0.49 sec
+2026-10-25T13:31:18.2433792Z       Start  4: rules
+2026-10-25T13:31:18.2548053Z  4/20 Test  #4: rules ............................   Passed    0.01 sec
+2026-10-25T13:31:18.2553071Z       Start  5: evaluation
+2026-10-25T13:31:18.3281614Z  5/20 Test  #5: evaluation .......................   Passed    0.07 sec
+2026-10-25T13:31:18.3282956Z       Start  6: table
+2026-10-25T13:31:18.4484927Z  6/20 Test  #6: table ............................   Passed    0.12 sec
+2026-10-25T13:31:18.4485634Z       Start  7: search
+2026-10-25T13:31:18.7268610Z  7/20 Test  #7: search ...........................   Passed    0.28 sec
+2026-10-25T13:31:18.7269175Z       Start  8: notation
+2026-10-25T13:31:18.7437264Z  8/20 Test  #8: notation .........................   Passed    0.02 sec
+2026-10-25T13:31:18.7437930Z       Start  9: uci
+2026-10-25T13:31:19.0944828Z  9/20 Test  #9: uci ..............................   Passed    0.35 sec
+2026-10-25T13:31:19.0945637Z       Start 10: position_line
+2026-10-25T13:31:19.6331160Z 10/20 Test #10: position_line ....................   Passed    0.54 sec
+2026-10-25T13:31:19.6331717Z       Start 11: kernels
+2026-10-25T13:31:20.7088010Z 11/20 Test #11: kernels ..........................   Passed    1.08 sec
+2026-10-25T13:31:20.7089122Z       Start 12: dense_kernels
+2026-10-25T13:31:22.6781462Z 12/20 Test #12: dense_kernels ....................   Passed    1.97 sec
+2026-10-25T13:31:22.6782185Z       Start 13: neural_bounds
+2026-10-25T13:31:25.0662707Z 13/20 Test #13: neural_bounds ....................   Passed    2.39 sec
+2026-10-25T13:31:25.0664567Z       Start 14: evaluation_cache
+2026-10-25T13:32:38.6616043Z 14/20 Test #14: evaluation_cache .................   Passed   73.60 sec
+2026-10-25T13:32:38.6616768Z       Start 15: tactical_generation
+2026-10-25T13:33:24.8867032Z 15/20 Test #15: tactical_generation ..............   Passed   46.22 sec
+2026-10-25T13:33:24.8867722Z       Start 16: search_context
+2026-10-25T13:33:40.3991280Z 16/20 Test #16: search_context ...................   Passed   15.51 sec
+2026-10-25T13:33:40.3993439Z       Start 17: lmr_window
+2026-10-25T13:33:40.6400541Z 17/20 Test #17: lmr_window .......................   Passed    0.24 sec
+2026-10-25T13:33:40.6401246Z       Start 18: network_precision
+2026-10-25T13:33:41.5252503Z 18/20 Test #18: network_precision ................   Passed    0.88 sec
+2026-10-25T13:33:41.5253175Z       Start 19: accumulator_stack
+2026-10-25T13:34:17.6607190Z 19/20 Test #19: accumulator_stack ................   Passed   36.14 sec
+2026-10-25T13:34:17.6608036Z       Start 20: state_probe
+2026-10-25T13:34:17.9367944Z 20/20 Test #20: state_probe ......................   Passed    0.28 sec
+2026-10-25T13:34:17.9373649Z 
+2026-10-25T13:34:17.9374539Z 100% tests passed, 0 tests failed out of 20
+2026-10-25T13:34:17.9374780Z 
+2026-10-25T13:34:17.9375086Z Total Test time (real) = 180.40 sec
+2026-10-25T13:34:35.7100413Z Traceback (most recent call last):
+2026-10-25T13:34:35.7119375Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-10-25T13:34:35.7120580Z   File "<frozen runpy>", line 88, in _run_code
+2026-10-25T13:34:35.7121612Z   File "/home/runner/work/caissa/caissa/tests/draw_history.py", line 275, in <module>
+2026-10-25T13:34:35.7123046Z     main()
+2026-10-25T13:34:35.7130114Z   File "/home/runner/work/caissa/caissa/tests/draw_history.py", line 44, in main
+2026-10-25T13:34:35.7130631Z     owner.run(
+2026-10-25T13:34:35.7131202Z   File "/home/runner/work/caissa/caissa/tools/campaign_process.py", line 341, in run
+2026-10-25T13:34:35.7131776Z     raise StageFailure(record)
+2026-10-25T13:34:35.7132914Z tools.campaign_process.StageFailure: stage observe failed: nonzero-exit (exit 1)
+2026-10-25T13:34:35.7329985Z ##[error]Process completed with exit code 1.
+2026-10-25T13:34:35.7419336Z ##[group]Run actions/upload-artifact@v4
+2026-10-25T13:34:35.7419726Z with:
+2026-10-25T13:34:35.7420130Z   name: native-state-ubuntu-24.04-thread-40197868753
+2026-10-25T13:34:35.7422798Z   path: runs/native-state-cases.json
+runs/native-state-programs.json
+runs/native-state-restoration/*.json
+runs/native-state-restoration/*.jsonl
+runs/native-state-restoration/*.log
+runs/native-state-restoration/producer/
+runs/native-state-restoration/independent/RESTORATION.json
+runs/native-state-draw/*.json
+runs/native-state-draw/*.jsonl
+runs/native-state-draw/*.log
+runs/native-state-draw/producer/
+runs/native-state-draw/independent/DRAW_HISTORY.json
+runs/native-state-draw/full-replay/G03/DRAW_HISTORY.json
+build-state/compile_commands.json
+build-state/CMakeCache.txt
+build-state/Testing/Temporary/LastTest.log
+build-state/caissa
+build-state/*_test
+
+2026-10-25T13:34:35.7425262Z   retention-days: 14
+2026-10-25T13:34:35.7425579Z   if-no-files-found: warn
+2026-10-25T13:34:35.7425901Z   compression-level: 6
+2026-10-25T13:34:35.7426263Z   overwrite: false
+2026-10-25T13:34:35.7426549Z   include-hidden-files: false
+2026-10-25T13:34:35.7426824Z env:
+2026-10-25T13:34:35.7427114Z   UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
+2026-10-25T13:34:35.7427483Z   TSAN_OPTIONS: halt_on_error=1
+2026-10-25T13:34:35.7427908Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:34:35.7428387Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-25T13:34:35.7428833Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:34:35.7429356Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:34:35.7429841Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-25T13:34:35.7430310Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-25T13:34:35.7430730Z ##[endgroup]
+2026-10-25T13:34:35.8923900Z (node:3031) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-25T13:34:35.8938287Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-25T13:34:35.9550396Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-25T13:34:35.9552712Z The least common ancestor is /home/runner/work/caissa/caissa. This will be the root directory of the artifact
+2026-10-25T13:34:35.9553710Z With the provided path, there will be 74 files uploaded
+2026-10-25T13:34:35.9554463Z Artifact name is valid!
+2026-10-25T13:34:35.9554956Z Root directory input is valid!
+2026-10-25T13:34:36.1760680Z Beginning upload of artifact content to blob storage
+2026-10-25T13:34:36.8876298Z (node:3031) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-25T13:34:37.4271657Z Uploaded bytes 8388608
+2026-10-25T13:34:37.8101891Z Uploaded bytes 16777216
+2026-10-25T13:34:38.3543343Z Uploaded bytes 23481635
+2026-10-25T13:34:38.3995222Z Finished uploading artifact content to blob storage!
+2026-10-25T13:34:38.3997879Z SHA256 digest of uploaded artifact zip is c55e8ad75f1b7b910ab99e417f19858b1eea554a87af4ff70054e6026a6e37c1
+2026-10-25T13:34:38.4014106Z Finalizing artifact upload
+2026-10-25T13:34:38.8220667Z Artifact native-state-ubuntu-24.04-thread-40197868753.zip successfully finalized. Artifact ID 12600354611
+2026-10-25T13:34:38.8222196Z Artifact native-state-ubuntu-24.04-thread-40197868753 has been successfully uploaded! Final size is 23481635 bytes. Artifact ID is 12600354611
+2026-10-25T13:34:38.8225735Z Artifact download URL: https://github.com/Aneesh495/caissa/actions/runs/40197868753/artifacts/12600354611
+2026-10-25T13:34:38.8448571Z Post job cleanup.
+2026-10-25T13:34:38.9443439Z [command]/usr/bin/git version
+2026-10-25T13:34:38.9503548Z git version 2.55.0
+2026-10-25T13:34:38.9566135Z Temporarily overriding HOME='/home/runner/work/_temp/30b481a7-cc56-44f9-919f-10a6263cfc65' before making global git config changes
+2026-10-25T13:34:38.9567500Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-25T13:34:38.9568515Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/caissa/caissa
+2026-10-25T13:34:38.9614843Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-25T13:34:38.9689821Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-25T13:34:38.9920812Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-25T13:34:38.9967560Z http.https://github.com/.extraheader
+2026-10-25T13:34:39.0006706Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-25T13:34:39.0067344Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-25T13:34:39.0366031Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-25T13:34:39.0415184Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-25T13:34:39.1014356Z Cleaning up orphan processes
+2026-10-25T13:34:39.1404044Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

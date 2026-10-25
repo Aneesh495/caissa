@@ -8,7 +8,7 @@ null suppression, conservative dead material and hash context, then reexecutes
 the pinned saved program. It requires equal-FEN history witnesses and all six
 terminal outcomes. Other semantic domains remain independently required.
 
-The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before domain replay. G01 rules, G02 restoration, G03 draw-history and G04 protocol adapters are implemented; the remaining full-domain adapters and complete campaign coordinator remain unfinished. Full verification still returns nonzero with `full_acceptance: false`. Passing metadata, existing receipts or admission controls cannot certify a release.
+The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before domain replay. G01 rules, G02 restoration, G03 draw-history, G04 protocol and G05 search adapters are implemented; the remaining full-domain adapters and complete campaign coordinator remain unfinished. Full verification still returns nonzero with `full_acceptance: false`. Passing metadata, existing receipts or admission controls cannot certify a release.
 
 ## Source identity
 
@@ -60,3 +60,13 @@ G02 can use `driver: restoration-v1` and `restoration` references named `profile
 The full readiness command finds the dataset by the frozen protocol's exact metadata identity rather than reading an obsolete directory and reporting zero positions. It reports observed metadata counts, retained model failures and unknown data explicitly. [Readiness controls](../tests/acceptance_readiness.py) ensure a larger unrelated dataset is never selected. Actual array reconstruction, checkpoint inference and games still need their domain evidence.
 
 Release packaging requires the same external input identity in the current private audit. Once every full gate passes, it copies the exact verified engine and selected evaluator, records their identities and declared mixture, and retains the source archive. It cannot substitute the older diagnostic model directory for the selected runtime. Packaging remains blocked by incomplete full verification and acceptance.
+
+G05 uses `driver: search-semantics-v1` and four distinct declared
+`search_semantics` references: `profile`, `config`, `summary`, `observations`.
+[The independent search adapter](SEARCH_SEMANTICS.md) reconstructs exhaustive
+minimax and root move values through an external board and classical oracle,
+checks real table bounds and mate normalization, records selective ablations
+and reexecutes every saved request through the exact native image. All frozen
+work and its original ceilings are required. A saved score, opaque native test
+pass or partial prefix cannot replace that reconstruction. Its actual positive
+full entry leaves the other fifteen semantic gates incomplete.
