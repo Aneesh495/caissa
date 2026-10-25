@@ -167,14 +167,14 @@ def verify(bundle, inputs, output):
         ("profile", "NUMERICAL_PROFILE.json", 4 * 1024**2),
     ]:
         staged[key] = raw / filename
-        staged[key].write_bytes(bundle.bytes(paths[key], maximum))
+        bundle.copy(paths[key], staged[key], maximum)
     for key, reference, filename, maximum in [
         ("engine", inputs["engine"], "caissa", 64 * 1024**2),
         ("network", inputs["network"]["artifact"], "selected.cai", 4 * 1024**2),
         ("protocol", inputs["protocol"], "PROTOCOL.json", 4 * 1024**2),
     ]:
         staged[key] = output / filename
-        staged[key].write_bytes(bundle.bytes(bundle.reference(reference), maximum))
+        bundle.copy(bundle.reference(reference), staged[key], maximum)
     staged["engine"].chmod(0o755)
     bundle.tick()
     remaining = min(
