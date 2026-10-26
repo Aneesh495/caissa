@@ -1,0 +1,42 @@
+name: native source input boundary
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: native-source-input-boundary-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  metadata:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - name: Original prospective development ceilings
+        run: |
+          python3 - <<'PY'
+          import json,os,time
+          rule=json.load(open('config/native-binding-development-v1.json'))
+          assert int(os.environ['GITHUB_RUN_NUMBER'])<=rule['maximum_ci_executions']
+          assert int(os.environ['GITHUB_RUN_ATTEMPT'])==1
+          assert time.time()<rule['deadline_unix']<rule['parent_deadline_unix']
+          PY
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Existing metadata admission dependencies
+        timeout-minutes: 3
+        run: python -m pip install numpy==2.2.6 chess==1.11.2
+      - name: Real Git and full-entry metadata controls
+        timeout-minutes: 7
+        run: python -m tests.native_binding --output runs/native-binding-controls
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-binding-controls-${{ matrix.os }}
+          path: runs/native-binding-controls/
+          retention-days: 14

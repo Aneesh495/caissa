@@ -12,6 +12,7 @@ from pathlib import Path
 
 LEGACY = "caissa-source-v1"
 PRODUCT = "caissa-source-v2"
+NATIVE = "caissa-native-build-inputs-v1"
 MAX_FILES = 10000
 MAX_TOTAL_BYTES = 32 * 1024 * 1024
 MAX_FILE_BYTES = 16 * 1024 * 1024
@@ -68,7 +69,31 @@ def relative_path(name):
 
 
 def selected(name, policy):
-    require(policy in {LEGACY, PRODUCT}, "unsupported source inventory policy")
+    require(policy in {LEGACY, PRODUCT, NATIVE}, "unsupported source inventory policy")
+    if policy == NATIVE:
+        return (
+            name in {"CMakeLists.txt", "Makefile"}
+            or name.startswith(("src/", "include/", "apps/", "cmake/"))
+            or Path(name).suffix
+            in {
+                ".cpp",
+                ".hpp",
+                ".h",
+                ".hh",
+                ".hxx",
+                ".cc",
+                ".cxx",
+                ".c",
+                ".C",
+                ".m",
+                ".mm",
+                ".inl",
+                ".inc",
+                ".cmake",
+                ".S",
+                ".s",
+            }
+        )
     suffixes = LEGACY_SUFFIXES if policy == LEGACY else PRODUCT_SUFFIXES
     return not name.startswith(("results/", "docs/images/")) and (
         Path(name).suffix in suffixes or name in FIXED or name.startswith("config/")
@@ -80,6 +105,7 @@ class Blob:
     name: str
     identity: str
     size: int
+    mode: str
 
 
 def inventory(checkout, commit, policy=LEGACY):
@@ -116,7 +142,9 @@ def inventory(checkout, commit, policy=LEGACY):
         )
         size = int(fields[3])
         require(0 <= size <= MAX_FILE_BYTES, "trusted source blob exceeds byte ceiling")
-        blobs.append(Blob(name, fields[2].decode("ascii"), size))
+        blobs.append(
+            Blob(name, fields[2].decode("ascii"), size, fields[0].decode("ascii"))
+        )
     require(
         0 < len(blobs) <= MAX_FILES and len({b.name for b in blobs}) == len(blobs),
         "trusted source inventory is empty, duplicated or excessive",
