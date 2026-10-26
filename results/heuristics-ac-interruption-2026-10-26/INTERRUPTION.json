@@ -1,0 +1,18 @@
+{
+  "status": "attempt1 stopped on original required AC power guard; resumable only under original scope",
+  "source_commit": "67f89c1bd89b6a86bbeb70a03fb3286d8614de8f",
+  "actual_games": 733,
+  "actual_pairs": 366,
+  "attempts_used": 1,
+  "maximum_attempts": 3,
+  "closed_active_seconds": 7167.7058187079965,
+  "original_deadline_unix": 1793058983.7196429,
+  "actual_owner_exited": true,
+  "actual_native_children_exited": true,
+  "exclusive_host_lock_free": true,
+  "current_power": "Battery Power,100percent at inspection",
+  "neural_or_absolute_elo_claimed": false,
+  "original_all_journals_preserved": true,
+  "parallel_repair_approved_but_not_started": true,
+  "full_acceptance": false
+}

@@ -1,0 +1,13 @@
+{
+  "files": {
+    "ACTIVE_USAGE.json": "e8e6d40fbada855685449dfad2cfafe27f8cd515217ccf9223c018a261823ad4",
+    "FAILED-1793022951512672000.json": "6bfc754c377cadf77444da39363ee4f4dafce638f680ad7bcd5c8756882360ae",
+    "INTERRUPTION.json": "387367df4e04bef23b771c6698e037859fb525bd179b1c36752032b07eec7188",
+    "SCOPE.json": "7bbe6641b680955ffc1ecd3a3b0b22dd5a6c9dbaa908a603759ef7796a1e3cf0",
+    "SOURCE_INPUTS.json": "e61a9bfe8f437bc88053914024644adc365fb104a3e9bfaf1534cffba3fe84ef",
+    "attempts/attempt-001/CAMPAIGN.json": "5bc8b17fbc1748b66291731f85738b806af300fcb714b7896bc2eb08bd1b328e",
+    "attempts/attempt-001/COMMANDS.jsonl": "b382c3754222c58c5cc9b2b6ef003864262c8a6d6685d210553c05e30bd2e4cb",
+    "attempts/attempt-001/PROGRESS.json": "0b54d415d076a7f8d4eb0b9f361d2f96df47022c8e992d2ef766fcf24c4c2a65",
+    "attempts/attempt-001/play-extensions-milliseconds-400.log": "3bdbc700ead450c16c4856bc1a4e8f82fdb9e68820bcdfd6830b2c670ca96c39"
+  }
+}
