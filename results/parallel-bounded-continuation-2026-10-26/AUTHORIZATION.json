@@ -1,0 +1,19 @@
+{
+  "entrypoint_sha256": "3c217ef028ed11ce48fc9c5fab860146affb9a3dcf15855af16527ecda9b6f56",
+  "original_scope_sha256": "fbd11fe8d7c7a0a842a8280a4916ab8a1a340eea2fea0538f6b2bca9579c8c5e",
+  "protected_records_sha256": "b72bd067bb8f1c6ceb97c4c10c3908e1c2f640dc791988fcaf9769272599fc6f",
+  "original_attempt": 4,
+  "extra_attempts_added": 1,
+  "maximum_new_wall_seconds": 28800,
+  "extra_active_seconds_added": 0,
+  "allow_battery": true,
+  "allow_normal_laptop_use": true,
+  "telemetry_helper_sha256": "92108ff7d07f6eb41f38402b0e60db3b005c83c0076ed1fa666b87a8238a63e6",
+  "bounded_host_helper_sha256": "9614ffd5e97cc5fc50f42c9805db273ff9228d3dc132072b0dc0452274263111",
+  "approved": true,
+  "human_authorization_received": true,
+  "human_answer": "you have allowance to do whatever you want please dont hesitate or feel the need to wait for me. full access is turned on for a reason.",
+  "authorization_basis": "New direct broad authority for needed repairs and bounded continuations; numerical bounds are agent-selected prospectively, not a fabricated verbatim numerical human approval. Old failures and active ledger remain unchanged.",
+  "proposal_sha256": "fddec2df907a7cf2109623aa2041aca64832d97d3f1f01310928710c3bc94b1c",
+  "recorded_unix": 1793057886.685617
+}
