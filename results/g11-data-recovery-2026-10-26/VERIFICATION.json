@@ -1,0 +1,50 @@
+{
+  "schema": "caissa-original-data-recovery-component-proof-v1",
+  "status": "passed component on Linux and macOS",
+  "source_commit": "67f89c1bd89b6a86bbeb70a03fb3286d8614de8f",
+  "ci_run": 40318631980,
+  "failed_first_ci_run": 40318064105,
+  "actual_interruption": {
+    "signal": "SIGKILL",
+    "actual_exit": -9,
+    "committed_pairs": 32,
+    "staged_uncommitted_pairs": 52,
+    "full_original_pairs_after_resume": 56
+  },
+  "checks": [
+    "Independent complete committed SQLite position, target and contributor reconstruction from original first32pairs",
+    "Actual durable source cursor and coupled SQL/progress counts",
+    "All56 original pairs, all three final feature/target/split lineages, and exact uninterrupted/resumed bytes",
+    "Twelve rehashed raw semantic forgeries, actual CLI rejection",
+    "Full-bundle immutable staging and two actual full-entry forgeries",
+    "Full-follow barrier rejected before any output"
+  ],
+  "controls_per_platform": 17,
+  "ci_executions": 2,
+  "local_executions": 1,
+  "cumulative_hosted_seconds": {
+    "linux": 132,
+    "macos": 124
+  },
+  "scope_closed": true,
+  "raw_hosted_artifacts": {
+    "linux": {
+      "id": 12648431339,
+      "zip_sha256": "c66e1e2aa66cb5227ae77f4a13f97a866ee9b1201e7c3513580b2390c636cfca",
+      "bytes": 7818616
+    },
+    "macos": {
+      "id": 12648471158,
+      "zip_sha256": "1459ac221ff16ffb5a1f442f72fce5529c973946ee8630f96bf765d3eb71b3cd",
+      "bytes": 8086379
+    }
+  },
+  "raw_artifact_bulk_retrieval_pending": true,
+  "original_diagnostic_labels_unchanged": true,
+  "new_training": false,
+  "new_strength_games": 0,
+  "full_G11_certified": false,
+  "final_source_native_binding_and_component_join_required": true,
+  "failed_local_and_hosted_logs_preserved": true,
+  "published_unix": 1793015945.705227
+}

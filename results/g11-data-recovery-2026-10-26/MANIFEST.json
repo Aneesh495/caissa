@@ -1,0 +1,14 @@
+{
+  "files": {
+    "FIRST_CI_FAILURE.json": "c858b2a8c5a492db62441f00bce5c29f7fae494ffc9d85c05b67159b63dea361",
+    "LOCAL_FAILURE.json": "73a08f8e756d8a245f862b4233191c81d91cbf2af754d8246bd6153be0625a84",
+    "README.md": "ec38309122fc37575c124337b177974ce5553f99e7814351ea18e97f50f14b59",
+    "SCOPE.json": "dcb5b93e8412a583e0702ef32ce1385bed1f0266d10f7050fe1c29bafb42032e",
+    "VERIFICATION.json": "68854aa4fda724e6b8912ea2eb5a47e90bdb1576fbc3028a58ea0afe9010a3b4",
+    "failed-first-linux.log": "558c76b2713362b6f3eefa1605b319731992a1c35649c4d452025faf872d1f8d",
+    "failed-first-macos.log": "42caae5d5605170b27296eeaf38ef6b9135a909c1776b700d7a6682e98b0aa9e",
+    "failed-local.log": "a613620bf010526c894ce1728ada19a8070d42aa8b6bdd22bb8e9b1a6a0decb1",
+    "success-linux.log": "528977a0e48bb02df108664f240e7c40bf1dfff13a00d471f808f60780459c97",
+    "success-macos.log": "08ba1f747be108a4a221c85bdf703a363a371d6ed733203218c28bc43b579775"
+  }
+}

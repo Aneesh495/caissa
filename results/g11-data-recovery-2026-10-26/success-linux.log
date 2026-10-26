@@ -1,0 +1,263 @@
+﻿2026-10-26T11:55:25.1890424Z Current runner version: '2.338.0'
+2026-10-26T11:55:25.1916405Z ##[group]Runner Image Provisioner
+2026-10-26T11:55:25.1917338Z Hosted Compute Agent
+2026-10-26T11:55:25.1917933Z Version: 20261021.618
+2026-10-26T11:55:25.1918558Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-26T11:55:25.1919358Z Build Date: 2026-10-21T00:45:21Z
+2026-10-26T11:55:25.1920060Z Worker ID: {276a6859-3c68-45d4-bb12-782458eba4ec}
+2026-10-26T11:55:25.1921187Z Region: centralus
+2026-10-26T11:55:25.1921768Z Cloud: Azure
+2026-10-26T11:55:25.1922318Z ##[endgroup]
+2026-10-26T11:55:25.1924007Z ##[group]Operating System
+2026-10-26T11:55:25.1924688Z Ubuntu
+2026-10-26T11:55:25.1925274Z 24.04.5
+2026-10-26T11:55:25.1925799Z LTS
+2026-10-26T11:55:25.1926308Z ##[endgroup]
+2026-10-26T11:55:25.1926902Z ##[group]Runner Image
+2026-10-26T11:55:25.1927491Z Image: ubuntu-24.04
+2026-10-26T11:55:25.1928567Z Version: 20261012.334.1
+2026-10-26T11:55:25.1930120Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-26T11:55:25.1932186Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-26T11:55:25.1933195Z ##[endgroup]
+2026-10-26T11:55:25.1934439Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T11:55:25.1936949Z Contents: read
+2026-10-26T11:55:25.1937646Z Metadata: read
+2026-10-26T11:55:25.1938211Z ##[endgroup]
+2026-10-26T11:55:25.1940744Z Secret source: Actions
+2026-10-26T11:55:25.1941734Z Cache mode: write
+2026-10-26T11:55:25.1942645Z Prepare workflow directory
+2026-10-26T11:55:25.2291435Z Prepare all required actions
+2026-10-26T11:55:25.2340172Z Getting action download info
+2026-10-26T11:55:25.5278126Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-26T11:55:25.6200066Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-26T11:55:25.7007432Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-26T11:55:25.9201163Z Complete job name: recovery (ubuntu-24.04)
+2026-10-26T11:55:26.0101385Z ##[group]Run actions/checkout@v4
+2026-10-26T11:55:26.0102381Z with:
+2026-10-26T11:55:26.0102847Z   repository: Aneesh495/caissa
+2026-10-26T11:55:26.0106913Z   token: ***
+2026-10-26T11:55:26.0107381Z   ssh-strict: true
+2026-10-26T11:55:26.0107828Z   ssh-user: git
+2026-10-26T11:55:26.0108278Z   persist-credentials: true
+2026-10-26T11:55:26.0108762Z   clean: true
+2026-10-26T11:55:26.0109195Z   sparse-checkout-cone-mode: true
+2026-10-26T11:55:26.0109719Z   fetch-depth: 1
+2026-10-26T11:55:26.0110146Z   fetch-tags: false
+2026-10-26T11:55:26.0110820Z   show-progress: true
+2026-10-26T11:55:26.0111266Z   lfs: false
+2026-10-26T11:55:26.0111672Z   submodules: false
+2026-10-26T11:55:26.0112109Z   set-safe-directory: true
+2026-10-26T11:55:26.0112617Z   allow-unsafe-pr-checkout: false
+2026-10-26T11:55:26.0113426Z ##[endgroup]
+2026-10-26T11:55:26.1196857Z Syncing repository: Aneesh495/caissa
+2026-10-26T11:55:26.1199774Z ##[group]Getting Git version info
+2026-10-26T11:55:26.1201289Z Working directory is '/home/runner/work/caissa/caissa'
+2026-10-26T11:55:26.1202919Z [command]/usr/bin/git version
+2026-10-26T11:55:26.1281509Z git version 2.55.0
+2026-10-26T11:55:26.1311593Z ##[endgroup]
+2026-10-26T11:55:26.1319213Z Temporarily overriding HOME='/home/runner/work/_temp/05463ba9-7fbd-4a39-a97d-d8a65d2949b4' before making global git config changes
+2026-10-26T11:55:26.1321961Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T11:55:26.1324424Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/caissa/caissa
+2026-10-26T11:55:26.1381936Z Deleting the contents of '/home/runner/work/caissa/caissa'
+2026-10-26T11:55:26.1391519Z ##[group]Initializing the repository
+2026-10-26T11:55:26.1402256Z [command]/usr/bin/git init /home/runner/work/caissa/caissa
+2026-10-26T11:55:26.1509613Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-26T11:55:26.1511954Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-26T11:55:26.1513448Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-26T11:55:26.1514684Z hint: call:
+2026-10-26T11:55:26.1515718Z hint:
+2026-10-26T11:55:26.1516563Z hint: 	git config --global init.defaultBranch <name>
+2026-10-26T11:55:26.1517539Z hint:
+2026-10-26T11:55:26.1518528Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-26T11:55:26.1520038Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-26T11:55:26.1521488Z hint:
+2026-10-26T11:55:26.1522170Z hint: 	git branch -m <name>
+2026-10-26T11:55:26.1522918Z hint:
+2026-10-26T11:55:26.1523964Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-26T11:55:26.1525678Z Initialized empty Git repository in /home/runner/work/caissa/caissa/.git/
+2026-10-26T11:55:26.1528322Z [command]/usr/bin/git remote add origin https://github.com/Aneesh495/caissa
+2026-10-26T11:55:26.1611524Z ##[endgroup]
+2026-10-26T11:55:26.1612862Z ##[group]Disabling automatic garbage collection
+2026-10-26T11:55:26.1614033Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-26T11:55:26.1692763Z ##[endgroup]
+2026-10-26T11:55:26.1693563Z ##[group]Setting up auth
+2026-10-26T11:55:26.1718547Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T11:55:26.1735972Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T11:55:26.2141114Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T11:55:26.2181960Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T11:55:26.2441121Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T11:55:26.2484739Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T11:55:26.2748983Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-26T11:55:26.2793733Z ##[endgroup]
+2026-10-26T11:55:26.2794581Z ##[group]Fetching the repository
+2026-10-26T11:55:26.2803900Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +67f89c1bd89b6a86bbeb70a03fb3286d8614de8f:refs/remotes/origin/main
+2026-10-26T11:55:38.1614491Z From https://github.com/Aneesh495/caissa
+2026-10-26T11:55:38.1617016Z  * [new ref]         67f89c1bd89b6a86bbeb70a03fb3286d8614de8f -> origin/main
+2026-10-26T11:55:38.1622830Z ##[endgroup]
+2026-10-26T11:55:38.1624946Z ##[group]Determining the checkout info
+2026-10-26T11:55:38.1627280Z ##[endgroup]
+2026-10-26T11:55:38.1629066Z [command]/usr/bin/git sparse-checkout disable
+2026-10-26T11:55:38.1682962Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-26T11:55:38.1716964Z ##[group]Checking out the ref
+2026-10-26T11:55:38.1722363Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-26T11:55:39.1832841Z Updating files:  69% (2109/3015)
+2026-10-26T11:55:39.2519561Z Updating files:  70% (2111/3015)
+2026-10-26T11:55:39.2572529Z Updating files:  71% (2141/3015)
+2026-10-26T11:55:39.2588521Z Updating files:  72% (2171/3015)
+2026-10-26T11:55:39.2603511Z Updating files:  73% (2201/3015)
+2026-10-26T11:55:39.2655474Z Updating files:  74% (2232/3015)
+2026-10-26T11:55:39.2669391Z Updating files:  75% (2262/3015)
+2026-10-26T11:55:39.2915375Z Updating files:  76% (2292/3015)
+2026-10-26T11:55:39.3166597Z Updating files:  77% (2322/3015)
+2026-10-26T11:55:39.3180228Z Updating files:  78% (2352/3015)
+2026-10-26T11:55:39.3201851Z Updating files:  79% (2382/3015)
+2026-10-26T11:55:39.3228370Z Updating files:  80% (2412/3015)
+2026-10-26T11:55:39.3369979Z Updating files:  81% (2443/3015)
+2026-10-26T11:55:40.2071356Z Updating files:  82% (2473/3015)
+2026-10-26T11:55:40.4362636Z Updating files:  82% (2491/3015)
+2026-10-26T11:55:40.4374189Z Updating files:  83% (2503/3015)
+2026-10-26T11:55:40.4415671Z Updating files:  84% (2533/3015)
+2026-10-26T11:55:40.4437147Z Updating files:  85% (2563/3015)
+2026-10-26T11:55:40.4523893Z Updating files:  86% (2593/3015)
+2026-10-26T11:55:40.4536815Z Updating files:  87% (2624/3015)
+2026-10-26T11:55:40.4547787Z Updating files:  88% (2654/3015)
+2026-10-26T11:55:40.4561807Z Updating files:  89% (2684/3015)
+2026-10-26T11:55:40.4606022Z Updating files:  90% (2714/3015)
+2026-10-26T11:55:40.4632221Z Updating files:  91% (2744/3015)
+2026-10-26T11:55:40.4698842Z Updating files:  92% (2774/3015)
+2026-10-26T11:55:40.4717686Z Updating files:  93% (2804/3015)
+2026-10-26T11:55:40.4737102Z Updating files:  94% (2835/3015)
+2026-10-26T11:55:40.4757079Z Updating files:  95% (2865/3015)
+2026-10-26T11:55:40.4778015Z Updating files:  96% (2895/3015)
+2026-10-26T11:55:40.4801161Z Updating files:  97% (2925/3015)
+2026-10-26T11:55:40.4826656Z Updating files:  98% (2955/3015)
+2026-10-26T11:55:40.4853560Z Updating files:  99% (2985/3015)
+2026-10-26T11:55:40.4854452Z Updating files: 100% (3015/3015)
+2026-10-26T11:55:40.4855242Z Updating files: 100% (3015/3015), done.
+2026-10-26T11:55:40.6013928Z Switched to a new branch 'main'
+2026-10-26T11:55:40.6014370Z branch 'main' set up to track 'origin/main'.
+2026-10-26T11:55:40.6165806Z ##[endgroup]
+2026-10-26T11:55:40.6211753Z [command]/usr/bin/git log -1 --format=%H
+2026-10-26T11:55:40.6241915Z 67f89c1bd89b6a86bbeb70a03fb3286d8614de8f
+2026-10-26T11:55:40.6469917Z ##[group]Run python3 - <<'PY'
+2026-10-26T11:55:40.6470317Z [36;1mpython3 - <<'PY'[0m
+2026-10-26T11:55:40.6470947Z [36;1mimport json,os,time[0m
+2026-10-26T11:55:40.6471372Z [36;1mrule=json.load(open('config/data-recovery-development-v1.json'))[0m
+2026-10-26T11:55:40.6471964Z [36;1massert int(os.environ['GITHUB_RUN_NUMBER'])<=rule['maximum_ci_executions'][0m
+2026-10-26T11:55:40.6472449Z [36;1massert int(os.environ['GITHUB_RUN_ATTEMPT'])==1[0m
+2026-10-26T11:55:40.6472906Z [36;1massert time.time()<rule['deadline_unix']<rule['parent_deadline_unix'][0m
+2026-10-26T11:55:40.6473301Z [36;1mPY[0m
+2026-10-26T11:55:40.7161714Z shell: /usr/bin/bash -e {0}
+2026-10-26T11:55:40.7162088Z ##[endgroup]
+2026-10-26T11:55:40.8041354Z ##[group]Run actions/setup-python@v5
+2026-10-26T11:55:40.8041890Z with:
+2026-10-26T11:55:40.8042246Z   python-version: 3.12
+2026-10-26T11:55:40.8042658Z   check-latest: false
+2026-10-26T11:55:40.8047854Z   token: ***
+2026-10-26T11:55:40.8048212Z   update-environment: true
+2026-10-26T11:55:40.8048625Z   allow-prereleases: false
+2026-10-26T11:55:40.8049001Z   freethreaded: false
+2026-10-26T11:55:40.8049336Z ##[endgroup]
+2026-10-26T11:55:40.9459096Z ##[group]Installed versions
+2026-10-26T11:55:41.1547739Z (node:2312) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T11:55:41.1548570Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T11:55:41.1549397Z Successfully set up CPython (3.12.15)
+2026-10-26T11:55:41.1550333Z ##[endgroup]
+2026-10-26T11:55:41.4496261Z ##[group]Run python -m pip install numpy==2.2.6 chess==1.11.2
+2026-10-26T11:55:41.4497058Z [36;1mpython -m pip install numpy==2.2.6 chess==1.11.2[0m
+2026-10-26T11:55:41.5021678Z shell: /usr/bin/bash -e {0}
+2026-10-26T11:55:41.5021998Z env:
+2026-10-26T11:55:41.5022309Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:55:41.5022827Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-26T11:55:41.5023314Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:55:41.5023730Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:55:41.5024147Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:55:41.5024832Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-26T11:55:41.5025188Z ##[endgroup]
+2026-10-26T11:55:44.4609717Z Collecting numpy==2.2.6
+2026-10-26T11:55:44.5640858Z   Downloading numpy-2.2.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+2026-10-26T11:55:44.6151596Z Collecting chess==1.11.2
+2026-10-26T11:55:44.6269879Z   Downloading chess-1.11.2.tar.gz (6.1 MB)
+2026-10-26T11:55:44.9425722Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.1/6.1 MB 20.6 MB/s  0:00:00
+2026-10-26T11:55:45.0909889Z   Installing build dependencies: started
+2026-10-26T11:55:46.6721013Z   Installing build dependencies: finished with status 'done'
+2026-10-26T11:55:46.6727002Z   Getting requirements to build wheel: started
+2026-10-26T11:55:47.2007152Z   Getting requirements to build wheel: finished with status 'done'
+2026-10-26T11:55:47.2016319Z   Preparing metadata (pyproject.toml): started
+2026-10-26T11:55:47.4445658Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-10-26T11:55:47.4581335Z Downloading numpy-2.2.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.5 MB)
+2026-10-26T11:55:47.6949263Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.5/16.5 MB 70.3 MB/s  0:00:00
+2026-10-26T11:55:47.7286240Z Building wheels for collected packages: chess
+2026-10-26T11:55:47.7294609Z   Building wheel for chess (pyproject.toml): started
+2026-10-26T11:55:48.0224732Z   Building wheel for chess (pyproject.toml): finished with status 'done'
+2026-10-26T11:55:48.0231316Z   Created wheel for chess: filename=chess-1.11.2-py3-none-any.whl size=147878 sha256=458a87dabf7ae539206a8b25264163c8f2a52be537a628bfd0d9adb2c3ba33e5
+2026-10-26T11:55:48.0233272Z   Stored in directory: /home/runner/.cache/pip/wheels/83/1f/4e/8f4300f7dd554eb8de70ddfed96e94d3d030ace10c5b53d447
+2026-10-26T11:55:48.0260793Z Successfully built chess
+2026-10-26T11:55:48.0530813Z Installing collected packages: numpy, chess
+2026-10-26T11:55:50.1641002Z 
+2026-10-26T11:55:50.1650715Z Successfully installed chess-1.11.2 numpy-2.2.6
+2026-10-26T11:55:50.1659327Z 
+2026-10-26T11:55:50.1659589Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-26T11:55:50.1660177Z [notice] To update, run: pip install --upgrade pip
+2026-10-26T11:55:50.2487798Z ##[group]Run python -m tests.data_recovery_component --output runs/g11-data-component
+2026-10-26T11:55:50.2488459Z [36;1mpython -m tests.data_recovery_component --output runs/g11-data-component[0m
+2026-10-26T11:55:50.2553124Z shell: /usr/bin/bash -e {0}
+2026-10-26T11:55:50.2553388Z env:
+2026-10-26T11:55:50.2553663Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:55:50.2554134Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-26T11:55:50.2554583Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:55:50.2554981Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:55:50.2555376Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:55:50.2555784Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-26T11:55:50.2556112Z ##[endgroup]
+2026-10-26T11:56:21.9734287Z {"status": "passed", "controls": 17, "full_G11_certified": false}
+2026-10-26T11:56:22.0028306Z ##[group]Run actions/upload-artifact@v4
+2026-10-26T11:56:22.0028634Z with:
+2026-10-26T11:56:22.0028858Z   name: data-recovery-ubuntu-24.04
+2026-10-26T11:56:22.0029149Z   path: runs/g11-data-component/
+2026-10-26T11:56:22.0029411Z   retention-days: 14
+2026-10-26T11:56:22.0029644Z   if-no-files-found: warn
+2026-10-26T11:56:22.0029890Z   compression-level: 6
+2026-10-26T11:56:22.0030112Z   overwrite: false
+2026-10-26T11:56:22.0030339Z   include-hidden-files: false
+2026-10-26T11:56:22.0030903Z env:
+2026-10-26T11:56:22.0031179Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:56:22.0031641Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-26T11:56:22.0032099Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:56:22.0032730Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:56:22.0033132Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T11:56:22.0033561Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-26T11:56:22.0033899Z ##[endgroup]
+2026-10-26T11:56:22.1635725Z (node:2488) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T11:56:22.1636654Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T11:56:22.2101601Z With the provided path, there will be 212 files uploaded
+2026-10-26T11:56:22.2122116Z Artifact name is valid!
+2026-10-26T11:56:22.2127518Z Root directory input is valid!
+2026-10-26T11:56:22.4872152Z Beginning upload of artifact content to blob storage
+2026-10-26T11:56:23.1546041Z (node:2488) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-26T11:56:23.7548893Z Uploaded bytes 7818616
+2026-10-26T11:56:23.8049745Z Finished uploading artifact content to blob storage!
+2026-10-26T11:56:23.8051434Z SHA256 digest of uploaded artifact zip is c66e1e2aa66cb5227ae77f4a13f97a866ee9b1201e7c3513580b2390c636cfca
+2026-10-26T11:56:23.8052448Z Finalizing artifact upload
+2026-10-26T11:56:24.2232510Z Artifact data-recovery-ubuntu-24.04.zip successfully finalized. Artifact ID 12648431339
+2026-10-26T11:56:24.2234273Z Artifact data-recovery-ubuntu-24.04 has been successfully uploaded! Final size is 7818616 bytes. Artifact ID is 12648431339
+2026-10-26T11:56:24.2241836Z Artifact download URL: https://github.com/Aneesh495/caissa/actions/runs/40318631980/artifacts/12648431339
+2026-10-26T11:56:24.2452354Z Post job cleanup.
+2026-10-26T11:56:24.3683949Z (node:2502) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T11:56:24.3685512Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T11:56:24.3869076Z Post job cleanup.
+2026-10-26T11:56:24.4841657Z [command]/usr/bin/git version
+2026-10-26T11:56:24.4897585Z git version 2.55.0
+2026-10-26T11:56:24.4959863Z Temporarily overriding HOME='/home/runner/work/_temp/9def59d7-5169-418f-933e-6cdb5179c11b' before making global git config changes
+2026-10-26T11:56:24.4961453Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T11:56:24.4975571Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/caissa/caissa
+2026-10-26T11:56:24.5031501Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T11:56:24.5083252Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T11:56:24.5434190Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T11:56:24.5473162Z http.https://github.com/.extraheader
+2026-10-26T11:56:24.5502387Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-26T11:56:24.5558638Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T11:56:24.5869424Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T11:56:24.5908386Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T11:56:24.6323913Z Cleaning up orphan processes
+2026-10-26T11:56:24.6719806Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
