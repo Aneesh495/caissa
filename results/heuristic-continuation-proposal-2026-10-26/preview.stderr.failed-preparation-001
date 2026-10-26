@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/runs/full-heuristics-strength-v1/FAILED-1793035507751064000.json", line 1, in <module>
+    {"reason":"stage play-extensions-milliseconds-400 failed: resource-guard: decisive timed games conflict with active compiler, data, training, arena or performance work (exit -15)","observed_unix":1793035507.751081,"full_acceptance":false}
+                                                                                                                                                                                                                                            ^^^^^
+NameError: name 'false' is not defined. Did you mean: 'False'?
