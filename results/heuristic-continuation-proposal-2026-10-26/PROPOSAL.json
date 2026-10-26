@@ -2,7 +2,7 @@
   "schema": "caissa-heuristic-continuation-proposal-v1",
   "status": "prepared; requires new direct approval for one additional process start",
   "entrypoint": "tools/heuristics_environment_continuation.py",
-  "entrypoint_sha256": "80ce63844cdb7d91feaad8f50471f215995c9df998a28cf3def6baed7eb1c439",
+  "entrypoint_sha256": "d0de9b42c4f036c9b9b15426804a95915d52bf0f6ae9ca4ee73b4e72179f98b7",
   "original_source_commit": "67f89c1bd89b6a86bbeb70a03fb3286d8614de8f",
   "original_scope_sha256": "7bbe6641b680955ffc1ecd3a3b0b22dd5a6c9dbaa908a603759ef7796a1e3cf0",
   "original_profile_sha256": "1d6bb4a26490d7ec4b4cc28c8da8fda0ad4dfd10678edcf2f2a69f13eba2f592",
@@ -33,5 +33,6 @@
   "maximum_new_preflight_seconds": 20,
   "preflight_absolute_deadline_unix": 1793058983.7196429,
   "preflight_runs_only_after_new_approval": true,
-  "validation_status": "static syntax reviewed; actual archived preview not yet verified; first preparation invoked wrong file and its original metadata window expired"
+  "validation_status": "static syntax reviewed; actual archived preview not yet verified; first preparation invoked wrong file and its original metadata window expired",
+  "real_free_host_probe_before_amendment": true
 }
