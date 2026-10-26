@@ -1,11 +1,11 @@
-"""Power admission refuses battery before budget creation; assertions are scoped."""
+"""Explicit strict-AC admission and scoped awake assertion controls."""
 
 import json
 import tempfile
 from pathlib import Path
 from unittest.mock import Mock, patch
 
-from tools.power_guard import POLICY, BATTERY_POLICY, PowerGuard
+from tools.power_guard import STRICT_AC_POLICY as POLICY, BATTERY_POLICY, PowerGuard
 
 
 def main():

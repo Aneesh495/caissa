@@ -29,7 +29,7 @@ class ProcessEvidence(unittest.TestCase):
                 patch("tools.full_strength.os.getpid", return_value=owner),
             ):
                 with self.assertRaisesRegex(ValueError, "decisive timed games"):
-                    HostGuard(Path(directory), Mock()).check()
+                    HostGuard(Path(directory), Mock(), require_idle=True).check()
             text = (Path(directory) / "HOST_SAMPLES.jsonl").read_text()
             self.assertNotIn("SYNTHETIC", text)
             self.assertNotIn("command", text)

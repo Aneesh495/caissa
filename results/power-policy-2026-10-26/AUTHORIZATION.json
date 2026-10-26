@@ -1,0 +1,9 @@
+{
+  "human_authorization": "User explicitly asked for all background jobs to run whether the Mac is plugged in and stated they will keep the battery charged.",
+  "observed_unix": 1793036567.467409,
+  "changes": "Current-source default battery allowed, no pause on unplug. Optional explicit AC-wait mode retained; historical archives unchanged.",
+  "extra_attempts_added": 0,
+  "extra_wall_seconds_added": 0,
+  "extra_active_seconds_added": 0,
+  "untimed_archive_policy": "Retain exclusive Caissa host lease and original scope/power observations; unrelated compilers do not invalidate byte transport."
+}

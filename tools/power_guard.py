@@ -8,13 +8,18 @@ import time
 
 from tools.campaign_process import atomic
 
-POLICY = {
+STRICT_AC_POLICY = {
     "platform": "darwin",
     "require_ac_power": True,
     "scoped_caffeinate_flags": "-dis",
     "check_interval_seconds": 5,
 }
-BATTERY_POLICY = {**POLICY, "require_ac_power": False, "scoped_caffeinate_flags": "-di"}
+POLICY = {
+    **STRICT_AC_POLICY,
+    "require_ac_power": False,
+    "scoped_caffeinate_flags": "-di",
+}
+BATTERY_POLICY = {**POLICY}
 WAIT_POLICY = {**BATTERY_POLICY, "wait_at_native_work_boundaries": True}
 
 
@@ -40,7 +45,7 @@ class PowerGuard:
         self.output = None
         if policy is not None:
             if (
-                policy not in (POLICY, BATTERY_POLICY, WAIT_POLICY)
+                policy not in (POLICY, BATTERY_POLICY, WAIT_POLICY, STRICT_AC_POLICY)
                 or sys.platform != "darwin"
             ):
                 raise ValueError("unsupported recovery awake-host policy")

@@ -13,6 +13,10 @@ def public_snapshot(snapshot):
         "load": snapshot["load"],
         "process_arguments": "omitted",
     }
+    if "idle_required" in snapshot:
+        if type(snapshot["idle_required"]) is not bool:
+            raise ValueError("invalid public host idle policy")
+        result["idle_required"] = snapshot["idle_required"]
     for group in ("offenders", "top_processes"):
         result[group] = [
             {key: row[key] for key in ("pid", "ppid", "state", "cpu")}
