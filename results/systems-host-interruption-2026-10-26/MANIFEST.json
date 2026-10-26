@@ -1,0 +1,15 @@
+{
+  "files": {
+    "ACTIVE_USAGE.json": "4b2520519e30f1c8481a40716271779d20995f31cf302cba1a5d6c91bc75e932",
+    "FAILED-1793025334891706000.json": "e6fcb41fd1ebdc84bf28753e1197400d8d0d19b33e6be86b9ec6da59f07091dd",
+    "HOST_SAMPLES.public.jsonl": "6f52a47b4259092d9f562ea45ccf14abcf83db84f94c9c0928801b473d6b2ccc",
+    "INTERRUPTION.json": "1d4e3407ae485c80b90faf19017508c76d718ce1dd7895ba78aa71c5e73b2d3d",
+    "README.md": "17ebd4d499a0eaf8adf11d8a2c2dda4d057cb876dbe8ceb807d953ad3eb241fa",
+    "SCOPE.json": "fbd11fe8d7c7a0a842a8280a4916ab8a1a340eea2fea0538f6b2bca9579c8c5e",
+    "attempts/attempt-002/CAMPAIGN.json": "1c66d66be382c1c345b6b6cea96f174a7e6b9173ae97797013cbc0e2174bd267",
+    "attempts/attempt-002/COMMANDS.jsonl": "9e901f17b6060a47b62ccad95f4876bd91c5e973d7a0d2d5b14615b6e3d8f337",
+    "attempts/attempt-002/PROGRESS.json": "01fb6431504f38babc178fd867e88e78e9af2814fc30855c8d66ab345f822d14",
+    "attempts/attempt-002/play-threads-2-ms-100.json": "9b21a0feeec9babb6591eb1f18c506534374a32ecc3fe19b1e233694f607b67f",
+    "attempts/attempt-002/play-threads-2-ms-100.log": "bad053e8df5623a403a41fb23bd5ee7afb131805a8a002fa443d6d450e67e5ec"
+  }
+}

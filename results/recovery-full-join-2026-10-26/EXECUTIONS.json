@@ -1,0 +1,44 @@
+{
+  "scope": {
+    "schema": "caissa-g11-historical-full-join-development-v1",
+    "origin_unix": 1793022295.019377,
+    "deadline_unix": 1793025895.019377,
+    "parent_deadline_unix": 1793150297.974828,
+    "maximum_ci_executions": 2,
+    "maximum_hosted_seconds_per_platform": 2700,
+    "maximum_output_bytes_per_platform": 4294967296,
+    "minimum_free_bytes": 10737418240,
+    "scope": "New all-component G11 final-source/saved-image join. Readonly independently pinned historical ZIPs, unchanged producer footprints, actual old SQL/tensor/game reconstruction and one current-code resumption probe on exactsaved1ff image. No acquisition, trainer, SIGKILL producer, old component control suite, browser or strength rerun. Three new mate-independent arena continuation diagnostic games only onmacOS are part of final-image joining, not strength."
+  },
+  "ci_executions_started": 2,
+  "executions": [
+    {
+      "number": 1,
+      "source_commit": "31c9619e7c916b8d150e0e69f728386fee740dab",
+      "charged_before_dispatch_unix": 1793023175.830703,
+      "run": 40335509024,
+      "result": "failed one test expected-error substring after actual full join and prior controls completed",
+      "hosted_seconds": {
+        "linux": 93,
+        "macos": 126
+      }
+    },
+    {
+      "number": 2,
+      "source_commit": "6a63aaaa507646c87ef54b7aab1bea2b71eec1ea",
+      "charged_before_dispatch_unix": 1793023616.3548312,
+      "run": 40336617662,
+      "result": "passed full new join contracts and exact saved-image sample onmacOS; Linux readonly component passed",
+      "hosted_seconds": {
+        "linux": 83,
+        "macos": 126
+      }
+    }
+  ],
+  "closed": true,
+  "closed_unix": 1793024035.061022,
+  "cumulative_hosted_seconds": {
+    "linux": 176,
+    "macos": 252
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "status": "full G11 saved-image recovery sample passed; full project acceptance false",
+  "source_commit": "6a63aaaa507646c87ef54b7aab1bea2b71eec1ea",
+  "ci_run": 40336617662,
+  "failed_ci_run": 40335509024,
+  "profile_sha256": "b2c23e734029d13800a27e4f237b2855fdbdf718c11cecec30cbc42154a3f627",
+  "original_components": {
+    "arena": "973f288afb3d05e736da11370c253b84c7114679",
+    "training": "34f40c293e114fafa8706dfd4d838b9be984ae55",
+    "data": "67f89c1bd89b6a86bbeb70a03fb3286d8614de8f"
+  },
+  "controls_per_platform": 9,
+  "historical_producers_rerun": false,
+  "original_archives_verified_and_selected_without_mutation": true,
+  "unchanged_current_producer_bytes_and_modes_verified": true,
+  "new_training": false,
+  "new_acquisition": false,
+  "new_strength_games": 0,
+  "native_resumption_diagnostic_games_per_macos_execution": 3,
+  "native_resumption_diagnostic_games_across_two_macos_executions": 6,
+  "saved_engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "full_G11_saved_image_sample_macos": true,
+  "linux_component_passed_saved_image_not_executed": true,
+  "remaining_full_gates_macos": 15,
+  "remaining_full_gates_linux": 16,
+  "full_acceptance": false,
+  "source_files_sha256": {
+    "verification/recovery_join.py": "144e409f49c6a282f4c889c84a2b2bf79f09099968d56037f1b84e0c1f012805",
+    "verification/recovery_join_bundle.py": "2cdf1cc180eea3d037f0095afbaa9316f2b7b11612b2eada89b6d3c376c82457",
+    "verification/arena_recovery.py": "300577b97b21ebc1c671ee694adbefdd61dd9662a814e4bbcbf3d6d73aa3a471",
+    "verification/full_bundle.py": "cf007a524427251901079c079991ffa9410a8f2d1859a3819db6b8dd09735bdc",
+    "tools/recovery_join_inputs.py": "25d21a16abfb22127e45ae8266b980a697e30e4700b854b34ed074179bbc0a99",
+    "tests/recovery_join.py": "196c174cb50e043de575f2eadc63e30351f29f5223faff1f471c5ff289dbd656",
+    ".github/workflows/recovery-join.yml": "d364ab4e00f16fb8fc628bf1f90758d46867c4d3941218dc9da5323f20271d01"
+  },
+  "first_failure": "Expected test error substring differed from the earlier correct full-graph saved-actor rejection. Both raw failed logs retained. Production rejection unchanged.",
+  "cumulative_hosted_seconds": {
+    "linux": 176,
+    "macos": 252
+  }
+}

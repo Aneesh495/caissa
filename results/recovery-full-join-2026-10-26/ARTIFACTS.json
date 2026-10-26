@@ -1,0 +1,43 @@
+{
+  "portable_raw_retrieval_pending": true,
+  "epochs": [
+    {
+      "run": 40335509024,
+      "artifacts": [
+        {
+          "id": 12657111898,
+          "name": "historical-recovery-join-macos-15",
+          "size_in_bytes": 294111587,
+          "digest": "sha256:a24426315e36e9abe7278ef92558b28539ca51903e32601e9a3f1207d1575b40",
+          "expired": false
+        },
+        {
+          "id": 12656228596,
+          "name": "historical-recovery-join-ubuntu-24.04",
+          "size_in_bytes": 294645451,
+          "digest": "sha256:19617b2d3f59d62bee7ad3360a9d06d64a66eac309568af72b4b630e5bb95bc3",
+          "expired": false
+        }
+      ]
+    },
+    {
+      "run": 40336617662,
+      "artifacts": [
+        {
+          "id": 12657780052,
+          "name": "historical-recovery-join-ubuntu-24.04",
+          "size_in_bytes": 297561650,
+          "digest": "sha256:c66b950a4eb1d7209d94cb0ec1d251420d66c2ae811d43a2f60dc5962c7a43ca",
+          "expired": false
+        },
+        {
+          "id": 12657018104,
+          "name": "historical-recovery-join-macos-15",
+          "size_in_bytes": 297027567,
+          "digest": "sha256:7c8fa076cc3b759ccda1f065653a6b74e0277795ca20852fc49f3ffe84b087fa",
+          "expired": false
+        }
+      ]
+    }
+  ]
+}

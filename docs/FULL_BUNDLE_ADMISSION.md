@@ -80,3 +80,13 @@ and reexecutes every saved request through the exact native image. All frozen
 work and its original ceilings are required. A saved score, opaque native test
 pass or partial prefix cannot replace that reconstruction. Its actual positive
 full entry leaves the other fifteen semantic gates incomplete.
+
+G11 uses `driver: forced-recovery-join-v1` with an exact `recovery_join.config`
+reference and the complete joined raw inventory. The [historical recovery
+join](RECOVERY_JOIN.md) independently selects the pinned original arena,
+trainer and data archives, reconstructs their contents and compares producer
+bytes/modes to their historical sources. macOS also performs a distinct saved-image
+resumption after these checks. Historical producer reruns and a different native
+image cannot substitute for this join. The source6a63aaaa sample passed in
+run40336617662; it leaves fifteen other full gates incomplete. Subsequent source
+changes still require final all-domain binding and do not inherit full acceptance.

@@ -1,0 +1,20 @@
+{
+  "human_authorized_restart": true,
+  "normal_quit_returncode": 0,
+  "quit_wait_result": "The app relaunched automatically before the no-process observation; first watcher correctly refused to declare a complete quit. No second quit or forced termination was used.",
+  "old_session_process_ids": [
+    2283
+  ],
+  "old_session_processes_exited": true,
+  "reopened": true,
+  "exposed_values_still_in_running_processes": {
+    "csrf_token": false,
+    "host_bridge_token": false
+  },
+  "replacement_values_observed": {
+    "csrf_token": true,
+    "host_bridge_token": true
+  },
+  "observed_unix": 1793033367.4485729,
+  "credential_endpoint_tests": 0
+}
