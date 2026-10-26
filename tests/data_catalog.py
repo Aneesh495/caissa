@@ -131,6 +131,15 @@ def main():
         )
         (args.output / (name + ".log")).write_text(result.stdout + result.stderr)
         actual = json.loads(result.stdout)
+        if reason is None and result.returncode:
+            for retained in sorted(destination.glob("attempts/*/*.log")):
+                if retained.stat().st_size <= 32768:
+                    print(
+                        "RETAINED CHILD FAILURE",
+                        retained,
+                        retained.read_text(),
+                        flush=True,
+                    )
         if reason:
             assert result.returncode == 1 and reason in actual.get("reason", ""), (
                 name,

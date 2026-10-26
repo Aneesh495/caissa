@@ -491,6 +491,9 @@ def execute(path, expected, input_root, output, expected_commit, diagnostic=Fals
             scope.check()
             power.check()
 
+        # ReplayIndex creates a temporary index inside this owned scratch
+        # parent. tempfile does not create the parent directory itself.
+        (output / "index").mkdir()
         launcher = "import runpy,sys;sys.path.insert(0,sys.argv.pop(1));runpy.run_module('verification.dataset',run_name='__main__')"
         command = [
             sys.executable,
