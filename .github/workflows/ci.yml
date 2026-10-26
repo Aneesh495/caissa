@@ -76,6 +76,7 @@ jobs:
           python -m tests.independent_index_recovery --dataset data/ci-prepared --corpus data/ci-original --output runs/ci-independent-index-recovery --maximum-seconds 120
           python -m tests.data_catalog --dataset data/ci-prepared --corpus data/ci-original --output runs/ci-data-catalog
           python -m tests.g07_coordinator --catalog runs/ci-data-catalog/CATALOG.json --output runs/ci-g07-coordinator
+          python -m tests.g07_inputs --corpus data/ci-original --dataset data/ci-prepared --output runs/ci-g07-inputs
       - name: Real analysis integration
         run: |
           npm ci --ignore-scripts
@@ -132,6 +133,7 @@ jobs:
             runs/ci-learning-bundle/*.log
             runs/ci-performance-bundle/
             runs/ci-g07-coordinator/
+            runs/ci-g07-inputs/
             runs/ci-data-catalog/
             data/ci-original/
             data/ci-prepared/

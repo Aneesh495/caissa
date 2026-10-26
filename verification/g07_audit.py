@@ -32,7 +32,13 @@ from verification.learning_bundle import (
     ORIGINAL_PROTOCOL,
     ORIGINAL_SELECTION,
 )
-from verification.source import PRODUCT, require, snapshot, verify_checkout
+from verification.source import (
+    PRODUCT,
+    require,
+    snapshot,
+    verify_archive,
+    verify_checkout,
+)
 
 OUTPUT = "runs/full-g07-audit-v1"
 CHECKPOINT = "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005"
@@ -222,7 +228,7 @@ def strength_settled(checkout):
     return False
 
 
-def execute(plan, expected, checkout, commit):
+def execute(plan, expected, checkout, commit, *, archived_source=False):
     checkout = Path(checkout).resolve()
     rule = contract(plan, expected, commit)
     output = checkout / OUTPUT
@@ -248,9 +254,12 @@ def execute(plan, expected, checkout, commit):
             "commit": commit,
             "files": snapshot(checkout, commit, PRODUCT),
         }
-        verify_checkout(checkout, source_inputs, commit, PRODUCT)
         code = Path(__file__).resolve().parents[1]
-        require(code == checkout, "launch G07 from its explicitly trusted checkout")
+        if archived_source:
+            verify_archive(checkout, code, source_inputs, commit, PRODUCT)
+        else:
+            verify_checkout(checkout, source_inputs, commit, PRODUCT)
+            require(code == checkout, "launch G07 from its explicitly trusted checkout")
         scope = RecoveryScope(
             output,
             {
@@ -434,10 +443,15 @@ def main():
     parser.add_argument("--expected-plan-sha256", required=True)
     parser.add_argument("--checkout", type=Path, required=True)
     parser.add_argument("--expected-commit", required=True)
+    parser.add_argument("--archived-source", action="store_true")
     args = parser.parse_args()
     try:
         result = execute(
-            args.plan, args.expected_plan_sha256, args.checkout, args.expected_commit
+            args.plan,
+            args.expected_plan_sha256,
+            args.checkout,
+            args.expected_commit,
+            archived_source=args.archived_source,
         )
         print(json.dumps(result))
         return 0
