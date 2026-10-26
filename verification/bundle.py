@@ -134,7 +134,7 @@ class Bundle:
     def json(self, name, maximum_bytes=4 * 1024 * 1024):
         return strict_json(self.bytes(name, maximum_bytes))
 
-    def copy(self, name, destination, maximum_bytes=8 * 1024**3):
+    def copy(self, name, destination, maximum_bytes=8 * 1024**3, *, check=None):
         """Stream a pinned artifact to a new external file with bounded memory."""
         require(
             type(maximum_bytes) is int and 0 < maximum_bytes <= 8 * 1024**3,
@@ -158,6 +158,8 @@ class Bundle:
             with destination.open("xb") as target:
                 while True:
                     self.tick()
+                    if check is not None:
+                        check()
                     block = stream.read(1048576)
                     if not block:
                         break
@@ -179,6 +181,8 @@ class Bundle:
             "verified copy bytes changed after manifest validation",
         )
         self.tick()
+        if check is not None:
+            check()
         return {"bytes": size, "sha256": digest.hexdigest()}
 
     def sha(self, name, maximum_bytes=8 * 1024**3):
