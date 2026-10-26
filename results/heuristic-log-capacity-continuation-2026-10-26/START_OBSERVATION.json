@@ -1,0 +1,23 @@
+{
+  "observed_unix": 1793057620.491807,
+  "owner_pid": 32106,
+  "session": 75478,
+  "owner_alive": true,
+  "original_attempt": 5,
+  "phase": "independent-aspiration-milliseconds-100",
+  "game_records": 2497,
+  "pair_records": 1248,
+  "protected_files": 6768,
+  "changed_original_files": [],
+  "active_usage": {
+    "maximum_active_seconds": 43200,
+    "active_seconds": 23456.80729925097,
+    "monotonic_stamp": 145050.484162458,
+    "closed": false
+  },
+  "original_scope_sha256": "7bbe6641b680955ffc1ecd3a3b0b22dd5a6c9dbaa908a603759ef7796a1e3cf0",
+  "original_deadline_unix": 1793058983.7196429,
+  "approved_deadline_unix": 1793066183.7196429,
+  "extra_active_seconds_added": 0,
+  "full_acceptance": false
+}
