@@ -17,6 +17,24 @@ def public_snapshot(snapshot):
         if type(snapshot["idle_required"]) is not bool:
             raise ValueError("invalid public host idle policy")
         result["idle_required"] = snapshot["idle_required"]
+    if "process_inventory_available" in snapshot:
+        if type(snapshot["process_inventory_available"]) is not bool:
+            raise ValueError("invalid public inventory availability")
+        result["process_inventory_available"] = snapshot["process_inventory_available"]
+        error = snapshot.get("observer_error")
+        allowed = {
+            "TimeoutExpired",
+            "CalledProcessError",
+            "OSError",
+            "ValueError",
+            "PermissionError",
+            "FileNotFoundError",
+            "UnicodeDecodeError",
+            "SubprocessError",
+        }
+        result["observer_error"] = (
+            error if error is None or error in allowed else "observer-error"
+        )
     for group in ("offenders", "top_processes"):
         result[group] = [
             {key: row[key] for key in ("pid", "ppid", "state", "cpu")}

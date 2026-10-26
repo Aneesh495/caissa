@@ -7,6 +7,7 @@ import sys
 import time
 
 from tools.campaign_process import atomic
+from tools.telemetry_nonfatal import power_or_unknown
 
 STRICT_AC_POLICY = {
     "platform": "darwin",
@@ -49,7 +50,9 @@ class PowerGuard:
                 or sys.platform != "darwin"
             ):
                 raise ValueError("unsupported recovery awake-host policy")
-            self.admission = observe()
+            self.admission = (
+                observe() if policy["require_ac_power"] else power_or_unknown(observe)
+            )
             if policy["require_ac_power"] and not self.admission["ac_power"]:
                 raise ValueError(
                     "plug Mac into AC power before starting the new recovery budget"
@@ -75,7 +78,9 @@ class PowerGuard:
     def check(self):
         if self.policy is None or time.monotonic() - self.last < 5:
             return
-        row = observe()
+        row = (
+            observe() if self.policy["require_ac_power"] else power_or_unknown(observe)
+        )
         if self.helper is None or self.helper.poll() is not None:
             raise ValueError("scoped recovery awake assertion exited")
         with (self.output / "POWER_SAMPLES.jsonl").open("a") as stream:

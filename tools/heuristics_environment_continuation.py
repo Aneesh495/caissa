@@ -62,6 +62,20 @@ def main():
         raise ValueError(
             "one additional heuristic start requires direct human approval"
         )
+    if approval is not None:
+        amendment_path = request.parent / "IMPLEMENTATION_AMENDMENT.json"
+        amendment = json.loads(amendment_path.read_bytes())
+        proposal = json.loads((request.parent / "PROPOSAL.json").read_bytes())
+        if not (
+            approval.get("implementation_amendment_sha256") == sha(amendment_path)
+            and amendment["approved_proposal_sha256"]
+            == sha(request.parent / "PROPOSAL.json")
+            and amendment["reviewed_entrypoint_sha256"] == proposal["entrypoint_sha256"]
+            and amendment["actual_entrypoint_sha256"] == sha(__file__)
+            and amendment["telemetry_helper_sha256"]
+            == sha(root / "tools/telemetry_nonfatal.py")
+        ):
+            raise ValueError("implementation-only telemetry repair identity differs")
     if "tools" in sys.modules or "verification" in sys.modules:
         raise ValueError("launch reviewed bootstrap by saved file path with python -P")
     sys.path.insert(0, str(output / "source"))
@@ -158,6 +172,24 @@ def main():
 
     owner.HostGuard = ObserveNormalUse
     owner.POLICY = dict(BATTERY_POLICY)
+    # A real power-status timeout killed the preceding multicore run. Optional
+    # readings must be nonfatal under the already approved environment policy.
+    # This implementation-only repair changes no actor or resource allowance.
+    import importlib.util
+    import tools.power_guard as archived_power
+    import tools.full_strength as archived_host
+
+    helper = root / "tools/telemetry_nonfatal.py"
+    require(
+        approval.get("telemetry_helper_sha256") == sha(helper),
+        "telemetry implementation pin differs",
+    )
+    spec = importlib.util.spec_from_file_location("caissa_nonfatal_telemetry", helper)
+    telemetry = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(telemetry)
+    if not args.check_only:
+        telemetry.install(archived_power, archived_host, output)
+
     original_args = SimpleNamespace(
         kind="heuristics",
         profile=output / "inputs/PROFILE.json",

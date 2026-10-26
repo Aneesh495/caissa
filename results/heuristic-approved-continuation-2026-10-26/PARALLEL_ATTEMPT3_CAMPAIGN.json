@@ -1,0 +1,1 @@
+{"status":"failed","details":{"type":"TimeoutExpired","reason":"Command '['/usr/bin/pmset', '-g', 'batt']' timed out after 3 seconds"},"seconds_this_campaign":2444.225932542002,"stages_started":4,"utc_unix":1793040725.695798,"full_acceptance":false}
