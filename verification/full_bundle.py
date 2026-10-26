@@ -838,6 +838,32 @@ def verify(
                 )
                 review.setdefault("verified_semantic_gates", {})["G13"] = result
                 del review["pending_semantic_gates"]["G13"]
+        domain = inputs["domains"]["G14"]
+        if domain.get("driver") == "semantic-audit-v1":
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G14"
+                ] = "semantic mutation audit requires an external --replay-output directory"
+            else:
+                from verification.semantic_bundle import verify as verify_semantic_audit
+
+                result = verify_semantic_audit(
+                    bundle,
+                    inputs,
+                    checkout,
+                    expected_commit,
+                    Path(replay_output).resolve() / "G14",
+                )
+                if result["full_gate"] is True:
+                    review.setdefault("verified_semantic_gates", {})["G14"] = result
+                    del review["pending_semantic_gates"]["G14"]
+                else:
+                    review.setdefault("verified_semantic_components", {})[
+                        "G14"
+                    ] = result
+                    review["pending_semantic_gates"][
+                        "G14"
+                    ] = "complete semantic mutation audit on the exact saved final native image remains required"
         return review
 
 

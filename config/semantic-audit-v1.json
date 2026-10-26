@@ -1,0 +1,59 @@
+{
+  "schema": "caissa-semantic-audit-profile-v1",
+  "search_depth": 3,
+  "fens": [
+    "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+    "rnbqkbnr/pppppppp/8/8/4P3/8/PPPP1PPP/RNBQKBNR b KQkq e3 0 1",
+    "7k/5Q2/6K1/8/8/8/8/8 w - - 0 1",
+    "8/8/8/8/8/6k1/5q2/7K b - - 0 1"
+  ],
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+  "saved_engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "compiled_source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+  "neural_weight": 10,
+  "classical_contract": 1,
+  "mate_fens": [
+    "7k/5Q2/6K1/8/8/8/8/8 w - - 0 1",
+    "8/8/8/8/8/6k1/5q2/7K b - - 0 1"
+  ],
+  "pairs": 2,
+  "nodes": 1000,
+  "max_plies": 64,
+  "draw_histories": [
+    [
+      "reset rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"
+    ],
+    [
+      "reset rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+      "move g1f3",
+      "move g8f6",
+      "move f3g1",
+      "move f6g8",
+      "move g1f3",
+      "move g8f6",
+      "move f3g1",
+      "move f6g8"
+    ],
+    [
+      "reset 7k/8/6K1/8/8/8/Q7/8 w - - 100 1"
+    ],
+    [
+      "reset 8/8/8/8/8/6k1/6q1/7K w - - 0 2"
+    ]
+  ],
+  "families": [
+    "illegal-pv",
+    "swapped-result-colors",
+    "mismatched-network-inference",
+    "incorrect-draw-claim"
+  ],
+  "variants_per_family": 4,
+  "maximum_audit_seconds": 180,
+  "maximum_producer_seconds": 120,
+  "maximum_output_bytes": 536870912,
+  "minimum_free_bytes": 10737418240,
+  "strength_sample": false,
+  "training": false,
+  "full_acceptance": false
+}
