@@ -27,3 +27,9 @@ A successful decode still needs its original chess, learning, numerical or
 strength verifier. Old failed experiments retain the same failed outcomes after
 transport. Implementing the codec does not mean that the full raw corpus,
 5.349 GB state journal or checkpoints have been packaged or distributed.
+
+[The targeted codec proof](../results/portable-volume-codec-2026-10-26/README.md)
+records 23 controls on Linux and macOS, including a real three-volume synthetic
+stream, exact original-journal bytes, bounded Python allocation measurements,
+rehashed malformed encodings and actual host-lock contention refusal. That
+closed development sample must not be rerun as a status check.

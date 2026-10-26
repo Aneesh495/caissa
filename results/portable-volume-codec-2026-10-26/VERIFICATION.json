@@ -1,0 +1,32 @@
+{
+  "schema": "caissa-portable-volume-codec-proof-v1",
+  "status": "passed bounded codec development on Linux and macOS",
+  "source_commit": "5dd8bab9f0ea4a565722cb07b4e997038b511742",
+  "ci_run": 40322306590,
+  "controls_per_platform": 23,
+  "synthetic_input_bytes": 35717120,
+  "synthetic_volume_count": 3,
+  "original_game_journal_byte_parity": true,
+  "independent_raw_and_compressed_identities_checked": true,
+  "encoder_peak_python_bytes": {
+    "linux": 3822332,
+    "macos": 3823424
+  },
+  "decoder_peak_python_bytes": {
+    "linux": 3336205,
+    "macos": 3337271
+  },
+  "memory_metric": "tracemalloc peak during codec operation only; not RSS",
+  "actual_owner_host_contention_refused_before_scope": true,
+  "cumulative_hosted_seconds": {
+    "linux": 33,
+    "macos": 46
+  },
+  "ci_executions": 1,
+  "development_scope_closed": true,
+  "local_compression_executions": 0,
+  "large_raw_packaging_started": false,
+  "full_G15_certified": false,
+  "full_acceptance": false,
+  "published_unix": 1793017806.498433
+}

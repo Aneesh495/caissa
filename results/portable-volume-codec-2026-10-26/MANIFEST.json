@@ -1,0 +1,9 @@
+{
+  "files": {
+    "README.md": "ebbadd99f92418c598b3788343d8d53d7303ede72e15bb15332d7d8a673af60b",
+    "SCOPE.json": "31b4a6d0e18df89e884312a5086da69a00c904115cac13acc00319cb555f1ea1",
+    "VERIFICATION.json": "ca3b7d25ef809d1e2c45dcb66328578e26f9a437db8763fab2e9871cca485864",
+    "success-linux.log": "2b905d3cb17883ff5f03c2b31ea02ce6d2f5eac728436b7585ac25ec9a6eefc1",
+    "success-macos.log": "292e267d2f0654b19520357693957a9ed9d7b5a4cb143e7a185dabc3ba34a876"
+  }
+}
