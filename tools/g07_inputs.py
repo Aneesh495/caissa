@@ -350,26 +350,31 @@ def learning_catalog(project, output, guard):
                 "validation-targets.npy",
             ]
         }
+        baseline_receipt = add(
+            "model", "baselines/BASELINES.json", "baseline/BASELINES.json"
+        )
         baseline_meta = pack.views["model"].json("baselines/BASELINES.json")
         model_meta = pack.views["model"].json("MODEL_CAMPAIGN.json")
         baseline = {
-            name: add(
-                "model",
-                "baselines/" + name,
-                "baseline/" + name,
-                (
-                    model_meta["engine_sha256"]
-                    if name == "caissa"
-                    else baseline_meta["files"].get(name)
-                ),
-                4 * 1024**3 if name.endswith(".npy") else 128 * 1024**2,
-            )
-            for name in [
-                "BASELINES.json",
-                "caissa",
-                "train-baseline.npy",
-                "validation-baseline.npy",
-            ]
+            "BASELINES.json": baseline_receipt,
+            **{
+                name: add(
+                    "model",
+                    "baselines/" + name,
+                    "baseline/" + name,
+                    (
+                        model_meta["engine_sha256"]
+                        if name == "caissa"
+                        else baseline_meta["files"].get(name)
+                    ),
+                    4 * 1024**3 if name.endswith(".npy") else 128 * 1024**2,
+                )
+                for name in [
+                    "caissa",
+                    "train-baseline.npy",
+                    "validation-baseline.npy",
+                ]
+            },
         }
         seeds, raw = {}, {}
         for seed in [17, 41, 73]:
@@ -380,6 +385,9 @@ def learning_catalog(project, output, guard):
                     "model", prefix + "CHECKPOINTS.json", prefix + "CHECKPOINTS.json"
                 ),
             }
+            initial_identity = add(
+                "model", prefix + "INITIAL.json", prefix + "INITIAL.json"
+            )
             initial = pack.views["model"].json(prefix + "INITIAL.json")
             raw[str(seed)] = {
                 "initial": add(
@@ -388,9 +396,7 @@ def learning_catalog(project, output, guard):
                     prefix + "initial.pt",
                     initial["sha256"],
                 ),
-                "initial_identity": add(
-                    "model", prefix + "INITIAL.json", prefix + "INITIAL.json"
-                ),
+                "initial_identity": initial_identity,
                 "observations": add(
                     "model",
                     prefix + "observations.jsonl",

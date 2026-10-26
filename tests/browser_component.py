@@ -57,8 +57,8 @@ def main():
         actual.stdout
         + actual.stderr
         + (
-            (root / "browser.log").read_text()
-            if (root / "browser.log").exists()
+            (root / "browser-process.log").read_text()
+            if (root / "browser-process.log").exists()
             else ""
         )
     )

@@ -56,7 +56,7 @@ def execute(engine, network, output):
 
         campaign = Campaign(output, config, 240, resource_guard=guard)
         campaign.run(
-            "browser",
+            "browser-process",
             ["node", "tools/browser_campaign.mjs", str(output)],
             235,
             maximum_output_bytes=1024 * 1024,

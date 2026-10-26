@@ -1,0 +1,13 @@
+{
+  "status": "failed original single attempt",
+  "reason": "LearningPack protects reads with an allowlist. Baseline and initial metadata were read before their hashes were registered; the guard correctly refused unregistered metadata.",
+  "affected_metadata": [
+    "baselines/BASELINES.json",
+    "seed17/INITIAL.json",
+    "seed41/INITIAL.json",
+    "seed73/INITIAL.json"
+  ],
+  "original_learning_and_data_modified": false,
+  "full_G07_certified": false,
+  "repair": "Register and stream-copy those metadata records before reading them. Source fix prepared, not executed. Original failure, source, partial files and used budgets remain preserved."
+}

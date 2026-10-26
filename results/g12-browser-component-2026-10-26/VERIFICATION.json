@@ -1,0 +1,34 @@
+{
+  "status": "failed, original3execution development scope closed",
+  "full_G12_certified": false,
+  "executions": [
+    {
+      "source": "039fa6203b7beffc5c64c4787e8adc921766dcd9",
+      "run": 40286189209,
+      "result": "failed: driver requested unsupported MultiPV2"
+    },
+    {
+      "source": "73339012016d5c3cfe65275aa09ae55f05471204",
+      "run": 40287336654,
+      "result": "failed: browser callback referenced a Node-only variable"
+    },
+    {
+      "source": "6c94365d529acad6b8aaa66963abb70d610c9aab",
+      "run": 40288293822,
+      "result": "real4context browser producer completed; independent reader failed on missing PROGRESS inventory and macOS BROWSER.json/browser.json filename collision"
+    }
+  ],
+  "original_raw_runtime_artifacts": [
+    {
+      "run": 40288293822,
+      "artifact": 12635445110,
+      "platform": "Linux"
+    },
+    {
+      "run": 40288293822,
+      "artifact": 12635193709,
+      "platform": "macOS"
+    }
+  ],
+  "repair": "Static source fixes prepared. No extra execution or fullG12 acceptance claimed. Failed logs and all raw histories retained."
+}

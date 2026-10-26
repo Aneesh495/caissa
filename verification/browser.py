@@ -179,8 +179,9 @@ def verify(root, engine_sha256, network_sha256, source_commit, maximum_seconds=6
             "service.log",
             "WRITER.lock",
             "COMMANDS.jsonl",
-            "browser.log",
-            "browser.json",
+            "browser-process.log",
+            "browser-process.json",
+            "PROGRESS.json",
             "CAMPAIGN.json",
             *{
                 f"{mode}-{width}/{name}.png"
@@ -199,7 +200,7 @@ def verify(root, engine_sha256, network_sha256, source_commit, maximum_seconds=6
             "G12 raw browser inventory differs",
         )
         require(
-            bundle.json("browser.json")["exit"] == 0
+            bundle.json("browser-process.json")["exit"] == 0
             and bundle.json("CAMPAIGN.json")["status"] == "recorded",
             "G12 real browser command did not finish",
         )
