@@ -1,0 +1,26 @@
+{
+  "human_authorization": "Background work must run on battery and while laptop in use.",
+  "source_file_checks": {
+    "tools/evidence_volumes.py": {
+      "original": "2a23ea724bab4758957f7551906bd1779148b0c541b5d0712f9e27d04dfddd64",
+      "current": "2a23ea724bab4758957f7551906bd1779148b0c541b5d0712f9e27d04dfddd64",
+      "unchanged": true
+    },
+    "tools/portable_evidence.py": {
+      "original": "039de8529a1f833c53fe6bf65dcd6c3982b3f7c9780a2eed6d1b0a6e7bd8d830",
+      "current": "892eca068c3caaa6ac54ea80b599f489d2ea30f1fd0de5be4b01522ca337784d",
+      "unchanged": false
+    },
+    "verification/evidence_volumes.py": {
+      "original": "37334e8166ab7af6e27bcff472f98fbe18c95dc9aebed66076fd7649bce13748",
+      "current": "37334e8166ab7af6e27bcff472f98fbe18c95dc9aebed66076fd7649bce13748",
+      "unchanged": true
+    }
+  },
+  "codec_and_independent_decoder_unchanged": true,
+  "owner_changes": "New battery/normal-use defaults, preserving scope checks, real exclusive lease and sanitized power/load observations. No byte codec change.",
+  "input_and_queued_plan_unchanged": true,
+  "extra_attempts_added": 0,
+  "extra_seconds_added": 0,
+  "observed_unix": 1793037103.039021
+}

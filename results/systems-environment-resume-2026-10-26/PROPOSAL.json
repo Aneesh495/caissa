@@ -1,0 +1,12 @@
+{
+  "status": "Direct human environment steering applied to original remaining parallel attempt3 only",
+  "entrypoint": "tools/systems_environment_resume.py",
+  "entrypoint_sha256": "054d0d20c837c98c44d6d202722d8ad44084f193f029020722631ff9cc3d796f",
+  "original_scope_sha256": "fbd11fe8d7c7a0a842a8280a4916ab8a1a340eea2fea0538f6b2bca9579c8c5e",
+  "original_deadline_unix": 1793042015.30114,
+  "source_commit": "d89b3e2139fef4dcbfdd6eac0dceaa1aec7c4829",
+  "profile_sha256": "5b405adcb7edbdc4bbae410612c7867879a83f73e635ed5ca29c26eeee072f48",
+  "no_actor_game_profile_archive_or_scope_edits": true,
+  "changes": "Fix exact archived verifier argument forwarding, select already-supported battery policy, preserve host observations without aborting on normal laptop use. All other guards remain.",
+  "full_acceptance": false
+}

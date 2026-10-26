@@ -1,0 +1,17 @@
+{
+  "approved": true,
+  "human_authorization_received": true,
+  "human_instruction": "After being told matches were stopped and a resume repair was being prepared, the user explicitly directed: moving forward nothing halts games/training/progress whether the laptop is plugged in and/or in use. This authorizes this remaining original parallel start with environment monitoring rather than environment aborts.",
+  "entrypoint_sha256": "054d0d20c837c98c44d6d202722d8ad44084f193f029020722631ff9cc3d796f",
+  "original_scope_sha256": "fbd11fe8d7c7a0a842a8280a4916ab8a1a340eea2fea0538f6b2bca9579c8c5e",
+  "original_attempt": 3,
+  "extra_attempts_added": 0,
+  "extra_wall_seconds_added": 0,
+  "extra_active_seconds_added": 0,
+  "allow_battery": true,
+  "allow_normal_laptop_use": true,
+  "observed_unix": 1793037710.9912589,
+  "original_startup_repair_approval_not_reused": true,
+  "proposal_sha256": "6f0fe2160e77008e35c59af9660f28def811c2ea8b5f824c2de0dcd2efa60b4d",
+  "protected_records_sha256": "b65c180c3d8d688b30b3741c64aaf181810fdb3aff7ef43ca6981b3bd5c8fe2c"
+}

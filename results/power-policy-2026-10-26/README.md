@@ -17,9 +17,14 @@ built unchanged native code. These eight total games are not a strength sample.
 
 After the human changed the desired default to allow battery and normal use,
 three metadata-only regression tests passed locally in0.113seconds. Actual Mac
-admission reported battery power and require_ac=false. The new default remains
-subject to the separately charged second hosted execution within this original
-scope; original first-run logs and source identity remain immutable. No old
+admission reported battery power and require_ac=false. The separately charged second hosted execution40372758102 failed on both
+platforms because the harness omitted NumPy needed by its new HostGuard import.
+Its exact failed logs remain here; native boundary games were not entered. The
+original two-execution scope is closed with93Linux/74macOS seconds. No third
+execution is authorized. The actual5.349GB archive owner subsequently completed
+on battery with the new default and independent full byte reconstruction passed.
+This is distinct from a passing second hosted component. Original first-run
+logs and source identity remain immutable. No old
 browser, training, recovery or strength producer was rerun.
 
 The optional AC-wait mode and explicit strict-idle/strict-AC policies remain

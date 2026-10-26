@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "seven_refusals": [
+    "approved",
+    "entrypoint_sha256",
+    "original_scope_sha256",
+    "original_attempt",
+    "extra_attempts_added",
+    "allow_battery",
+    "allow_normal_laptop_use"
+  ],
+  "actual_archived_check_only_observed": "ready; games_started=false; scope_created=false",
+  "original_records_unchanged": true,
+  "native_games": 0
+}

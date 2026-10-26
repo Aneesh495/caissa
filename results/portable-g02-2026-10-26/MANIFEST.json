@@ -1,0 +1,21 @@
+{
+  "files": {
+    "ACTIVE_USAGE.json": "e838b9cb6c5282d370cc508d5fae6ad9f440fc67b8d69a9e262789aa3689d737",
+    "ENCODING.json": "1ad4425b4bee2be4433964e1c98f603a10d4baad010e8b1796aaace81f3f81fd",
+    "HOST_SAMPLES.jsonl": "64de62008bbb485540c044baa9c082de0fd168ea78fd9e03765b6b1e50a49a00",
+    "OWNER_POLICY_AMENDMENT.json": "f76a52df814c40250c36ebe034c9a9c12a6b1c39c9fedbba0317b97c740db899",
+    "PACK_PROGRESS.json": "151d7aca26accff4457301c7235fc6e56a9ec99a5df05163f7fa2af4ddfdabdb",
+    "PLAN.json": "56d56f9d8507f215a79c28327e39845e0ead42d76d7ae4b64068fce88b4d6f70",
+    "PORTABLE.json": "ec329bd7811aa089b2e624708cfde81f3442b1eebbdaf3644a0ee29bb7a07d34",
+    "POWER_ADMISSION.json": "37a147660d2a43b5918982a35da35e8481290771f12c86d5afd63015ef662ecf",
+    "POWER_SAMPLES.jsonl": "5f4396eb68fcd32677adf64b82ad43fe714de548549b748473b31338f0868699",
+    "README.md": "291c79cb4a33625e6ce5001a37a163cd698d8f8b929aee86b83e89eaa5bb9359",
+    "SCOPE.json": "21f6182692f2d0b8844584af971aeee96861b83f03bb0ec700aff36ef50c4ca1",
+    "SOURCE_INPUTS.json": "abc1d2a28553b914cd9229e82994744905e044c5818f53e1c7e49f7c0066d93b",
+    "artifact/VOLUMES.json": "493405d717001b10e5406287b6f42138cd73de61677794d96183b73e9cfaaa40",
+    "execution/CAMPAIGN.json": "22db277c7f3fea37fec5389d2aabf1c6bec719e105b94fcb56cc949a0ceab14f",
+    "execution/COMMANDS.jsonl": "94c366288ccccbc76a7267fb6db7c78d4ad9e6a150fd83f7c84ed926ce7f4bd8",
+    "execution/PROGRESS.json": "5f8f8aef7992ce6cfe4cbe1146a6072e18c2a73a8972d1bf116163100a09ae72",
+    "execution/independent-byte-reconstruction.log": "10d0484695b7f5a068de056c6bb0ab1b12683aaf1cb1738e954f0d7da2b72e9d"
+  }
+}

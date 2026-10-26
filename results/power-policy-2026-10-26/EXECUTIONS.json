@@ -1,0 +1,47 @@
+{
+  "scope": {
+    "schema": "caissa-power-boundary-development-v1",
+    "origin_unix": 1793035451.302651,
+    "deadline_unix": 1793039051.302651,
+    "parent_deadline_unix": 1793150297.974828,
+    "maximum_ci_executions": 2,
+    "maximum_hosted_seconds_per_platform": 600,
+    "maximum_output_bytes_per_platform": 536870912,
+    "minimum_free_bytes": 10737418240,
+    "scope": "New opt-in arena wait-between-searches and future owner awake policy. Remote3deterministic clock/policy controls plus4native one-move mate diagnostic games. No old campaign/strength/browser/training/recovery producer rerun. Frozen in-flight scopes retain original require-AC abort behavior.",
+    "maximum_native_diagnostic_games_per_platform": 8
+  },
+  "ci_executions_started": 2,
+  "executions": [
+    {
+      "number": 1,
+      "source_commit": "0e7bd2a36273f1649301fcb55a54aac7f222cb9c",
+      "charged_before_dispatch_unix": 1793035974.8537579,
+      "status": "passed original opt-in wait behavior onLinux/macOS",
+      "run": 40369645769,
+      "hosted_seconds": {
+        "linux": 44,
+        "macos": 39
+      }
+    },
+    {
+      "number": 2,
+      "source_commit": "2f2f39acc6fd0012e3d09f43999c4746e45d5e10",
+      "charged_before_dispatch_unix": 1793037176.696724,
+      "status": "failed harness dependency: HostGuard import requires NumPy not installed by this targeted workflow; native boundary games not entered",
+      "run": 40372758102,
+      "hosted_seconds": {
+        "linux": 49,
+        "macos": 35
+      }
+    }
+  ],
+  "closed": true,
+  "local_metadata_controls_started": 1,
+  "closed_unix": 1793038198.9474628,
+  "cumulative_hosted_seconds": {
+    "linux": 93,
+    "macos": 74
+  },
+  "status": "original optional-wait component passed; changed default hosted check failed missing NumPy. Local metadata and actual full battery transport passed. No third execution."
+}
