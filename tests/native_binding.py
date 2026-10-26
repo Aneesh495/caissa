@@ -74,7 +74,7 @@ def main():
     project = Path(__file__).resolve().parents[1]
     controls = []
     with tempfile.TemporaryDirectory(prefix="caissa-native-binding-") as temporary:
-        temporary = Path(temporary)
+        temporary = Path(temporary).resolve()
         baseline = temporary / "baseline"
         compiled = repository(baseline)
         original = json.loads((project / "config/protocol-v4.json").read_text())
@@ -197,7 +197,7 @@ def main():
                 rule["strength_actor"][field] = value
             if case.startswith("committed-"):
                 expected = commit(source)
-            if rule != original:
+            if json.dumps(rule, sort_keys=True) != json.dumps(original, sort_keys=True):
                 write(profile, rule)
                 expected = commit(source)
             pin = "0" * 64 if case == "wrong-profile-pin" else sha(profile)
@@ -219,6 +219,8 @@ def main():
                 str(receipt),
             ]
             result = invoke(command, temporary, project)
+            with (args.output / "OBSERVATIONS.jsonl").open("a") as stream:
+                stream.write(json.dumps({"case": case, **result}) + "\n")
             assert result["exit"] == (
                 0 if case == "unchanged-native-ui-revision" else 1
             ), (case, result)
@@ -309,6 +311,8 @@ def main():
                 temporary,
                 project,
             )
+            with (args.output / "OBSERVATIONS.jsonl").open("a") as stream:
+                stream.write(json.dumps({"case": case, **result}) + "\n")
             incomplete = case in {
                 "full-entry-boundary-still-incomplete",
                 "full-entry-legacy-no-boundary",
