@@ -24,6 +24,7 @@ from verification.source import (
     relative_path,
     require,
     snapshot,
+    verify_archive,
     verify_checkout,
 )
 
@@ -361,24 +362,41 @@ def admit(rule, sources, diagnostic, tick=None):
     return manifest
 
 
-def execute(path, expected, input_root, output, expected_commit, diagnostic=False):
+def execute(
+    path,
+    expected,
+    input_root,
+    output,
+    expected_commit,
+    diagnostic=False,
+    trusted_git=None,
+    inherit_process_group=False,
+):
     from tools.heuristic_study import avoid_decisive_matches
 
     avoid_decisive_matches()
     avoid_decisive_matches(Path(__file__).resolve().parents[1] / "runs")
     rule = contract(path, expected, expected_commit, diagnostic)
     code = Path(__file__).resolve().parents[1]
-    actual = subprocess.check_output(
-        ["git", "rev-parse", "HEAD"], cwd=code, text=True, timeout=5
-    ).strip()
-    require(actual == expected_commit, "data catalog independent reader source changed")
+    git_root = Path(trusted_git).resolve() if trusted_git is not None else code
+    actual = expected_commit
+    if trusted_git is None:
+        actual = subprocess.check_output(
+            ["git", "rev-parse", "HEAD"], cwd=code, text=True, timeout=5
+        ).strip()
+        require(
+            actual == expected_commit, "data catalog independent reader source changed"
+        )
     source_inputs = {
         "schema": "caissa-source-inputs-v2",
         "policy": PRODUCT,
         "commit": actual,
-        "files": snapshot(code, actual, PRODUCT),
+        "files": snapshot(git_root, actual, PRODUCT),
     }
-    verify_checkout(code, source_inputs, actual, PRODUCT)
+    if trusted_git is None:
+        verify_checkout(code, source_inputs, actual, PRODUCT)
+    else:
+        verify_archive(git_root, code, source_inputs, actual, PRODUCT)
     limits = rule["resources"]
     parent = limits["parent_deadline_unix"]
     require(
@@ -443,7 +461,7 @@ def execute(path, expected, input_root, output, expected_commit, diagnostic=Fals
         from tools.finalize_corpus import archive_source
 
         atomic(output / "SOURCE_INPUTS.json", source_inputs)
-        archive_source(code, output / "source", actual, source_inputs["files"])
+        archive_source(git_root, output / "source", actual, source_inputs["files"])
         with Bundle(
             Path(path).resolve().parent, min(30, scope.remaining())
         ) as catalog_view:
@@ -548,6 +566,7 @@ def execute(path, expected, input_root, output, expected_commit, diagnostic=Fals
                 scope.remaining(),
                 cwd=raw,
                 maximum_output_bytes=4 * 1024**2,
+                new_session=not inherit_process_group,
             )
         except StageFailure as error:
             raise ValueError(
@@ -606,6 +625,8 @@ def main():
     parser.add_argument("--input-root", type=Path, required=True)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--diagnostic", action="store_true")
+    parser.add_argument("--trusted-git", type=Path)
+    parser.add_argument("--inherit-process-group", action="store_true")
     args = parser.parse_args()
     try:
         result = execute(
@@ -615,6 +636,8 @@ def main():
             args.output,
             args.expected_commit,
             args.diagnostic,
+            trusted_git=args.trusted_git,
+            inherit_process_group=args.inherit_process_group,
         )
         print(json.dumps(result))
         return 0

@@ -166,6 +166,47 @@ def snapshot(checkout, commit, policy=LEGACY):
     return identities
 
 
+def verify_archive(checkout, archive, manifest, expected_commit, policy=PRODUCT):
+    """Bind a saved source tree to Git blobs without changing checkout HEAD.
+
+    This is distinct from verifying the live checkout. Queued independent
+    readers use a frozen archive while unrelated committed work advances HEAD.
+    """
+    require(isinstance(manifest, dict), "source archive manifest must be an object")
+    require(manifest.get("commit") == expected_commit, "source archive commit mismatch")
+    require(
+        manifest.get("schema") == "caissa-source-inputs-v2"
+        and manifest.get("policy") == policy,
+        "source archive inventory policy differs",
+    )
+    expected = snapshot(checkout, expected_commit, policy)
+    require(
+        manifest.get("files") == expected,
+        "source archive differs from trusted Git blobs",
+    )
+    archive = Path(archive).resolve()
+    observed = set()
+    count = 0
+    for path in archive.rglob("*"):
+        count += 1
+        require(count <= 4 * MAX_FILES, "source archive namespace exceeds bound")
+        require(not path.is_symlink(), "source archive contains a symbolic link")
+        if path.is_file() and selected(str(path.relative_to(archive)), policy):
+            observed.add(str(path.relative_to(archive)))
+    require(
+        observed == set(expected), "source archive has missing or extra product files"
+    )
+    for name, digest in expected.items():
+        path = archive / name
+        require(
+            path.is_file()
+            and path.stat().st_size <= MAX_FILE_BYTES
+            and hashlib.sha256(path.read_bytes()).hexdigest() == digest,
+            "source archive bytes differ from trusted Git blobs: " + name,
+        )
+    return expected
+
+
 def verify_checkout(checkout, manifest, expected_commit, policy=LEGACY):
     checkout = Path(checkout).resolve()
     require(isinstance(manifest, dict), "source manifest must be an object")

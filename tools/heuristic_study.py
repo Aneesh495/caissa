@@ -103,6 +103,11 @@ def avoid_decisive_matches(root=Path("runs")):
     paths.append(root / "TIMED_STRENGTH.lock")
     for path in paths:
         if path.exists():
+            if path.name == "TIMED_STRENGTH.lock":
+                from tools.host_lease import inherited
+
+                if inherited(path):
+                    continue
             with path.open("a") as stream:
                 try:
                     fcntl.flock(stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
