@@ -37,3 +37,10 @@ selection, a borrowed deployment network, different float parameters, changed
 training settings, missing raw work, test-array inputs, omitted seeds and
 missing checkpoints. Their fixtures never evaluate a tensor or certify a
 learning component. Full-size replay and the data join remain required.
+
+The lineage controls and all ten full-command rejections passed on Linux and
+macOS at sourcec8aa443, correctness run40216641588. The real9MiB streaming-copy
+case used about2MiB peak Python memory on each platform; all nine copy controls
+passed. [Complete logs and exact identities](../results/learning-bundle-2026-10-25/VERIFICATION.json)
+retain those bounded outcomes. No tensor inference or complete learning replay
+ran in these fixtures.

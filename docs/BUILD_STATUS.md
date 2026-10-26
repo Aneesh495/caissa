@@ -41,7 +41,7 @@ four-game pair/game/PGN reconstruction with nine semantic rejections.
 | G11 Recovery | SIGKILL training/corpus/arena recovery tests executed | Source-bound replay of recovery records |
 | G12 Browser | Fresh-origin import, native analysis/cancel, keyboard variation, 390px viewport, service restart/export and malformed FEN exercised | Repeat against final release source |
 | G13 Performance | Auditable 640-search four-evaluator 1/2/4/8 pilot; 5097 RSS and 2000 latency samples independently reconstructed; 16 native scalar probes and 13 rehashed controls | Final selected model under controlled host load |
-| G14 Semantic verifier | Rehashed domain controls; committed product/lineage admission, independent G01/G02/G03/G04/G05 adapters; journal reader, ten G08/G09 adapter controls and14 G06 admission rejections passed both hosted platforms | Full-size source-bound G06/G08/G09 replay, remaining adapters, coordinator and final samples remain required |
+| G14 Semantic verifier | Rehashed domain controls; committed product/lineage admission, independent G01/G02/G03/G04/G05 adapters; journal reader, G06/G08/G09 controls and original-learning lineage/raw-inventory controls passed both platforms | Full-size source-bound replays, G07 data/learning join, remaining adapters, coordinator and final samples remain required |
 | G15 Reproduction | Clean source diagnostic passed; Linux/macOS CI passes | Full saved-model/game/report reproduction |
 | G16 Release | Blocked by incomplete and failed full gates | All required gates and final identity audit |
 

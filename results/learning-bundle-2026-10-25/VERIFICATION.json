@@ -1,0 +1,55 @@
+{
+  "schema": "caissa-learning-bundle-controls-v1",
+  "source_commit": "c8aa44352ff217f8e43629d6686c8087e4ec5702",
+  "workflow_run": 40216641588,
+  "status": "passed",
+  "jobs": [
+    {
+      "id": 121239094069,
+      "name": "native (macos-15)",
+      "conclusion": "success",
+      "started_at": "2026-10-25T17:28:39Z",
+      "completed_at": "2026-10-25T17:33:46Z",
+      "seconds": 307
+    },
+    {
+      "id": 121239094237,
+      "name": "native (ubuntu-24.04)",
+      "conclusion": "success",
+      "started_at": "2026-10-25T17:28:39Z",
+      "completed_at": "2026-10-25T17:35:57Z",
+      "seconds": 438
+    }
+  ],
+  "per_platform": {
+    "original_lineage_admissions": 1,
+    "metadata_only_full_command_remains_pending": true,
+    "actual_full_cli_rejections": 10,
+    "stream_copy_controls": 9,
+    "stream_copy_bytes": 9437184,
+    "stream_copy_maximum_python_peak_bytes": 4194304,
+    "observed_peak_python_bytes": {
+      "linux": 2107521,
+      "macos": 2107929
+    }
+  },
+  "scope": "Original-learning lineage and missing/forged raw-inventory full-command controls, plus real bounded-memory immutable copies. No training or tensor evaluation in these fixtures.",
+  "fullsize_positive_learning_replay": "pending",
+  "full_original_data_join": "pending",
+  "logs": [
+    {
+      "file": "linux.log",
+      "bytes": 506326,
+      "sha256": "01bf16bb1101888abf0663405ee450609018052eec4f0ab29cd8ee34dbf05742"
+    },
+    {
+      "file": "macos.log",
+      "bytes": 105776,
+      "sha256": "d64e5aa2ed03fc6b83ba02bc8055d5177a68ed52a1fca1c4be5a6c780eb6a1c0"
+    }
+  ],
+  "original_receipts_rewritten": false,
+  "full_learning_component_certified": false,
+  "full_gate": false,
+  "full_acceptance": false
+}
