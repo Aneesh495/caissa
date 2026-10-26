@@ -3,7 +3,9 @@
 `verification.systems_strength` admits prospective parallel and heuristic
 comparison contracts separately from the neural contribution experiment.
 No production systems profile or game sample is frozen by this implementation.
-A bounded source-archiving owner is still required before games may start.
+`tools.systems_strength` owns the separately bounded experiments. Its actual
+frozen profile, source archive and original learned inputs must be ready before
+games may start. It refuses to steal the current strength sequence's handoff.
 
 The parallel matrix contains six comparisons: 2, 4 and 8 threads against one
 thread at 100 and 400 milliseconds per move, with 100 reversed-color pairs
@@ -18,6 +20,13 @@ with 50 pairs each; equal-node budgets use 20,000 and 100,000 nodes with 25
 pairs each. The complete matrices require 1,200 and 3,000 games respectively.
 They do not select another model, change classical contract 1 or replace the
 failed neural endpoint.
+
+The owner snapshots committed source, verifies original model-selection
+lineage, saves exact actor/profile/opening bytes and inherits its exclusive
+host lease into independent readers. Resumption re-enters the saved source and
+retains original wall/active/disk/attempt limits and all completed game bytes.
+A closed domain cannot run again. A comparison with unfinished games stays
+failed while other predeclared comparisons can still be collected.
 
 Admission checks exact typed option inventories, identical executable/model
 paths, selected network identity, held-out openings, actual configured UCI

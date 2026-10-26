@@ -11,10 +11,13 @@ import json
 import shutil
 import subprocess
 import sys
+import tempfile
+import os
 from pathlib import Path
 
 from tools.campaign_process import atomic
 from verification.systems_strength import admission, contract
+from tools.systems_strength import configuration
 
 
 def profile(kind):
@@ -169,6 +172,20 @@ def main():
         for row in rule["comparisons"]:
             identity, wire = actors(rule, original, row, declarations)
             admission(identity, wire, rule, original, row)
+            generated = configuration(
+                rule,
+                row,
+                Path("/saved/caissa"),
+                Path("/saved/selected.cai"),
+                Path("/saved/OPENINGS.json"),
+            )
+            produced = copy.deepcopy(identity)
+            produced["config"] = generated
+            for role in ["candidate", "opponent"]:
+                produced["executables"][role]["options"] = generated[role]["options"]
+                produced["executables"][role]["command"] = generated[role]["command"]
+            sync_commands(produced, wire)
+            admission(produced, wire, rule, original, row)
             admitted.append(row["id"])
 
     cases = [
@@ -202,6 +219,44 @@ def main():
         "neural-heuristic-control",
     ]
     controls = []
+    # Exercise the actual owner entry point in an unsettled fresh workspace.
+    # It must refuse before profile reads, source freezing or scope creation.
+    with tempfile.TemporaryDirectory(
+        prefix="caissa-systems-owner-exclusion-"
+    ) as temporary:
+        owner_run = subprocess.run(
+            [
+                sys.executable,
+                "-m",
+                "tools.systems_strength",
+                "parallel",
+                "--profile",
+                "missing.json",
+                "--expected-profile-sha256",
+                "a" * 64,
+                "--expected-commit",
+                "b" * 40,
+            ],
+            cwd=temporary,
+            env={**os.environ, "PYTHONPATH": str(root)},
+            capture_output=True,
+            text=True,
+            timeout=10,
+        )
+        value = json.loads(owner_run.stdout)
+        assert owner_run.returncode == 1 and "has not settled" in value["reason"], value
+        assert not (Path(temporary) / "runs").exists()
+        (args.output / "owner-exclusion.log").write_text(
+            owner_run.stdout + owner_run.stderr
+        )
+        controls.append(
+            {
+                "case": "owner-cannot-steal-strength-handoff",
+                "actual_exit": owner_run.returncode,
+                "observed": value,
+                "scope_created": False,
+            }
+        )
     for case in cases:
         folder = args.output / case
         shutil.copytree(args.campaign, folder / "raw")
