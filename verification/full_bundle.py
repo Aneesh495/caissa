@@ -772,6 +772,27 @@ def verify(
                     if "training_recovery" in domain
                     else "independent training and original-data/split recovery components still required"
                 )
+        if (
+            domain.get("driver")
+            in {"forced-recovery-components-v1", "data-recovery-component-v1"}
+            and "data_recovery" in domain
+        ):
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G11"
+                ] = "data recovery requires an external --replay-output directory"
+            else:
+                from verification.recovery_bundle import verify_data
+
+                result = verify_data(
+                    bundle, inputs, Path(replay_output).resolve() / "G11-data"
+                )
+                review.setdefault("verified_semantic_components", {}).setdefault(
+                    "G11", {}
+                )["data"] = result
+                review["pending_semantic_gates"][
+                    "G11"
+                ] = "all required recovery components and final saved-source/native-image binding must be joined"
         domain = inputs["domains"]["G12"]
         if domain.get("driver") == "browser-component-v1":
             if replay_output is None:
