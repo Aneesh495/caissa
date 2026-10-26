@@ -1,0 +1,19 @@
+{
+  "schema": "caissa-light-source-review-v1",
+  "domain": "new G10 immutable full-bundle matrix inventory admission only; not old systems contracts or game campaign",
+  "origin_unix": 1793043916.2149482,
+  "deadline_unix": 1793043926.2149482,
+  "maximum_wall_seconds": 10,
+  "maximum_active_seconds": 10,
+  "maximum_invocations": 1,
+  "invocations_started": 0,
+  "parent_deadline_unix": 1793150297.974828,
+  "source_sha256": {
+    "verification/systems_bundle.py": "945bb120c53a814664334bdc3fe060a7c82ce6a52fa87e990ba0fc5589ccdd54",
+    "verification/full_bundle.py": "c882f1fa3031fe35440f06e21ea22de55cef181e4ccbbc01e2e8b16aaaa221ed"
+  },
+  "native_execution": false,
+  "training": false,
+  "game_execution": false,
+  "whole_project_acceptance": false
+}

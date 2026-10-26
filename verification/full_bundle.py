@@ -741,6 +741,30 @@ def verify(
             )
             review.setdefault("verified_semantic_gates", {})[gate] = result
             del review["pending_semantic_gates"][gate]
+        domain = inputs["domains"]["G10"]
+        if domain.get("driver") == "systems-matrices-v1":
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G10"
+                ] = "systems matrix replay requires an external --replay-output directory"
+            else:
+                from verification.systems_bundle import verify as verify_systems
+
+                result = verify_systems(
+                    bundle, inputs, Path(replay_output).resolve() / "G10-matrices"
+                )
+                category = (
+                    "verified_semantic_components"
+                    if result["status"] == "passed"
+                    else "failed_semantic_components"
+                )
+                review.setdefault(category, {}).setdefault("G10", {})[
+                    "systems_matrices"
+                ] = result
+                review["pending_semantic_gates"]["G10"] = (
+                    "systems matrices do not replace useful-work/memory/stop-latency, "
+                    "race instrumentation or final source/runtime binding"
+                )
         domain = inputs["domains"]["G11"]
         if (
             domain.get("driver")
