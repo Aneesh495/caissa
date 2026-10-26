@@ -1,0 +1,28 @@
+{
+  "schema": "caissa-systems-startup-repair-proposal-v1",
+  "status": "not approved; no repair attempt started",
+  "entrypoint": "tools/systems_startup_repair.py",
+  "entrypoint_sha256": "edcdcc79890d5441d9f62626dda00f5f2100601389f9af4865675d421718dffb",
+  "original_source_commit": "d89b3e2139fef4dcbfdd6eac0dceaa1aec7c4829",
+  "original_scope_sha256": "fbd11fe8d7c7a0a842a8280a4916ab8a1a340eea2fea0538f6b2bca9579c8c5e",
+  "original_deadline_unix": 1793042015.30114,
+  "parent_deadline_unix": 1793150297.974828,
+  "only_second_original_attempt_authorized_by_proposal": true,
+  "maximum_active_seconds_unchanged": 28800,
+  "maximum_total_attempts_unchanged": 3,
+  "maximum_additional_bytes_unchanged": 21474836480,
+  "minimum_free_bytes_unchanged": 10737418240,
+  "actual_games_before_repair": 0,
+  "saved_native_actor_handshakes_passed": 12,
+  "read_only_original_archive_admission_passed": true,
+  "missing_approval_refused_without_scope_or_input_mutation": true,
+  "repairs": [
+    "Forward the original saved controller archive-verification call with its two path arguments in their documented order.",
+    "Preserve the failed generated configuration bytes and serialize the same frozen option values with EvalFile before Use Neural."
+  ],
+  "original_source_tree_scope_profile_actor_models_and_failures_preserved": true,
+  "no_new_actor_or_model_selection": true,
+  "no_new_scope_or_deadline": true,
+  "created_unix": 1793013769.769734,
+  "full_acceptance": false
+}

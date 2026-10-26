@@ -1,0 +1,11 @@
+{
+  "status": "startup repair prepared; experiment remains stopped",
+  "saved_actor_handshakes": 12,
+  "observed_handshake_seconds": 0.8313779580057599,
+  "strength_games": 0,
+  "read_only_admission": true,
+  "unauthorized_execution_rejected_without_mutation": true,
+  "original_source_preserved": true,
+  "full_G10_certified": false,
+  "full_acceptance": false
+}
