@@ -331,6 +331,7 @@ def verify(root, source, maximum_seconds=60):
                         "committed progress and SQL generation differ",
                     )
                 bundle.tick()
+                (temporary / "oracle").mkdir()
                 result = verify_dataset(
                     temporary / "recovered",
                     temporary / "corpus",

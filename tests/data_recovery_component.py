@@ -13,6 +13,8 @@ from pathlib import Path
 from tools.campaign_process import atomic
 from verification.bundle import Bundle
 from verification.recovery_bundle import verify_data
+from tests.full_bundle import fixture, reference, seal as seal_full
+from tests.source_binding import repository
 
 
 def seal(root):
@@ -191,6 +193,105 @@ def main():
         controls.append(
             {"case": "immutable-full-bundle-component-stage", "observed": result}
         )
+    with tempfile.TemporaryDirectory(prefix="caissa-data-full-entry-") as temporary:
+        temporary = Path(temporary)
+        source_tree = temporary / "source"
+        commit = repository(source_tree)
+        for label in [
+            "saved-pass-cannot-certify-data-recovery",
+            "rehashed-fake-kill-full-entry",
+        ]:
+            evidence = temporary / label
+            inputs = fixture(
+                evidence, Path(__file__).resolve().parents[1], source_tree, commit
+            )
+            domain = inputs["domains"]["G11"]
+            domain["driver"] = "data-recovery-component-v1"
+            if label.startswith("saved-pass"):
+                domain["data_recovery"] = {
+                    "config": reference(evidence, "receipt.json")
+                }
+            else:
+                shutil.copytree(raw, evidence / "data")
+                p = evidence / "data/CONFIG.json"
+                value = json.loads(p.read_bytes())
+                value["source_commit"] = commit
+                atomic(p, value)
+                p = evidence / "data/KILL.json"
+                value = json.loads(p.read_bytes())
+                value["actual_exit"] = 0
+                atomic(p, value)
+                seal(evidence / "data")
+                domain["data_recovery"] = {
+                    "config": reference(evidence, "data/CONFIG.json")
+                }
+                domain["artifacts"] = [
+                    reference(evidence, str(p.relative_to(evidence)))
+                    for p in (evidence / "data").rglob("*")
+                    if p.is_file()
+                ]
+            digest = seal_full(evidence, inputs)
+            seal(evidence)
+            actual = subprocess.run(
+                [
+                    sys.executable,
+                    "-B",
+                    "-m",
+                    "verification.full_bundle",
+                    str(evidence),
+                    "--checkout",
+                    str(source_tree),
+                    "--expected-commit",
+                    commit,
+                    "--expected-inputs-sha256",
+                    digest,
+                    "--replay-output",
+                    str(temporary / (label + "-replay")),
+                    "--maximum-seconds",
+                    "60",
+                ],
+                capture_output=True,
+                text=True,
+                timeout=65,
+            )
+            value = json.loads(actual.stdout)
+            assert actual.returncode == 1 and value["full_acceptance"] is False, (
+                label,
+                value,
+                actual.stderr,
+            )
+            (args.output / (label + ".log")).write_text(actual.stdout + actual.stderr)
+            controls.append(
+                {"case": label, "actual_exit": actual.returncode, "observed": value}
+            )
+    refused = args.output / "refused-follow-barrier"
+    actual = subprocess.run(
+        [
+            sys.executable,
+            "-B",
+            "-m",
+            "training.prepare",
+            "results/full-model-planning-2026-10-23/fixed-prefix-owner-integration/corpus",
+            str(refused),
+            "--follow",
+            "--recovery-barrier",
+            str(refused / "RECOVERY_READY.json"),
+        ],
+        capture_output=True,
+        text=True,
+        timeout=10,
+    )
+    assert (
+        actual.returncode != 0
+        and not refused.exists()
+        and "diagnostic only" in actual.stderr
+    )
+    controls.append(
+        {
+            "case": "full-follow-barrier-refused-before-output",
+            "actual_exit": actual.returncode,
+        }
+    )
     result = {
         "status": "passed",
         "source_commit": config["source_commit"],
