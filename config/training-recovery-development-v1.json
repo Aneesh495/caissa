@@ -1,0 +1,15 @@
+{
+  "schema": "caissa-bounded-component-development-v1",
+  "purpose": "G11 original-trainer recovery component: existing original56pair diagnostic inputs only, actual SIGKILL after an uncommitted observation, byte-preserved recovery tail and independent parameter/optimizer/scheduler/sampler/RNG reconstruction. No original training or strength scope restarted, no selected weights changed. New targeted remote workflow only; closed browser runs never invoked.",
+  "origin_unix": 1793003310.996662,
+  "deadline_unix": 1793006910.996662,
+  "maximum_wall_seconds": 3600,
+  "maximum_ci_executions": 2,
+  "maximum_cumulative_ci_seconds_per_platform": 2700,
+  "maximum_retained_output_bytes_per_platform": 1073741824,
+  "minimum_free_bytes": 10737418240,
+  "maximum_diagnostic_training_steps_per_run": 100,
+  "full_G11_certified": false,
+  "parent_deadline_unix": 1793150297.974828,
+  "frozen_data_metadata_sha256": "51ab630fd7c986efa3010d0f2fc8b6bc1108af0917dc4ec408253a9de21be20e"
+}

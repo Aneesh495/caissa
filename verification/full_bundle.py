@@ -732,6 +732,27 @@ def verify(
             review.setdefault("verified_semantic_gates", {})[gate] = result
             del review["pending_semantic_gates"][gate]
         domain = inputs["domains"]["G11"]
+        if (
+            domain.get("driver")
+            in {"forced-recovery-components-v1", "training-recovery-component-v1"}
+            and "training_recovery" in domain
+        ):
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G11"
+                ] = "training recovery requires an external --replay-output directory"
+            else:
+                from verification.recovery_bundle import verify_training
+
+                result = verify_training(
+                    bundle, inputs, Path(replay_output).resolve() / "G11-training"
+                )
+                review.setdefault("verified_semantic_components", {}).setdefault(
+                    "G11", {}
+                )["training"] = result
+                review["pending_semantic_gates"][
+                    "G11"
+                ] = "independent original-data/split recovery and final saved-image binding still required"
         if domain.get("driver") == "forced-recovery-components-v1":
             if replay_output is None:
                 review["pending_semantic_gates"][
@@ -746,9 +767,11 @@ def verify(
                 review.setdefault("verified_semantic_components", {}).setdefault(
                     "G11", {}
                 )["arena"] = result
-                review["pending_semantic_gates"][
-                    "G11"
-                ] = "independent training and original-data/split recovery components still required"
+                review["pending_semantic_gates"]["G11"] = (
+                    "independent original-data/split recovery and final saved-image binding still required"
+                    if "training_recovery" in domain
+                    else "independent training and original-data/split recovery components still required"
+                )
         domain = inputs["domains"]["G12"]
         if domain.get("driver") == "browser-component-v1":
             if replay_output is None:

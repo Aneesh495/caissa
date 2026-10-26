@@ -40,6 +40,8 @@ FORBIDDEN_MODULES = {
     "verification.systems_strength",
     "tools.arena_recovery",
     "verification.arena_recovery",
+    "tools.training_recovery",
+    "verification.training_recovery",
     "tools.browser_campaign",
     "verification.browser",
     "tools.performance",
