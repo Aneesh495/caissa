@@ -15,6 +15,7 @@ POLICY = {
     "check_interval_seconds": 5,
 }
 BATTERY_POLICY = {**POLICY, "require_ac_power": False, "scoped_caffeinate_flags": "-di"}
+WAIT_POLICY = {**BATTERY_POLICY, "wait_at_native_work_boundaries": True}
 
 
 def observe():
@@ -38,7 +39,10 @@ class PowerGuard:
         self.last = -1e9
         self.output = None
         if policy is not None:
-            if policy not in (POLICY, BATTERY_POLICY) or sys.platform != "darwin":
+            if (
+                policy not in (POLICY, BATTERY_POLICY, WAIT_POLICY)
+                or sys.platform != "darwin"
+            ):
                 raise ValueError("unsupported recovery awake-host policy")
             self.admission = observe()
             if policy["require_ac_power"] and not self.admission["ac_power"]:

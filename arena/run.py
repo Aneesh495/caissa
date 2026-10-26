@@ -46,7 +46,7 @@ def write_pgn(record, actors, path):
     temp.replace(path.with_suffix(".pgn"))
 
 
-def game(config, opening, pair, reverse, root, recovery_barrier=None):
+def game(config, opening, pair, reverse, root, recovery_barrier=None, power_wait=None):
     path = root / "games" / f"{pair:06d}-{reverse}.json"
     if path.exists():
         record = json.loads(path.read_text())
@@ -79,6 +79,8 @@ def game(config, opening, pair, reverse, root, recovery_barrier=None):
     result = "*"
     culprit = None
     try:
+        if power_wait is not None:
+            power_wait.before_work(force=True)
         for color, actor in enumerate(actors):
             try:
                 clients.append(
@@ -103,6 +105,8 @@ def game(config, opening, pair, reverse, root, recovery_barrier=None):
                 color = 0 if board.turn else 1
                 client = clients[color]
                 try:
+                    if power_wait is not None:
+                        power_wait.before_work()
                     text, elapsed, lines = client.play(
                         initial,
                         moves,
@@ -183,12 +187,12 @@ def game(config, opening, pair, reverse, root, recovery_barrier=None):
     return record
 
 
-def pair(config, opening, identity, root, recovery_barrier=None):
+def pair(config, opening, identity, root, recovery_barrier=None, power_wait=None):
     path = root / "pairs" / f"{identity:06d}.json"
     if path.exists():
         return json.loads(path.read_text())
     games = [
-        game(config, opening, identity, reverse, root, recovery_barrier)
+        game(config, opening, identity, reverse, root, recovery_barrier, power_wait)
         for reverse in [0, 1]
     ]
     record = {
@@ -256,6 +260,14 @@ def main():
     cfg = a.output / "CONFIG.json"
     if cfg.exists() and json.loads(cfg.read_text()) != identity:
         raise ValueError("resume source, model, workload or configuration mismatch")
+    power_wait = None
+    if "power_wait" in config:
+        from arena.power_wait import PowerWait
+
+        power_wait = PowerWait(a.output, config["power_wait"])
+        power_wait.before_work()
+    elif (a.output / "POWER_WAIT_POLICY.json").exists():
+        raise ValueError("cannot remove the saved power wait policy on resume")
     protocol = {}
     for role in ["candidate", "opponent"]:
         actor = config[role]
@@ -291,6 +303,7 @@ def main():
                         i,
                         a.output,
                         a.recovery_barrier,
+                        power_wait,
                     )
                 ] = i
 

@@ -1,0 +1,42 @@
+{
+  "status": "stable AC observed for30seconds",
+  "seconds": 30.51009095799236,
+  "samples": [
+    {
+      "unix": 1793034090.195053,
+      "ac_power": true,
+      "exit": 0
+    },
+    {
+      "unix": 1793034095.2393951,
+      "ac_power": true,
+      "exit": 0
+    },
+    {
+      "unix": 1793034100.529845,
+      "ac_power": true,
+      "exit": 0
+    },
+    {
+      "unix": 1793034105.606053,
+      "ac_power": true,
+      "exit": 0
+    },
+    {
+      "unix": 1793034110.634065,
+      "ac_power": true,
+      "exit": 0
+    },
+    {
+      "unix": 1793034115.658921,
+      "ac_power": true,
+      "exit": 0
+    },
+    {
+      "unix": 1793034120.688002,
+      "ac_power": true,
+      "exit": 0
+    }
+  ],
+  "original_scope_or_policy_modified": false
+}

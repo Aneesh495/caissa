@@ -1,0 +1,22 @@
+{
+  "files": {
+    "ACTIVE_USAGE.json": "e29ab63257c14985a61e9247bb2bceb84844f23926e0150d30a64e87f19b791a",
+    "FAILED-1793033903672878000.json": "ec13bd45ceb2584ec96947d1c05fc109cbd186e6a43834b075b5e3ca0cd604bf",
+    "FAILED-1793035507751064000.json": "b624c834cc9237d7cfb13ad63920cfc85e89dbee1dce26876460010ccee1a74e",
+    "HOST_LAST.public.json": "427232499a378d17fe73d32cf242b701339be24c838dae567eebe4e8ce9faa5c",
+    "INTERRUPTIONS.json": "fcbb4d759dce1765a30c493db1f24ed4f658f84f61ad3b22393659cec5172942",
+    "POWER_STABILITY.json": "df386420777bb66e2a0cc68cd87418031cdfbefb54495e4e943cb12a92a24977",
+    "README.md": "390d7208cb3b8dae75bdbef1b23f703259d7fd3fce28e44a6bbf528f534c3503",
+    "SCOPE.json": "7bbe6641b680955ffc1ecd3a3b0b22dd5a6c9dbaa908a603759ef7796a1e3cf0",
+    "attempts/attempt-002/CAMPAIGN.json": "a05eeb5f325c944bdd856824f83394bb3c035829257212e314eb263c6be24d71",
+    "attempts/attempt-002/COMMANDS.jsonl": "72f573317f60f8065403a2d411c29594a2de533073175f85aab10a15d09d9bb8",
+    "attempts/attempt-002/PROGRESS.json": "e55341fa13a8ea86495c2c201bdeed65669ffc0cde5ee2cafb7798d8be848a6d",
+    "attempts/attempt-002/play-extensions-milliseconds-400.json": "26d77a96428f27922d065890845c4b9fba55c26a40f096c6db835f09656db5ed",
+    "attempts/attempt-002/play-extensions-milliseconds-400.log": "e699a8d08abfb29985a855e102724cf4c553862522ae6a33ba374bf35941361a",
+    "attempts/attempt-003/CAMPAIGN.json": "528cf1dd1e8531b639b3dc0e61714e2d7b2ca44fd49ae5951ed4aed0c8ba380b",
+    "attempts/attempt-003/COMMANDS.jsonl": "241806fbf0e8b3a9b8f21d3e7e3b28fc1a6760191f81f661be96a3a83e5eab9b",
+    "attempts/attempt-003/PROGRESS.json": "6ecc53f181c30041b48ed5338a679599e8f7cf95d556ddd0d808acf691abc7f6",
+    "attempts/attempt-003/play-extensions-milliseconds-400.json": "231e8d1d32a03fad7fa4893eac7a36f0b4b8c5b369322e3c38f930593a907626",
+    "attempts/attempt-003/play-extensions-milliseconds-400.log": "dd349bc9769d99c7d0f6beb44257e9dfe25c7d53a8ae43f100f973b0045f03b9"
+  }
+}
