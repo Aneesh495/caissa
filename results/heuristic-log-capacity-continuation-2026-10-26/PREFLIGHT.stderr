@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/work/heuristics-log-continuation-2026-10-26/preflight.py", line 45, in <module>
+    result=subprocess.run([str(root/".venv/bin/python"),"-B","-P",str(root/"tools/heuristics_log_continuation.py"),"--check-only"],capture_output=True,text=True,check=True)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/aneeshkrishna/.local/share/uv/python/cpython-3.12.14-macos-aarch64-none/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/.venv/bin/python', '-B', '-P', '/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/heuristics_log_continuation.py', '--check-only']' returned non-zero exit status 1.

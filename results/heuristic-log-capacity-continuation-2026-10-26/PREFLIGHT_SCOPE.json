@@ -1,0 +1,12 @@
+{
+  "schema": "caissa-log-capacity-repair-preflight-v1",
+  "origin_unix": 1793057309.577322,
+  "deadline_unix": 1793057339.577322,
+  "maximum_wall_seconds": 30,
+  "maximum_active_seconds": 30,
+  "maximum_invocations": 1,
+  "invocations_started": 1,
+  "original_parent_deadline_unix": 1793150297.974828,
+  "native_or_game_execution": false,
+  "new_direct_human_authorization": true
+}

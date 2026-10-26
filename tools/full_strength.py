@@ -19,6 +19,7 @@ from tools.finalize_corpus import archive_source
 from tools.full_learning import frozen_rule
 from tools.power_guard import PowerGuard
 from tools.process_evidence import public_snapshot
+from tools.bounded_host_log import append as append_host_snapshot
 from tools.telemetry_nonfatal import rows_or_unknown
 from tools.recovery_scope import RecoveryScope
 from verification.acquisition import sha
@@ -226,12 +227,7 @@ class HostGuard:
                 "top_processes": top,
             }
         )
-        path = self.output / "HOST_SAMPLES.jsonl"
-        if path.exists() and path.stat().st_size > 32 * 1024 * 1024:
-            raise ValueError("host sample byte ceiling exhausted")
-        with path.open("a") as stream:
-            stream.write(json.dumps(snapshot, separators=(",", ":")) + "\n")
-            stream.flush()
+        append_host_snapshot(self.output, snapshot)
         self.last = time.monotonic()
         if bad and self.require_idle:
             raise ValueError(
