@@ -1,0 +1,89 @@
+﻿2026-10-26T01:40:51.1706369Z Current runner version: '2.338.0'
+2026-10-26T01:40:51.1731949Z ##[group]Runner Image Provisioner
+2026-10-26T01:40:51.1732917Z Hosted Compute Agent
+2026-10-26T01:40:51.1733651Z Version: 20261021.618
+2026-10-26T01:40:51.1734263Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-26T01:40:51.1735070Z Build Date: 2026-10-21T00:45:21Z
+2026-10-26T01:40:51.1735804Z Worker ID: {a56490c3-0f28-4198-a56b-a6ed179a543d}
+2026-10-26T01:40:51.1736561Z Region: westus2
+2026-10-26T01:40:51.1737405Z Cloud: Azure
+2026-10-26T01:40:51.1737935Z ##[endgroup]
+2026-10-26T01:40:51.1739782Z ##[group]Operating System
+2026-10-26T01:40:51.1740455Z Ubuntu
+2026-10-26T01:40:51.1741038Z 24.04.5
+2026-10-26T01:40:51.1741601Z LTS
+2026-10-26T01:40:51.1742142Z ##[endgroup]
+2026-10-26T01:40:51.1742781Z ##[group]Runner Image
+2026-10-26T01:40:51.1743419Z Image: ubuntu-24.04
+2026-10-26T01:40:51.1744013Z Version: 20261012.334.1
+2026-10-26T01:40:51.1745330Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-26T01:40:51.1747105Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-26T01:40:51.1748131Z ##[endgroup]
+2026-10-26T01:40:51.1749339Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T01:40:51.1751563Z Actions: read
+2026-10-26T01:40:51.1752308Z Contents: read
+2026-10-26T01:40:51.1752987Z Metadata: read
+2026-10-26T01:40:51.1753529Z ##[endgroup]
+2026-10-26T01:40:51.1756115Z Secret source: Actions
+2026-10-26T01:40:51.1757326Z Cache mode: write
+2026-10-26T01:40:51.1758117Z Prepare workflow directory
+2026-10-26T01:40:51.2794085Z Prepare all required actions
+2026-10-26T01:40:51.3147846Z Complete job name: retained-data-error
+2026-10-26T01:40:51.4793178Z ##[group]Run python3 - <<'PY'
+2026-10-26T01:40:51.4793855Z [36;1mpython3 - <<'PY'[0m
+2026-10-26T01:40:51.4794455Z [36;1mimport io, os, urllib.request, zipfile[0m
+2026-10-26T01:40:51.4795156Z [36;1mfor artifact in [12622195176,12620734758]:[0m
+2026-10-26T01:40:51.4797029Z [36;1m    request=urllib.request.Request(f'https://api.github.com/repos/Aneesh495/caissa/actions/artifacts/{artifact}/zip',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})[0m
+2026-10-26T01:40:51.4798871Z [36;1m    with urllib.request.urlopen(request,timeout=25) as response:[0m
+2026-10-26T01:40:51.4799664Z [36;1m        data=response.read(16*1024*1024+1)[0m
+2026-10-26T01:40:51.4800314Z [36;1m    assert len(data)<=16*1024*1024[0m
+2026-10-26T01:40:51.4801017Z [36;1m    with zipfile.ZipFile(io.BytesIO(data)) as archive:[0m
+2026-10-26T01:40:51.4801755Z [36;1m        for name in archive.namelist():[0m
+2026-10-26T01:40:51.4802617Z [36;1m            if 'ci-data-catalog' in name and name.endswith(('.log','FAILED.json')):[0m
+2026-10-26T01:40:51.4803454Z [36;1m                info=archive.getinfo(name)[0m
+2026-10-26T01:40:51.4804108Z [36;1m                if info.file_size<=32768:[0m
+2026-10-26T01:40:51.4804783Z [36;1m                    print('PRESERVED',artifact,name)[0m
+2026-10-26T01:40:51.4805603Z [36;1m                    print(archive.read(name).decode('utf8',errors='replace'))[0m
+2026-10-26T01:40:51.4806351Z [36;1mPY[0m
+2026-10-26T01:40:51.5873256Z shell: /usr/bin/bash -e {0}
+2026-10-26T01:40:51.5874199Z env:
+2026-10-26T01:40:51.5878657Z   GH_TOKEN: ***
+2026-10-26T01:40:51.5879125Z ##[endgroup]
+2026-10-26T01:40:52.2895102Z Traceback (most recent call last):
+2026-10-26T01:40:52.2895949Z   File "<stdin>", line 4, in <module>
+2026-10-26T01:40:52.2897156Z   File "/usr/lib/python3.12/urllib/request.py", line 215, in urlopen
+2026-10-26T01:40:52.2921557Z     return opener.open(url, data, timeout)
+2026-10-26T01:40:52.2922743Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-26T01:40:52.2924068Z   File "/usr/lib/python3.12/urllib/request.py", line 521, in open
+2026-10-26T01:40:52.2925428Z     response = meth(req, response)
+2026-10-26T01:40:52.2926425Z                ^^^^^^^^^^^^^^^^^^^
+2026-10-26T01:40:52.2927956Z   File "/usr/lib/python3.12/urllib/request.py", line 630, in http_response
+2026-10-26T01:40:52.2929795Z     response = self.parent.error(
+2026-10-26T01:40:52.2930802Z                ^^^^^^^^^^^^^^^^^^
+2026-10-26T01:40:52.2932020Z   File "/usr/lib/python3.12/urllib/request.py", line 553, in error
+2026-10-26T01:40:52.2933428Z     result = self._call_chain(*args)
+2026-10-26T01:40:52.2934459Z              ^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-26T01:40:52.2935802Z   File "/usr/lib/python3.12/urllib/request.py", line 492, in _call_chain
+2026-10-26T01:40:52.2937415Z     result = func(*args)
+2026-10-26T01:40:52.2938305Z              ^^^^^^^^^^^
+2026-10-26T01:40:52.2939513Z   File "/usr/lib/python3.12/urllib/request.py", line 745, in http_error_302
+2026-10-26T01:40:52.2941053Z     return self.parent.open(new, timeout=req.timeout)
+2026-10-26T01:40:52.2942263Z            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-26T01:40:52.2943066Z   File "/usr/lib/python3.12/urllib/request.py", line 521, in open
+2026-10-26T01:40:52.2943826Z     response = meth(req, response)
+2026-10-26T01:40:52.2944427Z                ^^^^^^^^^^^^^^^^^^^
+2026-10-26T01:40:52.2945195Z   File "/usr/lib/python3.12/urllib/request.py", line 630, in http_response
+2026-10-26T01:40:52.2946024Z     response = self.parent.error(
+2026-10-26T01:40:52.2946889Z                ^^^^^^^^^^^^^^^^^^
+2026-10-26T01:40:52.2947657Z   File "/usr/lib/python3.12/urllib/request.py", line 559, in error
+2026-10-26T01:40:52.2948485Z     return self._call_chain(*args)
+2026-10-26T01:40:52.2949068Z            ^^^^^^^^^^^^^^^^^^^^^^^
+2026-10-26T01:40:52.2949841Z   File "/usr/lib/python3.12/urllib/request.py", line 492, in _call_chain
+2026-10-26T01:40:52.2950659Z     result = func(*args)
+2026-10-26T01:40:52.2951425Z              ^^^^^^^^^^^
+2026-10-26T01:40:52.2952193Z   File "/usr/lib/python3.12/urllib/request.py", line 639, in http_error_default
+2026-10-26T01:40:52.2953221Z     raise HTTPError(req.full_url, code, msg, hdrs, fp)
+2026-10-26T01:40:52.2954559Z urllib.error.HTTPError: HTTP Error 401: Server failed to authenticate the request. Please refer to the information in the www-authenticate header.
+2026-10-26T01:40:52.3130759Z ##[error]Process completed with exit code 1.
+2026-10-26T01:40:52.3460326Z Cleaning up orphan processes
+

@@ -1,0 +1,223 @@
+﻿2026-10-26T01:42:05.0606700Z Current runner version: '2.338.0'
+2026-10-26T01:42:05.0623400Z ##[group]Runner Image Provisioner
+2026-10-26T01:42:05.0624050Z Hosted Compute Agent
+2026-10-26T01:42:05.0624540Z Version: 20260828.587
+2026-10-26T01:42:05.0625050Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-10-26T01:42:05.0625640Z Build Date: 2026-08-28T16:44:25Z
+2026-10-26T01:42:05.0626200Z Worker ID: {ef6f6479-7ad8-4d58-9b17-200bfe635da1}
+2026-10-26T01:42:05.0626770Z Azure Region: westus
+2026-10-26T01:42:05.0627260Z ##[endgroup]
+2026-10-26T01:42:05.0628410Z ##[group]Operating System
+2026-10-26T01:42:05.0628920Z macOS
+2026-10-26T01:42:05.0629360Z 15.7.9
+2026-10-26T01:42:05.0629800Z 24G830
+2026-10-26T01:42:05.0630250Z ##[endgroup]
+2026-10-26T01:42:05.0630730Z ##[group]Runner Image
+2026-10-26T01:42:05.0631220Z Image: macos-15-arm64
+2026-10-26T01:42:05.0631760Z Version: 20260907.0337.1
+2026-10-26T01:42:05.0632920Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260907.0337/images/macos/macos-15-arm64-Readme.md
+2026-10-26T01:42:05.0634190Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260907.0337
+2026-10-26T01:42:05.0635110Z ##[endgroup]
+2026-10-26T01:42:05.0636480Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T01:42:05.0638210Z Actions: read
+2026-10-26T01:42:05.0638720Z Contents: read
+2026-10-26T01:42:05.0639250Z Metadata: read
+2026-10-26T01:42:05.0639720Z ##[endgroup]
+2026-10-26T01:42:05.0641400Z Secret source: Actions
+2026-10-26T01:42:05.0642130Z Cache mode: write
+2026-10-26T01:42:05.0642680Z Prepare workflow directory
+2026-10-26T01:42:05.0888500Z Prepare all required actions
+2026-10-26T01:42:05.0926750Z Getting action download info
+2026-10-26T01:42:05.2303230Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-26T01:42:05.5368170Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-26T01:42:05.6860600Z Complete job name: controls (macos-15)
+2026-10-26T01:42:05.7332240Z ##[group]Run actions/checkout@v4
+2026-10-26T01:42:05.7332820Z with:
+2026-10-26T01:42:05.7333220Z   repository: Aneesh495/caissa
+2026-10-26T01:42:05.7335750Z   token: ***
+2026-10-26T01:42:05.7336130Z   ssh-strict: true
+2026-10-26T01:42:05.7336520Z   ssh-user: git
+2026-10-26T01:42:05.7336910Z   persist-credentials: true
+2026-10-26T01:42:05.7337320Z   clean: true
+2026-10-26T01:42:05.7337720Z   sparse-checkout-cone-mode: true
+2026-10-26T01:42:05.7338160Z   fetch-depth: 1
+2026-10-26T01:42:05.7338540Z   fetch-tags: false
+2026-10-26T01:42:05.7338930Z   show-progress: true
+2026-10-26T01:42:05.7339320Z   lfs: false
+2026-10-26T01:42:05.7339690Z   submodules: false
+2026-10-26T01:42:05.7340090Z   set-safe-directory: true
+2026-10-26T01:42:05.7340520Z   allow-unsafe-pr-checkout: false
+2026-10-26T01:42:05.7341050Z ##[endgroup]
+2026-10-26T01:42:06.2634940Z Syncing repository: Aneesh495/caissa
+2026-10-26T01:42:06.2637160Z ##[group]Getting Git version info
+2026-10-26T01:42:06.2638660Z Working directory is '/Users/runner/work/caissa/caissa'
+2026-10-26T01:42:06.2640350Z [command]/opt/homebrew/bin/git version
+2026-10-26T01:42:06.2641220Z git version 2.55.0
+2026-10-26T01:42:06.2644090Z ##[endgroup]
+2026-10-26T01:42:06.2648790Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/070a9084-a534-4876-b237-17ba816a1aa0/.gitconfig'
+2026-10-26T01:42:06.2650550Z Temporarily overriding HOME='/Users/runner/work/_temp/070a9084-a534-4876-b237-17ba816a1aa0' before making global git config changes
+2026-10-26T01:42:06.2651910Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T01:42:06.2653190Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/caissa/caissa
+2026-10-26T01:42:06.2655650Z Deleting the contents of '/Users/runner/work/caissa/caissa'
+2026-10-26T01:42:06.2656980Z ##[group]Initializing the repository
+2026-10-26T01:42:06.2657870Z [command]/opt/homebrew/bin/git init /Users/runner/work/caissa/caissa
+2026-10-26T01:42:06.2813750Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-26T01:42:06.2815670Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-26T01:42:06.2817420Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-26T01:42:06.2819320Z hint: call:
+2026-10-26T01:42:06.2820100Z hint:
+2026-10-26T01:42:06.2820840Z hint: 	git config --global init.defaultBranch <name>
+2026-10-26T01:42:06.2838390Z hint:
+2026-10-26T01:42:06.2839750Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-26T01:42:06.2840780Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-26T01:42:06.2841720Z hint:
+2026-10-26T01:42:06.2842300Z hint: 	git branch -m <name>
+2026-10-26T01:42:06.2842890Z hint:
+2026-10-26T01:42:06.2843600Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-26T01:42:06.2844760Z Initialized empty Git repository in /Users/runner/work/caissa/caissa/.git/
+2026-10-26T01:42:06.2846770Z [command]/opt/homebrew/bin/git remote add origin https://github.com/Aneesh495/caissa
+2026-10-26T01:42:06.2907380Z ##[endgroup]
+2026-10-26T01:42:06.2909000Z ##[group]Disabling automatic garbage collection
+2026-10-26T01:42:06.2910600Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-10-26T01:42:06.3099230Z ##[endgroup]
+2026-10-26T01:42:06.3102500Z ##[group]Setting up auth
+2026-10-26T01:42:06.3103600Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T01:42:06.3182320Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T01:42:06.4131530Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T01:42:06.4189020Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T01:42:06.4872630Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T01:42:06.4936910Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T01:42:06.5641450Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-26T01:42:06.5692400Z ##[endgroup]
+2026-10-26T01:42:06.5693200Z ##[group]Fetching the repository
+2026-10-26T01:42:06.5697610Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +56b58d3b6697c45c9b668bc927af082a859c2ad2:refs/remotes/origin/main
+2026-10-26T01:42:26.1417700Z From https://github.com/Aneesh495/caissa
+2026-10-26T01:42:26.1418490Z  * [new ref]         56b58d3b6697c45c9b668bc927af082a859c2ad2 -> origin/main
+2026-10-26T01:42:26.1421500Z ##[endgroup]
+2026-10-26T01:42:26.1422060Z ##[group]Determining the checkout info
+2026-10-26T01:42:26.1423270Z ##[endgroup]
+2026-10-26T01:42:26.1427950Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-10-26T01:42:26.1517860Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-26T01:42:26.1583840Z ##[group]Checking out the ref
+2026-10-26T01:42:26.1586950Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-26T01:42:27.4240620Z Updating files:  69% (1963/2818)
+2026-10-26T01:42:27.6159350Z Updating files:  70% (1973/2818)
+2026-10-26T01:42:27.6305440Z Updating files:  71% (2001/2818)
+2026-10-26T01:42:27.6330150Z Updating files:  72% (2029/2818)
+2026-10-26T01:42:27.6357600Z Updating files:  73% (2058/2818)
+2026-10-26T01:42:27.6419290Z Updating files:  74% (2086/2818)
+2026-10-26T01:42:27.6510900Z Updating files:  75% (2114/2818)
+2026-10-26T01:42:27.6722990Z Updating files:  76% (2142/2818)
+2026-10-26T01:42:27.6902180Z Updating files:  77% (2170/2818)
+2026-10-26T01:42:27.7005970Z Updating files:  78% (2199/2818)
+2026-10-26T01:42:27.7030280Z Updating files:  79% (2227/2818)
+2026-10-26T01:42:27.7056140Z Updating files:  80% (2255/2818)
+2026-10-26T01:42:27.7094220Z Updating files:  81% (2283/2818)
+2026-10-26T01:42:27.7315050Z Updating files:  82% (2311/2818)
+2026-10-26T01:42:28.2002360Z Updating files:  83% (2339/2818)
+2026-10-26T01:42:29.1859450Z Updating files:  83% (2351/2818)
+2026-10-26T01:42:29.5240850Z Updating files:  83% (2356/2818)
+2026-10-26T01:42:29.5272960Z Updating files:  84% (2368/2818)
+2026-10-26T01:42:29.5316730Z Updating files:  85% (2396/2818)
+2026-10-26T01:42:29.5342170Z Updating files:  86% (2424/2818)
+2026-10-26T01:42:29.5547970Z Updating files:  87% (2452/2818)
+2026-10-26T01:42:29.5571040Z Updating files:  88% (2480/2818)
+2026-10-26T01:42:29.5598180Z Updating files:  89% (2509/2818)
+2026-10-26T01:42:29.5663000Z Updating files:  90% (2537/2818)
+2026-10-26T01:42:29.5775860Z Updating files:  91% (2565/2818)
+2026-10-26T01:42:29.5807630Z Updating files:  92% (2593/2818)
+2026-10-26T01:42:29.5832600Z Updating files:  93% (2621/2818)
+2026-10-26T01:42:29.5859070Z Updating files:  94% (2649/2818)
+2026-10-26T01:42:29.5881960Z Updating files:  95% (2678/2818)
+2026-10-26T01:42:29.5912520Z Updating files:  96% (2706/2818)
+2026-10-26T01:42:29.5937180Z Updating files:  97% (2734/2818)
+2026-10-26T01:42:29.5972760Z Updating files:  98% (2762/2818)
+2026-10-26T01:42:29.6000820Z Updating files:  99% (2790/2818)
+2026-10-26T01:42:29.6001450Z Updating files: 100% (2818/2818)
+2026-10-26T01:42:29.6001750Z Updating files: 100% (2818/2818), done.
+2026-10-26T01:42:29.6063460Z Switched to a new branch 'main'
+2026-10-26T01:42:29.6072340Z branch 'main' set up to track 'origin/main'.
+2026-10-26T01:42:29.6109850Z ##[endgroup]
+2026-10-26T01:42:29.6281780Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-10-26T01:42:29.6856160Z 56b58d3b6697c45c9b668bc927af082a859c2ad2
+2026-10-26T01:42:29.7140960Z ##[group]Run actions/setup-python@v5
+2026-10-26T01:42:29.7141420Z with:
+2026-10-26T01:42:29.7141640Z   python-version: 3.12
+2026-10-26T01:42:29.7141920Z   check-latest: false
+2026-10-26T01:42:29.7143990Z   token: ***
+2026-10-26T01:42:29.7144250Z   update-environment: true
+2026-10-26T01:42:29.7144550Z   allow-prereleases: false
+2026-10-26T01:42:29.7144850Z   freethreaded: false
+2026-10-26T01:42:29.7145180Z ##[endgroup]
+2026-10-26T01:42:29.8661020Z ##[group]Installed versions
+2026-10-26T01:42:29.9011350Z (node:13002) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T01:42:29.9011970Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T01:42:29.9012280Z Successfully set up CPython (3.12.10)
+2026-10-26T01:42:29.9012820Z ##[endgroup]
+2026-10-26T01:42:29.9098870Z ##[group]Run python -m pip install numpy==2.2.6 chess==1.11.2
+2026-10-26T01:42:29.9099370Z [36;1mpython -m pip install numpy==2.2.6 chess==1.11.2[0m
+2026-10-26T01:42:29.9160770Z shell: /bin/bash -e {0}
+2026-10-26T01:42:29.9160980Z env:
+2026-10-26T01:42:29.9161290Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T01:42:29.9161770Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-26T01:42:29.9162180Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T01:42:29.9162650Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T01:42:29.9163070Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T01:42:29.9163420Z ##[endgroup]
+2026-10-26T01:42:31.6160480Z Collecting numpy==2.2.6
+2026-10-26T01:42:31.8431890Z   Downloading numpy-2.2.6-cp312-cp312-macosx_14_0_arm64.whl.metadata (62 kB)
+2026-10-26T01:42:31.9883500Z Collecting chess==1.11.2
+2026-10-26T01:42:32.0644530Z   Downloading chess-1.11.2.tar.gz (6.1 MB)
+2026-10-26T01:42:32.4302390Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.1/6.1 MB 23.2 MB/s  0:00:00
+2026-10-26T01:42:32.5926380Z   Installing build dependencies: started
+2026-10-26T01:42:33.5810950Z   Installing build dependencies: finished with status 'done'
+2026-10-26T01:42:33.5821060Z   Getting requirements to build wheel: started
+2026-10-26T01:42:33.8517690Z   Getting requirements to build wheel: finished with status 'done'
+2026-10-26T01:42:33.8527320Z   Preparing metadata (pyproject.toml): started
+2026-10-26T01:42:33.9968120Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-10-26T01:42:34.0608120Z Downloading numpy-2.2.6-cp312-cp312-macosx_14_0_arm64.whl (5.1 MB)
+2026-10-26T01:42:34.1360920Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.1/5.1 MB 65.7 MB/s  0:00:00
+2026-10-26T01:42:34.1544990Z Building wheels for collected packages: chess
+2026-10-26T01:42:34.1551610Z   Building wheel for chess (pyproject.toml): started
+2026-10-26T01:42:34.3391270Z   Building wheel for chess (pyproject.toml): finished with status 'done'
+2026-10-26T01:42:34.3398900Z   Created wheel for chess: filename=chess-1.11.2-py3-none-any.whl size=147878 sha256=8626f57ea20e149e3d630f852ee13fa995021d4522a9b11c65040f598a49ab54
+2026-10-26T01:42:34.3399950Z   Stored in directory: /Users/runner/Library/Caches/pip/wheels/83/1f/4e/8f4300f7dd554eb8de70ddfed96e94d3d030ace10c5b53d447
+2026-10-26T01:42:34.3418830Z Successfully built chess
+2026-10-26T01:42:34.3564220Z Installing collected packages: numpy, chess
+2026-10-26T01:42:35.5020780Z 
+2026-10-26T01:42:35.5027580Z Successfully installed chess-1.11.2 numpy-2.2.6
+2026-10-26T01:42:35.5033820Z 
+2026-10-26T01:42:35.5034080Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-26T01:42:35.5034480Z [notice] To update, run: python -m pip install --upgrade pip
+2026-10-26T01:42:35.5834850Z ##[group]Run python -m tests.strength_wall_recovery
+2026-10-26T01:42:35.5835220Z [36;1mpython -m tests.strength_wall_recovery[0m
+2026-10-26T01:42:35.5874530Z shell: /bin/bash -e {0}
+2026-10-26T01:42:35.5874730Z env:
+2026-10-26T01:42:35.5875000Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T01:42:35.5875430Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-26T01:42:35.5875870Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T01:42:35.5876260Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T01:42:35.5876670Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T01:42:35.5876980Z ##[endgroup]
+2026-10-26T01:42:35.9188030Z {"status": "passed", "controls": ["wall origin is old deadline; original active seconds charged", "concurrent recovery owner refused", "resume retains wall bytes and cumulative recovery compute", "wall renewal refused", "disk renewal refused", "original_active_seconds exhausted refused", "original_attempts exhausted refused", "expired contiguous recovery refused", "unclosed ledger elapsed compute charged", "both committed games reconstruct missing pair without starting an engine", "completed-game mutation rejected; interrupted bytes retained"], "strength_sample_certified": false, "full_acceptance": false}
+2026-10-26T01:42:35.9475230Z Post job cleanup.
+2026-10-26T01:42:36.0559370Z (node:13267) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T01:42:36.0560010Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T01:42:36.0664480Z Post job cleanup.
+2026-10-26T01:42:36.1451610Z [command]/opt/homebrew/bin/git version
+2026-10-26T01:42:36.1514880Z git version 2.55.0
+2026-10-26T01:42:36.1532570Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/fe8a0c87-9b9f-427d-ae0a-78a2aca9892a/.gitconfig'
+2026-10-26T01:42:36.1538760Z Temporarily overriding HOME='/Users/runner/work/_temp/fe8a0c87-9b9f-427d-ae0a-78a2aca9892a' before making global git config changes
+2026-10-26T01:42:36.1539830Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T01:42:36.1542080Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/caissa/caissa
+2026-10-26T01:42:36.1604590Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T01:42:36.1660150Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T01:42:36.2306090Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T01:42:36.2348530Z http.https://github.com/.extraheader
+2026-10-26T01:42:36.2354170Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-26T01:42:36.2404980Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T01:42:36.2979820Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T01:42:36.3027820Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T01:42:36.3887550Z Cleaning up orphan processes
+2026-10-26T01:42:36.6415120Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

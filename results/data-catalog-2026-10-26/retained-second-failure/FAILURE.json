@@ -1,0 +1,9 @@
+{
+  "status": "failed",
+  "ci_run": 40253659989,
+  "source_commit": "1ee64bee88ef0dd35987ae88ff8fe427254dec67",
+  "actual_cause": "Independent ReplayIndex could not create a temporary directory because the owned scratch parent did not exist. Exact child JSON from both retained artifacts is published in ../../wall-recovery-2026-10-26/retained-data-error.log.",
+  "repaired_source": "a0e2d925f28311432dcb56291de54380508ab630",
+  "original_failure_preserved": true,
+  "full_acceptance": false
+}

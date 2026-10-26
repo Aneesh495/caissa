@@ -1,0 +1,77 @@
+﻿2026-10-26T01:42:06.4793219Z Current runner version: '2.338.0'
+2026-10-26T01:42:06.4818137Z ##[group]Runner Image Provisioner
+2026-10-26T01:42:06.4819394Z Hosted Compute Agent
+2026-10-26T01:42:06.4820023Z Version: 20261021.618
+2026-10-26T01:42:06.4820728Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-26T01:42:06.4821524Z Build Date: 2026-10-21T00:45:21Z
+2026-10-26T01:42:06.4822212Z Worker ID: {b63b937d-b251-4763-9820-ac7c615015d2}
+2026-10-26T01:42:06.4822965Z Region: westus3
+2026-10-26T01:42:06.4823529Z Cloud: Azure
+2026-10-26T01:42:06.4824172Z ##[endgroup]
+2026-10-26T01:42:06.4825662Z ##[group]Operating System
+2026-10-26T01:42:06.4826309Z Ubuntu
+2026-10-26T01:42:06.4826929Z 24.04.5
+2026-10-26T01:42:06.4827447Z LTS
+2026-10-26T01:42:06.4827940Z ##[endgroup]
+2026-10-26T01:42:06.4828592Z ##[group]Runner Image
+2026-10-26T01:42:06.4829590Z Image: ubuntu-24.04
+2026-10-26T01:42:06.4830232Z Version: 20261012.334.1
+2026-10-26T01:42:06.4831534Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-26T01:42:06.4833223Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-26T01:42:06.4834207Z ##[endgroup]
+2026-10-26T01:42:06.4835460Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T01:42:06.4837339Z Actions: read
+2026-10-26T01:42:06.4838165Z Contents: read
+2026-10-26T01:42:06.4838753Z Metadata: read
+2026-10-26T01:42:06.4839623Z ##[endgroup]
+2026-10-26T01:42:06.4842502Z Secret source: Actions
+2026-10-26T01:42:06.4843469Z Cache mode: write
+2026-10-26T01:42:06.4844292Z Prepare workflow directory
+2026-10-26T01:42:06.5245374Z Prepare all required actions
+2026-10-26T01:42:06.5349449Z Complete job name: retained-data-error
+2026-10-26T01:42:06.6718188Z ##[group]Run python3 - <<'PY'
+2026-10-26T01:42:06.6719579Z [36;1mpython3 - <<'PY'[0m
+2026-10-26T01:42:06.6720519Z [36;1mimport io, os, urllib.request, zipfile[0m
+2026-10-26T01:42:06.6721603Z [36;1mclass ScopedRedirect(urllib.request.HTTPRedirectHandler):[0m
+2026-10-26T01:42:06.6722788Z [36;1m    def redirect_request(self, request, response, code, message, headers, url):[0m
+2026-10-26T01:42:06.6724092Z [36;1m        redirected=super().redirect_request(request,response,code,message,headers,url)[0m
+2026-10-26T01:42:06.6725258Z [36;1m        redirected.remove_header('Authorization')[0m
+2026-10-26T01:42:06.6726040Z [36;1m        return redirected[0m
+2026-10-26T01:42:06.6726944Z [36;1mopener=urllib.request.build_opener(ScopedRedirect())[0m
+2026-10-26T01:42:06.6727840Z [36;1mfor artifact in [12622195176,12620734758]:[0m
+2026-10-26T01:42:06.6730245Z [36;1m    request=urllib.request.Request(f'https://api.github.com/repos/Aneesh495/caissa/actions/artifacts/{artifact}/zip',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})[0m
+2026-10-26T01:42:06.6732271Z [36;1m    with opener.open(request,timeout=25) as response:[0m
+2026-10-26T01:42:06.6733233Z [36;1m        data=response.read(16*1024*1024+1)[0m
+2026-10-26T01:42:06.6734042Z [36;1m    assert len(data)<=16*1024*1024[0m
+2026-10-26T01:42:06.6734962Z [36;1m    with zipfile.ZipFile(io.BytesIO(data)) as archive:[0m
+2026-10-26T01:42:06.6735831Z [36;1m        for name in archive.namelist():[0m
+2026-10-26T01:42:06.6736828Z [36;1m            if 'ci-data-catalog' in name and name.endswith(('.log','FAILED.json')):[0m
+2026-10-26T01:42:06.6737874Z [36;1m                info=archive.getinfo(name)[0m
+2026-10-26T01:42:06.6738651Z [36;1m                if info.file_size<=32768:[0m
+2026-10-26T01:42:06.6739916Z [36;1m                    print('PRESERVED',artifact,name)[0m
+2026-10-26T01:42:06.6741176Z [36;1m                    print(archive.read(name).decode('utf8',errors='replace'))[0m
+2026-10-26T01:42:06.6742220Z [36;1mPY[0m
+2026-10-26T01:42:06.7714134Z shell: /usr/bin/bash -e {0}
+2026-10-26T01:42:06.7716205Z env:
+2026-10-26T01:42:06.7724580Z   GH_TOKEN: ***
+2026-10-26T01:42:06.7725642Z ##[endgroup]
+2026-10-26T01:42:10.5312797Z PRESERVED 12622195176 runs/ci-data-catalog/real-small-original-data-replay/FAILED.json
+2026-10-26T01:42:10.5315773Z {"status":"failed","reason":"independent original-data replay failed; inspect preserved execution","full_gate":false,"full_acceptance":false}
+2026-10-26T01:42:10.5317253Z 
+2026-10-26T01:42:10.5318155Z PRESERVED 12622195176 runs/ci-data-catalog/real-small-original-data-replay/execution/independent.log
+2026-10-26T01:42:10.5321686Z {"status": "rejected", "reason": "[Errno 2] No such file or directory: '/Users/runner/work/caissa/caissa/runs/ci-data-catalog/real-small-original-data-replay/index/caissa-verify-data-qmsk06iv'"}
+2026-10-26T01:42:10.5324151Z 
+2026-10-26T01:42:10.5324895Z PRESERVED 12622195176 runs/ci-data-catalog/real-small-original-data.log
+2026-10-26T01:42:10.5327243Z {"status": "rejected", "reason": "independent original-data replay failed; inspect preserved execution", "full_acceptance": false}
+2026-10-26T01:42:10.5329281Z 
+2026-10-26T01:42:10.5330242Z PRESERVED 12620734758 runs/ci-data-catalog/real-small-original-data-replay/FAILED.json
+2026-10-26T01:42:10.5333312Z {"status":"failed","reason":"independent original-data replay failed; inspect preserved execution","full_gate":false,"full_acceptance":false}
+2026-10-26T01:42:10.5335564Z 
+2026-10-26T01:42:10.5336976Z PRESERVED 12620734758 runs/ci-data-catalog/real-small-original-data-replay/execution/independent.log
+2026-10-26T01:42:10.5342042Z {"status": "rejected", "reason": "[Errno 2] No such file or directory: '/home/runner/work/caissa/caissa/runs/ci-data-catalog/real-small-original-data-replay/index/caissa-verify-data-ps2wdkc0'"}
+2026-10-26T01:42:10.5345446Z 
+2026-10-26T01:42:10.5346349Z PRESERVED 12620734758 runs/ci-data-catalog/real-small-original-data.log
+2026-10-26T01:42:10.5349845Z {"status": "rejected", "reason": "independent original-data replay failed; inspect preserved execution", "full_acceptance": false}
+2026-10-26T01:42:10.5352122Z 
+2026-10-26T01:42:10.5570833Z Cleaning up orphan processes
+
