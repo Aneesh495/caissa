@@ -1,5 +1,7 @@
 # Findings
 
+The newer q4096/deferred actor completed all 2,000 external games with independent replay. Against unrestricted Stockfish 19 it scored 56 wins, two draws and 608 losses, a relative difference of -411.50 Elo with a 95% interval of [-460.14,-370.68] at 100 milliseconds, one thread and 16 MiB. This is not an absolute or human rating. Its separate neural comparison recorded all 4,000 attempts, but three games remained unfinished at the frozen 512-ply ceiling. Independent full-sample acceptance failed. The 3,997 completed games gave a diagnostic -63.86 relative difference against classical, interval [-73.80,-54.07]; it is not a certified full neural result. Neither failure is repaired by the passed full data/learning audit or performance measurements.
+
 The [full original neural comparison](../results/full-neural-v3-2026-10-25/README.md) completed all 4000 games with 1274 wins, 746 draws and 1980 losses. Independent replay measured -61.97 Elo relative to the unchanged classical evaluator, with a 95% opening-cluster interval of [-71.25,-52.87]. There were no crashes, illegal moves or time/protocol forfeits. The required +50 gain failed. Validation-loss improvement therefore did not establish stronger equal-time chess, even on the full corpus. The experiment does not identify evaluation quality, quantization or execution cost as the sole cause. Classical remains the default; the q4096 encoding has not inherited this measurement or demonstrated a positive gain.
 
 Correctness, throughput, validation loss and match strength are separate measurements.

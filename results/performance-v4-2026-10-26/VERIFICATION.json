@@ -1,0 +1,19 @@
+{
+  "schema": "caissa-full-performance-publication-v1",
+  "status": "passed full performance sample, final source binding pending",
+  "source_commit": "4f2670e746b7dfd1a7ad499f67e32148824af519",
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "timed_searches": 640,
+  "independent_fixed_node_searches": 16,
+  "rss_samples": 4581,
+  "latency_samples": 2000,
+  "closed_active_seconds": 148.2426335409982,
+  "idle_readiness_p99_ms": 0.02695883,
+  "active_readiness_p99_ms": 3.7191008299999972,
+  "single_stop_ms": 0.155916,
+  "no_elo_inferred": true,
+  "other_gates_and_final_binding_required": true,
+  "full_acceptance": false,
+  "published_unix": 1793014409.184045
+}

@@ -1,0 +1,33 @@
+{
+  "files": {
+    "ACTIVE_USAGE.json": "10559c44bfd11f9b8f171e41b96253776292d17a6671e913454741d608df5bba",
+    "DEPLOYMENT_LINEAGE.json": "0d32361676200b9879a60d71b8fe7c4973704063ae8f7d7d6e8c959f4e91cb93",
+    "HOST_SAMPLES.jsonl": "99183a8d5cf4f0c7046d1b41c7bbc4a46c755d12b3fe0805b0d9813fbc085301",
+    "PERFORMANCE.json": "c9f40251b2561f87710955210d13b7e31a0a365692c7bd5d45d36c28a2700d60",
+    "PLAN.json": "68b034408c5840ca5ba47dc5cbd6a2924add9a96eaee5ff1138296bd5953e8eb",
+    "POWER_ADMISSION.json": "302811d5afba9c9cdd4c307b8c5925315fea56e2f2807d583113c3a01248e372",
+    "POWER_SAMPLES.jsonl": "195179f7853e2d3e2f29813144250ad967da939504eb9560151740b026e3a3e6",
+    "README.md": "e3c937b2814a73dd3fc16b4c6f834b788cdb3a3e0e1bc9a7fc659c1ac63ee6ae",
+    "SCOPE.json": "e4cae1e7f828f92f4479d806ef3c060d9ccc03130bfed30b35d0476685830975",
+    "SOURCE_INPUTS.json": "2156afc30f4c98e01cbda8cab7a7e1bf5d5edff30cd0258268ff830d905163d9",
+    "VERIFICATION.json": "4ce52e1556a1479470a34bc7f299036b9978fc57ab202bddf9ad444b51e40c4d",
+    "execution/CAMPAIGN.json": "ceb56acd0199c972b322d0e93047d8200d256133ac1626d8b13f3cb048f5eabc",
+    "execution/COMMANDS.jsonl": "9acdfa28c37888c0f37b8a1d5e470045028ba25be7addc2cc7dff43f51c047f2",
+    "execution/CONFIG.json": "615ec6e3f855a3d3608b2df697fcaea86c35d588b9a899e56c1b132710f9490d",
+    "execution/PROGRESS.json": "f8a019e4fe36f3a8ddcb5e8983165ace12f2f65dbd483875d252a7ba87589303",
+    "execution/independent.json": "58539cc965cb180b2291932f7f570bcc10989564d741e1ef608328fed0bad61f",
+    "execution/independent.log": "257dc865f7b8ea9ed92046110d340dcf6cb0f44ad71bcdba46d5225672b6c4ac",
+    "execution/producer.json": "7759dd65e4f828ef903d5434e079a14f6385b6e1e66eccb6740f9ca20e1e2267",
+    "execution/producer.log": "0b56c089c5c14da1a433eaec8c8e798417e9d4f6c6ead6006c71421d97855a91",
+    "inputs/PROFILE.json": "8a27cea07ff367e7c991a5c855a1d4620a7f43b8578f95309e8d50f0ad63fcfe",
+    "measurements/CONFIG.json": "9f7f7db6732c21320c442ef97ebf2dd1c99911a02ce8f55d327bdee677db7586",
+    "measurements/PROGRESS.json": "ff885f8983c9a871a865be974d64d2df5bf3342ec01461657b923ae224472c7a",
+    "measurements/SESSIONS.json": "67743d95ef0b11ee780c8e9cbb59b64ae935492b0fc665b5c611a0009487d965",
+    "measurements/SUMMARY.json": "c8fd98492dad00fb5c3919b5342b409cc2a3051297012dad7a15180f18a841ed",
+    "measurements/correctness.json": "40f356e08ab226b376bb1f02299f52f64fb6b7bb6a1d01538be0fd961a772349",
+    "measurements/latency.jsonl": "c979a664f58998b777dbfd4fb4083c671a3c4ac30de40132fc77d97cf4f2ec35",
+    "measurements/measurements.jsonl": "4f9aefa44ce00433148c55a0cbff0c68918560715627fd7fbd7ec6b4df6e6014",
+    "measurements/memory.jsonl": "bad214f4d6e448ab53166e0f60ca44d27a3c49e8d60a05db73b8a7094cee2180",
+    "replay": "13c6979b6790f9f934ac8bdf30e788b87a6e174779431361906a23cd30aa2b5b"
+  }
+}

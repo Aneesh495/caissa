@@ -53,7 +53,7 @@ See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution w
 
 | Check | Observed result | Scope |
 |---|---|---|
-| Full data reconstruction | 229582 completed original games; 10578434 distinct training inputs; every exported row independently rebuilt | [Data domain passed](results/full-data-2026-10-25/README.md); strength remains pending |
+| Full data and learning audit | 229582 completed original games; 10578434 distinct training inputs; every exported row rebuilt and all 240 original checkpoints independently evaluated | [Full G07 join passed](results/g07-full-audit-2026-10-26/README.md); final source binding and portable bulk remain pending |
 | Original learning | Three seeds completed 20000 updates each; all 240 checkpoints independently evaluated | [Validation-only selection](docs/MODEL_CARD.md); no test access or Elo conclusion |
 | Rules | 20 perft fixtures; 100000-position differential campaigns with zero disagreements | Development executables |
 | State restoration | 1000000 seeded transitions per Release/ASan+UBSan/TSan mode, independently replayed | [Selected q4096 network, both platforms](results/precision-v4-followup-2026-10-25/README.md) |
@@ -63,7 +63,9 @@ See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution w
 | Warm Stockfish 19 unrestricted | 0 wins, 0 draws, 48 losses | 20 ms/move, small paired diagnostic |
 | Full original neural contribution | 1274W/746D/1980L; -61.97 Elo, 95% interval [-71.25,-52.87] | [4000 games independently replayed](results/full-neural-v3-2026-10-25/README.md); required positive gain failed |
 | Full original external comparison | 2000 games across three settings; unrestricted Stockfish 19 subset: -392.39 relative Elo, 95% interval [-438.13,-353.45] | [Original q1024 candidate](results/full-external-v3-2026-10-25/README.md); no absolute rating |
-| New q4096/deferred candidate | Full neural comparison in progress; no new strength estimate | [Separate frozen profile](config/protocol-v4.json); 2000 external games follow |
+| New q4096/deferred neural comparison | 4000 scheduled attempts, 3997 finished games, three unfinished at the original 512-ply ceiling; independent acceptance failed | [Failure preserved](results/neural-v4-failure-2026-10-26); completed-game diagnostic -63.86 relative Elo versus classical, 95% interval [-73.80,-54.07]; not a certified full sample |
+| New q4096/deferred external comparison | All 2000 games independently replayed; unrestricted Stockfish 19 subset: 56W/2D/608L, -411.50 relative Elo, 95% interval [-460.14,-370.68] | [Frozen v4 actor](results/external-v4-2026-10-26); 100 ms, one thread, 16 MiB; no absolute rating |
+| Selected v4 runtime performance | 640 timed searches, 4581 memory observations, 2000 readiness samples and 16 independent scalar/native searches | [Full performance sample passed](results/performance-v4-2026-10-26/README.md); 1/2/4/8 threads, final binding pending; no Elo inference |
 | Larger neural pilot versus classical | 4 wins, 8 draws, 84 losses | 2000 nodes/move, diagnostic data split |
 
 These checks establish specific behavior. The data-domain pass does not certify a positive learned contribution, the new deployment's strength or a release. Opponent strength settings are not a calibrated absolute rating pool.
