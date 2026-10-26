@@ -84,8 +84,14 @@ async function exercise(mode, width) {
     const task = (async () => {
       const request = response.request(); const row = { mode, width, url: new URL(response.url()).pathname,
         method: request.method(), status: response.status(), request: request.postData(), headers: request.headers() };
-      try { row.body = await response.text(); bytes += row.body.length; }
-      catch { row.aborted = true; }
+      try {
+        const failure = await response.finished(); if (failure) throw failure;
+        row.body = await response.text(); row.transport_complete = true;
+        row.body_bytes = Buffer.byteLength(row.body); bytes += row.body_bytes;
+      } catch (error) {
+        row.aborted = true; row.transport_complete = false;
+        row.capture_error = { name: String(error?.name ?? 'Error').slice(0, 80), message: String(error?.message ?? error).slice(0, 512) };
+      }
       if (bytes > 32 * 1024 * 1024) throw new Error('Browser network evidence exceeded its ceiling.');
       requests.push(row);
     })();
@@ -113,7 +119,11 @@ async function exercise(mode, width) {
   await page.locator('#inspect-search').check();
   await page.locator('#analyze').click();
   await page.waitForFunction(() => document.querySelector('#status').textContent.startsWith('Analysis complete.'));
+  await poll(() => requests.some((row) => row.mode === mode && row.width === width && row.url === '/api/analyze'
+    && row.transport_complete === true && JSON.parse(row.request).milliseconds === 1000 && row.body.includes('event: bestmove')),
+  'Original completed native analysis response was not fully captured.');
   const analysis = await snapshot(page, 'analysis', mode, width); assert(analysis.lines.length > 0); assert.notEqual(analysis.nodes, '0');
+  assert.equal(analysis.state, 'READY');
   await page.locator('#time').selectOption('30000'); await page.locator('#analyze').click();
   await page.waitForFunction(() => document.querySelector('#cancel').disabled === false && document.querySelectorAll('.pv-path').length > 0);
   const stopped = Date.now(); await page.locator('#cancel').click();

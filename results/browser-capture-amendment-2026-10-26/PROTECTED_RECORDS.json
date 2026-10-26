@@ -1,0 +1,12 @@
+{
+  "results/g12-browser-component-2026-10-26/APPROVED_REPAIR_RESULT.json": "a1090b0a02be38346a0533b12c40c44d6e14bde48689a0b7d63e7486db61118f",
+  "results/g12-browser-component-2026-10-26/VERIFICATION.json": "20dcbe58a9425cc5eed63a34dc1a2369a79ceffb6b4d8455924fd777cf140fbd",
+  "results/g12-browser-component-2026-10-26/failed-approved-repair-linux.log": "d63e7ea286c8b8575d5aaec315b2ed730b2d06eba89319c6a07ba2fb633adae2",
+  "results/g12-browser-component-2026-10-26/failed-approved-repair-macos.log": "9b9796fa4e11c4a08e51834e1f790ee68658744852006c35ef1bf1db1bc17bac",
+  "results/g12-browser-component-2026-10-26/failed-first-linux.log": "c8b43c04dd01e601e2564926e75d59b77cd0c847df3b080e29730224b5580078",
+  "results/g12-browser-component-2026-10-26/failed-first-macos.log": "e0586fd326551c0e4e566d239ca998c589d89e12a9f637bdfdb5d2a18f15e880",
+  "results/g12-browser-component-2026-10-26/failed-second-linux.log": "a365b56277f916d0eea45c1832433e1929eb9fd7ccea9d24aaf8443b28a84567",
+  "results/g12-browser-component-2026-10-26/failed-second-macos.log": "102c9fdaacd09f85ea32cca8c1a3a09f0a7b179677c4b5213c23e81a3e8fb7c9",
+  "results/g12-browser-component-2026-10-26/failed-third-linux.log": "c71effc2b0d9302fe1819e31d91f26bc33c2ec5e070fa43547f001d0c7cbc8b0",
+  "results/g12-browser-component-2026-10-26/failed-third-macos.log": "40729aa23448f0623c38ba2e698b73f8488102a0cdf3f86a9eacb87784f334c9"
+}
