@@ -60,6 +60,7 @@ jobs:
           python -m tests.bundle_integrity --output runs/ci-bundle-integrity
           python -m tests.bundle_copy --output runs/ci-bundle-copy
           python -m tests.learning_bundle --output runs/ci-learning-bundle
+          python -m tests.performance_bundle --engine build/caissa --output runs/ci-performance-bundle
           python -m tests.acceptance_readiness --output runs/ci-acceptance-readiness
           python -m tests.rules_replay --engine build/caissa --output runs/ci-rules-replay
           python -m tests.protocol_bundle --engine build/caissa --output runs/ci-protocol-bundle
@@ -128,6 +129,7 @@ jobs:
             runs/ci-bundle-copy/*.json
             runs/ci-learning-bundle/*.json
             runs/ci-learning-bundle/*.log
+            runs/ci-performance-bundle/
             runs/ci-data-catalog/
             data/ci-original/
             data/ci-prepared/

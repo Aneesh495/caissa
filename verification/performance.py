@@ -117,7 +117,7 @@ def metrics(rows):
     }
 
 
-def options(evaluation, threads, config, model_path, optimized):
+def options(evaluation, threads, config, model_path, optimized, lazy=False):
     result = {
         "Hash": config["hash_mib"],
         "Threads": threads,
@@ -127,6 +127,8 @@ def options(evaluation, threads, config, model_path, optimized):
         "Neural Bounds": False,
         "Ordering Hints": False,
     }
+    if lazy:
+        result["Lazy Neural"] = True
     if evaluation != "classical":
         require(
             type(model_path) is str and 0 < len(model_path) <= 4096,
@@ -172,6 +174,7 @@ def verify(
     maximum_seconds=600,
     full=False,
     replay_output=None,
+    native_new_session=True,
 ):
     require(
         1 <= maximum_seconds <= 1800, "finite independent performance ceiling required"
@@ -206,6 +209,10 @@ def verify(
     require(
         type(config["exact_optimizations"]) is bool,
         "performance optimization flag is not boolean",
+    )
+    require(
+        type(config.get("lazy_neural", False)) is bool,
+        "performance deferred-state option is not boolean",
     )
     require(
         config["deadline_unix"] == config["started_unix"] + config["maximum_seconds"]
@@ -292,6 +299,7 @@ def verify(
             frozen,
             actual.get("EvalFile"),
             config["exact_optimizations"],
+            config.get("lazy_neural", False),
         )
         require(
             actual == expected, "performance actual evaluator/resource options differ"
@@ -564,9 +572,12 @@ def verify(
                 frozen,
                 str(network.resolve()),
                 config["exact_optimizations"],
+                config.get("lazy_neural", False),
             )
             clients[evaluation] = stack.enter_context(
-                NativeSession(engine, selected, deadline)
+                NativeSession(
+                    engine, selected, deadline, new_session=native_new_session
+                )
             )
         for row, position in zip(correctness, frozen["positions"]):
             budget()
@@ -663,6 +674,7 @@ def main():
     parser.add_argument("--maximum-seconds", type=int, default=600)
     parser.add_argument("--require-full", action="store_true")
     parser.add_argument("--replay-output", type=Path)
+    parser.add_argument("--inherit-process-group", action="store_true")
     args = parser.parse_args()
     try:
         result = verify(
@@ -674,6 +686,7 @@ def main():
             args.maximum_seconds,
             args.require_full,
             args.replay_output,
+            native_new_session=not args.inherit_process_group,
         )
         print(json.dumps(result))
         return 0

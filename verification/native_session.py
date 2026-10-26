@@ -14,14 +14,24 @@ from pathlib import Path
 
 
 class NativeSession:
-    def __init__(self, engine, options, deadline, *, maximum_bytes=64 * 1024 * 1024):
+    def __init__(
+        self,
+        engine,
+        options,
+        deadline,
+        *,
+        maximum_bytes=64 * 1024 * 1024,
+        new_session=True,
+    ):
         if (
             not math.isfinite(deadline)
             or type(maximum_bytes) is not int
             or not 1024 <= maximum_bytes <= 64 * 1024 * 1024
+            or type(new_session) is not bool
         ):
             raise ValueError("finite native deadline and output byte bound required")
         self.deadline = deadline
+        self.new_session = new_session
         self.maximum_bytes = maximum_bytes
         self.received_bytes = 0
         self.buffer = b""
@@ -32,7 +42,7 @@ class NativeSession:
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
-            start_new_session=True,
+            start_new_session=new_session,
         )
         self.reader = selectors.DefaultSelector()
         self.writer = selectors.DefaultSelector()
@@ -180,22 +190,29 @@ class NativeSession:
                     process.wait(timeout=0.25)
                 except subprocess.TimeoutExpired:
                     try:
-                        os.killpg(process.pid, signal.SIGTERM)
+                        if self.new_session:
+                            os.killpg(process.pid, signal.SIGTERM)
+                        else:
+                            process.terminate()
                     except ProcessLookupError:
                         pass
                     try:
                         process.wait(timeout=2)
                     except subprocess.TimeoutExpired:
                         try:
-                            os.killpg(process.pid, signal.SIGKILL)
+                            if self.new_session:
+                                os.killpg(process.pid, signal.SIGKILL)
+                            else:
+                                process.kill()
                         except ProcessLookupError:
                             pass
                         process.wait(timeout=3)
             # Terminate any same-group descendant left by an adversarial peer.
-            try:
-                os.killpg(process.pid, signal.SIGKILL)
-            except ProcessLookupError:
-                pass
+            if self.new_session:
+                try:
+                    os.killpg(process.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
             for pipe in [process.stdin, process.stdout, process.stderr]:
                 if pipe is not None:
                     pipe.close()
