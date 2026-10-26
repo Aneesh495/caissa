@@ -1,0 +1,61 @@
+name: historical recovery and saved image join
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: historical-recovery-final-image-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  join:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, macos-15]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - name: Original prospective join ceilings
+        run: |
+          python3 - <<'PY'
+          import json,os,time
+          rule=json.load(open('config/recovery-join-development-v1.json'))
+          assert int(os.environ['GITHUB_RUN_NUMBER'])<=rule['maximum_ci_executions']
+          assert int(os.environ['GITHUB_RUN_ATTEMPT'])==1
+          assert time.time()<rule['deadline_unix']<rule['parent_deadline_unix']
+          PY
+      - name: Fetch immutable historical producer and compiled source trees
+        timeout-minutes: 2
+        run: |
+          git fetch --no-tags --depth=1 origin 973f288afb3d05e736da11370c253b84c7114679
+          git fetch --no-tags --depth=1 origin 34f40c293e114fafa8706dfd4d838b9be984ae55
+          git fetch --no-tags --depth=1 origin 67f89c1bd89b6a86bbeb70a03fb3286d8614de8f
+          git fetch --no-tags --depth=1 origin 5803cc485420b19eb96dda2c29f81fcfc6b09b6b
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Pinned read-only tensor and board reconstruction dependencies
+        timeout-minutes: 6
+        shell: bash
+        run: |
+          python -m pip install numpy==2.2.6 chess==1.11.2
+          if test "$RUNNER_OS" = Linux; then
+            python -m pip install torch==2.8.0 --index-url https://download.pytorch.org/whl/cpu
+          else
+            python -m pip install torch==2.8.0
+          fi
+      - name: Original archives, independent reconstructions and saved-image join
+        timeout-minutes: 9
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python -m tests.recovery_join --output runs/g11-full-join
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: historical-recovery-join-${{ matrix.os }}
+          path: |
+            runs/g11-full-join/
+            !runs/g11-full-join/**/archives/*.zip
+          retention-days: 14

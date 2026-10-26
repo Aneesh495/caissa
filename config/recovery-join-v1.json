@@ -1,0 +1,54 @@
+{
+  "schema": "caissa-recovery-join-profile-v1",
+  "artifacts_sha256": "3e2834dd582d3c7bfebba97f3bdaa55bba6bb4196a0df90bba096f9394bde2d6",
+  "producer_footprints": {
+    "arena": [
+      "arena/__init__.py",
+      "arena/client.py",
+      "arena/run.py",
+      "arena/statistics.py",
+      "training/__init__.py",
+      "training/corpus.py",
+      "tools/campaign_process.py",
+      "tools/host_lease.py"
+    ],
+    "training": [
+      "training/__init__.py",
+      "training/train.py",
+      "training/model.py",
+      "training/features.py",
+      "training/corpus.py",
+      "training/journal.py",
+      "verification/learning.py",
+      "verification/classical.py",
+      "verification/dataset.py",
+      "verification/bundle.py",
+      "verification/verify.py"
+    ],
+    "data": [
+      "training/__init__.py",
+      "training/prepare.py",
+      "training/corpus.py",
+      "training/features.py"
+    ]
+  },
+  "saved_engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "maximum_join_seconds": 300,
+  "maximum_archive_bytes": 268435456,
+  "maximum_selected_bytes": 536870912,
+  "maximum_archive_members": 100000,
+  "maximum_output_bytes": 4294967296,
+  "minimum_free_bytes": 10737418240,
+  "original_readers_seconds": {
+    "arena": 60,
+    "training": 60,
+    "data": 60
+  },
+  "final_native_seconds": 60,
+  "final_native_new_games": 3,
+  "new_training": false,
+  "new_acquisition": false,
+  "strength_games": 0,
+  "full_acceptance": false
+}

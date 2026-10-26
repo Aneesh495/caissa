@@ -1,0 +1,50 @@
+{
+  "arena": {
+    "source_commit": "973f288afb3d05e736da11370c253b84c7114679",
+    "prefix": "runs/ci-arena-recovery-component/positive/",
+    "platforms": {
+      "linux": {
+        "artifact_id": 12633445807,
+        "archive_bytes": 38752691,
+        "archive_sha256": "51890252a75be3e4f14388216a3f66930564f4f4d943f0c75c1d966a61596223"
+      },
+      "macos": {
+        "artifact_id": 12633445800,
+        "archive_bytes": 37863448,
+        "archive_sha256": "6e77fcad8e050ad12f6d3f324bf13c58f8401c53745ea10ef8c2bff478df8813"
+      }
+    }
+  },
+  "training": {
+    "source_commit": "34f40c293e114fafa8706dfd4d838b9be984ae55",
+    "prefix": "producer/evidence/",
+    "platforms": {
+      "linux": {
+        "artifact_id": 12638530278,
+        "archive_bytes": 152780299,
+        "archive_sha256": "e8d0356e1b9c71551d69ed35cd2f91e849c42a694c60d96847a2672ba0bf4c4f"
+      },
+      "macos": {
+        "artifact_id": 12637823621,
+        "archive_bytes": 152691412,
+        "archive_sha256": "ea78bc141e8375b8b0c947db6a4143e87aa6e22b1138cb1fb223c04f38714a66"
+      }
+    }
+  },
+  "data": {
+    "source_commit": "67f89c1bd89b6a86bbeb70a03fb3286d8614de8f",
+    "prefix": "producer/evidence/",
+    "platforms": {
+      "macos": {
+        "artifact_id": 12648471158,
+        "archive_bytes": 8086379,
+        "archive_sha256": "1459ac221ff16ffb5a1f442f72fce5529c973946ee8630f96bf765d3eb71b3cd"
+      },
+      "linux": {
+        "artifact_id": 12648431339,
+        "archive_bytes": 7818616,
+        "archive_sha256": "c66e1e2aa66cb5227ae77f4a13f97a866ee9b1201e7c3513580b2390c636cfca"
+      }
+    }
+  }
+}
