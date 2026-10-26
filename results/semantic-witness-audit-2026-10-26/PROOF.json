@@ -1,0 +1,50 @@
+{
+  "status": "G14 saved-image semantic sample passed; full project acceptance remains false",
+  "source_commit": "1deecce362cf12d9758e1af4bbebb5bbdda95fb1",
+  "run": 40329511266,
+  "profile_sha256": "750a973a5a4d2f7d53238f204ef4b225d280854eb057d77900403f7d185d21ad",
+  "saved_engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "platforms": {
+    "macos": {
+      "exact_saved_image_sample": true,
+      "rehashed_semantic_rejections": 16,
+      "full_entry_cases": 7,
+      "remaining_full_semantic_gates": 15
+    },
+    "linux": {
+      "exact_saved_image_sample": false,
+      "component_controls_passed": true,
+      "engine_sha256": "d97386d62a5684f0720f97bc7c9bbd5c9c3d6ae791a8c9256705474b3db7751b",
+      "rehashed_semantic_rejections": 16,
+      "full_entry_cases": 7,
+      "remaining_full_semantic_gates": 16
+    }
+  },
+  "actual_native_witnesses_per_platform": {
+    "searches": 4,
+    "network_inferences": 4,
+    "draw_histories": 4,
+    "mate_diagnostic_games": 4,
+    "strength_games": 0,
+    "training": false,
+    "browser": false
+  },
+  "full_G14_saved_image_sample": true,
+  "final_all_domain_source_join_pending": true,
+  "full_acceptance": false,
+  "cumulative_hosted_seconds": {
+    "linux": 54,
+    "macos": 51
+  },
+  "raw_artifacts_hosted_portability_pending": true,
+  "new_strength_result": false,
+  "source_files_sha256": {
+    "verification/semantic_audit.py": "abe6792c2d225c39747eb36ef134189fe8c6a0febfefbf75064b72d57366466e",
+    "verification/semantic_bundle.py": "f1217e005aa04e9ca260c63a2021584c9fee00d727002c4025273273187ed072",
+    "verification/full_bundle.py": "b50574ac5f2b5ab59ce57f229eff6e7ca140fb3c84e9c01a9e3705108f8c0af6",
+    "tools/semantic_witness.py": "c50fe4fe14665e0faceb940b30646815863d355691f3477efab4d3fb473043e0",
+    "tests/semantic_audit.py": "0ea0c1252b9626c64764f6ca26d3599acda8befcbc1e13b38698a7b1c02665d6",
+    ".github/workflows/semantic-audit.yml": "0e4311315da0332aa283a1e7c43e22103e81b6b9e814779cf7d64356fb951650"
+  }
+}

@@ -1,0 +1,1159 @@
+﻿2026-10-26T13:19:02.3201403Z Current runner version: '2.338.0'
+2026-10-26T13:19:02.3240504Z ##[group]Runner Image Provisioner
+2026-10-26T13:19:02.3241805Z Hosted Compute Agent
+2026-10-26T13:19:02.3243000Z Version: 20261021.618
+2026-10-26T13:19:02.3244133Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-26T13:19:02.3246425Z Build Date: 2026-10-21T00:45:21Z
+2026-10-26T13:19:02.3247645Z Worker ID: {26ffcba4-9d2d-4f29-a0c9-9e659de1acae}
+2026-10-26T13:19:02.3248864Z Region: eastus
+2026-10-26T13:19:02.3249934Z Cloud: Azure
+2026-10-26T13:19:02.3250872Z ##[endgroup]
+2026-10-26T13:19:02.3253494Z ##[group]Operating System
+2026-10-26T13:19:02.3254603Z Ubuntu
+2026-10-26T13:19:02.3255609Z 24.04.5
+2026-10-26T13:19:02.3256800Z LTS
+2026-10-26T13:19:02.3257772Z ##[endgroup]
+2026-10-26T13:19:02.3258933Z ##[group]Runner Image
+2026-10-26T13:19:02.3260010Z Image: ubuntu-24.04
+2026-10-26T13:19:02.3261130Z Version: 20261012.334.1
+2026-10-26T13:19:02.3263325Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-26T13:19:02.3266492Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-26T13:19:02.3268329Z ##[endgroup]
+2026-10-26T13:19:02.3270168Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T13:19:02.3273809Z Contents: read
+2026-10-26T13:19:02.3275017Z Metadata: read
+2026-10-26T13:19:02.3276343Z ##[endgroup]
+2026-10-26T13:19:02.3279604Z Secret source: Actions
+2026-10-26T13:19:02.3281205Z Cache mode: write
+2026-10-26T13:19:02.3282644Z Prepare workflow directory
+2026-10-26T13:19:02.3784634Z Prepare all required actions
+2026-10-26T13:19:02.3859803Z Getting action download info
+2026-10-26T13:19:02.5964139Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-26T13:19:02.8334835Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-26T13:19:03.1248338Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-26T13:19:04.1663780Z Complete job name: semantic (ubuntu-24.04)
+2026-10-26T13:19:04.2496663Z ##[group]Run actions/checkout@v4
+2026-10-26T13:19:04.2497718Z with:
+2026-10-26T13:19:04.2498221Z   repository: Aneesh495/caissa
+2026-10-26T13:19:04.2502247Z   token: ***
+2026-10-26T13:19:04.2502658Z   ssh-strict: true
+2026-10-26T13:19:04.2502932Z   ssh-user: git
+2026-10-26T13:19:04.2503200Z   persist-credentials: true
+2026-10-26T13:19:04.2503494Z   clean: true
+2026-10-26T13:19:04.2503757Z   sparse-checkout-cone-mode: true
+2026-10-26T13:19:04.2504067Z   fetch-depth: 1
+2026-10-26T13:19:04.2504322Z   fetch-tags: false
+2026-10-26T13:19:04.2504591Z   show-progress: true
+2026-10-26T13:19:04.2504870Z   lfs: false
+2026-10-26T13:19:04.2505132Z   submodules: false
+2026-10-26T13:19:04.2505397Z   set-safe-directory: true
+2026-10-26T13:19:04.2505705Z   allow-unsafe-pr-checkout: false
+2026-10-26T13:19:04.2506784Z ##[endgroup]
+2026-10-26T13:19:04.3603362Z Syncing repository: Aneesh495/caissa
+2026-10-26T13:19:04.3605743Z ##[group]Getting Git version info
+2026-10-26T13:19:04.3609702Z Working directory is '/home/runner/work/caissa/caissa'
+2026-10-26T13:19:04.3611109Z [command]/usr/bin/git version
+2026-10-26T13:19:04.3754913Z git version 2.55.0
+2026-10-26T13:19:04.3788636Z ##[endgroup]
+2026-10-26T13:19:04.3796480Z Temporarily overriding HOME='/home/runner/work/_temp/f898b0c1-a543-4faa-a084-0f28665cba19' before making global git config changes
+2026-10-26T13:19:04.3797955Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T13:19:04.3803071Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/caissa/caissa
+2026-10-26T13:19:04.3869875Z Deleting the contents of '/home/runner/work/caissa/caissa'
+2026-10-26T13:19:04.3875467Z ##[group]Initializing the repository
+2026-10-26T13:19:04.3881813Z [command]/usr/bin/git init /home/runner/work/caissa/caissa
+2026-10-26T13:19:04.4013567Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-26T13:19:04.4015073Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-26T13:19:04.4016215Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-26T13:19:04.4016962Z hint: call:
+2026-10-26T13:19:04.4017375Z hint:
+2026-10-26T13:19:04.4017891Z hint: 	git config --global init.defaultBranch <name>
+2026-10-26T13:19:04.4018773Z hint:
+2026-10-26T13:19:04.4019473Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-26T13:19:04.4020381Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-26T13:19:04.4021088Z hint:
+2026-10-26T13:19:04.4021514Z hint: 	git branch -m <name>
+2026-10-26T13:19:04.4021965Z hint:
+2026-10-26T13:19:04.4022558Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-26T13:19:04.4023568Z Initialized empty Git repository in /home/runner/work/caissa/caissa/.git/
+2026-10-26T13:19:04.4029385Z [command]/usr/bin/git remote add origin https://github.com/Aneesh495/caissa
+2026-10-26T13:19:04.4082110Z ##[endgroup]
+2026-10-26T13:19:04.4082898Z ##[group]Disabling automatic garbage collection
+2026-10-26T13:19:04.4086612Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-26T13:19:04.4129147Z ##[endgroup]
+2026-10-26T13:19:04.4129751Z ##[group]Setting up auth
+2026-10-26T13:19:04.4130235Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T13:19:04.4188308Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T13:19:04.4609119Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T13:19:04.4647031Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T13:19:04.4875700Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T13:19:04.4914054Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T13:19:04.5143636Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-26T13:19:04.5189221Z ##[endgroup]
+2026-10-26T13:19:04.5189922Z ##[group]Fetching the repository
+2026-10-26T13:19:04.5200575Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +1deecce362cf12d9758e1af4bbebb5bbdda95fb1:refs/remotes/origin/main
+2026-10-26T13:19:15.0264797Z From https://github.com/Aneesh495/caissa
+2026-10-26T13:19:15.0265362Z  * [new ref]         1deecce362cf12d9758e1af4bbebb5bbdda95fb1 -> origin/main
+2026-10-26T13:19:15.0269956Z ##[endgroup]
+2026-10-26T13:19:15.0270485Z ##[group]Determining the checkout info
+2026-10-26T13:19:15.0277602Z ##[endgroup]
+2026-10-26T13:19:15.0279669Z [command]/usr/bin/git sparse-checkout disable
+2026-10-26T13:19:15.0334635Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-26T13:19:15.0369139Z ##[group]Checking out the ref
+2026-10-26T13:19:15.0373958Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-26T13:19:16.1121045Z Updating files:  70% (2147/3063)
+2026-10-26T13:19:16.1184200Z Updating files:  71% (2175/3063)
+2026-10-26T13:19:16.1198511Z Updating files:  72% (2206/3063)
+2026-10-26T13:19:16.1213835Z Updating files:  73% (2236/3063)
+2026-10-26T13:19:16.1264639Z Updating files:  74% (2267/3063)
+2026-10-26T13:19:16.1278856Z Updating files:  75% (2298/3063)
+2026-10-26T13:19:16.1522044Z Updating files:  76% (2328/3063)
+2026-10-26T13:19:16.1770212Z Updating files:  77% (2359/3063)
+2026-10-26T13:19:16.1800335Z Updating files:  78% (2390/3063)
+2026-10-26T13:19:16.1822349Z Updating files:  79% (2420/3063)
+2026-10-26T13:19:16.1848434Z Updating files:  80% (2451/3063)
+2026-10-26T13:19:16.1989617Z Updating files:  81% (2482/3063)
+2026-10-26T13:19:17.1479879Z Updating files:  82% (2512/3063)
+2026-10-26T13:19:17.2664802Z Updating files:  82% (2530/3063)
+2026-10-26T13:19:17.2682023Z Updating files:  83% (2543/3063)
+2026-10-26T13:19:17.2757840Z Updating files:  84% (2573/3063)
+2026-10-26T13:19:17.2788542Z Updating files:  85% (2604/3063)
+2026-10-26T13:19:17.2876716Z Updating files:  86% (2635/3063)
+2026-10-26T13:19:17.2893840Z Updating files:  87% (2665/3063)
+2026-10-26T13:19:17.2913850Z Updating files:  88% (2696/3063)
+2026-10-26T13:19:17.2933411Z Updating files:  89% (2727/3063)
+2026-10-26T13:19:17.3002178Z Updating files:  90% (2757/3063)
+2026-10-26T13:19:17.3052772Z Updating files:  91% (2788/3063)
+2026-10-26T13:19:17.3126157Z Updating files:  92% (2818/3063)
+2026-10-26T13:19:17.3150627Z Updating files:  93% (2849/3063)
+2026-10-26T13:19:17.3175555Z Updating files:  94% (2880/3063)
+2026-10-26T13:19:17.3202567Z Updating files:  95% (2910/3063)
+2026-10-26T13:19:17.3231963Z Updating files:  96% (2941/3063)
+2026-10-26T13:19:17.3253255Z Updating files:  97% (2972/3063)
+2026-10-26T13:19:17.3277384Z Updating files:  98% (3002/3063)
+2026-10-26T13:19:17.3302374Z Updating files:  99% (3033/3063)
+2026-10-26T13:19:17.3303093Z Updating files: 100% (3063/3063)
+2026-10-26T13:19:17.3303597Z Updating files: 100% (3063/3063), done.
+2026-10-26T13:19:17.3352775Z Switched to a new branch 'main'
+2026-10-26T13:19:17.3359311Z branch 'main' set up to track 'origin/main'.
+2026-10-26T13:19:17.3477962Z ##[endgroup]
+2026-10-26T13:19:17.3531882Z [command]/usr/bin/git log -1 --format=%H
+2026-10-26T13:19:17.3560159Z 1deecce362cf12d9758e1af4bbebb5bbdda95fb1
+2026-10-26T13:19:17.3802588Z ##[group]Run python3 - <<'PY'
+2026-10-26T13:19:17.3802990Z [36;1mpython3 - <<'PY'[0m
+2026-10-26T13:19:17.3803253Z [36;1mimport json,os,time[0m
+2026-10-26T13:19:17.3803649Z [36;1mrule=json.load(open('config/semantic-audit-development-v1.json'))[0m
+2026-10-26T13:19:17.3804219Z [36;1massert int(os.environ['GITHUB_RUN_NUMBER'])<=rule['maximum_ci_executions'][0m
+2026-10-26T13:19:17.3804713Z [36;1massert int(os.environ['GITHUB_RUN_ATTEMPT'])==1[0m
+2026-10-26T13:19:17.3805153Z [36;1massert time.time()<rule['deadline_unix']<rule['parent_deadline_unix'][0m
+2026-10-26T13:19:17.3805529Z [36;1mPY[0m
+2026-10-26T13:19:17.4073325Z shell: /usr/bin/bash -e {0}
+2026-10-26T13:19:17.4073653Z ##[endgroup]
+2026-10-26T13:19:17.4548310Z ##[group]Run git fetch --no-tags --depth=1 origin 5803cc485420b19eb96dda2c29f81fcfc6b09b6b
+2026-10-26T13:19:17.4548957Z [36;1mgit fetch --no-tags --depth=1 origin 5803cc485420b19eb96dda2c29f81fcfc6b09b6b[0m
+2026-10-26T13:19:17.4611472Z shell: /usr/bin/bash -e {0}
+2026-10-26T13:19:17.4611745Z ##[endgroup]
+2026-10-26T13:19:17.7491717Z From https://github.com/Aneesh495/caissa
+2026-10-26T13:19:17.7492437Z  * branch            5803cc485420b19eb96dda2c29f81fcfc6b09b6b -> FETCH_HEAD
+2026-10-26T13:19:17.7592325Z ##[group]Run actions/setup-python@v5
+2026-10-26T13:19:17.7592623Z with:
+2026-10-26T13:19:17.7592834Z   python-version: 3.12
+2026-10-26T13:19:17.7593057Z   check-latest: false
+2026-10-26T13:19:17.7595272Z   token: ***
+2026-10-26T13:19:17.7595490Z   update-environment: true
+2026-10-26T13:19:17.7595735Z   allow-prereleases: false
+2026-10-26T13:19:17.7596389Z   freethreaded: false
+2026-10-26T13:19:17.7596620Z ##[endgroup]
+2026-10-26T13:19:17.8972118Z ##[group]Installed versions
+2026-10-26T13:19:17.9074902Z (node:2264) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T13:19:17.9075659Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T13:19:17.9076806Z Successfully set up CPython (3.12.15)
+2026-10-26T13:19:17.9077559Z ##[endgroup]
+2026-10-26T13:19:17.9232264Z ##[group]Run python -m pip install numpy==2.2.6 chess==1.11.2
+2026-10-26T13:19:17.9232737Z [36;1mpython -m pip install numpy==2.2.6 chess==1.11.2[0m
+2026-10-26T13:19:17.9367794Z shell: /usr/bin/bash -e {0}
+2026-10-26T13:19:17.9369176Z env:
+2026-10-26T13:19:17.9369903Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:17.9371062Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-26T13:19:17.9372247Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:17.9373256Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:17.9374174Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:17.9374838Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-26T13:19:17.9375390Z ##[endgroup]
+2026-10-26T13:19:19.1122629Z Collecting numpy==2.2.6
+2026-10-26T13:19:19.1601049Z   Downloading numpy-2.2.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (62 kB)
+2026-10-26T13:19:19.1976812Z Collecting chess==1.11.2
+2026-10-26T13:19:19.2009527Z   Downloading chess-1.11.2.tar.gz (6.1 MB)
+2026-10-26T13:19:19.2574390Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.1/6.1 MB 138.0 MB/s  0:00:00
+2026-10-26T13:19:19.3988236Z   Installing build dependencies: started
+2026-10-26T13:19:20.2418277Z   Installing build dependencies: finished with status 'done'
+2026-10-26T13:19:20.2426126Z   Getting requirements to build wheel: started
+2026-10-26T13:19:20.7126391Z   Getting requirements to build wheel: finished with status 'done'
+2026-10-26T13:19:20.7136536Z   Preparing metadata (pyproject.toml): started
+2026-10-26T13:19:20.9430135Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-10-26T13:19:20.9486951Z Downloading numpy-2.2.6-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (16.5 MB)
+2026-10-26T13:19:21.0102395Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.5/16.5 MB 276.1 MB/s  0:00:00
+2026-10-26T13:19:21.0431250Z Building wheels for collected packages: chess
+2026-10-26T13:19:21.0440423Z   Building wheel for chess (pyproject.toml): started
+2026-10-26T13:19:21.3303456Z   Building wheel for chess (pyproject.toml): finished with status 'done'
+2026-10-26T13:19:21.3310370Z   Created wheel for chess: filename=chess-1.11.2-py3-none-any.whl size=147878 sha256=8b110b2584e2164e854e30292bc35ab744f7c2306bfad535b955f6dea0553557
+2026-10-26T13:19:21.3312237Z   Stored in directory: /home/runner/.cache/pip/wheels/83/1f/4e/8f4300f7dd554eb8de70ddfed96e94d3d030ace10c5b53d447
+2026-10-26T13:19:21.3340394Z Successfully built chess
+2026-10-26T13:19:21.3605412Z Installing collected packages: numpy, chess
+2026-10-26T13:19:23.4559295Z 
+2026-10-26T13:19:23.4569995Z Successfully installed chess-1.11.2 numpy-2.2.6
+2026-10-26T13:19:23.4579179Z 
+2026-10-26T13:19:23.4579529Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-26T13:19:23.4580155Z [notice] To update, run: pip install --upgrade pip
+2026-10-26T13:19:23.5347020Z ##[group]Run cmake -S . -B build-g14 -DCMAKE_BUILD_TYPE=Release
+2026-10-26T13:19:23.5347541Z [36;1mcmake -S . -B build-g14 -DCMAKE_BUILD_TYPE=Release[0m
+2026-10-26T13:19:23.5347937Z [36;1mcmake --build build-g14 --target caissa -j 2[0m
+2026-10-26T13:19:23.5410665Z shell: /usr/bin/bash -e {0}
+2026-10-26T13:19:23.5410939Z env:
+2026-10-26T13:19:23.5411211Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:23.5411663Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-26T13:19:23.5412099Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:23.5412487Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:23.5412876Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:23.5413283Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-26T13:19:23.5413616Z ##[endgroup]
+2026-10-26T13:19:23.7519894Z -- The CXX compiler identification is GNU 13.3.0
+2026-10-26T13:19:23.7682430Z -- Detecting CXX compiler ABI info
+2026-10-26T13:19:23.8703877Z -- Detecting CXX compiler ABI info - done
+2026-10-26T13:19:23.8879533Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-10-26T13:19:23.8886907Z -- Detecting CXX compile features
+2026-10-26T13:19:23.8895166Z -- Detecting CXX compile features - done
+2026-10-26T13:19:24.1421380Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2026-10-26T13:19:24.2396505Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2026-10-26T13:19:24.2415212Z -- Found Threads: TRUE
+2026-10-26T13:19:24.2454285Z -- Configuring done (0.7s)
+2026-10-26T13:19:24.2888105Z -- Generating done (0.0s)
+2026-10-26T13:19:24.2891153Z -- Build files have been written to: /home/runner/work/caissa/caissa/build-g14
+2026-10-26T13:19:24.3148477Z [  4%] Building CXX object CMakeFiles/caissa_core.dir/src/version.cpp.o
+2026-10-26T13:19:24.3150434Z [  8%] Building CXX object CMakeFiles/caissa_core.dir/src/attacks.cpp.o
+2026-10-26T13:19:24.4603490Z [ 13%] Building CXX object CMakeFiles/caissa_core.dir/src/position.cpp.o
+2026-10-26T13:19:25.0555339Z [ 17%] Building CXX object CMakeFiles/caissa_core.dir/src/position_line.cpp.o
+2026-10-26T13:19:25.2352110Z [ 21%] Building CXX object CMakeFiles/caissa_core.dir/src/movegen.cpp.o
+2026-10-26T13:19:25.5708224Z [ 26%] Building CXX object CMakeFiles/caissa_core.dir/src/reference.cpp.o
+2026-10-26T13:19:25.9496797Z [ 30%] Building CXX object CMakeFiles/caissa_core.dir/src/rules.cpp.o
+2026-10-26T13:19:26.1061163Z [ 34%] Building CXX object CMakeFiles/caissa_core.dir/src/evaluation.cpp.o
+2026-10-26T13:19:26.3267252Z [ 39%] Building CXX object CMakeFiles/caissa_core.dir/src/table.cpp.o
+2026-10-26T13:19:26.6584862Z [ 43%] Building CXX object CMakeFiles/caissa_core.dir/src/search.cpp.o
+2026-10-26T13:19:26.9540799Z [ 47%] Building CXX object CMakeFiles/caissa_core.dir/src/search_probe.cpp.o
+2026-10-26T13:19:27.8670216Z /home/runner/work/caissa/caissa/src/search_probe.cpp: In function ‘int caissa::{anonymous}::number(const std::string&, int, int)’:
+2026-10-26T13:19:27.8672300Z /home/runner/work/caissa/caissa/src/search_probe.cpp:18:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:27.8674101Z    18 |     if(error!=std::errc{}||end!=text.data()+text.size()||value<low||value>high)throw InputError("search probe integer outside bounds");return value;
+2026-10-26T13:19:27.8675190Z       |     ^~
+2026-10-26T13:19:27.8676781Z /home/runner/work/caissa/caissa/src/search_probe.cpp:18:136: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:27.8678689Z    18 |     if(error!=std::errc{}||end!=text.data()+text.size()||value<low||value>high)throw InputError("search probe integer outside bounds");return value;
+2026-10-26T13:19:27.8680012Z       |                                                                                                                                        ^~~~~~
+2026-10-26T13:19:27.8682279Z /home/runner/work/caissa/caissa/src/search_probe.cpp: In function ‘caissa::Key caissa::{anonymous}::unsigned_number(const std::string&, int)’:
+2026-10-26T13:19:27.8697608Z /home/runner/work/caissa/caissa/src/search_probe.cpp:22:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:27.8707724Z    22 |     if(text.empty()||error!=std::errc{}||end!=text.data()+text.size())throw InputError("search probe unsigned integer malformed");return value;
+2026-10-26T13:19:27.8709015Z       |     ^~
+2026-10-26T13:19:27.8710421Z /home/runner/work/caissa/caissa/src/search_probe.cpp:22:131: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:27.8712407Z    22 |     if(text.empty()||error!=std::errc{}||end!=text.data()+text.size())throw InputError("search probe unsigned integer malformed");return value;
+2026-10-26T13:19:27.8713939Z       |                                                                                                                                   ^~~~~~
+2026-10-26T13:19:28.4310683Z [ 52%] Building CXX object CMakeFiles/caissa_core.dir/src/uci.cpp.o
+2026-10-26T13:19:28.7593207Z [ 56%] Building CXX object CMakeFiles/caissa_core.dir/src/selfplay.cpp.o
+2026-10-26T13:19:29.3786506Z /home/runner/work/caissa/caissa/src/uci.cpp: In function ‘uint64_t caissa::{anonymous}::number(std::string_view, uint64_t)’:
+2026-10-26T13:19:29.3788871Z /home/runner/work/caissa/caissa/src/uci.cpp:20:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:29.3790716Z    20 |     if(e!=std::errc{}||p!=s.data()+s.size()||value>maximum)throw InputError("invalid or oversized integer");return value;
+2026-10-26T13:19:29.3791687Z       |     ^~
+2026-10-26T13:19:29.3793007Z /home/runner/work/caissa/caissa/src/uci.cpp:20:109: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:29.3794651Z    20 |     if(e!=std::errc{}||p!=s.data()+s.size()||value>maximum)throw InputError("invalid or oversized integer");return value;
+2026-10-26T13:19:29.3795683Z       |                                                                                                             ^~~~~~
+2026-10-26T13:19:29.4223497Z /home/runner/work/caissa/caissa/src/uci.cpp: In member function ‘void caissa::{anonymous}::Session::go(const std::vector<std::__cxx11::basic_string<char> >&)’:
+2026-10-26T13:19:29.4226448Z /home/runner/work/caissa/caissa/src/uci.cpp:135:17: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:29.4251476Z   135 |                 if(limits.root_moves.empty())throw InputError("searchmoves missing legal moves");continue;
+2026-10-26T13:19:29.4252753Z       |                 ^~
+2026-10-26T13:19:29.4254410Z /home/runner/work/caissa/caissa/src/uci.cpp:135:98: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:29.4256565Z   135 |                 if(limits.root_moves.empty())throw InputError("searchmoves missing legal moves");continue;
+2026-10-26T13:19:29.4257882Z       |                                                                                                  ^~~~~~~~
+2026-10-26T13:19:29.4259575Z /home/runner/work/caissa/caissa/src/uci.cpp:137:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:29.4261242Z   137 |             if(i+1>=t.size())throw InputError("go field missing value");auto value=number(t[++i]);
+2026-10-26T13:19:29.4262301Z       |             ^~
+2026-10-26T13:19:29.4263795Z /home/runner/work/caissa/caissa/src/uci.cpp:137:73: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:29.4265550Z   137 |             if(i+1>=t.size())throw InputError("go field missing value");auto value=number(t[++i]);
+2026-10-26T13:19:29.4266954Z       |                                                                         ^~~~
+2026-10-26T13:19:30.0998964Z [ 60%] Building CXX object CMakeFiles/caissa_core.dir/src/network.cpp.o
+2026-10-26T13:19:30.4161923Z [ 65%] Building CXX object CMakeFiles/caissa_core.dir/src/network_kernel.cpp.o
+2026-10-26T13:19:30.7918829Z /home/runner/work/caissa/caissa/src/network.cpp: In static member function ‘static std::shared_ptr<const caissa::Network> caissa::Network::load(const std::filesystem::__cxx11::path&)’:
+2026-10-26T13:19:30.7921385Z /home/runner/work/caissa/caissa/src/network.cpp:56:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:30.7922802Z    56 |     for(auto& value:net->embedding_)value=reader.i16();for(auto& value:net->bias0_)value=reader.i32();
+2026-10-26T13:19:30.7923636Z       |     ^~~
+2026-10-26T13:19:30.7924613Z /home/runner/work/caissa/caissa/src/network.cpp:56:56: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-10-26T13:19:30.7925599Z    56 |     for(auto& value:net->embedding_)value=reader.i16();for(auto& value:net->bias0_)value=reader.i32();
+2026-10-26T13:19:30.7926666Z       |                                                        ^~~
+2026-10-26T13:19:30.7927909Z /home/runner/work/caissa/caissa/src/network.cpp:57:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:30.7929250Z    57 |     for(auto& value:net->weights1_)value=reader.i16();for(auto& value:net->bias1_)value=reader.i32();
+2026-10-26T13:19:30.7930575Z       |     ^~~
+2026-10-26T13:19:30.7931429Z /home/runner/work/caissa/caissa/src/network.cpp:57:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-10-26T13:19:30.7932266Z    57 |     for(auto& value:net->weights1_)value=reader.i16();for(auto& value:net->bias1_)value=reader.i32();
+2026-10-26T13:19:30.7932764Z       |                                                       ^~~
+2026-10-26T13:19:30.7933496Z /home/runner/work/caissa/caissa/src/network.cpp:58:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:30.7934423Z    58 |     for(auto& value:net->weights2_)value=reader.i16();for(auto& value:net->bias2_)value=reader.i32();
+2026-10-26T13:19:30.7934904Z       |     ^~~
+2026-10-26T13:19:30.7935598Z /home/runner/work/caissa/caissa/src/network.cpp:58:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-10-26T13:19:30.7936669Z    58 |     for(auto& value:net->weights2_)value=reader.i16();for(auto& value:net->bias2_)value=reader.i32();
+2026-10-26T13:19:30.7937172Z       |                                                       ^~~
+2026-10-26T13:19:30.7937854Z /home/runner/work/caissa/caissa/src/network.cpp:59:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:30.7938536Z    59 |     for(auto& value:net->weights3_)value=reader.i16();net->bias3_=reader.i32();
+2026-10-26T13:19:30.7938920Z       |     ^~~
+2026-10-26T13:19:30.7939597Z /home/runner/work/caissa/caissa/src/network.cpp:59:55: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-10-26T13:19:30.7940353Z    59 |     for(auto& value:net->weights3_)value=reader.i16();net->bias3_=reader.i32();
+2026-10-26T13:19:30.7940767Z       |                                                       ^~~
+2026-10-26T13:19:31.2686617Z [ 69%] Building CXX object CMakeFiles/caissa_core.dir/src/accumulator_stack.cpp.o
+2026-10-26T13:19:31.9697412Z [ 73%] Building CXX object CMakeFiles/caissa_core.dir/src/state_probe.cpp.o
+2026-10-26T13:19:32.6086705Z [ 78%] Building CXX object CMakeFiles/caissa_core.dir/src/notation.cpp.o
+2026-10-26T13:19:32.6964344Z /home/runner/work/caissa/caissa/src/state_probe.cpp: In member function ‘std::string caissa::{anonymous}::StateProbe::state()’:
+2026-10-26T13:19:32.6966761Z /home/runner/work/caissa/caissa/src/state_probe.cpp:91:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:32.6968018Z    91 |             if(c==Color::black)out<<',';out<<'[';
+2026-10-26T13:19:32.6969034Z       |             ^~
+2026-10-26T13:19:32.6970446Z /home/runner/work/caissa/caissa/src/state_probe.cpp:91:41: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:32.6971709Z    91 |             if(c==Color::black)out<<',';out<<'[';
+2026-10-26T13:19:32.6972257Z       |                                         ^~~
+2026-10-26T13:19:32.6988167Z /home/runner/work/caissa/caissa/src/state_probe.cpp:99:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:32.6989310Z    99 |             if(c)out<<',';out<<'[';
+2026-10-26T13:19:32.6989815Z       |             ^~
+2026-10-26T13:19:32.6991189Z /home/runner/work/caissa/caissa/src/state_probe.cpp:99:27: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:32.6992428Z    99 |             if(c)out<<',';out<<'[';
+2026-10-26T13:19:32.6992937Z       |                           ^~~
+2026-10-26T13:19:33.0351737Z [ 82%] Building CXX object CMakeFiles/caissa_core.dir/src/serialization.cpp.o
+2026-10-26T13:19:33.1280451Z /home/runner/work/caissa/caissa/src/notation.cpp: In function ‘std::string caissa::san(Position&, Move)’:
+2026-10-26T13:19:33.1282289Z /home/runner/work/caissa/caissa/src/notation.cpp:21:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1283993Z    21 |         if(capture)text+='x';text+=square_name(m.to);
+2026-10-26T13:19:33.1284553Z       |         ^~
+2026-10-26T13:19:33.1286203Z /home/runner/work/caissa/caissa/src/notation.cpp:21:30: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.1287530Z    21 |         if(capture)text+='x';text+=square_name(m.to);
+2026-10-26T13:19:33.1288105Z       |                              ^~~~
+2026-10-26T13:19:33.1308674Z /home/runner/work/caissa/caissa/src/notation.cpp: In function ‘std::string caissa::{anonymous}::normalize(std::string_view)’:
+2026-10-26T13:19:33.1310589Z /home/runner/work/caissa/caissa/src/notation.cpp:29:5: warning: this ‘while’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1311996Z    29 |     while(!s.empty()&&(s.back()=='!'||s.back()=='?'||s.back()=='+'||s.back()=='#'))s.pop_back();return s;
+2026-10-26T13:19:33.1312796Z       |     ^~~~~
+2026-10-26T13:19:33.1314182Z /home/runner/work/caissa/caissa/src/notation.cpp:29:97: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘while’
+2026-10-26T13:19:33.1315703Z    29 |     while(!s.empty()&&(s.back()=='!'||s.back()=='?'||s.back()=='+'||s.back()=='#'))s.pop_back();return s;
+2026-10-26T13:19:33.1316895Z       |                                                                                                 ^~~~~~
+2026-10-26T13:19:33.1322417Z /home/runner/work/caissa/caissa/src/notation.cpp: In member function ‘caissa::{anonymous}::Token caissa::{anonymous}::Lexer::next()’:
+2026-10-26T13:19:33.1324307Z /home/runner/work/caissa/caissa/src/notation.cpp:40:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1325718Z    40 |         if(c=='(')return {TokenKind::open,"",begin};if(c==')')return {TokenKind::close,"",begin};
+2026-10-26T13:19:33.1326773Z       |         ^~
+2026-10-26T13:19:33.1328087Z /home/runner/work/caissa/caissa/src/notation.cpp:40:53: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.1329599Z    40 |         if(c=='(')return {TokenKind::open,"",begin};if(c==')')return {TokenKind::close,"",begin};
+2026-10-26T13:19:33.1330423Z       |                                                     ^~
+2026-10-26T13:19:33.1384452Z /home/runner/work/caissa/caissa/src/notation.cpp: In function ‘std::pair<std::__cxx11::basic_string<char>, std::__cxx11::basic_string<char> > caissa::{anonymous}::parse_tag(const Token&)’:
+2026-10-26T13:19:33.1387297Z /home/runner/work/caissa/caissa/src/notation.cpp:79:5: warning: this ‘while’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1388787Z    79 |     while(i<s.size()&&std::isspace(static_cast<unsigned char>(s[i])))++i;std::size_t begin=i;
+2026-10-26T13:19:33.1389605Z       |     ^~~~~
+2026-10-26T13:19:33.1390997Z /home/runner/work/caissa/caissa/src/notation.cpp:79:74: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘while’
+2026-10-26T13:19:33.1392595Z    79 |     while(i<s.size()&&std::isspace(static_cast<unsigned char>(s[i])))++i;std::size_t begin=i;
+2026-10-26T13:19:33.1393483Z       |                                                                          ^~~
+2026-10-26T13:19:33.1394827Z /home/runner/work/caissa/caissa/src/notation.cpp:81:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1396524Z    81 |     if(begin==i)Lexer::fail("invalid tag name",token.offset);std::string key=s.substr(begin,i-begin);
+2026-10-26T13:19:33.1397388Z       |     ^~
+2026-10-26T13:19:33.1398746Z /home/runner/work/caissa/caissa/src/notation.cpp:81:62: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.1400326Z    81 |     if(begin==i)Lexer::fail("invalid tag name",token.offset);std::string key=s.substr(begin,i-begin);
+2026-10-26T13:19:33.1401239Z       |                                                              ^~~
+2026-10-26T13:19:33.1402909Z /home/runner/work/caissa/caissa/src/notation.cpp:87:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1426715Z    87 |     if(!closed||i!=s.size())Lexer::fail("invalid tag trailer",token.offset);return {key,value};
+2026-10-26T13:19:33.1436524Z       |     ^~
+2026-10-26T13:19:33.1437925Z /home/runner/work/caissa/caissa/src/notation.cpp:87:77: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.1439409Z    87 |     if(!closed||i!=s.size())Lexer::fail("invalid tag trailer",token.offset);return {key,value};
+2026-10-26T13:19:33.1440296Z       |                                                                             ^~~~~~
+2026-10-26T13:19:33.1460010Z /home/runner/work/caissa/caissa/src/notation.cpp: In function ‘std::optional<caissa::Move> caissa::parse_san(Position&, std::string_view)’:
+2026-10-26T13:19:33.1461952Z /home/runner/work/caissa/caissa/src/notation.cpp:98:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1463087Z    98 |         if(found)return std::nullopt;found=m;
+2026-10-26T13:19:33.1463627Z       |         ^~
+2026-10-26T13:19:33.1464957Z /home/runner/work/caissa/caissa/src/notation.cpp:98:38: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.1466505Z    98 |         if(found)return std::nullopt;found=m;
+2026-10-26T13:19:33.1467079Z       |                                      ^~~~~
+2026-10-26T13:19:33.1499544Z /home/runner/work/caissa/caissa/src/notation.cpp: In member function ‘caissa::Position caissa::Game::position_at(std::size_t) const’:
+2026-10-26T13:19:33.1501463Z /home/runner/work/caissa/caissa/src/notation.cpp:109:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1502848Z   109 |     if(node>=nodes.size())throw InputError("variation node absent");std::vector<Move> path;
+2026-10-26T13:19:33.1503684Z       |     ^~
+2026-10-26T13:19:33.1504984Z /home/runner/work/caissa/caissa/src/notation.cpp:109:69: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.1506862Z   109 |     if(node>=nodes.size())throw InputError("variation node absent");std::vector<Move> path;
+2026-10-26T13:19:33.1507780Z       |                                                                     ^~~
+2026-10-26T13:19:33.1614259Z /home/runner/work/caissa/caissa/src/notation.cpp: In static member function ‘static caissa::Game caissa::Game::parse(std::string_view)’:
+2026-10-26T13:19:33.1616863Z /home/runner/work/caissa/caissa/src/notation.cpp:114:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1618507Z   114 |     if(source.size()>1024*1024)throw InputError("PGN exceeds 1 MiB");Game game;Lexer lexer(source);Position p=game.initial;
+2026-10-26T13:19:33.1619538Z       |     ^~
+2026-10-26T13:19:33.1620924Z /home/runner/work/caissa/caissa/src/notation.cpp:114:70: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.1622567Z   114 |     if(source.size()>1024*1024)throw InputError("PGN exceeds 1 MiB");Game game;Lexer lexer(source);Position p=game.initial;
+2026-10-26T13:19:33.1623614Z       |                                                                      ^~~~
+2026-10-26T13:19:33.1656783Z /home/runner/work/caissa/caissa/src/notation.cpp:119:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1686453Z   119 |             if(started)Lexer::fail("tag after movetext",t.offset);auto [key,value]=parse_tag(t);
+2026-10-26T13:19:33.1687323Z       |             ^~
+2026-10-26T13:19:33.1688729Z /home/runner/work/caissa/caissa/src/notation.cpp:119:67: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.1690384Z   119 |             if(started)Lexer::fail("tag after movetext",t.offset);auto [key,value]=parse_tag(t);
+2026-10-26T13:19:33.1691618Z       |                                                                   ^~~~
+2026-10-26T13:19:33.1693041Z /home/runner/work/caissa/caissa/src/notation.cpp:120:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1694616Z   120 |             if(game.tags.contains(key))Lexer::fail("duplicate tag",t.offset);game.tags.emplace(std::move(key),std::move(value));
+2026-10-26T13:19:33.1695616Z       |             ^~
+2026-10-26T13:19:33.1697396Z /home/runner/work/caissa/caissa/src/notation.cpp:120:78: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.1699137Z   120 |             if(game.tags.contains(key))Lexer::fail("duplicate tag",t.offset);game.tags.emplace(std::move(key),std::move(value));
+2026-10-26T13:19:33.1700232Z       |                                                                              ^~~~
+2026-10-26T13:19:33.1737271Z /home/runner/work/caissa/caissa/src/notation.cpp:134:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1738929Z   134 |             if(!stack.empty())Lexer::fail("result inside variation unsupported",t.offset);game.result=t.value;ended=true;continue;
+2026-10-26T13:19:33.1739930Z       |             ^~
+2026-10-26T13:19:33.1741279Z /home/runner/work/caissa/caissa/src/notation.cpp:134:91: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.1743067Z   134 |             if(!stack.empty())Lexer::fail("result inside variation unsupported",t.offset);game.result=t.value;ended=true;continue;
+2026-10-26T13:19:33.1744232Z       |                                                                                           ^~~~
+2026-10-26T13:19:33.1745658Z /home/runner/work/caissa/caissa/src/notation.cpp:136:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1747659Z   136 |         if(t.value=="e.p.")continue;started=true;auto move=parse_san(p,t.value);if(!move)Lexer::fail("illegal or ambiguous SAN "+t.value,t.offset);
+2026-10-26T13:19:33.1748748Z       |         ^~
+2026-10-26T13:19:33.1750032Z /home/runner/work/caissa/caissa/src/notation.cpp:136:37: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.1751817Z   136 |         if(t.value=="e.p.")continue;started=true;auto move=parse_san(p,t.value);if(!move)Lexer::fail("illegal or ambiguous SAN "+t.value,t.offset);
+2026-10-26T13:19:33.1752923Z       |                                     ^~~~~~~
+2026-10-26T13:19:33.1934402Z /home/runner/work/caissa/caissa/src/notation.cpp: In member function ‘std::string caissa::Game::pgn() const’:
+2026-10-26T13:19:33.1936618Z /home/runner/work/caissa/caissa/src/notation.cpp:155:5: warning: this ‘for’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.1937975Z   155 |     for(auto& [key,value]:headers)out<<'['<<key<<" \""<<quote(value)<<"\"]\n";out<<'\n';
+2026-10-26T13:19:33.1938737Z       |     ^~~
+2026-10-26T13:19:33.1940038Z /home/runner/work/caissa/caissa/src/notation.cpp:155:79: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘for’
+2026-10-26T13:19:33.1941451Z   155 |     for(auto& [key,value]:headers)out<<'['<<key<<" \""<<quote(value)<<"\"]\n";out<<'\n';
+2026-10-26T13:19:33.1942270Z       |                                                                               ^~~
+2026-10-26T13:19:33.4081934Z /home/runner/work/caissa/caissa/src/serialization.cpp: In function ‘void caissa::write_game_json(std::ostream&, const Game&)’:
+2026-10-26T13:19:33.4083897Z /home/runner/work/caissa/caissa/src/serialization.cpp:19:9: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:33.4085133Z    19 |         if(i)out<<',';auto& node=game.nodes[i];auto p=game.position_at(i);
+2026-10-26T13:19:33.4088770Z       |         ^~
+2026-10-26T13:19:33.4090122Z /home/runner/work/caissa/caissa/src/serialization.cpp:19:23: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:33.4091504Z    19 |         if(i)out<<',';auto& node=game.nodes[i];auto p=game.position_at(i);
+2026-10-26T13:19:33.4092153Z       |                       ^~~~
+2026-10-26T13:19:33.5219985Z [ 86%] Building CXX object CMakeFiles/caissa_core.dir/src/protocol_io.cpp.o
+2026-10-26T13:19:34.7434065Z [ 91%] Linking CXX static library libcaissa_core.a
+2026-10-26T13:19:34.7719738Z [ 91%] Built target caissa_core
+2026-10-26T13:19:34.7791780Z [ 95%] Building CXX object CMakeFiles/caissa.dir/apps/main.cpp.o
+2026-10-26T13:19:35.7004876Z /home/runner/work/caissa/caissa/apps/main.cpp: In function ‘uint64_t {anonymous}::parse_u64(std::string_view)’:
+2026-10-26T13:19:35.7006592Z /home/runner/work/caissa/caissa/apps/main.cpp:22:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:35.7007715Z    22 |     if(error!=std::errc{}||end!=text.data()+text.size())throw InputError("invalid unsigned integer");return value;
+2026-10-26T13:19:35.7008396Z       |     ^~
+2026-10-26T13:19:35.7009326Z /home/runner/work/caissa/caissa/apps/main.cpp:22:102: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:35.7010507Z    22 |     if(error!=std::errc{}||end!=text.data()+text.size())throw InputError("invalid unsigned integer");return value;
+2026-10-26T13:19:35.7011291Z       |                                                                                                      ^~~~~~
+2026-10-26T13:19:35.7018260Z /home/runner/work/caissa/caissa/apps/main.cpp: In function ‘int {anonymous}::parse_depth(std::string_view)’:
+2026-10-26T13:19:35.7019271Z /home/runner/work/caissa/caissa/apps/main.cpp:27:5: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:35.7020111Z    27 |     if(e!=std::errc{}||p!=s.data()+s.size()||depth<0||depth>80) throw InputError("invalid depth");return depth;
+2026-10-26T13:19:35.7020617Z       |     ^~
+2026-10-26T13:19:35.7021334Z /home/runner/work/caissa/caissa/apps/main.cpp:27:99: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:35.7022232Z    27 |     if(e!=std::errc{}||p!=s.data()+s.size()||depth<0||depth>80) throw InputError("invalid depth");return depth;
+2026-10-26T13:19:35.7022818Z       |                                                                                                   ^~~~~~
+2026-10-26T13:19:35.7137514Z /home/runner/work/caissa/caissa/apps/main.cpp: In function ‘int main(int, char**)’:
+2026-10-26T13:19:35.7138725Z /home/runner/work/caissa/caissa/apps/main.cpp:74:13: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+2026-10-26T13:19:35.7139708Z    74 |             if(!move)throw InputError("illegal requested move");auto text=san(p,*move);p.make(*move);
+2026-10-26T13:19:35.7140306Z       |             ^~
+2026-10-26T13:19:35.7141176Z /home/runner/work/caissa/caissa/apps/main.cpp:74:65: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+2026-10-26T13:19:35.7142220Z    74 |             if(!move)throw InputError("illegal requested move");auto text=san(p,*move);p.make(*move);
+2026-10-26T13:19:35.7142846Z       |                                                                 ^~~~
+2026-10-26T13:19:36.2650989Z [100%] Linking CXX executable caissa
+2026-10-26T13:19:38.1057110Z In function ‘construct_at’,
+2026-10-26T13:19:38.1087141Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1088712Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1117026Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1126870Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1156948Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1186706Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1216980Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1218296Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1246741Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1276410Z       |              ^
+2026-10-26T13:19:38.1306681Z In member function ‘allocate’,
+2026-10-26T13:19:38.1307903Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1337072Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1366877Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1396793Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1398344Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1427195Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 66 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1428469Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1429211Z       |                                                       ^
+2026-10-26T13:19:38.1429838Z In function ‘construct_at’,
+2026-10-26T13:19:38.1430692Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1431901Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1433098Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1434251Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1435349Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1466839Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1468018Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1469455Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1471100Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1471826Z       |              ^
+2026-10-26T13:19:38.1472319Z In member function ‘allocate’,
+2026-10-26T13:19:38.1473087Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1474114Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1475189Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1476458Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1477590Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1479101Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 70 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1480308Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1481054Z       |                                                       ^
+2026-10-26T13:19:38.1481668Z In function ‘construct_at’,
+2026-10-26T13:19:38.1482440Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1483606Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1485076Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1486485Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1487608Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1488603Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1489678Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1490927Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1492051Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1492711Z       |              ^
+2026-10-26T13:19:38.1493185Z In member function ‘allocate’,
+2026-10-26T13:19:38.1493948Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1494994Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1526384Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1527418Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1528443Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1529860Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 74 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1531053Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1531764Z       |                                                       ^
+2026-10-26T13:19:38.1532348Z In function ‘construct_at’,
+2026-10-26T13:19:38.1533104Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1534244Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1535398Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1536742Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1537800Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1538743Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1539812Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1541280Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1542415Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1543052Z       |              ^
+2026-10-26T13:19:38.1543510Z In member function ‘allocate’,
+2026-10-26T13:19:38.1544270Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1545273Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1546475Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1547418Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1548460Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1549851Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 78 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1550944Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1551618Z       |                                                       ^
+2026-10-26T13:19:38.1552195Z In function ‘construct_at’,
+2026-10-26T13:19:38.1552925Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1554242Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1555387Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1586974Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1588001Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1588874Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1589879Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1590971Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1592004Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1592589Z       |              ^
+2026-10-26T13:19:38.1593017Z In member function ‘allocate’,
+2026-10-26T13:19:38.1593687Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1594576Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1595450Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1596508Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1597458Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1598898Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 82 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1600036Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1600688Z       |                                                       ^
+2026-10-26T13:19:38.1601239Z In function ‘construct_at’,
+2026-10-26T13:19:38.1601916Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1602939Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1604069Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1605138Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1606373Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1607521Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1608581Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1609765Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1610837Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1611449Z       |              ^
+2026-10-26T13:19:38.1611873Z In member function ‘allocate’,
+2026-10-26T13:19:38.1612580Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1613506Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1614344Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1615249Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1626899Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1628481Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 86 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1629713Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1630787Z       |                                                       ^
+2026-10-26T13:19:38.1631439Z In function ‘construct_at’,
+2026-10-26T13:19:38.1632251Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1633441Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1634662Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1636054Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1637244Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1638134Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1639048Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1640215Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1641477Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1642132Z       |              ^
+2026-10-26T13:19:38.1642610Z In member function ‘allocate’,
+2026-10-26T13:19:38.1643360Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1644377Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1645330Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1646663Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1647726Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1649128Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 90 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1650274Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1650976Z       |                                                       ^
+2026-10-26T13:19:38.1651547Z In function ‘construct_at’,
+2026-10-26T13:19:38.1652293Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1653381Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1654518Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1656063Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1657156Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1658123Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1659183Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1660472Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1661598Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1662263Z       |              ^
+2026-10-26T13:19:38.1662739Z In member function ‘allocate’,
+2026-10-26T13:19:38.1663511Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1664524Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1665559Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1666903Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1668065Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1669614Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 94 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1671149Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1671863Z       |                                                       ^
+2026-10-26T13:19:38.1672421Z In function ‘construct_at’,
+2026-10-26T13:19:38.1673135Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1674275Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1675465Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1677062Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1678166Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1679192Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1680318Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1681545Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1682672Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1683321Z       |              ^
+2026-10-26T13:19:38.1683810Z In member function ‘allocate’,
+2026-10-26T13:19:38.1684573Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1685614Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1686977Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1688011Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1689150Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1690668Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 98 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1691898Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1692645Z       |                                                       ^
+2026-10-26T13:19:38.1693282Z In function ‘construct_at’,
+2026-10-26T13:19:38.1694076Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1695229Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1697083Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1698252Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1699344Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1700564Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1701666Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1702901Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1704037Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1704703Z       |              ^
+2026-10-26T13:19:38.1705172Z In member function ‘allocate’,
+2026-10-26T13:19:38.1706266Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1707329Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1708359Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1709321Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1710410Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1711921Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 102 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1713124Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1713846Z       |                                                       ^
+2026-10-26T13:19:38.1714441Z In function ‘construct_at’,
+2026-10-26T13:19:38.1715207Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1716628Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1717816Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1718940Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1720024Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1720998Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1722086Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1723328Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1724463Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1725123Z       |              ^
+2026-10-26T13:19:38.1725599Z In member function ‘allocate’,
+2026-10-26T13:19:38.1726565Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1727577Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1728595Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1729607Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1730689Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1732202Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 106 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1733404Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1734121Z       |                                                       ^
+2026-10-26T13:19:38.1734705Z In function ‘construct_at’,
+2026-10-26T13:19:38.1735647Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1737128Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1738349Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1739789Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1740863Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1741835Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1742940Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1744193Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1745366Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1746388Z       |              ^
+2026-10-26T13:19:38.1746914Z In member function ‘allocate’,
+2026-10-26T13:19:38.1747702Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1748768Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1749872Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1750894Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1752004Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1753546Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 110 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1754767Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1755473Z       |                                                       ^
+2026-10-26T13:19:38.1756444Z In function ‘construct_at’,
+2026-10-26T13:19:38.1757230Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1758406Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1759661Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1760917Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1762017Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1763022Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1764125Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1765361Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1767309Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1768024Z       |              ^
+2026-10-26T13:19:38.1768536Z In member function ‘allocate’,
+2026-10-26T13:19:38.1769320Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1770377Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1771389Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1772363Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1773440Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1774947Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 114 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1776405Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1777137Z       |                                                       ^
+2026-10-26T13:19:38.1777741Z In function ‘construct_at’,
+2026-10-26T13:19:38.1778524Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1779698Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1781139Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1782267Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1783352Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1784337Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1785412Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1786920Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1788062Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1788734Z       |              ^
+2026-10-26T13:19:38.1789222Z In member function ‘allocate’,
+2026-10-26T13:19:38.1790003Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1791006Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1792012Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1792989Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1794082Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1795568Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 118 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1820219Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1820991Z       |                                                       ^
+2026-10-26T13:19:38.1821666Z In function ‘construct_at’,
+2026-10-26T13:19:38.1822491Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1823719Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1824986Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1826470Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1827614Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1828616Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1829980Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1831254Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1832392Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1833057Z       |              ^
+2026-10-26T13:19:38.1833522Z In member function ‘allocate’,
+2026-10-26T13:19:38.1834271Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1835298Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1836572Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1837551Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1838626Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1840154Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 122 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1841364Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1842104Z       |                                                       ^
+2026-10-26T13:19:38.1842946Z In function ‘construct_at’,
+2026-10-26T13:19:38.1843731Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1844885Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1846855Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1848094Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1849174Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1850200Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1851298Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1852548Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1853689Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1854337Z       |              ^
+2026-10-26T13:19:38.1854801Z In member function ‘allocate’,
+2026-10-26T13:19:38.1855564Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1856881Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1857960Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1858981Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1860200Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1861746Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 126 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1862982Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1863747Z       |                                                       ^
+2026-10-26T13:19:38.1864376Z In function ‘construct_at’,
+2026-10-26T13:19:38.1865154Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1866579Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1867822Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1869014Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1870383Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1871413Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1872532Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1873778Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1874967Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1875633Z       |              ^
+2026-10-26T13:19:38.1876417Z In member function ‘allocate’,
+2026-10-26T13:19:38.1877192Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1878247Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1879310Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1880345Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1881460Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1882969Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 67 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1884563Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1885309Z       |                                                       ^
+2026-10-26T13:19:38.1886220Z In function ‘construct_at’,
+2026-10-26T13:19:38.1887041Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1888215Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1889405Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1890563Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1891670Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1892649Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1893737Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1894999Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1896350Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1897018Z       |              ^
+2026-10-26T13:19:38.1897497Z In member function ‘allocate’,
+2026-10-26T13:19:38.1898257Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1899281Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1900322Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1901313Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1902409Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1903909Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 71 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1905124Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1906053Z       |                                                       ^
+2026-10-26T13:19:38.1906656Z In function ‘construct_at’,
+2026-10-26T13:19:38.1907423Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1908587Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1909776Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1911125Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1912220Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1913193Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1914287Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1915521Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1916892Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1917585Z       |              ^
+2026-10-26T13:19:38.1918098Z In member function ‘allocate’,
+2026-10-26T13:19:38.1918892Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1919945Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1921027Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1922018Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1923140Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1924922Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 75 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1926418Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1927152Z       |                                                       ^
+2026-10-26T13:19:38.1927813Z In function ‘construct_at’,
+2026-10-26T13:19:38.1928616Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1929806Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1931002Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1932172Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1933400Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1934434Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1935530Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1937154Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1938264Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1938954Z       |              ^
+2026-10-26T13:19:38.1939476Z In member function ‘allocate’,
+2026-10-26T13:19:38.1940310Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1941337Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1942401Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1943432Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1944580Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1946356Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 79 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1947607Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1948345Z       |                                                       ^
+2026-10-26T13:19:38.1948962Z In function ‘construct_at’,
+2026-10-26T13:19:38.1949762Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1951175Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1952377Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1953493Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1954558Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1955547Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1956878Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1958116Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1959236Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1959970Z       |              ^
+2026-10-26T13:19:38.1960444Z In member function ‘allocate’,
+2026-10-26T13:19:38.1961215Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1962229Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1963241Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1964436Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1965532Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1967247Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 83 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1968445Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1969171Z       |                                                       ^
+2026-10-26T13:19:38.1969770Z In function ‘construct_at’,
+2026-10-26T13:19:38.1970550Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1971687Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1972859Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1973996Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1975066Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1976238Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1977348Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1978575Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.1979720Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.1980399Z       |              ^
+2026-10-26T13:19:38.1980856Z In member function ‘allocate’,
+2026-10-26T13:19:38.1981595Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.1982591Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.1983619Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.1984600Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.1985730Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1987518Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 87 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.1988711Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.1989446Z       |                                                       ^
+2026-10-26T13:19:38.1990274Z In function ‘construct_at’,
+2026-10-26T13:19:38.1991111Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.1992304Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.1993498Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.1994719Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.1996093Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.1997148Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.1998281Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.1999554Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.2000717Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.2001358Z       |              ^
+2026-10-26T13:19:38.2001827Z In member function ‘allocate’,
+2026-10-26T13:19:38.2002551Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.2003747Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.2004695Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.2005580Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.2006942Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2008434Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 91 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.2009590Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.2010327Z       |                                                       ^
+2026-10-26T13:19:38.2010920Z In function ‘construct_at’,
+2026-10-26T13:19:38.2011691Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.2012833Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.2014034Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.2015164Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.2016477Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.2017480Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.2018580Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2019847Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.2020988Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.2021652Z       |              ^
+2026-10-26T13:19:38.2022119Z In member function ‘allocate’,
+2026-10-26T13:19:38.2022892Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.2023905Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.2024922Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.2026125Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.2027243Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2028732Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 95 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.2030145Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.2030899Z       |                                                       ^
+2026-10-26T13:19:38.2031502Z In function ‘construct_at’,
+2026-10-26T13:19:38.2032278Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.2033446Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.2034628Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.2035712Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.2036976Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.2037915Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.2038931Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2040017Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.2041128Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.2041756Z       |              ^
+2026-10-26T13:19:38.2042416Z In member function ‘allocate’,
+2026-10-26T13:19:38.2043133Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.2044049Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.2045013Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.2046162Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.2047202Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2048678Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 99 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.2049867Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.2050551Z       |                                                       ^
+2026-10-26T13:19:38.2051137Z In function ‘construct_at’,
+2026-10-26T13:19:38.2051902Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.2053038Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.2054201Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.2055316Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.2056597Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.2057552Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.2058604Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2059756Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.2060912Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.2061564Z       |              ^
+2026-10-26T13:19:38.2062008Z In member function ‘allocate’,
+2026-10-26T13:19:38.2062732Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.2063712Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.2064710Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.2065680Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.2067171Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2068637Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 103 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.2069788Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.2070520Z       |                                                       ^
+2026-10-26T13:19:38.2071145Z In function ‘construct_at’,
+2026-10-26T13:19:38.2071945Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.2073147Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.2074377Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.2075517Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.2076845Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.2077851Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.2078934Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2080219Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.2081575Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.2082240Z       |              ^
+2026-10-26T13:19:38.2082705Z In member function ‘allocate’,
+2026-10-26T13:19:38.2083433Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.2084423Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.2085393Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.2086561Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.2087613Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2089125Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 107 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.2090343Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.2091083Z       |                                                       ^
+2026-10-26T13:19:38.2091672Z In function ‘construct_at’,
+2026-10-26T13:19:38.2092415Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.2093475Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.2094602Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.2095677Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.2096976Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.2097970Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.2099029Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2100308Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.2101458Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.2102127Z       |              ^
+2026-10-26T13:19:38.2102607Z In member function ‘allocate’,
+2026-10-26T13:19:38.2103369Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.2104376Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.2105385Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.2107210Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.2108493Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2110220Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 111 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.2111823Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.2112687Z       |                                                       ^
+2026-10-26T13:19:38.2113557Z In function ‘construct_at’,
+2026-10-26T13:19:38.2114587Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.2116407Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.2117903Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.2119263Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.2120712Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.2121956Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.2123289Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2139608Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.2142246Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.2142939Z       |              ^
+2026-10-26T13:19:38.2143477Z In member function ‘allocate’,
+2026-10-26T13:19:38.2144291Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.2145358Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.2146718Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.2147754Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.2148859Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2150425Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 115 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.2151674Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.2152427Z       |                                                       ^
+2026-10-26T13:19:38.2153059Z In function ‘construct_at’,
+2026-10-26T13:19:38.2153856Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.2155043Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.2156876Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.2158036Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.2159091Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.2160192Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.2161273Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2162531Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.2163699Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.2164382Z       |              ^
+2026-10-26T13:19:38.2164880Z In member function ‘allocate’,
+2026-10-26T13:19:38.2165665Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.2167009Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.2177599Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.2178660Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.2180092Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2181670Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 119 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.2182923Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.2183677Z       |                                                       ^
+2026-10-26T13:19:38.2184298Z In function ‘construct_at’,
+2026-10-26T13:19:38.2185094Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.2186602Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.2187885Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.2189075Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.2190231Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.2191245Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.2192366Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2193656Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.2194820Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.2195506Z       |              ^
+2026-10-26T13:19:38.2196259Z In member function ‘allocate’,
+2026-10-26T13:19:38.2208890Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.2210103Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.2211132Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.2212088Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.2213133Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2214576Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 123 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.2215783Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.2216822Z       |                                                       ^
+2026-10-26T13:19:38.2217487Z In function ‘construct_at’,
+2026-10-26T13:19:38.2218557Z     inlined from ‘construct’ at /usr/include/c++/13/bits/alloc_traits.h:540:21,
+2026-10-26T13:19:38.2219807Z     inlined from ‘__relocate_object_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1077:26,
+2026-10-26T13:19:38.2221063Z     inlined from ‘__relocate_a_1’ at /usr/include/c++/13/bits/stl_uninitialized.h:1105:26,
+2026-10-26T13:19:38.2222253Z     inlined from ‘__relocate_a’ at /usr/include/c++/13/bits/stl_uninitialized.h:1147:33,
+2026-10-26T13:19:38.2223423Z     inlined from ‘_S_relocate’ at /usr/include/c++/13/bits/stl_vector.h:509:26,
+2026-10-26T13:19:38.2224470Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:80:19,
+2026-10-26T13:19:38.2225617Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2227347Z /usr/include/c++/13/bits/stl_construct.h:97:14: warning: writing 1 byte into a region of size 0 [-Wstringop-overflow=]
+2026-10-26T13:19:38.2228516Z    97 |     { return ::new((void*)__location) _Tp(std::forward<_Args>(__args)...); }
+2026-10-26T13:19:38.2229221Z       |              ^
+2026-10-26T13:19:38.2229745Z In member function ‘allocate’,
+2026-10-26T13:19:38.2230555Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/allocator.h:198:40,
+2026-10-26T13:19:38.2231623Z     inlined from ‘allocate’ at /usr/include/c++/13/bits/alloc_traits.h:482:28,
+2026-10-26T13:19:38.2232988Z     inlined from ‘_M_allocate’ at /usr/include/c++/13/bits/stl_vector.h:381:33,
+2026-10-26T13:19:38.2234033Z     inlined from ‘reserve’ at /usr/include/c++/13/bits/vector.tcc:79:33,
+2026-10-26T13:19:38.2235184Z     inlined from ‘legal_tactical’ at /home/runner/work/caissa/caissa/src/movegen.cpp:130:55:
+2026-10-26T13:19:38.2259030Z /usr/include/c++/13/bits/new_allocator.h:151:55: note: at offset 127 into destination object of size 64 allocated by ‘operator new’
+2026-10-26T13:19:38.2260447Z   151 |         return static_cast<_Tp*>(_GLIBCXX_OPERATOR_NEW(__n * sizeof(_Tp)));
+2026-10-26T13:19:38.2261205Z       |                                                       ^
+2026-10-26T13:19:39.9742246Z [100%] Built target caissa
+2026-10-26T13:19:39.9841801Z ##[group]Run if test "$RUNNER_OS" = 'macOS'; then
+2026-10-26T13:19:39.9842425Z [36;1mif test "$RUNNER_OS" = 'macOS'; then[0m
+2026-10-26T13:19:39.9843439Z [36;1m  python -m tests.semantic_audit --engine results/saved-v4-runtime-inputs/caissa --output runs/g14-semantic-witness[0m
+2026-10-26T13:19:39.9844446Z [36;1melse[0m
+2026-10-26T13:19:39.9845129Z [36;1m  python -m tests.semantic_audit --engine build-g14/caissa --output runs/g14-semantic-witness[0m
+2026-10-26T13:19:39.9846144Z [36;1mfi[0m
+2026-10-26T13:19:39.9930749Z shell: /usr/bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-26T13:19:39.9931321Z env:
+2026-10-26T13:19:39.9931750Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:39.9932513Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-26T13:19:39.9933254Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:39.9933910Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:39.9934650Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:39.9935326Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-26T13:19:39.9936117Z ##[endgroup]
+2026-10-26T13:19:49.4255625Z {"status": "passed", "source_commit": "1deecce362cf12d9758e1af4bbebb5bbdda95fb1", "engine_sha256": "d97386d62a5684f0720f97bc7c9bbd5c9c3d6ae791a8c9256705474b3db7751b", "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7", "semantic_rehashed_rejections": 16, "full_entry_cases": [{"case": "positive-full-entry", "exit": 2}, {"case": "missing-replay-output", "exit": 2}, {"case": "illegal-pv", "exit": 1}, {"case": "swapped-result-colors", "exit": 1}, {"case": "mismatched-network-inference", "exit": 1}, {"case": "incorrect-draw-claim", "exit": 1}, {"case": "undeclared-raw-artifact", "exit": 1}], "diagnostic_games": 4, "strength_games": 0, "training": false, "browser": false, "full_G14_saved_image_sample": false, "full_acceptance": false}
+2026-10-26T13:19:49.4532176Z ##[group]Run actions/upload-artifact@v4
+2026-10-26T13:19:49.4532487Z with:
+2026-10-26T13:19:49.4532711Z   name: semantic-witness-ubuntu-24.04
+2026-10-26T13:19:49.4533002Z   path: runs/g14-semantic-witness/
+2026-10-26T13:19:49.4533278Z   retention-days: 14
+2026-10-26T13:19:49.4533522Z   if-no-files-found: warn
+2026-10-26T13:19:49.4533754Z   compression-level: 6
+2026-10-26T13:19:49.4533972Z   overwrite: false
+2026-10-26T13:19:49.4534186Z   include-hidden-files: false
+2026-10-26T13:19:49.4534422Z env:
+2026-10-26T13:19:49.4534672Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:49.4535110Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-26T13:19:49.4535536Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:49.4536144Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:49.4536552Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-26T13:19:49.4537039Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-26T13:19:49.4537367Z ##[endgroup]
+2026-10-26T13:19:49.6187703Z (node:2816) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T13:19:49.6188468Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T13:19:49.8526213Z With the provided path, there will be 903 files uploaded
+2026-10-26T13:19:49.8532054Z Artifact name is valid!
+2026-10-26T13:19:49.8532761Z Root directory input is valid!
+2026-10-26T13:19:50.0638528Z Beginning upload of artifact content to blob storage
+2026-10-26T13:19:50.6760701Z (node:2816) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-26T13:19:50.8219382Z Uploaded bytes 8388608
+2026-10-26T13:19:51.3664233Z Uploaded bytes 16777216
+2026-10-26T13:19:51.9341870Z Uploaded bytes 25165824
+2026-10-26T13:19:52.4219525Z Uploaded bytes 33554432
+2026-10-26T13:19:52.9011319Z Uploaded bytes 41943040
+2026-10-26T13:19:53.5224312Z Uploaded bytes 50331648
+2026-10-26T13:19:53.8151361Z Uploaded bytes 56304103
+2026-10-26T13:19:53.8328685Z Finished uploading artifact content to blob storage!
+2026-10-26T13:19:53.8332313Z SHA256 digest of uploaded artifact zip is 3a5431cfc9bf63fea2bad3df09efcc37f2492ab920ae29b8444e0ad3e9bc7b10
+2026-10-26T13:19:53.8335677Z Finalizing artifact upload
+2026-10-26T13:19:54.2952402Z Artifact semantic-witness-ubuntu-24.04.zip successfully finalized. Artifact ID 12655125618
+2026-10-26T13:19:54.2953817Z Artifact semantic-witness-ubuntu-24.04 has been successfully uploaded! Final size is 56304103 bytes. Artifact ID is 12655125618
+2026-10-26T13:19:54.2962388Z Artifact download URL: https://github.com/Aneesh495/caissa/actions/runs/40329511266/artifacts/12655125618
+2026-10-26T13:19:54.3205773Z Post job cleanup.
+2026-10-26T13:19:54.4384698Z (node:2828) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T13:19:54.4385552Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T13:19:54.4564177Z Post job cleanup.
+2026-10-26T13:19:54.5563733Z [command]/usr/bin/git version
+2026-10-26T13:19:54.5596659Z git version 2.55.0
+2026-10-26T13:19:54.5670556Z Temporarily overriding HOME='/home/runner/work/_temp/67d11e75-82ed-46bb-83e2-6f6a91b01042' before making global git config changes
+2026-10-26T13:19:54.5672285Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T13:19:54.5673677Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/caissa/caissa
+2026-10-26T13:19:54.5725014Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T13:19:54.5778768Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T13:19:54.6116509Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T13:19:54.6167425Z http.https://github.com/.extraheader
+2026-10-26T13:19:54.6184856Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-26T13:19:54.6241476Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T13:19:54.6585002Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T13:19:54.6622975Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T13:19:54.6997286Z Cleaning up orphan processes
+2026-10-26T13:19:54.7469436Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
