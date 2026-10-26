@@ -235,7 +235,12 @@ class CombinedScope:
         if time.monotonic() - self.last_size >= 5:
             allocated = sum(
                 tree_bytes(p)
-                for p in [self.root, self.original, self.state["data_root"]]
+                for p in [
+                    self.root,
+                    self.original,
+                    self.state["data_root"],
+                    self.original.parent / Path(WATCHER).name,
+                ]
             )
             require(
                 allocated - self.state["initial_data_bytes"]

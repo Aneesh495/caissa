@@ -8,7 +8,12 @@ from unittest.mock import patch
 
 from arena.run import game, pair
 from tools.campaign_process import atomic
-from tools.strength_wall_recovery import CombinedScope, pin_journals, verify_journals
+from tools.strength_wall_recovery import (
+    WATCHER,
+    CombinedScope,
+    pin_journals,
+    verify_journals,
+)
 
 
 def main():
@@ -130,6 +135,17 @@ def main():
             cases.append("completed-game mutation rejected; interrupted bytes retained")
         else:
             raise AssertionError("changed original game admitted")
+        watcher = old.parent / Path(WATCHER).name
+        watcher.mkdir()
+        (watcher / "allocated").write_bytes(b"x" * (1024**2 + 1))
+        lease.last_size = -float("inf")
+        try:
+            lease.check()
+        except ValueError as error:
+            assert "disk ceiling" in str(error)
+            cases.append("watcher source allocation is charged to the same combined disk cap")
+        else:
+            raise AssertionError("watcher allocation escaped combined disk budget")
         lease.close()
     print(
         json.dumps(
