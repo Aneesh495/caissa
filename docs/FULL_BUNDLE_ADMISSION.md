@@ -8,7 +8,7 @@ null suppression, conservative dead material and hash context, then reexecutes
 the pinned saved program. It requires equal-FEN history witnesses and all six
 terminal outcomes. Other semantic domains remain independently required.
 
-The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before domain replay. G01 rules, G02 restoration, G03 draw-history, G04 protocol and G05 search adapters are implemented; the remaining full-domain adapters and complete campaign coordinator remain unfinished. Full verification still returns nonzero with `full_acceptance: false`. Passing metadata, existing receipts or admission controls cannot certify a release.
+The full entry point checks committed product source, immutable artifact relationships and original experiment lineage before domain replay. G01 rules, G02 restoration, G03 draw history, G04 protocol, G05 search, G06 numerical probes, G08/G09 strength journals and G13 performance adapters are implemented. G07 has an original-learning component and a separate full data/learning audit; its full-entry joint adapter remains incomplete. G11 has the historical source/saved-image recovery join, G12 has a browser component and G14 has the combined semantic audit. G10 systems, G15 complete reproduction, G16 release audit and complete campaign coordination remain unfinished. A component is not automatically a full gate, and historical sample acceptance does not bind later product source. Full verification still returns nonzero with `full_acceptance: false`. Passing metadata, existing receipts or admission controls cannot certify a release.
 
 ## Source identity
 
