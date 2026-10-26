@@ -14,7 +14,12 @@ single stop observation was 0.155916 milliseconds and is not a stop percentile.
 
 The owner retained its actual exclusive host lease, process and power samples,
 source inventory, copied actor lineage, raw output, stage exits and closed
-resource ledger. Every published record is listed in `MANIFEST.json`. Residual
+resource ledger. Every published record is listed in `MANIFEST.json`. The public host samples
+omit process command lines and arguments after local app session values were
+found in those arguments. `PUBLIC_REDACTION.json` records the original hash and
+the derived public hash. Original raw bytes remain private, original run receipts
+are unchanged, and Git history has not been rewritten. Current-tree redaction
+does not revoke previously exposed session values. Residual
 system load is visible in the actual samples; a lock alone does not prove an
 otherwise idle machine. The exact executable and network identities remain
 pinned, while complete portable deployment packaging is still required.
