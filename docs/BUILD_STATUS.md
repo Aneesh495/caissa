@@ -2,6 +2,19 @@
 
 Status: implemented development system; full acceptance incomplete; no release and no final absolute Elo.
 
+The frozen q4096/deferred comparison is progressing. After a battery sleep,
+the human approved one five-hour wall-only continuation after its original
+deadline. The original failure, every completed game and the combined active,
+attempt and disk caps remain intact. A saved-source metadata watcher prepares
+that handoff without running a second arena. [Recovery controls](../results/wall-recovery-2026-10-26/VERIFICATION.json)
+distinguish implementation checks from the still-unfinished strength sample.
+
+The [original-data catalog controls](../results/data-catalog-2026-10-26/VERIFICATION.json)
+passed on Linux and macOS: one real 50-pair reconstruction and twelve actual
+rejections, including a rehashed illegal original move. Both earlier failures
+remain published. This new adapter still needs the full corpus audit and its
+join with all 240 independently replayed original learning checkpoints.
+
 The native rules, classical evaluation, PVS search, bounded UCI, Chess960, PGN variations, quantized incremental neural evaluator, original selfplay/training, paired arena, independent diagnostic verifier, loopback analysis service and browser board execute. Classical remains the default; both earlier diagnostics and the completed full original neural comparison lost strength.
 
 The core maintains its ordered reversible-history score fingerprint incrementally. Its source-bound 16 Release and 16 ASan/UBSan cases passed, including a million-transition context reconstruction and sixty mailbox-minimax comparisons. Independent transport reproduced 180 paired cost observations. The loaded-host median runtime ratios were 0.942 classical and 0.957 neural mixture against the previous original executable. [Evidence and limits](notes/search-context.md) distinguish search cost from unmeasured playing strength. No final absolute Elo exists.

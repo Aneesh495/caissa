@@ -2,6 +2,13 @@
 
 Keep the exact executable, model, configuration and completed journals. A new binary or a changed budget requires a new corpus/match identity. Do not delete losing games to resume a campaign.
 
+Closed historical acquisition, training, numerical and strength scopes must
+not be restarted using these generic commands. An exhausted ceiling remains
+exhausted. The current v4 wall-only continuation has its own explicit human
+authorization, fixed deadline and combined accounting, described in
+[the approved recovery contract](STRENGTH_WALL_RECOVERY.md). It preserves the
+original failed scope and reuses completed individual games.
+
 ## Original corpus
 
 Rerun the exact `training.corpus` command against the same output directory and frozen teacher. The immutable `CONFIG.json` rejects a changed executable or request. Completed pair files are validated and skipped. Temporary `.tmp` files have no completion meaning and can be inspected or removed after confirming no writer remains. The next atomic pair commit replaces only its own temporary path. A failed child must be investigated; do not turn a missing pair into a draw.
