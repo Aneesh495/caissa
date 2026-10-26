@@ -63,6 +63,13 @@ def execute(engine, output):
         def guard():
             lease.check()
             if (
+                time.monotonic() >= campaign.deadline
+                or time.time() >= campaign.wall_deadline
+            ):
+                raise TimeoutError(
+                    "trainer recovery original wall/active ceiling exhausted"
+                )
+            if (
                 shutil.disk_usage(output).free < 10 * 1024**3
                 or tree_bytes(output) > 1024**3
             ):

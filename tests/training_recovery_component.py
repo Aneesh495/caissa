@@ -55,7 +55,9 @@ def journal_controls(output):
         if case == "unsafe-backup":
             elsewhere = output / "outside"
             elsewhere.mkdir()
-            (root / "recovery-tails").symlink_to(elsewhere, target_is_directory=True)
+            (root / "recovery-tails").symlink_to(
+                elsewhere.resolve(), target_is_directory=True
+            )
         try:
             value = recover(root, 20, 20)
         except ValueError as error:
