@@ -1,0 +1,29 @@
+{
+  "scope": "One metadata-only admission of saved original inputs to current committed source. No native process, compiler or inference.",
+  "origin_unix": 1793019374.5002692,
+  "deadline_unix": 1793019394.5002692,
+  "maximum_seconds": 20,
+  "maximum_attempts": 1,
+  "maximum_output_bytes": 1048576,
+  "source_commit": "ef73e4e78ba18cbe966e5932210a0e6bf500d09d",
+  "command": [
+    ".venv/bin/python",
+    "-B",
+    "-m",
+    "verification.runtime_binding",
+    "--checkout",
+    "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess",
+    "--expected-commit",
+    "ef73e4e78ba18cbe966e5932210a0e6bf500d09d",
+    "--profile",
+    "config/protocol-v4.json",
+    "--expected-profile-sha256",
+    "a8623bf2d59561d434546ad612c939f994a4e699b1c61f4eba5b3114f26528dd",
+    "--engine",
+    "runs/full-heuristics-strength-v1/bin/caissa",
+    "--network",
+    "results/precision-v4-2026-10-25/selected-v4.cai",
+    "--learning-receipt",
+    "results/full-model-v3-2026-10-25/MODEL_CAMPAIGN.json"
+  ]
+}

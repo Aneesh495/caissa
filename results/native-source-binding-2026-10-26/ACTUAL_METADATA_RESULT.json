@@ -1,0 +1,10 @@
+{
+  "closed": true,
+  "attempts_used": 1,
+  "maximum_attempts": 1,
+  "observed_wall_seconds": 0.7621958255767822,
+  "maximum_seconds": 20,
+  "exit": 0,
+  "native_or_model_execution": false,
+  "full_acceptance": false
+}

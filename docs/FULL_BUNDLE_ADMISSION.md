@@ -25,6 +25,7 @@ The full entry point checks committed product source, immutable artifact relatio
 | Input | Independent relationship checks |
 |---|---|
 | `source_commit` and `SOURCE_INPUTS.json` | Externally trusted commit, product inventory, Git blobs and actual checkout agree |
+| Optional `native_source_binding` | Recompute the [tracked native source/input boundary](NATIVE_SOURCE_BINDING.md), preserve the original compiled source and learning failures, and leave all runtime gates required |
 | `engine` | Exact saved artifact; runtime domains name the same SHA256 |
 | `network` | Original residual formats 3/4, 64/32/16 architecture, wire length/CRC, classical contract 1, ten-percent mixture and selected float-checkpoint identity |
 | `protocol` | Frozen experiment, at least 2000 neural pairs and 1000 external pairs across at least three settings, at least 50 Elo gain and positive 95-percent lower endpoint |

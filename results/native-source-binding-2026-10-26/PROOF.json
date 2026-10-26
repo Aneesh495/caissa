@@ -1,0 +1,39 @@
+{
+  "status": "new source and input metadata boundary controls passed; full G14 remains pending",
+  "source_commit": "ef73e4e78ba18cbe966e5932210a0e6bf500d09d",
+  "passed_ci_run": 40326171268,
+  "failed_ci_run": 40325898078,
+  "controls_per_platform": 31,
+  "native_or_model_execution": false,
+  "actual_source_boundary": {
+    "source_commit": "ef73e4e78ba18cbe966e5932210a0e6bf500d09d",
+    "compiled_source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+    "matched_native_files": 69,
+    "saved_engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+    "saved_network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+    "original_model_campaign_sha256": "92d62149d3a4de184ad93b9f5f04f77e38386992d04d02bd824b33cf3e5241bd",
+    "observed_metadata_seconds": 0.7621958255767822
+  },
+  "source_files_sha256": {
+    "verification/runtime_binding.py": "578dbc04a6b742fdda5f0890d6d3ce494cdd419f879a5f2c0cd908ee6173cadf",
+    "verification/source.py": "a1fbfa4094527a5c65b74e90cd7810841ee4118058b6a3802ca3779c5271551a",
+    "verification/full_bundle.py": "d36e5539dbd7c437b855fc22f9d9af04bdad7b4f91a0e5a6a13e376281361005",
+    "tests/native_binding.py": "aa9984dae1a5d9d64112243a1f53f5d179558de1471830bca171dd02b902907d",
+    ".github/workflows/native-binding.yml": "866e666daad99b81134958ddabb01f861a1e87408d7f678617f9db8b2d7bed5a",
+    "config/native-binding-development-v1.json": "19f19963c5ad4378847abd78fac5adf5eda7a5c3a679736d0dd6f79ae145334e"
+  },
+  "cumulative_hosted_seconds": {
+    "linux": 74,
+    "macos": 83
+  },
+  "remaining": [
+    "Compiler invocation/environment attribution",
+    "Full G11 component/source join",
+    "Full G14 semantic coordinator",
+    "Each original full-domain runtime gate",
+    "External source-similarity audit",
+    "Full portable reproduction and final independent audit"
+  ],
+  "full_gate": false,
+  "full_acceptance": false
+}
