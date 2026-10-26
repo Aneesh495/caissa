@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tests/data_recovery_component.py", line 209, in <module>
+    main()
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tests/data_recovery_component.py", line 82, in main
+    run("actual-sql-rollback-and-complete-splits", raw)
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tests/data_recovery_component.py", line 72, in run
+    result.returncode == 0
+AssertionError: {'status': 'rejected', 'reason': "[Errno 2] No such file or directory: '/var/folders/2t/65zz6xzn5s77mnqllrjt8xtc0000gn/T/caissa-data-recovery-reader-p3gm9zmf/oracle/caissa-verify-data-g3u7a81p'", 'full_G11_certified': False}

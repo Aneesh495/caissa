@@ -1,0 +1,11 @@
+{
+  "run": 40318064105,
+  "source_commit": "fb79f0a962af79ed332aa5052a46e709cae2414e",
+  "linux_job": 121555579160,
+  "macos_job": 121555578971,
+  "linux_seconds": 70,
+  "macos_seconds": 65,
+  "status": "failed both platforms after the actual component and all raw forgeries; full-entry fixture collided with existing dataset directory",
+  "scope_not_extended": true,
+  "full_G11_certified": false
+}
