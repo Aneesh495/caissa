@@ -1,0 +1,30 @@
+{
+  "status": "passed bounded development controls; no full G07 certification",
+  "source_commit": "09291c52396445852d0177297ce241a71d626d1b",
+  "workflow_run": 40263221657,
+  "jobs": [
+    {
+      "platform": "ubuntu-24.04",
+      "id": 121379863733,
+      "seconds": 462,
+      "conclusion": "success",
+      "log": "linux.log",
+      "sha256": "7fe0b8f5fdd35cb8fe020a41c07da89df315b6dfae8ca96f60871dbf8e46cb85"
+    },
+    {
+      "platform": "macos-15",
+      "id": 121379864043,
+      "seconds": 386,
+      "conclusion": "success",
+      "log": "macos.log",
+      "sha256": "c6a67bb7cc7417bde8263097a73bdda10b6f7cf67e0f2fb9ae9253fdf152dbef"
+    }
+  ],
+  "ci_executions": 1,
+  "within_original_development_deadline": true,
+  "ci_finished_unix": 1792985028,
+  "scope": "work/g07-input-preparation-development-v1/SCOPE.json",
+  "full_preparation_started": false,
+  "full_audit_started": false,
+  "full_acceptance": false
+}
