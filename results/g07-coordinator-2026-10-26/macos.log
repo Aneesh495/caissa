@@ -1,0 +1,742 @@
+﻿2026-10-26T02:44:01.3113030Z Current runner version: '2.338.0'
+2026-10-26T02:44:01.3129250Z ##[group]Runner Image Provisioner
+2026-10-26T02:44:01.3129780Z Hosted Compute Agent
+2026-10-26T02:44:01.3130170Z Version: 20260828.587
+2026-10-26T02:44:01.3130570Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-10-26T02:44:01.3131060Z Build Date: 2026-08-28T16:44:25Z
+2026-10-26T02:44:01.3131500Z Worker ID: {2090a358-4eba-468f-8766-0b48e528fbf3}
+2026-10-26T02:44:01.3131960Z Azure Region: westus
+2026-10-26T02:44:01.3132340Z ##[endgroup]
+2026-10-26T02:44:01.3133200Z ##[group]Operating System
+2026-10-26T02:44:01.3133610Z macOS
+2026-10-26T02:44:01.3133940Z 15.7.9
+2026-10-26T02:44:01.3134280Z 24G830
+2026-10-26T02:44:01.3134620Z ##[endgroup]
+2026-10-26T02:44:01.3134980Z ##[group]Runner Image
+2026-10-26T02:44:01.3135370Z Image: macos-15-arm64
+2026-10-26T02:44:01.3135760Z Version: 20260907.0337.1
+2026-10-26T02:44:01.3136630Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260907.0337/images/macos/macos-15-arm64-Readme.md
+2026-10-26T02:44:01.3137700Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260907.0337
+2026-10-26T02:44:01.3138380Z ##[endgroup]
+2026-10-26T02:44:01.3139130Z ##[group]GITHUB_TOKEN Permissions
+2026-10-26T02:44:01.3140340Z Contents: read
+2026-10-26T02:44:01.3140710Z Metadata: read
+2026-10-26T02:44:01.3141080Z ##[endgroup]
+2026-10-26T02:44:01.3142730Z Secret source: Actions
+2026-10-26T02:44:01.3143330Z Cache mode: write
+2026-10-26T02:44:01.3143820Z Prepare workflow directory
+2026-10-26T02:44:01.3371850Z Prepare all required actions
+2026-10-26T02:44:01.3407120Z Getting action download info
+2026-10-26T02:44:01.7478740Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-26T02:44:02.1291730Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-26T02:44:02.2181940Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-26T02:44:02.3148600Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-26T02:44:02.5299960Z Complete job name: native (macos-15)
+2026-10-26T02:44:02.5799060Z ##[group]Run actions/checkout@v4
+2026-10-26T02:44:02.5799600Z with:
+2026-10-26T02:44:02.5799920Z   repository: Aneesh495/caissa
+2026-10-26T02:44:02.5802690Z   token: ***
+2026-10-26T02:44:02.5803000Z   ssh-strict: true
+2026-10-26T02:44:02.5803310Z   ssh-user: git
+2026-10-26T02:44:02.5803640Z   persist-credentials: true
+2026-10-26T02:44:02.5803990Z   clean: true
+2026-10-26T02:44:02.5804320Z   sparse-checkout-cone-mode: true
+2026-10-26T02:44:02.5804700Z   fetch-depth: 1
+2026-10-26T02:44:02.5805020Z   fetch-tags: false
+2026-10-26T02:44:02.5805340Z   show-progress: true
+2026-10-26T02:44:02.5805660Z   lfs: false
+2026-10-26T02:44:02.5805960Z   submodules: false
+2026-10-26T02:44:02.5806290Z   set-safe-directory: true
+2026-10-26T02:44:02.5806660Z   allow-unsafe-pr-checkout: false
+2026-10-26T02:44:02.5807190Z ##[endgroup]
+2026-10-26T02:44:02.9079490Z Syncing repository: Aneesh495/caissa
+2026-10-26T02:44:02.9081480Z ##[group]Getting Git version info
+2026-10-26T02:44:02.9082210Z Working directory is '/Users/runner/work/caissa/caissa'
+2026-10-26T02:44:02.9083230Z [command]/opt/homebrew/bin/git version
+2026-10-26T02:44:02.9630300Z git version 2.55.0
+2026-10-26T02:44:02.9645320Z ##[endgroup]
+2026-10-26T02:44:02.9651860Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/f34efd07-7cfb-4b45-8509-e936da2439f8/.gitconfig'
+2026-10-26T02:44:02.9658550Z Temporarily overriding HOME='/Users/runner/work/_temp/f34efd07-7cfb-4b45-8509-e936da2439f8' before making global git config changes
+2026-10-26T02:44:02.9660200Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T02:44:02.9661750Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/caissa/caissa
+2026-10-26T02:44:02.9764750Z Deleting the contents of '/Users/runner/work/caissa/caissa'
+2026-10-26T02:44:02.9766880Z ##[group]Initializing the repository
+2026-10-26T02:44:02.9770370Z [command]/opt/homebrew/bin/git init /Users/runner/work/caissa/caissa
+2026-10-26T02:44:02.9975140Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-26T02:44:02.9976260Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-26T02:44:02.9977190Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-26T02:44:02.9977880Z hint: call:
+2026-10-26T02:44:02.9978310Z hint:
+2026-10-26T02:44:02.9978840Z hint: 	git config --global init.defaultBranch <name>
+2026-10-26T02:44:02.9979440Z hint:
+2026-10-26T02:44:02.9980050Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-26T02:44:02.9980910Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-26T02:44:02.9981610Z hint:
+2026-10-26T02:44:02.9982020Z hint: 	git branch -m <name>
+2026-10-26T02:44:02.9982580Z hint:
+2026-10-26T02:44:02.9983190Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-26T02:44:02.9984080Z Initialized empty Git repository in /Users/runner/work/caissa/caissa/.git/
+2026-10-26T02:44:02.9985790Z [command]/opt/homebrew/bin/git remote add origin https://github.com/Aneesh495/caissa
+2026-10-26T02:44:03.0073650Z ##[endgroup]
+2026-10-26T02:44:03.0075100Z ##[group]Disabling automatic garbage collection
+2026-10-26T02:44:03.0077030Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-10-26T02:44:03.0158340Z ##[endgroup]
+2026-10-26T02:44:03.0159090Z ##[group]Setting up auth
+2026-10-26T02:44:03.0162690Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T02:44:03.0226170Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T02:44:03.1746210Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T02:44:03.1830980Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T02:44:03.2867990Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T02:44:03.2924230Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T02:44:03.3672550Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-26T02:44:03.3842380Z ##[endgroup]
+2026-10-26T02:44:03.3843380Z ##[group]Fetching the repository
+2026-10-26T02:44:03.3844710Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +dce141fbdec349408370084baa39cfe0a83298f4:refs/remotes/origin/main
+2026-10-26T02:44:19.1109090Z From https://github.com/Aneesh495/caissa
+2026-10-26T02:44:19.1308500Z  * [new ref]         dce141fbdec349408370084baa39cfe0a83298f4 -> origin/main
+2026-10-26T02:44:19.1477340Z ##[endgroup]
+2026-10-26T02:44:19.1478120Z ##[group]Determining the checkout info
+2026-10-26T02:44:19.1478760Z ##[endgroup]
+2026-10-26T02:44:19.1479140Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-10-26T02:44:19.1494110Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-26T02:44:19.1566360Z ##[group]Checking out the ref
+2026-10-26T02:44:19.1570340Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-26T02:44:20.6290610Z Updating files:  57% (1634/2842)
+2026-10-26T02:44:20.6329490Z Updating files:  58% (1649/2842)
+2026-10-26T02:44:20.6930730Z Updating files:  59% (1677/2842)
+2026-10-26T02:44:20.7503430Z Updating files:  60% (1706/2842)
+2026-10-26T02:44:20.7621870Z Updating files:  61% (1734/2842)
+2026-10-26T02:44:20.7918650Z Updating files:  62% (1763/2842)
+2026-10-26T02:44:20.7984360Z Updating files:  63% (1791/2842)
+2026-10-26T02:44:20.8998480Z Updating files:  64% (1819/2842)
+2026-10-26T02:44:20.9164520Z Updating files:  65% (1848/2842)
+2026-10-26T02:44:20.9258940Z Updating files:  66% (1876/2842)
+2026-10-26T02:44:20.9281710Z Updating files:  67% (1905/2842)
+2026-10-26T02:44:21.0715260Z Updating files:  68% (1933/2842)
+2026-10-26T02:44:21.4718670Z Updating files:  69% (1961/2842)
+2026-10-26T02:44:21.6928950Z Updating files:  69% (1985/2842)
+2026-10-26T02:44:21.8946440Z Updating files:  70% (1990/2842)
+2026-10-26T02:44:21.9238610Z Updating files:  71% (2018/2842)
+2026-10-26T02:44:21.9280070Z Updating files:  72% (2047/2842)
+2026-10-26T02:44:21.9325810Z Updating files:  73% (2075/2842)
+2026-10-26T02:44:21.9554350Z Updating files:  74% (2104/2842)
+2026-10-26T02:44:21.9668460Z Updating files:  75% (2132/2842)
+2026-10-26T02:44:22.0504680Z Updating files:  76% (2160/2842)
+2026-10-26T02:44:22.0708410Z Updating files:  77% (2189/2842)
+2026-10-26T02:44:22.0949610Z Updating files:  78% (2217/2842)
+2026-10-26T02:44:22.1020010Z Updating files:  79% (2246/2842)
+2026-10-26T02:44:22.1080770Z Updating files:  80% (2274/2842)
+2026-10-26T02:44:22.1136720Z Updating files:  81% (2303/2842)
+2026-10-26T02:44:22.1482150Z Updating files:  82% (2331/2842)
+2026-10-26T02:44:22.4595700Z Updating files:  83% (2359/2842)
+2026-10-26T02:44:23.3309790Z Updating files:  83% (2363/2842)
+2026-10-26T02:44:24.5180410Z Updating files:  83% (2366/2842)
+2026-10-26T02:44:25.2464500Z Updating files:  83% (2369/2842)
+2026-10-26T02:44:25.2756040Z Updating files:  83% (2371/2842)
+2026-10-26T02:44:25.2815770Z Updating files:  84% (2388/2842)
+2026-10-26T02:44:25.2878900Z Updating files:  85% (2416/2842)
+2026-10-26T02:44:25.2915960Z Updating files:  86% (2445/2842)
+2026-10-26T02:44:25.3889650Z Updating files:  87% (2473/2842)
+2026-10-26T02:44:25.4002040Z Updating files:  88% (2501/2842)
+2026-10-26T02:44:25.4074810Z Updating files:  89% (2530/2842)
+2026-10-26T02:44:25.4212780Z Updating files:  90% (2558/2842)
+2026-10-26T02:44:25.4544730Z Updating files:  91% (2587/2842)
+2026-10-26T02:44:25.4629690Z Updating files:  92% (2615/2842)
+2026-10-26T02:44:25.4666590Z Updating files:  93% (2644/2842)
+2026-10-26T02:44:25.4718190Z Updating files:  94% (2672/2842)
+2026-10-26T02:44:25.4779850Z Updating files:  95% (2700/2842)
+2026-10-26T02:44:25.4830900Z Updating files:  96% (2729/2842)
+2026-10-26T02:44:25.5305430Z Updating files:  97% (2757/2842)
+2026-10-26T02:44:25.5379540Z Updating files:  98% (2786/2842)
+2026-10-26T02:44:25.5439130Z Updating files:  99% (2814/2842)
+2026-10-26T02:44:25.5443560Z Updating files: 100% (2842/2842)
+2026-10-26T02:44:25.5444880Z Updating files: 100% (2842/2842), done.
+2026-10-26T02:44:25.5554180Z Switched to a new branch 'main'
+2026-10-26T02:44:25.5561290Z branch 'main' set up to track 'origin/main'.
+2026-10-26T02:44:25.5634440Z ##[endgroup]
+2026-10-26T02:44:25.5961740Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-10-26T02:44:25.6174360Z dce141fbdec349408370084baa39cfe0a83298f4
+2026-10-26T02:44:25.6565940Z ##[group]Run git fetch --no-tags --depth=1 origin 5803cc485420b19eb96dda2c29f81fcfc6b09b6b
+2026-10-26T02:44:25.6566650Z [36;1mgit fetch --no-tags --depth=1 origin 5803cc485420b19eb96dda2c29f81fcfc6b09b6b[0m
+2026-10-26T02:44:25.6629160Z shell: /bin/bash -e {0}
+2026-10-26T02:44:25.6629440Z ##[endgroup]
+2026-10-26T02:44:26.3826960Z From https://github.com/Aneesh495/caissa
+2026-10-26T02:44:26.3828030Z  * branch            5803cc485420b19eb96dda2c29f81fcfc6b09b6b -> FETCH_HEAD
+2026-10-26T02:44:26.3985630Z ##[group]Run actions/setup-python@v5
+2026-10-26T02:44:26.3986040Z with:
+2026-10-26T02:44:26.3986720Z   python-version: 3.12
+2026-10-26T02:44:26.3987700Z   check-latest: false
+2026-10-26T02:44:26.3990250Z   token: ***
+2026-10-26T02:44:26.3990510Z   update-environment: true
+2026-10-26T02:44:26.3990860Z   allow-prereleases: false
+2026-10-26T02:44:26.3991190Z   freethreaded: false
+2026-10-26T02:44:26.4001320Z ##[endgroup]
+2026-10-26T02:44:26.6591410Z ##[group]Installed versions
+2026-10-26T02:44:26.6696180Z (node:6404) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T02:44:26.6697840Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T02:44:26.6698880Z Successfully set up CPython (3.12.10)
+2026-10-26T02:44:26.6700120Z ##[endgroup]
+2026-10-26T02:44:26.6851670Z ##[group]Run actions/setup-node@v4
+2026-10-26T02:44:26.6851990Z with:
+2026-10-26T02:44:26.6852150Z   node-version: 24
+2026-10-26T02:44:26.6852340Z   always-auth: false
+2026-10-26T02:44:26.6852530Z   check-latest: false
+2026-10-26T02:44:26.6854880Z   token: ***
+2026-10-26T02:44:26.6855080Z env:
+2026-10-26T02:44:26.6855330Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:26.6855800Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-26T02:44:26.6856330Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:26.6856730Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:26.6857160Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:26.6857460Z ##[endgroup]
+2026-10-26T02:44:26.8519380Z Found in cache @ /Users/runner/hostedtoolcache/node/24.20.0/arm64
+2026-10-26T02:44:26.8521950Z (node:6406) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T02:44:26.8524020Z ##[group]Environment details
+2026-10-26T02:44:26.8525420Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T02:44:27.5995320Z node: v24.20.0
+2026-10-26T02:44:27.6042240Z npm: 11.19.0
+2026-10-26T02:44:27.6067830Z yarn: 1.22.22
+2026-10-26T02:44:27.6069080Z ##[endgroup]
+2026-10-26T02:44:27.6203030Z ##[group]Run python -m pip install numpy==2.2.6 chess==1.11.2
+2026-10-26T02:44:27.6203450Z [36;1mpython -m pip install numpy==2.2.6 chess==1.11.2[0m
+2026-10-26T02:44:27.6276790Z shell: /bin/bash -e {0}
+2026-10-26T02:44:27.6277370Z env:
+2026-10-26T02:44:27.6278030Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:27.6279470Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-26T02:44:27.6280980Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:27.6282500Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:27.6283020Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:27.6283360Z ##[endgroup]
+2026-10-26T02:44:29.5482260Z Collecting numpy==2.2.6
+2026-10-26T02:44:29.6379900Z   Downloading numpy-2.2.6-cp312-cp312-macosx_14_0_arm64.whl.metadata (62 kB)
+2026-10-26T02:44:29.6942660Z Collecting chess==1.11.2
+2026-10-26T02:44:29.7114620Z   Downloading chess-1.11.2.tar.gz (6.1 MB)
+2026-10-26T02:44:29.7827200Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.1/6.1 MB 100.2 MB/s  0:00:00
+2026-10-26T02:44:29.9451450Z   Installing build dependencies: started
+2026-10-26T02:44:31.3886430Z   Installing build dependencies: finished with status 'done'
+2026-10-26T02:44:31.3893140Z   Getting requirements to build wheel: started
+2026-10-26T02:44:31.7932990Z   Getting requirements to build wheel: finished with status 'done'
+2026-10-26T02:44:31.7942660Z   Preparing metadata (pyproject.toml): started
+2026-10-26T02:44:32.0275050Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-10-26T02:44:32.0528020Z Downloading numpy-2.2.6-cp312-cp312-macosx_14_0_arm64.whl (5.1 MB)
+2026-10-26T02:44:32.1044030Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.1/5.1 MB 100.3 MB/s  0:00:00
+2026-10-26T02:44:32.1307360Z Building wheels for collected packages: chess
+2026-10-26T02:44:32.1320690Z   Building wheel for chess (pyproject.toml): started
+2026-10-26T02:44:32.4438670Z   Building wheel for chess (pyproject.toml): finished with status 'done'
+2026-10-26T02:44:32.4457670Z   Created wheel for chess: filename=chess-1.11.2-py3-none-any.whl size=147878 sha256=6de8486c972beb4a2485a5df955bc3f81d93df3564d2b9ab0a7891d7c40c2778
+2026-10-26T02:44:32.4458810Z   Stored in directory: /Users/runner/Library/Caches/pip/wheels/83/1f/4e/8f4300f7dd554eb8de70ddfed96e94d3d030ace10c5b53d447
+2026-10-26T02:44:32.4485380Z Successfully built chess
+2026-10-26T02:44:32.4722130Z Installing collected packages: numpy, chess
+2026-10-26T02:44:34.3121820Z 
+2026-10-26T02:44:34.3129160Z Successfully installed chess-1.11.2 numpy-2.2.6
+2026-10-26T02:44:34.3134550Z 
+2026-10-26T02:44:34.3134970Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-26T02:44:34.3135570Z [notice] To update, run: python -m pip install --upgrade pip
+2026-10-26T02:44:34.4193310Z ##[group]Run cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+2026-10-26T02:44:34.4193810Z [36;1mcmake -S . -B build -DCMAKE_BUILD_TYPE=Release[0m
+2026-10-26T02:44:34.4194090Z [36;1mcmake --build build -j 4[0m
+2026-10-26T02:44:34.4194380Z [36;1mctest --test-dir build --output-on-failure[0m
+2026-10-26T02:44:34.4194640Z [36;1mpython tools/check_perft.py[0m
+2026-10-26T02:44:34.4194990Z [36;1m./build/network_test models/diagnostic-v2.cai 10000[0m
+2026-10-26T02:44:34.4195410Z [36;1m./build/network_test models/residual-prefix-diagnostic.cai 10000[0m
+2026-10-26T02:44:34.4195860Z [36;1m./build/accumulator_stack_test models/residual-prefix-diagnostic.cai 10000[0m
+2026-10-26T02:44:34.4196290Z [36;1m./build/accumulator_stack_test models/diagnostic-v2.cai 10000[0m
+2026-10-26T02:44:34.4197160Z [36;1mpython tests/format_controls.py --network models/diagnostic-v2.cai[0m
+2026-10-26T02:44:34.4197520Z [36;1mpython -m tests.statistics_test[0m
+2026-10-26T02:44:34.4197850Z [36;1mpython -m tests.residual_contract[0m
+2026-10-26T02:44:34.4198110Z [36;1mpython -m tests.arena_options[0m
+2026-10-26T02:44:34.4198390Z [36;1mpython -m tests.features_test[0m
+2026-10-26T02:44:34.4198680Z [36;1mpython -m tests.acquisition_limits[0m
+2026-10-26T02:44:34.4198920Z [36;1mpython -m tests.recovery_scope[0m
+2026-10-26T02:44:34.4199170Z [36;1mpython -m tests.campaign_cleanup[0m
+2026-10-26T02:44:34.4199400Z [36;1mpython -m tests.power_guard[0m
+2026-10-26T02:44:34.4199640Z [36;1mpython -m tests.full_strength[0m
+2026-10-26T02:44:34.4199880Z [36;1mpython -m tests.heuristic_study[0m
+2026-10-26T02:44:34.4200120Z [36;1mpython -m tests.full_actor_contract[0m
+2026-10-26T02:44:34.4200420Z [36;1mpython -m tests.deferred_actor_contract[0m
+2026-10-26T02:44:34.4200860Z [36;1mpython -m tests.strength_v4_profile --published-inputs --output runs/ci-strength-v4-profile[0m
+2026-10-26T02:44:34.4201420Z [36;1mpython -m tests.full_model_protocol --output runs/ci-full-model-controls[0m
+2026-10-26T02:44:34.4201860Z [36;1mpython -m tests.project_continuation[0m
+2026-10-26T02:44:34.4202190Z [36;1mpython -m tests.source_binding --output runs/ci-source-binding[0m
+2026-10-26T02:44:34.4202590Z [36;1mpython -m tests.full_bundle --output runs/ci-full-bundle[0m
+2026-10-26T02:44:34.4203470Z [36;1mpython -m tests.numerical_bundle --output runs/ci-numerical-bundle[0m
+2026-10-26T02:44:34.4204860Z [36;1mpython -m tests.bundle_integrity --output runs/ci-bundle-integrity[0m
+2026-10-26T02:44:34.4205900Z [36;1mpython -m tests.bundle_copy --output runs/ci-bundle-copy[0m
+2026-10-26T02:44:34.4206930Z [36;1mpython -m tests.learning_bundle --output runs/ci-learning-bundle[0m
+2026-10-26T02:44:34.4208280Z [36;1mpython -m tests.performance_bundle --engine build/caissa --output runs/ci-performance-bundle[0m
+2026-10-26T02:44:34.4209670Z [36;1mpython -m tests.acceptance_readiness --output runs/ci-acceptance-readiness[0m
+2026-10-26T02:44:34.4211000Z [36;1mpython -m tests.rules_replay --engine build/caissa --output runs/ci-rules-replay[0m
+2026-10-26T02:44:34.4212350Z [36;1mpython -m tests.protocol_bundle --engine build/caissa --output runs/ci-protocol-bundle[0m
+2026-10-26T02:44:34.4213820Z [36;1mpython -m tests.restoration_replay --engine build/caissa --output runs/ci-restoration-replay[0m
+2026-10-26T02:44:34.4216760Z [36;1mpython -m tests.draw_history --engine build/caissa --output runs/ci-draw-history[0m
+2026-10-26T02:44:34.4218150Z [36;1mpython -m tests.search_semantics --engine build/caissa --output runs/ci-search-semantics[0m
+2026-10-26T02:44:34.4220080Z [36;1mpython -m tests.deferred_neural_controls --evidence results/deferred-neural-2026-10-25 --output runs/ci-deferred-controls[0m
+2026-10-26T02:44:34.4221030Z [36;1mpython -m training.corpus --engine build/caissa --pairs 50 --nodes 500 --workers 2 --output data/ci-original[0m
+2026-10-26T02:44:34.4221640Z [36;1mpython -m training.prepare data/ci-original data/ci-prepared[0m
+2026-10-26T02:44:34.4222660Z [36;1mpython -m verification.dataset data/ci-prepared data/ci-original[0m
+2026-10-26T02:44:34.4223250Z [36;1mpython -m tests.data_profile --dataset data/ci-prepared --output runs/ci-data-profile[0m
+2026-10-26T02:44:34.4223880Z [36;1mpython -m tests.dataset_controls --dataset data/ci-prepared --corpus data/ci-original --output runs/ci-data-controls[0m
+2026-10-26T02:44:34.4225180Z [36;1mpython -m tests.independent_index_recovery --dataset data/ci-prepared --corpus data/ci-original --output runs/ci-independent-index-recovery --maximum-seconds 120[0m
+2026-10-26T02:44:34.4226010Z [36;1mpython -m tests.data_catalog --dataset data/ci-prepared --corpus data/ci-original --output runs/ci-data-catalog[0m
+2026-10-26T02:44:34.4226760Z [36;1mpython -m tests.g07_coordinator --catalog runs/ci-data-catalog/CATALOG.json --output runs/ci-g07-coordinator[0m
+2026-10-26T02:44:34.4297750Z shell: /bin/bash -e {0}
+2026-10-26T02:44:34.4298930Z env:
+2026-10-26T02:44:34.4299340Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:34.4299810Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-26T02:44:34.4300790Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:34.4301350Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:34.4302190Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:44:34.4303210Z ##[endgroup]
+2026-10-26T02:44:36.7944880Z -- The CXX compiler identification is AppleClang 17.0.0.17000013
+2026-10-26T02:44:37.6420350Z -- Detecting CXX compiler ABI info
+2026-10-26T02:44:38.9048500Z -- Detecting CXX compiler ABI info - done
+2026-10-26T02:44:38.9204220Z -- Check for working CXX compiler: /usr/bin/c++ - skipped
+2026-10-26T02:44:38.9209630Z -- Detecting CXX compile features
+2026-10-26T02:44:38.9217020Z -- Detecting CXX compile features - done
+2026-10-26T02:44:40.7087440Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+2026-10-26T02:44:40.9431140Z -- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+2026-10-26T02:44:40.9446220Z -- Found Threads: TRUE
+2026-10-26T02:44:40.9462670Z -- Configuring done (6.4s)
+2026-10-26T02:44:41.6463940Z -- Generating done (0.7s)
+2026-10-26T02:44:41.6470780Z -- Build files have been written to: /Users/runner/work/caissa/caissa/build
+2026-10-26T02:44:41.7073290Z [  1%] Building CXX object CMakeFiles/caissa_core.dir/src/attacks.cpp.o
+2026-10-26T02:44:41.7188110Z [  2%] Building CXX object CMakeFiles/caissa_core.dir/src/position.cpp.o
+2026-10-26T02:44:41.7290570Z [  5%] Building CXX object CMakeFiles/caissa_core.dir/src/version.cpp.o
+2026-10-26T02:44:41.7392680Z [  5%] Building CXX object CMakeFiles/caissa_core.dir/src/position_line.cpp.o
+2026-10-26T02:44:42.4248100Z [  7%] Building CXX object CMakeFiles/caissa_core.dir/src/movegen.cpp.o
+2026-10-26T02:44:43.5276630Z [  8%] Building CXX object CMakeFiles/caissa_core.dir/src/reference.cpp.o
+2026-10-26T02:44:43.5742690Z [ 10%] Building CXX object CMakeFiles/caissa_core.dir/src/rules.cpp.o
+2026-10-26T02:44:44.1206780Z [ 11%] Building CXX object CMakeFiles/caissa_core.dir/src/evaluation.cpp.o
+2026-10-26T02:44:44.2324450Z [ 13%] Building CXX object CMakeFiles/caissa_core.dir/src/table.cpp.o
+2026-10-26T02:44:44.6060420Z [ 14%] Building CXX object CMakeFiles/caissa_core.dir/src/search.cpp.o
+2026-10-26T02:44:44.8177540Z [ 15%] Building CXX object CMakeFiles/caissa_core.dir/src/search_probe.cpp.o
+2026-10-26T02:44:45.0419670Z [ 17%] Building CXX object CMakeFiles/caissa_core.dir/src/uci.cpp.o
+2026-10-26T02:44:45.1425000Z [ 18%] Building CXX object CMakeFiles/caissa_core.dir/src/selfplay.cpp.o
+2026-10-26T02:44:46.9201580Z [ 20%] Building CXX object CMakeFiles/caissa_core.dir/src/network.cpp.o
+2026-10-26T02:44:47.0953910Z [ 21%] Building CXX object CMakeFiles/caissa_core.dir/src/network_kernel.cpp.o
+2026-10-26T02:44:47.5359210Z [ 23%] Building CXX object CMakeFiles/caissa_core.dir/src/accumulator_stack.cpp.o
+2026-10-26T02:44:47.6980100Z [ 24%] Building CXX object CMakeFiles/caissa_core.dir/src/state_probe.cpp.o
+2026-10-26T02:44:48.4800640Z [ 26%] Building CXX object CMakeFiles/caissa_core.dir/src/notation.cpp.o
+2026-10-26T02:44:48.6296480Z [ 27%] Building CXX object CMakeFiles/caissa_core.dir/src/serialization.cpp.o
+2026-10-26T02:44:48.7781970Z [ 28%] Building CXX object CMakeFiles/caissa_core.dir/src/protocol_io.cpp.o
+2026-10-26T02:44:50.3875020Z [ 30%] Linking CXX static library libcaissa_core.a
+2026-10-26T02:44:50.5013260Z [ 30%] Built target caissa_core
+2026-10-26T02:44:50.5531440Z [ 31%] Building CXX object CMakeFiles/rules_test.dir/tests/rules_test.cpp.o
+2026-10-26T02:44:50.5634330Z [ 34%] Building CXX object CMakeFiles/core_test.dir/tests/core_test.cpp.o
+2026-10-26T02:44:50.5703680Z [ 34%] Building CXX object CMakeFiles/position_test.dir/tests/position_test.cpp.o
+2026-10-26T02:44:50.5740640Z [ 36%] Building CXX object CMakeFiles/caissa.dir/apps/main.cpp.o
+2026-10-26T02:44:51.9612010Z [ 37%] Linking CXX executable core_test
+2026-10-26T02:44:52.1101100Z [ 39%] Linking CXX executable rules_test
+2026-10-26T02:44:52.3287980Z [ 39%] Built target core_test
+2026-10-26T02:44:52.3792120Z [ 40%] Building CXX object CMakeFiles/evaluation_test.dir/tests/evaluation_test.cpp.o
+2026-10-26T02:44:52.5417020Z [ 40%] Built target rules_test
+2026-10-26T02:44:52.6123280Z [ 42%] Building CXX object CMakeFiles/table_test.dir/tests/table_test.cpp.o
+2026-10-26T02:44:52.9155280Z [ 43%] Linking CXX executable position_test
+2026-10-26T02:44:53.1611220Z [ 43%] Built target position_test
+2026-10-26T02:44:53.2113510Z [ 44%] Building CXX object CMakeFiles/search_test.dir/tests/search_test.cpp.o
+2026-10-26T02:44:53.5842630Z [ 46%] Linking CXX executable caissa
+2026-10-26T02:44:53.6455750Z [ 47%] Linking CXX executable evaluation_test
+2026-10-26T02:44:53.9590580Z [ 47%] Built target evaluation_test
+2026-10-26T02:44:53.9991790Z [ 49%] Building CXX object CMakeFiles/search_claim_test.dir/tests/search_claim_test.cpp.o
+2026-10-26T02:44:54.0296120Z [ 50%] Linking CXX executable table_test
+2026-10-26T02:44:54.1504120Z [ 50%] Built target table_test
+2026-10-26T02:44:54.2006740Z [ 52%] Building CXX object CMakeFiles/search_probe_test.dir/tests/search_probe_test.cpp.o
+2026-10-26T02:44:55.6087290Z [ 53%] Linking CXX executable search_probe_test
+2026-10-26T02:44:56.1027130Z [ 55%] Linking CXX executable search_test
+2026-10-26T02:44:56.6407240Z [ 55%] Built target caissa
+2026-10-26T02:44:56.6910260Z [ 56%] Building CXX object CMakeFiles/network_test.dir/tests/network_test.cpp.o
+2026-10-26T02:44:56.8433160Z [ 57%] Linking CXX executable search_claim_test
+2026-10-26T02:44:57.5062410Z [ 57%] Built target search_probe_test
+2026-10-26T02:44:57.5474730Z [ 59%] Building CXX object CMakeFiles/notation_test.dir/tests/notation_test.cpp.o
+2026-10-26T02:44:57.5776360Z [ 59%] Built target search_test
+2026-10-26T02:44:57.6179440Z [ 60%] Building CXX object CMakeFiles/uci_test.dir/tests/uci_test.cpp.o
+2026-10-26T02:44:57.9576300Z [ 60%] Built target search_claim_test
+2026-10-26T02:44:57.9978150Z [ 62%] Building CXX object CMakeFiles/position_line_test.dir/tests/position_line_test.cpp.o
+2026-10-26T02:44:58.4465910Z [ 63%] Linking CXX executable network_test
+2026-10-26T02:44:58.4948180Z [ 65%] Linking CXX executable uci_test
+2026-10-26T02:44:59.0708470Z [ 65%] Built target network_test
+2026-10-26T02:44:59.1109860Z [ 66%] Building CXX object CMakeFiles/kernel_test.dir/tests/kernel_test.cpp.o
+2026-10-26T02:44:59.1210170Z [ 68%] Linking CXX executable notation_test
+2026-10-26T02:44:59.9962490Z [ 68%] Built target notation_test
+2026-10-26T02:45:00.0604560Z [ 69%] Building CXX object CMakeFiles/dense_kernel_test.dir/tests/dense_kernel_test.cpp.o
+2026-10-26T02:45:00.1337850Z [ 69%] Built target uci_test
+2026-10-26T02:45:00.1899290Z [ 71%] Building CXX object CMakeFiles/dense_kernel_bench.dir/tests/dense_kernel_bench.cpp.o
+2026-10-26T02:45:00.2402900Z [ 72%] Linking CXX executable position_line_test
+2026-10-26T02:45:00.6671110Z [ 72%] Built target position_line_test
+2026-10-26T02:45:00.7173150Z [ 73%] Building CXX object CMakeFiles/neural_bounds_test.dir/tests/neural_bounds_test.cpp.o
+2026-10-26T02:45:00.9083130Z [ 75%] Linking CXX executable kernel_test
+2026-10-26T02:45:01.2435080Z [ 75%] Built target kernel_test
+2026-10-26T02:45:01.2836870Z [ 76%] Building CXX object CMakeFiles/evaluation_cache_test.dir/tests/evaluation_cache_test.cpp.o
+2026-10-26T02:45:01.7184110Z [ 78%] Linking CXX executable dense_kernel_test
+2026-10-26T02:45:01.9333160Z [ 78%] Built target dense_kernel_test
+2026-10-26T02:45:02.0163420Z [ 79%] Building CXX object CMakeFiles/tactical_generation_test.dir/tests/tactical_generation_test.cpp.o
+2026-10-26T02:45:02.1380300Z [ 81%] Linking CXX executable dense_kernel_bench
+2026-10-26T02:45:02.6978120Z [ 81%] Built target dense_kernel_bench
+2026-10-26T02:45:02.7481210Z [ 82%] Building CXX object CMakeFiles/search_context_test.dir/tests/search_context_test.cpp.o
+2026-10-26T02:45:02.8986410Z [ 84%] Linking CXX executable neural_bounds_test
+2026-10-26T02:45:03.8203270Z [ 85%] Linking CXX executable evaluation_cache_test
+2026-10-26T02:45:04.1077940Z [ 85%] Built target neural_bounds_test
+2026-10-26T02:45:04.1910940Z [ 86%] Building CXX object CMakeFiles/lmr_window_test.dir/tests/lmr_window_test.cpp.o
+2026-10-26T02:45:05.2335570Z [ 86%] Built target evaluation_cache_test
+2026-10-26T02:45:05.2840320Z [ 88%] Building CXX object CMakeFiles/network_precision_test.dir/tests/network_precision_test.cpp.o
+2026-10-26T02:45:05.7088420Z [ 89%] Linking CXX executable tactical_generation_test
+2026-10-26T02:45:06.1286780Z [ 91%] Linking CXX executable search_context_test
+2026-10-26T02:45:07.0955510Z [ 92%] Linking CXX executable lmr_window_test
+2026-10-26T02:45:08.0045510Z [ 92%] Built target tactical_generation_test
+2026-10-26T02:45:08.0448420Z [ 94%] Building CXX object CMakeFiles/accumulator_stack_test.dir/tests/accumulator_stack_test.cpp.o
+2026-10-26T02:45:08.2457330Z [ 94%] Built target search_context_test
+2026-10-26T02:45:08.2960740Z [ 95%] Building CXX object CMakeFiles/state_probe_test.dir/tests/state_probe_test.cpp.o
+2026-10-26T02:45:08.5865370Z [ 95%] Built target lmr_window_test
+2026-10-26T02:45:08.6777380Z [ 97%] Linking CXX executable network_precision_test
+2026-10-26T02:45:09.1132210Z [ 97%] Built target network_precision_test
+2026-10-26T02:45:09.5377850Z [ 98%] Linking CXX executable state_probe_test
+2026-10-26T02:45:10.0149520Z [100%] Linking CXX executable accumulator_stack_test
+2026-10-26T02:45:10.4103030Z [100%] Built target state_probe_test
+2026-10-26T02:45:10.7267840Z [100%] Built target accumulator_stack_test
+2026-10-26T02:45:10.7968960Z Test project /Users/runner/work/caissa/caissa/build
+2026-10-26T02:45:10.8001800Z       Start  1: version
+2026-10-26T02:45:10.8057730Z  1/22 Test  #1: version ..........................   Passed    0.01 sec
+2026-10-26T02:45:10.8058920Z       Start  2: core
+2026-10-26T02:45:10.8284650Z  2/22 Test  #2: core .............................   Passed    0.02 sec
+2026-10-26T02:45:10.8285630Z       Start  3: position
+2026-10-26T02:45:10.8709650Z  3/22 Test  #3: position .........................   Passed    0.04 sec
+2026-10-26T02:45:10.8710180Z       Start  4: rules
+2026-10-26T02:45:10.8733180Z  4/22 Test  #4: rules ............................   Passed    0.00 sec
+2026-10-26T02:45:10.8733750Z       Start  5: evaluation
+2026-10-26T02:45:10.8799060Z  5/22 Test  #5: evaluation .......................   Passed    0.01 sec
+2026-10-26T02:45:10.8806780Z       Start  6: table
+2026-10-26T02:45:10.8837680Z  6/22 Test  #6: table ............................   Passed    0.00 sec
+2026-10-26T02:45:10.8838280Z       Start  7: search
+2026-10-26T02:45:11.0002610Z  7/22 Test  #7: search ...........................   Passed    0.11 sec
+2026-10-26T02:45:11.0105410Z       Start  8: search_claim
+2026-10-26T02:45:11.0207610Z  8/22 Test  #8: search_claim .....................   Passed    0.01 sec
+2026-10-26T02:45:11.0264020Z       Start  9: search_probe
+2026-10-26T02:45:11.0265490Z  9/22 Test  #9: search_probe .....................   Passed    0.01 sec
+2026-10-26T02:45:11.0266160Z       Start 10: notation
+2026-10-26T02:45:11.0266940Z 10/22 Test #10: notation .........................   Passed    0.01 sec
+2026-10-26T02:45:11.0274420Z       Start 11: uci
+2026-10-26T02:45:11.0353600Z 11/22 Test #11: uci ..............................   Passed    0.02 sec
+2026-10-26T02:45:11.0354770Z       Start 12: position_line
+2026-10-26T02:45:11.1123110Z 12/22 Test #12: position_line ....................   Passed    0.08 sec
+2026-10-26T02:45:11.1123990Z       Start 13: kernels
+2026-10-26T02:45:11.1530460Z 13/22 Test #13: kernels ..........................   Passed    0.04 sec
+2026-10-26T02:45:11.1531060Z       Start 14: dense_kernels
+2026-10-26T02:45:11.1909870Z 14/22 Test #14: dense_kernels ....................   Passed    0.04 sec
+2026-10-26T02:45:11.1910450Z       Start 15: neural_bounds
+2026-10-26T02:45:11.3349280Z 15/22 Test #15: neural_bounds ....................   Passed    0.14 sec
+2026-10-26T02:45:11.3350530Z       Start 16: evaluation_cache
+2026-10-26T02:45:15.2891200Z 16/22 Test #16: evaluation_cache .................   Passed    3.95 sec
+2026-10-26T02:45:15.2895520Z       Start 17: tactical_generation
+2026-10-26T02:45:17.2180590Z 17/22 Test #17: tactical_generation ..............   Passed    1.93 sec
+2026-10-26T02:45:17.2184330Z       Start 18: search_context
+2026-10-26T02:45:19.3918800Z 18/22 Test #18: search_context ...................   Passed    2.17 sec
+2026-10-26T02:45:19.3929370Z       Start 19: lmr_window
+2026-10-26T02:45:19.4185450Z 19/22 Test #19: lmr_window .......................   Passed    0.03 sec
+2026-10-26T02:45:19.4186070Z       Start 20: network_precision
+2026-10-26T02:45:19.4918790Z 20/22 Test #20: network_precision ................   Passed    0.07 sec
+2026-10-26T02:45:19.4920650Z       Start 21: accumulator_stack
+2026-10-26T02:45:21.1240110Z 21/22 Test #21: accumulator_stack ................   Passed    1.63 sec
+2026-10-26T02:45:21.1241080Z       Start 22: state_probe
+2026-10-26T02:45:21.1763400Z 22/22 Test #22: state_probe ......................   Passed    0.05 sec
+2026-10-26T02:45:21.1777220Z 
+2026-10-26T02:45:21.1778270Z 100% tests passed out of 22
+2026-10-26T02:45:21.1778900Z 
+2026-10-26T02:45:21.1779400Z Total Test time (real) =  10.38 sec
+2026-10-26T02:45:21.3600260Z {"positions": 20, "status": "passed", "seconds": 0.09544399999998632}
+2026-10-26T02:45:21.4471140Z {"transitions":10000,"status":"passed","kernel":"NEON (architectural AArch64 baseline)"}
+2026-10-26T02:45:21.5265770Z {"transitions":10000,"status":"passed","kernel":"NEON (architectural AArch64 baseline)"}
+2026-10-26T02:45:23.0302600Z {"status":"passed","transitions":10000,"full_refresh_observations":1618,"exact_search_pairs":144,"parallel_workers":[2,4,8],"network_identity":"ae6fc9aa39b4900d7b932d76e2f72a70a0d4018d565eabe8b22825553a818a31"}
+2026-10-26T02:45:24.2885050Z {"status":"passed","transitions":10000,"full_refresh_observations":1618,"exact_search_pairs":144,"parallel_workers":[2,4,8],"network_identity":"ccc6f7c2db40f95b510e63326f0c764d3cd6577d4029cc5bbe3e28758d46b6ce"}
+2026-10-26T02:45:24.4252640Z [
+2026-10-26T02:45:24.4252930Z   {
+2026-10-26T02:45:24.4254000Z     "case": "truncated",
+2026-10-26T02:45:24.4254940Z     "exit": 1,
+2026-10-26T02:45:24.4255830Z     "reason": "network length incompatible or truncated"
+2026-10-26T02:45:24.4256750Z   },
+2026-10-26T02:45:24.4257340Z   {
+2026-10-26T02:45:24.4257790Z     "case": "trailing",
+2026-10-26T02:45:24.4258410Z     "exit": 1,
+2026-10-26T02:45:24.4261220Z     "reason": "network length incompatible or truncated"
+2026-10-26T02:45:24.4262090Z   },
+2026-10-26T02:45:24.4262570Z   {
+2026-10-26T02:45:24.4263260Z     "case": "wrong-feature",
+2026-10-26T02:45:24.4263780Z     "exit": 1,
+2026-10-26T02:45:24.4264610Z     "reason": "network feature or architecture mismatch"
+2026-10-26T02:45:24.4265300Z   },
+2026-10-26T02:45:24.4265840Z   {
+2026-10-26T02:45:24.4266270Z     "case": "wrong-width",
+2026-10-26T02:45:24.4266900Z     "exit": 1,
+2026-10-26T02:45:24.4267790Z     "reason": "network feature or architecture mismatch"
+2026-10-26T02:45:24.4268650Z   },
+2026-10-26T02:45:24.4269190Z   {
+2026-10-26T02:45:24.4269740Z     "case": "wrong-scale",
+2026-10-26T02:45:24.4270500Z     "exit": 1,
+2026-10-26T02:45:24.4273260Z     "reason": "network numerical contract mismatch"
+2026-10-26T02:45:24.4274150Z   },
+2026-10-26T02:45:24.4274690Z   {
+2026-10-26T02:45:24.4275200Z     "case": "wrong-checksum",
+2026-10-26T02:45:24.4275850Z     "exit": 1,
+2026-10-26T02:45:24.4276400Z     "reason": "network checksum mismatch"
+2026-10-26T02:45:24.4277100Z   },
+2026-10-26T02:45:24.4277590Z   {
+2026-10-26T02:45:24.4278110Z     "case": "corrupt-weights",
+2026-10-26T02:45:24.4278740Z     "exit": 1,
+2026-10-26T02:45:24.4279370Z     "reason": "network checksum mismatch"
+2026-10-26T02:45:24.4280100Z   }
+2026-10-26T02:45:24.4280540Z ]
+2026-10-26T02:45:24.7389840Z Opening clusters and finite-sample endpoint uncertainty passed
+2026-10-26T02:45:35.1332200Z {"positions": 2000, "nonzero_residual_scalar_native_reference": "bit-identical", "classical_board_oracle": "bit-identical", "wrong_baseline_contract": "rejected"}
+2026-10-26T02:45:35.3412670Z five invalid match option contracts rejected; real native handshake and play accepted
+2026-10-26T02:45:36.0512660Z 2000 normalized feature identities agree across color reflections and omitted state fields
+2026-10-26T02:45:36.1395120Z {"status": "passed", "rejections": [{"case": "max_seconds-increased", "reason": "resume would extend the frozen acquisition limit: max_seconds"}, {"case": "max_seconds-removed", "reason": "resume would extend the frozen acquisition limit: max_seconds"}, {"case": "max_child_cpu_seconds-increased", "reason": "resume would extend the frozen acquisition limit: max_child_cpu_seconds"}, {"case": "max_child_cpu_seconds-removed", "reason": "resume would extend the frozen acquisition limit: max_child_cpu_seconds"}, {"case": "max_gib-increased", "reason": "resume would extend the frozen acquisition limit: max_gib"}, {"case": "max_gib-removed", "reason": "resume would extend the frozen acquisition limit: max_gib"}, {"case": "reserve-reduced", "reason": "resume would reduce the frozen free-space reserve"}, {"case": "elapsed-before-restart", "reason": "original acquisition wall budget already exhausted"}, {"case": "cpu-cumulative", "reason": "original acquisition child CPU budget already exhausted"}, {"case": "wall-time-budget", "reason": "acquisition budget already exhausted; a restart cannot reset it"}, {"case": "child-cpu-scheduling-budget", "reason": "acquisition budget already exhausted; a restart cannot reset it"}, {"case": "output-byte-budget", "reason": "acquisition budget already exhausted; a restart cannot reset it"}, {"case": "preparation-confirmation-timeout", "reason": "acquisition budget already exhausted; a restart cannot reset it"}, {"case": "confirmation-cross-session", "reason": "original preparation confirmation budget already exhausted"}, {"case": "undo-prior-tightening", "reason": "resume would extend the frozen acquisition limit: max_seconds"}], "admitted": ["same budget", "tighter budget", "same remaining confirmation deadline"], "full_acceptance": false}
+2026-10-26T02:45:36.5532300Z {"status": "passed", "controls": ["second owner refused", "same original deadline and immutable scope on resume", "input-change refused", "budget-increase refused", "expired original scope refused", "wall-clock rollback refused", "additional byte ceiling enforced", "owned child reaped after resource stop", "absolute deadline terminates and reaps child"], "full_acceptance": false}
+2026-10-26T02:45:36.8185770Z {"status": "passed", "controls": [{"case": "successful-parent", "actual_exit": 0, "retained_reason": "cleanup-permission-denied", "cleanup_warnings": ["permission denied signalling owned process group: 15"]}, {"case": "failed-parent", "actual_exit": 7, "retained_reason": "nonzero-exit", "cleanup_warnings": ["permission denied signalling owned process group: 15"]}, {"case": "timed-parent", "actual_exit": -15, "retained_reason": "stage-timeout", "cleanup_warnings": ["permission denied signalling owned process group: 15"]}], "full_acceptance": false}
+2026-10-26T02:45:36.9523250Z {"status": "passed", "controls": ["battery refused before creating a scope", "AC loss stops work without granting a new deadline", "awake assertion terminates with its owner", "legacy frozen protocols retain original power behavior", "continued-work policy admits battery with a scoped awake assertion"], "full_acceptance": false}
+2026-10-26T02:45:37.3078920Z {"status": "passed", "rejected": ["milliseconds", "threads", "hash_mib", "workers", "warmup_nodes", "transport_allowance_ms", "maximum_plies", "neural_pairs", "external_pairs", "maximum_neural_campaign_wall_seconds", "maximum_external_campaign_wall_seconds", "default corpus/model scope cannot grant twelve hours", "resumed fixed sample cannot change"], "unchanged_classical_control": true, "live_conflicting_processes": [], "scope": "contract and host-isolation checks; no full strength games executed", "full_acceptance": false}
+2026-10-26T02:45:37.5093040Z {"status": "passed", "single_switch_modes": 10, "rejected_contracts": [{"field": "schema", "value": "caissa-heuristic-study-v0"}, {"field": "status", "value": "draft"}, {"field": "profile", "value": "full"}, {"field": "positions", "value": "elsewhere.json"}, {"field": "positions_sha256", "value": "0000000000000000000000000000000000000000000000000000000000000000"}, {"field": "nodes", "value": [5000]}, {"field": "milliseconds", "value": [25]}, {"field": "repeats", "value": 2}, {"field": "schedule_seed", "value": 0}, {"field": "threads", "value": 2}, {"field": "threads", "value": true}, {"field": "hash_mib", "value": 32}, {"field": "warmup_nodes", "value": 0}, {"field": "maximum_seconds", "value": 601}, {"field": "maximum_observation_bytes", "value": 134217729}, {"field": "external protocol identity"}], "actual_owner_lock_deferrals": 2, "full_acceptance": false}
+2026-10-26T02:45:37.7143050Z {"status": "passed", "controls": [{"case": "weakened-classical-table", "reason": "full classical control option inventory differs from frozen original-engine contract"}, {"case": "both-table-disabled", "reason": "full candidate option inventory differs from frozen original-engine contract"}, {"case": "changed-mixture", "reason": "full candidate option inventory differs from frozen original-engine contract"}, {"case": "scalar-only-candidate", "reason": "full candidate option inventory differs from frozen original-engine contract"}, {"case": "missing-file", "reason": "full candidate option inventory differs from frozen original-engine contract"}, {"case": "changed-hash", "reason": "full candidate option inventory differs from frozen original-engine contract"}], "full_acceptance": false}
+2026-10-26T02:45:37.9791830Z {"status": "passed", "controls": [{"case": "unknown-schema", "reason": "unsupported full strength protocol schema"}, {"case": "lazy-candidate", "reason": "full candidate option inventory differs from frozen original-engine contract"}, {"case": "lazy-classical", "reason": "full classical control option inventory differs from frozen original-engine contract"}, {"case": "lazy-both", "reason": "full candidate option inventory differs from frozen original-engine contract"}, {"case": "missing-lazy", "reason": "full candidate option inventory differs from frozen original-engine contract"}, {"case": "extra-option", "reason": "full candidate option inventory differs from frozen original-engine contract"}, {"case": "bool-thread", "reason": "full candidate option inventory differs from frozen original-engine contract"}, {"case": "integer-lazy", "reason": "full candidate option inventory differs from frozen original-engine contract"}, {"case": "changed-mixture", "reason": "full candidate option inventory differs from frozen original-engine contract"}, {"case": "old-wire", "reason": "full deferred actor encoding or selected mixture differs"}, {"case": "changed-clip", "reason": "full deferred actor encoding or selected mixture differs"}, {"case": "protocol-bool-thread", "reason": "full deferred actor resource types or values differ"}, {"case": "control-network", "reason": "full classical control option inventory differs from frozen original-engine contract"}, {"case": "control-table", "reason": "full classical control option inventory differs from frozen original-engine contract"}], "full_acceptance": false, "scope": "Prospective parser controls only; no profile frozen or games run"}
+2026-10-26T02:45:38.5373010Z {"status": "passed", "controls": 26, "real_lineage_checked": true, "full_acceptance": false}
+2026-10-26T02:45:38.7511360Z {"status": "passed", "controls": [{"case": "inactive-proposal", "reason": "full model protocol is not frozen"}, {"case": "missing-data-identity", "reason": "full model data/finalization identity is absent: dataset_sha256"}, {"case": "exact-cache-changed", "reason": "full exact search optimization contract differs"}, {"case": "leaf-generation-changed", "reason": "full exact search optimization contract differs"}, {"case": "seed-replacement", "reason": "full seed inventory or declared update budget differs"}, {"case": "updates-reduced", "reason": "full seed inventory or declared update budget differs"}, {"case": "batch-reduced", "reason": "full seed inventory or declared update budget differs"}, {"case": "mixture-changed", "reason": "full training numerical settings differ"}, {"case": "architecture-changed", "reason": "full residual architecture or deployed mixture differs"}, {"case": "probes-reduced", "reason": "full numerical sample or error endpoint differs"}, {"case": "error-weakened", "reason": "full numerical sample or error endpoint differs"}, {"case": "budget-expanded", "reason": "full model cumulative resources or restoration sample differs"}, {"case": "active-budget-expanded", "reason": "full model cumulative resources or restoration sample differs"}, {"case": "awake-policy-changed", "reason": "full model cumulative resources or restoration sample differs"}, {"case": "early-stop", "reason": "full model cumulative resources or restoration sample differs"}, {"case": "transitions-reduced", "reason": "full model cumulative resources or restoration sample differs"}, {"case": "data-floor-reduced", "reason": "full data endpoints were weakened"}, {"case": "neural-sample-reduced", "reason": "full strength sample or neural-gain endpoint was weakened"}, {"case": "external-sample-reduced", "reason": "full strength sample or neural-gain endpoint was weakened"}, {"case": "gain-weakened", "reason": "full strength sample or neural-gain endpoint was weakened"}, {"case": "lower-weakened", "reason": "full strength sample or neural-gain endpoint was weakened"}], "scope": "Frozen contract checks only; no full learning or strength observation", "full_acceptance": false}
+2026-10-26T02:45:38.9865490Z {"status": "passed", "controls": [{"case": "data-status", "reason": "the existing corpus has no matching complete independent pass"}, {"case": "data-protocol_sha256", "reason": "the existing corpus has no matching complete independent pass"}, {"case": "data-dataset_sha256", "reason": "the existing corpus has no matching complete independent pass"}, {"case": "data-independent", "reason": "the existing corpus has no matching complete independent pass"}, {"case": "model-updates_per_seed", "reason": "three complete seeds and validation-only selection are absent"}, {"case": "model-seeds", "reason": "three complete seeds and validation-only selection are absent"}, {"case": "model-test_model_metrics_used_for_selection", "reason": "three complete seeds and validation-only selection are absent"}, {"case": "failed-domain-exit-zero", "reason": "domain exit differs from completed receipt"}, {"case": "failed-status-empty-failures", "reason": "domain failure flags disagree"}, {"case": "domain-cannot-claim-release", "reason": "domain has no complete matching receipt: model"}, {"case": "crash-cannot-be-negative-endpoint", "reason": "domain exit differs from completed receipt"}, {"case": "different-protocol", "reason": "domain has no complete matching receipt: model"}, {"case": "actual-negative-domain-continues", "reason": "valid completed negative receipts retain their failed domains"}, {"case": "missing-original-archive", "reason": "original owner source is missing"}, {"case": "resume-imports-archived-owner", "reason": "safe module launcher selects original source rather than current root"}, {"case": "stopped-dependency", "reason": "existing data owner stopped without a full pass; inspect its retained failure and remaining scope"}, {"case": "live-dependency-waits", "reason": "existing owner retains its lock; actual counters are published; no model scope starts"}, {"case": "scheduler-deadline-exhausted", "reason": "continuation wall ceiling exhausted during dependency wait"}, {"case": "negative-learning-still-measures-strength", "reason": "both predeclared strength domains execute in order and both failed gates remain failed"}, {"case": "expired-queue-not-reset-completed-negative-endpoints", "reason": "original continuation wall ceiling exhausted or clock reversed"}, {"case": "abnormal-child-stops-queue", "reason": "domain did not finish: full-model"}, {"case": "expired-queue-not-reset-unexpected-crash", "reason": "original continuation wall ceiling exhausted or clock reversed"}], "full_acceptance": false, "scope": "Scheduling and receipt controls only; all positive test-domain receipts are synthetic fixtures"}
+2026-10-26T02:45:39.9942110Z {"status": "passed", "cases": [{"case": "unchanged", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.source", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/SOURCE_INPUTS.json", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/source", "--expected-commit", "ae267e86e771a45d59f070fc883ec933d202b047"], "exit": 0, "observed": {"status": "passed", "source_commit": "ae267e86e771a45d59f070fc883ec933d202b047", "source_files": 6, "policy": "caissa-source-v2", "full_acceptance": false}, "stderr": "", "ordinary_hashes_recomputed": false}, {"case": "edited-native-rehashed", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.source", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/SOURCE_INPUTS.json", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/source", "--expected-commit", "ae267e86e771a45d59f070fc883ec933d202b047"], "exit": 1, "observed": {"status": "rejected", "reason": "source inventory or hashes differ from trusted Git blobs", "full_acceptance": false}, "stderr": "", "ordinary_hashes_recomputed": true}, {"case": "edited-browser-rehashed", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.source", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/SOURCE_INPUTS.json", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/source", "--expected-commit", "ae267e86e771a45d59f070fc883ec933d202b047"], "exit": 1, "observed": {"status": "rejected", "reason": "source inventory or hashes differ from trusted Git blobs", "full_acceptance": false}, "stderr": "", "ordinary_hashes_recomputed": true}, {"case": "edited-native-unrehashed", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.source", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/SOURCE_INPUTS.json", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/source", "--expected-commit", "ae267e86e771a45d59f070fc883ec933d202b047"], "exit": 1, "observed": {"status": "rejected", "reason": "trusted checkout bytes differ from the expected commit: src/main.cpp", "full_acceptance": false}, "stderr": "", "ordinary_hashes_recomputed": false}, {"case": "edited-browser-unrehashed", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.source", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/SOURCE_INPUTS.json", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/source", "--expected-commit", "ae267e86e771a45d59f070fc883ec933d202b047"], "exit": 1, "observed": {"status": "rejected", "reason": "trusted checkout bytes differ from the expected commit: web/index.html", "full_acceptance": false}, "stderr": "", "ordinary_hashes_recomputed": false}, {"case": "omitted-asset", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.source", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/SOURCE_INPUTS.json", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/source", "--expected-commit", "ae267e86e771a45d59f070fc883ec933d202b047"], "exit": 1, "observed": {"status": "rejected", "reason": "source inventory or hashes differ from trusted Git blobs", "full_acceptance": false}, "stderr": "", "ordinary_hashes_recomputed": false}, {"case": "linked-source", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.source", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/SOURCE_INPUTS.json", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/source", "--expected-commit", "ae267e86e771a45d59f070fc883ec933d202b047"], "exit": 1, "observed": {"status": "rejected", "reason": "trusted checkout source traverses a symbolic link", "full_acceptance": false}, "stderr": "", "ordinary_hashes_recomputed": false}, {"case": "wrong-commit", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.source", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/SOURCE_INPUTS.json", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-source-controls-tqwuvz8c/source", "--expected-commit", "ae267e86e771a45d59f070fc883ec933d202b047"], "exit": 1, "observed": {"status": "rejected", "reason": "source commit mismatch", "full_acceptance": false}, "stderr": "", "ordinary_hashes_recomputed": false}], "legacy_policy_preserved": true, "scope": "Source identity controls on a synthetic Git fixture; no engine or model execution", "full_acceptance": false}
+2026-10-26T02:45:43.9392890Z {"status": "passed", "cases": [{"case": "receipt-booleans", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/receipt-booleans", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "360169d0e08cd8570f7b2c95e3bbcaec48fe5a141f10c0b4e5b41b8fe74f2707"], "exit": 2, "observed": {"status": "incomplete", "profile": "full", "full_acceptance": false, "source_commit": "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "inputs_sha256": "360169d0e08cd8570f7b2c95e3bbcaec48fe5a141f10c0b4e5b41b8fe74f2707", "verified_relationships": {"deployment": {"format": 4, "scale": 4096, "clip": 8188, "classical_contract": 1, "neural_weight": 10, "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005"}, "data": {"training_inputs": 10578434, "completed_original_games": 229582, "dataset_sha256": "f09cdec986858c5b1aa80b3c97aaa4d825be892fc94e16ac5d835bc3d709f0ce", "semantic_reconstruction_required": true}, "learning": {"seeds": [17, 41, 73], "selected_seed": 73, "selected_step": 2750, "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005", "optimizer_and_validation_replay_required": true}}, "pending_semantic_gates": {"G01": "independent full-domain semantic adapter required", "G02": "independent full-domain semantic adapter required", "G03": "independent full-domain semantic adapter required", "G04": "independent full-domain semantic adapter required", "G05": "independent full-domain semantic adapter required", "G06": "independent full-domain semantic adapter required", "G07": "independent full-domain semantic adapter required", "G08": "independent full-domain semantic adapter required", "G09": "independent full-domain semantic adapter required", "G10": "independent full-domain semantic adapter required", "G11": "independent full-domain semantic adapter required", "G12": "independent full-domain semantic adapter required", "G13": "independent full-domain semantic adapter required", "G14": "independent full-domain semantic adapter required", "G15": "independent full-domain semantic adapter required", "G16": "independent full-domain semantic adapter required"}, "scope": "Artifact integrity, committed product source and experiment-lineage admission only; no full gate certified"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "changed-mixture", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/changed-mixture", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "115568f1dcac298a150affc8623f503c5b10596a4069941baffc1374a7afb581"], "exit": 1, "observed": {"status": "rejected", "reason": "full deployment changed original classical evaluation or selected mixture"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "changed-checkpoint", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/changed-checkpoint", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "9d8b7bc89b0972fa19a228478c77d50625d5464edc1b29cabd30da4d4c1c92f4"], "exit": 1, "observed": {"status": "rejected", "reason": "full network is not the selected float checkpoint"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "weakened-gain", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/weakened-gain", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "88f0faa9e995c1b5ed5e121877c6741bea5953b14f809645a900bfee0a6fdad4"], "exit": 1, "observed": {"status": "rejected", "reason": "full neural-gain threshold or uncertainty was weakened"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "lost-seed", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/lost-seed", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "34a7a511e99d8f8f6f8388a850f5a7811c31fd3bc940fd256b2692b5e848daba"], "exit": 1, "observed": {"status": "rejected", "reason": "full learning omitted or replaced a frozen seed"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "test-selection", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/test-selection", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "6767e2395ba1a80dc34d2f0f3e25def3a843a74eb93c24251e23de090c5b1820"], "exit": 1, "observed": {"status": "rejected", "reason": "full learning changed data or accessed test selection"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "different-engine", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/different-engine", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "81fe16b560e056ff210daceedf46e3bb192ce8ff7baa70150ee806c426066c8b"], "exit": 1, "observed": {"status": "rejected", "reason": "full gate used a different engine: G08"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "different-evaluator", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/different-evaluator", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "bc1e61ec81047d91d835b690931166a5d68c49c37fd418eaabf5a5bbfd1a5a16"], "exit": 1, "observed": {"status": "rejected", "reason": "full gate used a different evaluator: G08"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "changed-heldout", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/changed-heldout", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "4799e41304a6dc3240688ac27765bcaaf5b15bb0013fb95786996d2c533c868a"], "exit": 1, "observed": {"status": "rejected", "reason": "full held-out study/opening bytes differ from data screening"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "bad-network-crc", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/bad-network-crc", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "5de775c3e8c7cbe7984d82eeea1c424c3ed5e66a448c8fbfdf804453feb16889"], "exit": 1, "observed": {"status": "rejected", "reason": "full selected network payload, CRC or classical contract differs"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "linked-artifact-directory", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/linked-artifact-directory", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "360169d0e08cd8570f7b2c95e3bbcaec48fe5a141f10c0b4e5b41b8fe74f2707"], "exit": 1, "observed": {"status": "rejected", "reason": "evidence contains a symbolic link"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "missing-input-pin", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/missing-input-pin", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full"], "exit": 1, "observed": {"status": "rejected", "reason": "full verification requires external expected-inputs SHA256"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": false}, {"case": "malformed-deployment", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/malformed-deployment", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "ae3273c1515715a10f24358aeaffb74a7009c9e438366ffe3a6d246ef5be1d76"], "exit": 1, "observed": {"status": "rejected", "reason": "full deployment descriptor must be an object"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "bool-classical", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/bool-classical", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "cfcb225a4cf041aca9452eb77c9660769b03fee6748f66f5bbabf481030cf8ab"], "exit": 1, "observed": {"status": "rejected", "reason": "full deployment changed original classical evaluation or selected mixture"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}, {"case": "nonfinite-input", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/nonfinite-input", "--checkout", "/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-full-graph-xskuiofh/source", "--expected-commit", "63763a58e1bd3c49e7f5d2929cf6cb09dde99c75", "--profile", "full", "--expected-inputs-sha256", "80454e4514fd8ec7a3beb9bb4c052909c445e2173fac6450011fa36894ad3895"], "exit": 1, "observed": {"status": "rejected", "reason": "nonfinite JSON value: Infinity"}, "stderr": "", "ordinary_hashes_and_external_input_pin_recomputed": true}], "scope": "Synthetic metadata relationship controls through actual CLI; no raw domain gate certified or native executable run", "full_acceptance": false}
+2026-10-26T02:45:48.3015280Z {"status": "passed", "metadata_admissions": 1, "actual_full_cli_rejections": 14, "full_numerical_sample_certified": false, "full_acceptance": false}
+2026-10-26T02:45:48.3541820Z {"status": "passed", "cases": [{"case": "strict-json", "input": "{\"value\":1,\"value\":2}", "reason": "duplicate JSON object key"}, {"case": "strict-json", "input": "{\"value\":NaN}", "reason": "nonfinite JSON value: NaN"}, {"case": "strict-json", "input": "{\"value\":1e999}", "reason": "nonfinite JSON number"}, {"case": "mutation-after-verification", "reason": "verified metadata bytes changed after manifest validation"}, {"case": "metadata-byte-ceiling", "reason": "evidence metadata byte ceiling exceeded"}, {"case": "unsafe-relative-path", "path": "../data.json", "reason": "source path is not a safe canonical relative name"}, {"case": "unsafe-relative-path", "path": "/data.json", "reason": "source path is not a safe canonical relative name"}, {"case": "unsafe-relative-path", "path": "a//data.json", "reason": "source path is not a safe canonical relative name"}, {"case": "unsafe-relative-path", "path": "a/./data.json", "reason": "source path is not a safe canonical relative name"}, {"case": "unsafe-relative-path", "path": "a\\data.json", "reason": "source path is not a safe canonical relative name"}, {"case": "linked-artifact", "reason": "evidence contains a symbolic link"}, {"case": "nonregular-nonblocking-read", "reason": "evidence artifact must be a regular file"}, {"case": "aliased-manifest-path", "reason": "source path is not a safe canonical relative name"}], "scope": "Synthetic artifact integrity controls; no chess or model execution", "full_acceptance": false}
+2026-10-26T02:45:48.4951480Z {"status": "passed", "cases": [{"case": "actual-stream-copy", "bytes": 9437184, "peak_python_bytes": 2107929}, {"case": "no-overwrite", "reason": "[Errno 17] File exists: '/var/folders/nj/vtw8zd2j31d1gdrtntc5y4600000gn/T/caissa-stream-copy-ue74dnoz/copy.bin'"}, {"case": "preserve-original-root", "reason": "evidence copy must preserve the original artifact directory"}, {"case": "copy-byte-ceiling", "reason": "evidence copy byte ceiling exceeded"}, {"case": "typed-byte-ceiling", "reason": "finite evidence copy byte ceiling required"}, {"case": "changed-after-manifest", "reason": "verified copy bytes changed after manifest validation"}, {"case": "linked-source", "reason": "[Errno 62] Too many levels of symbolic links: 'raw.bin'"}, {"case": "unverified-source", "reason": "evidence copy requires a verified manifest identity"}, {"case": "original-deadline", "reason": "cumulative evidence verification deadline exhausted"}], "full_acceptance": false, "scope": "Synthetic immutable streaming-copy controls; no model/native execution"}
+2026-10-26T02:45:51.8912340Z {"status": "passed", "original_lineage_admissions": 1, "metadata_only_full_command_remains_pending": true, "actual_full_cli_rejections": 10, "full_learning_component_certified": false, "full_acceptance": false}
+2026-10-26T02:45:56.1456750Z {"status": "passed", "metadata_admissions": 1, "full_cli_rejections": 14, "option_contracts": 8, "actual_native_ownership_probes": 2, "full_G13_certified": false, "full_acceptance": false}
+2026-10-26T02:45:56.2275390Z {"status": "passed", "frozen_identity_selected": true, "failed_domain_preserved": true, "missing_data_remains_unknown": true, "scope": "Synthetic metadata-only readiness fixture", "full_acceptance": false}
+2026-10-26T02:46:00.5338700Z {"status": "passed", "native_prefix_positions": 512, "independent_perft_positions": 20, "positive_full_gate": false, "controls": [{"case": "move-sets", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.rules", "--observations", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-move-sets/observations.jsonl", "--summary", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-move-sets/summary.json", "--engine", "/Users/runner/work/caissa/caissa/build/caissa", "--expected-engine-sha256", "e94375dc0e5fbcfa761e328a6d919f7eed9254b938d26c50ea52d9352b190dc8", "--protocol", "/Users/runner/work/caissa/caissa/config/rules-replay-v1.json", "--expected-protocol-sha256", "a63e23962322b1c389426954ac21510618914e40451166de7bed50c69ce631b5", "--fixtures", "/Users/runner/work/caissa/caissa/config/perft.json", "--expected-observations-sha256", "9280aab87468d1f4c82260ec58b957075c7addbaf5595cbcc902836922043a95", "--profile", "diagnostic", "--maximum-seconds", "60", "--output", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/replay-move-sets"], "exit": 1, "reason": "rules saved move/check results disagree with independent oracle", "raw_summary_profile_pins_rehashed": true}, {"case": "unreachable-walk", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.rules", "--observations", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-unreachable-walk/observations.jsonl", "--summary", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-unreachable-walk/summary.json", "--engine", "/Users/runner/work/caissa/caissa/build/caissa", "--expected-engine-sha256", "e94375dc0e5fbcfa761e328a6d919f7eed9254b938d26c50ea52d9352b190dc8", "--protocol", "/Users/runner/work/caissa/caissa/config/rules-replay-v1.json", "--expected-protocol-sha256", "a63e23962322b1c389426954ac21510618914e40451166de7bed50c69ce631b5", "--fixtures", "/Users/runner/work/caissa/caissa/config/perft.json", "--expected-observations-sha256", "f5bd1461f5252fea638d3d9d7fbbbe2047e6ea468c52d2c8a8e8f8297e1cdba3", "--profile", "diagnostic", "--maximum-seconds", "60", "--output", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/replay-unreachable-walk"], "exit": 1, "reason": "rules observation is not the frozen reachable walk", "raw_summary_profile_pins_rehashed": true}, {"case": "duplicate-index", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.rules", "--observations", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-duplicate-index/observations.jsonl", "--summary", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-duplicate-index/summary.json", "--engine", "/Users/runner/work/caissa/caissa/build/caissa", "--expected-engine-sha256", "e94375dc0e5fbcfa761e328a6d919f7eed9254b938d26c50ea52d9352b190dc8", "--protocol", "/Users/runner/work/caissa/caissa/config/rules-replay-v1.json", "--expected-protocol-sha256", "a63e23962322b1c389426954ac21510618914e40451166de7bed50c69ce631b5", "--fixtures", "/Users/runner/work/caissa/caissa/config/perft.json", "--expected-observations-sha256", "0e576f0f40399e6fa3b9f488d0c21f411b1b28c4a7f6a0644ae03c906d26165b", "--profile", "diagnostic", "--maximum-seconds", "60", "--output", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/replay-duplicate-index"], "exit": 1, "reason": "rules observation is not the frozen reachable walk", "raw_summary_profile_pins_rehashed": true}, {"case": "false-perft", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.rules", "--observations", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-false-perft/observations.jsonl", "--summary", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-false-perft/summary.json", "--engine", "/Users/runner/work/caissa/caissa/build/caissa", "--expected-engine-sha256", "e94375dc0e5fbcfa761e328a6d919f7eed9254b938d26c50ea52d9352b190dc8", "--protocol", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-false-perft/rules.json", "--expected-protocol-sha256", "a3b4fdc803015b981e309560e0ac334bb1cecd5f04ad55caefcdf2c256f14f3f", "--fixtures", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-false-perft/perft.json", "--expected-observations-sha256", "be3bd26501fd379f7bd62eee1618ad473feff3f2f8a1c01f47cfc95260124db6", "--profile", "diagnostic", "--maximum-seconds", "60", "--output", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/replay-false-perft"], "exit": 1, "reason": "known perft total disagrees with independent oracle", "raw_summary_profile_pins_rehashed": true}, {"case": "false-full-work", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.rules", "--observations", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-false-full-work/observations.jsonl", "--summary", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-false-full-work/summary.json", "--engine", "/Users/runner/work/caissa/caissa/build/caissa", "--expected-engine-sha256", "e94375dc0e5fbcfa761e328a6d919f7eed9254b938d26c50ea52d9352b190dc8", "--protocol", "/Users/runner/work/caissa/caissa/config/rules-replay-v1.json", "--expected-protocol-sha256", "a63e23962322b1c389426954ac21510618914e40451166de7bed50c69ce631b5", "--fixtures", "/Users/runner/work/caissa/caissa/config/perft.json", "--expected-observations-sha256", "be3bd26501fd379f7bd62eee1618ad473feff3f2f8a1c01f47cfc95260124db6", "--profile", "full", "--maximum-seconds", "60", "--output", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/replay-false-full-work"], "exit": 1, "reason": "rules useful-work or distinct-position counts disagree", "raw_summary_profile_pins_rehashed": true}, {"case": "engine-identity", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.rules", "--observations", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-engine-identity/observations.jsonl", "--summary", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/mutant-engine-identity/summary.json", "--engine", "/Users/runner/work/caissa/caissa/build/caissa", "--expected-engine-sha256", "0000000000000000000000000000000000000000000000000000000000000000", "--protocol", "/Users/runner/work/caissa/caissa/config/rules-replay-v1.json", "--expected-protocol-sha256", "a63e23962322b1c389426954ac21510618914e40451166de7bed50c69ce631b5", "--fixtures", "/Users/runner/work/caissa/caissa/config/perft.json", "--expected-observations-sha256", "be3bd26501fd379f7bd62eee1618ad473feff3f2f8a1c01f47cfc95260124db6", "--profile", "diagnostic", "--maximum-seconds", "60", "--output", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/replay-engine-identity"], "exit": 1, "reason": "rules saved-engine identity differs", "raw_summary_profile_pins_rehashed": true}, {"case": "full-adapter-prefix", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/full-bundle-prefix", "--checkout", "/Users/runner/work/caissa/caissa", "--expected-commit", "dce141fbdec349408370084baa39cfe0a83298f4", "--profile", "full", "--expected-inputs-sha256", "4291918e497146d0aa8cd6df8ae832e93a600ba9530edb3f69352353d9b6161e", "--replay-output", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/full-replay"], "exit": 1, "reason": "full rules replay needs all100000 positions", "raw_summary_profile_pins_rehashed": true}, {"case": "full-adapter-output", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/full-bundle-prefix", "--checkout", "/Users/runner/work/caissa/caissa", "--expected-commit", "dce141fbdec349408370084baa39cfe0a83298f4", "--profile", "full", "--expected-inputs-sha256", "4291918e497146d0aa8cd6df8ae832e93a600ba9530edb3f69352353d9b6161e", "--replay-output", "/Users/runner/work/caissa/caissa/runs/ci-rules-replay/full-bundle-prefix/invalid-replay"], "exit": 1, "reason": "full replay must preserve the original evidence", "raw_summary_profile_pins_rehashed": true}], "engine_sha256": "e94375dc0e5fbcfa761e328a6d919f7eed9254b938d26c50ea52d9352b190dc8", "scope": "Real original-core diagnostic replay; full100000-position final-source gate remains unexecuted", "full_acceptance": false}
+2026-10-26T02:49:27.0263030Z {"status": "diagnostic", "pairs": 1, "completed_games": 2, "positions_before_dedup": 98, "seconds_this_session": 0.06778033300008701, "workers": 2, "wall_seconds_this_session": 0.06778097152709961, "output_bytes": 15496, "stop_reason": null, "phase": "generating", "observed_prepared_pairs": null, "max_preparation_lag_pairs": 0, "in_flight_pairs": 1, "session": "499aeb5255f14660881759285c3d0eaf", "pid": 13654}
+2026-10-26T02:49:28.1445030Z {"status": "diagnostic", "pairs": 25, "completed_games": 50, "positions_before_dedup": 3298, "seconds_this_session": 1.185870207999983, "workers": 2, "wall_seconds_this_session": 1.185873031616211, "output_bytes": 518787, "stop_reason": null, "phase": "generating", "observed_prepared_pairs": null, "max_preparation_lag_pairs": 0, "in_flight_pairs": 1, "session": "499aeb5255f14660881759285c3d0eaf", "pid": 13654}
+2026-10-26T02:49:29.3639890Z {"status": "diagnostic", "pairs": 50, "completed_games": 100, "positions_before_dedup": 7036, "seconds_this_session": 2.404834666000056, "workers": 2, "wall_seconds_this_session": 2.4048359394073486, "output_bytes": 1097641, "stop_reason": null, "phase": "generating", "observed_prepared_pairs": null, "max_preparation_lag_pairs": 0, "in_flight_pairs": 0, "session": "499aeb5255f14660881759285c3d0eaf", "pid": 13654}
+2026-10-26T02:49:30.1513720Z {"source_pairs": 0, "games": 0, "completed_games": 0, "unfinished_games": 0, "raw_positions": 0, "within_split_duplicates": 0, "feature_equivalent_duplicates": 0, "cross_split_conflicts": 0, "heldout_samples": 0, "heldout_games": 0, "teacher_depth_zero_samples": 0, "distinct_train_inputs": 0, "distinct_validation_inputs": 0, "distinct_test_inputs": 0}
+2026-10-26T02:49:31.1947310Z {"source_pairs": 50, "games": 100, "completed_games": 100, "unfinished_games": 0, "raw_positions": 7036, "within_split_duplicates": 2943, "feature_equivalent_duplicates": 0, "cross_split_conflicts": 0, "heldout_samples": 0, "heldout_games": 0, "teacher_depth_zero_samples": 5949, "distinct_train_inputs": 3226, "distinct_validation_inputs": 425, "distinct_test_inputs": 442}
+2026-10-26T02:49:31.4308850Z {"schema": "caissa-dataset-v2", "corpus_config": {"schema": "caissa-selfplay-v1", "engine_sha256": "e94375dc0e5fbcfa761e328a6d919f7eed9254b938d26c50ea52d9352b190dc8", "seed": 271828, "nodes": 500, "requested_pairs": 50, "max_plies": 512, "opening_policy": "random-16-to-32-plies; near-best-30cp-first-12-v1", "outcome_perspective": "white", "search_score_perspective": "side-to-move"}, "corpus_content_sha256": "3c4b64d358f70de8879fd894bbc235b1893f0185f22a21cb194d69dd6fdb8fa2", "source_pairs_sha256": "450f60ddacce1c713a7d5ab3b4849c6a9af0c207f5b78950d26e0add1691da1a", "input_identity": "side-to-move normalized placement; rights/EP/clocks excluded; color reflection collapsed", "functional_deduplication": true, "target_columns": ["mean_outcome_stm", "mean_original_teacher_cp", "mean_original_teacher_win_probability"], "ordering": "input SHA256", "heldout_inputs": {"config/studies.json": "003444606138bc2702cf8981562bfec488b53498846602919c6f459cd8543f41", "config/strength-openings.json": "61b8c8812a107e0ea0b6e8a763a0d52d088b6b8480a0879a4952c4689bae71a8"}, "counts": {"games": 100, "completed_games": 100, "unfinished_games": 0, "raw_positions": 7036, "within_split_duplicates": 2943, "feature_equivalent_duplicates": 0, "cross_split_conflicts": 0, "heldout_samples": 0, "heldout_games": 0, "teacher_depth_zero_samples": 5949, "distinct_train_inputs": 3226, "distinct_validation_inputs": 425, "distinct_test_inputs": 442, "distinct_usable_positions": 4093, "quarantined_inputs": 0, "mixed_outcome_inputs": 15}, "splits": {"train": 3226, "validation": 425, "test": 442}, "histogram_scope": "eligible raw observations after held-out family/input screening, before duplicate aggregation", "seconds": 1.2718404999999393, "parent_cpu_seconds_this_session": 1.973194, "wall_seconds_this_session": 1.2718429565429688, "timing_scope": "current preparation session; checkpoint progress preserves work from earlier sessions"}
+2026-10-26T02:49:33.8214780Z {"status": "passed", "profile": "diagnostic-data-replay", "source_pairs": 50, "completed_games": 100, "unfinished_games": 0, "raw_samples": 7036, "independently_rebuilt_splits": {"train": 3226, "validation": 425, "test": 442}, "dataset_sha256": "6d8bce073c85a8b4b2ca148a996f7cd82f6ca0a311ad3d7753e5bed2e076618c"}
+2026-10-26T02:49:34.1105770Z {"status": "passed", "independent_chess_feature_rows": 162, "chunk_size_independence": true, "controls": [{"case": "out-of-range-feature", "reason": "feature index exceeds the declared transformer"}, {"case": "nonfinite-target", "reason": "nonfinite or invalid probability target"}, {"case": "outcome-range", "reason": "nonfinite or invalid probability target"}, {"case": "teacher-probability-range", "reason": "nonfinite or invalid probability target"}, {"case": "unbounded-teacher", "reason": "teacher score exceeds original search bounds"}, {"case": "perspective-material", "reason": "perspectives disagree on material count"}, {"case": "perspective-phase", "reason": "perspectives disagree on tapered phase"}, {"case": "missing-king", "reason": "profile features require one king of each color"}, {"case": "wrong-target-dtype", "reason": "profile numerical storage differs"}], "model_evaluated": false, "full_acceptance": false, "real_dataset_rows": {"train": 3226, "validation": 425, "test": 442}}
+2026-10-26T02:49:39.4748920Z [{"case": "wrong-feature", "rehashed_array": true, "subprocess_exit": 1, "reason": "prepared neural features disagree with independent board reconstruction"}, {"case": "wrong-target", "rehashed_array": true, "subprocess_exit": 1, "reason": "prepared target differs from original outcome/teacher averages"}, {"case": "wrong-contributor", "rehashed_array": false, "subprocess_exit": 1, "reason": "prepared contributor provenance differs"}]
+2026-10-26T02:49:45.4230170Z {"status": "passed", "actual_interruption_exit": -9, "committed_pair_cursor": 1, "stopped_index_sha256": "3c1f7ab18274522f67338ac9d0089b9c02ca28edf6f0a4c14d003c154e7c5bc8", "completed_index_sha256": "18ebd47a312d6f22709fc4fa302403ffcdeddd32529d08ab25040fd2ff81d4a1", "independent_result": {"status": "passed", "profile": "diagnostic-data-replay", "source_pairs": 50, "completed_games": 100, "unfinished_games": 0, "raw_samples": 7036, "independently_rebuilt_splits": {"train": 3226, "validation": 425, "test": 442}, "dataset_sha256": "6d8bce073c85a8b4b2ca148a996f7cd82f6ca0a311ad3d7753e5bed2e076618c"}, "wrong_pin_exit": 1, "unpinned_exit": 1, "uncommitted_pages_and_cursor_rolled_back": true, "legacy_unsafe_index_refused": true, "full_acceptance": false}
+2026-10-26T02:49:54.9403430Z {"status": "passed", "real_original_data_replays": 1, "actual_rejections": 12, "full_data_component_certified": false, "full_acceptance": false}
+2026-10-26T02:50:02.5361430Z {"status": "passed", "plan_cli_rejections": 10, "join_rejections": 7, "source_controls": 2, "real_original_pairs": 50, "inherited_host_lock": true, "nested_timeout_cleanup": true, "full_G07_certified": false, "full_acceptance": false}
+2026-10-26T02:50:02.5627180Z ##[group]Run npm ci --ignore-scripts
+2026-10-26T02:50:02.5627570Z [36;1mnpm ci --ignore-scripts[0m
+2026-10-26T02:50:02.5627840Z [36;1mnpm run build[0m
+2026-10-26T02:50:02.5628080Z [36;1mnode tests/service_workers.mjs[0m
+2026-10-26T02:50:02.5628500Z [36;1mnode dist/analysis-service/server.js > runs/service.log 2>&1 &[0m
+2026-10-26T02:50:02.5628830Z [36;1mSERVICE_PID=$![0m
+2026-10-26T02:50:02.5629090Z [36;1mtrap 'kill "$SERVICE_PID"' EXIT[0m
+2026-10-26T02:50:02.5629520Z [36;1mfor attempt in $(seq 1 30); do[0m
+2026-10-26T02:50:02.5629880Z [36;1m  if curl -fsS http://127.0.0.1:8765/api/session >/dev/null; then break; fi[0m
+2026-10-26T02:50:02.5630420Z [36;1m  if test "$attempt" -eq 30; then echo 'Service readiness deadline exceeded'; exit 1; fi[0m
+2026-10-26T02:50:02.5630790Z [36;1m  sleep 0.2[0m
+2026-10-26T02:50:02.5631030Z [36;1mdone[0m
+2026-10-26T02:50:02.5631230Z [36;1mnode tests/service_integration.mjs[0m
+2026-10-26T02:50:02.5631800Z [36;1mCAISSA_ENGINE=build/caissa node tests/search_inspection.mjs runs/ci-search-inspection[0m
+2026-10-26T02:50:02.6052300Z shell: /bin/bash -e {0}
+2026-10-26T02:50:02.6052590Z env:
+2026-10-26T02:50:02.6052910Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:02.6053400Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-26T02:50:02.6053880Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:02.6054330Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:02.6054730Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:02.6055080Z ##[endgroup]
+2026-10-26T02:50:04.1425900Z 
+2026-10-26T02:50:04.1426810Z added 4 packages, and audited 5 packages in 1s
+2026-10-26T02:50:04.1428750Z 
+2026-10-26T02:50:04.1429410Z found 0 vulnerabilities
+2026-10-26T02:50:04.4006780Z 
+2026-10-26T02:50:04.4007290Z > caissa-analysis@0.1.0 build
+2026-10-26T02:50:04.4007980Z > tsc -p tsconfig.json
+2026-10-26T02:50:04.4008310Z 
+2026-10-26T02:50:05.2234630Z {"status":"passed","occupiedLimit":4,"reservedUntilClose":4,"timeoutReaped":true,"malformedRejected":true,"unicodePreserved":true,"synchronousSpawnFailure":true,"shutdownReaped":true,"capacityRecovered":true,"scope":"adversarial subprocess transport; real chess integration separate"}
+2026-10-26T02:50:05.2427910Z curl: (7) Failed to connect to 127.0.0.1 port 8765 after 0 ms: Couldn't connect to server
+2026-10-26T02:50:06.0964850Z {"status":"passed","nativePosition":true,"nativePGN":true,"nativeAnalysis":true,"cancellationCleanup":true,"malformedInput":true,"tokenAndOrigin":true}
+2026-10-26T02:50:07.3823280Z {"status":"passed","observations":[{"case":"native-inspection-fixed-node-parity","nodes":10000,"samples":8},{"case":"malformed-native-telemetry-rejected","rejections":10},{"case":"actual-inspection-stream","threads":1,"visited":232768,"samples":8},{"case":"actual-inspection-stream","threads":4,"visited":619700,"samples":32},{"case":"terminal-zero-summary-invalid-input-and-cancellation","completed":true}],"full_acceptance":false}
+2026-10-26T02:50:07.9063550Z ##[group]Run python -m arena.run config/arena-ci.json runs/ci-arena --workers 1
+2026-10-26T02:50:07.9064150Z [36;1mpython -m arena.run config/arena-ci.json runs/ci-arena --workers 1[0m
+2026-10-26T02:50:07.9064630Z [36;1mpython -m arena.statistics runs/ci-arena[0m
+2026-10-26T02:50:07.9065110Z [36;1mpython -m tests.match_journals --campaign runs/ci-arena --output runs/ci-match-journals[0m
+2026-10-26T02:50:07.9065790Z [36;1mpython -m tests.strength_bundle --campaign runs/ci-arena --output runs/ci-strength-bundle[0m
+2026-10-26T02:50:07.9066400Z [36;1mpython -m tests.strength_controls --campaign runs/ci-arena --output runs/ci-strength-controls[0m
+2026-10-26T02:50:07.9067230Z [36;1mpython -m tools.evidence --checkout . --engine build/caissa --network models/diagnostic-v2.cai --arena runs/ci-arena --output runs/ci-evidence[0m
+2026-10-26T02:50:07.9068240Z [36;1mpython -m verification.verify runs/ci-evidence --checkout . --expected-commit "$GITHUB_SHA" --profile diagnostic[0m
+2026-10-26T02:50:07.9068990Z [36;1mpython -m tools.negative_controls runs/ci-evidence runs/ci-negative --checkout . --expected-commit "$GITHUB_SHA"[0m
+2026-10-26T02:50:07.9108910Z shell: /bin/bash -e {0}
+2026-10-26T02:50:07.9109290Z env:
+2026-10-26T02:50:07.9109700Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:07.9110720Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-26T02:50:07.9111210Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:07.9111770Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:07.9112370Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:07.9112710Z ##[endgroup]
+2026-10-26T02:50:08.3714320Z {"pairs": 2, "requested": 2, "seconds": 0.1972593750000442}
+2026-10-26T02:50:08.4773650Z {
+2026-10-26T02:50:08.4774130Z   "schema": "caissa-strength-v1",
+2026-10-26T02:50:08.4774660Z   "complete_pairs": 2,
+2026-10-26T02:50:08.4775000Z   "independent_opening_clusters": 2,
+2026-10-26T02:50:08.4775320Z   "games": 4,
+2026-10-26T02:50:08.4775530Z   "wins": 2,
+2026-10-26T02:50:08.4775790Z   "draws": 0,
+2026-10-26T02:50:08.4776030Z   "losses": 2,
+2026-10-26T02:50:08.4776230Z   "unfinished_games": 0,
+2026-10-26T02:50:08.4776420Z   "score": 0.5,
+2026-10-26T02:50:08.4776650Z   "score_95": [
+2026-10-26T02:50:08.4776840Z     0.0,
+2026-10-26T02:50:08.4777100Z     1.0
+2026-10-26T02:50:08.4777280Z   ],
+2026-10-26T02:50:08.4777450Z   "elo_difference": 0.0,
+2026-10-26T02:50:08.4777640Z   "elo_95": [
+2026-10-26T02:50:08.4777820Z     "-infinity",
+2026-10-26T02:50:08.4777990Z     "+infinity"
+2026-10-26T02:50:08.4778140Z   ],
+2026-10-26T02:50:08.4778310Z   "statistics_version": 2,
+2026-10-26T02:50:08.4778510Z   "boundary_guard": false,
+2026-10-26T02:50:08.4778710Z   "degeneracy_guard": true,
+2026-10-26T02:50:08.4778910Z   "bootstrap": {
+2026-10-26T02:50:08.4779190Z     "unit": "opening family containing color-reversed pairs",
+2026-10-26T02:50:08.4779510Z     "resamples": 20000,
+2026-10-26T02:50:08.4779690Z     "seed": 104729
+2026-10-26T02:50:08.4779850Z   },
+2026-10-26T02:50:08.4780000Z   "failures": {},
+2026-10-26T02:50:08.4780180Z   "complete_sample": true,
+2026-10-26T02:50:08.4780420Z   "profile": "synthetic-integration"
+2026-10-26T02:50:08.4780640Z }
+2026-10-26T02:50:10.6374920Z {"status": "passed", "positive_games": 4, "semantic_rejections": 9, "full_acceptance": false}
+2026-10-26T02:50:11.2863780Z {"status": "passed", "controls": 10, "full_strength_sample_certified": false, "full_acceptance": false}
+2026-10-26T02:50:12.0378490Z [{"case": "illegal-pv", "subprocess_exit": 1, "reason": "arena principal variation has malformed notation"}, {"case": "wrong-budget", "subprocess_exit": 1, "reason": "recorded UCI budget/history differs from actual match position"}, {"case": "swapped-colors", "subprocess_exit": 1, "reason": "swapped result colors or pair ordering"}, {"case": "missing-observation", "subprocess_exit": 1, "reason": "played move has no matching raw protocol observation"}]
+2026-10-26T02:50:22.5193210Z {"evidence": "/Users/runner/work/caissa/caissa/runs/ci-evidence", "source": "dce141fbdec349408370084baa39cfe0a83298f4", "profile": "diagnostic", "full_acceptance": false}
+2026-10-26T02:50:23.5581450Z {"status": "passed", "scope": "diagnostic source identity and bounded semantic replay", "full_acceptance": false, "search_probes": 4, "network_probes": 64, "arena_games": 4, "source_commit": "dce141fbdec349408370084baa39cfe0a83298f4"}
+2026-10-26T02:50:24.0065150Z {"control": "illegal-pv", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "runs/ci-negative/illegal-pv", "--checkout", ".", "--expected-commit", "dce141fbdec349408370084baa39cfe0a83298f4", "--profile", "diagnostic"], "exit": 1, "reason": "illegal principal variation", "rehashes_recomputed": true}
+2026-10-26T02:50:24.7020470Z {"control": "swapped-result", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "runs/ci-negative/swapped-result", "--checkout", ".", "--expected-commit", "dce141fbdec349408370084baa39cfe0a83298f4", "--profile", "diagnostic"], "exit": 1, "reason": "result colors disagree with replayed terminal position", "rehashes_recomputed": true}
+2026-10-26T02:50:25.1624310Z {"control": "network-output", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "runs/ci-negative/network-output", "--checkout", ".", "--expected-commit", "dce141fbdec349408370084baa39cfe0a83298f4", "--profile", "diagnostic"], "exit": 1, "reason": "network inference semantic mismatch", "rehashes_recomputed": true}
+2026-10-26T02:50:26.0803900Z {"control": "false-draw", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "runs/ci-negative/false-draw", "--checkout", ".", "--expected-commit", "dce141fbdec349408370084baa39cfe0a83298f4", "--profile", "diagnostic"], "exit": 1, "reason": "invalid terminal or draw claim: threefold-claim", "rehashes_recomputed": true}
+2026-10-26T02:50:26.2384770Z {"control": "source-mismatch", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "runs/ci-negative/source-mismatch", "--checkout", ".", "--expected-commit", "dce141fbdec349408370084baa39cfe0a83298f4", "--profile", "diagnostic"], "exit": 1, "reason": "source commit mismatch", "rehashes_recomputed": true}
+2026-10-26T02:50:26.5668260Z {"control": "missing-artifact", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "runs/ci-negative/missing-artifact", "--checkout", ".", "--expected-commit", "dce141fbdec349408370084baa39cfe0a83298f4", "--profile", "diagnostic"], "exit": 1, "reason": "artifact inventory mismatch", "rehashes_recomputed": false}
+2026-10-26T02:50:26.8779660Z {"control": "corrupt-artifact", "command": ["/Library/Frameworks/Python.framework/Versions/3.12/bin/python", "-m", "verification.verify", "runs/ci-negative/corrupt-artifact", "--checkout", ".", "--expected-commit", "dce141fbdec349408370084baa39cfe0a83298f4", "--profile", "diagnostic"], "exit": 1, "reason": "artifact hash mismatch: network.cai", "rehashes_recomputed": false}
+2026-10-26T02:50:26.9071670Z ##[group]Run python tools/check_docs.py
+2026-10-26T02:50:26.9072480Z [36;1mpython tools/check_docs.py[0m
+2026-10-26T02:50:26.9074050Z [36;1mcmake --install build --prefix runs/package[0m
+2026-10-26T02:50:26.9074780Z [36;1mtest -x runs/package/bin/caissa[0m
+2026-10-26T02:50:26.9075430Z [36;1mruns/package/bin/caissa --version[0m
+2026-10-26T02:50:26.9125030Z shell: /bin/bash -e {0}
+2026-10-26T02:50:26.9125870Z env:
+2026-10-26T02:50:26.9126650Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:26.9127880Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-26T02:50:26.9129110Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:26.9130170Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:26.9131120Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:26.9131860Z ##[endgroup]
+2026-10-26T02:50:27.0338310Z 104 tracked Markdown files checked
+2026-10-26T02:50:27.0872450Z -- Install configuration: "Release"
+2026-10-26T02:50:27.0876380Z -- Installing: /Users/runner/work/caissa/caissa/runs/package/bin/caissa
+2026-10-26T02:50:27.0940950Z Caissa 0.1.0-dev
+2026-10-26T02:50:27.1033440Z ##[group]Run actions/upload-artifact@v4
+2026-10-26T02:50:27.1033780Z with:
+2026-10-26T02:50:27.1033990Z   name: diagnostic-macos-15
+2026-10-26T02:50:27.1039270Z   path: runs/ci-evidence
+runs/ci-negative/CONTROLS.json
+runs/ci-arena/SUMMARY.json
+runs/ci-match-journals/*.json
+runs/ci-match-journals/*.log
+runs/ci-strength-bundle/*.json
+runs/ci-strength-bundle/*.log
+runs/service.log
+runs/ci-source-binding/CONTROLS.json
+runs/ci-strength-v4-profile/CONTROLS.json
+runs/ci-strength-v4-profile/REAL_LINEAGE.json
+runs/ci-full-bundle/CONTROLS.json
+runs/ci-numerical-bundle/*.json
+runs/ci-numerical-bundle/*.log
+runs/ci-bundle-integrity/CONTROLS.json
+runs/ci-bundle-copy/*.json
+runs/ci-learning-bundle/*.json
+runs/ci-learning-bundle/*.log
+runs/ci-performance-bundle/
+runs/ci-g07-coordinator/
+runs/ci-data-catalog/
+data/ci-original/
+data/ci-prepared/
+build/caissa
+runs/ci-acceptance-readiness/CONTROLS.json
+runs/ci-rules-replay/
+runs/ci-protocol-bundle/
+runs/ci-restoration-replay/CONTROLS.json
+runs/ci-restoration-replay/CAMPAIGN.json
+runs/ci-restoration-replay/*.json
+runs/ci-restoration-replay/*.log
+runs/ci-restoration-replay/producer/
+runs/ci-restoration-replay/independent/RESTORATION.json
+runs/ci-draw-history/*.json
+runs/ci-draw-history/*.jsonl
+runs/ci-draw-history/*.log
+runs/ci-draw-history/producer/
+runs/ci-draw-history/independent/DRAW_HISTORY.json
+runs/ci-draw-history/full-replay/G03/DRAW_HISTORY.json
+runs/ci-search-semantics/*.json
+runs/ci-search-semantics/*.jsonl
+runs/ci-search-semantics/*.log
+runs/ci-search-semantics/producer/
+runs/ci-search-semantics/independent/SEARCH_SEMANTICS.json
+runs/ci-search-semantics/independent/ORACLES.json
+runs/ci-search-semantics/independent/ABLATIONS.json
+runs/ci-search-semantics/full-replay/G05/SEARCH_SEMANTICS.json
+runs/ci-deferred-controls/CONTROLS.json
+build/Testing/Temporary/LastTest.log
+
+2026-10-26T02:50:27.1044850Z   retention-days: 14
+2026-10-26T02:50:27.1045110Z   if-no-files-found: warn
+2026-10-26T02:50:27.1045370Z   compression-level: 6
+2026-10-26T02:50:27.1045640Z   overwrite: false
+2026-10-26T02:50:27.1045870Z   include-hidden-files: false
+2026-10-26T02:50:27.1046190Z env:
+2026-10-26T02:50:27.1046520Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:27.1047040Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-26T02:50:27.1047620Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:27.1048070Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:27.1048600Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-26T02:50:27.1048930Z ##[endgroup]
+2026-10-26T02:50:27.5004960Z (node:15237) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T02:50:27.5075390Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T02:50:28.1654500Z Multiple search paths detected. Calculating the least common ancestor of all paths
+2026-10-26T02:50:28.1659210Z The least common ancestor is /Users/runner/work/caissa/caissa. This will be the root directory of the artifact
+2026-10-26T02:50:28.1659820Z With the provided path, there will be 2945 files uploaded
+2026-10-26T02:50:28.1660510Z Artifact name is valid!
+2026-10-26T02:50:28.1660750Z Root directory input is valid!
+2026-10-26T02:50:28.5971420Z Beginning upload of artifact content to blob storage
+2026-10-26T02:50:30.0396330Z (node:15237) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-26T02:50:30.8966150Z Uploaded bytes 8388608
+2026-10-26T02:50:31.3979010Z Uploaded bytes 16777216
+2026-10-26T02:50:32.7644540Z Uploaded bytes 25165824
+2026-10-26T02:50:33.4721860Z Uploaded bytes 31127135
+2026-10-26T02:50:33.5438080Z Finished uploading artifact content to blob storage!
+2026-10-26T02:50:33.5443270Z SHA256 digest of uploaded artifact zip is fe803aa5ad029c2b4c10f64fce93fdccb4188fa0bb172554ef3f2e1272ccb35a
+2026-10-26T02:50:33.5446070Z Finalizing artifact upload
+2026-10-26T02:50:34.1859700Z Artifact diagnostic-macos-15.zip successfully finalized. Artifact ID 12624122895
+2026-10-26T02:50:34.1983950Z Artifact diagnostic-macos-15 has been successfully uploaded! Final size is 31127135 bytes. Artifact ID is 12624122895
+2026-10-26T02:50:34.2095880Z Artifact download URL: https://github.com/Aneesh495/caissa/actions/runs/40260539544/artifacts/12624122895
+2026-10-26T02:50:34.2314780Z Post job cleanup.
+2026-10-26T02:50:34.4038300Z (node:15411) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T02:50:34.4106650Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T02:50:34.4274210Z Post job cleanup.
+2026-10-26T02:50:34.5934220Z (node:15415) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-26T02:50:34.6038480Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-26T02:50:34.6282710Z Post job cleanup.
+2026-10-26T02:50:34.7906270Z [command]/opt/homebrew/bin/git version
+2026-10-26T02:50:34.8009560Z git version 2.55.0
+2026-10-26T02:50:34.8219180Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/63e800f8-d39a-4f85-9167-94495e29629d/.gitconfig'
+2026-10-26T02:50:34.8222690Z Temporarily overriding HOME='/Users/runner/work/_temp/63e800f8-d39a-4f85-9167-94495e29629d' before making global git config changes
+2026-10-26T02:50:34.8225360Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-26T02:50:34.8227540Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/caissa/caissa
+2026-10-26T02:50:34.8269830Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-26T02:50:34.8271610Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-26T02:50:35.0930430Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-26T02:50:35.0953810Z http.https://github.com/.extraheader
+2026-10-26T02:50:35.0964290Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-26T02:50:35.1127180Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-26T02:50:35.2849000Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-26T02:50:35.2943190Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-26T02:50:35.4492690Z Cleaning up orphan processes
+2026-10-26T02:50:36.7239990Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+

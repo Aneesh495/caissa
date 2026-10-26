@@ -1,0 +1,27 @@
+{
+  "schema": "caissa-approved-strength-wall-handoff-observation-v1",
+  "original_failure_preserved": true,
+  "original_deadline_unix": 1792982806.744264,
+  "recovery_deadline_unix": 1793000806.744264,
+  "original_active_campaign_seconds": 17888.670015667005,
+  "maximum_combined_active_campaign_seconds": 43200,
+  "combined_attempts_used": 2,
+  "maximum_combined_attempts": 3,
+  "completed_games_pinned_at_boundary": 3257,
+  "completed_pairs_pinned_at_boundary": 1628,
+  "boundary_has_one_completed_unpaired_game": true,
+  "continuation_observed_games": 3333,
+  "phase": "resume-missing-neural-games",
+  "same_engine_and_model": true,
+  "original_scope_bytes_unchanged": true,
+  "activation_is_not_a_strength_result": true,
+  "full_acceptance": false,
+  "observed_unix": 1792983234.763059,
+  "artifacts": {
+    "RECOVERY_SCOPE.json": "acf1721792801ed3961c1e08720ccd2d585302997799b0162fc1f7a581dd45ab",
+    "ORIGINAL_FAILED.json": "9662e7ca58dc64a7e322ec2ffd3a7e370923261ef7f42acd957e71237f6440b8",
+    "ORIGINAL_ACTIVE_USAGE.json": "eecb3425a527af448ab48a02b3d7cf03ad8263dc271d34f1e849316504325680",
+    "PRESERVED_JOURNALS.json": "8ef0179e8c0b4569646b78b737d8d49e083fb5553cf164706c468a346feb2fd3",
+    "ORIGINAL_SCOPE.json": "b80c2af13f5087d0872f8239a175e681e41fae53085a295bbb0f9449348a87fa"
+  }
+}
