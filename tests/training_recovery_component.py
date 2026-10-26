@@ -27,7 +27,7 @@ def seal(folder):
             "files": {
                 str(p.relative_to(folder)): hashlib.sha256(p.read_bytes()).hexdigest()
                 for p in sorted(folder.rglob("*"))
-                if p.is_file() and p.name != "MANIFEST.json"
+                if p.is_file() and p != folder / "MANIFEST.json"
             }
         },
     )
@@ -236,7 +236,9 @@ def main():
                     state["sampler"]["state"]["state"] += 1
                 elif label == "changed-rng":
                     state["torch_rng"][0] ^= 1
-                torch.save(state, p)
+                changed = p.with_suffix(".mutated.pt")
+                torch.save(state, changed)
+                changed.replace(p)
                 pointer = folder / "recovered/CHECKPOINTS.json"
                 value = json.loads(pointer.read_text())
                 for ref in [value["last"], value["best"]]:
@@ -284,6 +286,7 @@ def main():
                     if p.is_file()
                 ]
             digest = seal_full(evidence, inputs)
+            seal(evidence)
             result = subprocess.run(
                 [
                     sys.executable,
