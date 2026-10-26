@@ -38,6 +38,8 @@ FORBIDDEN_MODULES = {
     "tools.strength_v4_preflight",
     "tools.systems_strength",
     "verification.systems_strength",
+    "tools.arena_recovery",
+    "verification.arena_recovery",
     "tools.performance",
     "tools.neural_cost",
     "tools.plot_data_profile",
