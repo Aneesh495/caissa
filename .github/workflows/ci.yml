@@ -92,6 +92,11 @@ jobs:
           done
           node tests/service_integration.mjs
           CAISSA_ENGINE=build/caissa node tests/search_inspection.mjs runs/ci-search-inspection
+      - name: Real browser and independent board/PGN/native reconstruction
+        timeout-minutes: 6
+        run: |
+          npx playwright install --with-deps chromium
+          python -m tests.browser_component --engine build/caissa --output runs/ci-browser-component
       - name: Native arena and semantic negative controls
         run: |
           python -m arena.run config/arena-ci.json runs/ci-arena --workers 1
@@ -124,6 +129,7 @@ jobs:
             runs/ci-strength-bundle/*.log
             runs/ci-systems-strength/
             runs/ci-arena-recovery-component/
+            runs/ci-browser-component/
             runs/service.log
             runs/ci-source-binding/CONTROLS.json
             runs/ci-strength-v4-profile/CONTROLS.json

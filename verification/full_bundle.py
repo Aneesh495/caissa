@@ -749,6 +749,24 @@ def verify(
                 review["pending_semantic_gates"][
                     "G11"
                 ] = "independent training and original-data/split recovery components still required"
+        domain = inputs["domains"]["G12"]
+        if domain.get("driver") == "browser-component-v1":
+            if replay_output is None:
+                review["pending_semantic_gates"][
+                    "G12"
+                ] = "browser component requires an external --replay-output directory"
+            else:
+                from verification.browser_bundle import verify as verify_browser
+
+                result = verify_browser(
+                    bundle, inputs, Path(replay_output).resolve() / "G12-browser"
+                )
+                review.setdefault("verified_semantic_components", {}).setdefault(
+                    "G12", {}
+                )["browser"] = result
+                review["pending_semantic_gates"][
+                    "G12"
+                ] = "final-source product binding and fresh end-to-end execution still required"
         domain = inputs["domains"]["G13"]
         if domain.get("driver") == "performance-observations-v2":
             if replay_output is None:
