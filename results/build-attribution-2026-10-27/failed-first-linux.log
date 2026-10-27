@@ -1,0 +1,252 @@
+﻿2026-10-27T00:24:58.9883649Z Current runner version: '2.338.0'
+2026-10-27T00:24:58.9902825Z ##[group]Runner Image Provisioner
+2026-10-27T00:24:58.9903489Z Hosted Compute Agent
+2026-10-27T00:24:58.9903915Z Version: 20261021.618
+2026-10-27T00:24:58.9904297Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-27T00:24:58.9904786Z Build Date: 2026-10-21T00:45:21Z
+2026-10-27T00:24:58.9905211Z Worker ID: {23ca3909-b774-4996-a27c-d5586f626ec2}
+2026-10-27T00:24:58.9905682Z Region: centralus
+2026-10-27T00:24:58.9906058Z Cloud: Azure
+2026-10-27T00:24:58.9906390Z ##[endgroup]
+2026-10-27T00:24:58.9907333Z ##[group]Operating System
+2026-10-27T00:24:58.9907763Z Ubuntu
+2026-10-27T00:24:58.9908114Z 24.04.5
+2026-10-27T00:24:58.9908458Z LTS
+2026-10-27T00:24:58.9908782Z ##[endgroup]
+2026-10-27T00:24:58.9909134Z ##[group]Runner Image
+2026-10-27T00:24:58.9909558Z Image: ubuntu-24.04
+2026-10-27T00:24:58.9909944Z Version: 20261012.334.1
+2026-10-27T00:24:58.9910748Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-27T00:24:58.9911644Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-27T00:24:58.9912312Z ##[endgroup]
+2026-10-27T00:24:58.9913277Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T00:24:58.9914604Z Contents: read
+2026-10-27T00:24:58.9915002Z Metadata: read
+2026-10-27T00:24:58.9915436Z ##[endgroup]
+2026-10-27T00:24:58.9916997Z Secret source: Actions
+2026-10-27T00:24:58.9917586Z Cache mode: write
+2026-10-27T00:24:58.9918026Z Prepare workflow directory
+2026-10-27T00:24:59.0139248Z Prepare all required actions
+2026-10-27T00:24:59.0170967Z Getting action download info
+2026-10-27T00:24:59.2797799Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-27T00:24:59.3565995Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-27T00:24:59.4472810Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-27T00:24:59.6529032Z Complete job name: attribution (ubuntu-24.04)
+2026-10-27T00:24:59.7098424Z ##[group]Run actions/checkout@v4
+2026-10-27T00:24:59.7098864Z with:
+2026-10-27T00:24:59.7099107Z   repository: Aneesh495/caissa
+2026-10-27T00:24:59.7101431Z   token: ***
+2026-10-27T00:24:59.7101672Z   ssh-strict: true
+2026-10-27T00:24:59.7101913Z   ssh-user: git
+2026-10-27T00:24:59.7102164Z   persist-credentials: true
+2026-10-27T00:24:59.7102430Z   clean: true
+2026-10-27T00:24:59.7102677Z   sparse-checkout-cone-mode: true
+2026-10-27T00:24:59.7102963Z   fetch-depth: 1
+2026-10-27T00:24:59.7103200Z   fetch-tags: false
+2026-10-27T00:24:59.7103447Z   show-progress: true
+2026-10-27T00:24:59.7103695Z   lfs: false
+2026-10-27T00:24:59.7103925Z   submodules: false
+2026-10-27T00:24:59.7104172Z   set-safe-directory: true
+2026-10-27T00:24:59.7104453Z   allow-unsafe-pr-checkout: false
+2026-10-27T00:24:59.7104802Z ##[endgroup]
+2026-10-27T00:24:59.8969067Z Syncing repository: Aneesh495/caissa
+2026-10-27T00:24:59.8971374Z ##[group]Getting Git version info
+2026-10-27T00:24:59.8972056Z Working directory is '/home/runner/work/caissa/caissa'
+2026-10-27T00:24:59.8972915Z [command]/usr/bin/git version
+2026-10-27T00:24:59.9068102Z git version 2.55.0
+2026-10-27T00:24:59.9083373Z ##[endgroup]
+2026-10-27T00:24:59.9110287Z Temporarily overriding HOME='/home/runner/work/_temp/00da9c06-5c42-47be-a9a1-373a93bdaf14' before making global git config changes
+2026-10-27T00:24:59.9112411Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T00:24:59.9124463Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/caissa/caissa
+2026-10-27T00:24:59.9181580Z Deleting the contents of '/home/runner/work/caissa/caissa'
+2026-10-27T00:24:59.9187987Z ##[group]Initializing the repository
+2026-10-27T00:24:59.9189114Z [command]/usr/bin/git init /home/runner/work/caissa/caissa
+2026-10-27T00:24:59.9272992Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-27T00:24:59.9274380Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-27T00:24:59.9275242Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-27T00:24:59.9275907Z hint: call:
+2026-10-27T00:24:59.9276258Z hint:
+2026-10-27T00:24:59.9276836Z hint: 	git config --global init.defaultBranch <name>
+2026-10-27T00:24:59.9277416Z hint:
+2026-10-27T00:24:59.9277933Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-27T00:24:59.9278788Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-27T00:24:59.9279416Z hint:
+2026-10-27T00:24:59.9279769Z hint: 	git branch -m <name>
+2026-10-27T00:24:59.9280232Z hint:
+2026-10-27T00:24:59.9280815Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-27T00:24:59.9281720Z Initialized empty Git repository in /home/runner/work/caissa/caissa/.git/
+2026-10-27T00:24:59.9286317Z [command]/usr/bin/git remote add origin https://github.com/Aneesh495/caissa
+2026-10-27T00:24:59.9330231Z ##[endgroup]
+2026-10-27T00:24:59.9330932Z ##[group]Disabling automatic garbage collection
+2026-10-27T00:24:59.9333560Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-27T00:24:59.9368911Z ##[endgroup]
+2026-10-27T00:24:59.9369323Z ##[group]Setting up auth
+2026-10-27T00:24:59.9376034Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T00:24:59.9408976Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T00:24:59.9701881Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T00:24:59.9739458Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T00:24:59.9927675Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T00:24:59.9960053Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T00:25:00.0154154Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-27T00:25:00.0195212Z ##[endgroup]
+2026-10-27T00:25:00.0196051Z ##[group]Fetching the repository
+2026-10-27T00:25:00.0204878Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +07e9897815457a35afbbfca91d41283fd369de05:refs/remotes/origin/main
+2026-10-27T00:25:10.7652697Z From https://github.com/Aneesh495/caissa
+2026-10-27T00:25:10.7654187Z  * [new ref]         07e9897815457a35afbbfca91d41283fd369de05 -> origin/main
+2026-10-27T00:25:10.7659653Z ##[endgroup]
+2026-10-27T00:25:10.7660836Z ##[group]Determining the checkout info
+2026-10-27T00:25:10.7662317Z ##[endgroup]
+2026-10-27T00:25:10.7663211Z [command]/usr/bin/git sparse-checkout disable
+2026-10-27T00:25:10.7712871Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-27T00:25:10.7743305Z ##[group]Checking out the ref
+2026-10-27T00:25:10.7747063Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-27T00:25:11.9158031Z Updating files:  81% (2694/3286)
+2026-10-27T00:25:12.5421252Z Updating files:  82% (2695/3286)
+2026-10-27T00:25:12.5429525Z Updating files:  83% (2728/3286)
+2026-10-27T00:25:12.5472101Z Updating files:  84% (2761/3286)
+2026-10-27T00:25:12.5487965Z Updating files:  85% (2794/3286)
+2026-10-27T00:25:12.5555347Z Updating files:  86% (2826/3286)
+2026-10-27T00:25:12.5565987Z Updating files:  87% (2859/3286)
+2026-10-27T00:25:12.5573567Z Updating files:  88% (2892/3286)
+2026-10-27T00:25:12.5584395Z Updating files:  89% (2925/3286)
+2026-10-27T00:25:12.5623117Z Updating files:  90% (2958/3286)
+2026-10-27T00:25:12.5652028Z Updating files:  91% (2991/3286)
+2026-10-27T00:25:12.5693167Z Updating files:  92% (3024/3286)
+2026-10-27T00:25:12.5706836Z Updating files:  93% (3056/3286)
+2026-10-27T00:25:12.5721703Z Updating files:  94% (3089/3286)
+2026-10-27T00:25:12.5737366Z Updating files:  95% (3122/3286)
+2026-10-27T00:25:12.5753534Z Updating files:  96% (3155/3286)
+2026-10-27T00:25:12.5771481Z Updating files:  97% (3188/3286)
+2026-10-27T00:25:12.5791517Z Updating files:  98% (3221/3286)
+2026-10-27T00:25:12.5810122Z Updating files:  99% (3254/3286)
+2026-10-27T00:25:12.5810469Z Updating files: 100% (3286/3286)
+2026-10-27T00:25:12.5810818Z Updating files: 100% (3286/3286), done.
+2026-10-27T00:25:12.5849976Z Switched to a new branch 'main'
+2026-10-27T00:25:12.5854591Z branch 'main' set up to track 'origin/main'.
+2026-10-27T00:25:12.5974346Z ##[endgroup]
+2026-10-27T00:25:12.6020689Z [command]/usr/bin/git log -1 --format=%H
+2026-10-27T00:25:12.6050236Z 07e9897815457a35afbbfca91d41283fd369de05
+2026-10-27T00:25:12.6255718Z ##[group]Run python3 - <<'PY'
+2026-10-27T00:25:12.6256071Z [36;1mpython3 - <<'PY'[0m
+2026-10-27T00:25:12.6256297Z [36;1mimport hashlib,json,os,time[0m
+2026-10-27T00:25:12.6256637Z [36;1mfrom pathlib import Path[0m
+2026-10-27T00:25:12.6256940Z [36;1mrule=json.loads(Path('config/build-attribution-amendment-v1.json').read_text())[0m
+2026-10-27T00:25:12.6257306Z [36;1massert os.environ['GITHUB_SHA']==os.environ['EXPECTED_SOURCE'][0m
+2026-10-27T00:25:12.6257627Z [36;1massert int(os.environ['GITHUB_RUN_NUMBER'])<=rule['maximum_ci_executions'][0m
+2026-10-27T00:25:12.6257920Z [36;1massert int(os.environ['GITHUB_RUN_ATTEMPT'])==1[0m
+2026-10-27T00:25:12.6258202Z [36;1massert time.time()<rule['deadline_unix']<rule['parent_deadline_unix'][0m
+2026-10-27T00:25:12.6258489Z [36;1mfor name,digest in rule['source_files'].items():[0m
+2026-10-27T00:25:12.6258775Z [36;1m    assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest,name[0m
+2026-10-27T00:25:12.6259067Z [36;1mPY[0m
+2026-10-27T00:25:12.6459265Z shell: /usr/bin/bash -e {0}
+2026-10-27T00:25:12.6459584Z env:
+2026-10-27T00:25:12.6459802Z   EXPECTED_SOURCE: 07e9897815457a35afbbfca91d41283fd369de05
+2026-10-27T00:25:12.6460038Z ##[endgroup]
+2026-10-27T00:25:12.6888605Z ##[group]Run git fetch --no-tags --depth=1 origin 5803cc485420b19eb96dda2c29f81fcfc6b09b6b
+2026-10-27T00:25:12.6889037Z [36;1mgit fetch --no-tags --depth=1 origin 5803cc485420b19eb96dda2c29f81fcfc6b09b6b[0m
+2026-10-27T00:25:12.6945052Z shell: /usr/bin/bash -e {0}
+2026-10-27T00:25:12.6945265Z ##[endgroup]
+2026-10-27T00:25:13.0340343Z From https://github.com/Aneesh495/caissa
+2026-10-27T00:25:13.0340901Z  * branch            5803cc485420b19eb96dda2c29f81fcfc6b09b6b -> FETCH_HEAD
+2026-10-27T00:25:13.0418974Z ##[group]Run actions/setup-python@v5
+2026-10-27T00:25:13.0419159Z with:
+2026-10-27T00:25:13.0419285Z   python-version: 3.12
+2026-10-27T00:25:13.0419431Z   check-latest: false
+2026-10-27T00:25:13.0420949Z   token: ***
+2026-10-27T00:25:13.0421075Z   update-environment: true
+2026-10-27T00:25:13.0421243Z   allow-prereleases: false
+2026-10-27T00:25:13.0421380Z   freethreaded: false
+2026-10-27T00:25:13.0421515Z ##[endgroup]
+2026-10-27T00:25:13.1418048Z ##[group]Installed versions
+2026-10-27T00:25:13.1484103Z (node:2084) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T00:25:13.1484587Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T00:25:13.1485536Z Successfully set up CPython (3.12.15)
+2026-10-27T00:25:13.1486048Z ##[endgroup]
+2026-10-27T00:25:13.1636889Z ##[group]Run python -m tests.build_reproduction --output runs/g15-build-attribution
+2026-10-27T00:25:13.1637296Z [36;1mpython -m tests.build_reproduction --output runs/g15-build-attribution[0m
+2026-10-27T00:25:13.1731936Z shell: /usr/bin/bash -e {0}
+2026-10-27T00:25:13.1732248Z env:
+2026-10-27T00:25:13.1732516Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T00:25:13.1732902Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-27T00:25:13.1733567Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T00:25:13.1733795Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T00:25:13.1734024Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T00:25:13.1734252Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-27T00:25:13.1734452Z ##[endgroup]
+2026-10-27T00:26:08.3674752Z {"builds": [{"directory": "build-1", "binary_sha256": "ab2e9be5eb375ddafc2c72fd9d1180e83ff2fe7bfe39c4d8d4d611ead51d2605", "unit_outputs": {"src/attacks.cpp": "9fab7fd95755559f9e997f797cfc23ff3f98e28c9059cfa12e71df869b96184b", "src/movegen.cpp": "3865be07c41691c929e724a50deec644a57cdd46c6da74ea680b26cbf36d4ef5", "src/network_kernel.cpp": "6f8ef3de4a917ff0cc3b4d266a15b9eeb5f2099e1576898567a46445055701a8", "src/rules.cpp": "dd882fb061ecc7acd8a320e12b0cc31f1935627237227c781a14eade9af5a657", "src/position.cpp": "84fa014ef01207b4ea863ac46374eb625d35c1828caa2ffb2ed4b9386a90871e", "src/search_probe.cpp": "f4cfbafea862bf4983d0273d3fcc9aabcccd5a7812be3869d43c57e44a208c5c", "src/uci.cpp": "cc467d69a19b3944529d1336c3156d1e294fac96a679a3b23062f4e3f64b4a30", "apps/main.cpp": "7fdeee65286987ca177d94807e63274c98d2d8869369c0b6e3b14dfe159ccf6c", "src/evaluation.cpp": "455f55e6aa5d078f130425074b70861971f6264d2f0ee03d374cfad5d5f3ea27", "src/version.cpp": "5c0ac8d2341b12387e90f3b2f7d4f254f1b276f31fcdf26c4a2e4971ca42c4c1", "src/protocol_io.cpp": "fc38bfb3864c26f5165ee2ffc45f5317d5907b981f393c0a83992f68326aad64", "src/notation.cpp": "88d315d33852ad2da1f59f0379e6409bdab8bde4b90ded9531f22d32c85a0559", "src/selfplay.cpp": "a2e7c6988b8f2ac551dae61501d1a80563faef69cc84f3f149d7d62f49f6ddb0", "src/accumulator_stack.cpp": "2aeaae36f5794486194e2ecc1a9d66047bc9f040d73a57eedc8938e4ebddcbe9", "src/reference.cpp": "67fe9ef17cd40250235f1bda6f26881e977264d6d69459c9a9d5c19d168f4bdf", "src/network.cpp": "33ea687bb1b75dcdb68d00d6ea5157baa711062f827b2f2333d9a0e7b6e09128", "src/search.cpp": "87aaf77a347cf17aa25be4c9cda368d10a6509474ff4207ff4a8175a018d4958", "src/position_line.cpp": "5b5b3e54134f3bffddf29a12803acb60bca8e85180f0ec5ccbbb472801faf561", "src/state_probe.cpp": "e90e69c6ed811d68f1cebfd690f1d76af232a5d4e7849057d39942b1f5af498f", "src/table.cpp": "9696a56cf567e0d8db3584656b2bf3eede0091f1727ed0535fc7ca77e80eaacd", "src/serialization.cpp": "ba7789dc1eb99809b0f80d8bd15f0a8a8e783b8a6663cf356fdf0729a20c220d"}}, {"directory": "build-2", "binary_sha256": "fb39ffa5c2903849502c04fee08f0ded3c66dd815bab3b078d4981556b591a15", "unit_outputs": {"src/attacks.cpp": "838fc5b7ca1e0d3fc0f3e87ceec2b3fb017b1b67274ebf947e2cb4fb683bd754", "src/movegen.cpp": "7e5959da40a865371ed529fd5080668a9d4b775c7be6a279227a2849c859f185", "src/network_kernel.cpp": "bc2f91af2dea9d825153d45030e8b09aa1b09934640346ff5ed705a0e2d8930f", "src/rules.cpp": "e16042b4bd3d87d236158235da88c3766d1d9846cc6bfb6d2bc24b9f9da61d5a", "src/position.cpp": "4e09930b467a24759a3a03bc5d1c32e58b632a17e3aa6ffa5715d58e0c86dd2f", "src/search_probe.cpp": "c7b87a51b04e96d6845a3799f23f3105c4a627c924e58e2185757c9fe0fced1c", "src/uci.cpp": "a615f86664c8b1371e1cafc1ef7a4c4823afe41e6f7d5baa1080426fb4aa34b8", "apps/main.cpp": "6d801e8ae2e03247221328bee135218f07f31d9399a8100651b87e4659918139", "src/evaluation.cpp": "1b7934b98411066ddffb32a83bb34894ec6e6ed624decfe2350680fd4f0bfd6e", "src/version.cpp": "51e5da4910708d70fe1c6eb4c2de97f03d617a28982d22976a7b5bd7a0ee3fc0", "src/protocol_io.cpp": "7fe533e614d628ba286ce0c4fdd083f78849662384e180c8f2c9236dcd8ab306", "src/notation.cpp": "8e4031b4f57bdf0685a3d98812ed2a76d8a559e0cd1524333cdcc21c45fae50f", "src/selfplay.cpp": "3593ae63466726241f994e0c7f216c8e68f76168661fd7a4462544c4f2004bbd", "src/accumulator_stack.cpp": "c18dca31e8488825f2c58509c8e037f8b53e717b6ec6022a0e2dbd7cf83a0f1c", "src/reference.cpp": "2d4dc7f027ddd88ec8f342de7ba27e53b6a089d6ec72103efca221b0432bdc4a", "src/network.cpp": "d9df86b8767b5fc3bc09c4b3a7ed97bf2c4a9008faaac5a096d8ce9a32d833a2", "src/search.cpp": "03489695fbc69820efddbe9b443d6c55068f0ca45ab0c0a2f2ee4ef67b87b1ba", "src/position_line.cpp": "075dae5edd82323c9bc6d875ab141aca756e241fdfb26de2fb34fc04d22ab6b7", "src/state_probe.cpp": "689e7bf41c76680e2e0df39af3c557dd147fecbd0d8bbbd98319400ea3c155e8", "src/table.cpp": "7b96f6e4f4276fdce2c8acd3126b3098d30f683ba634cbc66bdb29d7f75434f8", "src/serialization.cpp": "bb637ab02e2d92a869d030ba1af63e17570f86daefaebfecac2b3d6b82b31ee1"}}], "lengths": [415096, 415096], "first_differing_bytes": [[368680, 96, 224], [368681, 104, 170], [368682, 3, 0], [368688, 144, 63], [368689, 1, 0], [368696, 241, 4], [368697, 79, 80], [368700, 2, 0], [368702, 15, 18], [368704, 224, 240], [368705, 170, 242], [368706, 0, 4], [368712, 63, 0], [368720, 68, 23], [368724, 0, 2], [368726, 18, 15], [368728, 240, 96], [368729, 242, 41], [368730, 4, 3], [368736, 0, 36], [368737, 0, 1], [368744, 87, 171], [368752, 96, 16], [368753, 41, 167], [368754, 3, 0], [368760, 36, 87], [368761, 1, 0], [368768, 235, 3], [368769, 80, 81], [368776, 16, 112], [368777, 167, 122], [368778, 0, 4]], "different_objects": ["src/attacks.cpp", "src/movegen.cpp", "src/network_kernel.cpp", "src/rules.cpp", "src/position.cpp", "src/search_probe.cpp", "src/uci.cpp", "apps/main.cpp", "src/evaluation.cpp", "src/version.cpp", "src/protocol_io.cpp", "src/notation.cpp", "src/selfplay.cpp", "src/accumulator_stack.cpp", "src/reference.cpp", "src/network.cpp", "src/search.cpp", "src/position_line.cpp", "src/state_probe.cpp", "src/table.cpp", "src/serialization.cpp"]}
+2026-10-27T00:26:08.3690023Z Traceback (most recent call last):
+2026-10-27T00:26:08.3694609Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-10-27T00:26:08.3695083Z   File "<frozen runpy>", line 88, in _run_code
+2026-10-27T00:26:08.3695623Z   File "/home/runner/work/caissa/caissa/tools/build_reproduction.py", line 266, in <module>
+2026-10-27T00:26:08.3696013Z     main()
+2026-10-27T00:26:08.3696335Z   File "/home/runner/work/caissa/caissa/tools/build_reproduction.py", line 258, in main
+2026-10-27T00:26:08.3696862Z     execute(
+2026-10-27T00:26:08.3697193Z   File "/home/runner/work/caissa/caissa/tools/build_reproduction.py", line 230, in execute
+2026-10-27T00:26:08.3697709Z     raise ValueError("two clean builds produced different executable bytes")
+2026-10-27T00:26:08.3698112Z ValueError: two clean builds produced different executable bytes
+2026-10-27T00:26:08.3698344Z 
+2026-10-27T00:26:08.7760160Z Traceback (most recent call last):
+2026-10-27T00:26:08.7764885Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-10-27T00:26:08.7765272Z   File "<frozen runpy>", line 88, in _run_code
+2026-10-27T00:26:08.7765737Z   File "/home/runner/work/caissa/caissa/tests/build_reproduction.py", line 288, in <module>
+2026-10-27T00:26:08.7766133Z     main()
+2026-10-27T00:26:08.7766715Z   File "/home/runner/work/caissa/caissa/tests/build_reproduction.py", line 145, in main
+2026-10-27T00:26:08.7767201Z     raise ValueError("actual compiler attribution producer failed")
+2026-10-27T00:26:08.7767555Z ValueError: actual compiler attribution producer failed
+2026-10-27T00:26:08.7853261Z ##[error]Process completed with exit code 1.
+2026-10-27T00:26:08.7922776Z ##[group]Run actions/upload-artifact@v4
+2026-10-27T00:26:08.7922942Z with:
+2026-10-27T00:26:08.7923068Z   name: compiler-attribution-ubuntu-24.04
+2026-10-27T00:26:08.7923890Z   path: runs/g15-build-attribution/*.json
+runs/g15-build-attribution/*.log
+runs/g15-build-attribution/public/
+runs/g15-build-attribution/positive/*.json
+runs/g15-build-attribution/positive/*.jsonl
+runs/g15-build-attribution/positive/*.log
+runs/g15-build-attribution/positive/build-*/trace/*.json
+runs/g15-build-attribution/positive/build-*/trace/*.deps
+runs/g15-build-attribution/positive/toolchain/COMPILER.json
+
+2026-10-27T00:26:08.7924701Z   retention-days: 14
+2026-10-27T00:26:08.7924832Z   if-no-files-found: warn
+2026-10-27T00:26:08.7924967Z   compression-level: 6
+2026-10-27T00:26:08.7925089Z   overwrite: false
+2026-10-27T00:26:08.7925210Z   include-hidden-files: false
+2026-10-27T00:26:08.7925342Z env:
+2026-10-27T00:26:08.7925486Z   pythonLocation: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T00:26:08.7925879Z   PKG_CONFIG_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib/pkgconfig
+2026-10-27T00:26:08.7926116Z   Python_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T00:26:08.7926324Z   Python2_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T00:26:08.7926670Z   Python3_ROOT_DIR: /opt/hostedtoolcache/Python/3.12.15/x64
+2026-10-27T00:26:08.7926882Z   LD_LIBRARY_PATH: /opt/hostedtoolcache/Python/3.12.15/x64/lib
+2026-10-27T00:26:08.7927059Z ##[endgroup]
+2026-10-27T00:26:08.9079445Z (node:2454) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T00:26:08.9079865Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T00:26:08.9737374Z With the provided path, there will be 394 files uploaded
+2026-10-27T00:26:08.9741636Z Artifact name is valid!
+2026-10-27T00:26:08.9742121Z Root directory input is valid!
+2026-10-27T00:26:09.2690141Z Beginning upload of artifact content to blob storage
+2026-10-27T00:26:09.7115534Z (node:2454) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-27T00:26:10.2174832Z Uploaded bytes 5871657
+2026-10-27T00:26:10.2614469Z Finished uploading artifact content to blob storage!
+2026-10-27T00:26:10.2615207Z SHA256 digest of uploaded artifact zip is e9b195672a9efbd769acb76d8a475d2793b531b575e30f585a3788a2e635f04c
+2026-10-27T00:26:10.2615942Z Finalizing artifact upload
+2026-10-27T00:26:10.7216056Z Artifact compiler-attribution-ubuntu-24.04.zip successfully finalized. Artifact ID 12699921679
+2026-10-27T00:26:10.7216989Z Artifact compiler-attribution-ubuntu-24.04 has been successfully uploaded! Final size is 5871657 bytes. Artifact ID is 12699921679
+2026-10-27T00:26:10.7222387Z Artifact download URL: https://github.com/Aneesh495/caissa/actions/runs/40426236191/artifacts/12699921679
+2026-10-27T00:26:10.7428942Z Post job cleanup.
+2026-10-27T00:26:10.8037294Z [command]/usr/bin/git version
+2026-10-27T00:26:10.8066904Z git version 2.55.0
+2026-10-27T00:26:10.8077270Z Temporarily overriding HOME='/home/runner/work/_temp/52eedfe2-54fa-439e-94ba-60b806501089' before making global git config changes
+2026-10-27T00:26:10.8078097Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T00:26:10.8078765Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/caissa/caissa
+2026-10-27T00:26:10.8112949Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T00:26:10.8144053Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T00:26:10.8369233Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T00:26:10.8394346Z http.https://github.com/.extraheader
+2026-10-27T00:26:10.8403337Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-27T00:26:10.8443926Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T00:26:10.8654275Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T00:26:10.8687407Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T00:26:10.9032182Z Cleaning up orphan processes
+2026-10-27T00:26:10.9296093Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

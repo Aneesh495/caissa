@@ -144,6 +144,7 @@ def main():
                 )
         raise ValueError("actual compiler attribution producer failed")
     seal(root)
+    public_copy(root, args.output / "public")
     positive = verify(
         root,
         project,
@@ -151,6 +152,7 @@ def main():
         profile_sha,
         replay_dependencies=True,
         deadline=limits["deadline_unix"],
+        replay_output=args.output / "independent",
     )
     write(args.output / "INDEPENDENT.json", positive)
     print("INDEPENDENT", json.dumps(positive), flush=True)
@@ -255,7 +257,6 @@ def main():
                 results.append({"case": case, "rejected": True, "reason": str(error)})
             else:
                 raise AssertionError("semantic build forgery accepted: " + case)
-    public_copy(root, args.output / "public")
     try:
         verify(args.output / "public", project, head, profile_sha)
     except FileNotFoundError:
