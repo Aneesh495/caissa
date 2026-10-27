@@ -1,0 +1,14 @@
+{
+  "source_commit": "42a37de7215f4d038d05adf36e86cb2d2d5ab907",
+  "launcher_sha256": "9cc526aba87094af3a75bb55fd0ea6381003a836c6f0bbd8d634a104877e8b53",
+  "source_pins": {
+    "tools/storage_archive_anchors.py": "8da407229a4e2ee77a9d206ed3daddf9d7a5925546fbc7846e854b3d380487d8",
+    "tools/storage_archive_continuation.py": "d648fb41b7215c64e81d63081948343a8fef74d03d9b8010bb2653901ea5bc04",
+    "tools/storage_archive.py": "2d0f01cc4574fc4977b9360b6d105e98083bf5f6352afeddd84981b4e0799760",
+    "tools/storage_budget.py": "f2c93a82ee940904583dc71135bb0fa69d13c1e37a768e717b4fb98e32af49fb",
+    "tools/host_lease.py": "5cd62b0588fe59894137219f6a6db81ba0dabe08da53e5e8da4fcd5833a92de4"
+  },
+  "amendment_sha256": "250dc0060ac6ea772b67d21252740004ecd34f2f90c1db7dd25566985971b474",
+  "started_unix": 1793076309.036569,
+  "deadline_unchanged": 1793084632.899253
+}

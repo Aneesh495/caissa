@@ -41,3 +41,10 @@ deduplicates hardlinked inodes and accepts explicit project-owned cache paths
 outside the checkout. New continuations must wire this check into admission and
 their existing guard. Adding the helper alone does not constrain an older
 archived producer. The storage migration keeps those producers stopped.
+
+Large archive branch updates returned server errors during the first two
+invocations. The third transport gives each binary a private annotated Git tag
+whose target is the exact blob, and commits only small manifests to the archive
+branch. These tags retain storage objects. They are not software release tags.
+Full remote reconstruction and local rehash still precede deletion. The original
+failures and the fixed migration deadline remain preserved.

@@ -1,0 +1,24 @@
+{
+  "observed_unix": 1793076583.049839,
+  "actual_owner_pid": 20178,
+  "session_id": 8026,
+  "active_ledger": "ARCHIVE_CONTINUATION_USAGE_3.json",
+  "progress": {
+    "amendment_sha256": "250dc0060ac6ea772b67d21252740004ecd34f2f90c1db7dd25566985971b474",
+    "continuation_source_sha256": "8da407229a4e2ee77a9d206ed3daddf9d7a5925546fbc7846e854b3d380487d8",
+    "current_pack_chunks": 94,
+    "current_pack_compressed_bytes": 3121387302,
+    "error": "GitHub archive request failed: POST /git/refs exit 1",
+    "error_type": "RuntimeError",
+    "observed_unix": 1793076558.2043111,
+    "pack": 1,
+    "phase": "blob-anchor-continuation-failed-preserving-unverified-inputs",
+    "source_sha256": "2d0f01cc4574fc4977b9360b6d105e98083bf5f6352afeddd84981b4e0799760",
+    "transport": "private blob anchors and manifest-only commits"
+  },
+  "stderr_bytes": 1467,
+  "verified_private_blob_anchor_refs_last_observed": 7,
+  "initial_diagnostic_anchor_refs": 2,
+  "pack1_eviction_complete": false,
+  "full_acceptance": false
+}
