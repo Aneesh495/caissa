@@ -1,0 +1,378 @@
+﻿2026-10-27T00:01:01.0897606Z Current runner version: '2.338.0'
+2026-10-27T00:01:01.0915609Z ##[group]Runner Image Provisioner
+2026-10-27T00:01:01.0916338Z Hosted Compute Agent
+2026-10-27T00:01:01.0916742Z Version: 20261021.618
+2026-10-27T00:01:01.0917169Z Commit: 21505ad2541d5be6135ed84fc33697146cf75b8e
+2026-10-27T00:01:01.0917607Z Build Date: 2026-10-21T00:45:21Z
+2026-10-27T00:01:01.0918062Z Worker ID: {cd726808-fb6e-4971-beaa-8f7841e7c181}
+2026-10-27T00:01:01.0918487Z Region: centralus
+2026-10-27T00:01:01.0918822Z Cloud: Azure
+2026-10-27T00:01:01.0919254Z ##[endgroup]
+2026-10-27T00:01:01.0920048Z ##[group]Operating System
+2026-10-27T00:01:01.0920458Z Ubuntu
+2026-10-27T00:01:01.0920778Z 24.04.5
+2026-10-27T00:01:01.0921081Z LTS
+2026-10-27T00:01:01.0921507Z ##[endgroup]
+2026-10-27T00:01:01.0921845Z ##[group]Runner Image
+2026-10-27T00:01:01.0922239Z Image: ubuntu-24.04
+2026-10-27T00:01:01.0922605Z Version: 20261012.334.1
+2026-10-27T00:01:01.0923439Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20261012.334/images/ubuntu/Ubuntu2404-Readme.md
+2026-10-27T00:01:01.0924322Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20261012.334
+2026-10-27T00:01:01.0924913Z ##[endgroup]
+2026-10-27T00:01:01.0925654Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T00:01:01.0927059Z Actions: read
+2026-10-27T00:01:01.0927446Z Contents: read
+2026-10-27T00:01:01.0927783Z Metadata: read
+2026-10-27T00:01:01.0928165Z ##[endgroup]
+2026-10-27T00:01:01.0929494Z Secret source: Actions
+2026-10-27T00:01:01.0930426Z Cache mode: write
+2026-10-27T00:01:01.0930880Z Prepare workflow directory
+2026-10-27T00:01:01.1159724Z Prepare all required actions
+2026-10-27T00:01:01.1192184Z Getting action download info
+2026-10-27T00:01:01.3331915Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-27T00:01:01.5756030Z Complete job name: metadata
+2026-10-27T00:01:01.6719572Z ##[group]Run actions/checkout@v4
+2026-10-27T00:01:01.6720200Z with:
+2026-10-27T00:01:01.6720456Z   repository: Aneesh495/caissa
+2026-10-27T00:01:01.6725151Z   token: ***
+2026-10-27T00:01:01.6725936Z   ssh-strict: true
+2026-10-27T00:01:01.6727665Z   ssh-user: git
+2026-10-27T00:01:01.6728494Z   persist-credentials: true
+2026-10-27T00:01:01.6729299Z   clean: true
+2026-10-27T00:01:01.6729712Z   sparse-checkout-cone-mode: true
+2026-10-27T00:01:01.6730491Z   fetch-depth: 1
+2026-10-27T00:01:01.6730920Z   fetch-tags: false
+2026-10-27T00:01:01.6731379Z   show-progress: true
+2026-10-27T00:01:01.6731772Z   lfs: false
+2026-10-27T00:01:01.6732148Z   submodules: false
+2026-10-27T00:01:01.6732570Z   set-safe-directory: true
+2026-10-27T00:01:01.6733195Z   allow-unsafe-pr-checkout: false
+2026-10-27T00:01:01.6735166Z ##[endgroup]
+2026-10-27T00:01:01.7628742Z Syncing repository: Aneesh495/caissa
+2026-10-27T00:01:01.7630404Z ##[group]Getting Git version info
+2026-10-27T00:01:01.7630969Z Working directory is '/home/runner/work/caissa/caissa'
+2026-10-27T00:01:01.7631647Z [command]/usr/bin/git version
+2026-10-27T00:01:01.8040019Z git version 2.55.0
+2026-10-27T00:01:01.8059882Z ##[endgroup]
+2026-10-27T00:01:01.8072133Z Temporarily overriding HOME='/home/runner/work/_temp/17787e53-4c2c-4f41-a3f0-44d4e575920b' before making global git config changes
+2026-10-27T00:01:01.8073332Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T00:01:01.8076715Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/caissa/caissa
+2026-10-27T00:01:01.8736876Z Deleting the contents of '/home/runner/work/caissa/caissa'
+2026-10-27T00:01:01.8740204Z ##[group]Initializing the repository
+2026-10-27T00:01:01.8743560Z [command]/usr/bin/git init /home/runner/work/caissa/caissa
+2026-10-27T00:01:01.9736787Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-27T00:01:01.9748951Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-27T00:01:01.9749937Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-27T00:01:01.9750982Z hint: call:
+2026-10-27T00:01:01.9751352Z hint:
+2026-10-27T00:01:01.9751853Z hint: 	git config --global init.defaultBranch <name>
+2026-10-27T00:01:01.9752447Z hint:
+2026-10-27T00:01:01.9753011Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-27T00:01:01.9753886Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-27T00:01:01.9754575Z hint:
+2026-10-27T00:01:01.9754955Z hint: 	git branch -m <name>
+2026-10-27T00:01:01.9755453Z hint:
+2026-10-27T00:01:01.9756018Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-27T00:01:01.9757149Z Initialized empty Git repository in /home/runner/work/caissa/caissa/.git/
+2026-10-27T00:01:01.9761238Z [command]/usr/bin/git remote add origin https://github.com/Aneesh495/caissa
+2026-10-27T00:01:02.0339149Z ##[endgroup]
+2026-10-27T00:01:02.0340426Z ##[group]Disabling automatic garbage collection
+2026-10-27T00:01:02.0341551Z [command]/usr/bin/git config --local gc.auto 0
+2026-10-27T00:01:02.0529132Z ##[endgroup]
+2026-10-27T00:01:02.0530757Z ##[group]Setting up auth
+2026-10-27T00:01:02.0532300Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T00:01:02.0567471Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T00:01:02.0866034Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T00:01:02.0896270Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T00:01:02.1072506Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T00:01:02.1101853Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T00:01:02.1280525Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-27T00:01:02.2216736Z ##[endgroup]
+2026-10-27T00:01:02.2218593Z ##[group]Fetching the repository
+2026-10-27T00:01:02.2229495Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +750d4014b030d3421f6aa7fc78593661d08965bd:refs/remotes/origin/main
+2026-10-27T00:01:14.0317800Z From https://github.com/Aneesh495/caissa
+2026-10-27T00:01:14.0318264Z  * [new ref]         750d4014b030d3421f6aa7fc78593661d08965bd -> origin/main
+2026-10-27T00:01:14.0321194Z ##[endgroup]
+2026-10-27T00:01:14.0321823Z ##[group]Determining the checkout info
+2026-10-27T00:01:14.0323455Z ##[endgroup]
+2026-10-27T00:01:14.0328722Z [command]/usr/bin/git sparse-checkout disable
+2026-10-27T00:01:14.0437039Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-27T00:01:14.0533802Z ##[group]Checking out the ref
+2026-10-27T00:01:14.0534153Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-27T00:01:15.8031179Z Updating files:  82% (2682/3269)
+2026-10-27T00:01:15.8053297Z Updating files:  83% (2714/3269)
+2026-10-27T00:01:15.8087060Z Updating files:  84% (2746/3269)
+2026-10-27T00:01:15.8103901Z Updating files:  85% (2779/3269)
+2026-10-27T00:01:15.8113639Z Updating files:  86% (2812/3269)
+2026-10-27T00:01:15.8182556Z Updating files:  87% (2845/3269)
+2026-10-27T00:01:15.8191659Z Updating files:  88% (2877/3269)
+2026-10-27T00:01:15.8202127Z Updating files:  89% (2910/3269)
+2026-10-27T00:01:15.8237662Z Updating files:  90% (2943/3269)
+2026-10-27T00:01:15.8264935Z Updating files:  91% (2975/3269)
+2026-10-27T00:01:15.8305146Z Updating files:  92% (3008/3269)
+2026-10-27T00:01:15.8318130Z Updating files:  93% (3041/3269)
+2026-10-27T00:01:15.8332212Z Updating files:  94% (3073/3269)
+2026-10-27T00:01:15.8347036Z Updating files:  95% (3106/3269)
+2026-10-27T00:01:15.8363424Z Updating files:  96% (3139/3269)
+2026-10-27T00:01:15.8379583Z Updating files:  97% (3171/3269)
+2026-10-27T00:01:15.8399311Z Updating files:  98% (3204/3269)
+2026-10-27T00:01:15.8417992Z Updating files:  99% (3237/3269)
+2026-10-27T00:01:15.8418363Z Updating files: 100% (3269/3269)
+2026-10-27T00:01:15.8418620Z Updating files: 100% (3269/3269), done.
+2026-10-27T00:01:15.8456620Z Switched to a new branch 'main'
+2026-10-27T00:01:15.8462156Z branch 'main' set up to track 'origin/main'.
+2026-10-27T00:01:15.8574200Z ##[endgroup]
+2026-10-27T00:01:15.8617376Z [command]/usr/bin/git log -1 --format=%H
+2026-10-27T00:01:15.8639974Z 750d4014b030d3421f6aa7fc78593661d08965bd
+2026-10-27T00:01:15.8819671Z ##[group]Run python3 - <<'PY'
+2026-10-27T00:01:15.8819920Z [36;1mpython3 - <<'PY'[0m
+2026-10-27T00:01:15.8820084Z [36;1mimport json,os,time,zipfile[0m
+2026-10-27T00:01:15.8820248Z [36;1mfrom pathlib import Path[0m
+2026-10-27T00:01:15.8820461Z [36;1mfrom tools.recovery_join_inputs import download[0m
+2026-10-27T00:01:15.8820819Z [36;1mrule=json.loads(Path('results/browser-capture-amendment-2026-10-26/DIAGNOSTIC_AMENDMENT.json').read_text())[0m
+2026-10-27T00:01:15.8821176Z [36;1massert os.environ['GITHUB_SHA']==os.environ['EXPECTED_SOURCE'][0m
+2026-10-27T00:01:15.8821410Z [36;1massert int(os.environ['GITHUB_RUN_NUMBER'])==1[0m
+2026-10-27T00:01:15.8821614Z [36;1massert int(os.environ['GITHUB_RUN_ATTEMPT'])==1[0m
+2026-10-27T00:01:15.8821792Z [36;1mstart=time.monotonic()[0m
+2026-10-27T00:01:15.8821931Z [36;1mdef tick():[0m
+2026-10-27T00:01:15.8822122Z [36;1m    assert time.monotonic()-start<60 and time.time()<rule['deadline_unix'][0m
+2026-10-27T00:01:15.8822384Z [36;1mfor item in rule['artifacts']:[0m
+2026-10-27T00:01:15.8822605Z [36;1m    target=Path('runs/capture-diagnosis')/(str(item['artifact_id'])+'.zip')[0m
+2026-10-27T00:01:15.8822838Z [36;1m    origin=download(item,target,tick)[0m
+2026-10-27T00:01:15.8823024Z [36;1m    print('PINNED_ARCHIVE',json.dumps(origin))[0m
+2026-10-27T00:01:15.8823220Z [36;1m    with zipfile.ZipFile(target) as bundle:[0m
+2026-10-27T00:01:15.8823547Z [36;1m        for name in ['ORIGINAL_CAPTURE_INSPECTION.json','RESULT.json','component.log','component/positive/browser-process.log']:[0m
+2026-10-27T00:01:15.8823865Z [36;1m            info=bundle.getinfo(name)[0m
+2026-10-27T00:01:15.8824036Z [36;1m            assert info.file_size<=131072[0m
+2026-10-27T00:01:15.8824254Z [36;1m            print('PINNED_MEMBER',name,bundle.read(info).decode()[-12000:])[0m
+2026-10-27T00:01:15.8824499Z [36;1m        raw=bundle.read('component/positive/NETWORK.json')[0m
+2026-10-27T00:01:15.8824764Z [36;1m        assert len(raw)<=33554432[0m
+2026-10-27T00:01:15.8824956Z [36;1m        rows=json.loads(raw)[0m
+2026-10-27T00:01:15.8825345Z [36;1m        print('CAPTURE_ERRORS',json.dumps([{k:r.get(k) for k in ['mode','width','url','status','aborted','transport_complete','capture_error']} for r in rows if r['url']=='/api/analyze']))[0m
+2026-10-27T00:01:15.8825721Z [36;1m    tick()[0m
+2026-10-27T00:01:15.8825844Z [36;1mPY[0m
+2026-10-27T00:01:15.9047969Z shell: /usr/bin/bash -e {0}
+2026-10-27T00:01:15.9048141Z env:
+2026-10-27T00:01:15.9048299Z   EXPECTED_SOURCE: 750d4014b030d3421f6aa7fc78593661d08965bd
+2026-10-27T00:01:15.9049988Z   GH_TOKEN: ***
+2026-10-27T00:01:15.9050110Z ##[endgroup]
+2026-10-27T00:01:17.3782524Z PINNED_ARCHIVE {"path": "runs/capture-diagnosis/12698112301.zip", "bytes": 1430482, "sha256": "9889b1e9e8c44c0da3b72ed797a34bf24b928b82506570e5a98b43cbd62004ac", "artifact_id": 12698112301}
+2026-10-27T00:01:17.3783194Z PINNED_MEMBER ORIGINAL_CAPTURE_INSPECTION.json {
+2026-10-27T00:01:17.3783549Z   "schema": "caissa-failed-browser-capture-inspection-v1",
+2026-10-27T00:01:17.3783823Z   "archive": {
+2026-10-27T00:01:17.3784075Z     "path": "runs/g12-capture-amendment/original-failed-macos.zip",
+2026-10-27T00:01:17.3784361Z     "bytes": 43782845,
+2026-10-27T00:01:17.3784680Z     "sha256": "24061634fde05f3fa9c01f61e1f478989e15304d73829e9d89d7e868f3d11c36",
+2026-10-27T00:01:17.3785331Z     "artifact_id": 12635533585
+2026-10-27T00:01:17.3785526Z   },
+2026-10-27T00:01:17.3785765Z   "member": "runs/ci-browser-component/positive/NETWORK.json",
+2026-10-27T00:01:17.3786347Z   "member_sha256": "25f49f72a00930f6d1624361a1fb433e77788dcae461595c194762d5709d693e",
+2026-10-27T00:01:17.3786697Z   "member_bytes": 100769,
+2026-10-27T00:01:17.3786890Z   "contexts": [
+2026-10-27T00:01:17.3787057Z     {
+2026-10-27T00:01:17.3787227Z       "mode": "classical",
+2026-10-27T00:01:17.3787413Z       "width": 1280,
+2026-10-27T00:01:17.3787596Z       "analysis_responses": 3,
+2026-10-27T00:01:17.3787809Z       "aborted_captures": 3,
+2026-10-27T00:01:17.3788333Z       "complete_bestmove_bodies": 0
+2026-10-27T00:01:17.3788543Z     },
+2026-10-27T00:01:17.3788690Z     {
+2026-10-27T00:01:17.3788850Z       "mode": "classical",
+2026-10-27T00:01:17.3789040Z       "width": 390,
+2026-10-27T00:01:17.3789228Z       "analysis_responses": 3,
+2026-10-27T00:01:17.3789439Z       "aborted_captures": 3,
+2026-10-27T00:01:17.3789655Z       "complete_bestmove_bodies": 0
+2026-10-27T00:01:17.3789865Z     },
+2026-10-27T00:01:17.3790013Z     {
+2026-10-27T00:01:17.3790165Z       "mode": "neural",
+2026-10-27T00:01:17.3790338Z       "width": 1280,
+2026-10-27T00:01:17.3790522Z       "analysis_responses": 3,
+2026-10-27T00:01:17.3790722Z       "aborted_captures": 3,
+2026-10-27T00:01:17.3790928Z       "complete_bestmove_bodies": 0
+2026-10-27T00:01:17.3791129Z     },
+2026-10-27T00:01:17.3791273Z     {
+2026-10-27T00:01:17.3791420Z       "mode": "neural",
+2026-10-27T00:01:17.3791601Z       "width": 390,
+2026-10-27T00:01:17.3791779Z       "analysis_responses": 3,
+2026-10-27T00:01:17.3792000Z       "aborted_captures": 3,
+2026-10-27T00:01:17.3792213Z       "complete_bestmove_bodies": 0
+2026-10-27T00:01:17.3792418Z     }
+2026-10-27T00:01:17.3792565Z   ],
+2026-10-27T00:01:17.3792732Z   "derived_metadata_only": true,
+2026-10-27T00:01:17.3792958Z   "original_zip_unchanged": true,
+2026-10-27T00:01:17.3793355Z   "cause": "Original observations are separate from the proposed UI transport-lifetime explanation."
+2026-10-27T00:01:17.3793760Z }
+2026-10-27T00:01:17.3793850Z 
+2026-10-27T00:01:17.3793934Z PINNED_MEMBER RESULT.json {
+2026-10-27T00:01:17.3794144Z   "status": "failed",
+2026-10-27T00:01:17.3794348Z   "full_G12_certified": false,
+2026-10-27T00:01:17.3794565Z   "old_failures_preserved": true,
+2026-10-27T00:01:17.3794792Z   "new_strength_games": 0,
+2026-10-27T00:01:17.3795123Z   "engine_sha256": "d97386d62a5684f0720f97bc7c9bbd5c9c3d6ae791a8c9256705474b3db7751b",
+2026-10-27T00:01:17.3795487Z   "saved_image": false,
+2026-10-27T00:01:17.3795790Z   "reason": "actual amended browser component failed; see retained component.log",
+2026-10-27T00:01:17.3796123Z   "seconds": 12.381429381000004
+2026-10-27T00:01:17.3796487Z }
+2026-10-27T00:01:17.3796574Z 
+2026-10-27T00:01:17.3796720Z PINNED_MEMBER component.log Traceback (most recent call last):
+2026-10-27T00:01:17.3797056Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-10-27T00:01:17.3797340Z   File "<frozen runpy>", line 88, in _run_code
+2026-10-27T00:01:17.3797724Z   File "/home/runner/work/caissa/caissa/tests/browser_component.py", line 245, in <module>
+2026-10-27T00:01:17.3798093Z     main()
+2026-10-27T00:01:17.3798398Z   File "/home/runner/work/caissa/caissa/tests/browser_component.py", line 56, in main
+2026-10-27T00:01:17.3798772Z     assert actual.returncode == 0, (
+2026-10-27T00:01:17.3799010Z            ^^^^^^^^^^^^^^^^^^^^^^
+2026-10-27T00:01:17.3799270Z AssertionError: Traceback (most recent call last):
+2026-10-27T00:01:17.3799627Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-10-27T00:01:17.3799943Z   File "<frozen runpy>", line 88, in _run_code
+2026-10-27T00:01:17.3800328Z   File "/home/runner/work/caissa/caissa/tools/browser_campaign.py", line 102, in <module>
+2026-10-27T00:01:17.3800707Z     main()
+2026-10-27T00:01:17.3801005Z   File "/home/runner/work/caissa/caissa/tools/browser_campaign.py", line 97, in main
+2026-10-27T00:01:17.3801414Z     execute(args.engine, args.network, args.output)
+2026-10-27T00:01:17.3802015Z   File "/home/runner/work/caissa/caissa/tools/browser_campaign.py", line 58, in execute
+2026-10-27T00:01:17.3802372Z     campaign.run(
+2026-10-27T00:01:17.3802673Z   File "/home/runner/work/caissa/caissa/tools/campaign_process.py", line 358, in run
+2026-10-27T00:01:17.3803034Z     raise StageFailure(record)
+2026-10-27T00:01:17.3803393Z tools.campaign_process.StageFailure: stage browser-process failed: nonzero-exit (exit 1)
+2026-10-27T00:01:17.3803890Z file:///home/runner/work/caissa/caissa/tools/browser_campaign.mjs:20
+2026-10-27T00:01:17.3804226Z   throw new Error(message);
+2026-10-27T00:01:17.3804436Z         ^
+2026-10-27T00:01:17.3804698Z 
+2026-10-27T00:01:17.3804897Z Error: Original completed native analysis response was not fully captured.
+2026-10-27T00:01:17.3805322Z     at poll (file:///home/runner/work/caissa/caissa/tools/browser_campaign.mjs:20:9)
+2026-10-27T00:01:17.3805863Z     at async exercise (file:///home/runner/work/caissa/caissa/tools/browser_campaign.mjs:122:3)
+2026-10-27T00:01:17.3806538Z     at async file:///home/runner/work/caissa/caissa/tools/browser_campaign.mjs:167:38
+2026-10-27T00:01:17.3806831Z 
+2026-10-27T00:01:17.3806910Z Node.js v24.21.0
+2026-10-27T00:01:17.3807022Z 
+2026-10-27T00:01:17.3807025Z 
+2026-10-27T00:01:17.3807384Z PINNED_MEMBER component/positive/browser-process.log file:///home/runner/work/caissa/caissa/tools/browser_campaign.mjs:20
+2026-10-27T00:01:17.3807921Z   throw new Error(message);
+2026-10-27T00:01:17.3808131Z         ^
+2026-10-27T00:01:17.3808229Z 
+2026-10-27T00:01:17.3808421Z Error: Original completed native analysis response was not fully captured.
+2026-10-27T00:01:17.3808911Z     at poll (file:///home/runner/work/caissa/caissa/tools/browser_campaign.mjs:20:9)
+2026-10-27T00:01:17.3809449Z     at async exercise (file:///home/runner/work/caissa/caissa/tools/browser_campaign.mjs:122:3)
+2026-10-27T00:01:17.3809989Z     at async file:///home/runner/work/caissa/caissa/tools/browser_campaign.mjs:167:38
+2026-10-27T00:01:17.3810298Z 
+2026-10-27T00:01:17.3810376Z Node.js v24.21.0
+2026-10-27T00:01:17.3810487Z 
+2026-10-27T00:01:17.3811062Z CAPTURE_ERRORS [{"mode": "classical", "width": 1280, "url": "/api/analyze", "status": 200, "aborted": true, "transport_complete": false, "capture_error": {"name": "Error", "message": "Target page, context or browser has been closed"}}]
+2026-10-27T00:01:17.3812292Z PINNED_ARCHIVE {"path": "runs/capture-diagnosis/12698551481.zip", "bytes": 1531365, "sha256": "9e141f166fd0c0bd1440f4ae134096633fb4c71ec07827393581a71abc051f3f", "artifact_id": 12698551481}
+2026-10-27T00:01:17.3813003Z PINNED_MEMBER ORIGINAL_CAPTURE_INSPECTION.json {
+2026-10-27T00:01:17.3813366Z   "schema": "caissa-failed-browser-capture-inspection-v1",
+2026-10-27T00:01:17.3813658Z   "archive": {
+2026-10-27T00:01:17.3813912Z     "path": "runs/g12-capture-amendment/original-failed-macos.zip",
+2026-10-27T00:01:17.3814200Z     "bytes": 43782845,
+2026-10-27T00:01:17.3814488Z     "sha256": "24061634fde05f3fa9c01f61e1f478989e15304d73829e9d89d7e868f3d11c36",
+2026-10-27T00:01:17.3814847Z     "artifact_id": 12635533585
+2026-10-27T00:01:17.3815043Z   },
+2026-10-27T00:01:17.3815275Z   "member": "runs/ci-browser-component/positive/NETWORK.json",
+2026-10-27T00:01:17.3815715Z   "member_sha256": "25f49f72a00930f6d1624361a1fb433e77788dcae461595c194762d5709d693e",
+2026-10-27T00:01:17.3816092Z   "member_bytes": 100769,
+2026-10-27T00:01:17.3816505Z   "contexts": [
+2026-10-27T00:01:17.3816676Z     {
+2026-10-27T00:01:17.3816838Z       "mode": "classical",
+2026-10-27T00:01:17.3817038Z       "width": 1280,
+2026-10-27T00:01:17.3817235Z       "analysis_responses": 3,
+2026-10-27T00:01:17.3817454Z       "aborted_captures": 3,
+2026-10-27T00:01:17.3817682Z       "complete_bestmove_bodies": 0
+2026-10-27T00:01:17.3817886Z     },
+2026-10-27T00:01:17.3818040Z     {
+2026-10-27T00:01:17.3818211Z       "mode": "classical",
+2026-10-27T00:01:17.3818396Z       "width": 390,
+2026-10-27T00:01:17.3818570Z       "analysis_responses": 3,
+2026-10-27T00:01:17.3818781Z       "aborted_captures": 3,
+2026-10-27T00:01:17.3819159Z       "complete_bestmove_bodies": 0
+2026-10-27T00:01:17.3819368Z     },
+2026-10-27T00:01:17.3819514Z     {
+2026-10-27T00:01:17.3819658Z       "mode": "neural",
+2026-10-27T00:01:17.3819846Z       "width": 1280,
+2026-10-27T00:01:17.3820041Z       "analysis_responses": 3,
+2026-10-27T00:01:17.3820249Z       "aborted_captures": 3,
+2026-10-27T00:01:17.3820467Z       "complete_bestmove_bodies": 0
+2026-10-27T00:01:17.3820678Z     },
+2026-10-27T00:01:17.3820827Z     {
+2026-10-27T00:01:17.3820984Z       "mode": "neural",
+2026-10-27T00:01:17.3821173Z       "width": 390,
+2026-10-27T00:01:17.3821363Z       "analysis_responses": 3,
+2026-10-27T00:01:17.3821721Z       "aborted_captures": 3,
+2026-10-27T00:01:17.3821946Z       "complete_bestmove_bodies": 0
+2026-10-27T00:01:17.3822164Z     }
+2026-10-27T00:01:17.3822318Z   ],
+2026-10-27T00:01:17.3822495Z   "derived_metadata_only": true,
+2026-10-27T00:01:17.3822732Z   "original_zip_unchanged": true,
+2026-10-27T00:01:17.3823163Z   "cause": "Original observations are separate from the proposed UI transport-lifetime explanation."
+2026-10-27T00:01:17.3823587Z }
+2026-10-27T00:01:17.3823678Z 
+2026-10-27T00:01:17.3823765Z PINNED_MEMBER RESULT.json {
+2026-10-27T00:01:17.3823977Z   "status": "failed",
+2026-10-27T00:01:17.3824173Z   "full_G12_certified": false,
+2026-10-27T00:01:17.3824376Z   "old_failures_preserved": true,
+2026-10-27T00:01:17.3824589Z   "new_strength_games": 0,
+2026-10-27T00:01:17.3824909Z   "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+2026-10-27T00:01:17.3825264Z   "saved_image": true,
+2026-10-27T00:01:17.3825582Z   "reason": "actual amended browser component failed; see retained component.log",
+2026-10-27T00:01:17.3825928Z   "seconds": 18.091509416999997
+2026-10-27T00:01:17.3826120Z }
+2026-10-27T00:01:17.3826344Z 
+2026-10-27T00:01:17.3826494Z PINNED_MEMBER component.log Traceback (most recent call last):
+2026-10-27T00:01:17.3826850Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-10-27T00:01:17.3827163Z   File "<frozen runpy>", line 88, in _run_code
+2026-10-27T00:01:17.3827569Z   File "/Users/runner/work/caissa/caissa/tests/browser_component.py", line 245, in <module>
+2026-10-27T00:01:17.3827956Z     main()
+2026-10-27T00:01:17.3828253Z   File "/Users/runner/work/caissa/caissa/tests/browser_component.py", line 56, in main
+2026-10-27T00:01:17.3828631Z     assert actual.returncode == 0, (
+2026-10-27T00:01:17.3828863Z            ^^^^^^^^^^^^^^^^^^^^^^
+2026-10-27T00:01:17.3886365Z AssertionError: Traceback (most recent call last):
+2026-10-27T00:01:17.3886707Z   File "<frozen runpy>", line 198, in _run_module_as_main
+2026-10-27T00:01:17.3887022Z   File "<frozen runpy>", line 88, in _run_code
+2026-10-27T00:01:17.3887409Z   File "/Users/runner/work/caissa/caissa/tools/browser_campaign.py", line 102, in <module>
+2026-10-27T00:01:17.3887767Z     main()
+2026-10-27T00:01:17.3888054Z   File "/Users/runner/work/caissa/caissa/tools/browser_campaign.py", line 97, in main
+2026-10-27T00:01:17.3888430Z     execute(args.engine, args.network, args.output)
+2026-10-27T00:01:17.3888831Z   File "/Users/runner/work/caissa/caissa/tools/browser_campaign.py", line 58, in execute
+2026-10-27T00:01:17.3889188Z     campaign.run(
+2026-10-27T00:01:17.3889481Z   File "/Users/runner/work/caissa/caissa/tools/campaign_process.py", line 358, in run
+2026-10-27T00:01:17.3889843Z     raise StageFailure(record)
+2026-10-27T00:01:17.3890206Z tools.campaign_process.StageFailure: stage browser-process failed: nonzero-exit (exit 1)
+2026-10-27T00:01:17.3890678Z file:///Users/runner/work/caissa/caissa/tools/browser_campaign.mjs:20
+2026-10-27T00:01:17.3890994Z   throw new Error(message);
+2026-10-27T00:01:17.3891191Z         ^
+2026-10-27T00:01:17.3891287Z 
+2026-10-27T00:01:17.3891466Z Error: Original completed native analysis response was not fully captured.
+2026-10-27T00:01:17.3891913Z     at poll (file:///Users/runner/work/caissa/caissa/tools/browser_campaign.mjs:20:9)
+2026-10-27T00:01:17.3892415Z     at async exercise (file:///Users/runner/work/caissa/caissa/tools/browser_campaign.mjs:122:3)
+2026-10-27T00:01:17.3893359Z     at async file:///Users/runner/work/caissa/caissa/tools/browser_campaign.mjs:167:38
+2026-10-27T00:01:17.3893645Z 
+2026-10-27T00:01:17.3893720Z Node.js v24.20.0
+2026-10-27T00:01:17.3893832Z 
+2026-10-27T00:01:17.3893835Z 
+2026-10-27T00:01:17.3894186Z PINNED_MEMBER component/positive/browser-process.log file:///Users/runner/work/caissa/caissa/tools/browser_campaign.mjs:20
+2026-10-27T00:01:17.3894676Z   throw new Error(message);
+2026-10-27T00:01:17.3894879Z         ^
+2026-10-27T00:01:17.3894969Z 
+2026-10-27T00:01:17.3895278Z Error: Original completed native analysis response was not fully captured.
+2026-10-27T00:01:17.3895745Z     at poll (file:///Users/runner/work/caissa/caissa/tools/browser_campaign.mjs:20:9)
+2026-10-27T00:01:17.3896390Z     at async exercise (file:///Users/runner/work/caissa/caissa/tools/browser_campaign.mjs:122:3)
+2026-10-27T00:01:17.3896905Z     at async file:///Users/runner/work/caissa/caissa/tools/browser_campaign.mjs:167:38
+2026-10-27T00:01:17.3897212Z 
+2026-10-27T00:01:17.3897287Z Node.js v24.20.0
+2026-10-27T00:01:17.3897400Z 
+2026-10-27T00:01:17.3898014Z CAPTURE_ERRORS [{"mode": "classical", "width": 1280, "url": "/api/analyze", "status": 200, "aborted": true, "transport_complete": false, "capture_error": {"name": "Error", "message": "Target page, context or browser has been closed"}}]
+2026-10-27T00:01:17.4012844Z Post job cleanup.
+2026-10-27T00:01:17.4602380Z [command]/usr/bin/git version
+2026-10-27T00:01:17.4621155Z git version 2.55.0
+2026-10-27T00:01:17.4645410Z Temporarily overriding HOME='/home/runner/work/_temp/d4f2f8ae-acae-40ad-ab9d-3d4fe6471ed2' before making global git config changes
+2026-10-27T00:01:17.4646113Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T00:01:17.4649143Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/caissa/caissa
+2026-10-27T00:01:17.4682996Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T00:01:17.4713087Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T00:01:17.4928759Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T00:01:17.4945955Z http.https://github.com/.extraheader
+2026-10-27T00:01:17.4955202Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-27T00:01:17.4989064Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T00:01:17.5201379Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T00:01:17.5231545Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T00:01:17.5533087Z Cleaning up orphan processes
+2026-10-27T00:01:17.5799920Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

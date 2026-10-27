@@ -5,6 +5,7 @@ import { once } from 'node:events';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { chromium } from 'playwright';
+import { observeNativeStreams } from './browser_stream_capture.mjs';
 
 const root = resolve(process.argv[2]);
 const config = JSON.parse(await readFile(root + '/CONFIG.json', 'utf8'));
@@ -66,6 +67,11 @@ async function exercise(mode, width) {
   context = await browser.newContext({ viewport: { width, height: 900 }, reducedMotion: 'reduce' });
   await context.tracing.start({ screenshots: true, snapshots: true, sources: true });
   const page = await context.newPage(); page.setDefaultTimeout(8000);
+  await observeNativeStreams(page, base, (row) => {
+    bytes += row.body_bytes ?? 0;
+    if (bytes > 32 * 1024 * 1024) throw new Error('Browser network evidence exceeded its ceiling.');
+    requests.push({ mode, width, ...row });
+  });
   async function idle(name) {
     const sessionRow = requests.find((r) => r.mode === mode && r.width === width && r.url === '/api/session' && r.body);
     assert(sessionRow); const session = JSON.parse(sessionRow.body);
@@ -81,6 +87,7 @@ async function exercise(mode, width) {
   page.on('pageerror', (error) => errors.push({ mode, width, message: error.message }));
   page.on('response', (response) => {
     if (!response.url().startsWith(base + '/api/')) return;
+    if (new URL(response.url()).pathname === '/api/analyze') return;
     const task = (async () => {
       const request = response.request(); const row = { mode, width, url: new URL(response.url()).pathname,
         method: request.method(), status: response.status(), request: request.postData(), headers: request.headers() };
@@ -157,6 +164,7 @@ async function exercise(mode, width) {
   await page.locator('.moves-panel > details > summary').click(); await page.locator('#export-pgn').click();
   await page.waitForFunction(() => document.querySelector('#status').textContent.startsWith('Exported'));
   const final = await snapshot(page, 'final-export', mode, width); assert.equal(final.pgn, exported.pgn);
+  await page.evaluate(() => window.__caissaNativeCaptureIdle());
   await context.tracing.stop({ path: folder + '/trace.zip' }); await context.close(); context = undefined;
   await Promise.all([...pending]);
 }

@@ -13,10 +13,10 @@
   "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
   "source_files": {
     "web/app.ts": "b7f1a4054bfa42cc5997c3efe676fc19ac0bc1dc59191027801b06977927d2c2",
-    "tools/browser_campaign.mjs": "c67ad8ba72bb80f64adddbcc0449be218aa54a7f38193d59ca6319d3b9aac554",
+    "tools/browser_campaign.mjs": "7fa472632d8e3a24f85740a5925f7ea586c3880959dee97cf5fd82d8c75a3d88",
     "tools/browser_campaign.py": "05e16245a51938571491febd608e5a2d6d33edb096843eb604327e2060ea5aa4",
     "tests/browser_component.py": "2059f0785d458db4dac9c7f3e832dbda31ee902c5ded358b29461b1ce8de26f6",
-    "tests/browser_capture.py": "4257da93fca75d85ec076b36cc0d1f3baacd19096fa0925001da912f8ce3ae69",
+    "tests/browser_capture.py": "f29f19c195e4bd972fd4e6d7585c9a286f0f3b9a643289cf7343a057420d92e9",
     "verification/browser.py": "a2410eb7190783fa4c013e85a13d6864b2f98617041d15b6719b1fa07675a3c7",
     "verification/browser_bundle.py": "b3d18eec7819917fee405f8854f0a157532e4bb0a2e01384d90c23b8d2793072",
     "verification/bundle.py": "006f94caed2dcc6b5f51a3aa1c64bd65aa32fc539b366e3fb0b2496e1d30a113",
@@ -31,7 +31,8 @@
     ".github/workflows/browser-capture.yml": "d17a9cc0097473f528e34bb16aa0915e3a231f3e469d3d76f7a3741b416a9ce0",
     "analysis-service/telemetry.ts": "9e26681676b7734017025294797b2ecf6aad2b80fccf860de0b31fef8bafad94",
     "analysis-service/native.ts": "9c1bcd2256a79c4f41387e62e6f0e5a7295140d7e31b0a7901719fd13b547688",
-    "analysis-service/server.ts": "ad27906270f50f9762a42e7010e78823b57772d3397a8675b5612552c4763a94"
+    "analysis-service/server.ts": "ad27906270f50f9762a42e7010e78823b57772d3397a8675b5612552c4763a94",
+    "tools/browser_stream_capture.mjs": "0ed367af720c69626431325fd9e5c39561dec2f526c6d23fc5b8e2565a3118f4"
   },
   "original_failed_artifact": {
     "artifact_id": 12635533585,
