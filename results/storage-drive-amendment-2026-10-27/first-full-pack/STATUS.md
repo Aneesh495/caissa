@@ -1,0 +1,3 @@
+The first full Drive archive independently reconstructed4,383,080,448original bytes and matched the original input SHA256 before the local source file was rehashed and removed. The compressed archive is3,121,387,302bytes. Its stored manifest was also downloaded and checked byte for byte before decoding. Exact raw/stored-manifest pins, original path/mode/mtime and private Drive locator are retained here.
+
+This is the first full provider transport result, not a chess/data/learning/compiler gate pass. It does not certify project acceptance or full public reproduction. The next archive is running; the local project remains above5GB and matches remain stopped. Original failed GitHub scopes/receipts remain unchanged.

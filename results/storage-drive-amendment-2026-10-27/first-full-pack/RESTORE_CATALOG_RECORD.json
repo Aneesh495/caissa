@@ -1,0 +1,12 @@
+{
+  "bytes": 4383080448,
+  "manifest_file_id": "1ipPYFyB9qs_3ql2CpE3vL-G75xg97VT1",
+  "manifest_stored_bytes": 10064,
+  "manifest_stored_sha256": "e8f639ac9e7c532ce825383fc84dd0daf70da85b067f15bfbc9e147869ee03c3",
+  "mode": 420,
+  "mtime_ns": 1792791943231183624,
+  "pack": 1,
+  "path": "data/searched-full-v3-prepared/identities.sqlite3",
+  "provider": "google-drive-private",
+  "sha256": "a85bbda8a3d1217b7a2f031ef10b1120a0a1006fbbc405e4b8505ada02f900cb"
+}

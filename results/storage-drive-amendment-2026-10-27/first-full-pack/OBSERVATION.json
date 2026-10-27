@@ -1,0 +1,12 @@
+{
+  "observed_unix": 1793082547.489907,
+  "source_path_absent": true,
+  "source_path": "data/searched-full-v3-prepared/identities.sqlite3",
+  "removed_logical_bytes": 4383080448,
+  "manifest_file_id": "1ipPYFyB9qs_3ql2CpE3vL-G75xg97VT1",
+  "mac_used_bytes": 329077207040,
+  "project_cap_met": false,
+  "further_archival_in_progress": true,
+  "new_games": 0,
+  "full_acceptance": false
+}
