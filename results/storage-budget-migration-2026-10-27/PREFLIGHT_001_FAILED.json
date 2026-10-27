@@ -1,0 +1,7 @@
+{
+  "status": "failed-before-tests",
+  "reason": "-P excluded checkout; tests is not an installed package",
+  "source_unchanged": true,
+  "original_stdout": "preflight-001.stdout",
+  "original_stderr": "preflight-001.stderr"
+}

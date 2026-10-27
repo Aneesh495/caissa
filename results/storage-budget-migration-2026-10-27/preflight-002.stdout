@@ -1,0 +1,1 @@
+{"status": "passed", "cases": 24, "network_calls": 0, "native_games": 0, "real_private_blob_roundtrip": true, "canary_git_blob": "5e5628ddf9c88e752dbfa28b300aa9ba2924be6d", "canary_bytes": 54, "seconds": 1.2583995000168215, "source_sha256": "2d0f01cc4574fc4977b9360b6d105e98083bf5f6352afeddd84981b4e0799760"}

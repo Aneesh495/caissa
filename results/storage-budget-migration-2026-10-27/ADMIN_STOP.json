@@ -1,0 +1,20 @@
+{
+  "schema": "caissa-user-storage-admin-interruption-v1",
+  "human_constraint": "Total Mac storage used must stay below400GB; never exceed5GB locally for any project, especially Caissa.",
+  "owner_pid": 46456,
+  "phase": "play-threads-2-ms-400",
+  "arena_pid": 33045,
+  "recorded_games": 262,
+  "recorded_pairs": 131,
+  "original_active_usage": {
+    "maximum_active_seconds": 28800,
+    "active_seconds": 4583.147348625964,
+    "monotonic_stamp": 150539.47198175,
+    "closed": false
+  },
+  "original_scope_sha256": "fbd11fe8d7c7a0a842a8280a4916ab8a1a340eea2fea0538f6b2bca9579c8c5e",
+  "action": "SIGTERM to the original parallel controller for a storage-priority administrative stop. Existing committed games, failures and actors remain intact. No favorable game rerun or result acceptance.",
+  "observed_unix": 1793063111.3303418,
+  "original_parent_deadline_unix": 1793150297.974828,
+  "no_wall_or_active_budget_extension": true
+}

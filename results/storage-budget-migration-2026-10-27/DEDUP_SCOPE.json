@@ -1,0 +1,10 @@
+{
+  "schema": "caissa-storage-duplicate-reclamation-v1",
+  "origin_unix": 1793063356.846113,
+  "deadline_unix": 1793063536.846113,
+  "maximum_invocations": 1,
+  "invocations_started": 1,
+  "source_sha256": "87ab2b1246d125b749488dd5067b46b28e12bfaef0da034121de679a76d1aff0",
+  "authority": "New direct user5GBproject/400GBMac storage limit; raw originals retained, only independently verified duplicate reconstruction hardlinked.",
+  "parent_deadline_unix": 1793150297.974828
+}
