@@ -1,0 +1,33 @@
+{
+  "schema": "caissa-strength-v1",
+  "complete_pairs": 50,
+  "independent_opening_clusters": 50,
+  "games": 100,
+  "wins": 81,
+  "draws": 3,
+  "losses": 16,
+  "unfinished_games": 0,
+  "score": 0.825,
+  "score_95": [
+    0.745,
+    0.895
+  ],
+  "elo_difference": 269.3663599454522,
+  "elo_95": [
+    186.24643692573505,
+    372.2534944983896
+  ],
+  "statistics_version": 2,
+  "boundary_guard": false,
+  "degeneracy_guard": false,
+  "bootstrap": {
+    "unit": "opening family containing color-reversed pairs",
+    "resamples": 20000,
+    "seed": 104729
+  },
+  "failures": {
+    "time-loss": 5
+  },
+  "complete_sample": true,
+  "profile": "full original heuristics comparison"
+}
