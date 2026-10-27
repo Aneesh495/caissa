@@ -1,0 +1,49 @@
+{
+  "schema": "caissa-amended-browser-capture-result-v1",
+  "status": "closed passed component",
+  "source_commit": "7e699e200d2cb89a87c4d1c21c784244a2f96481",
+  "failed_first_run": 40423146013,
+  "metadata_diagnosis_run": 40423610628,
+  "passed_second_run": 40424040184,
+  "main_executions_started": 2,
+  "metadata_executions_started": 1,
+  "cumulative_hosted_seconds": {
+    "linux": 220,
+    "macos": 161
+  },
+  "real_contexts_per_platform": 4,
+  "controls_per_platform": 17,
+  "macos_engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "linux_engine_sha256": "d97386d62a5684f0720f97bc7c9bbd5c9c3d6ae791a8c9256705474b3db7751b",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "first_original_scope_unchanged": true,
+  "changed_original_public_files": [],
+  "full_G12_certified": false,
+  "full_acceptance": false,
+  "final_all_domain_source_join_pending": true,
+  "no_new_strength_games": true,
+  "no_local_native_browser_compiler_execution": true,
+  "original_failed_capture": {
+    "artifact_id": 12635533585,
+    "network_member": "runs/ci-browser-component/positive/NETWORK.json",
+    "member_bytes": 100769,
+    "member_sha256": "25f49f72a00930f6d1624361a1fb433e77788dcae461595c194762d5709d693e",
+    "analysis_responses": 12,
+    "aborted_captures": 12,
+    "complete_bestmove_bodies": 0
+  },
+  "hosted_raw_artifacts": {
+    "linux": {
+      "artifact_id": 12698933326,
+      "bytes": 9988714,
+      "sha256": "c040f1a6cf0a027e793e07d472f5a794b8729fbdf3fffde51639827d34da4605"
+    },
+    "macos": {
+      "artifact_id": 12698952186,
+      "bytes": 9678582,
+      "sha256": "d3804aafd849ca9afd2376f078d4d90bb60e5e2195e08b2f9f5385ff38a99f6e"
+    }
+  },
+  "logs": "Decoded GitHub job-log text retained. Metadata diagnosis is an explicit derived observation from pinned original ZIP members; it is not relabeled raw member bytes. Original raw ZIPs remain hosted unchanged.",
+  "closed_unix": 1793059677.817081
+}

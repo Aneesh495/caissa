@@ -1,0 +1,371 @@
+﻿2026-10-27T00:04:55.2854810Z Current runner version: '2.338.0'
+2026-10-27T00:04:55.2871880Z ##[group]Runner Image Provisioner
+2026-10-27T00:04:55.2872430Z Hosted Compute Agent
+2026-10-27T00:04:55.2872800Z Version: 20260828.587
+2026-10-27T00:04:55.2873200Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-10-27T00:04:55.2873670Z Build Date: 2026-08-28T16:44:25Z
+2026-10-27T00:04:55.2874120Z Worker ID: {85fd6597-29b4-4d71-a417-f16b88e41df5}
+2026-10-27T00:04:55.2874670Z Azure Region: westus
+2026-10-27T00:04:55.2875040Z ##[endgroup]
+2026-10-27T00:04:55.2875970Z ##[group]Operating System
+2026-10-27T00:04:55.2876370Z macOS
+2026-10-27T00:04:55.2876700Z 15.7.9
+2026-10-27T00:04:55.2877030Z 24G830
+2026-10-27T00:04:55.2877350Z ##[endgroup]
+2026-10-27T00:04:55.2877710Z ##[group]Runner Image
+2026-10-27T00:04:55.2878080Z Image: macos-15-arm64
+2026-10-27T00:04:55.2878460Z Version: 20260907.0337.1
+2026-10-27T00:04:55.2879320Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260907.0337/images/macos/macos-15-arm64-Readme.md
+2026-10-27T00:04:55.2880350Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260907.0337
+2026-10-27T00:04:55.2881010Z ##[endgroup]
+2026-10-27T00:04:55.2881810Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T00:04:55.2883070Z Actions: read
+2026-10-27T00:04:55.2883450Z Contents: read
+2026-10-27T00:04:55.2883820Z Metadata: read
+2026-10-27T00:04:55.2884190Z ##[endgroup]
+2026-10-27T00:04:55.2885680Z Secret source: Actions
+2026-10-27T00:04:55.2886260Z Cache mode: write
+2026-10-27T00:04:55.2886720Z Prepare workflow directory
+2026-10-27T00:04:55.3205270Z Prepare all required actions
+2026-10-27T00:04:55.3250420Z Getting action download info
+2026-10-27T00:04:55.6390970Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-27T00:04:56.0067200Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-27T00:04:56.1411510Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-10-27T00:04:56.2701430Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-27T00:04:56.5182000Z Complete job name: capture (macos-15)
+2026-10-27T00:04:56.6065890Z ##[group]Run actions/checkout@v4
+2026-10-27T00:04:56.6066480Z with:
+2026-10-27T00:04:56.6066840Z   repository: Aneesh495/caissa
+2026-10-27T00:04:56.6069950Z   token: ***
+2026-10-27T00:04:56.6070290Z   ssh-strict: true
+2026-10-27T00:04:56.6070630Z   ssh-user: git
+2026-10-27T00:04:56.6070980Z   persist-credentials: true
+2026-10-27T00:04:56.6071370Z   clean: true
+2026-10-27T00:04:56.6071720Z   sparse-checkout-cone-mode: true
+2026-10-27T00:04:56.6072120Z   fetch-depth: 1
+2026-10-27T00:04:56.6072460Z   fetch-tags: false
+2026-10-27T00:04:56.6072810Z   show-progress: true
+2026-10-27T00:04:56.6073170Z   lfs: false
+2026-10-27T00:04:56.6073510Z   submodules: false
+2026-10-27T00:04:56.6073870Z   set-safe-directory: true
+2026-10-27T00:04:56.6074320Z   allow-unsafe-pr-checkout: false
+2026-10-27T00:04:56.6074920Z ##[endgroup]
+2026-10-27T00:04:57.2220190Z Syncing repository: Aneesh495/caissa
+2026-10-27T00:04:57.2222300Z ##[group]Getting Git version info
+2026-10-27T00:04:57.2223160Z Working directory is '/Users/runner/work/caissa/caissa'
+2026-10-27T00:04:57.2234000Z [command]/opt/homebrew/bin/git version
+2026-10-27T00:04:57.2837230Z git version 2.55.0
+2026-10-27T00:04:57.2861600Z ##[endgroup]
+2026-10-27T00:04:57.2871870Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/3666770d-3c67-4d28-a9c6-16d842309897/.gitconfig'
+2026-10-27T00:04:57.2893420Z Temporarily overriding HOME='/Users/runner/work/_temp/3666770d-3c67-4d28-a9c6-16d842309897' before making global git config changes
+2026-10-27T00:04:57.2896250Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T00:04:57.2899480Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/caissa/caissa
+2026-10-27T00:04:57.3058740Z Deleting the contents of '/Users/runner/work/caissa/caissa'
+2026-10-27T00:04:57.3068050Z ##[group]Initializing the repository
+2026-10-27T00:04:57.3088280Z [command]/opt/homebrew/bin/git init /Users/runner/work/caissa/caissa
+2026-10-27T00:04:57.3470100Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-27T00:04:57.3478190Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-27T00:04:57.3482650Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-27T00:04:57.3486820Z hint: call:
+2026-10-27T00:04:57.3488960Z hint:
+2026-10-27T00:04:57.3491840Z hint: 	git config --global init.defaultBranch <name>
+2026-10-27T00:04:57.3494860Z hint:
+2026-10-27T00:04:57.3498230Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-27T00:04:57.3503000Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-27T00:04:57.3509080Z hint:
+2026-10-27T00:04:57.3510640Z hint: 	git branch -m <name>
+2026-10-27T00:04:57.3512380Z hint:
+2026-10-27T00:04:57.3514270Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-27T00:04:57.3516710Z Initialized empty Git repository in /Users/runner/work/caissa/caissa/.git/
+2026-10-27T00:04:57.3522600Z [command]/opt/homebrew/bin/git remote add origin https://github.com/Aneesh495/caissa
+2026-10-27T00:04:57.3590340Z ##[endgroup]
+2026-10-27T00:04:57.3592030Z ##[group]Disabling automatic garbage collection
+2026-10-27T00:04:57.3593420Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-10-27T00:04:57.3691730Z ##[endgroup]
+2026-10-27T00:04:57.3693320Z ##[group]Setting up auth
+2026-10-27T00:04:57.3696680Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T00:04:57.3954960Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T00:04:57.5580060Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T00:04:57.5603220Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T00:04:57.7053970Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T00:04:57.7292600Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T00:04:57.8144840Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-27T00:04:57.8435210Z ##[endgroup]
+2026-10-27T00:04:57.8476580Z ##[group]Fetching the repository
+2026-10-27T00:04:57.8479930Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +7e699e200d2cb89a87c4d1c21c784244a2f96481:refs/remotes/origin/main
+2026-10-27T00:05:15.8088190Z From https://github.com/Aneesh495/caissa
+2026-10-27T00:05:15.8121770Z  * [new ref]         7e699e200d2cb89a87c4d1c21c784244a2f96481 -> origin/main
+2026-10-27T00:05:15.8129300Z ##[endgroup]
+2026-10-27T00:05:15.8130960Z ##[group]Determining the checkout info
+2026-10-27T00:05:15.8132280Z ##[endgroup]
+2026-10-27T00:05:15.8147760Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-10-27T00:05:15.8338320Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-27T00:05:15.8459370Z ##[group]Checking out the ref
+2026-10-27T00:05:15.8463150Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-27T00:05:17.2662150Z Updating files:  56% (1840/3272)
+2026-10-27T00:05:17.2749310Z Updating files:  57% (1866/3272)
+2026-10-27T00:05:17.3131100Z Updating files:  58% (1898/3272)
+2026-10-27T00:05:17.3220790Z Updating files:  59% (1931/3272)
+2026-10-27T00:05:17.3656290Z Updating files:  60% (1964/3272)
+2026-10-27T00:05:17.3719070Z Updating files:  61% (1996/3272)
+2026-10-27T00:05:17.4022560Z Updating files:  62% (2029/3272)
+2026-10-27T00:05:17.4145870Z Updating files:  63% (2062/3272)
+2026-10-27T00:05:17.4244440Z Updating files:  64% (2095/3272)
+2026-10-27T00:05:17.4305910Z Updating files:  65% (2127/3272)
+2026-10-27T00:05:17.4455890Z Updating files:  66% (2160/3272)
+2026-10-27T00:05:17.4566420Z Updating files:  67% (2193/3272)
+2026-10-27T00:05:17.5656500Z Updating files:  68% (2225/3272)
+2026-10-27T00:05:17.8690580Z Updating files:  69% (2258/3272)
+2026-10-27T00:05:18.1705470Z Updating files:  69% (2279/3272)
+2026-10-27T00:05:18.3142930Z Updating files:  70% (2291/3272)
+2026-10-27T00:05:18.3281300Z Updating files:  71% (2324/3272)
+2026-10-27T00:05:18.3322010Z Updating files:  72% (2356/3272)
+2026-10-27T00:05:18.3412280Z Updating files:  73% (2389/3272)
+2026-10-27T00:05:18.3579110Z Updating files:  74% (2422/3272)
+2026-10-27T00:05:18.3805210Z Updating files:  75% (2454/3272)
+2026-10-27T00:05:18.4196980Z Updating files:  76% (2487/3272)
+2026-10-27T00:05:18.4405600Z Updating files:  77% (2520/3272)
+2026-10-27T00:05:18.4440340Z Updating files:  78% (2553/3272)
+2026-10-27T00:05:18.4518760Z Updating files:  79% (2585/3272)
+2026-10-27T00:05:18.4834400Z Updating files:  80% (2618/3272)
+2026-10-27T00:05:18.8046960Z Updating files:  81% (2651/3272)
+2026-10-27T00:05:19.0851000Z Updating files:  82% (2684/3272)
+2026-10-27T00:05:20.1597480Z Updating files:  82% (2685/3272)
+2026-10-27T00:05:20.9016520Z Updating files:  82% (2687/3272)
+2026-10-27T00:05:22.0543870Z Updating files:  82% (2689/3272)
+2026-10-27T00:05:22.0840250Z Updating files:  82% (2692/3272)
+2026-10-27T00:05:22.0876620Z Updating files:  83% (2716/3272)
+2026-10-27T00:05:22.1040090Z Updating files:  84% (2749/3272)
+2026-10-27T00:05:22.1113870Z Updating files:  85% (2782/3272)
+2026-10-27T00:05:22.1153220Z Updating files:  86% (2814/3272)
+2026-10-27T00:05:22.1727920Z Updating files:  87% (2847/3272)
+2026-10-27T00:05:22.1777010Z Updating files:  88% (2880/3272)
+2026-10-27T00:05:22.1844570Z Updating files:  89% (2913/3272)
+2026-10-27T00:05:22.2134030Z Updating files:  90% (2945/3272)
+2026-10-27T00:05:22.2294230Z Updating files:  91% (2978/3272)
+2026-10-27T00:05:22.2368600Z Updating files:  92% (3011/3272)
+2026-10-27T00:05:22.2444420Z Updating files:  93% (3043/3272)
+2026-10-27T00:05:22.2575180Z Updating files:  94% (3076/3272)
+2026-10-27T00:05:22.2644440Z Updating files:  95% (3109/3272)
+2026-10-27T00:05:22.2739770Z Updating files:  96% (3142/3272)
+2026-10-27T00:05:22.2846180Z Updating files:  97% (3174/3272)
+2026-10-27T00:05:22.2917240Z Updating files:  98% (3207/3272)
+2026-10-27T00:05:22.2994740Z Updating files:  99% (3240/3272)
+2026-10-27T00:05:22.3005950Z Updating files: 100% (3272/3272)
+2026-10-27T00:05:22.3006570Z Updating files: 100% (3272/3272), done.
+2026-10-27T00:05:22.3094840Z Switched to a new branch 'main'
+2026-10-27T00:05:22.3101840Z branch 'main' set up to track 'origin/main'.
+2026-10-27T00:05:22.3210170Z ##[endgroup]
+2026-10-27T00:05:22.3479990Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-10-27T00:05:22.3638910Z 7e699e200d2cb89a87c4d1c21c784244a2f96481
+2026-10-27T00:05:22.4078430Z ##[group]Run python3 - <<'PY'
+2026-10-27T00:05:22.4078930Z [36;1mpython3 - <<'PY'[0m
+2026-10-27T00:05:22.4079190Z [36;1mimport hashlib,json,os,time[0m
+2026-10-27T00:05:22.4079550Z [36;1mfrom pathlib import Path[0m
+2026-10-27T00:05:22.4079960Z [36;1mrule=json.loads(Path('config/browser-capture-amendment-v1.json').read_text())[0m
+2026-10-27T00:05:22.4080510Z [36;1massert os.environ['GITHUB_SHA']==os.environ['EXPECTED_SOURCE'][0m
+2026-10-27T00:05:22.4081020Z [36;1massert int(os.environ['GITHUB_RUN_NUMBER'])<=rule['maximum_ci_executions'][0m
+2026-10-27T00:05:22.4081440Z [36;1massert int(os.environ['GITHUB_RUN_ATTEMPT'])==1[0m
+2026-10-27T00:05:22.4081910Z [36;1massert time.time()<rule['deadline_unix']<rule['parent_deadline_unix'][0m
+2026-10-27T00:05:22.4113990Z [36;1mfor name,digest in rule['source_files'].items():[0m
+2026-10-27T00:05:22.4114480Z [36;1m    assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest,name[0m
+2026-10-27T00:05:22.4115190Z [36;1mPY[0m
+2026-10-27T00:05:22.4176820Z shell: /bin/bash -e {0}
+2026-10-27T00:05:22.4177120Z env:
+2026-10-27T00:05:22.4177420Z   EXPECTED_SOURCE: 7e699e200d2cb89a87c4d1c21c784244a2f96481
+2026-10-27T00:05:22.4177810Z ##[endgroup]
+2026-10-27T00:05:22.7532000Z ##[group]Run actions/setup-python@v5
+2026-10-27T00:05:22.7532250Z with:
+2026-10-27T00:05:22.7532470Z   python-version: 3.12
+2026-10-27T00:05:22.7532650Z   check-latest: false
+2026-10-27T00:05:22.7534830Z   token: ***
+2026-10-27T00:05:22.7535070Z   update-environment: true
+2026-10-27T00:05:22.7551680Z   allow-prereleases: false
+2026-10-27T00:05:22.7551960Z   freethreaded: false
+2026-10-27T00:05:22.7552190Z ##[endgroup]
+2026-10-27T00:05:22.9345520Z ##[group]Installed versions
+2026-10-27T00:05:22.9452220Z (node:3739) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T00:05:22.9452970Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T00:05:22.9453330Z Successfully set up CPython (3.12.10)
+2026-10-27T00:05:22.9454630Z ##[endgroup]
+2026-10-27T00:05:22.9593450Z ##[group]Run actions/setup-node@v4
+2026-10-27T00:05:22.9593680Z with:
+2026-10-27T00:05:22.9593850Z   node-version: 24
+2026-10-27T00:05:22.9594040Z   always-auth: false
+2026-10-27T00:05:22.9594240Z   check-latest: false
+2026-10-27T00:05:22.9596360Z   token: ***
+2026-10-27T00:05:22.9596520Z env:
+2026-10-27T00:05:22.9596760Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:22.9597190Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-27T00:05:22.9597640Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:22.9598050Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:22.9598500Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:22.9598810Z ##[endgroup]
+2026-10-27T00:05:23.1235260Z Found in cache @ /Users/runner/hostedtoolcache/node/24.20.0/arm64
+2026-10-27T00:05:23.1239610Z (node:3740) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T00:05:23.1241130Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T00:05:23.1243820Z ##[group]Environment details
+2026-10-27T00:05:23.7808430Z node: v24.20.0
+2026-10-27T00:05:23.7808740Z npm: 11.19.0
+2026-10-27T00:05:23.7808960Z yarn: 1.22.22
+2026-10-27T00:05:23.7809620Z ##[endgroup]
+2026-10-27T00:05:23.7946170Z ##[group]Run python -m pip install numpy==2.2.6 chess==1.11.2
+2026-10-27T00:05:23.7946550Z [36;1mpython -m pip install numpy==2.2.6 chess==1.11.2[0m
+2026-10-27T00:05:23.7946810Z [36;1mnpm ci --ignore-scripts[0m
+2026-10-27T00:05:23.7947030Z [36;1mnpm run build[0m
+2026-10-27T00:05:23.7947250Z [36;1mnpx playwright install --with-deps chromium[0m
+2026-10-27T00:05:23.7993970Z shell: /bin/bash -e {0}
+2026-10-27T00:05:23.7994140Z env:
+2026-10-27T00:05:23.7994430Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:23.7994860Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-27T00:05:23.7995300Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:23.7995690Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:23.7996060Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:23.7996370Z ##[endgroup]
+2026-10-27T00:05:25.8021290Z Collecting numpy==2.2.6
+2026-10-27T00:05:25.8964590Z   Downloading numpy-2.2.6-cp312-cp312-macosx_14_0_arm64.whl.metadata (62 kB)
+2026-10-27T00:05:25.9546460Z Collecting chess==1.11.2
+2026-10-27T00:05:25.9682570Z   Downloading chess-1.11.2.tar.gz (6.1 MB)
+2026-10-27T00:05:26.3444590Z      ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.1/6.1 MB 17.3 MB/s  0:00:00
+2026-10-27T00:05:26.8077200Z   Installing build dependencies: started
+2026-10-27T00:05:28.0145180Z   Installing build dependencies: finished with status 'done'
+2026-10-27T00:05:28.0249000Z   Getting requirements to build wheel: started
+2026-10-27T00:05:28.4100430Z   Getting requirements to build wheel: finished with status 'done'
+2026-10-27T00:05:28.4179760Z   Preparing metadata (pyproject.toml): started
+2026-10-27T00:05:28.6391520Z   Preparing metadata (pyproject.toml): finished with status 'done'
+2026-10-27T00:05:28.6637420Z Downloading numpy-2.2.6-cp312-cp312-macosx_14_0_arm64.whl (5.1 MB)
+2026-10-27T00:05:28.8209280Z    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 5.1/5.1 MB 32.1 MB/s  0:00:00
+2026-10-27T00:05:28.8524660Z Building wheels for collected packages: chess
+2026-10-27T00:05:28.8532930Z   Building wheel for chess (pyproject.toml): started
+2026-10-27T00:05:29.1312020Z   Building wheel for chess (pyproject.toml): finished with status 'done'
+2026-10-27T00:05:29.1324670Z   Created wheel for chess: filename=chess-1.11.2-py3-none-any.whl size=147878 sha256=41958f94b3a30cf0a697387c62f8d14b1c40663f1d5884ce9157f2696ae42308
+2026-10-27T00:05:29.1327390Z   Stored in directory: /Users/runner/Library/Caches/pip/wheels/83/1f/4e/8f4300f7dd554eb8de70ddfed96e94d3d030ace10c5b53d447
+2026-10-27T00:05:29.1353150Z Successfully built chess
+2026-10-27T00:05:29.1539560Z Installing collected packages: numpy, chess
+2026-10-27T00:05:30.7647690Z 
+2026-10-27T00:05:30.7656180Z Successfully installed chess-1.11.2 numpy-2.2.6
+2026-10-27T00:05:30.7662790Z 
+2026-10-27T00:05:30.7663950Z [notice] A new release of pip is available: 26.2.1 -> 26.2.2
+2026-10-27T00:05:30.7665580Z [notice] To update, run: python -m pip install --upgrade pip
+2026-10-27T00:05:32.8143870Z 
+2026-10-27T00:05:32.8146500Z added 7 packages, and audited 8 packages in 2s
+2026-10-27T00:05:32.8164880Z 
+2026-10-27T00:05:32.8165470Z found 0 vulnerabilities
+2026-10-27T00:05:33.1032680Z 
+2026-10-27T00:05:33.1033510Z > caissa-analysis@0.1.0 build
+2026-10-27T00:05:33.1036310Z > tsc -p tsconfig.json
+2026-10-27T00:05:33.1036550Z 
+2026-10-27T00:05:34.7648760Z Downloading Chromium 141.0.7390.37 (playwright build v1194) from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1194/chromium-mac-arm64.zip
+2026-10-27T00:05:35.0848980Z |                                                                                |   0% of 129.7 MiB
+2026-10-27T00:05:35.3252310Z |■■■■■■■■                                                                        |  10% of 129.7 MiB
+2026-10-27T00:05:35.4186250Z |■■■■■■■■■■■■■■■■                                                                |  20% of 129.7 MiB
+2026-10-27T00:05:35.5126110Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 129.7 MiB
+2026-10-27T00:05:35.6170860Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 129.7 MiB
+2026-10-27T00:05:35.7483290Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 129.7 MiB
+2026-10-27T00:05:35.8285230Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 129.7 MiB
+2026-10-27T00:05:35.9666440Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 129.7 MiB
+2026-10-27T00:05:36.1352680Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 129.7 MiB
+2026-10-27T00:05:36.2561570Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 129.7 MiB
+2026-10-27T00:05:36.3789480Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 129.7 MiB
+2026-10-27T00:05:39.2823970Z Chromium 141.0.7390.37 (playwright build v1194) downloaded to /Users/runner/Library/Caches/ms-playwright/chromium-1194
+2026-10-27T00:05:39.2830100Z Downloading FFMPEG playwright build v1011 from https://cdn.playwright.dev/dbazure/download/playwright/builds/ffmpeg/1011/ffmpeg-mac-arm64.zip
+2026-10-27T00:05:39.5527150Z |                                                                                |   0% of 1 MiB
+2026-10-27T00:05:39.5637270Z |■■■■■■■■                                                                        |  10% of 1 MiB
+2026-10-27T00:05:39.5722630Z |■■■■■■■■■■■■■■■■                                                                |  20% of 1 MiB
+2026-10-27T00:05:39.5778820Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  31% of 1 MiB
+2026-10-27T00:05:39.5844560Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  41% of 1 MiB
+2026-10-27T00:05:39.5852340Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 1 MiB
+2026-10-27T00:05:39.5866420Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  61% of 1 MiB
+2026-10-27T00:05:39.5876370Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  71% of 1 MiB
+2026-10-27T00:05:39.5885700Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 1 MiB
+2026-10-27T00:05:39.5931670Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 1 MiB
+2026-10-27T00:05:39.5936190Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 1 MiB
+2026-10-27T00:05:39.6321630Z FFMPEG playwright build v1011 downloaded to /Users/runner/Library/Caches/ms-playwright/ffmpeg-1011
+2026-10-27T00:05:39.6338830Z Downloading Chromium Headless Shell 141.0.7390.37 (playwright build v1194) from https://cdn.playwright.dev/dbazure/download/playwright/builds/chromium/1194/chromium-headless-shell-mac-arm64.zip
+2026-10-27T00:05:39.8835140Z |                                                                                |   0% of 81.7 MiB
+2026-10-27T00:05:40.0373870Z |■■■■■■■■                                                                        |  10% of 81.7 MiB
+2026-10-27T00:05:40.0964810Z |■■■■■■■■■■■■■■■■                                                                |  20% of 81.7 MiB
+2026-10-27T00:05:40.1903720Z |■■■■■■■■■■■■■■■■■■■■■■■■                                                        |  30% of 81.7 MiB
+2026-10-27T00:05:40.2978790Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                                |  40% of 81.7 MiB
+2026-10-27T00:05:40.3524790Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                        |  50% of 81.7 MiB
+2026-10-27T00:05:40.4083600Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                                |  60% of 81.7 MiB
+2026-10-27T00:05:40.4910820Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                        |  70% of 81.7 MiB
+2026-10-27T00:05:40.5729380Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■                |  80% of 81.7 MiB
+2026-10-27T00:05:40.6286330Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■        |  90% of 81.7 MiB
+2026-10-27T00:05:40.6811970Z |■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■| 100% of 81.7 MiB
+2026-10-27T00:05:41.7205340Z Chromium Headless Shell 141.0.7390.37 (playwright build v1194) downloaded to /Users/runner/Library/Caches/ms-playwright/chromium_headless_shell-1194
+2026-10-27T00:05:41.7752350Z ##[group]Run if test "$RUNNER_OS" = 'macOS'; then
+2026-10-27T00:05:41.7752920Z [36;1mif test "$RUNNER_OS" = 'macOS'; then[0m
+2026-10-27T00:05:41.7757080Z [36;1m  python -m tests.browser_capture --engine results/saved-v4-runtime-inputs/caissa --output runs/g12-capture-amendment[0m
+2026-10-27T00:05:41.7758850Z [36;1melse[0m
+2026-10-27T00:05:41.7760090Z [36;1m  python -m tests.browser_capture --engine build-browser-capture/caissa --output runs/g12-capture-amendment[0m
+2026-10-27T00:05:41.7761890Z [36;1mfi[0m
+2026-10-27T00:05:41.7835240Z shell: /bin/bash --noprofile --norc -e -o pipefail {0}
+2026-10-27T00:05:41.7835610Z env:
+2026-10-27T00:05:41.7836070Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:41.7889830Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-27T00:05:41.7891380Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:41.7892890Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:41.7894070Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:05:41.7902090Z   GH_TOKEN: ***
+2026-10-27T00:05:41.7902750Z ##[endgroup]
+2026-10-27T00:05:44.3735530Z ORIGINAL_CAPTURE_CONTEXTS [{"mode": "classical", "width": 1280, "analysis_responses": 3, "aborted_captures": 3, "complete_bestmove_bodies": 0}, {"mode": "classical", "width": 390, "analysis_responses": 3, "aborted_captures": 3, "complete_bestmove_bodies": 0}, {"mode": "neural", "width": 1280, "analysis_responses": 3, "aborted_captures": 3, "complete_bestmove_bodies": 0}, {"mode": "neural", "width": 390, "analysis_responses": 3, "aborted_captures": 3, "complete_bestmove_bodies": 0}]
+2026-10-27T00:06:14.7827610Z {"status": "passed", "cases": 17, "real_contexts": 4, "full_G12_certified": false}
+2026-10-27T00:06:14.7829130Z 
+2026-10-27T00:06:14.7881790Z {"status": "passed", "full_G12_certified": false, "old_failures_preserved": true, "new_strength_games": 0, "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897", "saved_image": true, "controls": 17, "real_contexts": 4, "final_all_domain_source_join_pending": true, "seconds": 32.847639791999995}
+2026-10-27T00:06:14.8441800Z ##[group]Run actions/upload-artifact@v4
+2026-10-27T00:06:14.8442600Z with:
+2026-10-27T00:06:14.8443300Z   name: amended-browser-capture-macos-15
+2026-10-27T00:06:14.8444580Z   path: runs/g12-capture-amendment/
+!runs/g12-capture-amendment/original-failed-macos.zip
+
+2026-10-27T00:06:14.8445650Z   retention-days: 14
+2026-10-27T00:06:14.8446290Z   if-no-files-found: warn
+2026-10-27T00:06:14.8447000Z   compression-level: 6
+2026-10-27T00:06:14.8447690Z   overwrite: false
+2026-10-27T00:06:14.8456860Z   include-hidden-files: false
+2026-10-27T00:06:14.8457610Z env:
+2026-10-27T00:06:14.8458440Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:06:14.8459660Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-27T00:06:14.8460950Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:06:14.8462030Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:06:14.8463430Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:06:14.8464480Z ##[endgroup]
+2026-10-27T00:06:15.1226480Z (node:4758) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T00:06:15.1227630Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T00:06:15.1473370Z With the provided path, there will be 53 files uploaded
+2026-10-27T00:06:15.1473990Z Artifact name is valid!
+2026-10-27T00:06:15.1474480Z Root directory input is valid!
+2026-10-27T00:06:15.5642960Z Beginning upload of artifact content to blob storage
+2026-10-27T00:06:15.9233630Z (node:4758) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-27T00:06:16.4658250Z Uploaded bytes 8388608
+2026-10-27T00:06:16.5298650Z Uploaded bytes 9678582
+2026-10-27T00:06:16.5717210Z Finished uploading artifact content to blob storage!
+2026-10-27T00:06:16.5821080Z SHA256 digest of uploaded artifact zip is d3804aafd849ca9afd2376f078d4d90bb60e5e2195e08b2f9f5385ff38a99f6e
+2026-10-27T00:06:16.5920090Z Finalizing artifact upload
+2026-10-27T00:06:17.0482690Z Artifact amended-browser-capture-macos-15.zip successfully finalized. Artifact ID 12698952186
+2026-10-27T00:06:17.0487610Z Artifact amended-browser-capture-macos-15 has been successfully uploaded! Final size is 9678582 bytes. Artifact ID is 12698952186
+2026-10-27T00:06:17.0490510Z Artifact download URL: https://github.com/Aneesh495/caissa/actions/runs/40424040184/artifacts/12698952186
+2026-10-27T00:06:17.0803460Z Post job cleanup.
+2026-10-27T00:06:17.3109010Z (node:4891) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T00:06:17.3113680Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T00:06:17.3342050Z Post job cleanup.
+2026-10-27T00:06:17.5829830Z (node:4895) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T00:06:17.5947420Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T00:06:17.6119350Z Post job cleanup.
+2026-10-27T00:06:17.7796140Z [command]/opt/homebrew/bin/git version
+2026-10-27T00:06:17.7901960Z git version 2.55.0
+2026-10-27T00:06:17.7938070Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/77b53679-5e93-4a5c-a1f9-f0eba10274d3/.gitconfig'
+2026-10-27T00:06:17.8085910Z Temporarily overriding HOME='/Users/runner/work/_temp/77b53679-5e93-4a5c-a1f9-f0eba10274d3' before making global git config changes
+2026-10-27T00:06:17.8101330Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T00:06:17.8110070Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/caissa/caissa
+2026-10-27T00:06:17.8289600Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T00:06:17.8533120Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T00:06:18.2138790Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T00:06:18.2242840Z http.https://github.com/.extraheader
+2026-10-27T00:06:18.2373290Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-27T00:06:18.2416320Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T00:06:18.4543830Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T00:06:18.4850940Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T00:06:18.7168090Z Cleaning up orphan processes
+2026-10-27T00:06:19.6917370Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
