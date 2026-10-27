@@ -1,0 +1,14 @@
+[
+  {
+    "bytes": 3220332544,
+    "manifest_file_id": "1ywZ8G5-5mI61l2MgDiA2ragjt5zfT6Mo",
+    "manifest_stored_bytes": 7192,
+    "manifest_stored_sha256": "81479332d9a1634dc1e5a6412424bc6e14ea583c5655a6eb55c485ab5db5072f",
+    "mode": 420,
+    "mtime_ns": 1792829661932786346,
+    "pack": 3,
+    "path": "runs/searched-full-v3-finalization-v1/verification-index/caissa-verify-data-06yjl83n/replayed.sqlite3",
+    "provider": "google-drive-private",
+    "sha256": "1c640bed6fa05df48529f3b74f8316c5f166973188c560c4feda971cef6288ae"
+  }
+]
