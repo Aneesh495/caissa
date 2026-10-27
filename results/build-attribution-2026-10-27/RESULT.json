@@ -1,0 +1,51 @@
+{
+  "schema": "caissa-build-attribution-component-result-v1",
+  "status": "closed passed component",
+  "source_commit": "169222a3f8e0960e667d7e0fd458744de8b783c8",
+  "failed_first_run": 40426236191,
+  "passed_second_run": 40426808520,
+  "ci_executions_started": 2,
+  "cumulative_hosted_seconds": {
+    "linux": 190,
+    "macos": 266
+  },
+  "two_clean_target_builds_per_platform": true,
+  "compiled_runtime_units_per_successful_platform_run": 42,
+  "independent_compiler_dependency_scans_per_platform": 42,
+  "independent_cases_per_platform": 15,
+  "distinct_consumed_input_blobs": {
+    "linux": 542,
+    "macos": 1110
+  },
+  "new_attribution_image_sha256": {
+    "linux": "1b6cb2e6b6d6985f6fa0caeb7bee74f777221d93871bed76ecd9e1db12d11976",
+    "macos": "e94375dc0e5fbcfa761e328a6d919f7eed9254b938d26c50ea52d9352b190dc8"
+  },
+  "saved_original_image_replaced": false,
+  "saved_original_compiler_invocation_proven": false,
+  "runtime_dynamic_dependency_closure_proven": false,
+  "complete_platform_input_transport": false,
+  "original_native_source_join_passed": true,
+  "changed_old_prototype_files": [],
+  "old_prototype_executions": 0,
+  "old_deadline_unchanged": true,
+  "new_games": 0,
+  "new_training": false,
+  "full_G15_certified": false,
+  "full_acceptance": false,
+  "successful_hosted_artifacts": {
+    "linux": {
+      "id": 12699887799,
+      "bytes": 6038401,
+      "sha256": "2acca1559c010a708adcdef1601fecdba4f7b646cb945c70e74899d45127382d"
+    },
+    "macos": {
+      "id": 12700815556,
+      "bytes": 11063034,
+      "sha256": "6954586804a7289985fa73b76c79f4814508b216726b3798f05cfd2c2c4f3750"
+    }
+  },
+  "artifact_policy": "Explicit derived public subset retains project/object/executable payloads and actual invocation/dependency identities. Installed compiler/system SDK bodies are omitted. The independent reader rejects this public subset as incomplete platform reproduction. This is not a full raw environment download.",
+  "failed_first_payload_limitation": "First failed Mac upload retained target hashes/compiler receipts/dependency outputs but omitted target and object body payloads after independent rejection. No claim of complete raw retention for that first failed image. Both exact decoded job logs are retained.",
+  "closed_unix": 1793061320.7401621
+}

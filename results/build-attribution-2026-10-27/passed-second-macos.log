@@ -1,0 +1,268 @@
+﻿2026-10-27T00:30:17.9318350Z Current runner version: '2.338.0'
+2026-10-27T00:30:17.9356920Z ##[group]Runner Image Provisioner
+2026-10-27T00:30:17.9357790Z Hosted Compute Agent
+2026-10-27T00:30:17.9358300Z Version: 20260828.587
+2026-10-27T00:30:17.9358820Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-10-27T00:30:17.9359380Z Build Date: 2026-08-28T16:44:25Z
+2026-10-27T00:30:17.9359900Z Worker ID: {1892deaf-8d37-4f74-91c7-2687bbf4270f}
+2026-10-27T00:30:17.9360440Z Azure Region: westus
+2026-10-27T00:30:17.9360900Z ##[endgroup]
+2026-10-27T00:30:17.9362050Z ##[group]Operating System
+2026-10-27T00:30:17.9362530Z macOS
+2026-10-27T00:30:17.9362940Z 15.7.9
+2026-10-27T00:30:17.9363350Z 24G830
+2026-10-27T00:30:17.9363760Z ##[endgroup]
+2026-10-27T00:30:17.9364200Z ##[group]Runner Image
+2026-10-27T00:30:17.9364660Z Image: macos-15-arm64
+2026-10-27T00:30:17.9365110Z Version: 20260907.0337.1
+2026-10-27T00:30:17.9366280Z Included Software: https://github.com/actions/runner-images/blob/macos-15-arm64/20260907.0337/images/macos/macos-15-arm64-Readme.md
+2026-10-27T00:30:17.9372880Z Image Release: https://github.com/actions/runner-images/releases/tag/macos-15-arm64%2F20260907.0337
+2026-10-27T00:30:17.9374800Z ##[endgroup]
+2026-10-27T00:30:17.9376900Z ##[group]GITHUB_TOKEN Permissions
+2026-10-27T00:30:17.9381260Z Contents: read
+2026-10-27T00:30:17.9381780Z Metadata: read
+2026-10-27T00:30:17.9382260Z ##[endgroup]
+2026-10-27T00:30:17.9384280Z Secret source: Actions
+2026-10-27T00:30:17.9385050Z Cache mode: write
+2026-10-27T00:30:17.9385620Z Prepare workflow directory
+2026-10-27T00:30:18.0019640Z Prepare all required actions
+2026-10-27T00:30:18.0074930Z Getting action download info
+2026-10-27T00:30:18.4927430Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-10-27T00:30:19.4917170Z Download action repository 'actions/setup-python@v5' (SHA:a26af69be951a213d495a4c3e4e4022e16d87065)
+2026-10-27T00:30:19.7131700Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-10-27T00:30:20.0866160Z Complete job name: attribution (macos-15)
+2026-10-27T00:30:20.1945920Z ##[group]Run actions/checkout@v4
+2026-10-27T00:30:20.1947280Z with:
+2026-10-27T00:30:20.1948580Z   repository: Aneesh495/caissa
+2026-10-27T00:30:20.1954790Z   token: ***
+2026-10-27T00:30:20.1955450Z   ssh-strict: true
+2026-10-27T00:30:20.1956530Z   ssh-user: git
+2026-10-27T00:30:20.1957350Z   persist-credentials: true
+2026-10-27T00:30:20.1958210Z   clean: true
+2026-10-27T00:30:20.1958960Z   sparse-checkout-cone-mode: true
+2026-10-27T00:30:20.1959770Z   fetch-depth: 1
+2026-10-27T00:30:20.1960590Z   fetch-tags: false
+2026-10-27T00:30:20.1961380Z   show-progress: true
+2026-10-27T00:30:20.1962100Z   lfs: false
+2026-10-27T00:30:20.1962740Z   submodules: false
+2026-10-27T00:30:20.1964160Z   set-safe-directory: true
+2026-10-27T00:30:20.1965230Z   allow-unsafe-pr-checkout: false
+2026-10-27T00:30:20.1967070Z ##[endgroup]
+2026-10-27T00:30:21.0684270Z Syncing repository: Aneesh495/caissa
+2026-10-27T00:30:21.0704260Z ##[group]Getting Git version info
+2026-10-27T00:30:21.0783760Z Working directory is '/Users/runner/work/caissa/caissa'
+2026-10-27T00:30:21.0813110Z [command]/opt/homebrew/bin/git version
+2026-10-27T00:30:21.1379500Z git version 2.55.0
+2026-10-27T00:30:21.1414000Z ##[endgroup]
+2026-10-27T00:30:21.1444580Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/81ce5fb4-c2ce-421b-93f6-bdc4a78eb799/.gitconfig'
+2026-10-27T00:30:21.1479550Z Temporarily overriding HOME='/Users/runner/work/_temp/81ce5fb4-c2ce-421b-93f6-bdc4a78eb799' before making global git config changes
+2026-10-27T00:30:21.1480690Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T00:30:21.1481610Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/caissa/caissa
+2026-10-27T00:30:21.1748390Z Deleting the contents of '/Users/runner/work/caissa/caissa'
+2026-10-27T00:30:21.1853150Z ##[group]Initializing the repository
+2026-10-27T00:30:21.1855210Z [command]/opt/homebrew/bin/git init /Users/runner/work/caissa/caissa
+2026-10-27T00:30:21.2047870Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-10-27T00:30:21.2054760Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-10-27T00:30:21.2057430Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-10-27T00:30:21.2058160Z hint: call:
+2026-10-27T00:30:21.2058650Z hint:
+2026-10-27T00:30:21.2059250Z hint: 	git config --global init.defaultBranch <name>
+2026-10-27T00:30:21.2061260Z hint:
+2026-10-27T00:30:21.2062030Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-10-27T00:30:21.2064160Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-10-27T00:30:21.2064810Z hint:
+2026-10-27T00:30:21.2066620Z hint: 	git branch -m <name>
+2026-10-27T00:30:21.2067160Z hint:
+2026-10-27T00:30:21.2067790Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-10-27T00:30:21.2068640Z Initialized empty Git repository in /Users/runner/work/caissa/caissa/.git/
+2026-10-27T00:30:21.2078620Z [command]/opt/homebrew/bin/git remote add origin https://github.com/Aneesh495/caissa
+2026-10-27T00:30:21.2186860Z ##[endgroup]
+2026-10-27T00:30:21.2187990Z ##[group]Disabling automatic garbage collection
+2026-10-27T00:30:21.2192930Z [command]/opt/homebrew/bin/git config --local gc.auto 0
+2026-10-27T00:30:21.2286800Z ##[endgroup]
+2026-10-27T00:30:21.2287670Z ##[group]Setting up auth
+2026-10-27T00:30:21.2288990Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T00:30:21.2359810Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T00:30:21.3690770Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T00:30:21.3824920Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T00:30:21.4970150Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T00:30:21.5072990Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T00:30:21.6196210Z [command]/opt/homebrew/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-10-27T00:30:21.6303640Z ##[endgroup]
+2026-10-27T00:30:21.6305350Z ##[group]Fetching the repository
+2026-10-27T00:30:21.6309280Z [command]/opt/homebrew/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +169222a3f8e0960e667d7e0fd458744de8b783c8:refs/remotes/origin/main
+2026-10-27T00:30:36.6129650Z From https://github.com/Aneesh495/caissa
+2026-10-27T00:30:36.6131310Z  * [new ref]         169222a3f8e0960e667d7e0fd458744de8b783c8 -> origin/main
+2026-10-27T00:30:36.6140720Z ##[endgroup]
+2026-10-27T00:30:36.6141300Z ##[group]Determining the checkout info
+2026-10-27T00:30:36.6144040Z ##[endgroup]
+2026-10-27T00:30:36.6157940Z [command]/opt/homebrew/bin/git sparse-checkout disable
+2026-10-27T00:30:36.6272180Z [command]/opt/homebrew/bin/git config --local --unset-all extensions.worktreeConfig
+2026-10-27T00:30:36.6359230Z ##[group]Checking out the ref
+2026-10-27T00:30:36.6364070Z [command]/opt/homebrew/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-10-27T00:30:38.4128920Z Updating files:  56% (1855/3290)
+2026-10-27T00:30:38.4209910Z Updating files:  57% (1876/3290)
+2026-10-27T00:30:38.4619410Z Updating files:  58% (1909/3290)
+2026-10-27T00:30:38.4702250Z Updating files:  59% (1942/3290)
+2026-10-27T00:30:38.5206810Z Updating files:  60% (1974/3290)
+2026-10-27T00:30:38.5275240Z Updating files:  61% (2007/3290)
+2026-10-27T00:30:38.5621810Z Updating files:  62% (2040/3290)
+2026-10-27T00:30:38.5773700Z Updating files:  63% (2073/3290)
+2026-10-27T00:30:38.5939770Z Updating files:  64% (2106/3290)
+2026-10-27T00:30:38.5987470Z Updating files:  65% (2139/3290)
+2026-10-27T00:30:38.6058420Z Updating files:  66% (2172/3290)
+2026-10-27T00:30:38.6180170Z Updating files:  67% (2205/3290)
+2026-10-27T00:30:38.6540220Z Updating files:  68% (2238/3290)
+2026-10-27T00:30:38.6976010Z Updating files:  68% (2259/3290)
+2026-10-27T00:30:39.1502380Z Updating files:  69% (2271/3290)
+2026-10-27T00:30:39.3277460Z Updating files:  70% (2303/3290)
+2026-10-27T00:30:39.3333390Z Updating files:  71% (2336/3290)
+2026-10-27T00:30:39.3383330Z Updating files:  72% (2369/3290)
+2026-10-27T00:30:39.3493020Z Updating files:  73% (2402/3290)
+2026-10-27T00:30:39.3762240Z Updating files:  74% (2435/3290)
+2026-10-27T00:30:39.4030690Z Updating files:  75% (2468/3290)
+2026-10-27T00:30:39.4615790Z Updating files:  76% (2501/3290)
+2026-10-27T00:30:39.4858860Z Updating files:  77% (2534/3290)
+2026-10-27T00:30:39.4934570Z Updating files:  78% (2567/3290)
+2026-10-27T00:30:39.5027060Z Updating files:  79% (2600/3290)
+2026-10-27T00:30:39.5337250Z Updating files:  80% (2632/3290)
+2026-10-27T00:30:39.8439960Z Updating files:  81% (2665/3290)
+2026-10-27T00:30:40.7200570Z Updating files:  82% (2698/3290)
+2026-10-27T00:30:41.8325680Z Updating files:  82% (2701/3290)
+2026-10-27T00:30:42.5994530Z Updating files:  82% (2703/3290)
+2026-10-27T00:30:42.6031730Z Updating files:  83% (2731/3290)
+2026-10-27T00:30:42.6125510Z Updating files:  84% (2764/3290)
+2026-10-27T00:30:42.6175590Z Updating files:  85% (2797/3290)
+2026-10-27T00:30:42.6614820Z Updating files:  86% (2830/3290)
+2026-10-27T00:30:42.6681360Z Updating files:  87% (2863/3290)
+2026-10-27T00:30:42.6702570Z Updating files:  88% (2896/3290)
+2026-10-27T00:30:42.6750430Z Updating files:  89% (2929/3290)
+2026-10-27T00:30:42.6951530Z Updating files:  90% (2961/3290)
+2026-10-27T00:30:42.6997100Z Updating files:  91% (2994/3290)
+2026-10-27T00:30:42.7094900Z Updating files:  92% (3027/3290)
+2026-10-27T00:30:42.7152370Z Updating files:  93% (3060/3290)
+2026-10-27T00:30:42.7234430Z Updating files:  94% (3093/3290)
+2026-10-27T00:30:42.7276160Z Updating files:  95% (3126/3290)
+2026-10-27T00:30:42.7330630Z Updating files:  96% (3159/3290)
+2026-10-27T00:30:42.7392430Z Updating files:  97% (3192/3290)
+2026-10-27T00:30:42.7498830Z Updating files:  98% (3225/3290)
+2026-10-27T00:30:42.7550570Z Updating files:  99% (3258/3290)
+2026-10-27T00:30:42.7551610Z Updating files: 100% (3290/3290)
+2026-10-27T00:30:42.7551980Z Updating files: 100% (3290/3290), done.
+2026-10-27T00:30:42.7635270Z Switched to a new branch 'main'
+2026-10-27T00:30:42.7639400Z branch 'main' set up to track 'origin/main'.
+2026-10-27T00:30:42.7708340Z ##[endgroup]
+2026-10-27T00:30:42.7989830Z [command]/opt/homebrew/bin/git log -1 --format=%H
+2026-10-27T00:30:42.8132640Z 169222a3f8e0960e667d7e0fd458744de8b783c8
+2026-10-27T00:30:42.8650430Z ##[group]Run python3 - <<'PY'
+2026-10-27T00:30:42.8650940Z [36;1mpython3 - <<'PY'[0m
+2026-10-27T00:30:42.8651240Z [36;1mimport hashlib,json,os,time[0m
+2026-10-27T00:30:42.8651580Z [36;1mfrom pathlib import Path[0m
+2026-10-27T00:30:42.8652050Z [36;1mrule=json.loads(Path('config/build-attribution-amendment-v1.json').read_text())[0m
+2026-10-27T00:30:42.8652540Z [36;1massert os.environ['GITHUB_SHA']==os.environ['EXPECTED_SOURCE'][0m
+2026-10-27T00:30:42.8653070Z [36;1massert int(os.environ['GITHUB_RUN_NUMBER'])<=rule['maximum_ci_executions'][0m
+2026-10-27T00:30:42.8653440Z [36;1massert int(os.environ['GITHUB_RUN_ATTEMPT'])==1[0m
+2026-10-27T00:30:42.8653790Z [36;1massert time.time()<rule['deadline_unix']<rule['parent_deadline_unix'][0m
+2026-10-27T00:30:42.8654140Z [36;1mfor name,digest in rule['source_files'].items():[0m
+2026-10-27T00:30:42.8654610Z [36;1m    assert hashlib.sha256(Path(name).read_bytes()).hexdigest()==digest,name[0m
+2026-10-27T00:30:42.8654970Z [36;1mPY[0m
+2026-10-27T00:30:42.8728300Z shell: /bin/bash -e {0}
+2026-10-27T00:30:42.8735040Z env:
+2026-10-27T00:30:42.8735310Z   EXPECTED_SOURCE: 169222a3f8e0960e667d7e0fd458744de8b783c8
+2026-10-27T00:30:42.8735580Z ##[endgroup]
+2026-10-27T00:30:43.1688920Z ##[group]Run git fetch --no-tags --depth=1 origin 5803cc485420b19eb96dda2c29f81fcfc6b09b6b
+2026-10-27T00:30:43.1689450Z [36;1mgit fetch --no-tags --depth=1 origin 5803cc485420b19eb96dda2c29f81fcfc6b09b6b[0m
+2026-10-27T00:30:43.1725680Z shell: /bin/bash -e {0}
+2026-10-27T00:30:43.1725900Z ##[endgroup]
+2026-10-27T00:30:43.6714330Z From https://github.com/Aneesh495/caissa
+2026-10-27T00:30:43.6714750Z  * branch            5803cc485420b19eb96dda2c29f81fcfc6b09b6b -> FETCH_HEAD
+2026-10-27T00:30:43.6813760Z ##[group]Run actions/setup-python@v5
+2026-10-27T00:30:43.6814120Z with:
+2026-10-27T00:30:43.6814330Z   python-version: 3.12
+2026-10-27T00:30:43.6814530Z   check-latest: false
+2026-10-27T00:30:43.6816390Z   token: ***
+2026-10-27T00:30:43.6816560Z   update-environment: true
+2026-10-27T00:30:43.6816820Z   allow-prereleases: false
+2026-10-27T00:30:43.6817050Z   freethreaded: false
+2026-10-27T00:30:43.6817220Z ##[endgroup]
+2026-10-27T00:30:43.8786500Z ##[group]Installed versions
+2026-10-27T00:30:43.8920300Z (node:1838) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T00:30:43.8921160Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T00:30:43.8922320Z Successfully set up CPython (3.12.10)
+2026-10-27T00:30:43.8923140Z ##[endgroup]
+2026-10-27T00:30:43.9041550Z ##[group]Run python -m tests.build_reproduction --output runs/g15-build-attribution
+2026-10-27T00:30:43.9042610Z [36;1mpython -m tests.build_reproduction --output runs/g15-build-attribution[0m
+2026-10-27T00:30:43.9097130Z shell: /bin/bash -e {0}
+2026-10-27T00:30:43.9097510Z env:
+2026-10-27T00:30:43.9097820Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:30:43.9098330Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-27T00:30:43.9098810Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:30:43.9099200Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:30:43.9099590Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:30:43.9099880Z ##[endgroup]
+2026-10-27T00:31:47.1451980Z {"status": "recorded", "source_commit": "169222a3f8e0960e667d7e0fd458744de8b783c8", "profile_sha256": "af19830551c681f5ba54223139282ac793fbf0d1e496b8e58a67aa382b5e4941", "builds": [{"directory": "build-1", "binary_sha256": "e94375dc0e5fbcfa761e328a6d919f7eed9254b938d26c50ea52d9352b190dc8", "unit_outputs": {"src/evaluation.cpp": "f2cdddf910b40ed7c7ffbfe77c891b04d8784ccb9ec8d49a5dea69f26990449b", "apps/main.cpp": "f7a51cbb440d7642048a544e5e9e64faabb96208d49323c45943bf786f5af796", "src/table.cpp": "0682af273e38bab385ad39ae12a6b0787def0c167eac0d370226d4b1a4ab0008", "src/protocol_io.cpp": "972b87b5eaa88b01c29cc2cc25f1fe9e49992d3a5892e21719733af2c9f61563", "src/search_probe.cpp": "a105ef6398100b8d77857dea74ef9c3af9311cd25fba7bc6b5fc3789a95d389f", "src/network_kernel.cpp": "3c25e15394c5d98c19a393f84c348456c89cb3d86183e6d40e615c204f3ce404", "src/selfplay.cpp": "5c39a695f68a703f9d8a8d4ce34f4368ef69ea9049208dccd65a9828a89f0118", "src/rules.cpp": "625ab22c56a97f8dbdae2900417fb90d41c1aa22a9ea27a319b4f819de624ff8", "src/accumulator_stack.cpp": "0a0c6a631e82bb64150a4bcb03501c5623ba67f48634237620ce4238c9fd7b0f", "src/network.cpp": "d0e26d98109805379276bc6ada3d2ec5c0e8f101c8af2b4be9f10e344365ce89", "src/movegen.cpp": "750f40b662330dec470949f89e353cebd980db8c1a100b2d9b669b3209a91b8a", "src/search.cpp": "dcdde09b3d96162b522f1572083b9c87a0417db811c70bfe181a5a700080681d", "src/uci.cpp": "82fbeb5a3cbecfdb5539576ac0b28d02ace4c9e34d1afa20b7b8854ba49e7c22", "src/version.cpp": "410c5175eadd2c728ab37b9b76e0d5034913391f6cc291511ed049660493765b", "src/reference.cpp": "84963e893efcbbc22835a8921e8c489f7a592e5b08620ddac0597bd0f7fa0ddc", "src/notation.cpp": "aa77d5ff7fa3c2004ce4b67fca91e8371c1a9d69ab296761eb2e4da0e420d54e", "src/position.cpp": "1e19703bb9c9acebea876af61f1bcdfb2b0b8cd42291f9f4c18115388a8f9568", "src/serialization.cpp": "dd28f670611ce107b5c11c4710c3357628fb246764918827084e947209284fd8", "src/position_line.cpp": "41375f6a4c40a75581ef0dcea887bb6494fa4339475826007b2324cdbf43c31b", "src/state_probe.cpp": "d06dc7336a288227450d0a1263fd9515d4ab83960d41c51946d689f6118f60b3", "src/attacks.cpp": "11749a5d35586bd9e45a265acda4607cf201a8526f6ec3249d5fc24897ea8b69"}}, {"directory": "build-2", "binary_sha256": "e94375dc0e5fbcfa761e328a6d919f7eed9254b938d26c50ea52d9352b190dc8", "unit_outputs": {"src/evaluation.cpp": "f2cdddf910b40ed7c7ffbfe77c891b04d8784ccb9ec8d49a5dea69f26990449b", "apps/main.cpp": "f7a51cbb440d7642048a544e5e9e64faabb96208d49323c45943bf786f5af796", "src/table.cpp": "0682af273e38bab385ad39ae12a6b0787def0c167eac0d370226d4b1a4ab0008", "src/protocol_io.cpp": "972b87b5eaa88b01c29cc2cc25f1fe9e49992d3a5892e21719733af2c9f61563", "src/search_probe.cpp": "a105ef6398100b8d77857dea74ef9c3af9311cd25fba7bc6b5fc3789a95d389f", "src/network_kernel.cpp": "3c25e15394c5d98c19a393f84c348456c89cb3d86183e6d40e615c204f3ce404", "src/selfplay.cpp": "5c39a695f68a703f9d8a8d4ce34f4368ef69ea9049208dccd65a9828a89f0118", "src/rules.cpp": "625ab22c56a97f8dbdae2900417fb90d41c1aa22a9ea27a319b4f819de624ff8", "src/accumulator_stack.cpp": "0a0c6a631e82bb64150a4bcb03501c5623ba67f48634237620ce4238c9fd7b0f", "src/network.cpp": "d0e26d98109805379276bc6ada3d2ec5c0e8f101c8af2b4be9f10e344365ce89", "src/movegen.cpp": "750f40b662330dec470949f89e353cebd980db8c1a100b2d9b669b3209a91b8a", "src/search.cpp": "dcdde09b3d96162b522f1572083b9c87a0417db811c70bfe181a5a700080681d", "src/uci.cpp": "82fbeb5a3cbecfdb5539576ac0b28d02ace4c9e34d1afa20b7b8854ba49e7c22", "src/version.cpp": "410c5175eadd2c728ab37b9b76e0d5034913391f6cc291511ed049660493765b", "src/reference.cpp": "84963e893efcbbc22835a8921e8c489f7a592e5b08620ddac0597bd0f7fa0ddc", "src/notation.cpp": "aa77d5ff7fa3c2004ce4b67fca91e8371c1a9d69ab296761eb2e4da0e420d54e", "src/position.cpp": "1e19703bb9c9acebea876af61f1bcdfb2b0b8cd42291f9f4c18115388a8f9568", "src/serialization.cpp": "dd28f670611ce107b5c11c4710c3357628fb246764918827084e947209284fd8", "src/position_line.cpp": "41375f6a4c40a75581ef0dcea887bb6494fa4339475826007b2324cdbf43c31b", "src/state_probe.cpp": "d06dc7336a288227450d0a1263fd9515d4ab83960d41c51946d689f6118f60b3", "src/attacks.cpp": "11749a5d35586bd9e45a265acda4607cf201a8526f6ec3249d5fc24897ea8b69"}}], "compiler_attribution_applies_to_new_builds_only": true, "saved_original_compiler_invocation_proven": false, "full_G15_certified": false, "full_acceptance": false}
+2026-10-27T00:31:47.1472270Z 
+2026-10-27T00:32:04.9579710Z INDEPENDENT {"component_pass": true, "compiled_units": 42, "independent_dependency_scans": 42, "distinct_consumed_blobs": 1110, "binary_sha256": "e94375dc0e5fbcfa761e328a6d919f7eed9254b938d26c50ea52d9352b190dc8", "source_commit": "169222a3f8e0960e667d7e0fd458744de8b783c8", "saved_original_compiler_invocation_proven": false, "runtime_dynamic_dependency_closure_proven": false, "full_G15_certified": false, "full_acceptance": false}
+2026-10-27T00:32:40.9104340Z {"status": "passed", "cases": 15, "seconds": 116.58477200000002, "full_G15_certified": false, "full_acceptance": false}
+2026-10-27T00:32:40.9744210Z ##[group]Run actions/upload-artifact@v4
+2026-10-27T00:32:40.9744470Z with:
+2026-10-27T00:32:40.9744750Z   name: compiler-attribution-macos-15
+2026-10-27T00:32:40.9746530Z   path: runs/g15-build-attribution/*.json
+runs/g15-build-attribution/*.log
+runs/g15-build-attribution/public/
+runs/g15-build-attribution/independent/
+runs/g15-build-attribution/positive/*.json
+runs/g15-build-attribution/positive/*.jsonl
+runs/g15-build-attribution/positive/*.log
+runs/g15-build-attribution/positive/build-*/trace/*.json
+runs/g15-build-attribution/positive/build-*/trace/*.deps
+runs/g15-build-attribution/positive/build-*/trace/*.deps.stderr
+runs/g15-build-attribution/positive/toolchain/COMPILER.json
+
+2026-10-27T00:32:40.9749820Z   retention-days: 14
+2026-10-27T00:32:40.9751080Z   if-no-files-found: warn
+2026-10-27T00:32:40.9751260Z   compression-level: 6
+2026-10-27T00:32:40.9751510Z   overwrite: false
+2026-10-27T00:32:40.9751730Z   include-hidden-files: false
+2026-10-27T00:32:40.9751950Z env:
+2026-10-27T00:32:40.9752340Z   pythonLocation: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:32:40.9752840Z   PKG_CONFIG_PATH: /Users/runner/hostedtoolcache/Python/3.12.10/arm64/lib/pkgconfig
+2026-10-27T00:32:40.9753260Z   Python_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:32:40.9753720Z   Python2_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:32:40.9754230Z   Python3_ROOT_DIR: /Users/runner/hostedtoolcache/Python/3.12.10/arm64
+2026-10-27T00:32:40.9754650Z ##[endgroup]
+2026-10-27T00:32:41.6435900Z (node:4335) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T00:32:41.6436850Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T00:32:41.7631570Z With the provided path, there will be 566 files uploaded
+2026-10-27T00:32:41.7631990Z Artifact name is valid!
+2026-10-27T00:32:41.7632170Z Root directory input is valid!
+2026-10-27T00:32:42.1889430Z Beginning upload of artifact content to blob storage
+2026-10-27T00:32:43.1245920Z (node:4335) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-10-27T00:32:44.0586830Z Uploaded bytes 8388608
+2026-10-27T00:32:44.1862090Z Uploaded bytes 11063034
+2026-10-27T00:32:44.2658200Z Finished uploading artifact content to blob storage!
+2026-10-27T00:32:44.2659470Z SHA256 digest of uploaded artifact zip is 6954586804a7289985fa73b76c79f4814508b216726b3798f05cfd2c2c4f3750
+2026-10-27T00:32:44.2660980Z Finalizing artifact upload
+2026-10-27T00:32:44.7522070Z Artifact compiler-attribution-macos-15.zip successfully finalized. Artifact ID 12700815556
+2026-10-27T00:32:44.7523810Z Artifact compiler-attribution-macos-15 has been successfully uploaded! Final size is 11063034 bytes. Artifact ID is 12700815556
+2026-10-27T00:32:44.7542090Z Artifact download URL: https://github.com/Aneesh495/caissa/actions/runs/40426808520/artifacts/12700815556
+2026-10-27T00:32:44.7745800Z Post job cleanup.
+2026-10-27T00:32:44.9586260Z (node:4340) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-10-27T00:32:44.9588000Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-10-27T00:32:44.9771650Z Post job cleanup.
+2026-10-27T00:32:45.1236750Z [command]/opt/homebrew/bin/git version
+2026-10-27T00:32:45.1435570Z git version 2.55.0
+2026-10-27T00:32:45.1456830Z Copying '/Users/runner/.gitconfig' to '/Users/runner/work/_temp/4ab370b7-5dba-4ea1-9b64-b5003539cb67/.gitconfig'
+2026-10-27T00:32:45.1476280Z Temporarily overriding HOME='/Users/runner/work/_temp/4ab370b7-5dba-4ea1-9b64-b5003539cb67' before making global git config changes
+2026-10-27T00:32:45.1477280Z Adding repository directory to the temporary git global config as a safe directory
+2026-10-27T00:32:45.1483770Z [command]/opt/homebrew/bin/git config --global --add safe.directory /Users/runner/work/caissa/caissa
+2026-10-27T00:32:45.1572770Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-10-27T00:32:45.1667280Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-10-27T00:32:45.2614950Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-10-27T00:32:45.2676280Z http.https://github.com/.extraheader
+2026-10-27T00:32:45.2683760Z [command]/opt/homebrew/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-10-27T00:32:45.2754040Z [command]/opt/homebrew/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-10-27T00:32:45.3703550Z [command]/opt/homebrew/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-10-27T00:32:45.3786950Z [command]/opt/homebrew/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-10-27T00:32:45.4640320Z Cleaning up orphan processes
+2026-10-27T00:32:46.0639540Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-python@v5, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
