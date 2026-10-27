@@ -1,0 +1,16 @@
+{
+  "source_commit": "cf55128e2fb182d6196f057f50c3ded83760398a",
+  "source_pins": {
+    "tools/storage_drive.py": "73aaa7fac3e28c601b92fd4531eddd3e491e7bb5c14404f93ac00082160aedae",
+    "tools/drive_controller.js": "cd68c9d2b194c595e4d501d54f4ee3a38e2dba1ffc42155d62f337e718f9f6ac",
+    "tools/storage_archive.py": "2d0f01cc4574fc4977b9360b6d105e98083bf5f6352afeddd84981b4e0799760",
+    "tools/storage_archive_continuation.py": "d648fb41b7215c64e81d63081948343a8fef74d03d9b8010bb2653901ea5bc04",
+    "tools/storage_budget.py": "f2c93a82ee940904583dc71135bb0fa69d13c1e37a768e717b4fb98e32af49fb",
+    "tools/host_lease.py": "5cd62b0588fe59894137219f6a6db81ba0dabe08da53e5e8da4fcd5833a92de4"
+  },
+  "launcher_sha256": "5e08203c8a34a5f4fb7f8c25e799e7e7ebb78c5d3b7093bf90d7ddad1afe452c",
+  "scope_sha256": "6eaf28fed46c2af9c1037a307aeb223eccbbb09fd11a8d64d2c27e6b6836b0e1",
+  "started_unix": 1793077664.39258,
+  "backend_deadline_unix": 1793099205.35649,
+  "original_parent_deadline_unix": 1793150297.974828
+}
