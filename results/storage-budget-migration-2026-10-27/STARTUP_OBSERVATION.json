@@ -1,0 +1,19 @@
+{
+  "observed_unix": 1793070465.909693,
+  "owner_pid": 42019,
+  "session_id": 77761,
+  "progress": {
+    "current_pack_chunks": 2,
+    "current_pack_compressed_bytes": 67108864,
+    "input_files": 383817,
+    "logical_bytes": 73958379166,
+    "observed_unix": 1793070454.152724,
+    "pack": 0,
+    "phase": "uploading-pack",
+    "source_sha256": "2d0f01cc4574fc4977b9360b6d105e98083bf5f6352afeddd84981b4e0799760",
+    "unique_bytes": 46300176871,
+    "unique_objects": 255849
+  },
+  "unique_inputs_not_yet_evicted": true,
+  "full_acceptance": false
+}

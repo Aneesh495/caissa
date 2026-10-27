@@ -34,3 +34,10 @@ The original 5.349 GB restoration trace and its reconstructed duplicate were
 independently hashed before their local paths were hardlinked. Both paths and
 all content bytes were preserved. Later archival retains both original paths
 in the restore catalog even when their content has one remote object.
+
+`tools/storage_budget.py` checks both limits before admitting a producer and
+reserves space for growth between checks. It counts logical and allocated bytes,
+deduplicates hardlinked inodes and accepts explicit project-owned cache paths
+outside the checkout. New continuations must wire this check into admission and
+their existing guard. Adding the helper alone does not constrain an older
+archived producer. The storage migration keeps those producers stopped.
