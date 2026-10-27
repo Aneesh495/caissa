@@ -1,0 +1,13 @@
+{
+  "origin_unix": 1793076783.886623,
+  "deadline_unix": 1793077383.886624,
+  "maximum_invocations": 1,
+  "maximum_existing_canary_download_bytes": 100000,
+  "maximum_new_files": 1,
+  "maximum_new_upload_bytes": 33554432,
+  "maximum_new_readback_bytes": 33554432,
+  "maximum_local_staging_bytes": 68000000,
+  "no_original_eviction": true,
+  "no_paid_upgrade_or_new_subscription": true,
+  "purpose": "Verify connected Drive arbitrary binary chunk roundtrip via authenticated download reference read from private file, as a different backend after three closed GitHub storage invocations. Preserve earlier Drive partial control and all GitHub failures."
+}

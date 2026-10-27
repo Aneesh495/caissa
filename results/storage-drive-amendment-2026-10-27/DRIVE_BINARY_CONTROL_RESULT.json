@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "source_bytes": 33554432,
+  "sha256": "c37ec4035c3c1b50ad18bf52ee7cfc4a009cb5cbba2b0a83e28ea215b4cd3ac8",
+  "file_id": "1MDbO8mM49plIUxiwriXXSEfbJXo_hLEG",
+  "raw_roundtrip_exact": true,
+  "TLS_verification_enabled": true,
+  "download_seconds": 1.5081108339945786,
+  "existing_canary50byte_roundtrip_also_passed": true,
+  "no_original_project_data_evicted": true,
+  "observed_unix": 1793076918.9477
+}

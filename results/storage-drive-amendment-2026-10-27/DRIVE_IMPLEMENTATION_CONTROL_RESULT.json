@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "cases": 11,
+  "cloud_writes": 0,
+  "native_games": 0,
+  "seconds": 0.5404480000142939,
+  "controller_syntax": "passed",
+  "source_sha256": "73aaa7fac3e28c601b92fd4531eddd3e491e7bb5c14404f93ac00082160aedae",
+  "controller_sha256": "addf0f4a9af92d05ad90c49bcdd13eca77a184df8afb8aba673d6a78647386f6"
+}

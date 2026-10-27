@@ -1,0 +1,5 @@
+{
+  "worker_source_same_as_passed_offline_controls": true,
+  "controller_change_after_syntax_control": "Metadata-only exec wait1to10seconds; finalcontroller independently parsed. No cloud callback/identity/eviction behavior changed.",
+  "controller_final_sha256": "cd68c9d2b194c595e4d501d54f4ee3a38e2dba1ffc42155d62f337e718f9f6ac"
+}
