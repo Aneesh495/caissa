@@ -1,0 +1,9 @@
+{
+  "schema": "caissa-later-human-authority-v1",
+  "human_answer": "you have allowance to do whatever you want please dont hesitate or feel the need to wait for me. full access is turned on for a reason.",
+  "original_human_authorization_sha256": "25774b813f7d0bb58ec8dccb9cc74d073692e458f3cdf5fa2f05cb2c78a1f3b8",
+  "numerical_limits": "Agent-selected prospectively. The human did not state these numeric limits.",
+  "scope_sha256": "8c377d57e3a68d22fed060badfc57f069620e2d911fff4bab43f959d7848af3e",
+  "expired_old_scope_not_renewed": true,
+  "parent_deadline_unchanged": true
+}
