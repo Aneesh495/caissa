@@ -1,0 +1,17 @@
+{
+  "origin_unix": 1793074962.7063448,
+  "deadline_unix": 1793075562.7063448,
+  "maximum_invocations": 1,
+  "maximum_readonly_network_requests": 4,
+  "maximum_metadata_local_bytes": 2000000,
+  "maximum_active_seconds": 120,
+  "source_sha256": "d648fb41b7215c64e81d63081948343a8fef74d03d9b8010bb2653901ea5bc04",
+  "no_new_archive_uploads_or_evictions": true,
+  "purpose": "Pure metadata batching/reuse/forgery controls plus exact existing complete failed-pack manifest GET. Original failure and old unused diagnosis scope retained.",
+  "maximum_remote_blob_payload_read_bytes": 2000000,
+  "maximum_local_inventory_metadata_read_bytes": 100000000,
+  "invocations_started": 1,
+  "closed": true,
+  "ended_unix": 1793075084.937332,
+  "status": "passed14controls and2authenticated readonly requests; no new raw upload/eviction"
+}

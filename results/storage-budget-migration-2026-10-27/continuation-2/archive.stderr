@@ -1,0 +1,20 @@
+Traceback (most recent call last):
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/work/storage-cap-migration-2026-10-27/run_archive.py", line 10, in <module>
+    runpy.run_module("tools.storage_archive",run_name="__main__")
+  File "<frozen runpy>", line 229, in run_module
+  File "<frozen runpy>", line 88, in _run_code
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/storage_archive.py", line 749, in <module>
+    main()
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/storage_archive.py", line 742, in main
+    Migration(args.root, args.plan).execute()
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/storage_archive.py", line 625, in execute
+    total += self.pack(
+             ^^^^^^^^^^
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/storage_archive.py", line 524, in pack
+    commit = github.commit(
+             ^^^^^^^^^^^^^^
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/storage_archive.py", line 158, in commit
+    self.request(
+  File "/Users/aneeshkrishna/Documents/Codex/2026-10-22/ex/outputs/caissa-chess/tools/storage_archive.py", line 115, in request
+    raise RuntimeError(
+RuntimeError: GitHub archive request failed: PATCH /git/refs/heads/main exit 1
