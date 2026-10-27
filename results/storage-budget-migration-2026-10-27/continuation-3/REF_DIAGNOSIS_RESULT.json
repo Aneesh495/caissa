@@ -1,0 +1,8 @@
+{
+  "observed_unix": 1793075408.7727559,
+  "head_before": "5f6dac8fbd9809150d421916ff40ac71d1ea39d0",
+  "noop_ref_probe_exit_code": 0,
+  "no_body_or_ref_advancement_requested": true,
+  "same_head_noop_http_status": 200,
+  "derived_headers_omitted": true
+}

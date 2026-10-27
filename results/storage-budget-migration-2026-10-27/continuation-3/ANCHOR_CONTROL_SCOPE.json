@@ -1,0 +1,18 @@
+{
+  "origin_unix": 1793076178.651969,
+  "deadline_unix": 1793076478.651969,
+  "maximum_invocations": 1,
+  "maximum_mutations": 2,
+  "maximum_readonly_requests": 8,
+  "maximum_existing_blob_read_bytes": 33554432,
+  "maximum_active_seconds": 120,
+  "maximum_new_local_metadata_bytes": 2000000,
+  "new_binary_upload_bytes": 0,
+  "local_original_deletions": 0,
+  "source_sha256": "8da407229a4e2ee77a9d206ed3daddf9d7a5925546fbc7846e854b3d380487d8",
+  "test_sha256": "2e33008277262717824853d24246ce11c04f92bb443f23fabf7b375ef10c044b",
+  "purpose": "Actual code path private blob anchor/readback for one existing32MiBchunk plus semantic changed-ref/checksum/inventory controls; zero experiment/native work",
+  "closed": true,
+  "status": "passed11semanticcontrols plus actual32MiBprivate blob anchor/readback",
+  "ended_unix": 1793076278.897721
+}

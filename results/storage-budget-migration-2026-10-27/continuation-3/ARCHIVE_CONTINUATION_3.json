@@ -1,0 +1,33 @@
+{
+  "schema": "caissa-private-archive-blob-anchor-continuation-v3",
+  "human_authority": "Direct hard5GBproject/400GBMac limit plus broad authority for necessary bounded repairs without routine prompts",
+  "numeric_limits_selected_by_agent": true,
+  "maximum_additional_invocations": 1,
+  "effective_storage_invocations": 3,
+  "extra_wall_seconds": 0,
+  "deadline_unix": 1793084632.899253,
+  "parent_deadline_unix": 1793150297.974828,
+  "maximum_remote_compressed_bytes_unchanged": 8500000000,
+  "maximum_additional_local_bytes_unchanged": 384000000,
+  "entrypoint_sha256": "8da407229a4e2ee77a9d206ed3daddf9d7a5925546fbc7846e854b3d380487d8",
+  "previous_source_sha256": "d648fb41b7215c64e81d63081948343a8fef74d03d9b8010bb2653901ea5bc04",
+  "protected_files": {
+    "ARCHIVE_CONTINUATION_2.json": "a8f42ada97d228f24a0e7c7febb5ab50af0e97bd87de257b29338f3e519a62de",
+    "ARCHIVE_CONTINUATION_USAGE_2.json": "71abacae5274e26b64b3e2da387be0310b598efc74f524a55809952f43acc38a",
+    "ARCHIVE_PROGRESS_CONTINUATION_2_FAILED.json": "a380bbe83067404c3b58b6460a4706d46cb867f8f36dda8e4618175b0290d390",
+    "ANCHOR_CONTROL_SCOPE.json": "b9371bdbaeaf959bf0a3cae6aa36b0a27c988465fc231fbf6bb209d5bd1894e7",
+    "ANCHOR_CONTROL_RESULT.json": "edc0701022be14faf7ba1fa92baa54be7990e0b626192cf9c9c9b6099fd2f767",
+    "PACK-00001-ORIGINAL-UPLOADING.json": "a4926a694ebeb4307c3d41ec92c4e2f270e35979ab937b44b165cf6c31a5d2a4",
+    "BLOB_ANCHOR_DIAGNOSIS_SCOPE.json": "67c8f0452a61f1d373ab94beca5d856cb625b593c41070da1f84dda885038c4f",
+    "BLOB_ANCHOR_DIAGNOSIS_RESULT.json": "c5ac605d463b1ba5fcfcf463ef73b01d1a74bbfa4ee00a27447f0b03d9fc014a",
+    "FOURTEEN_CHUNK_DIAGNOSIS_SCOPE.json": "5b1b2b68335f4ffaf8d23b85d03cf4cab7eabfca8540eb106d4464f948dedf1c",
+    "FOURTEEN_CHUNK_DIAGNOSIS_RESPONSE.json": "94c4869a9e4e3f7323cd205b441bf0863b1625fe68389519f4ba0f999e439a68",
+    "ARCHIVE_CONTINUATION_FAILED-1793075261637843000.json": "a380bbe83067404c3b58b6460a4706d46cb867f8f36dda8e4618175b0290d390"
+  },
+  "reuse_complete_pack": 1,
+  "transport": "Create immutable private annotated tags to each exact binary blob; main branch commits contain small manifests only. All blob tags and full remote reconstruction verified before local deletion. No software-release tags/assets/publication.",
+  "no_new_binary_upload_for_reused_pack": true,
+  "no_new_games_or_training": true,
+  "old_failed_scopes_and_receipts_unchanged": true,
+  "observed_unix": 1793076278.902025
+}

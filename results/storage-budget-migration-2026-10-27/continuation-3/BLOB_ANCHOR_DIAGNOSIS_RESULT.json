@@ -1,0 +1,36 @@
+{
+  "status": "passed",
+  "scope_sha256": "67c8f0452a61f1d373ab94beca5d856cb625b593c41070da1f84dda885038c4f",
+  "ref": "refs/tags/archive-blob-v1/56b3f2c1b813e0f9b64c6861169232375a9f75f4",
+  "tag_object": "1dad637978ed46a2f884433856e9b2a33218aedf",
+  "blob_object": "56b3f2c1b813e0f9b64c6861169232375a9f75f4",
+  "product_or_release_ref_changed": false,
+  "requests": [
+    {
+      "method": "GET",
+      "path": "",
+      "exit_code": 0
+    },
+    {
+      "method": "POST",
+      "path": "/git/tags",
+      "exit_code": 0
+    },
+    {
+      "method": "POST",
+      "path": "/git/refs",
+      "exit_code": 0
+    },
+    {
+      "method": "GET",
+      "path": "/git/ref/tags/archive-blob-v1/56b3f2c1b813e0f9b64c6861169232375a9f75f4",
+      "exit_code": 0
+    },
+    {
+      "method": "GET",
+      "path": "/git/tags/1dad637978ed46a2f884433856e9b2a33218aedf",
+      "exit_code": 0
+    }
+  ],
+  "completed_unix": 1793075973.851632
+}

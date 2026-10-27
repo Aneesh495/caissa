@@ -1,0 +1,29 @@
+{
+  "origin_unix": 1793075556.757038,
+  "deadline_unix": 1793075736.757038,
+  "maximum_invocations": 1,
+  "maximum_mutations": 3,
+  "maximum_readonly_requests": 6,
+  "new_blobs_uploaded": 0,
+  "maximum_new_reachable_existing_bytes": 469762048,
+  "expected_head": "d935a3f65940a8ff613fd9aaea129b1b4420d11b",
+  "existing_git_blobs": [
+    "8c5935a27406b31ed1b56fd7f9fa0929919df0c4",
+    "cb15e0e3e81d6616e46dc6768483cbe60713ba20",
+    "2c7705a7dd2e66e918d0d7fed800ed05fcaa5085",
+    "9b7a4a9412a95ae296213b7ba2b3145dade2ef5a",
+    "32c803ce72af877846b0d1bbac1941219477e3e3",
+    "cf7cf1a555835bb31678a7f4e114dff66f5fb2cf",
+    "bb4c94bdaf56382bedba5c9e2be4afa825c83d16",
+    "5d8231bb7f855f11c56387e236a8a5aa5cc43c15",
+    "c46af6985e23a421d47ed8f2bd18b2bebad0c9e9",
+    "fcfa12ccaeb4a5f108b03e5b08aad0296e7edf8a",
+    "a8993d1552333c8b2581348e1687a90ab5fe3d4b",
+    "e4a2f81a931e8a64bc47ea653a99ac06aa288e2c",
+    "0131cc829dc89737f3d9268974ac1fa93c3766e2",
+    "c3b1d1575ccbb8095bcb7696d0664a2688f430cd"
+  ],
+  "local_source_deletions": 0,
+  "no_new_games": true,
+  "purpose": "Capture exact structured response for the rejected14chunk method after a single existing chunk succeeded. Existing private archive reachability only; source objects/data unchanged."
+}

@@ -1,0 +1,7 @@
+The original archive invocation and the first repair are both CLOSED FAILED before pack1local eviction. A structured14chunk diagnosis captured HTTP500from GitHub ref update; one existing32MiBchunk could be bound successfully. Exact underlying server cause remains unknown. The earlier2GBlimit explanation was only an inference.
+
+The new representation keeps binary bodies reachable through immutable private annotated tags whose target type is blob, while ordinary branch commits bind only small manifests. These are storage references in the separate private archive, not software releases. The API explicitly permits blob targets: https://docs.github.com/en/rest/git/tags#create-a-tag-object
+
+11semantic controls plus an actual existing32MiBblob anchor and complete SHA256/Git-identity readback passed. Original hashes, independent full-pack reconstruction and pre-unlink local rehash remain enforced. The explicit third invocation adds zero wall time and no local/remote byte ceiling; the original deadline remains unchanged. Actual resumed migration is pending at this checkpoint.
+
+A connected Drive alternative uploaded one private50byte canary and verified metadata. Its raw readback was not completed, so no Drive roundtrip pass or bulk archive claim is made. No unique original was deleted by these diagnoses, no native/strength/training scope was restarted, and no gate/release acceptance is claimed.

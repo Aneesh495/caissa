@@ -1,0 +1,15 @@
+{
+  "origin_unix": 1793075769.704204,
+  "deadline_unix": 1793076369.704204,
+  "maximum_invocations": 1,
+  "maximum_new_folders": 1,
+  "maximum_new_files": 1,
+  "maximum_upload_bytes": 100000,
+  "maximum_download_bytes": 100000,
+  "maximum_local_additional_bytes": 2000000,
+  "expected_canary_sha256": "a68975666e0dddc2dcb32276004faa6bec8a927386a0ec5bccd96e53a4efed89",
+  "expected_canary_md5": "3e290675128a58677593f00357fce18c",
+  "source": "Connected Google Drive upload/fetch adapters only; no credential extraction or external paid service",
+  "no_new_archive_owner_or_source_eviction": true,
+  "purpose": "Test private arbitrary-file upload and authenticated materialized raw readback as an alternative to the observedGitHub500ref failure"
+}
