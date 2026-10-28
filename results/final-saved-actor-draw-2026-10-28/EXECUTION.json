@@ -1,0 +1,37 @@
+{
+  "status": "passed_saved_actor_draw_component",
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "profile_sha256": "4512410118ad92190c167232b2082308aa18c42e07b287fa7b281b8ecc90c583",
+  "source_commit": "2254180087760847f89a993effe20ec13b328e44",
+  "original_compiled_source_reference": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+  "reader_sha256": "bc6c9c26836e6ebfc50f76c2ea89746d086c0e19749387223276b7e434af9970",
+  "stages": {
+    "produce": {
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 2.5239798330003396,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "cleanup_warnings": []
+    },
+    "independent": {
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 3.9027507080172654,
+      "log_sha256": "20720b464cbca174729556b4d23e04f944f7b7922dc63782d1032865e22fd3a4",
+      "cleanup_warnings": []
+    }
+  },
+  "owner_exit": 0,
+  "stderr_bytes": 0,
+  "closed": true,
+  "native_actor_starts": 2,
+  "match_games": 0,
+  "training": false,
+  "compilations": 0,
+  "original_parallel_reopened": false,
+  "old_c82_receipt_replaced": false,
+  "full_bundle_coordinator_executed": false,
+  "original_compiler_runtime_closure_established": false,
+  "full_acceptance": false
+}

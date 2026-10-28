@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-28T17:58:43-04:00 (America/New_York). Revision 43.
+Updated: 2026-10-28T18:25:04-04:00 (America/New_York). Revision 44.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R05: Bind core correctness to the final engine.
 
-Prepare a new finite source/input-bound admission for only missing exact saved-1ff runtime checks, beginning with rules/draw/protocol. Inspect existing producers and independent readers before selecting bounds. Keep old actor receipts, failures, settings and closed samples unchanged; do not rerun accepted G05 for status.
+Prepare a fresh finite source/input-bound admission for missing saved1ff rules and protocol checks. Reuse the closed successful G03 draw result and accepted G05; do not rerun them for status. Keep the old actors, original failures and exhausted parallel scope unchanged.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -92,15 +92,15 @@ Blocker: The frozen neural sample failed and its completed-game diagnostic was w
 
 ### R05: Bind core correctness to the final engine
 
-Prepare a new finite source/input-bound admission for only missing exact saved-1ff runtime checks, beginning with rules/draw/protocol. Inspect existing producers and independent readers before selecting bounds. Keep old actor receipts, failures, settings and closed samples unchanged; do not rerun accepted G05 for status.
+Prepare a fresh finite source/input-bound admission for missing saved1ff rules and protocol checks. Reuse the closed successful G03 draw result and accepted G05; do not rerun them for status. Keep the old actors, original failures and exhausted parallel scope unchanged.
 
 Completion requires: G01-G06 evidence and independent readers agree on the final identity, reject incorrect evidence, and show actual runtime completion where required.
 
 Dependencies: exclusive host released, final source and actor inventory.
 
-Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`; `results/native-source-binding-2026-10-26`; `results/final-core-identity-join-2026-10-28`.
+Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`; `results/native-source-binding-2026-10-26`; `results/final-core-identity-join-2026-10-28`; `results/final-draw-wiring-2026-10-28`; `results/final-saved-actor-draw-2026-10-28`.
 
-Blocker: Exact final-actor runtime checks remain missing for G01/G02/G03/G04/G06. The original saved-image compiler/runtime closure and some raw reproduction inputs remain unproven or unavailable.
+Blocker: Exact final-actor runtime evidence remains missing for G01/G02/G04/G06. Full coordinator/final deployment and original compiler/runtime closure remain unproven.
 
 ### R06: Finish final data and learning lineage integration
 

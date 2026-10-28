@@ -1,0 +1,9 @@
+# Exact saved-actor draw history
+
+The retained 1ff executable and unchanged 52d model passed the full original v2 draw-history schedule: 92 histories and 2,195 observations. An independent reader checked every observation against its own history model and freshly replayed every command through a separately copied, rehashed instance of the same saved executable. All six terminal outcomes and the three equal-board/history witnesses passed. Both actual stages exited zero with clean native transport and no cleanup warnings.
+
+The source/controller checkpoint is `2254180087760847f89a993effe20ec13b328e44`; the actor remains `1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897`, with model `52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7`. The prospective profile remains `4512410118ad92190c167232b2082308aa18c42e07b287fa7b281b8ecc90c583`. The original c82 history evidence is unchanged and is not relabeled as this new actor.
+
+A fresh finite scope admitted one owner, the fixed producer and independent reader, and two native process starts. Shared durable byte credits covered the actual Python writers and streamed saved-image copies. The native actors used pipes and inherited their stage groups. The real host lease, time/identity/space checks, stage exits and active/write ledgers closed. This is audited writer enforcement, not an operating-system sandbox.
+
+This establishes the saved-actor G03 draw-history component. The raw producer journal, fresh native replay, copied actor/model, source/input pins, logs and closure receipts remain local. This compact public evidence does not supply every raw portable input. No match games, training, compilation, model selection, old semantic sample rerun or parallel campaign restart occurred. Full-bundle/coordinator acceptance and original saved-image compiler/runtime provenance remain unproven. No strength or release claim follows.

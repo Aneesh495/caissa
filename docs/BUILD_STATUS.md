@@ -56,7 +56,7 @@ The [current core identity join](../results/final-core-identity-join-2026-10-28/
 |---|---|---|
 | G01 Rules | Full d2/c82 historical sample:100000 reachable comparisons,96589 unique positions and20 independently recomputed perft fixtures passed | Exact saved1ff runtime evidence and final bundle/source joins |
 | G02 Restoration | Historical abbe/636/q4096 full sample passed; its engine differs from saved1ff | Exact saved1ff runtime evidence, final source joins and honest availability of retired raw bulk inputs |
-| G03 Draw history | Historical d2/c82 full92-history/2195-observation replay and12controls passed; its real full entry certified only G03 | Exact saved1ff runtime evidence and final bundle/source joins |
+| G03 Draw history | New saved1ff/52d full92-history/2195-observation producer and independent fresh native replay passed; original c82 evidence remains unchanged | Final full-bundle/coordinator and compiler/runtime relationships; component proof is in results/final-saved-actor-draw-2026-10-28 |
 | G04 Protocol | Historical d2/c82 full10000ordinary+100ponder sequences passed independent replay; stop p99 .174375ms | Exact saved1ff runtime evidence and final bundle/source joins |
 | G05 Search | Full5803/1ff semantics passed; new current-source metadata join matches all69native inputs to that actor | Final compiler/runtime/full-bundle joins and dedicated strength ablations; metadata is not a new semantic pass |
 | G06 Network | Historical q4096 numerical probes passed with the same52dmodel on earlier348/624images; original q1024failure remains failed | Exact saved1ff runtime numerical evidence and final source/model/strength joins |
