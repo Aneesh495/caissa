@@ -1,0 +1,26 @@
+{
+  "status": "passed",
+  "controls": [
+    "actual_protocol_writer_reserved_before_growth",
+    "draw_namespace_not_reused",
+    "escaped_protocol_write_rejected",
+    "actual_protocol_reader_result_writer",
+    "native_style_descriptor_reserved_before_direct_write",
+    "actual_protocol_child_inherited_lease_and_quota",
+    "unknown_native_descriptor_rejected",
+    "insufficient_native_descriptor_reservation_rejects_before_launch"
+  ],
+  "elapsed_seconds": 0.07175783399725333,
+  "native_actors": 0,
+  "match_games": 0,
+  "synthetic_python_children": 2,
+  "full_gate": false,
+  "full_acceptance": false,
+  "derived_from_local_result": true,
+  "original_result_sha256": "c581c3707a130344a228333f21b82b6ec9cfb9d5ac2179deda0f4b3a46fdc5f7",
+  "runtime_source_sha256": "afc0d372c12655bbf727b4cb556f5197d409de972cd54f43d3b14ddc3a42a487",
+  "controls_source_sha256": "14efa41f40f6f57e331a582c85012ef689559327cf28cc8b50788783d2253302",
+  "process_exit": 0,
+  "stderr_bytes": 0,
+  "runtime": "CPython 3.12.14"
+}
