@@ -1,0 +1,47 @@
+{
+  "status": "passed_saved_actor_numerical_component",
+  "source_commit": "04a3038a10b51991b866743fee9d42494e545236",
+  "original_compiled_source_reference": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+  "scope_sha256": "ca49184f78365d45bd64b70d8c45c369679870bdaee04dd93705b238106061ea",
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+  "profile_sha256": "624a0f1700657e2f23ea28c12e800139be10921ba7286395da75fdca62ccfab9",
+  "reader_sha256": "10747d60a1804ec0cad159252f20e4996c665782a6edbd62f6720ad446499f4b",
+  "runtime_import": {
+    "torch": "2.8.0",
+    "numpy": "2.2.6",
+    "checkpoint_model_parameters": 8,
+    "inference": false
+  },
+  "stages": {
+    "produce": {
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 21.99749295800575,
+      "log_sha256": "8d8f3edb38b10f79b1f9b6ffedd47a36e1c6681adcf4db42928c5dffac773bc9",
+      "cleanup_warnings": []
+    },
+    "independent": {
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 24.077005541999824,
+      "log_sha256": "29b11311f49f9a3c3ef9fd751d4e12560ae26b74ef84d62517feb4227caac70c",
+      "cleanup_warnings": []
+    }
+  },
+  "owner_exit": 0,
+  "owner_elapsed_seconds": 47.34051866698428,
+  "owner_stderr_bytes": 0,
+  "active_and_write_ledgers_closed": true,
+  "native_actor_starts": 2,
+  "match_games": 0,
+  "training": false,
+  "compilations": 0,
+  "old_precision_scope_reopened": false,
+  "original_parallel_reopened": false,
+  "old_actor_receipts_replaced": false,
+  "full_bundle_coordinator_executed": false,
+  "original_compiler_runtime_closure_established": false,
+  "full_acceptance": false
+}

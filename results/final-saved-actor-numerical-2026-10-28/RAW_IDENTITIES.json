@@ -1,0 +1,29 @@
+{
+  "retained_local_artifacts": {
+    "producer/POSITIONS.fen": {
+      "bytes": 5870181,
+      "sha256": "ebb26559fc219c63564b86cdf89673731888bc6687cb7e68f04260214f8070a2"
+    },
+    "producer/probes.jsonl": {
+      "bytes": 26322143,
+      "sha256": "5c4acd368cdab94992a64acb253f4de14a610108adc172e7128b110df88bf644"
+    },
+    "producer/CONFIG.json": {
+      "bytes": 764,
+      "sha256": "ca36dba6be017e9e5810335f3128cc2eae133b733eb9ce02207bd19cbc4e9eeb"
+    },
+    "producer/SUMMARY.json": {
+      "bytes": 1196,
+      "sha256": "6b61a0b369466e81d752db1b95e4a646a894012ec35eae679656fe010192f293"
+    },
+    "independent/native-output.jsonl": {
+      "bytes": 5689828,
+      "sha256": "bc5df8eef4e17f4947fd102c5fc7568fd27ff01661bae4d7178ab96a1be6f59f"
+    },
+    "independent/native-stderr.log": {
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "raw_contents_in_this_compact_package": false
+}
