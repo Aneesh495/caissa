@@ -1,0 +1,42 @@
+{
+  "scope": "Initial UCI handshake from the accepted G04 transcript; declarations only",
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "transcript_sha256": "9d3ad97c10a1a41016abc81d00584810a261e7659a9ec9de0c516d9b8b84d37e",
+  "identity": [
+    "id name Caissa 0.1.0-dev",
+    "id author Aneesh Krishna"
+  ],
+  "options": [
+    "option name Hash type spin default 32 min 1 max 1024",
+    "option name Threads type spin default 1 min 1 max 8",
+    "option name MultiPV type spin default 1 min 1 max 32",
+    "option name Move Overhead type spin default 20 min 0 max 1000",
+    "option name UCI_Chess960 type check default false",
+    "option name Ponder type check default false",
+    "option name Null Move type check default true",
+    "option name LMR type check default true",
+    "option name Extensions type check default true",
+    "option name PVS type check default true",
+    "option name Aspiration type check default true",
+    "option name Quiescence type check default true",
+    "option name History type check default true",
+    "option name SEE type check default true",
+    "option name Futility type check default true",
+    "option name Use Table type check default true",
+    "option name Ordering Hints type check default false",
+    "option name Neural Bounds type check default false",
+    "option name Evaluation Cache type check default false",
+    "option name Tactical Generation type check default false",
+    "option name Lazy Neural type check default false",
+    "option name Neural Weight type spin default 100 min 0 max 100",
+    "option name EvalFile type string default <empty>",
+    "option name Use Neural type check default false",
+    "option name Scalar Neural type check default false",
+    "option name Search Stats type check default false",
+    "option name Trace Samples type spin default 0 min 0 max 64",
+    "option name Clear Hash type button"
+  ],
+  "uciok": true,
+  "applied_benchmark_configuration_verified": false,
+  "rating_producer_admitted": false
+}
