@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "controls": [
+    "sparse_journal_seek_rejected",
+    "actual_large_journal_writer_crosses_old_4MiB_limit_with_credits",
+    "committed_journal_reopen_rejected",
+    "escaped_rules_output_rejected",
+    "draw_namespace_rejected",
+    "raw_regular_descriptor_write_rejected",
+    "linked_rules_destination_rejected",
+    "actual_rules_child_inherited_lease_and_quota",
+    "actual_reader_copy_uses_metered_stream",
+    "actual_independent_result_atomic_writer",
+    "unadmitted_native_command_rejected_before_launch",
+    "actual_contained_probe_closes_with_clean_transport",
+    "actual_nested_perft_campaign_uses_direct_child_containment",
+    "native_regular_output_descriptor_rejected",
+    "forced_probe_cleanup_is_failure_and_reaped",
+    "individual_large_journal_limit_before_growth",
+    "shared_data_exhaustion_before_growth",
+    "duplicate_native_start_rejected",
+    "closed_rules_ledger_cannot_be_reused"
+  ],
+  "elapsed_seconds": 1.1235172500018962,
+  "native_actors": 0,
+  "match_games": 0,
+  "synthetic_python_children": 4,
+  "full_gate": false,
+  "full_acceptance": false
+}

@@ -1,0 +1,36 @@
+{
+  "executions": [
+    {
+      "status": "failed",
+      "closed": true,
+      "exit": 1,
+      "owner_elapsed_seconds": 0.12871975000598468,
+      "scope_sha256": "60e1544b0b934171efa0824ffa12c55e4ab69273002932e0c5de83619b86e4c7",
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "885d0b05a8ce3a5b47f7d5b2be1d084107cf8820af77f329fa2143d6ba57bcfd",
+      "stderr_bytes": 596,
+      "native_actors": 0,
+      "match_games": 0,
+      "failure": "Synthetic input exceeded inherited64KiB regular-file limit before integration assertions; exact failed source and stderr retained locally."
+    },
+    {
+      "status": "passed",
+      "closed": true,
+      "exit": 0,
+      "owner_elapsed_seconds": 1.274296041985508,
+      "scope_sha256": "336d23ef9c1b7dc5221592fcc7dc2271265d4889432538fc587cd49b135f69c3",
+      "stdout_sha256": "eac65845d1f81f6ddc29a34779c277997a9ef14b6ca478f19d1f9e8c4588460a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "native_actors": 0,
+      "match_games": 0,
+      "amendment": "New fixture8MiB soft file limit with separately pinned child clipping; one additional invocation recorded before execution under unchanged human parent. Cumulative controls ceiling60seconds/64MB, both scopes closed."
+    }
+  ],
+  "first_failure_preserved": true,
+  "cumulative_actual_seconds": 1.4030157919914927,
+  "synthetic_python_children": 4,
+  "native_chess_actors": 0,
+  "match_games": 0,
+  "full_acceptance": false
+}
