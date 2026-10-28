@@ -1,0 +1,202 @@
+{
+  "status": "passed_saved_actor_rules_component",
+  "source_commit": "b4fe69da05d260f3584ac55a5c9629143c82bd04",
+  "original_compiled_source_reference": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "profile_sha256": "a63e23962322b1c389426954ac21510618914e40451166de7bed50c69ce631b5",
+  "fixtures_sha256": "3db35f2159694ddad19b9dfc906f4b144c16b7a893c1acab22d8a3c15eb69cb7",
+  "reader_sha256": "0af0ad65249a7fd85c1157c7b8819170d9f7bf5ee1f69a1701592ad5a3b575da",
+  "scope_sha256": "1d8787fa2cb473277d87fe263e40bf710b782fee544d720d32186c928ddebae9",
+  "stages": {
+    "produce": {
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 14.158029707992682,
+      "log_sha256": "f65f32c3b3023e4a6821ba848b2ea343bcaccbcca27b36caef54ca9bc1fd8b1e",
+      "cleanup_warnings": []
+    },
+    "independent": {
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 23.972490959014976,
+      "log_sha256": "91e379307492cfccb2bec322bfa55aca8e6a251de0cf6969b27b1d53f38fe8e8",
+      "cleanup_warnings": []
+    }
+  },
+  "perft_stages": [
+    {
+      "id": "standard-0",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.008902875008061528,
+      "log_sha256": "5581dc82a40f2c73007a692ef2762cb8ac0d586a0fbdb4a29eda0981836803f5",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "standard-1",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.006949167000129819,
+      "log_sha256": "1a978a358b3583f1196cc6239968b222e094fa1893827e0f6e3c7420e3527b04",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "standard-2",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.0056421670014970005,
+      "log_sha256": "4c4277663673a433078fa646f0dddc8ab19cc0f89d1fcb7cebaf16aba2327d99",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "standard-3",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.0053435839945450425,
+      "log_sha256": "7f1a08e984f396d964479a5157e14a55149aa7b066d9131e33597031d60409ba",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "standard-4",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.006007749994751066,
+      "log_sha256": "8fc0d033a4580051cd2c89b2b232b443dcef779600c3599158a769e45ad6b24a",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "standard-5",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.0060743329813703895,
+      "log_sha256": "712c7a5deb5ef989358e8d861608ae8d195b8c5059d2b7d41a07ae7e6b6e6dda",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-0",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.005570792010985315,
+      "log_sha256": "0ec68ebad6cf3d9346d7da57c9be151e8a1fc69d3db99694b0128ee6e8c60a90",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-1",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.005353790998924524,
+      "log_sha256": "d05c07c65bbc822e5283250039b53a051c3dbab008f3c2341cdf1584df7246ec",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-2",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.005998000007821247,
+      "log_sha256": "89ea840dc919548a5025b6ec018ea3d474fe9693a613a6f8bb1baecb52b8f0fc",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-3",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.005885666992980987,
+      "log_sha256": "fd80d3d730a5f3f96936523559035a8e7e81663957d870f644554176937127b0",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-4",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.006748291983967647,
+      "log_sha256": "7998a99545f0332cc274356e6ab0bdbcfa568df32c298eebca5819e136551c31",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-5",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.006849459023214877,
+      "log_sha256": "31647d2d05288b90dcf6b1fd23f21b04ba0c72869f631c54fbcffcd0aa1d1416",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-6",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.007111875020200387,
+      "log_sha256": "5cda2121e4c08ff37836ff43f736c2915d9afc7c114da109a3b3e1a8cd4380a8",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-7",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.006204042001627386,
+      "log_sha256": "dd05529ba5e3e9e0f7676acefaad52f9275cad09f3283dcc20c1bd85ccb51375",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-8",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.006091957999160513,
+      "log_sha256": "a67554282e1dcfd1152bd03ee5ae91581a14e51436d05553bd4948ceb5fc441c",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-9",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.006334666977636516,
+      "log_sha256": "5494afea0366fb992097f5a8e002733f630e36a38fa3965931db0e1f98fffdd7",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-10",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.005432207981357351,
+      "log_sha256": "63e318e0b9e6238022705ef1410c17f588281fd4dc30eea188c17f34dda693ce",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-11",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.005640957999275997,
+      "log_sha256": "8751f1e9ee9066fd31e906d749ca9f97b3bc6bd60d0d9aaa34afab9bad258591",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-12",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.006272791011724621,
+      "log_sha256": "5273ce6a0d02fe601b5a559473f6d469c94d47f31591a660d17b71ebc1a6cc85",
+      "cleanup_warnings": []
+    },
+    {
+      "id": "reachable-13",
+      "exit": 0,
+      "reason": "completed",
+      "monotonic_seconds": 0.0054290000116452575,
+      "log_sha256": "b9b136dc659d265cca4dc6a9c7719f6d121c0eca76b6535cfbd7f021f2342419",
+      "cleanup_warnings": []
+    }
+  ],
+  "owner_exit": 0,
+  "owner_elapsed_seconds": 39.018106790987076,
+  "owner_stdout_bytes": 0,
+  "owner_stderr_bytes": 0,
+  "active_and_write_ledgers_closed": true,
+  "native_actor_starts": 22,
+  "match_games": 0,
+  "training": false,
+  "compilations": 0,
+  "original_parallel_reopened": false,
+  "old_c82_receipt_replaced": false,
+  "full_bundle_coordinator_executed": false,
+  "original_compiler_runtime_closure_established": false,
+  "full_acceptance": false
+}
