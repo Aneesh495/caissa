@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-28T17:41:30-04:00 (America/New_York). Revision 42.
+Updated: 2026-10-28T17:58:43-04:00 (America/New_York). Revision 43.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R05: Bind core correctness to the final engine.
 
-Prepare the exact final source/actor/model/settings evidence inventory and identify missing G01-G06 joins under a new finite source-bound scope. Reuse closed accepted readers; do not rerun them for status. Keep the saved actor and original compiler-provenance blocker unchanged.
+Prepare a new finite source/input-bound admission for only missing exact saved-1ff runtime checks, beginning with rules/draw/protocol. Inspect existing producers and independent readers before selecting bounds. Keep old actor receipts, failures, settings and closed samples unchanged; do not rerun accepted G05 for status.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -32,7 +32,7 @@ Recorded attempts include failed or unfinished outcomes. A count does not establ
 | R02 | in progress | Verify comparisons and integrate the matrix reader |
 | R03 | pending | Close thread-scaling, memory, stop and race-safety evidence |
 | R04 | failed requirement | Diagnose the failed neural-strength requirement |
-| R05 | pending | Bind core correctness to the final engine |
+| R05 | in progress | Bind core correctness to the final engine |
 | R06 | blocked | Finish final data and learning lineage integration |
 | R07 | pending | Bind existing external strength to the final report |
 | R08 | blocked | Design and run a calibrated engine-pool rating benchmark |
@@ -92,13 +92,15 @@ Blocker: The frozen neural sample failed and its completed-game diagnostic was w
 
 ### R05: Bind core correctness to the final engine
 
-Prepare the exact final source/actor/model/settings evidence inventory and identify missing G01-G06 joins under a new finite source-bound scope. Reuse closed accepted readers; do not rerun them for status. Keep the saved actor and original compiler-provenance blocker unchanged.
+Prepare a new finite source/input-bound admission for only missing exact saved-1ff runtime checks, beginning with rules/draw/protocol. Inspect existing producers and independent readers before selecting bounds. Keep old actor receipts, failures, settings and closed samples unchanged; do not rerun accepted G05 for status.
 
 Completion requires: G01-G06 evidence and independent readers agree on the final identity, reject incorrect evidence, and show actual runtime completion where required.
 
-Dependencies: R01, final source and actor inventory.
+Dependencies: exclusive host released, final source and actor inventory.
 
-Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`; `results/native-source-binding-2026-10-26`.
+Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`; `results/native-source-binding-2026-10-26`; `results/final-core-identity-join-2026-10-28`.
+
+Blocker: Exact final-actor runtime checks remain missing for G01/G02/G03/G04/G06. The original saved-image compiler/runtime closure and some raw reproduction inputs remain unproven or unavailable.
 
 ### R06: Finish final data and learning lineage integration
 

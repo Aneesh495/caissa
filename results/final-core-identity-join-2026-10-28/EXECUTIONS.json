@@ -1,0 +1,26 @@
+{
+  "first": {
+    "status": "failed",
+    "exit": 1,
+    "scope_sha256": "6b7d49602d28bbfb5095b367831c8f06e17d6b56625629bf6f1bd32639c7c1b0",
+    "source_sha256": "47815564ed02b2ea678f856b0ab0580086c46ebd8962a8dd2b90df9e82c0c52a",
+    "stderr_sha256": "1d31438810252804ee2e1cfa64440988cd674cdab1d695dd92668f8ad72a1d32",
+    "reason": "Write guard incorrectly rejected the FIFO used for read-only Git cat-file stdin. Original source and private stderr remain local."
+  },
+  "second": {
+    "status": "completed_metadata_join",
+    "exit": 0,
+    "scope_sha256": "a493cefaf6f4705a334a96aaee4bccfd9a5b805b0c263c9a2328c576a0228c0a",
+    "source_sha256": "c9ae6438d10892843367cc39dd6f0a49fedfeb02061f19162f40667d4a2c7ab4",
+    "stderr_bytes": 0,
+    "elapsed_seconds": 1.0617243330052588
+  },
+  "preparation_failure_preserved": "A root-path receipt assumption failed before admission; the retained exact 92d receipt was located and pinned before execution.",
+  "native_actors": 0,
+  "games": 0,
+  "compilations": 0,
+  "closed_semantic_samples_reexecuted": 0,
+  "original_scopes_reopened": false,
+  "full_gate": false,
+  "full_acceptance": false
+}
