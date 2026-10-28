@@ -1,0 +1,89 @@
+{
+  "status": "passed",
+  "scope": "Synthetic adapter import, exact schedule admission and malformed/partial inventory rejection only",
+  "controls": [
+    {
+      "name": "exact_6_plus_40_schedule",
+      "status": "admitted_exact_synthetic_inventory"
+    },
+    {
+      "name": "omitted_matrix",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "reordered_matrices",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "duplicate_kind",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "extra_descriptor_field",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "wrong_protocol",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "wrong_profile",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "missing_comparison",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "reordered_comparisons",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "typed_comparison_mismatch",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "aliased_config",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "undeclared_config",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "manifest_digest_mismatch",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "unsafe_reference",
+      "status": "rejected_as_required"
+    },
+    {
+      "name": "missing_raw_inventory_rejected_before_staging",
+      "status": "rejected_as_required"
+    }
+  ],
+  "elapsed_seconds": 0.2506911249947734,
+  "real_games": 0,
+  "native_actors": 0,
+  "raw_campaign_replays": 0,
+  "actual_full_bundle_acceptance": false,
+  "full_G10_certified": false,
+  "full_acceptance": false,
+  "old_scope_reopened": false,
+  "derived_from_local_control_result": true,
+  "original_result_sha256": "138909f652b4c0f00c504e9bff5405ccc71e36edd30fb82a8dfe35d4120e0baa",
+  "source_sha256": {
+    "tools/systems_matrix_admission_controls.py": "f088a2d2b391c4a5128c8757973d8326111b20c0292cc31914c0e6037b7c17f6",
+    "verification/systems_bundle.py": "945bb120c53a814664334bdc3fe060a7c82ce6a52fa87e990ba0fc5589ccdd54",
+    "verification/bundle.py": "006f94caed2dcc6b5f51a3aa1c64bd65aa32fc539b366e3fb0b2496e1d30a113",
+    "verification/strength_bundle.py": "a67362202e38f76c89f1fa0dd24a489ee127ea861a1bfb5b4605a2a2f095fc62",
+    "verification/systems_strength.py": "12ae1e7ae0e247b8a5baeb0bbfee28a8b60005cf79a3bf5f063161dd8b13c1c8"
+  },
+  "runtime": "CPython 3.12.14",
+  "stderr_bytes": 0,
+  "process_exit": 0,
+  "invocations": 1,
+  "old_admission_review": "expired-unexecuted; unchanged",
+  "remaining_parallel_attempts_unrecorded": 90
+}

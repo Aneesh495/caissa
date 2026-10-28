@@ -1,0 +1,230 @@
+# Caissa remaining work
+
+Updated: 2026-10-28T17:29:42-04:00 (America/New_York). Revision 41.
+
+This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
+
+## Current work
+
+R08: Design and run a calibrated engine-pool rating benchmark.
+
+Prepare the prospective rating-pool benchmark design and identify genuine calibration prerequisites. Keep public-default classical and frozen-neural actors distinct. Declare target configuration, opponents, conditions, games/time/storage, independent replay and uncertainty before any new experiment. The exhausted original parallel scope grants no benchmark game time.
+
+1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
+Last recorded match stage: `play-threads-8-ms-400`.
+Match stopping reason: `campaign-timeout`.
+
+Recorded attempts include failed or unfinished outcomes. A count does not establish a passing comparison, learned improvement or an Elo rating.
+
+## Already completed
+
+- Native chess engine, analysis board, original data/training pipeline and measurement tools are implemented.
+- Full historical data/learning domain audit and the saved-actor performance study passed their separate domains.
+- The frozen external 2,000-game comparison independently passed; the original neural and one heuristic comparison failures remain preserved.
+- Minimal local cleanup and actual parent/child storage write guards are implemented and checked. The unnecessary bulk Drive archive is deleted; new cloud uploads remain disabled.
+- The follow-up is ACTIVE with hourly plain-English reports and ten-minute internal checks.
+
+## Remaining actions
+
+| ID | Status | Action |
+|---|---|---|
+| R01 | blocked | Finish the frozen multicore match schedule |
+| R02 | in progress | Verify comparisons and integrate the matrix reader |
+| R03 | pending | Close thread-scaling, memory, stop and race-safety evidence |
+| R04 | failed requirement | Diagnose the failed neural-strength requirement |
+| R05 | pending | Bind core correctness to the final engine |
+| R06 | blocked | Finish final data and learning lineage integration |
+| R07 | pending | Bind existing external strength to the final report |
+| R08 | pending design | Design and run a calibrated engine-pool rating benchmark |
+| R09 | pending | Complete final recovery acceptance |
+| R10 | pending | Complete final browser and native-engine acceptance |
+| R11 | pending | Bind the passed performance study to final deployment |
+| R12 | pending | Finish semantic adapters and the complete coordinator |
+| R13 | blocked | Close compiler provenance and clean-build reproduction |
+| R14 | unavailable inputs | Produce a compact, honest reproducibility package |
+| R15 | blocked | Finish source/provenance/security audit, report and release decision |
+
+### R01: Finish the frozen multicore match schedule
+
+Preserve the closed original sample, original counters and five accepted comparisons. Do not restart an owner or add game time. Continue independent non-game work; keep final matrix acceptance incomplete.
+
+Completion requires: All 1,200 scheduled attempts have original records and the owner closes with exact counts and real exits. This does not by itself mark the comparisons passed.
+
+Dependencies: live owner and storage guards.
+
+Existing evidence: `runs/full-parallel-strength-v1/attempts/attempt-005/PROGRESS.json`; `runs/full-parallel-strength-v1/PARALLEL_CONTINUATION_5.json`.
+
+Blocker: Original cumulative parallel active-time cap exhausted with 1110 of 1200 attempts recorded. The sixth comparison is incomplete. No additional game time or replacement start is admitted.
+
+### R02: Verify comparisons and integrate the matrix reader
+
+Reuse the completed admission controls without rerunning them. Finish final evidence/source relationships and preserve the incomplete matrix as an acceptance blocker. Actual whole-matrix replay cannot pass without the missing original inputs and final comparison.
+
+Completion requires: Every comparison has independently checked success/failure and exact provenance; the final matrix reader rejects forged or mismatched inputs. Unfinished original games remain failures.
+
+Dependencies: R01.
+
+Existing evidence: `results/systems-matrix-adapter-2026-10-26`; `results/heuristics-original-2026-10-27`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-2-ms-100.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-2-ms-400.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-4-ms-100.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-4-ms-400.log`; `runs/full-parallel-strength-v1/attempts/attempt-005/independent-threads-8-ms-100.log`; `results/systems-matrix-admission-2026-10-28`.
+
+Blocker: The sixth parallel comparison is incomplete at the original active cap. Historical heuristic raw inputs were retired. Synthetic admission success is not actual matrix or full G10 acceptance.
+
+### R03: Close thread-scaling, memory, stop and race-safety evidence
+
+After the timed owner releases the host, join useful search work, memory, cancellation latency and race-safety evidence across thread modes. Run only missing separately scoped checks.
+
+Completion requires: The multicore result includes checked performance and safety relationships for the same actor and options; source bindings and real stage exits are complete.
+
+Dependencies: R01, R02.
+
+Existing evidence: `results/performance-v4-2026-10-26`.
+
+### R04: Diagnose the failed neural-strength requirement
+
+Investigate evaluation quality and runtime overhead after decisive games. Write a prospective repair-study design before any new study; keep the selected model/seed/checkpoint/mixture unchanged in current campaigns.
+
+Completion requires: A defensible diagnosis and any separately authorized new study have explicit data separation, source/input identities and predeclared endpoints. The original 4,000-attempt failure is never converted into a pass.
+
+Dependencies: R01.
+
+Existing evidence: `docs/STRENGTH_V4.md`; `results/external-v4-2026-10-26`.
+
+Blocker: The frozen neural sample failed and its completed-game diagnostic was weaker than classical. No current authorization admits new training or outcome-based model selection; release cannot claim the neural gain requirement passed.
+
+### R05: Bind core correctness to the final engine
+
+Join rules, reversible state, draws, protocol, search and network numerical evidence to one exact final engine/model/source/settings inventory; complete only missing final checks under finite source-bound scopes.
+
+Completion requires: G01-G06 evidence and independent readers agree on the final identity, reject incorrect evidence, and show actual runtime completion where required.
+
+Dependencies: R01, final source and actor inventory.
+
+Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`; `results/native-source-binding-2026-10-26`.
+
+### R06: Finish final data and learning lineage integration
+
+Bind the historically passed complete data/learning audit to final source and the retained inference model. Separate historical pass receipts from currently available raw inputs.
+
+Completion requires: The final lineage graph is independently checked and accurately states which original data/checkpoint bytes are available and which reproduction steps cannot run.
+
+Dependencies: R05, R14.
+
+Existing evidence: `results/g07-full-audit-2026-10-26`; `docs/ARTIFACT_RETENTION.md`.
+
+Blocker: Bulk historical corpora and obsolete checkpoints were intentionally retired. Full raw historical reconstruction from the current checkout is unavailable.
+
+### R07: Bind existing external strength to the final report
+
+Preserve the independently passed 2,000-game frozen external sample and its exact actor/settings. Complete final report/source relationships; do not replay the closed sample.
+
+Completion requires: The report states opponent versions, settings, time control, hardware, results, uncertainty and tested Caissa identity without an unsupported absolute rating.
+
+Dependencies: R05.
+
+Existing evidence: `results/external-v4-2026-10-26/independent-external.json`; `docs/STRENGTH_V4.md`.
+
+### R08: Design and run a calibrated engine-pool rating benchmark
+
+Prepare the prospective rating-pool benchmark design and identify genuine calibration prerequisites. Keep public-default classical and frozen-neural actors distinct. Declare target configuration, opponents, conditions, games/time/storage, independent replay and uncertainty before any new experiment. The exhausted original parallel scope grants no benchmark game time.
+
+Completion requires: A checked connected match sample yields a named-pool rating estimate with a meaningful confidence interval and documented conditions. An official rating-list entry would require that list to test/include the engine separately.
+
+Dependencies: exclusive host released, fixed target configuration, fresh finite benchmark scope.
+
+Existing evidence: `docs/STRENGTH_V4.md`.
+
+Blocker: Current multicore games measure Caissa thread differences. They do not anchor the engine to an external rating pool. No rating-pool experiment is admitted by this planning record.
+
+### R09: Complete final recovery acceptance
+
+Join the passed arena/training/data crash-and-resume components to final source/runtime and finish missing combined acceptance. Preserve original failure and resume records.
+
+Completion requires: The independent full recovery reader accepts the required final combined evidence and confirms committed records and process ownership survive the specified failures.
+
+Dependencies: R05, R06.
+
+Existing evidence: `results/recovery-full-join-2026-10-26`.
+
+### R10: Complete final browser and native-engine acceptance
+
+Bind the passed amended response-capture component and four browser contexts to final source and the actual native engine. Complete missing final narrow-screen, keyboard, cancellation, variation/export and real-response joins in a separate bounded final campaign.
+
+Completion requires: The final browser reader checks actual captured native responses and required flows on the declared final build; old failed browser scopes remain failed.
+
+Dependencies: R05, exclusive host released.
+
+Existing evidence: `results/browser-capture-amendment-2026-10-26`.
+
+### R11: Bind the passed performance study to final deployment
+
+Reuse the checked saved-actor performance study and finish final source, runtime and deployment relationships. Keep single-actor performance distinct from multicore race/strength evidence.
+
+Completion requires: G13 final identity joins close without claiming that performance numbers certify race safety or playing strength.
+
+Dependencies: R03, R05.
+
+Existing evidence: `results/performance-v4-2026-10-26`.
+
+### R12: Finish semantic adapters and the complete coordinator
+
+Finish missing full evidence adapters and connect all required independent readers. Reuse passed semantic-forgery components, while adding only missing source-bound runtime/coordination checks.
+
+Completion requires: The full coordinator reads real artifacts, rejects stale/forged/mismatched inputs, preserves failed gates and cannot report full acceptance from component pass flags.
+
+Dependencies: R02, R05, R06, R09, R10, R11.
+
+Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`.
+
+### R13: Close compiler provenance and clean-build reproduction
+
+Establish the saved actor compiler invocation, flags, dependencies and runtime relationships where genuinely recoverable. Complete bounded clean-source macOS/Linux reproduction and explicitly distinguish new attribution builds from actual match actors.
+
+Completion requires: The final saved-image build/runtime provenance and independent clean reproduction meet their declared identity requirements. Missing historical provenance stays a reported blocker.
+
+Dependencies: R05.
+
+Existing evidence: `results/build-attribution-2026-10-27`.
+
+Blocker: The original saved actor compiler-invocation/runtime closure is unproven. Later build-attribution component passes cannot retroactively supply missing original evidence.
+
+### R14: Produce a compact, honest reproducibility package
+
+Inventory retained source/model/config/results and recovery paths. Package only essential material within the storage cap, without cloud dumping. Determine which old exact-byte inputs remain recoverable from already accepted existing sources before promising reproduction.
+
+Completion requires: The package is independently usable for its stated scope; missing historical corpora/checkpoints/raw traces are explicitly unavailable. Full historical reproduction remains unpassed if required inputs cannot be recovered.
+
+Dependencies: retention inventory, R07, R13.
+
+Existing evidence: `docs/ARTIFACT_RETENTION.md`.
+
+Blocker: Retired raw bulk inputs cannot be recreated from compact receipts or hashes. Do not regenerate training data or relabel derived summaries as original bytes.
+
+### R15: Finish source/provenance/security audit, report and release decision
+
+Audit final source and evidence relationships, reconcile documentation, publish exact strength and uncertainty, and run the independent full acceptance decision. Keep originality and historical secret-rotation facts accurate.
+
+Completion requires: Every required release gate actually passes and the final engine/model/source/package identities match; otherwise publish development status and precise remaining failures, with no release claim.
+
+Dependencies: R02, R03, R04, R05, R06, R07, R09, R10, R11, R12, R13, R14.
+
+Existing evidence: `docs/BUILD_STATUS.md`; `docs/ARTIFACT_RETENTION.md`.
+
+Blocker: Neural gain and full historical reproduction are unresolved in addition to remaining final integrations.
+
+## When Elo becomes meaningful
+
+The saved v4 neural actor measured -411.50 relative Elo against unrestricted Stockfish 19 in its 666-game subset, with a 95% interval[-460.14,-370.68], at 100 ms/move, one thread and16 MiB hash. This is a relative match result for that exact actor, not an absolute Caissa/classical/human rating.
+
+After the current multicore study releases the host, R08 prepares a separate prospectively bounded rating-pool benchmark for a fixed declared configuration. A defensible pool-specific estimate follows sufficient independently checked games and an uncertainty interval. It need not wait for every release-documentation gate, but requires its own valid experiment admission.
+
+A pool rating depends on the tested engine configuration, opponents, hardware, openings and time control. It is reported with uncertainty and the pool name; it is not automatically a human FIDE or online rating.
+
+Primary methodology: [Stockfish rating FAQ](https://official-stockfish.github.io/docs/stockfish-wiki/Stockfish-FAQ.html#the-elo-rating-of-stockfish).
+
+## Maintenance rules
+
+- Refresh this document and its private structured roadmap on every follow-up. Update the scheduled prompt's compact live roadmap block when state changes.
+- Keep status, next action, dependencies, evidence and blockers synchronized. Preserve the stable action IDs and the original failures.
+- Mark an item done only when its stated completion evidence exists and has been checked. Producer summaries and progress counters alone cannot close acceptance gates.
+- Preserve hourly user updates and ten-minute internal checks. Quiet maintenance does not move the user-notification timestamp.
+- During timed matches, refresh metadata only. No competing engine work, compilation, training, browser runs, bulk scans or hash sweeps.
+- Keep the hard local storage limits, no cloud uploads, frozen actors and prospective finite experiment scopes. Planning does not admit an experiment.
