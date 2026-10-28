@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "controls": [
+    "actual_numerical_writer_reserved_before_growth",
+    "committed_numerical_input_immutable",
+    "escaped_directory_rejected",
+    "actual_torch_numpy_checkpoint_import_under_inherited_lease_and_quota",
+    "unknown_native_descriptor_rejected",
+    "native_direct_descriptor_write_fully_prepaid_and_contained",
+    "actual_numerical_pipe_native_boundary",
+    "unknown_native_command_rejected",
+    "third_temporary_file_rejected",
+    "duplicate_native_start_rejected",
+    "closed_numerical_ledger_rejected"
+  ],
+  "elapsed_seconds": 2.7700390839891043,
+  "native_chess_actors": 0,
+  "synthetic_python_children": 3,
+  "match_games": 0,
+  "inference": false,
+  "full_acceptance": false
+}
