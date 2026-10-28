@@ -4,6 +4,8 @@ An original C++23 chess engine with incremental neural evaluation, a paired-matc
 
 **Development build. Full acceptance is incomplete. No absolute Elo rating or Stockfish-level strength is established.** Classical evaluation is the default because the selected neural evaluator lost its full matched comparison. See [build status](docs/BUILD_STATUS.md) and [findings](docs/FINDINGS.md).
 
+The original experiment deadline has expired. Bulk historical artifacts and the private Drive archive were retired under the maintainer's minimal-storage instruction. Source, the frozen inference inputs and saved parallel games remain local. See [current artifact availability](docs/ARTIFACT_RETENTION.md).
+
 ![Live native-engine analysis board](docs/images/live-board.png)
 
 ## Run
