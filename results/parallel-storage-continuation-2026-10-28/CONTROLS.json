@@ -1,0 +1,37 @@
+{
+  "schema": "caissa-parallel-storage-integration-v1",
+  "controls": [
+    "admission rejects before original active ledger is opened",
+    "actual archived JSON/PGN/pair writers and immutable committed games",
+    "separate processes share one durable byte ceiling",
+    "atomic control replacement peak and parent binary log/writelines are reserved",
+    "oversized bytes, raw descriptors, raw buffers and sparse growth cannot bypass quota",
+    "escaped and linked destinations preserve their targets",
+    "atomic temporary-file headroom is rejected before file creation",
+    "actual archived Campaign terminates and reaps owned process group on storage failure",
+    "draft and expired continuation reject without admitting an owner",
+    "actual child bootstrap inherits exclusive lease and meters the archived summary writer",
+    "expired write deadline still permits bounded emergency active-ledger closure without producer writes"
+  ],
+  "passed": true,
+  "real_games": 0,
+  "native_engine_invocations": 0,
+  "original_active_ledger_unchanged": true,
+  "source_bindings": {
+    "tools/parallel_storage_quota.py": "bb4252c2474176a45aa34ff83e1a0d2f01aa1485c4cbef6d63a4594e5cc2849e",
+    "tools/parallel_storage_resume.py": "f7c16a9f7573ea2f8e4d7c27d5b839a599d54fb8936a06dcb46ef6d2fb5a2172",
+    "tools/parallel_storage_controls.py": "19beaa0534089cb7f3823bd8cde2aefa711d932a7abddeb08e38aa55dc597da7",
+    "tools/storage_budget.py": "f2c93a82ee940904583dc71135bb0fa69d13c1e37a768e717b4fb98e32af49fb",
+    "tools/telemetry_nonfatal.py": "92108ff7d07f6eb41f38402b0e60db3b005c83c0076ed1fa666b87a8238a63e6",
+    "tools/bounded_host_log.py": "9614ffd5e97cc5fc50f42c9805db273ff9228d3dc132072b0dc0452274263111"
+  },
+  "first_harness_failure": {
+    "kind": "TypeError",
+    "reason": "HostLease does not implement a context manager; fixture changed to contextlib.closing",
+    "original_result_preserved": true
+  },
+  "later_source_revision": "Reserve emergency metadata for active-ledger closure after the producer write deadline. Separate finite fourth invocation recorded before execution.",
+  "actual_saved_parallel_owner_admitted": false,
+  "whole_project_acceptance": false,
+  "full_G10_certified": false
+}
