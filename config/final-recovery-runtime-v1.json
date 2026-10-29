@@ -1,0 +1,29 @@
+{
+  "schema": "caissa-current-arena-recovery-v1",
+  "purpose": "New current-source recovery diagnostic, separate from all closed strength and historical recovery samples",
+  "pairs": 2,
+  "nodes": 2000,
+  "max_plies": 64,
+  "warmup_nodes": 1,
+  "openings": "config/recovery-openings-v1.json",
+  "options": {
+    "Threads": 1,
+    "Hash": 16,
+    "Use Neural": true,
+    "Neural Weight": 10,
+    "Lazy Neural": true,
+    "Evaluation Cache": true,
+    "Tactical Generation": true,
+    "Search Stats": false
+  },
+  "power_wait": null,
+  "required_native_starts": 12,
+  "required_forced_exit": -9,
+  "required_normal_native_exits": 12,
+  "required_game_journals": 4,
+  "required_pgn_files": 4,
+  "required_completed_outcomes": 4,
+  "required_protected_game": "000000-0.json",
+  "match_games": 0,
+  "historical_sample_reexecutions": 0
+}
