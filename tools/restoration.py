@@ -13,6 +13,7 @@ import chess
 
 from tools.campaign_process import atomic
 from tools.heuristic_study import avoid_decisive_matches
+from tools.restoration_journal import open_journal
 from verification.tactical_generation import Probe
 
 PROFILE_SHA256 = "6cde330d87e49084135760cb737f3c2756a594a69b4ed709e21b98df5f9e584c"
@@ -34,6 +35,7 @@ def main():
     parser.add_argument("--maximum-seconds", type=float, default=1800)
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--source-commit")
+    parser.add_argument("--gzip-journals", action="store_true")
     args = parser.parse_args()
     avoid_decisive_matches()
     if (
@@ -81,6 +83,7 @@ def main():
             "maximum_seconds": args.maximum_seconds,
             "maximum_observation_bytes": rule["maximum_observation_bytes"],
             "full_acceptance": False,
+            "journal_encoding": "gzip-v1" if args.gzip_journals else "plain-jsonl-v1",
         },
     )
     native = None
@@ -95,7 +98,8 @@ def main():
         native = Probe(
             args.engine, ["--state-probe", str(args.network.resolve())], deadline
         )
-        with (args.output / "observations.jsonl").open("xb") as output:
+        journal = args.output / ("observations.jsonl.gz" if args.gzip_journals else "observations.jsonl")
+        with open_journal(journal, "xb", compressed=args.gzip_journals, maximum_bytes=rule["maximum_observation_bytes"]) as output:
 
             def check():
                 if (

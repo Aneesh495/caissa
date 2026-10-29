@@ -10,6 +10,7 @@ import time
 from pathlib import Path
 
 from tools.campaign_process import atomic
+from tools.restoration_journal import open_journal
 from verification.bundle import strict_json
 from verification.network_bytes import QuantizedNetwork
 from verification.restoration_state import Shadow, require, same_type, state_commands
@@ -52,6 +53,7 @@ def verify(
     *,
     mode="full",
     maximum_seconds=3600,
+    compressed_journals=False,
 ):
     from tools.heuristic_study import avoid_decisive_matches
 
@@ -115,6 +117,12 @@ def verify(
     )
     observations, output = Path(observations), Path(output)
     require(
+        type(compressed_journals) is bool
+        and config.get("journal_encoding", "plain-jsonl-v1")
+        == ("gzip-v1" if compressed_journals else "plain-jsonl-v1"),
+        "restoration journal transport differs from producer declaration",
+    )
+    require(
         observations.is_file()
         and not observations.is_symlink()
         and 0 < observations.stat().st_size <= rule["maximum_observation_bytes"],
@@ -165,8 +173,8 @@ def verify(
             saved_engine, ["--state-probe", str(saved_network.resolve())], deadline
         )
         with (
-            observations.open("rb") as stream,
-            (output / "native-replay.jsonl").open("xb") as replay,
+            open_journal(observations, "rb", compressed=compressed_journals, maximum_bytes=rule["maximum_observation_bytes"]) as stream,
+            open_journal(output / ("native-replay.jsonl.gz" if compressed_journals else "native-replay.jsonl"), "xb", compressed=compressed_journals, maximum_bytes=rule["maximum_replay_bytes"]) as replay,
         ):
             original_stat = os.fstat(stream.fileno())
 
@@ -414,6 +422,7 @@ def main():
         parser.add_argument("--expected-" + name + "-sha256", required=True)
     parser.add_argument("--mode", choices=["full", "diagnostic"], default="full")
     parser.add_argument("--maximum-seconds", type=float, default=3600)
+    parser.add_argument("--gzip-journals", action="store_true")
     args = parser.parse_args()
     try:
         result = verify(
@@ -430,6 +439,7 @@ def main():
             args.output,
             mode=args.mode,
             maximum_seconds=args.maximum_seconds,
+            compressed_journals=args.gzip_journals,
         )
         print(json.dumps(result, allow_nan=False))
     except (ValueError, KeyError, TypeError, OSError, TimeoutError) as error:
