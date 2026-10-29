@@ -50,6 +50,12 @@ def metadata_inputs(scope):
     return {name for name in scope["input_bindings"] if name.startswith(("work/", "runs/", "results/")) and not name.endswith((".pgn", ".zip", ".pt", ".cai")) and not name.endswith("/bin/caissa")}
 
 
+def lineage_metadata_inputs(scope):
+    # The accepted lineage owner already hashed the retained numerical slice.
+    # Its metadata is joined here without opening arrays or identity rows again.
+    return {name for name in metadata_inputs(scope) if not name.startswith("results/precision-v4-inputs/validation/") or name.endswith(("SLICE.json", "DATASET.json"))}
+
+
 def same(a, b):
     return json.dumps(a, sort_keys=True, separators=(",", ":")) == json.dumps(b, sort_keys=True, separators=(",", ":"))
 
@@ -163,7 +169,7 @@ def learning(records, checkout):
     ledger = records.doc(LINEAGE + "METADATA_USAGE.json")
     require(ledger["closed"] is True and ledger["failure"] is None and ledger["scope_sha256"] == records.sha(LINEAGE + "SCOPE.json") and ledger["native_starts"] == ledger["child_starts"] == 0, "final lineage metadata ledger incomplete")
     require(same(result, records.doc("results/final-data-learning-lineage-2026-10-29/LINEAGE.json")) and result["status"] == "passed_final_data_learning_lineage" and result["historical_G07_pass_bound"] is True and result["full_raw_reproduction_available"] is False and result["full_acceptance"] is False, "final lineage result or raw availability differs")
-    expected = metadata_inputs(scope)
+    expected = lineage_metadata_inputs(scope)
     require(expected <= set(records.records), "actual original lineage metadata inventory incomplete")
     for name in expected:
         require(records.sha(name) == scope["input_bindings"][name], "accepted lineage input changed: " + name)
