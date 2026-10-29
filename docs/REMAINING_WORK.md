@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T03:37:18-04:00 (America/New_York). Revision 74.
+Updated: 2026-10-29T04:05:19-04:00 (America/New_York). Revision 76.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R12: Finish semantic adapters and the complete coordinator.
 
-Connect final core G01-G06, external G09 and performance G13 closed evidence through genuine source/exit/ledger relationships; then integrate G07/G14 and explicit failed/incomplete/unavailable G08/G10/G15/G16 decisions. Reuse all closed samples and new16controls without reruns. New work requires a fresh finite scope; original match cap stays exhausted.
+Integrate retained G07 lineage and G14 semantic evidence, then explicit failed/incomplete/unavailable/release decisions for G08/G10/G15/G16. Reuse all completed domains and the closed17/16controls without rerunning samples or cases. Bind real source/input/independent-result/owner/stage/availability relationships; no pass from counts or component flags. Original neural gain, interrupted sixth comparison, saved-actor compiler/runtime and retired-input blockers remain unchanged. Record a fresh finite scope before any new integration execution.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -92,7 +92,7 @@ Blocker: The frozen neural sample failed and its completed-game diagnostic was w
 
 ### R05: Bind core correctness to the final engine
 
-Reuse the closed six-domain core runtime join without rerunning samples. Continue R07 final external-strength reporting, R12 full coordinator integration and R13 original compiler/runtime provenance.
+Reuse this completed final domain and its now accepted actual coordinator adapter without rerunning samples or controls. Continue R12 remaining G07/G08/G10/G14/G15/G16 decisions and R13 original compiler/runtime provenance.
 
 Completion requires: G01-G06 evidence and independent readers agree on the final identity, reject incorrect evidence, and show actual runtime completion where required.
 
@@ -114,7 +114,7 @@ Blocker: Bulk historical corpora and obsolete checkpoints were intentionally ret
 
 ### R07: Bind existing external strength to the final report
 
-Reuse the checked final external report without replaying the closed sample. Preserve its exact neural settings and relative uncertainty; continue R03 final thread-safety/evidence joins, R12 coordinator integration and R13 original compiler/runtime provenance.
+Reuse this completed final domain and its now accepted actual coordinator adapter without rerunning samples or controls. Continue R12 remaining G07/G08/G10/G14/G15/G16 decisions and R13 original compiler/runtime provenance.
 
 Completion requires: The report states opponent versions, settings, time control, hardware, results, uncertainty and tested Caissa identity without an unsupported absolute rating.
 
@@ -136,7 +136,7 @@ Blocker: The current runner has only node/per-move budgets, not the required gam
 
 ### R09: Complete final recovery acceptance
 
-Reuse the closed final current-arena recovery and independent combined proof without rerunning samples. Integrate this reader into R12 while R10 checks final browser/native evidence. Preserve original strict reader rejection, all historical failures and independent full-project/compiler/reproduction blockers.
+Reuse this completed final proof and accepted actual coordinator adapter without rerunning samples or controls. Other R12 decisions, original compiler/runtime provenance, failed strength and reproduction/release requirements remain separate.
 
 Completion requires: The independent full recovery reader accepts the required final combined evidence and confirms committed records and process ownership survive the specified failures.
 
@@ -146,7 +146,7 @@ Existing evidence: `results/recovery-full-join-2026-10-26`; `results/final-recov
 
 ### R10: Complete final browser and native-engine acceptance
 
-Reuse the closed final served-browser proof in R12 coordinator integration without rerunning captures or controls. Preserve original historical reader flags and failed owners. Original saved C++ compiler/runtime, failed strength, reproduction and release gates remain open.
+Reuse this completed final proof and accepted actual coordinator adapter without rerunning samples or controls. Other R12 decisions, original compiler/runtime provenance, failed strength and reproduction/release requirements remain separate.
 
 Completion requires: The final browser reader checks actual captured native responses and required flows on the declared final build; old failed browser scopes remain failed.
 
@@ -156,7 +156,7 @@ Existing evidence: `results/browser-capture-amendment-2026-10-26`; `results/fina
 
 ### R11: Bind the passed performance study to final deployment
 
-Reuse the closed final performance identity join in R12. Preserve the descriptive250ms/16MiB diagnostic conditions, measured memory rows and separate strength/race claims; no performance rerun.
+Reuse this completed final domain and its now accepted actual coordinator adapter without rerunning samples or controls. Continue R12 remaining G07/G08/G10/G14/G15/G16 decisions and R13 original compiler/runtime provenance.
 
 Completion requires: G13 final identity joins close without claiming that performance numbers certify race safety or playing strength.
 
@@ -166,13 +166,13 @@ Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-ev
 
 ### R12: Finish semantic adapters and the complete coordinator
 
-Connect final core G01-G06, external G09 and performance G13 closed evidence through genuine source/exit/ledger relationships; then integrate G07/G14 and explicit failed/incomplete/unavailable G08/G10/G15/G16 decisions. Reuse all closed samples and new16controls without reruns. New work requires a fresh finite scope; original match cap stays exhausted.
+Integrate retained G07 lineage and G14 semantic evidence, then explicit failed/incomplete/unavailable/release decisions for G08/G10/G15/G16. Reuse all completed domains and the closed17/16controls without rerunning samples or cases. Bind real source/input/independent-result/owner/stage/availability relationships; no pass from counts or component flags. Original neural gain, interrupted sixth comparison, saved-actor compiler/runtime and retired-input blockers remain unchanged. Record a fresh finite scope before any new integration execution.
 
 Completion requires: The full coordinator reads real artifacts, rejects stale/forged/mismatched inputs, preserves failed gates and cannot report full acceptance from component pass flags.
 
 Dependencies: R02, R05, R06, R09, R10, R11.
 
-Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`.
+Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`.
 
 ### R13: Close compiler provenance and clean-build reproduction
 
