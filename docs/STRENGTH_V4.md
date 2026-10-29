@@ -1,79 +1,27 @@
-# Derived actor strength profile
+# Saved v4 actor strength
 
-Both v4 scopes are closed. Do not restart their owners, extend games or reinterpret
-unfinished records. The external sample completed all 2000 games and passed
-independent replay. Its unrestricted Stockfish19 subset was 56 wins, two draws
-and 608 losses in 666 games: -411.50 relative Elo with a 95% interval of
-[-460.14, -370.68] at 100 ms, one thread and 16 MiB. This is not an absolute or
-human rating. [The compact external proof](../results/external-v4-2026-10-26/independent-external.json)
-does not yet provide every raw portable game artifact.
+The fixed external sample completed all 2,000 games and passed independent replay. The [final external report binding](../results/final-external-report-2026-10-28/README.md) checks its exact actor, settings, original stage exits, current native source boundary and retained PGN outcomes. Both v4 scopes are closed. Their samples are never restarted, extended or relabeled.
 
-The neural sample recorded 4000 attempts, 3997 finished games and three original
-512-ply-limit records. Independent full-sample acceptance failed. The completed-game
-diagnostic was -63.86 relative Elo against unchanged classical evaluation, with a
-95% interval of [-73.80, -54.07]. It does not satisfy the required 50 Elo gain and
-positive lower bound. Neither failed sample is repaired by selecting another
-checkpoint, seed or mixture from match outcomes.
+| Opponent setting | Games | Pairs | Wins / draws / losses | Relative Elo | 95% interval |
+|---|---:|---:|---:|---:|---|
+| Stockfish 19 Skill Level 0 | 668 | 334 | 656 / 5 / 7 | +736.33 | [+649.70, +867.45] |
+| Stockfish 19 UCI_Elo 2000 | 666 | 333 | 372 / 23 / 271 | +53.10 | [+30.33, +75.78] |
+| Stockfish 19 unrestricted | 666 | 333 | 56 / 2 / 608 | -411.50 | [-460.14, -370.68] |
 
-The owner commands below document the historical campaign interface. They are
-not instructions to rerun these closed samples.
+These are three separate comparisons. Stockfish's Skill Level and UCI_Elo option names do not establish calibrated absolute ratings. None of these values measures the public default classical configuration or a human rating.
 
-The original full learning and match sequence is closed. Its real
-`MODEL_CAMPAIGN.json` still names the original49057 executable, q1024c251
-network, selected float checkpoint and failed numerical gates. Its4000-game
-neural comparison failed the required gain endpoint. Those receipts are never
-rewritten to describe a newer actor.
+The measured Caissa actor is executable `1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897`, network `52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7`. Options were Threads=1, Hash=16 MiB, Use Neural=true, Neural Weight=10, Lazy Neural=true, Evaluation Cache=true, Tactical Generation=true, Ordering Hints=false and Neural Bounds=false. The recorded opponent is Stockfish 19, SHA256 `dc2f18c34ae962dff591b66147d220ec06e61d756b93d8a4f5e04fd8e55c251f`; each setting used Threads=1 and Hash=16 MiB. `EXTERNAL_REPORT.json` records the precise opponent options.
 
-[The new profile](../config/protocol-v4.json) binds the same validation-only
-seed73/step2750/checkpointC76 to the independently validated q4096network52d
-and the saved1ff original executable. The latter adds deferred neural state
-and the intended-draw search repair. Actual compiled native Git inputs must
-match commit5803; later controller/documentation commits cannot replace the
-saved image. The ten-percent mixture and classical contract1 stay fixed.
+Conditions were 100 ms per move, one-node warmup, 150 ms transport allowance, 512-ply maximum and two arena workers. This is a per-move budget, not a game clock. The accepted 95% intervals use 20,000 bootstrap resamples of opening families containing color-reversed pairs, seed 104729. All original outcomes remain included; there were zero unfinished games in each external subset. The original host receipt records `macOS-26.7.2-arm64-arm-64bit` and eight logical CPUs. It did not capture CPU brand or RAM, which remain unspecified for exact historical attribution. No raw process log was published.
 
-The new owner reads the original model receipt, selection, all-three-seed
-independent learning proof, actual float checkpoint, original protocol and
-same-parameter wire export. Their byte identities are pinned. A separate
-`DEPLOYMENT_LINEAGE.json` records the derivation and original failed domains.
-It is not a new learning receipt, retraining run or revised seed selection.
+The same executable advertises public defaults of one thread, 32 MiB hash and neural evaluation disabled. Those declarations came from the accepted G04 transcript. The external games above deliberately used 16 MiB and the frozen neural mixture. No measured absolute, default-classical or human rating is established. Nominal Stockfish option labels cannot supply one.
 
-Neural and classical actors use the same saved executable, one thread,
-16MiB hash, identical search options and `Lazy Neural=true`. Only evaluator
-selection differs. The independent v4 parser checks the entire typed option
-inventory and deployment identity. The full sample remains4000color-paired
-neural games and2000external games across the same334/333/333pairs of pinned
-Stockfish19settings. Openings,100ms/move, one-node warmup,150ms transport
-allowance,512-ply limit,20k cluster-bootstrap resamples and all gain/uncertainty
-endpoints are unchanged. The neural point estimate must reach50Elo and its
-predeclared95%lower bound must exceed zero.
+The selected floating checkpoint remains C76 from validation-only seed 73 at step 2750. The q4096 network is 52d, and the saved executable is 1ff. The original learning receipt remains unchanged. The [core runtime join](../results/final-core-runtime-join-2026-10-28/README.md) checks the final identity and native inputs; original compiler/runtime closure and complete coordinator acceptance remain open.
 
-`runs/full-neural-strength-v4` and `runs/full-external-strength-v4` are the only
-output scopes. Each has one persistent12-hour wall/active ceiling,20GiB
-additional disk,10GiB reserve and at most three attempts, inside the original
-parent project deadline. A global exclusive host lock covers the sequence.
-Other native engine processes, compilation, training, inference, profiling,
-arenas and protocol stress cannot compete during decisive games. Actual host
-snapshots, failures, forfeits, complete journals and stage exits are retained.
+The original v4 neural comparison recorded 4,000 attempts, 3,997 finished games and three original 512-ply-limit records. Independent full-sample acceptance failed. Its completed-game diagnostic was -63.86 relative Elo against unchanged classical evaluation, with a 95% interval of [-73.80, -54.07]. The required 50 Elo gain and positive lower bound remain unmet. No checkpoint, seed or mixture is selected from match outcomes to replace that failure.
 
-```sh
-.venv/bin/python -m tools.strength_v4 sequence \
-  --protocol config/protocol-v4.json --expected-protocol-sha256 PROFILE_SHA \
-  --check-only
-.venv/bin/python -m tools.strength_v4 sequence \
-  --protocol config/protocol-v4.json --expected-protocol-sha256 PROFILE_SHA
-```
+Earlier q1024 numerical and neural-gain failures remain preserved under their original actors. The later 52d numerical component passed its separate frozen endpoint; that does not repair a strength failure or rewrite an old model receipt.
 
-The sequence completes the entire neural sample and independent replay. An
-observed failed neural-gain endpoint remains failed while the prospectively
-fixed external sample follows. An abnormal process/provenance/resource error
-stops that owner and preserves evidence. `--resume` retains original scopes,
-source, model bytes, journals and every used budget. It re-enters the original
-archived owner/module tree. Closed domains are read to advance the sequence;
-their actual games are never rerun. A changed or missing independent proof
-cannot manufacture a cached completion.
+The current tree retains the 2,000 external PGNs. The new report hashes them and recounts only headers, outcomes and color pairs. It reuses the accepted historical uncertainty and full independent move replay. Original game JSON, pair journals and archived actor configurations were retired, so a fresh full raw replay from this compact package is unavailable. Historical publication receipts remain unchanged and describe their original date. [Retention policy](ARTIFACT_RETENTION.md) states the present limits.
 
-The eight-query preflight is a nonrating node-limited functional check. The
-26profile/lineage/lock controls use actual saved learning and program bytes;
-hosted hosts inspect the saved foreign program without executing it. Neither
-preflight, validation loss, old opponent option labels nor measured speed
-establishes the new actor's Elo. No release is authorized by these receipts.
+The historical scope admitted at most three attempts and one 12-hour wall/active ceiling per domain under the original parent. Those closed limits are unchanged and grant no additional games. No rating producer is currently admitted. The [prospective rating benchmark](RATING_BENCHMARK_DESIGN.md) still requires real game-clock support, defensible calibration and a new feasible finite scope.

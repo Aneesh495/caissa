@@ -1,0 +1,30 @@
+{
+  "closed": true,
+  "owner_starts": 1,
+  "owner_exit": 0,
+  "elapsed_seconds": 0.20486041699768975,
+  "scope_sha256": "1427d4ae1c12710592284e854aab92102020653854670f555ecd386e369aa788",
+  "stderr_bytes": 0,
+  "stdout_sha256": "6d4e9370c4331d4b917cfdb4b6bd5e5b7f640ae8dceb5c6f11e4860d27294c3f",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "native_starts": 0,
+  "games_started": 0,
+  "move_replays": 0,
+  "bootstrap_reruns": 0,
+  "full_acceptance": false,
+  "closed_unix": 1793236039.8728378,
+  "product_source_commit": "3f6fcb51742e0abf40eea68506ca0f24e6354ff3",
+  "collector_sha256": "3829e46a5ee86e2b67d53bc1738a1e38c9d88401f2314aa130b83cf091956cd9",
+  "maximum_seconds": 20,
+  "combined_local_bytes": 2000000,
+  "input_bindings": 2099,
+  "historical_stages": {
+    "play": 3,
+    "statistics": 3,
+    "independent": 1,
+    "all_exits_zero": true,
+    "cleanup_warnings": []
+  },
+  "original_compiler_runtime_closure_established": false,
+  "full_bundle_coordinator_executed": false
+}

@@ -1,0 +1,183 @@
+{
+  "status": "passed_final_external_report_join",
+  "actor": {
+    "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+    "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+    "compiled_source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+    "historical_campaign_source_commit": "9f3ac86ca38eb28b357ad7ef146f1af4bfb96021",
+    "options": {
+      "Threads": 1,
+      "Hash": 16,
+      "Ordering Hints": false,
+      "Neural Bounds": false,
+      "Evaluation Cache": true,
+      "Tactical Generation": true,
+      "Use Neural": true,
+      "Neural Weight": 10,
+      "Lazy Neural": true
+    }
+  },
+  "conditions": {
+    "milliseconds": 100,
+    "threads": 1,
+    "hash_mib": 16,
+    "warmup_nodes": 1,
+    "transport_allowance_ms": 150,
+    "maximum_plies": 512,
+    "workers": 2,
+    "bootstrap_resamples": 20000,
+    "bootstrap_seed": 104729,
+    "confidence": 0.95
+  },
+  "hardware": {
+    "recorded_platform": "macOS-26.7.2-arm64-arm-64bit",
+    "recorded_logical_cpus": 8,
+    "cpu_brand_and_ram": "not captured by the original campaign host receipt"
+  },
+  "settings": [
+    {
+      "name": "Stockfish 19 Skill Level 0",
+      "opponent_sha256": "dc2f18c34ae962dff591b66147d220ec06e61d756b93d8a4f5e04fd8e55c251f",
+      "opponent_options": {
+        "Threads": 1,
+        "Hash": 16,
+        "UCI_LimitStrength": false,
+        "Skill Level": 0
+      },
+      "games": 668,
+      "wins": 656,
+      "draws": 5,
+      "losses": 7,
+      "unfinished": 0,
+      "pairs": 334,
+      "relative_elo": 736.3328696035825,
+      "relative_elo_95": [
+        649.699527136011,
+        867.4513653700432
+      ]
+    },
+    {
+      "name": "Stockfish 19 UCI_Elo 2000",
+      "opponent_sha256": "dc2f18c34ae962dff591b66147d220ec06e61d756b93d8a4f5e04fd8e55c251f",
+      "opponent_options": {
+        "Threads": 1,
+        "Hash": 16,
+        "UCI_LimitStrength": true,
+        "UCI_Elo": 2000
+      },
+      "games": 666,
+      "wins": 372,
+      "draws": 23,
+      "losses": 271,
+      "unfinished": 0,
+      "pairs": 333,
+      "relative_elo": 53.098766451817006,
+      "relative_elo_95": [
+        30.333994769764764,
+        75.77873309799925
+      ]
+    },
+    {
+      "name": "Stockfish 19 unrestricted",
+      "opponent_sha256": "dc2f18c34ae962dff591b66147d220ec06e61d756b93d8a4f5e04fd8e55c251f",
+      "opponent_options": {
+        "Threads": 1,
+        "Hash": 16,
+        "UCI_LimitStrength": false,
+        "Skill Level": 20
+      },
+      "games": 666,
+      "wins": 56,
+      "draws": 2,
+      "losses": 608,
+      "unfinished": 0,
+      "pairs": 333,
+      "relative_elo": -411.49697478415356,
+      "relative_elo_95": [
+        -460.13508328185253,
+        -370.677059530959
+      ]
+    }
+  ],
+  "absolute_elo": null,
+  "default_classical_rating": null,
+  "full_acceptance": false,
+  "product_source_commit": "3f6fcb51742e0abf40eea68506ca0f24e6354ff3",
+  "core_source_join_sha256": "752873744fe92e31ef8d6f3e2d4869bbc2518c5bc21a67ee3c2f557eb303f124",
+  "matched_native_files": 69,
+  "retained_pgn_header_counts": [
+    {
+      "setting": 0,
+      "wins": 656,
+      "draws": 5,
+      "losses": 7,
+      "paired_openings": 334,
+      "pgn_files": 668
+    },
+    {
+      "setting": 1,
+      "wins": 372,
+      "draws": 23,
+      "losses": 271,
+      "paired_openings": 333,
+      "pgn_files": 666
+    },
+    {
+      "setting": 2,
+      "wins": 56,
+      "draws": 2,
+      "losses": 608,
+      "paired_openings": 333,
+      "pgn_files": 666
+    }
+  ],
+  "negative_controls": [
+    {
+      "case": "absolute-rating",
+      "status": "rejected",
+      "reason": "unsupported absolute/default/release claim"
+    },
+    {
+      "case": "default-classical-rating",
+      "status": "rejected",
+      "reason": "unsupported absolute/default/release claim"
+    },
+    {
+      "case": "release-flag",
+      "status": "rejected",
+      "reason": "unsupported absolute/default/release claim"
+    },
+    {
+      "case": "wrong-engine",
+      "status": "rejected",
+      "reason": "wrong saved actor or network"
+    },
+    {
+      "case": "public-defaults-substituted",
+      "status": "rejected",
+      "reason": "measured neural configuration changed"
+    },
+    {
+      "case": "wrong-time-control",
+      "status": "rejected",
+      "reason": "time/resource/uncertainty conditions changed"
+    },
+    {
+      "case": "unfinished-original-game",
+      "status": "rejected",
+      "reason": "missing or unfinished original outcomes"
+    },
+    {
+      "case": "changed-opponent",
+      "status": "rejected",
+      "reason": "opponent version or setting differs"
+    }
+  ],
+  "elapsed_seconds": 0.15449000004446134,
+  "native_starts": 0,
+  "games_started": 0,
+  "move_replays": 0,
+  "bootstrap_reruns": 0,
+  "original_compiler_runtime_closure_established": false,
+  "full_bundle_coordinator_executed": false
+}
