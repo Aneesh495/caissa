@@ -48,7 +48,7 @@ def fixtures():
 
 
 def run_controls():
-    require(audit_reader.ACCEPTED_AUDIT is None and semantic_reader.ACCEPTED_JOIN is None,
+    require(semantic_reader.ACCEPTED_JOIN is None,
             "these new controls require the admitted pre-activation source state")
     cases = []
 

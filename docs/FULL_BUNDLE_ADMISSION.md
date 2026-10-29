@@ -29,6 +29,11 @@ are also prepared and unexecuted. No accepted audit roots or real independent
 audit producer/checker exist. Current source identity still needs an explicit
 checked transition before any future audit-root activation.
 
+The [new external-receipt design](FINAL_AUDIT_EXTERNAL_ROOT_DRAFT.md) prepares
+that boundary through a separately admitted expected digest, with unchanged
+audited source and HEAD. The loader and nine additional policy cases remain
+unexecuted; no real receipt or new execution scope has been created.
+
 ## Retained final evidence adapters
 
 | Driver | Gates | Accepted relationship |

@@ -226,3 +226,8 @@ prepared, with 23 new synthetic cases and zero executions. Audit trust roots,
 the real collector/checker and a checked final source transition remain missing.
 The projection consumes the audit reader's actual result only in a future
 admitted invocation. The accepted entry remains unchanged.
+
+The [external audit receipt draft](FINAL_AUDIT_EXTERNAL_ROOT_DRAFT.md) now
+prepares the final source-freeze relationship without changing audited code to
+install an audit root. Its expected receipt digest must be separately fixed by
+a legitimate future admission. No receipt, audit result or runtime pass exists.
