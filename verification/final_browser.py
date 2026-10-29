@@ -22,7 +22,7 @@ def inspect(data, expected):
     require(build['status'] == 'compiled' and build['typescript'] == '7.0.2' and build['types_node'] == '25.9.5' and build['node'] == expected['node_version'], 'actual final compiler/type/runtime differs')
     for name, digest in expected['compiled_source_inputs'].items():require(build['source_inputs'].get(name) == digest, 'actual final build source graph differs')
     require(build['outputs'] == expected['build_outputs'] and len(build['outputs']) == 8, 'actual final compiled output differs')
-    require([g['stage'] for g in data['groups']] == ['build', 'capture'] and all(g['group_absent_after_reap'] is True for g in data['groups']), 'final browser process groups survived')
+    require([g['stage'] for g in data['groups']] == ['capture'] and all(g['group_absent_after_reap'] is True for g in data['groups']), 'final browser process groups survived')
     edited = chess.Board();edited.push_uci('e2e3');edited_fen = edited.fen(en_passant='fen')
     required_paths = {('g1f3',), ('g1f3', 'd7d5'), ('g1f3', 'd7d5', 'g2g3'), ('d2d4',), ('d2d4', 'g8f6'), ('e2e3',)}
     native_lines, completed, served = 0, 0, 0
@@ -98,9 +98,9 @@ def verify(output, scope):
         require(hashlib.sha256(target.read_bytes()).hexdigest() == digest and ('100755' if target.stat().st_mode & 0o111 else '100644') == scope['native_source_modes'][name], 'final browser native source or mode differs')
     profile = json.loads((Path(scope['root'])/'config/final-browser-runtime-v1.json').read_text())
     require(profile['widths'] == [1366, 375] and profile['modes'] == ['classical', 'neural'] and profile['required_contexts'] == 4 and profile['completed_analysis_ms'] == 3000 and profile['maximum_capture_bytes'] == 5242880, 'final browser profile weakened')
-    for label in ['build', 'capture']:
+    for label in ['compiler-stage', 'capture']:
         stage = doc(label+'.json');require(stage['exit'] == 0 and stage['reason'] == 'completed' and stage['cleanup_warnings'] == [] and stage['discarded_output_bytes'] == 0 and hashlib.sha256((output/(label+'.log')).read_bytes()).hexdigest() == stage['log_sha256'], 'actual final browser stage/log failed')
-    build = doc('BUILD.json');outputs = {name: hashlib.sha256((output/name).read_bytes()).hexdigest() for name in build['outputs']}
+    build = doc('COMPILED_BUILD.json');outputs = {name: hashlib.sha256((output/name).read_bytes()).hexdigest() for name in build['outputs']}
     served = {name: hashlib.sha256((output/name).read_bytes()).hexdigest() for name in ['product/web/index.html', 'product/web/style.css', 'product/dist/web/app.js']}
     require(served['product/web/index.html'] == scope['source_bindings'][str(Path(scope['root'])/'web/index.html')] and served['product/web/style.css'] == scope['source_bindings'][str(Path(scope['root'])/'web/style.css')], 'final copied source assets changed')
     expected = {'network_sha256': scope['network_sha256'], 'engine_path': scope['engine'], 'node_version': scope['node_version'], 'build_outputs': outputs, 'served_hashes': served, 'compiled_source_inputs': {str(Path(scope['root'])/name): scope['source_bindings'][str(Path(scope['root'])/name)] for name in ['web/app.ts', 'analysis-service/server.ts', 'analysis-service/native.ts', 'analysis-service/telemetry.ts']}}

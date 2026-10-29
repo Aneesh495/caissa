@@ -27,7 +27,7 @@ cp.spawn = function(file, args = [], options = {}) {
 let compilerStarts = 0;
 cp.spawnSync = function(file, args, options) {
   const expected = ['--project', path.join(scope.root, 'tsconfig.json'), '--outDir', path.join(scope.output, 'product/dist'), '--typeRoots', scope.type_roots, '--listFiles'];
-  if (role !== 'build' || file !== scope.typescript_executable || JSON.stringify(args) !== JSON.stringify(expected) || ++compilerStarts > 1) throw new Error('Unadmitted final compiler invocation.');
+  if (role !== 'build' || scope.maximum_typescript_compiler_starts === 0 || file !== scope.typescript_executable || JSON.stringify(args) !== JSON.stringify(expected) || ++compilerStarts > 1) throw new Error('Unadmitted final compiler invocation.');
   return originalSync.call(this, file, args, { ...options, detached: false });
 };
 require('node:module').syncBuiltinESMExports();

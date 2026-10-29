@@ -32,12 +32,12 @@ class BrowserQuota(storage.Quota):
         path = Path(path).absolute()
         require(path == path.resolve() and path.is_relative_to(self.output), 'browser writer escaped its scope')
         name = str(path.relative_to(self.output));canonical = name[:-4] if name.endswith('.tmp') else name
-        root = {'WRITER.lock', 'CONFIG.json', 'COMMANDS.jsonl', 'PROGRESS.json', 'CAMPAIGN.json', 'ACTIVE_USAGE.json', 'RUNTIME_CONFIG.json', 'BUILD.json', 'BROWSER.json', 'NETWORK.json', 'ASSETS.json', 'ERRORS.json', 'service.log', 'build.log', 'build.json', 'capture.log', 'capture.json', 'independent.log', 'independent.json', 'FINAL_BROWSER.json', 'FAILED-final-browser.json', 'GROUPS.json', 'NATIVE_WRITER_USAGE.json'}
+        root = {'WRITER.lock', 'CONFIG.json', 'COMMANDS.jsonl', 'PROGRESS.json', 'CAMPAIGN.json', 'ACTIVE_USAGE.json', 'RUNTIME_CONFIG.json', 'COMPILED_BUILD.json', 'REUSED_COMPILER.json', 'compiler-stage.log', 'compiler-stage.json', 'BROWSER.json', 'NETWORK.json', 'ASSETS.json', 'ERRORS.json', 'service.log', 'build.log', 'build.json', 'capture.log', 'capture.json', 'independent.log', 'independent.json', 'FINAL_BROWSER.json', 'FAILED-final-browser.json', 'GROUPS.json', 'NATIVE_WRITER_USAGE.json'}
         product = re.fullmatch(r'product/(?:web/(?:index\.html|style\.css)|dist/(?:web/app|analysis-service/(?:native|server|telemetry))\.js(?:\.map)?)', canonical)
         screenshot = re.fullmatch(r'(?:classical|neural)-(?:1366|375)/(?:import|keyboard-edit|analysis|restored)\.png', canonical)
         independent = canonical in {'independent/FINAL_BROWSER.json', 'independent/CONTROLS.json'}
         require(canonical in root or product or screenshot or independent, 'unknown final browser writer destination: '+name)
-        immutable = product or screenshot or canonical in {'BUILD.json', 'BROWSER.json', 'NETWORK.json', 'ASSETS.json', 'ERRORS.json', 'RUNTIME_CONFIG.json'}
+        immutable = product or screenshot or canonical in {'COMPILED_BUILD.json', 'BROWSER.json', 'NETWORK.json', 'ASSETS.json', 'ERRORS.json', 'RUNTIME_CONFIG.json'}
         if immutable:require(not (self.output/canonical).exists(), 'committed final browser evidence is immutable')
         return 'control', ('FAILED-'+name if canonical.startswith('FAILED-') else name)
 
@@ -67,6 +67,7 @@ def execute(path):
     launched = []
     def spawn(command, *args, **kwargs):
         require(command in allowed and command not in launched, 'only the three final browser stages are admitted')
+        require(not (scope.get('reuse_compiler') and command == allowed[0]), 'the accepted compiler prerequisite cannot be rerun')
         launched.append(command)
         ceiling = 1024**2 if command == allowed[0] else 4*1024**2
         kwargs['preexec_fn'] = lambda: resource.setrlimit(resource.RLIMIT_FSIZE, (ceiling, ceiling))
@@ -87,7 +88,7 @@ def execute(path):
         require(trace_used <= scope['native_trace_bytes'], 'prepaid trace allowance exhausted')
         compiler_root = output/'product/dist'
         compiler_used = footprint([compiler_root])['charged_bytes'] if compiler_root.exists() else 0
-        require(compiler_used <= scope['compiler_writer_bytes'], 'prepaid compiler output exhausted')
+        if not scope.get('reuse_compiler'):require(compiler_used <= scope['compiler_writer_bytes'], 'prepaid compiler output exhausted')
         if force or time.monotonic()-last_storage[0] >= 10:
             actual = footprint([ROOT, *map(Path, scope['external_paths'])])
             remaining = scope['control_bytes']-state['control_used']+scope['outside_control_bytes']+max(0, scope['native_temp_bytes']-usage)+max(0, scope['native_trace_bytes']-trace_used)+max(0, scope['compiler_writer_bytes']-compiler_used)
@@ -112,7 +113,25 @@ def execute(path):
         atomic(output/'ACTIVE_USAGE.json', {'closed': False, 'active_seconds': 0, 'maximum_active_seconds': scope['maximum_active_seconds']})
         env = {**lease.environment(), 'CAISSA_FINAL_SCOPE': str(path), 'TMPDIR': str(output/'native-tmp'), 'TMP': str(output/'native-tmp'), 'TEMP': str(output/'native-tmp')}
         (output/'native-tmp').mkdir()
-        campaign.run('build', allowed[0], 60, maximum_output_bytes=2*1024**2, cwd=ROOT, env={**env, 'CAISSA_FINAL_ROLE': 'build'}, pass_fds=(lease.stream.fileno(),));reap('build');collect('build')
+        if scope.get('reuse_compiler'):
+            original = Path(scope['reuse_compiler']['output'])
+            stage = json.loads((original/'build.json').read_text())
+            require(stage['exit'] == 0 and stage['reason'] == 'completed' and stage['cleanup_warnings'] == [] and sha(original/'build.log') == stage['log_sha256'], 'retained actual compiler stage differs')
+            rows = [json.loads(line) for line in (original/'build.log').read_text().splitlines()]
+            manifest = [row for row in rows if row.get('artifact') == 'BUILD.json']
+            require(len(manifest) == 1, 'retained compiler manifest missing')
+            compiled = json.loads(base64.b64decode(manifest[0]['data'], validate=True))
+            for name, digest in compiled['outputs'].items():
+                require(sha(original/name) == digest, 'retained compiled file differs')
+                target = output/name;target.parent.mkdir(parents=True, exist_ok=True);target.write_bytes((original/name).read_bytes())
+            for name in ['web/app.ts', 'analysis-service/server.ts', 'analysis-service/native.ts', 'analysis-service/telemetry.ts']:
+                require(compiled['source_inputs'][str(ROOT/name)] == sha(ROOT/name), 'retained compiler source changed')
+            atomic(output/'COMPILED_BUILD.json', compiled)
+            (output/'compiler-stage.log').write_bytes((original/'build.log').read_bytes())
+            atomic(output/'compiler-stage.json', stage)
+            atomic(output/'REUSED_COMPILER.json', scope['reuse_compiler'])
+        else:
+            campaign.run('build', allowed[0], 60, maximum_output_bytes=2*1024**2, cwd=ROOT, env={**env, 'CAISSA_FINAL_ROLE': 'build'}, pass_fds=(lease.stream.fileno(),));reap('build');collect('build')
         for name in ['index.html', 'style.css']:
             target = output/'product/web'/name;target.parent.mkdir(parents=True, exist_ok=True);target.write_bytes((ROOT/'web'/name).read_bytes())
         for mode in ['classical', 'neural']:

@@ -27,4 +27,4 @@ const result = { status: 'compiled', node: process.version, typescript: JSON.par
   types_node: JSON.parse(readFileSync(resolve(scope.type_roots, 'node/package.json'), 'utf8')).version,
   compiler_exit: actual.status, compiler_pid: actual.pid, compiler_sha256: sha(readFileSync(scope.typescript_executable)), compiler_arguments: args,
   outputs, source_inputs: sourceInputs };
-console.log(JSON.stringify({ artifact: 'BUILD.json', data: Buffer.from(JSON.stringify(result)).toString('base64') }));
+console.log(JSON.stringify({ artifact: 'COMPILED_BUILD.json', data: Buffer.from(JSON.stringify(result)).toString('base64') }));
