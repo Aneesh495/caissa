@@ -1,0 +1,28 @@
+{
+  "status": "passed_pinned_browser_archive_inspection",
+  "artifact_id": 12698952186,
+  "archive_bytes": 9678582,
+  "archive_sha256": "d3804aafd849ca9afd2376f078d4d90bb60e5e2195e08b2f9f5385ff38a99f6e",
+  "archive_staged_on_filesystem": false,
+  "raw_positive_files": 32,
+  "raw_reserved_bytes": 10569150,
+  "historical_independent_result": {
+    "case": "real-browser-reconstruction",
+    "actual_exit": 0,
+    "observed": {
+      "status": "passed",
+      "component_pass": true,
+      "contexts": 4,
+      "reconstructed_board_states": 44,
+      "native_lines": 84,
+      "full_G12_certified": false,
+      "final_source_reexecution_required": true
+    }
+  },
+  "browser_executions": 0,
+  "native_starts": 0,
+  "old_controls_reexecuted": 0,
+  "full_R10_complete": false,
+  "full_acceptance": false,
+  "elapsed_seconds": 3.808233999996446
+}

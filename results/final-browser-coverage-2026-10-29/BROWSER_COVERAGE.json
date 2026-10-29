@@ -1,0 +1,400 @@
+{
+  "status": "passed_browser_source_and_archive_coverage_audit_only",
+  "product_source_commit": "b9e07e8ece3cb4edadcbc88dc344e910ae8e6d6b",
+  "historical_source_commit": "7e699e200d2cb89a87c4d1c21c784244a2f96481",
+  "browser_source_files_and_modes": {
+    "analysis-service/native.ts": {
+      "sha256": "9c1bcd2256a79c4f41387e62e6f0e5a7295140d7e31b0a7901719fd13b547688",
+      "mode": "100644"
+    },
+    "analysis-service/server.ts": {
+      "sha256": "ad27906270f50f9762a42e7010e78823b57772d3397a8675b5612552c4763a94",
+      "mode": "100644"
+    },
+    "analysis-service/telemetry.ts": {
+      "sha256": "9e26681676b7734017025294797b2ecf6aad2b80fccf860de0b31fef8bafad94",
+      "mode": "100644"
+    },
+    "package-lock.json": {
+      "sha256": "0b6240006715a91d81d67c676bd8a94846a71f3427cacabe7e4281fc856b2c1a",
+      "mode": "100644"
+    },
+    "package.json": {
+      "sha256": "18e1d84dddbccd2c5c88ef7ade3f56e2f2be39bae25221e4e50527a80bf1e555",
+      "mode": "100644"
+    },
+    "tests/browser_capture.py": {
+      "sha256": "f29f19c195e4bd972fd4e6d7585c9a286f0f3b9a643289cf7343a057420d92e9",
+      "mode": "100644"
+    },
+    "tests/browser_component.py": {
+      "sha256": "2059f0785d458db4dac9c7f3e832dbda31ee902c5ded358b29461b1ce8de26f6",
+      "mode": "100644"
+    },
+    "tools/browser_campaign.mjs": {
+      "sha256": "7fa472632d8e3a24f85740a5925f7ea586c3880959dee97cf5fd82d8c75a3d88",
+      "mode": "100644"
+    },
+    "tools/browser_campaign.py": {
+      "sha256": "05e16245a51938571491febd608e5a2d6d33edb096843eb604327e2060ea5aa4",
+      "mode": "100644"
+    },
+    "tools/browser_stream_capture.mjs": {
+      "sha256": "0ed367af720c69626431325fd9e5c39561dec2f526c6d23fc5b8e2565a3118f4",
+      "mode": "100644"
+    },
+    "tsconfig.json": {
+      "sha256": "f259788c7699473f37d2302b43755d2820f11d91ffc8caa7e45bf1b3a3fa8688",
+      "mode": "100644"
+    },
+    "verification/browser.py": {
+      "sha256": "a2410eb7190783fa4c013e85a13d6864b2f98617041d15b6719b1fa07675a3c7",
+      "mode": "100644"
+    },
+    "verification/browser_bundle.py": {
+      "sha256": "b3d18eec7819917fee405f8854f0a157532e4bb0a2e01384d90c23b8d2793072",
+      "mode": "100644"
+    },
+    "web/app.ts": {
+      "sha256": "b7f1a4054bfa42cc5997c3efe676fc19ac0bc1dc59191027801b06977927d2c2",
+      "mode": "100644"
+    },
+    "web/index.html": {
+      "sha256": "0fa5a4ec18041bfa7220c98b59f7205ba4882c9d06dcb87aed696da8c9205649",
+      "mode": "100644"
+    },
+    "web/style.css": {
+      "sha256": "37c6b22cc12ea6a7d15b41f08d97af2b0377212505bdda1fe5d28f9751217f46",
+      "mode": "100644"
+    }
+  },
+  "final_native_files_and_modes": 69,
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "archive_sha256": "d3804aafd849ca9afd2376f078d4d90bb60e5e2195e08b2f9f5385ff38a99f6e",
+  "original_independent_result": {
+    "case": "real-browser-reconstruction",
+    "actual_exit": 0,
+    "observed": {
+      "status": "passed",
+      "component_pass": true,
+      "contexts": 4,
+      "reconstructed_board_states": 44,
+      "native_lines": 84,
+      "full_G12_certified": false,
+      "final_source_reexecution_required": true
+    }
+  },
+  "contexts": [
+    {
+      "mode": "classical",
+      "width": 1280,
+      "steps": [
+        "fresh",
+        "import",
+        "keyboard-edit",
+        "export",
+        "flip",
+        "analysis",
+        "cancel",
+        "cancel-reaped",
+        "position-change",
+        "navigation-reaped",
+        "malformed-fen",
+        "stale-session",
+        "restored",
+        "final-export"
+      ],
+      "completed_native_responses": 1,
+      "native_response_sha256": [
+        "925cb0bd92d594cbda8aec6ef32e4aec312cda26e3c8c114951f7aa9c60f9e26"
+      ],
+      "cancel_workers_after": {
+        "positions": 0,
+        "analyses": 0
+      },
+      "navigation_workers_after": {
+        "positions": 0,
+        "analyses": 0
+      }
+    },
+    {
+      "mode": "classical",
+      "width": 390,
+      "steps": [
+        "fresh",
+        "import",
+        "keyboard-edit",
+        "export",
+        "flip",
+        "analysis",
+        "cancel",
+        "cancel-reaped",
+        "position-change",
+        "navigation-reaped",
+        "malformed-fen",
+        "stale-session",
+        "restored",
+        "final-export"
+      ],
+      "completed_native_responses": 1,
+      "native_response_sha256": [
+        "001066d5a90ee44ffb0d185b7cb9a5abf3a9b4b7a4955856ca82d5645c2a773b"
+      ],
+      "cancel_workers_after": {
+        "positions": 0,
+        "analyses": 0
+      },
+      "navigation_workers_after": {
+        "positions": 0,
+        "analyses": 0
+      }
+    },
+    {
+      "mode": "neural",
+      "width": 1280,
+      "steps": [
+        "fresh",
+        "import",
+        "keyboard-edit",
+        "export",
+        "flip",
+        "analysis",
+        "cancel",
+        "cancel-reaped",
+        "position-change",
+        "navigation-reaped",
+        "malformed-fen",
+        "stale-session",
+        "restored",
+        "final-export"
+      ],
+      "completed_native_responses": 1,
+      "native_response_sha256": [
+        "005fedb82956beccfc1b76db9a38a97b4b5f625b6dd6797a7f309244369d1620"
+      ],
+      "cancel_workers_after": {
+        "positions": 0,
+        "analyses": 0
+      },
+      "navigation_workers_after": {
+        "positions": 0,
+        "analyses": 0
+      }
+    },
+    {
+      "mode": "neural",
+      "width": 390,
+      "steps": [
+        "fresh",
+        "import",
+        "keyboard-edit",
+        "export",
+        "flip",
+        "analysis",
+        "cancel",
+        "cancel-reaped",
+        "position-change",
+        "navigation-reaped",
+        "malformed-fen",
+        "stale-session",
+        "restored",
+        "final-export"
+      ],
+      "completed_native_responses": 1,
+      "native_response_sha256": [
+        "ffe882598e862717abb58c40db8a27c0e6a7389905f0346d4a89a5219ab24b5c"
+      ],
+      "cancel_workers_after": {
+        "positions": 0,
+        "analyses": 0
+      },
+      "navigation_workers_after": {
+        "positions": 0,
+        "analyses": 0
+      }
+    }
+  ],
+  "assets": [
+    {
+      "mode": "classical",
+      "width": 1280,
+      "route": "/style.css",
+      "response_body_retained": true,
+      "sha256": "37c6b22cc12ea6a7d15b41f08d97af2b0377212505bdda1fe5d28f9751217f46"
+    },
+    {
+      "mode": "classical",
+      "width": 1280,
+      "route": "/",
+      "response_body_retained": true,
+      "sha256": "0fa5a4ec18041bfa7220c98b59f7205ba4882c9d06dcb87aed696da8c9205649"
+    },
+    {
+      "mode": "classical",
+      "width": 1280,
+      "route": "/app.js",
+      "response_body_retained": false,
+      "sha256": null
+    },
+    {
+      "mode": "classical",
+      "width": 1280,
+      "route": "/",
+      "response_body_retained": true,
+      "sha256": "0fa5a4ec18041bfa7220c98b59f7205ba4882c9d06dcb87aed696da8c9205649"
+    },
+    {
+      "mode": "classical",
+      "width": 1280,
+      "route": "/style.css",
+      "response_body_retained": true,
+      "sha256": "37c6b22cc12ea6a7d15b41f08d97af2b0377212505bdda1fe5d28f9751217f46"
+    },
+    {
+      "mode": "classical",
+      "width": 1280,
+      "route": "/app.js",
+      "response_body_retained": false,
+      "sha256": null
+    },
+    {
+      "mode": "classical",
+      "width": 390,
+      "route": "/style.css",
+      "response_body_retained": true,
+      "sha256": "37c6b22cc12ea6a7d15b41f08d97af2b0377212505bdda1fe5d28f9751217f46"
+    },
+    {
+      "mode": "classical",
+      "width": 390,
+      "route": "/",
+      "response_body_retained": true,
+      "sha256": "0fa5a4ec18041bfa7220c98b59f7205ba4882c9d06dcb87aed696da8c9205649"
+    },
+    {
+      "mode": "classical",
+      "width": 390,
+      "route": "/app.js",
+      "response_body_retained": false,
+      "sha256": null
+    },
+    {
+      "mode": "classical",
+      "width": 390,
+      "route": "/",
+      "response_body_retained": true,
+      "sha256": "0fa5a4ec18041bfa7220c98b59f7205ba4882c9d06dcb87aed696da8c9205649"
+    },
+    {
+      "mode": "classical",
+      "width": 390,
+      "route": "/style.css",
+      "response_body_retained": true,
+      "sha256": "37c6b22cc12ea6a7d15b41f08d97af2b0377212505bdda1fe5d28f9751217f46"
+    },
+    {
+      "mode": "classical",
+      "width": 390,
+      "route": "/app.js",
+      "response_body_retained": false,
+      "sha256": null
+    },
+    {
+      "mode": "neural",
+      "width": 1280,
+      "route": "/style.css",
+      "response_body_retained": true,
+      "sha256": "37c6b22cc12ea6a7d15b41f08d97af2b0377212505bdda1fe5d28f9751217f46"
+    },
+    {
+      "mode": "neural",
+      "width": 1280,
+      "route": "/",
+      "response_body_retained": true,
+      "sha256": "0fa5a4ec18041bfa7220c98b59f7205ba4882c9d06dcb87aed696da8c9205649"
+    },
+    {
+      "mode": "neural",
+      "width": 1280,
+      "route": "/app.js",
+      "response_body_retained": false,
+      "sha256": null
+    },
+    {
+      "mode": "neural",
+      "width": 1280,
+      "route": "/",
+      "response_body_retained": true,
+      "sha256": "0fa5a4ec18041bfa7220c98b59f7205ba4882c9d06dcb87aed696da8c9205649"
+    },
+    {
+      "mode": "neural",
+      "width": 1280,
+      "route": "/style.css",
+      "response_body_retained": true,
+      "sha256": "37c6b22cc12ea6a7d15b41f08d97af2b0377212505bdda1fe5d28f9751217f46"
+    },
+    {
+      "mode": "neural",
+      "width": 1280,
+      "route": "/app.js",
+      "response_body_retained": false,
+      "sha256": null
+    },
+    {
+      "mode": "neural",
+      "width": 390,
+      "route": "/style.css",
+      "response_body_retained": true,
+      "sha256": "37c6b22cc12ea6a7d15b41f08d97af2b0377212505bdda1fe5d28f9751217f46"
+    },
+    {
+      "mode": "neural",
+      "width": 390,
+      "route": "/app.js",
+      "response_body_retained": false,
+      "sha256": null
+    },
+    {
+      "mode": "neural",
+      "width": 390,
+      "route": "/",
+      "response_body_retained": true,
+      "sha256": "0fa5a4ec18041bfa7220c98b59f7205ba4882c9d06dcb87aed696da8c9205649"
+    },
+    {
+      "mode": "neural",
+      "width": 390,
+      "route": "/style.css",
+      "response_body_retained": true,
+      "sha256": "37c6b22cc12ea6a7d15b41f08d97af2b0377212505bdda1fe5d28f9751217f46"
+    },
+    {
+      "mode": "neural",
+      "width": 390,
+      "route": "/",
+      "response_body_retained": true,
+      "sha256": "0fa5a4ec18041bfa7220c98b59f7205ba4882c9d06dcb87aed696da8c9205649"
+    },
+    {
+      "mode": "neural",
+      "width": 390,
+      "route": "/app.js",
+      "response_body_retained": false,
+      "sha256": null
+    }
+  ],
+  "compiled_script_response_bodies_missing": 8,
+  "retained_local_app_js_sha256": "5d5d8fa843b1f5ac3cc35700ccb9d8605f3bf031d03667e17abc92b4d840a1d2",
+  "old_final_source_reexecution_requirement_preserved": true,
+  "browser_executions": 0,
+  "native_starts": 0,
+  "closed_controls_or_semantic_samples_reexecuted": 0,
+  "remaining": [
+    "Capture and independently bind the actual served compiled JavaScript/current service build and final native/browser flows under a new finite final acceptance scope. Existing source identity and component passes do not supply missing JavaScript response bytes."
+  ],
+  "full_R10_complete": false,
+  "full_acceptance": false,
+  "elapsed_seconds": 0.071083374961745
+}

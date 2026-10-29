@@ -1,0 +1,26 @@
+{
+  "archive": {
+    "closed": true,
+    "owner_exit": 0,
+    "elapsed_seconds": 3.840709291980602,
+    "scope_sha256": "bdf6c514be7ef61f150159da1301cb8d394b3fbff25879fb3629fb671ca24132",
+    "stdout_sha256": "485e278e80a6b8da539f7315c53885a3521a12ec57be9ab8b47a6c2f9312711d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0,
+    "closed_unix": 1793253725.537308,
+    "browser_executions": 0,
+    "native_starts": 0
+  },
+  "coverage": {
+    "closed": true,
+    "owner_exit": 0,
+    "elapsed_seconds": 0.10555083304643631,
+    "scope_sha256": "1424df5ee81273fa991bc9546fbe14ea4a263a51528028d3bc938695f848bff0",
+    "stdout_sha256": "709a5b6faea09f598ce3c2698c1678747fa9499a2a035d7418c8aef9b88c56d5",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0,
+    "closed_unix": 1793254127.296278,
+    "browser_executions": 0,
+    "native_starts": 0
+  }
+}
