@@ -9,6 +9,7 @@ import resource
 import runpy
 import shutil
 import signal
+import stat
 import subprocess
 import sys
 import time
@@ -35,7 +36,7 @@ def entry(scope_path):
     scope = read(scope_path)
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
     resource.setrlimit(resource.RLIMIT_FSIZE, (0, 0))
-    commands = []
+    commands, pipe_opens = [], []
     inactive_locks = {str(ROOT / "runs" / n / "OWNER.lock") for n in ["full-neural-strength-v3", "full-external-strength-v3", "full-neural-strength-v4", "full-external-strength-v4"]}
 
     def audit(event, args):
@@ -51,6 +52,10 @@ def entry(scope_path):
             writing = isinstance(mode, str) and any(c in mode for c in "wax+") or isinstance(flags, int) and flags & (os.O_WRONLY | os.O_RDWR | os.O_CREAT | os.O_TRUNC | os.O_APPEND)
             if writing:
                 if name == os.devnull:
+                    return
+                if type(name) is int and stat.S_ISFIFO(os.fstat(name).st_mode):
+                    require(len(pipe_opens) < 16, "full-entry owned pipe-open ceiling exhausted")
+                    pipe_opens.append(name)
                     return
                 # Existing old OWNER locks are opened only for flock by the
                 # unchanged guard. RLIMIT_FSIZE=0 forbids any content append.
