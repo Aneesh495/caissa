@@ -1,0 +1,12 @@
+{
+  "browser_reexecutions": 0,
+  "observations": [
+    "Narrow neural view shows legal board, selected evaluator, completed five-line analysis and retained variation tree.",
+    "Wide classical view restores the selected e3 board and imported main line/variation; analysis counters are cleared."
+  ],
+  "scope": "Two retained screenshots visually inspected after completion; this is supplemental to the independent four-context reader.",
+  "screenshots": {
+    "classical-1366/restored.png": "2fc3a62bee8d0ade34966e9b01dc791e6d63f7b18a7545ece69398b890b0b70a",
+    "neural-375/analysis.png": "46862ba731fc8feff64dc9db7e6406e7524406aa35af41cfa7f3ef5ca41583c1"
+  }
+}

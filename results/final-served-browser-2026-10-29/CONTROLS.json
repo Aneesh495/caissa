@@ -1,0 +1,62 @@
+[
+  {
+    "case": "changed_compiled_asset_with_rehashed_body",
+    "reason": "served compiled/source asset bytes differ",
+    "rejected": true
+  },
+  {
+    "case": "missing_compiled_asset",
+    "reason": "final served asset response body missing",
+    "rejected": true
+  },
+  {
+    "case": "illegal_native_pv",
+    "reason": "final native principal variation illegal",
+    "rejected": true
+  },
+  {
+    "case": "omitted_completed_native_bytes",
+    "reason": "final completed native response missing or duplicated",
+    "rejected": true
+  },
+  {
+    "case": "changed_build_source",
+    "reason": "actual final build source graph differs",
+    "rejected": true
+  },
+  {
+    "case": "wrong_visible_evaluator",
+    "reason": "final visible evaluator differs",
+    "rejected": true
+  },
+  {
+    "case": "lost_keyboard_focus",
+    "reason": "final keyboard destination focus lost",
+    "rejected": true
+  },
+  {
+    "case": "lost_exported_variation",
+    "reason": "final variation/export changed",
+    "rejected": true
+  },
+  {
+    "case": "unreaped_cancel",
+    "reason": "final cancellation/navigation worker not reaped",
+    "rejected": true
+  },
+  {
+    "case": "viewport_overflow",
+    "reason": "final constrained browser overflow",
+    "rejected": true
+  },
+  {
+    "case": "missing_process_close",
+    "reason": "final native/service/browser process not reaped",
+    "rejected": true
+  },
+  {
+    "case": "forged_full_acceptance",
+    "reason": "browser error or unsupported acceptance claim",
+    "rejected": true
+  }
+]
