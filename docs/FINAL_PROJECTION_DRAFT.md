@@ -28,7 +28,9 @@ The projection prepares exactly sixteen decisions, with category counts and a
 valid nonpassing exit value of 2. Missing, stale, contradictory or forged evidence
 raises rejection and must become exit 1 in a future admitted CLI. Structural
 inventory coverage is not completion of R12, a passed G14 join or project acceptance.
-There is no new CLI dispatch or runtime acceptance in this increment.
+The later [designated entry draft](FINAL_PROJECTION_ENTRY_DRAFT.md) now prepares
+separate guarded CLI dispatch. It remains unexecuted, requires a fresh admitted
+parent and has no runtime acceptance.
 
 The acceptance expression uses all actual prior requirements and independent
 audit satisfaction. The [later audit interface draft](FINAL_AUDIT_INTERFACE_DRAFT.md)
@@ -79,9 +81,9 @@ real final-entry integration remain required.
    process exit/output, owner, groups and closed ledgers, then update completion
    status from that evidence. No such invocation is admitted or performed now.
 
-The audit interface and new 23-case synthetic policy controls are prepared and
-unexecuted. The real audit producers, source-transition binding and actual entry
-wiring remain unfinished. The frozen failed neural requirement, incomplete
+The audit interface and all 50 later policy/filesystem controls are prepared and
+unexecuted. The real audit producers, checked source transition, admitted entry
+parent and actual entry acceptance remain unfinished. The frozen failed neural requirement, incomplete
 matrix and unavailable historical inputs remain nonpassing after implementation.
 
 ## New controls still required

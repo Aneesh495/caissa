@@ -1,6 +1,7 @@
 """Unexecuted saved-evidence coordinator draft, not an accepted entry point.
 
-No CLI dispatch imports this module. Execution requires a fresh admitted scope.
+Only the separate unexecuted admission-entry draft prepares CLI dispatch here.
+Execution requires fresh direct human authority and a separately admitted scope.
 The accepted full_bundle inspection and domain readers retain their contracts.
 """
 
