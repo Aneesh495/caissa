@@ -78,7 +78,7 @@ def main(scope_path):
 
     path = Path(scope_path).resolve()
     scope = read(path)
-    extended = scope.get("control_profile") == "core-external-performance"
+    extended = scope.get("control_profile") in {"core-external-performance", "data-learning"}
     if extended:
         from verification.final_core_bundle import DRIVERS as extended_drivers
 
@@ -144,6 +144,14 @@ def main(scope_path):
         def ref(name):
             return {"path": name, "sha256": sha(fixture / name)}
         derived = {}
+        for item in scope.get("derived_metadata", []):
+            raw = (ROOT / item["source"]).read_bytes()
+            require(hashlib.sha256(raw).hexdigest() == item["sha256"], "accepted derived source metadata identity differs")
+            name = "closed/CORE/derived/G05_SOURCE_INPUTS.json"
+            target = fixture / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(raw)
+            derived[item["logical"]] = ref(name)
         for item in scope.get("archive_metadata", []):
             import zipfile
 
@@ -205,11 +213,14 @@ def main(scope_path):
         expected_gates = scope.get("expected_verified_gates", ["G11", "G12"])
         require(set(report["verified_semantic_gates"]) == set(expected_gates) and len(report["pending_semantic_gates"]) == 16 - len(expected_gates) and report["full_acceptance"] is False, "actual full-entry gate decision differs")
         if extended:
-            from tools.final_extended_adapter_controls import run_controls
+            if scope["control_profile"] == "data-learning":
+                from tools.final_lineage_adapter_controls import run_controls
+            else:
+                from tools.final_extended_adapter_controls import run_controls
 
             controls = run_controls(fixture, inputs, manifest, put, ref, scope, quota)
             atomic(output / "CONTROLS.json", controls)
-            atomic(output / "ADAPTERS.json", {"status": "passed_final_core_external_performance_integration", "product_source_commit": scope["product_commit"], "scope_sha256": sha(path), "full_entry_actual_exit": receipt["exit"], "verified_final_gates": sorted(expected_gates), "remaining_pending_gates": sorted(report["pending_semantic_gates"]), "controls": len(controls), "old_16_controls_reexecuted": False, "native_starts": 0, "browser_starts": 0, "closed_semantic_samples_reexecuted": 0, "full_R12_complete": False, "full_acceptance": False})
+            atomic(output / "ADAPTERS.json", {"status": "passed_final_data_learning_integration" if scope["control_profile"] == "data-learning" else "passed_final_core_external_performance_integration", "product_source_commit": scope["product_commit"], "scope_sha256": sha(path), "full_entry_actual_exit": receipt["exit"], "verified_final_gates": sorted(expected_gates), "remaining_pending_gates": sorted(report["pending_semantic_gates"]), "controls": len(controls), "old_16_controls_reexecuted": False, "old_17_controls_reexecuted": False, "native_starts": 0, "browser_starts": 0, "closed_semantic_samples_reexecuted": 0, "full_R12_complete": False, "full_acceptance": False})
             campaign.close("passed-final-core-external-performance-adapters")
             return
         # These new cases exercise the adapter inventory, deployment and decision

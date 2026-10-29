@@ -1,0 +1,85 @@
+[
+  {
+    "case": "missing_real_independent_stage",
+    "reason": "'results/g07-full-audit-2026-10-26/data/execution/independent.json'",
+    "rejected": true
+  },
+  {
+    "case": "failed_real_learning_exit",
+    "reason": "actual original G07 stage failed or log/cleanup differs",
+    "rejected": true
+  },
+  {
+    "case": "changed_actual_stage_log_hash",
+    "reason": "actual original G07 stage failed or log/cleanup differs",
+    "rejected": true
+  },
+  {
+    "case": "historical_gate_promoted_from_component",
+    "reason": "historical G07 was not a completed independent gate",
+    "rejected": true
+  },
+  {
+    "case": "changed_original_selected_step",
+    "reason": "original frozen selection differs",
+    "rejected": true
+  },
+  {
+    "case": "incomplete_all_checkpoint_audit",
+    "reason": "actual original component output differs",
+    "rejected": true
+  },
+  {
+    "case": "wrong_retained_float_bytes",
+    "reason": "retained deployment bytes differ",
+    "rejected": true
+  },
+  {
+    "case": "old_export_substituted_as_final",
+    "reason": "retained deployment bytes differ",
+    "rejected": true
+  },
+  {
+    "case": "final_actor_substituted_as_old_teacher",
+    "reason": "historical teacher was replaced by final deployment",
+    "rejected": true
+  },
+  {
+    "case": "changed_independent_reader_source",
+    "reason": "original independent learning/data source changed: verification/learning.py",
+    "rejected": true
+  },
+  {
+    "case": "changed_final_native_mode",
+    "reason": "final native source or mode differs",
+    "rejected": true
+  },
+  {
+    "case": "invented_retired_checkpoint_availability",
+    "reason": "retired original checkpoint availability differs",
+    "rejected": true
+  },
+  {
+    "case": "validation_slice_promoted_to_full_reproduction",
+    "reason": "slice or lineage was promoted to reproduction/training/release",
+    "rejected": true
+  },
+  {
+    "case": "old_numerical_failures_erased",
+    "reason": "old numerical failures were erased",
+    "rejected": true
+  },
+  {
+    "case": "full_acceptance_promoted_from_lineage",
+    "reason": "slice or lineage was promoted to reproduction/training/release",
+    "rejected": true
+  },
+  {
+    "case": "training/train.py unrelated_source_edit",
+    "rejected": true
+  },
+  {
+    "case": "training/prepare.py unrelated_source_edit",
+    "rejected": true
+  }
+]

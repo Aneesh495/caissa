@@ -36,6 +36,14 @@ for _gate in DRIVERS:
     _work, _result, _public, _scope_sha, _result_sha = FAMILIES[_family]
     ANCHORS[_gate] = {_work + "SCOPE.json": _scope_sha, _work + _result: _result_sha, BOUNDARY: "c7f46036d528f057c797e87994cfc2e03467f24b16c05d329655e48187199e25"}
 
+LINEAGE = "work/final-data-learning-lineage-1-2026-10-29/"
+DRIVERS["G07"] = "final-data-learning-evidence-v1"
+ANCHORS["G07"] = {
+    LINEAGE + "SCOPE.json": "f1d3f31e9a00f0357c7901fac96bcc53b666f4e250dc32c7cbbb0f6ac0e9d075",
+    LINEAGE + "LINEAGE.json": "110fbfbd380be46e28cee8b85328d6864ed44bebaf4add0df94b30ad711acaa6",
+    BOUNDARY: "c7f46036d528f057c797e87994cfc2e03467f24b16c05d329655e48187199e25",
+}
+
 
 def metadata_inputs(scope):
     """Retained metadata, not retired corpora, checkpoints or per-move games."""
@@ -148,12 +156,38 @@ def performance(records, checkout):
     return {"accepted_final_join_sha256": records.sha(PERFORMANCE + "THREAD_PERFORMANCE_JOIN.json"), "original_timed_searches": 640, "original_rss_samples": 4581, "original_independent_fixed_node_searches": 16, "performance_is_descriptive": True, "new_stop_or_race_measurements": 0, "strength_inferred": False, "full_G10_certified": False}
 
 
+def learning(records, checkout):
+    scope, result = records.doc(LINEAGE + "SCOPE.json"), records.doc(LINEAGE + "LINEAGE.json")
+    closed = owner(records, LINEAGE, records.sha(LINEAGE + "SCOPE.json"))
+    require(closed["owned_group_absent_after_reap"] is True and records.doc(LINEAGE + "owner.stdout")["status"] == result["status"], "actual final lineage owner/output differs")
+    ledger = records.doc(LINEAGE + "METADATA_USAGE.json")
+    require(ledger["closed"] is True and ledger["failure"] is None and ledger["scope_sha256"] == records.sha(LINEAGE + "SCOPE.json") and ledger["native_starts"] == ledger["child_starts"] == 0, "final lineage metadata ledger incomplete")
+    require(same(result, records.doc("results/final-data-learning-lineage-2026-10-29/LINEAGE.json")) and result["status"] == "passed_final_data_learning_lineage" and result["historical_G07_pass_bound"] is True and result["full_raw_reproduction_available"] is False and result["full_acceptance"] is False, "final lineage result or raw availability differs")
+    expected = metadata_inputs(scope)
+    require(expected <= set(records.records), "actual original lineage metadata inventory incomplete")
+    for name in expected:
+        require(records.sha(name) == scope["input_bindings"][name], "accepted lineage input changed: " + name)
+    sources(checkout, scope["input_bindings"], ["tools/final_lineage_join.py", "tools/full_learning.py", "tools/finalize_corpus.py", *[n for n in scope["input_bindings"] if n.startswith(("training/", "verification/"))]])
+    boundary(checkout, records.doc(BOUNDARY))
+    old = "results/g07-full-audit-2026-10-26/"
+    report = records.doc(old + "G07.json")
+    require(report["status"] == "passed" and report["full_gate"] is True and report["scope_closed"] is True and report["full_acceptance"] is False and report["plan_sha256"] == records.sha(old + "PLAN.json"), "original complete G07 audit differs")
+    for label in ["data", "learning"]:
+        stage(records, old + "execution/", label)
+        require(records.doc(old + "ACTIVE_USAGE.json")["closed"] is True and report["components"][label]["sha256"] == records.sha(old + report["components"][label]["path"]), "original G07 closure or independent component differs")
+    stage(records, old + "data/execution/", "independent")
+    require(result["engine_sha256"] == ENGINE and result["network_sha256"] == NETWORK and result["checkpoint_sha256"] == records.doc(BOUNDARY)["checkpoint_sha256"] and result["original_selected_seed"] == 73 and result["original_selected_step"] == 2750 and result["ordinary_training_preparation_AST_matches"] is True, "final selected deployment/source lineage differs")
+    available = records.doc(LINEAGE + "AVAILABILITY.json")
+    require(same(available, records.doc("results/final-data-learning-lineage-2026-10-29/AVAILABILITY.json")) and len(available["original_checkpoint_paths"]) == 240 and not any(available["original_checkpoint_paths"].values()) and len(available["original_array_paths"]) == 6 and not any(available["original_array_paths"].values()) and len(available["original_audit_catalog_paths"]) == 3 and not any(available["original_audit_catalog_paths"].values()) and available["full_raw_reproduction_available"] is False, "retired historical inputs were restored by a metadata claim")
+    return {"accepted_final_join_sha256": records.sha(LINEAGE + "LINEAGE.json"), "historical_G07_independent_audit_bound": True, "original_selected_seed": 73, "original_selected_step": 2750, "retained_selected_checkpoint_bytes": result["retained_selected_checkpoint_bytes"], "retained_validation_rows": 8192, "original_checkpoint_paths_available": 0, "original_full_arrays_available": 0, "full_historical_raw_reproduction": False, "new_training_or_selection": False}
+
+
 def verify(bundle, inputs, checkout, expected_commit, gate):
     domain = inputs["domains"][gate]
     require(gate in DRIVERS and domain["driver"] == DRIVERS[gate] and domain["source_commit"] == expected_commit, "unsupported or stale final core/report/performance dispatch")
     require(domain["engine_sha256"] == inputs["engine"]["sha256"] == ENGINE and domain["network_sha256"] == inputs["network"]["artifact"]["sha256"] == NETWORK, "final adapter changed saved deployment")
     records = Records(bundle, domain, gate)
-    details = core(records, checkout, gate) if gate in CORE_GATES else external(records, checkout) if gate == "G09" else performance(records, checkout)
+    details = core(records, checkout, gate) if gate in CORE_GATES else learning(records, checkout) if gate == "G07" else external(records, checkout) if gate == "G09" else performance(records, checkout)
     return {"status": "passed_final_closed_evidence_adapter", "gate": gate, "full_gate": True, "full_acceptance": False, "coordinator_source_commit": expected_commit, "engine_sha256": ENGINE, "network_sha256": NETWORK, "native_starts_in_this_adapter": 0, "semantic_sample_replays": 0, "original_compiler_runtime_closure": False, **details}
 
 

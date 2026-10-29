@@ -1,0 +1,65 @@
+{
+  "checkpoint_sha256": "c76d8e9ef0f2255531bc9085f5d0330a7a4152cf9b21a65ff8aee740ab8b2005",
+  "closed_semantic_sample_replays": 0,
+  "dataset_sha256": "f09cdec986858c5b1aa80b3c97aaa4d825be892fc94e16ac5d835bc3d709f0ce",
+  "elapsed_seconds": 0.38969620800344273,
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "full_G07_coordinator_integrated": false,
+  "full_acceptance": false,
+  "full_bundle_coordinator_executed": false,
+  "full_raw_reproduction_available": false,
+  "games": 0,
+  "historical_G07_pass_bound": true,
+  "matched_native_files": 69,
+  "native_starts": 0,
+  "negative_controls": 17,
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "new_selection": false,
+  "new_training": false,
+  "optional_recovery_branches_remain_separate": true,
+  "ordinary_training_preparation_AST_matches": true,
+  "original_checkpoint_paths_available": 0,
+  "original_checkpoints_audited": 240,
+  "original_compiler_runtime_closure": false,
+  "original_full_arrays_available": 0,
+  "original_model_campaign_sha256": "92d62149d3a4de184ad93b9f5f04f77e38386992d04d02bd824b33cf3e5241bd",
+  "original_numerical_failures_preserved": [
+    "G06 producer numerical endpoint",
+    "G06 independent numerical endpoint"
+  ],
+  "original_selected_seed": 73,
+  "original_selected_step": 2750,
+  "original_teacher_sha256": "cd33e7f3f925bb522569c34283cc9f20c710d9e1bc50760bda62ccacbf2994ed",
+  "original_training_invocations": 3,
+  "product_source_commit": "8ada0369432183a8f56922536af48477815deabf",
+  "retained_selected_checkpoint_bytes": 9518976,
+  "retained_validation_rows": 8192,
+  "source_relationships": {
+    "training/prepare.py": {
+      "current_sha256": "435a815aa3a262ba725fae244d53ae746cad959288115b85ed5046df50a63c13",
+      "excluded_optional_branches": [
+        "prepare optional barrier os import",
+        "optional barrier argument with implicit None default",
+        "barrier branch: a.recovery_barrier is not None",
+        "barrier branch: a.recovery_barrier is not None and session_pairs == 32",
+        "barrier branch: a.recovery_barrier is not None and session_pairs == 52"
+      ],
+      "historical_sha256": "2930e4c0e718e9c1ca37b89a0d9e17e9e92043842a57e94f6b385010d8834a94",
+      "ordinary_AST_equal": true
+    },
+    "training/train.py": {
+      "current_sha256": "72fcfa59b082df2b0dea77d55877e3a5b4a503472cae1286dfdf425b10b2bd57",
+      "excluded_optional_branches": [
+        "optional barrier argument with implicit None default",
+        "barrier branch: a.recovery_barrier is not None and (a.steps != 100 or a.checkpoint_every != 20 or a.seed != 17 or (a.batch != 256) or (a.threads != 2) or (a.device != 'cpu') or (a.network_version != 3) or (a.neural_weight != 10) or a.resume or (a.recovery_barrier.resolve() != a.output.resolve() / 'RECOVERY_READY.json') or a.recovery_barrier.exists())",
+        "exclude optional argument from original config",
+        "resume-only journal repair",
+        "barrier branch: a.recovery_barrier is not None and step + 1 == 40"
+      ],
+      "historical_sha256": "0cc0e9b06f40701c7dc4f9f0941d02b7598a5f9298742b198eacac029b15ca65",
+      "ordinary_AST_equal": true
+    }
+  },
+  "status": "passed_final_data_learning_lineage",
+  "unchanged_independent_and_training_sources": 14
+}
