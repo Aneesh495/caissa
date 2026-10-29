@@ -1,0 +1,22 @@
+{
+  "status": "passed_current_arena_recovery_controls_only",
+  "controls": [
+    "actual_strict_G11_guard_rejects_changed_current_arena",
+    "inactive_power_path_AST_matches_original_without_relaxing_G11_guard",
+    "unrelated_committed_record_change_does_not_compare_equal",
+    "current_committed_game_unchanged_PGN_reconstructed_without_start_or_wait",
+    "current_partial_pair_fills_missing_reverse_and_then_reuses_commit",
+    "power_deadline_failure_prevents_start_and_authoritative_commit",
+    "actual_PowerWait_preserves_deadline_and_rejects_policy_change",
+    "actual_main_rejects_removed_saved_policy_before_actor_probe"
+  ],
+  "read_only_git_commands": 8,
+  "native_chess_starts": 0,
+  "real_games": 0,
+  "synthetic_new_game_fixtures": 1,
+  "historical_producers_or_closed_samples_rerun": false,
+  "strict_original_G11_guard_unchanged": true,
+  "full_R09_complete": false,
+  "full_acceptance": false,
+  "elapsed_seconds": 0.4254857079940848
+}

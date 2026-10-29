@@ -1,0 +1,39 @@
+{
+  "current_controls": {
+    "closed": true,
+    "owner_exit": 0,
+    "elapsed_seconds": 0.48434354102937505,
+    "scope_sha256": "5e5bb7f7185d4e3262326e7701f65265596717c5b207715cf17c5cff2293b82d",
+    "stderr_bytes": 0,
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_sha256": "b647c8ea34994f1f8a44a40497f09ddd8402b845b4ffa19747f528465c6c8400",
+    "native_chess_starts": 0,
+    "real_games": 0,
+    "closed_unix": 1793241843.3623948
+  },
+  "archive_inspection": {
+    "closed": true,
+    "owner_exit": 0,
+    "elapsed_seconds": 12.877695582981687,
+    "scope_sha256": "5a019d7b5ca95f7cc9d83489c3cd24b3e54fd686be964434327541f9946e89f9",
+    "stdout_bytes": 913,
+    "stderr_bytes": 0,
+    "stdout_sha256": "44e17655f38c5704f1f60886f8453c60872a984145e10b973284a274248c1723",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "native_chess_starts": 0,
+    "games": 0,
+    "closed_unix": 1793251950.603946
+  },
+  "coverage_join": {
+    "closed": true,
+    "owner_exit": 0,
+    "elapsed_seconds": 0.04303383396472782,
+    "scope_sha256": "80fc99eb70177ba48cbe4f2bc40325845ca573734e79ec5ea108852fb10092f5",
+    "stdout_sha256": "e1ad284514185c8d9e5cd1dd3ae1766ee879254b92906cd2becb41fb3d401c10",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_bytes": 0,
+    "closed_unix": 1793252146.800684,
+    "native_starts": 0,
+    "games": 0
+  }
+}
