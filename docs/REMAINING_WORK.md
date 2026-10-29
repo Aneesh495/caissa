@@ -1,14 +1,14 @@
 # Caissa remaining work
 
-Updated: 2026-10-28T20:57:01-04:00 (America/New_York). Revision 50.
+Updated: 2026-10-28T20:58:52-04:00 (America/New_York). Revision 51.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
 ## Current work
 
-R05: Bind core correctness to the final engine.
+R07: Bind existing external strength to the final report.
 
-Finish the final six-domain core source/actor/evidence join using the accepted exact1ff proofs, with independent mismatch rejection checks. Do not rerun closed semantic samples. Keep full coordinator execution, original compiler/runtime closure and release gates separate.
+Bind the accepted external2000-game result to the final1ff source/runtime identity and exact neural actor/settings, opponent version, hardware and uncertainty. Preserve the closed sample and distinguish it from the public classical defaults; do not replay games.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -32,9 +32,9 @@ Recorded attempts include failed or unfinished outcomes. A count does not establ
 | R02 | in progress | Verify comparisons and integrate the matrix reader |
 | R03 | pending | Close thread-scaling, memory, stop and race-safety evidence |
 | R04 | failed requirement | Diagnose the failed neural-strength requirement |
-| R05 | in progress | Bind core correctness to the final engine |
+| R05 | done | Bind core correctness to the final engine |
 | R06 | blocked | Finish final data and learning lineage integration |
-| R07 | pending | Bind existing external strength to the final report |
+| R07 | in progress | Bind existing external strength to the final report |
 | R08 | blocked | Design and run a calibrated engine-pool rating benchmark |
 | R09 | pending | Complete final recovery acceptance |
 | R10 | pending | Complete final browser and native-engine acceptance |
@@ -70,7 +70,7 @@ Blocker: The sixth parallel comparison is incomplete at the original active cap.
 
 ### R03: Close thread-scaling, memory, stop and race-safety evidence
 
-After the timed owner releases the host, join useful search work, memory, cancellation latency and race-safety evidence across thread modes. Run only missing separately scoped checks.
+Join useful search work, memory, cancellation latency and race-safety evidence across thread modes using the released host and accepted G04/performance proofs. Run only genuinely missing separately scoped checks.
 
 Completion requires: The multicore result includes checked performance and safety relationships for the same actor and options; source bindings and real stage exits are complete.
 
@@ -92,15 +92,13 @@ Blocker: The frozen neural sample failed and its completed-game diagnostic was w
 
 ### R05: Bind core correctness to the final engine
 
-Finish the final six-domain core source/actor/evidence join using the accepted exact1ff proofs, with independent mismatch rejection checks. Do not rerun closed semantic samples. Keep full coordinator execution, original compiler/runtime closure and release gates separate.
+Reuse the closed six-domain core runtime join without rerunning samples. Continue R07 final external-strength reporting, R12 full coordinator integration and R13 original compiler/runtime provenance.
 
 Completion requires: G01-G06 evidence and independent readers agree on the final identity, reject incorrect evidence, and show actual runtime completion where required.
 
 Dependencies: exclusive host released, final source and actor inventory.
 
-Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`; `results/native-source-binding-2026-10-26`; `results/final-core-identity-join-2026-10-28`; `results/final-draw-wiring-2026-10-28`; `results/final-saved-actor-draw-2026-10-28`; `results/final-protocol-wiring-2026-10-28`; `results/final-saved-actor-protocol-2026-10-28`; `results/final-rules-wiring-2026-10-28`; `results/final-saved-actor-rules-2026-10-28`; `results/precision-v4-inputs/IDENTITY.json`; `results/final-numerical-wiring-2026-10-28`; `results/final-saved-actor-numerical-2026-10-28`; `results/final-restoration-transport-2026-10-28`; `results/final-saved-actor-restoration-2026-10-28`.
-
-Blocker: Final six-domain source/evidence integration remains to be checked. Original compiler/runtime closure, other final coordinator domains, the failed neural-gain requirement and incomplete match comparison remain separate blockers.
+Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`; `results/native-source-binding-2026-10-26`; `results/final-core-identity-join-2026-10-28`; `results/final-draw-wiring-2026-10-28`; `results/final-saved-actor-draw-2026-10-28`; `results/final-protocol-wiring-2026-10-28`; `results/final-saved-actor-protocol-2026-10-28`; `results/final-rules-wiring-2026-10-28`; `results/final-saved-actor-rules-2026-10-28`; `results/precision-v4-inputs/IDENTITY.json`; `results/final-numerical-wiring-2026-10-28`; `results/final-saved-actor-numerical-2026-10-28`; `results/final-restoration-transport-2026-10-28`; `results/final-saved-actor-restoration-2026-10-28`; `results/final-core-runtime-join-2026-10-28`.
 
 ### R06: Finish final data and learning lineage integration
 
@@ -116,7 +114,7 @@ Blocker: Bulk historical corpora and obsolete checkpoints were intentionally ret
 
 ### R07: Bind existing external strength to the final report
 
-Preserve the independently passed 2,000-game frozen external sample and its exact actor/settings. Complete final report/source relationships; do not replay the closed sample.
+Bind the accepted external2000-game result to the final1ff source/runtime identity and exact neural actor/settings, opponent version, hardware and uncertainty. Preserve the closed sample and distinguish it from the public classical defaults; do not replay games.
 
 Completion requires: The report states opponent versions, settings, time control, hardware, results, uncertainty and tested Caissa identity without an unsupported absolute rating.
 
