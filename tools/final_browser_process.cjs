@@ -6,6 +6,7 @@ const crypto = require('node:crypto');
 const scope = JSON.parse(fs.readFileSync(process.env.CAISSA_FINAL_SCOPE, 'utf8'));
 const role = process.env.CAISSA_FINAL_ROLE;
 const original = cp.spawn;
+const originalSync = cp.spawnSync;
 const counts = { engine: 0, service: 0, browser: 0 };
 const emit = (value) => process.stdout.write(JSON.stringify({ _caissa_process_event: value }) + '\n');
 cp.spawn = function(file, args = [], options = {}) {
@@ -22,5 +23,11 @@ cp.spawn = function(file, args = [], options = {}) {
   emit({ event: 'started', ...identity });
   child.once('close', (code, signal) => emit({ event: 'closed', ...identity, code, signal }));
   return child;
+};
+let compilerStarts = 0;
+cp.spawnSync = function(file, args, options) {
+  const expected = ['--project', path.join(scope.root, 'tsconfig.json'), '--outDir', path.join(scope.output, 'product/dist'), '--typeRoots', scope.type_roots, '--listFiles'];
+  if (role !== 'build' || file !== scope.typescript_executable || JSON.stringify(args) !== JSON.stringify(expected) || ++compilerStarts > 1) throw new Error('Unadmitted final compiler invocation.');
+  return originalSync.call(this, file, args, { ...options, detached: false });
 };
 require('node:module').syncBuiltinESMExports();
