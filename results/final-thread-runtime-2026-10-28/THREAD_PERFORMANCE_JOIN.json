@@ -1,0 +1,279 @@
+{
+  "status": "passed_final_thread_performance_relationships",
+  "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+  "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+  "compiled_source_commit": "5803cc485420b19eb96dda2c29f81fcfc6b09b6b",
+  "matched_native_files": 69,
+  "options": {
+    "Hash": 16,
+    "Use Neural": true,
+    "Neural Weight": 10,
+    "Lazy Neural": true,
+    "Evaluation Cache": true,
+    "Tactical Generation": true,
+    "Neural Bounds": false,
+    "Ordering Hints": false,
+    "Search Stats": false
+  },
+  "threads": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "runtime": {
+    "status": "passed_exact_neural_thread_runtime_component",
+    "stop_sequences": 4000,
+    "instrumented_searches": 64,
+    "native_sessions": 8,
+    "legal_pvs": 8206,
+    "stop_ms": {
+      "count": 4000,
+      "p50": 0.062063,
+      "p95": 0.115959,
+      "p99": 0.38675,
+      "max": 3.165958
+    },
+    "stop_ms_per_thread": {
+      "1": {
+        "count": 1000,
+        "p50": 0.0443955,
+        "p95": 0.065584,
+        "p99": 0.090709,
+        "max": 0.206708
+      },
+      "2": {
+        "count": 1000,
+        "p50": 0.055833,
+        "p95": 0.079,
+        "p99": 0.172875,
+        "max": 1.742208
+      },
+      "4": {
+        "count": 1000,
+        "p50": 0.066104,
+        "p95": 0.099708,
+        "p99": 0.142875,
+        "max": 0.546042
+      },
+      "8": {
+        "count": 1000,
+        "p50": 0.09518750000000001,
+        "p95": 0.313083,
+        "p99": 1.639833,
+        "max": 3.165958
+      }
+    },
+    "all_native_exits_zero": true,
+    "forced_cleanup": false,
+    "critical_sanitizer_diagnostics": 0,
+    "full_G10_certified": false,
+    "full_acceptance": false,
+    "engine_sha256": "1ff25a97b2272f589aac40049f9c76e53228a3682f64489c72566dae449a9897",
+    "network_sha256": "52d0306143392ad683c3ebb09fe013f34e1f9e2bc44d3aa153b32314207374b7",
+    "instrumented_engine_sha256": "7789a6a2dce7c35fbd92a1cd3b1e6be47b841ae78f655a28d4a565ad583560fb",
+    "instrumented_runtime_sha256": "d5ad94f93fc2600abc1a31d49586fb25cf748173ac8799d59e22fe92a8eb2ab7",
+    "profile_sha256": "0706984a3d97bdca6ed425f29312d4ef9bbf7423c0c3d3dfdf81b90e9fc0f872",
+    "transcript_sha256": "77c30390701a2a0dd8552ebce29ade6d3fe86f50db0ad826922bac9a4f774cae",
+    "frames": 41610
+  },
+  "accepted_comparisons": 5,
+  "comparisons": [
+    {
+      "comparison": "threads-2-ms-100",
+      "games": 200,
+      "relative_elo": -1.7371924043128806,
+      "relative_elo_95": [
+        -38.37318885669783,
+        34.86007028756011
+      ]
+    },
+    {
+      "comparison": "threads-2-ms-400",
+      "games": 200,
+      "relative_elo": 17.386277512436138,
+      "relative_elo_95": [
+        -17.386277512436145,
+        52.51156585572756
+      ]
+    },
+    {
+      "comparison": "threads-4-ms-100",
+      "games": 200,
+      "relative_elo": 56.0714812660147,
+      "relative_elo_95": [
+        15.64516754533055,
+        96.1923443342004
+      ]
+    },
+    {
+      "comparison": "threads-4-ms-400",
+      "games": 200,
+      "relative_elo": 31.354042247812043,
+      "relative_elo_95": [
+        -5.21192470064803,
+        66.82477700555238
+      ]
+    },
+    {
+      "comparison": "threads-8-ms-100",
+      "games": 200,
+      "relative_elo": 31.354042247812043,
+      "relative_elo_95": [
+        -8.687699877294502,
+        70.43650362227247
+      ]
+    }
+  ],
+  "original_sixth_comparison": "closed incomplete",
+  "performance": {
+    "timed_searches": 640,
+    "rss_samples": 4581,
+    "latency_samples": 2000,
+    "source_binding_checked": true,
+    "tables": [
+      {
+        "evaluation": "classical",
+        "threads": 1,
+        "useful_nodes_per_second": 1766738.8970844448,
+        "useful_work_ratio_to_one_thread": 1.0,
+        "mean_depth": 18.0,
+        "maximum_resident_bytes": 54083584
+      },
+      {
+        "evaluation": "classical",
+        "threads": 2,
+        "useful_nodes_per_second": 2432675.718479918,
+        "useful_work_ratio_to_one_thread": 1.37692995976623,
+        "mean_depth": 17.975,
+        "maximum_resident_bytes": 54591488
+      },
+      {
+        "evaluation": "classical",
+        "threads": 4,
+        "useful_nodes_per_second": 3521018.3192061107,
+        "useful_work_ratio_to_one_thread": 1.9929477553342263,
+        "mean_depth": 17.875,
+        "maximum_resident_bytes": 56705024
+      },
+      {
+        "evaluation": "classical",
+        "threads": 8,
+        "useful_nodes_per_second": 3682869.3349017645,
+        "useful_work_ratio_to_one_thread": 2.084557792314081,
+        "mean_depth": 16.6,
+        "maximum_resident_bytes": 59326464
+      },
+      {
+        "evaluation": "neural-blend",
+        "threads": 1,
+        "useful_nodes_per_second": 1220634.613452003,
+        "useful_work_ratio_to_one_thread": 1.0,
+        "mean_depth": 17.7,
+        "maximum_resident_bytes": 57212928
+      },
+      {
+        "evaluation": "neural-blend",
+        "threads": 2,
+        "useful_nodes_per_second": 2054331.415828642,
+        "useful_work_ratio_to_one_thread": 1.6830027538043602,
+        "mean_depth": 17.675,
+        "maximum_resident_bytes": 57524224
+      },
+      {
+        "evaluation": "neural-blend",
+        "threads": 4,
+        "useful_nodes_per_second": 2779487.7969509456,
+        "useful_work_ratio_to_one_thread": 2.2770842038392174,
+        "mean_depth": 17.45,
+        "maximum_resident_bytes": 58720256
+      },
+      {
+        "evaluation": "neural-blend",
+        "threads": 8,
+        "useful_nodes_per_second": 3401702.3733308404,
+        "useful_work_ratio_to_one_thread": 2.7868309941749816,
+        "mean_depth": 17.3,
+        "maximum_resident_bytes": 61636608
+      }
+    ]
+  },
+  "performance_diagnostic_difference": {
+    "Search Stats": {
+      "performance": true,
+      "matches_and_stop_runtime": false
+    }
+  },
+  "first_and_second_failed_owner_receipts_preserved": true,
+  "strength_gain_inferred": false,
+  "full_G10_certified": false,
+  "original_compiler_runtime_closure_established": false,
+  "full_acceptance": false,
+  "negative_controls": [
+    {
+      "case": "wrong-final-actor",
+      "status": "rejected",
+      "reason": "final actor/model differs"
+    },
+    {
+      "case": "changed-hash",
+      "status": "rejected",
+      "reason": "applied thread configuration differs"
+    },
+    {
+      "case": "missing-stop",
+      "status": "rejected",
+      "reason": "runtime endpoints or exits incomplete"
+    },
+    {
+      "case": "failed-eight-thread-p99",
+      "status": "rejected",
+      "reason": "stop endpoint weakened or failed"
+    },
+    {
+      "case": "missing-instrumented-search",
+      "status": "rejected",
+      "reason": "runtime endpoints or exits incomplete"
+    },
+    {
+      "case": "forced-cleanup",
+      "status": "rejected",
+      "reason": "runtime endpoints or exits incomplete"
+    },
+    {
+      "case": "sixth-match-reclassified",
+      "status": "rejected",
+      "reason": "incomplete match schedule reclassified"
+    },
+    {
+      "case": "performance-diagnostic-hidden",
+      "status": "rejected",
+      "reason": "performance diagnostic configuration hidden"
+    },
+    {
+      "case": "strength-inferred-from-performance",
+      "status": "rejected",
+      "reason": "unsupported strength, compiler or release claim"
+    },
+    {
+      "case": "full-G10-from-components",
+      "status": "rejected",
+      "reason": "unsupported strength, compiler or release claim"
+    },
+    {
+      "case": "original-runtime-claim",
+      "status": "rejected",
+      "reason": "unsupported strength, compiler or release claim"
+    },
+    {
+      "case": "release-claim",
+      "status": "rejected",
+      "reason": "unsupported strength, compiler or release claim"
+    }
+  ],
+  "elapsed_seconds": 0.021726000006310642,
+  "new_native_starts": 0,
+  "games_started": 0,
+  "semantic_sample_reruns": 0,
+  "product_source_commit": "89a7758ed1a6025290f6532677ff283bb3b9c8ff"
+}

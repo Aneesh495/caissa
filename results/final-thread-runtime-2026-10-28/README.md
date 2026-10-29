@@ -1,0 +1,13 @@
+# Final exact-neural thread runtime and performance binding
+
+The saved `1ff` engine and `52d` model completed all 4,000 active-search stop sequences, 1,000 at each of one, two, four and eight threads. Independent verification checked the applied 16 MiB hash, neural weight 10, lazy neural, evaluation cache and tactical generation settings; depth and node witnesses; every stop timestamp; legal best moves and 8,206 principal variations; all transcript bytes and normal native exits.
+
+Overall empirical stop p99 was 0.386750 ms. Per-thread p99 was 0.090709, 0.172875, 0.142875 and 1.639833 ms. All remain below the unchanged exclusive 50 ms endpoint; maximum observed latency was 3.165958 ms. This is the frozen four-position, cold-hash sample.
+
+The matching native-source TSan image completed all 64 fixed 2,048-node searches at the same explicit neural settings across one, two, four and eight threads. The separately qualified local runtime is bound by its loaded-library witness and bytes. This instrumented image differs from the release image. These finite observations supplement the existing source-matched Linux/macOS 22-case sanitizer archives; they do not prove absence of every race.
+
+The first native run failed because neural evaluation was enabled before model load. Its eight errors, source and failed owner receipt remain retained. A separately admitted correction fixed command order and fail-fast handling, with four focused controls. The second native producer completed correctly, but its reader rejected the legitimate model-load acknowledgement. That failed receipt also remains retained. A separately scoped reader-only correction independently matched the acknowledgement to the saved network header and verified the entire unchanged second transcript with no new native starts. Eight new acknowledgement controls passed.
+
+The final metadata join checked the current 69 native source files and modes, actual reader/producer exits, the accepted G13 actor/model/checkpoint identity, both performance stage logs, and all five independently accepted thread comparisons. Twelve forged or incomplete relationship claims rejected. The original 18 wiring controls are reused without rerunning them.
+
+G13 measurements used Search Stats diagnostics, unlike the match and stop sample. Its 250 ms useful-work rates and memory observations are descriptive. They imply neither playing strength nor general race safety. The sixth original match comparison stays closed incomplete. Full G10, the complete coordinator, original saved-image compiler/runtime provenance and release acceptance remain open. No new games, training or model selection occurred. Raw transcripts and process logs remain local.

@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "controls": [
+    "actual_producer_loads_model_before_enable_all_thread_modes",
+    "reader_accepts_correct_setup_prefix_but_not_incomplete_sample",
+    "reader_rejects_neural_enable_before_model_load",
+    "actual_owned_pipe_fails_fast_and_retains_native_error"
+  ],
+  "elapsed_seconds": 0.00021370803005993366,
+  "native_chess_actors": 0,
+  "synthetic_python_children": 0,
+  "games": 0,
+  "original_18_controls_reexecuted": false,
+  "full_acceptance": false
+}
