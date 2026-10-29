@@ -33,6 +33,7 @@ REQUIRED_SOURCES = {
     "verification/final_evidence_bundle.py", "verification/full_bundle.py",
     "verification/bundle.py", "verification/source.py", "tools/host_lease.py",
     "tools/heuristic_study.py", "tools/final_projection_stage.py",
+    "tools/final_projection_owner.py",
     "tools/campaign_process.py", "tools/parallel_storage_quota.py", "tools/storage_budget.py",
     "config/final-gate-decisions-v1.json",
 }
@@ -239,7 +240,10 @@ def install_read_only_guard(scope):
 def run(scope_name, expected_scope_sha256):
     started = time.monotonic()
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
-    resource.setrlimit(resource.RLIMIT_CPU, (60, 60))
+    inherited_cpu = resource.getrlimit(resource.RLIMIT_CPU)[1]
+    cpu = 60 if inherited_cpu == resource.RLIM_INFINITY else min(60, inherited_cpu)
+    require(cpu > 0, "inherited entry CPU allowance is exhausted")
+    resource.setrlimit(resource.RLIMIT_CPU, (cpu, cpu))
     resource.setrlimit(resource.RLIMIT_FSIZE, (0, 0))
     def expired(*_):
         raise TimeoutError("admitted decision entry deadline exhausted")
