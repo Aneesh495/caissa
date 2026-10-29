@@ -220,3 +220,9 @@ and the derived nonpassing outcome. It is still unexecuted and absent from the
 accepted entry. G14 has no accepted final join roots, and the final audit adapter
 is explicitly missing. Entry wiring, real prerequisite acceptance and genuinely
 new controls remain outstanding. No draft changes the actual eleven-domain result.
+
+The [audit interface and policy controls](FINAL_AUDIT_INTERFACE_DRAFT.md) are now
+prepared, with 23 new synthetic cases and zero executions. Audit trust roots,
+the real collector/checker and a checked final source transition remain missing.
+The projection consumes the audit reader's actual result only in a future
+admitted invocation. The accepted entry remains unchanged.

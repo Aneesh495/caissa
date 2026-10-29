@@ -24,6 +24,11 @@ complete decision inventory from actual adapter calls. Its G14 trust roots are
 absent and its independent final audit interface cannot accept a pass. Neither
 module is imported by this accepted full entry. Both remain unexecuted.
 
+The [later audit interface and 23 policy cases](FINAL_AUDIT_INTERFACE_DRAFT.md)
+are also prepared and unexecuted. No accepted audit roots or real independent
+audit producer/checker exist. Current source identity still needs an explicit
+checked transition before any future audit-root activation.
+
 ## Retained final evidence adapters
 
 | Driver | Gates | Accepted relationship |
