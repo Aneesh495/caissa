@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-28T19:24:48-04:00 (America/New_York). Revision 47.
+Updated: 2026-10-28T20:57:01-04:00 (America/New_York). Revision 50.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R05: Bind core correctness to the final engine.
 
-Implement a bounded G02 restoration journal transport for the unchanged full1000000-pair schedule, then admit and run the missing saved1ff component. Use streaming or lossless compression to stay under5GB and reuse existing guards. Do not rerun passed G01/G03/G04/G05/G06 or add match time.
+Finish the final six-domain core source/actor/evidence join using the accepted exact1ff proofs, with independent mismatch rejection checks. Do not rerun closed semantic samples. Keep full coordinator execution, original compiler/runtime closure and release gates separate.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -92,15 +92,15 @@ Blocker: The frozen neural sample failed and its completed-game diagnostic was w
 
 ### R05: Bind core correctness to the final engine
 
-Implement a bounded G02 restoration journal transport for the unchanged full1000000-pair schedule, then admit and run the missing saved1ff component. Use streaming or lossless compression to stay under5GB and reuse existing guards. Do not rerun passed G01/G03/G04/G05/G06 or add match time.
+Finish the final six-domain core source/actor/evidence join using the accepted exact1ff proofs, with independent mismatch rejection checks. Do not rerun closed semantic samples. Keep full coordinator execution, original compiler/runtime closure and release gates separate.
 
 Completion requires: G01-G06 evidence and independent readers agree on the final identity, reject incorrect evidence, and show actual runtime completion where required.
 
 Dependencies: exclusive host released, final source and actor inventory.
 
-Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`; `results/native-source-binding-2026-10-26`; `results/final-core-identity-join-2026-10-28`; `results/final-draw-wiring-2026-10-28`; `results/final-saved-actor-draw-2026-10-28`; `results/final-protocol-wiring-2026-10-28`; `results/final-saved-actor-protocol-2026-10-28`; `results/final-rules-wiring-2026-10-28`; `results/final-saved-actor-rules-2026-10-28`; `results/precision-v4-inputs/IDENTITY.json`; `results/final-numerical-wiring-2026-10-28`; `results/final-saved-actor-numerical-2026-10-28`.
+Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`; `results/native-source-binding-2026-10-26`; `results/final-core-identity-join-2026-10-28`; `results/final-draw-wiring-2026-10-28`; `results/final-saved-actor-draw-2026-10-28`; `results/final-protocol-wiring-2026-10-28`; `results/final-saved-actor-protocol-2026-10-28`; `results/final-rules-wiring-2026-10-28`; `results/final-saved-actor-rules-2026-10-28`; `results/precision-v4-inputs/IDENTITY.json`; `results/final-numerical-wiring-2026-10-28`; `results/final-saved-actor-numerical-2026-10-28`; `results/final-restoration-transport-2026-10-28`; `results/final-saved-actor-restoration-2026-10-28`.
 
-Blocker: Exact saved1ff G02 restoration runtime evidence and final coordinator/source joins remain missing. Original compiler/runtime closure is still unproven. The historical failed neural-gain endpoint remains failed.
+Blocker: Final six-domain source/evidence integration remains to be checked. Original compiler/runtime closure, other final coordinator domains, the failed neural-gain requirement and incomplete match comparison remain separate blockers.
 
 ### R06: Finish final data and learning lineage integration
 
