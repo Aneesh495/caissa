@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T14:27:37-04:00 (America/New_York). Revision 101.
+Updated: 2026-10-29T17:30:14-04:00 (America/New_York). Revision 102.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
