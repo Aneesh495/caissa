@@ -1,0 +1,11 @@
+# Eleven-domain final coordinator integration
+
+The actual final verifier accepted G01-G07, G09, G11, G12 and G13 together. It exited 2 with status incomplete and full acceptance false. G08, G10, G14, G15 and G16 remain unresolved. This is a passed integration component, not project or release acceptance.
+
+G07 now binds the closed final data/learning lineage reader to its exact scope, independent result, current source, actual successful owner and closed metadata ledger. The retained original full audit includes both original component outputs, their real successful stage exits and log hashes, closed active ledgers, unchanged selection and the final 69-file native source boundary. The selected floating checkpoint and inference network remain the original C76/52d identities. Historical numerical failures and retired full inputs remain preserved.
+
+The independent lineage proof separately checked 17 new relationship/source rejections and R06's stated completion. This integration added 14 new Bundle/dispatch/rehashed-evidence rejections and one eleven-domain preservation case. The latter keeps failed G08 and pending incomplete/reproduction/release gates unchanged. Rehashed missing original reader/stage/source/owner/ledger records, failed original exits, open ledgers and claimed full raw reconstruction are rejected.
+
+The first new owner passed in 16.360499 seconds with empty stdout/stderr; its real full-entry child exited 2 after 2.197732 seconds, with clean transport and no cleanup warnings. All owned groups were reaped and active/write ledgers closed. Existing core/recovery/browser/external/performance inputs and the exact already-decoded G05 source metadata were reused. Earlier 17/16 control sets and all closed semantic samples stayed closed. No validation arrays were opened, archive metadata decoded, model trained or selected, native actor/browser/compiler started, or match played.
+
+Source: `1e89d2b9ce1038bcceb40cf08754dfaa877ec6de`. Compact result, actual decision, new controls and sanitized execution are retained here. Raw fixtures, process records, scope and output accounting stay private. R12 continues with G14 and explicit failed/incomplete/unavailable/release decisions. Original saved-actor compiler/runtime closure, full historical reproduction and any absolute rating remain unproven.

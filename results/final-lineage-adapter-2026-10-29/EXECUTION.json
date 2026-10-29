@@ -1,0 +1,26 @@
+{
+  "source_commit": "1e89d2b9ce1038bcceb40cf08754dfaa877ec6de",
+  "scope_sha256": "027ec08b97c9889b62090508c536eeec6e1852e636d179d17488fc77774ab40a",
+  "owner_exit": 0,
+  "owner_elapsed_seconds": 16.36049870797433,
+  "owner_stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "owner_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "full_entry": {
+    "exit": 2,
+    "reason": "nonzero-exit",
+    "monotonic_seconds": 2.1977316249976866,
+    "log_sha256": "7dfce8cfe961251be6eaee25dc78b045344dbb95fa650033dffb7eb520ebe5ba",
+    "cleanup_warnings": [],
+    "discarded_output_bytes": 0
+  },
+  "owner_and_child_closed": true,
+  "owned_group_absent_after_reap": true,
+  "active_and_write_ledgers_closed": true,
+  "host_lease_released": true,
+  "native_starts": 0,
+  "browser_starts": 0,
+  "compiler_starts": 0,
+  "games": 0,
+  "closed_semantic_sample_or_prior_control_replays": 0,
+  "full_acceptance": false
+}

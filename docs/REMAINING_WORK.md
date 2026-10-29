@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T06:47:04-04:00 (America/New_York). Revision 78.
+Updated: 2026-10-29T07:05:40-04:00 (America/New_York). Revision 79.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R12: Finish semantic adapters and the complete coordinator.
 
-Integrate retained G07 lineage and G14 semantic evidence, then explicit failed/incomplete/unavailable/release decisions for G08/G10/G15/G16. Reuse all completed domains and the closed17/16controls without rerunning samples or cases. Bind real source/input/independent-result/owner/stage/availability relationships; no pass from counts or component flags. Original neural gain, interrupted sixth comparison, saved-actor compiler/runtime and retired-input blockers remain unchanged. Record a fresh finite scope before any new integration execution.
+Bind retained G14 exact saved-image semantic evidence and current final source relationships, then explicit failed/incomplete/unavailable/release decisions for G08/G10/G15/G16. Reuse accepted G01-G07/G09/G11/G12/G13 and all closed15/17/16controls without rerunning cases or samples. Original neural gain, interrupted sixth comparison, original saved-actor compiler/runtime and retired-input blockers remain unchanged. Record a fresh finite scope before new execution.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -33,7 +33,7 @@ Recorded attempts include failed or unfinished outcomes. A count does not establ
 | R03 | done | Close thread-scaling, memory, stop and race-safety evidence |
 | R04 | failed requirement | Diagnose the failed neural-strength requirement |
 | R05 | done | Bind core correctness to the final engine |
-| R06 | blocked | Finish final data and learning lineage integration |
+| R06 | done | Finish final data and learning lineage integration |
 | R07 | done | Bind existing external strength to the final report |
 | R08 | blocked | Design and run a calibrated engine-pool rating benchmark |
 | R09 | done | Complete final recovery acceptance |
@@ -102,15 +102,15 @@ Existing evidence: `docs/BUILD_STATUS.md`; `results/search-semantics-2026-10-25`
 
 ### R06: Finish final data and learning lineage integration
 
-Bind the historically passed complete data/learning audit to final source and the retained inference model. Separate historical pass receipts from currently available raw inputs.
+Reuse the completed final lineage and accepted G07 coordinator adapter without reruns. Full raw reconstruction, original compiler/runtime closure, strength and release decisions remain separate.
 
 Completion requires: The final lineage graph is independently checked and accurately states which original data/checkpoint bytes are available and which reproduction steps cannot run.
 
-Dependencies: R05, R14.
+Dependencies: R05.
 
-Existing evidence: `results/g07-full-audit-2026-10-26`; `docs/ARTIFACT_RETENTION.md`; `results/precision-v4-inputs/IDENTITY.json`.
+Existing evidence: `results/g07-full-audit-2026-10-26`; `docs/ARTIFACT_RETENTION.md`; `results/precision-v4-inputs/IDENTITY.json`; `results/final-data-learning-lineage-2026-10-29`.
 
-Blocker: Bulk historical corpora and obsolete checkpoints were intentionally retired. Full raw historical reconstruction from the current checkout is unavailable.
+Blocker: Full raw reproduction remains unavailable and belongs to R14/G15; this does not block the completed lineage and availability graph.
 
 ### R07: Bind existing external strength to the final report
 
@@ -166,13 +166,13 @@ Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-ev
 
 ### R12: Finish semantic adapters and the complete coordinator
 
-Integrate retained G07 lineage and G14 semantic evidence, then explicit failed/incomplete/unavailable/release decisions for G08/G10/G15/G16. Reuse all completed domains and the closed17/16controls without rerunning samples or cases. Bind real source/input/independent-result/owner/stage/availability relationships; no pass from counts or component flags. Original neural gain, interrupted sixth comparison, saved-actor compiler/runtime and retired-input blockers remain unchanged. Record a fresh finite scope before any new integration execution.
+Bind retained G14 exact saved-image semantic evidence and current final source relationships, then explicit failed/incomplete/unavailable/release decisions for G08/G10/G15/G16. Reuse accepted G01-G07/G09/G11/G12/G13 and all closed15/17/16controls without rerunning cases or samples. Original neural gain, interrupted sixth comparison, original saved-actor compiler/runtime and retired-input blockers remain unchanged. Record a fresh finite scope before new execution.
 
 Completion requires: The full coordinator reads real artifacts, rejects stale/forged/mismatched inputs, preserves failed gates and cannot report full acceptance from component pass flags.
 
 Dependencies: R02, R05, R06, R09, R10, R11.
 
-Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`.
+Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`; `results/final-data-learning-lineage-2026-10-29`; `results/final-lineage-adapter-2026-10-29`.
 
 ### R13: Close compiler provenance and clean-build reproduction
 
