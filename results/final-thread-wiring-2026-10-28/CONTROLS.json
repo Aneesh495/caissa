@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "controls": [
+    "full_frozen_4000_stop_64_instrumented_synthetic_reader",
+    "wrong_release_actor",
+    "wrong_model",
+    "wrong_applied_hash",
+    "wrong_applied_evaluator",
+    "changed_node_budget",
+    "missing_active_witness",
+    "early_bestmove",
+    "illegal_PV",
+    "clock_reversal",
+    "native_sanitizer_exit",
+    "forced_native_cleanup",
+    "false_stderr_digest",
+    "wrong_instrumented_runtime",
+    "missing_final_exit",
+    "actual_journal_prepaid_before_timing",
+    "actual_thread_journal_immutable",
+    "actual_thread_child_inherited_namespace_and_lease"
+  ],
+  "elapsed_seconds": 1.01498704100959,
+  "synthetic_python_children": 1,
+  "native_chess_actors": 0,
+  "games": 0,
+  "full_acceptance": false
+}

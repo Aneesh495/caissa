@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-28T21:35:09-04:00 (America/New_York). Revision 55.
+Updated: 2026-10-28T21:54:56-04:00 (America/New_York). Revision 57.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R03: Close thread-scaling, memory, stop and race-safety evidence.
 
-Implement the proposed exact-neural thread-runtime producer and independent reader using established quota/lease/process guards; prospectively bind4000active-search stop sequences and64instrumented fixed-node searches. Then record a fresh finite source/input/numeric scope before execution. Reuse closed source archives, G04, G13 and both prerequisite receipts without reruns. No new match time or rating producer.
+Admit and run the implemented exact-neural thread workload once under fresh source/input/numeric bounds. The new full independent reader and18synthetic namespace/bootstrap/forgery controls passed. Preserve all4000active-stop sequences and64instrumented queries without replacement; inspect actual completion/exits/closed ledgers before accepting the component.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -70,13 +70,13 @@ Blocker: The sixth parallel comparison is incomplete at the original active cap.
 
 ### R03: Close thread-scaling, memory, stop and race-safety evidence
 
-Implement the proposed exact-neural thread-runtime producer and independent reader using established quota/lease/process guards; prospectively bind4000active-search stop sequences and64instrumented fixed-node searches. Then record a fresh finite source/input/numeric scope before execution. Reuse closed source archives, G04, G13 and both prerequisite receipts without reruns. No new match time or rating producer.
+Admit and run the implemented exact-neural thread workload once under fresh source/input/numeric bounds. The new full independent reader and18synthetic namespace/bootstrap/forgery controls passed. Preserve all4000active-stop sequences and64instrumented queries without replacement; inspect actual completion/exits/closed ledgers before accepting the component.
 
 Completion requires: The multicore result includes checked performance and safety relationships for the same actor and options; source bindings and real stage exits are complete.
 
 Dependencies: R01, R02.
 
-Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-evidence-2026-10-28`; `results/final-thread-runtime-preflight-2026-10-28`; `config/thread-runtime-v1.proposed.json`.
+Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-evidence-2026-10-28`; `results/final-thread-runtime-preflight-2026-10-28`; `config/thread-runtime-v1.proposed.json`; `results/final-thread-wiring-2026-10-28`; `config/thread-runtime-v1.json`.
 
 Blocker: G04 stop sample used1/2MiB hash with neural off. Existing TSan22-case source proof does not cover the complete52d/neural10/Lazy/cache/tactical/Hash16 configuration across1/2/4/8threads. Original sixth match comparison remains incomplete at the exhausted cap.
 
