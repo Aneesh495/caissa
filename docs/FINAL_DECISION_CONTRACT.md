@@ -213,3 +213,10 @@ reuse chains, missing historical log bodies, aliasing, unchanged missing-input
 census and inconsistent release classifications. No control has run. The pending
 renewal request remains unanswered; no scope, owner, test or full-entry start
 was added during this static preparation.
+
+The later [projection and G14 adapter draft](FINAL_PROJECTION_DRAFT.md) now
+prepares actual adapter-result normalization, exactly sixteen explicit decisions
+and the derived nonpassing outcome. It is still unexecuted and absent from the
+accepted entry. G14 has no accepted final join roots, and the final audit adapter
+is explicitly missing. Entry wiring, real prerequisite acceptance and genuinely
+new controls remain outstanding. No draft changes the actual eleven-domain result.
