@@ -78,6 +78,11 @@ def main(scope_path):
 
     path = Path(scope_path).resolve()
     scope = read(path)
+    extended = scope.get("control_profile") == "core-external-performance"
+    if extended:
+        from verification.final_core_bundle import DRIVERS as extended_drivers
+
+        DRIVERS = {**DRIVERS, **extended_drivers}
     work, output = path.parent, Path(scope["output"])
     require(scope["status"] == "admitted" and time.time() < scope["deadline_unix"] and not (work / "STARTED.json").exists(), "one fresh adapter invocation required")
     for name, digest in scope["source_bindings"].items():
@@ -91,11 +96,14 @@ def main(scope_path):
             target = Path(target).absolute()
             require(target == target.resolve() and target.is_relative_to(output), "adapter writer escaped")
             name = str(target.relative_to(output))
+            if name in scope.get("immutable_fixture_files", []):
+                require(not target.exists(), "immutable copied evidence rewrite rejected")
+                return "data", name
             allowed = name.startswith("fixture/") or name in {"WRITER.lock", "CONFIG.json", "CONFIG.json.tmp", "COMMANDS.jsonl", "ACTIVE_USAGE.json", "ACTIVE_USAGE.json.tmp", "PROGRESS.json", "PROGRESS.json.tmp", "CAMPAIGN.json", "CAMPAIGN.json.tmp", "full-entry.json", "full-entry.json.tmp", "full-entry.log", "CONTROLS.json", "CONTROLS.json.tmp", "ADAPTERS.json", "ADAPTERS.json.tmp", "GROUPS.json", "GROUPS.json.tmp", "FAILED-adapters.json", "FAILED-adapters.json.tmp"}
             require(allowed, "unknown final adapter writer")
             return "control", name
 
-    quota = AdapterQuota({"output": str(output), "ledger": str(work / "WRITE_USAGE.json"), "scope_sha256": sha(path), "data_bytes": 0, "control_bytes": scope["control_bytes"], "emergency_control_bytes": 8000000, "deadline_unix": scope["deadline_unix"], "reserve_bytes": 128000000})
+    quota = AdapterQuota({"output": str(output), "ledger": str(work / "WRITE_USAGE.json"), "scope_sha256": sha(path), "data_bytes": scope.get("data_bytes", 0), "control_bytes": scope["control_bytes"], "emergency_control_bytes": 8000000, "deadline_unix": scope["deadline_unix"], "reserve_bytes": 128000000})
     quota.create()
     resource.setrlimit(resource.RLIMIT_CORE, (0, 0))
     resource.setrlimit(resource.RLIMIT_CPU, (90, 90))
@@ -121,7 +129,7 @@ def main(scope_path):
         require(state.get("failure") is None, "adapter write failure latched")
         if time.monotonic() - last[0] > 10:
             actual = footprint([ROOT, *scope["external_paths"]])
-            storage.check_admission(actual["charged_bytes"], shutil.disk_usage(ROOT).used, 0, scope["control_bytes"] - state["control_used"] + scope["outside_control_bytes"], 128000000)
+            storage.check_admission(actual["charged_bytes"], shutil.disk_usage(ROOT).used, scope.get("data_bytes", 0) - state["data_used"], scope["control_bytes"] - state["control_used"] + scope["outside_control_bytes"], 128000000)
             last[0] = time.monotonic()
     campaign = None
     try:
@@ -135,13 +143,31 @@ def main(scope_path):
             target.write_text(json.dumps(value, indent=2, sort_keys=True) + "\n")
         def ref(name):
             return {"path": name, "sha256": sha(fixture / name)}
+        derived = {}
+        for item in scope.get("archive_metadata", []):
+            import zipfile
+
+            with zipfile.ZipFile(ROOT / item["archive"]) as archive:
+                entry = archive.getinfo(item["member"])
+                require(entry.file_size <= 262144, "new G05 source metadata exceeds its bound")
+                raw = archive.read(entry)
+            require(hashlib.sha256(raw).hexdigest() == item["sha256"], "new G05 source metadata identity differs")
+            name = "closed/CORE/derived/G05_SOURCE_INPUTS.json"
+            target = fixture / name
+            target.parent.mkdir(parents=True, exist_ok=True)
+            target.write_bytes(raw)
+            derived[item["logical"]] = ref(name)
         domains = {f"G{i:02d}": {"driver": "not-integrated-final-evidence", "source_commit": scope["product_commit"], "engine_sha256": scope["engine_sha256"], "network_sha256": scope["network_sha256"], "artifacts": []} for i in range(1, 17)}
         for gate, originals in scope["staged_records"].items():
-            records = {}
+            records = dict(derived) if gate in {"G01", "G02", "G03", "G04", "G05", "G06"} else {}
             for original in originals:
-                target = fixture / "closed" / gate / original
+                group = scope.get("record_groups", {}).get(gate, gate)
+                target = fixture / "closed" / group / original
                 target.parent.mkdir(parents=True, exist_ok=True)
-                target.write_bytes((ROOT / original).read_bytes())
+                if target.exists():
+                    require(sha(target) == sha(ROOT / original), "shared copied evidence differs")
+                else:
+                    target.write_bytes((ROOT / original).read_bytes())
                 records[original] = ref(str(target.relative_to(fixture)))
             name = "closed/" + gate + "/INDEX.json"
             put(name, {"schema": "caissa-closed-final-domain-v1", "gate": gate, "records": records})
@@ -176,7 +202,16 @@ def main(scope_path):
         else:
             raise ValueError("full-entry group survived")
         report = read(output / "full-entry.log")
-        require(set(report["verified_semantic_gates"]) == {"G11", "G12"} and len(report["pending_semantic_gates"]) == 14 and report["full_acceptance"] is False, "actual full-entry gate decision differs")
+        expected_gates = scope.get("expected_verified_gates", ["G11", "G12"])
+        require(set(report["verified_semantic_gates"]) == set(expected_gates) and len(report["pending_semantic_gates"]) == 16 - len(expected_gates) and report["full_acceptance"] is False, "actual full-entry gate decision differs")
+        if extended:
+            from tools.final_extended_adapter_controls import run_controls
+
+            controls = run_controls(fixture, inputs, manifest, put, ref, scope, quota)
+            atomic(output / "CONTROLS.json", controls)
+            atomic(output / "ADAPTERS.json", {"status": "passed_final_core_external_performance_integration", "product_source_commit": scope["product_commit"], "scope_sha256": sha(path), "full_entry_actual_exit": receipt["exit"], "verified_final_gates": sorted(expected_gates), "remaining_pending_gates": sorted(report["pending_semantic_gates"]), "controls": len(controls), "old_16_controls_reexecuted": False, "native_starts": 0, "browser_starts": 0, "closed_semantic_samples_reexecuted": 0, "full_R12_complete": False, "full_acceptance": False})
+            campaign.close("passed-final-core-external-performance-adapters")
+            return
         # These new cases exercise the adapter inventory, deployment and decision
         # relationships. No historical verifier main, native or browser runs.
         controls = []
