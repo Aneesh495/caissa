@@ -12,7 +12,8 @@ renew an expired parent. This is intended wiring, not accepted runtime wiring.
 
 ## Required future parent
 
-The parent producer is still missing. Before it can launch this entry, it must:
+The later [parent stage bridge](FINAL_PROJECTION_PARENT_STAGE_DRAFT.md) prepares
+one owned stage. The outer parent producer is still missing. Before it can launch this entry, it must:
 
 1. Record an actual direct human saved-evidence renewal. A scheduled message,
    tool acknowledgement or authored authority JSON cannot supply that authority.
@@ -42,6 +43,7 @@ the new authority window, one entry start and zero native, browser, compiler,
 training, inference, game, new parallel starts or extra parallel active seconds.
 Its origin must follow the newly recorded human instruction. Safe Python startup
 requires the admitted environment, interpreter digest, project cwd and `-B -P`.
+The resolved source Git executable also needs its own admitted path and digest.
 The bootstrap rehashes its bounded pinned source graph before importing project
 code. The unchanged full source/input admission then checks the actual product.
 
