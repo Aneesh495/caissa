@@ -88,6 +88,8 @@ class Native:
                 text = line.decode("utf8")
                 if channel == "stdout":
                     self.journal.emit("recv", self.index, ns=stamp, text=text)
+                    if text.startswith("info string error"):
+                        raise ValueError("native rejected applied setup/search: " + text)
                     self.ready.append((text, stamp))
                     if len(self.ready) > 4096:
                         raise ValueError("native response queue exhausted")
@@ -120,7 +122,8 @@ class Native:
     def setup(self, options):
         self.send("uci")
         self.until(lambda s: s == "uciok")
-        for key, value in {**options, "Threads": self.threads, "EvalFile": self.scope["network"]}.items():
+        ordered = {"Hash": options["Hash"], "Threads": self.threads, "EvalFile": self.scope["network"], **{k: v for k, v in options.items() if k != "Hash"}}
+        for key, value in ordered.items():
             value = str(value).lower() if type(value) is bool else str(value)
             self.send("setoption name " + key + " value " + value)
         self.send("isready")
