@@ -1,14 +1,14 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T01:36:39-04:00 (America/New_York). Revision 65.
+Updated: 2026-10-29T01:54:57-04:00 (America/New_York). Revision 67.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
 ## Current work
 
-R09: Complete final recovery acceptance.
+R10: Complete final browser and native-engine acceptance.
 
-Run only the genuinely missing current-arena forced interruption and saved1ff/52d native resumption under a new finite source-bound scope, then connect the independent combined reader. Reuse original full training/data recovery and eight new changed-path controls without reruns. Preserve strict original source rejection and all original failures.
+Bind the passed amended response-capture component and four browser contexts to final source and the actual native engine. Complete missing final narrow-screen, keyboard, cancellation, variation/export and real-response joins in a separate bounded final campaign.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -36,7 +36,7 @@ Recorded attempts include failed or unfinished outcomes. A count does not establ
 | R06 | blocked | Finish final data and learning lineage integration |
 | R07 | done | Bind existing external strength to the final report |
 | R08 | blocked | Design and run a calibrated engine-pool rating benchmark |
-| R09 | in progress | Complete final recovery acceptance |
+| R09 | done | Complete final recovery acceptance |
 | R10 | pending | Complete final browser and native-engine acceptance |
 | R11 | done | Bind the passed performance study to final deployment |
 | R12 | pending | Finish semantic adapters and the complete coordinator |
@@ -136,15 +136,13 @@ Blocker: The current runner has only node/per-move budgets, not the required gam
 
 ### R09: Complete final recovery acceptance
 
-Run only the genuinely missing current-arena forced interruption and saved1ff/52d native resumption under a new finite source-bound scope, then connect the independent combined reader. Reuse original full training/data recovery and eight new changed-path controls without reruns. Preserve strict original source rejection and all original failures.
+Reuse the closed final current-arena recovery and independent combined proof without rerunning samples. Integrate this reader into R12 while R10 checks final browser/native evidence. Preserve original strict reader rejection, all historical failures and independent full-project/compiler/reproduction blockers.
 
 Completion requires: The independent full recovery reader accepts the required final combined evidence and confirms committed records and process ownership survive the specified failures.
 
 Dependencies: R05, R06.
 
-Existing evidence: `results/recovery-full-join-2026-10-26`; `results/final-recovery-evidence-2026-10-29`.
-
-Blocker: Original full G11 passed at its historical source. Current arena/run.py changed; the unchanged strict reader rejects it. Eight new synthetic changed-path controls and the final 69-file identity audit passed, but actual current-arena native interruption/resume and the final combined reader remain missing.
+Existing evidence: `results/recovery-full-join-2026-10-26`; `results/final-recovery-evidence-2026-10-29`; `results/final-recovery-runtime-2026-10-29`.
 
 ### R10: Complete final browser and native-engine acceptance
 
