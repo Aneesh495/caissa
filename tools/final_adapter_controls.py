@@ -96,7 +96,7 @@ def main(scope_path):
     quota.install()
     commands, child = [], [None]
     original_popen = subprocess.Popen
-    child_command = [str(Path(sys.executable).resolve()), "-B", "-P", str(ROOT / "tools/final_adapter_controls.py"), "--entry", str(path)]
+    child_command = [scope["python_command"], "-B", "-P", str(ROOT / "tools/final_adapter_controls.py"), "--entry", str(path)]
 
     def spawn(command, *args, **kwargs):
         git = command in [["git", "cat-file", "--batch"], ["git", "ls-tree", "-r", "-l", "-z", "--full-tree", scope["product_commit"]]]
