@@ -1,0 +1,153 @@
+{
+  "actual_final_entry_exit": 2,
+  "all_owners_dead": true,
+  "attempts": [
+    {
+      "attempt": 1,
+      "closed_semantic_replays": 0,
+      "new_browser_starts": 0,
+      "new_chess_starts": 0,
+      "owner": {
+        "closed": true,
+        "closed_unix": 1793258671.000449,
+        "elapsed_seconds": 1.0566357910283841,
+        "owner_exit": 1,
+        "scope_sha256": "c20e6a16cb20c18adbb5ded80c8ef44c0b2923de2a455aef157fa22b6892ceb5",
+        "stderr_bytes": 1261,
+        "stderr_sha256": "888c8f393d9a6ecb71a2d8551a227cd45ba449808cfaeb6076e01474f94b004f",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scope_sha256": "c20e6a16cb20c18adbb5ded80c8ef44c0b2923de2a455aef157fa22b6892ceb5",
+      "source_commit": "c2b80cfabb3162ea8878eed90e53f6fe880894ed",
+      "write_failure": null,
+      "write_ledger_closed": true
+    },
+    {
+      "active_seconds": 0.3306365829776041,
+      "attempt": 2,
+      "closed_semantic_replays": 0,
+      "full_entry": {
+        "cleanup_warnings": [],
+        "discarded_output_bytes": 0,
+        "exit": 1,
+        "log_sha256": "7ec0eaf2a7ec1a3acfdd102354e3307c20968a6e5cb3a5687afffe6dfb74b38f",
+        "monotonic_seconds": 0.0509968749829568,
+        "reason": "nonzero-exit",
+        "retained_output_bytes": 1403
+      },
+      "new_browser_starts": 0,
+      "new_chess_starts": 0,
+      "owner": {
+        "closed": true,
+        "closed_unix": 1793258774.080043,
+        "elapsed_seconds": 1.948797166987788,
+        "owner_exit": 1,
+        "scope_sha256": "063134a4e1362c7cc7b56a469eafaa60f7fcaba0c2b3a1c560b72bd5fcb8e4c1",
+        "stderr_bytes": 1398,
+        "stderr_sha256": "46bfd9a572c86722bed0029893f497978cdc99609bfe2eebe1d4a23dcad9d5f1",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scope_sha256": "063134a4e1362c7cc7b56a469eafaa60f7fcaba0c2b3a1c560b72bd5fcb8e4c1",
+      "source_commit": "83b59da5315cb2a7c6e0fc76c35efbaadb4c0080",
+      "write_failure": null,
+      "write_ledger_closed": true
+    },
+    {
+      "active_seconds": 0.48579520802013576,
+      "attempt": 3,
+      "closed_semantic_replays": 0,
+      "full_entry": {
+        "cleanup_warnings": [],
+        "discarded_output_bytes": 0,
+        "exit": 1,
+        "log_sha256": "3c23ddf72d06947647e83ccd47a297ae73d99b4ac164b6342cb8265ff2a6304d",
+        "monotonic_seconds": 0.20442466699751094,
+        "reason": "nonzero-exit",
+        "retained_output_bytes": 101
+      },
+      "new_browser_starts": 0,
+      "new_chess_starts": 0,
+      "owner": {
+        "closed": true,
+        "closed_unix": 1793258852.714263,
+        "elapsed_seconds": 2.1176475839456543,
+        "owner_exit": 1,
+        "scope_sha256": "6a4843e7f11ff5052f7ac6e345d4138fab8ee241c8836646541a495ab779337f",
+        "stderr_bytes": 1398,
+        "stderr_sha256": "46bfd9a572c86722bed0029893f497978cdc99609bfe2eebe1d4a23dcad9d5f1",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scope_sha256": "6a4843e7f11ff5052f7ac6e345d4138fab8ee241c8836646541a495ab779337f",
+      "source_commit": "db96ec7c50cd1abaf32136a13475302f3f9b5a02",
+      "write_failure": null,
+      "write_ledger_closed": true
+    },
+    {
+      "active_seconds": 0.48267583397682756,
+      "attempt": 4,
+      "closed_semantic_replays": 0,
+      "full_entry": {
+        "cleanup_warnings": [],
+        "discarded_output_bytes": 0,
+        "exit": 1,
+        "log_sha256": "8e040d6757de49ffe2803570c71d10c99eaf1b153b59a7a2a1ee86ebbf6a08f0",
+        "monotonic_seconds": 0.1930202089715749,
+        "reason": "nonzero-exit",
+        "retained_output_bytes": 121
+      },
+      "new_browser_starts": 0,
+      "new_chess_starts": 0,
+      "owner": {
+        "closed": true,
+        "closed_unix": 1793259009.512558,
+        "elapsed_seconds": 1.857448666007258,
+        "owner_exit": 1,
+        "scope_sha256": "7e070a4c72b8dce24486a1f565741ab4be939f775ad77a6dd46504d472bc41b1",
+        "stderr_bytes": 1398,
+        "stderr_sha256": "1fd43d2f892625df6aa66a145522dd87f1728fe4acd01d1614eae125a8504b8d",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scope_sha256": "7e070a4c72b8dce24486a1f565741ab4be939f775ad77a6dd46504d472bc41b1",
+      "source_commit": "ee8a5b94f7deb53cee1d0376a95e70db555fbc1b",
+      "write_failure": null,
+      "write_ledger_closed": true
+    },
+    {
+      "active_seconds": 1.5577720829751343,
+      "attempt": 5,
+      "closed_semantic_replays": 0,
+      "full_entry": {
+        "cleanup_warnings": [],
+        "discarded_output_bytes": 0,
+        "exit": 2,
+        "log_sha256": "c47c060488b31b0027dddc6f00e5ca3492123deffe945490982142f45535cadc",
+        "monotonic_seconds": 0.31136824999703094,
+        "reason": "nonzero-exit",
+        "retained_output_bytes": 3275
+      },
+      "new_browser_starts": 0,
+      "new_chess_starts": 0,
+      "owner": {
+        "closed": true,
+        "closed_unix": 1793259099.0691378,
+        "elapsed_seconds": 3.2071625409880653,
+        "owner_exit": 0,
+        "scope_sha256": "3c2866e1639eade4240d5a7d956be1f646e0bf4aea4fd141ac70220ed589435f",
+        "stderr_bytes": 0,
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "scope_sha256": "3c2866e1639eade4240d5a7d956be1f646e0bf4aea4fd141ac70220ed589435f",
+      "source_commit": "2fdbdc5d3e3ce5f02a505bfbe10c34a032ce9c59",
+      "write_failure": null,
+      "write_ledger_closed": true
+    }
+  ],
+  "full_acceptance": false,
+  "host_lease_released": true,
+  "new_chess_browser_starts": 0,
+  "pre_admission_import_failure_preserved": true,
+  "prior_failed_owners_preserved": true,
+  "schema": "caissa-final-adapter-executions-v1",
+  "whole_R12_complete": false
+}

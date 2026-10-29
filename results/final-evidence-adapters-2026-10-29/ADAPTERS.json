@@ -1,0 +1,34 @@
+{
+  "browser_starts": 0,
+  "closed_semantic_samples_reexecuted": 0,
+  "controls": 16,
+  "explicit_cjs_source_bound": true,
+  "full_R12_complete": false,
+  "full_acceptance": false,
+  "full_entry_actual_exit": 2,
+  "native_starts": 0,
+  "original_source_inventory_policy_unchanged": true,
+  "product_source_commit": "2fdbdc5d3e3ce5f02a505bfbe10c34a032ce9c59",
+  "remaining_pending_gates": [
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G07",
+    "G08",
+    "G09",
+    "G10",
+    "G13",
+    "G14",
+    "G15",
+    "G16"
+  ],
+  "scope_sha256": "3c2866e1639eade4240d5a7d956be1f646e0bf4aea4fd141ac70220ed589435f",
+  "status": "passed_final_G11_G12_adapter_integration",
+  "verified_final_gates": [
+    "G11",
+    "G12"
+  ]
+}
