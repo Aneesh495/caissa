@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T13:15:08-04:00 (America/New_York). Revision 91.
+Updated: 2026-10-29T13:24:49-04:00 (America/New_York). Revision 93.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R12: Finish semantic adapters and the complete coordinator.
 
-Statically review the prepared external audit receipt loader and32policy cases. Prepare real filesystem/Bundle forgery fixtures, designated entry wiring and missing audit collector/checker. The expected receipt SHA must be separately fixed in a legitimate future admission after actual audit acceptance, never derived from bundle metadata. Keep audited source/HEAD frozen from audit through final entry. No receipt, import, test, verifier, scope or owner may be created or run before the pending direct human renewal and fresh finite admission.
+Statically review the18filesystem cases and prepare actual rehashed Bundle-forgery fixtures and designated entry wiring, then the missing real audit collector/checker. All50policy/filesystem cases and the separate24G14cases remain unexecuted. Future fixture links/modes/FIFO/one mutable file need exact bounded writer admission. Do not import or run any test/verifier/full entry or create fixtures/scopes/owners until the pending direct human renewal and fresh finite scope; no old sample/control reruns.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -166,13 +166,13 @@ Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-ev
 
 ### R12: Finish semantic adapters and the complete coordinator
 
-Statically review the prepared external audit receipt loader and32policy cases. Prepare real filesystem/Bundle forgery fixtures, designated entry wiring and missing audit collector/checker. The expected receipt SHA must be separately fixed in a legitimate future admission after actual audit acceptance, never derived from bundle metadata. Keep audited source/HEAD frozen from audit through final entry. No receipt, import, test, verifier, scope or owner may be created or run before the pending direct human renewal and fresh finite admission.
+Statically review the18filesystem cases and prepare actual rehashed Bundle-forgery fixtures and designated entry wiring, then the missing real audit collector/checker. All50policy/filesystem cases and the separate24G14cases remain unexecuted. Future fixture links/modes/FIFO/one mutable file need exact bounded writer admission. Do not import or run any test/verifier/full entry or create fixtures/scopes/owners until the pending direct human renewal and fresh finite scope; no old sample/control reruns.
 
 Completion requires: The full coordinator reads real artifacts, rejects stale/forged/mismatched inputs, preserves failed gates and cannot report full acceptance from component pass flags.
 
 Dependencies: R02, R05, R06, R09, R10, R11.
 
-Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`; `results/final-data-learning-lineage-2026-10-29`; `results/final-lineage-adapter-2026-10-29`; `results/final-semantic-archive-2026-10-29`; `docs/FINAL_DECISION_CONTRACT.md`; `verification/final_gate_decisions.py`; `config/final-gate-decisions-v1.json`; `verification/final_projection.py`; `verification/final_semantic_bundle.py`; `docs/FINAL_PROJECTION_DRAFT.md`; `verification/final_audit_bundle.py`; `tests/final_projection_policy.py`; `docs/FINAL_AUDIT_INTERFACE_DRAFT.md`; `verification/final_audit_trust.py`; `tests/final_audit_trust_policy.py`; `docs/FINAL_AUDIT_EXTERNAL_ROOT_DRAFT.md`.
+Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`; `results/final-data-learning-lineage-2026-10-29`; `results/final-lineage-adapter-2026-10-29`; `results/final-semantic-archive-2026-10-29`; `docs/FINAL_DECISION_CONTRACT.md`; `verification/final_gate_decisions.py`; `config/final-gate-decisions-v1.json`; `verification/final_projection.py`; `verification/final_semantic_bundle.py`; `docs/FINAL_PROJECTION_DRAFT.md`; `verification/final_audit_bundle.py`; `tests/final_projection_policy.py`; `docs/FINAL_AUDIT_INTERFACE_DRAFT.md`; `verification/final_audit_trust.py`; `tests/final_audit_trust_policy.py`; `docs/FINAL_AUDIT_EXTERNAL_ROOT_DRAFT.md`; `tests/final_audit_trust_filesystem.py`; `docs/FINAL_AUDIT_FILESYSTEM_CONTROLS_DRAFT.md`.
 
 Blocker: Human continuation parent expired October29at10:20EDT. New verification owners need direct human renewal; no new scope, native, match or rating allowance was admitted. G14 source join and final failure/reproduction/release decisions are still unverified.
 

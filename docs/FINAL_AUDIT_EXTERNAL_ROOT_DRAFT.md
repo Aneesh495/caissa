@@ -74,6 +74,11 @@ placement, links, modes, changes during reading, missing path/digest pairs and
 limits. Actual rehashed Bundle forgery and designated full-entry controls remain
 required. No synthetic policy case substitutes for those relationships.
 
+The later [18-case filesystem control draft](FINAL_AUDIT_FILESYSTEM_CONTROLS_DRAFT.md)
+now prepares those filesystem cases. Its fixture setup, link/mode allowances,
+writer wiring and invocation still need a fresh scope. None has run or created
+a file. Total prepared policy/filesystem cases are now 50, with zero executions.
+
 The real audit collector/checker and final entry wiring remain unfinished.
 G14 acceptance is absent; original compiler/runtime closure, failed neural gain,
 incomplete matrix and unavailable historical inputs remain separate blockers.
