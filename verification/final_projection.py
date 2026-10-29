@@ -13,8 +13,9 @@ from verification.bundle import Bundle
 from verification.final_audit_bundle import validate_projection_audit
 from verification.final_audit_bundle import verify_or_unverified as verify_final_audit
 from verification.final_audit_trust import load_external_trust
-from verification.final_core_bundle import DRIVERS as CLOSED_DRIVERS
+from verification.final_core_bundle import DRIVERS as CORE_DRIVERS
 from verification.final_core_bundle import verify as verify_closed_core
+from verification.final_evidence_bundle import DRIVERS as EVIDENCE_DRIVERS
 from verification.final_evidence_bundle import ENGINE, NETWORK
 from verification.final_evidence_bundle import verify as verify_closed_evidence
 from verification.final_gate_decisions import DRIVERS as NONPASSING_DRIVERS
@@ -26,6 +27,7 @@ from verification.source import require
 
 
 CLOSED_GATES = {f"G{i:02d}" for i in range(1, 8)} | {"G09", "G11", "G12", "G13"}
+CLOSED_DRIVERS = {**CORE_DRIVERS, **EVIDENCE_DRIVERS}
 
 
 def normalized_closed_result(result, gate, expected_commit):

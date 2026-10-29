@@ -9,13 +9,16 @@ A future genuinely admitted metadata owner must supply the real host lease and
 installed specialized quota. The helper does not admit itself, create authority,
 write a scope or consume an entry token. Direct human renewal remains pending.
 
-The seed builder and its admission are still missing. The prospective seed must
+The separate seed-builder source is now prepared and remains unexecuted. Its real
+admission and fixture/control owner are still missing. The prospective seed must
 contain real copied evidence for the eleven accepted adapters and the fixed G08,
 G10 and G15 inventories, exact current source metadata, and empty G14/audit
 declarations. A separately trusted scope must pin every seed path, size and digest,
 the manifest and full-input digests, current source/reader/interpreter identities,
 all nineteen external paths, and exact destination directories and writer names.
-No seed exists or was admitted as part of this source preparation.
+No seed exists or was admitted as part of either source preparation. The builder's
+candidate result cannot admit its own consumer; an independent admission must
+rehash and pin the actual finished seed.
 
 The intended helper makes one isolated ordinary copy, leaving the seed untouched.
 It requires the actual projection to establish a valid sixteen-decision baseline
