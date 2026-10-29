@@ -12,6 +12,13 @@ The full entry point checks committed product source, immutable artifact relatio
 
 G08, G10, G14, G15 and G16 remain pending in the real report. The original neural requirement failed, the matrix is incomplete, original compiler/runtime closure remains unproven and full historical reproduction is unavailable. G14's exact saved-image archive is retained, but the revised final relationship join and adapter have not run. The [final decision contract](FINAL_DECISION_CONTRACT.md) specifies how these different outcomes must be represented; that design is unexecuted. Complete coordination and release audit remain unfinished. The real process exits2 with `full_acceptance: false`. No component flag, summary count or caller receipt can certify a release.
 
+The [prepared nonpassing decision reader](../verification/final_gate_decisions.py)
+and its fixed metadata inventory are unexecuted and absent from dispatch. They
+preserve the missing neural failure log body, valid earlier comparison reuse and
+separate reproduction limitations. The G16 helper only blocks release; complete
+projection and independent audit integration remain unfinished. No new scope,
+test or verification owner has been admitted after the continuation window expired.
+
 ## Retained final evidence adapters
 
 | Driver | Gates | Accepted relationship |

@@ -166,3 +166,50 @@ the completed final G14 relationship result if admitted, and the checked final
 nonpassing decisions. No old sample, original mutation suite, closed control set,
 engine, browser, compiler, inference, training or match campaign is required by
 this saved-evidence decision integration.
+
+## Prepared decision reader, not runtime acceptance
+
+[The new draft reader](../verification/final_gate_decisions.py) implements
+prospective G08, G10 and G15 metadata relationships. Its
+[fixed metadata policy](../config/final-gate-decisions-v1.json) binds 11 G08
+records, 23 G10 records and 36 G15 records. These inventories overlap and total
+less than 0.5 MB before deduplication. They contain digests and sizes, not uploaded
+raw process records. Neither file grants execution authority.
+
+The module has not been imported, tested or executed. It is absent from the
+current full-entry dispatch. The real report still accepts eleven domains and
+leaves five pending. Its current source admission rules and accepted adapters
+remain unchanged.
+
+The neural draft binds the actual retained independent failure receipt, original
+and recovery failures, usage, fixed gain endpoint and unfinished outcomes. The
+receipt's referenced `independent-neural.log` body is unavailable at the retained
+run path. A digest in the receipt does not recover those bytes or prove a fresh
+semantic rejection. The output must state that limitation. No game move replay,
+statistical bootstrap, full sample acceptance or absolute rating is supplied.
+
+The matrix draft follows the first comparison's real attempt-005 reuse receipt
+back to its successful attempt-004 stage and identical result bytes. It rejects
+changed hashes, escaped paths and reuse cycles. The four later accepted stages
+retain their own actual exits and logs. Recorded attempts and pair counts are
+the closed owner's census, not a new independent replay of every game. The
+sixth comparison remains incomplete, with the original shutdown overrun visible.
+
+The reproduction draft reuses the accepted G07 metadata relationships without
+opening training arrays or rerunning learning. It keeps missing original inputs
+separate from unverified saved-image compiler and runtime closure. The later
+attribution report is pinned as a component limitation; its hosted builds and
+controls are not rerun or newly certified by this draft.
+
+The G16 helper only records release blocking and requires exactly G01-G15
+decisions with consistent source and actor identities. It cannot certify the
+missing final audit. Complete projection, normalization of actual adapter
+outputs, G14 dispatch, the independent G16 audit interface, exit handling and
+new forgery controls still need implementation and admitted verification.
+This helper is not the complete derived acceptance predicate required above.
+
+Future controls must also cover the valid retained comparison reuse, broken
+reuse chains, missing historical log bodies, aliasing, unchanged missing-input
+census and inconsistent release classifications. No control has run. The pending
+renewal request remains unanswered; no scope, owner, test or full-entry start
+was added during this static preparation.
