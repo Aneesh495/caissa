@@ -34,6 +34,7 @@ REQUIRED_SOURCES = {
     "verification/bundle.py", "verification/source.py", "tools/host_lease.py",
     "tools/heuristic_study.py", "tools/final_projection_stage.py",
     "tools/final_projection_owner.py",
+    "tools/final_projection_launcher.py",
     "tools/campaign_process.py", "tools/parallel_storage_quota.py", "tools/storage_budget.py",
     "config/final-gate-decisions-v1.json",
 }
@@ -255,6 +256,8 @@ def run(scope_name, expected_scope_sha256):
     require(remaining > 0, "entry admission expired during bootstrap")
     signal.setitimer(signal.ITIMER_REAL, remaining)
     consume_parent_token(scope, scope_sha, work)
+    require(scope["entry_group_policy"] == "inherit_owner_group"
+            and os.getpgrp() == os.getppid(), "entry left the actual launcher-owned process group")
     require(all(stat.S_ISFIFO(os.fstat(fd).st_mode) for fd in (1, 2)),
             "entry output must use owned metered parent pipes")
     sys.path.insert(0, str(ROOT))

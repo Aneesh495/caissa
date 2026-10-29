@@ -30,14 +30,16 @@ The bridge preserves the admitted virtual environment command. It writes one
 private immutable admission record through that installed quota, rechecks its
 actual bytes/mode, prewrites a bounded pipe token, closes the writer and admits
 one exact child command through `Campaign.run`. That command must use `-B -P`,
-the fixed entry source, externally pinned scope digest, owned process group,
+the fixed entry source, externally pinned scope digest, inherited owner group,
 exact inherited lease/token descriptors and piped output. A rejected or failed
 attempt consumes the admission record. No favorable replacement is allowed.
 
 The existing campaign drains combined stdout/stderr into a metered log and
 records the real exit, output digest, discarded-byte count and cleanup warnings.
 The bridge treats exit 2 as expected only when the actual single JSON report,
-process return code, log bytes and clean reaped group agree. Extra diagnostics,
+direct-child return code and log bytes agree. Final group absence is explicitly
+deferred to [the later launcher draft](FINAL_PROJECTION_LAUNCHER_DRAFT.md), which
+owns the parent group containing the entry and allowed Git children. Extra diagnostics,
 truncated output, altered identities and setup errors remain failures. Original
 failed G08, incomplete G10, unavailable G15 and blocked G16 must survive. The
 scope separately fixes G14's expected verified or unverified classification;

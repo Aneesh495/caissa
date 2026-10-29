@@ -71,6 +71,8 @@ def run_entry(scope_name, expected_scope_sha256, *, campaign, quota, lease):
     require(not (work / "ENTRY_ADMISSION.json").exists(), "entry admission already consumed")
     require(scope["python_command"] == sys.executable,
             "parent must preserve the admitted virtual environment command")
+    require(scope["entry_group_policy"] == "inherit_owner_group"
+            and os.getpgrp() == os.getpid(), "entry requires a launcher-owned parent process group")
     maximum_output = scope["maximum_entry_output_bytes"]
     require(type(maximum_output) is int and 1024 <= maximum_output <= 2 * 1024**2,
             "finite metered entry output bound required")
@@ -113,7 +115,7 @@ def run_entry(scope_name, expected_scope_sha256, *, campaign, quota, lease):
                                     "cwd", "pass_fds", "env"}
                 and kwargs["stdin"] == subprocess.DEVNULL and kwargs["stdout"] == subprocess.PIPE
                 and kwargs["stderr"] == subprocess.STDOUT and kwargs["bufsize"] == 0
-                and kwargs["start_new_session"] is True and Path(kwargs["cwd"]) == ROOT
+                and kwargs["start_new_session"] is False and Path(kwargs["cwd"]) == ROOT
                 and kwargs["pass_fds"] == descriptors and kwargs["env"] == environment,
                 "projection parent command, descriptors, ownership or start count differs")
         attempts[0] += 1
@@ -128,7 +130,8 @@ def run_entry(scope_name, expected_scope_sha256, *, campaign, quota, lease):
         try:
             receipt = campaign.run("full-entry", command, remaining,
                                    maximum_output_bytes=maximum_output, cwd=ROOT,
-                                   wall_timeout=remaining, pass_fds=descriptors, env=environment)
+                                   wall_timeout=remaining, pass_fds=descriptors, env=environment,
+                                   new_session=False)
         except StageFailure as error:
             receipt = error.record
             require(receipt["exit"] == 2 and receipt["reason"] == "nonzero-exit",
@@ -142,12 +145,6 @@ def run_entry(scope_name, expected_scope_sha256, *, campaign, quota, lease):
             and child[0].returncode == receipt["exit"] == 2
             and receipt["discarded_output_bytes"] == 0 and not receipt["cleanup_warnings"],
             "actual projection exit, count, output or cleanup differs")
-    try:
-        os.killpg(child[0].pid, 0)
-    except ProcessLookupError:
-        pass
-    else:
-        raise ValueError("projection entry group remains after reaping")
     log = campaign.output / "full-entry.log"
     require(not log.is_symlink() and stat.S_ISREG(log.stat().st_mode)
             and stat.S_IMODE(log.stat().st_mode) == 0o600 and log.stat().st_nlink == 1
@@ -196,6 +193,7 @@ def run_entry(scope_name, expected_scope_sha256, *, campaign, quota, lease):
     require(quota.read().get("failure") is None, "projection stage latched a storage failure")
     return {"report": report, "stage": receipt,
             "entry_process": {"pid": child[0].pid, "exit": child[0].returncode,
-                              "owned_group_absent_after_reap": True},
+                              "inherited_owner_group": True, "owner_group_id": os.getpgrp(),
+                              "final_group_check_pending": True},
             "entry_starts": 1, "parent_token_sha256": record["token_sha256"],
             "full_acceptance": False, "full_R12_complete": False}

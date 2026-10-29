@@ -51,9 +51,11 @@ a nonexistent ledger; cleanup failures cannot convert into a successful owner
 result or replace the original exception. Actual closure and emergency failure paths
 still need genuinely new controls and independent post-exit evidence.
 
-Still missing: the real admission and bounded external closure launcher, exact
-fixture builder, rehashed Bundle forgeries, parent/entry controls and audit
-collector/checker. All earlier 50 policy/filesystem and 24 G14 relationship cases
+The later [independent launcher draft](FINAL_PROJECTION_LAUNCHER_DRAFT.md) now
+prepares bounded external owner closure. It and the inherited-group correction
+remain unexecuted. Real admission, tool-observed launcher closure, exact fixture
+builder, rehashed Bundle forgeries, parent/entry controls and audit collector/checker
+remain missing. All earlier 50 policy/filesystem and 24 G14 relationship cases
 remain unexecuted. No parent/entry case is implemented or passed. The accepted
 entry, every original failure, frozen samples, expired parents and exhausted
 parallel allowance remain unchanged. Finalize intended wiring before the future
