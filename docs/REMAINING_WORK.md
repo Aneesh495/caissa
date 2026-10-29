@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T07:09:08-04:00 (America/New_York). Revision 80.
+Updated: 2026-10-29T11:37:46-04:00 (America/New_York). Revision 81.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R12: Finish semantic adapters and the complete coordinator.
 
-Bind retained G14 exact saved-image semantic evidence and current final source relationships, then explicit failed/incomplete/unavailable/release decisions for G08/G10/G15/G16. Reuse accepted G01-G07/G09/G11/G12/G13 and all closed15/17/16controls without rerunning cases or samples. Original neural gain, interrupted sixth comparison, original saved-actor compiler/runtime and retired-input blockers remain unchanged. Record a fresh finite scope before new execution.
+Review the committed, unexecuted G14 final relationship join and prepare the explicit G08/G10/G15/G16 decisions. The original G14 archive is now checked and retained locally, with all16original manifests/raw inventories and7recorded full-entry outcomes joined without replays. A new G14 verifier or full-entry owner requires a fresh direct human continuation window because parent1793283600.005172 expired; do not renew it implicitly or bypass the admission guard. Reuse all accepted closed samples/controls. Static review and honest compact documentation remain useful authorized work.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -166,13 +166,15 @@ Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-ev
 
 ### R12: Finish semantic adapters and the complete coordinator
 
-Bind retained G14 exact saved-image semantic evidence and current final source relationships, then explicit failed/incomplete/unavailable/release decisions for G08/G10/G15/G16. Reuse accepted G01-G07/G09/G11/G12/G13 and all closed15/17/16controls without rerunning cases or samples. Original neural gain, interrupted sixth comparison, original saved-actor compiler/runtime and retired-input blockers remain unchanged. Record a fresh finite scope before new execution.
+Review the committed, unexecuted G14 final relationship join and prepare the explicit G08/G10/G15/G16 decisions. The original G14 archive is now checked and retained locally, with all16original manifests/raw inventories and7recorded full-entry outcomes joined without replays. A new G14 verifier or full-entry owner requires a fresh direct human continuation window because parent1793283600.005172 expired; do not renew it implicitly or bypass the admission guard. Reuse all accepted closed samples/controls. Static review and honest compact documentation remain useful authorized work.
 
 Completion requires: The full coordinator reads real artifacts, rejects stale/forged/mismatched inputs, preserves failed gates and cannot report full acceptance from component pass flags.
 
 Dependencies: R02, R05, R06, R09, R10, R11.
 
-Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`; `results/final-data-learning-lineage-2026-10-29`; `results/final-lineage-adapter-2026-10-29`.
+Existing evidence: `results/semantic-witness-audit-2026-10-26`; `results/native-source-binding-2026-10-26`; `results/final-evidence-adapters-2026-10-29`; `results/final-domain-adapters-2026-10-29`; `results/final-data-learning-lineage-2026-10-29`; `results/final-lineage-adapter-2026-10-29`; `results/final-semantic-archive-2026-10-29`.
+
+Blocker: Human continuation parent expired October29at10:20EDT. New verification owners need direct human renewal; no new scope, native, match or rating allowance was admitted. G14 source join and final failure/reproduction/release decisions are still unverified.
 
 ### R13: Close compiler provenance and clean-build reproduction
 

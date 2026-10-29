@@ -1,0 +1,114 @@
+[
+  {
+    "case": "illegal-pv",
+    "actual_exit": 1,
+    "status": "rejected",
+    "reason": "illegal semantic PV: independent board rejects move",
+    "verified_gates": [],
+    "pending_gates": [],
+    "stderr_bytes": 0,
+    "ordinary_manifest_and_external_pin_recomputed": true,
+    "full_acceptance": false
+  },
+  {
+    "case": "incorrect-draw-claim",
+    "actual_exit": 1,
+    "status": "rejected",
+    "reason": "incorrect draw claim: independent history reconstruction differs",
+    "verified_gates": [],
+    "pending_gates": [],
+    "stderr_bytes": 0,
+    "ordinary_manifest_and_external_pin_recomputed": true,
+    "full_acceptance": false
+  },
+  {
+    "case": "mismatched-network-inference",
+    "actual_exit": 1,
+    "status": "rejected",
+    "reason": "mismatched network inference: independent integer interpretation differs",
+    "verified_gates": [],
+    "pending_gates": [],
+    "stderr_bytes": 0,
+    "ordinary_manifest_and_external_pin_recomputed": true,
+    "full_acceptance": false
+  },
+  {
+    "case": "missing-replay-output",
+    "actual_exit": 2,
+    "status": "incomplete",
+    "reason": null,
+    "verified_gates": [],
+    "pending_gates": [
+      "G01",
+      "G02",
+      "G03",
+      "G04",
+      "G05",
+      "G06",
+      "G07",
+      "G08",
+      "G09",
+      "G10",
+      "G11",
+      "G12",
+      "G13",
+      "G14",
+      "G15",
+      "G16"
+    ],
+    "stderr_bytes": 0,
+    "ordinary_manifest_and_external_pin_recomputed": true,
+    "full_acceptance": false
+  },
+  {
+    "case": "positive-full-entry",
+    "actual_exit": 2,
+    "status": "incomplete",
+    "reason": null,
+    "verified_gates": [
+      "G14"
+    ],
+    "pending_gates": [
+      "G01",
+      "G02",
+      "G03",
+      "G04",
+      "G05",
+      "G06",
+      "G07",
+      "G08",
+      "G09",
+      "G10",
+      "G11",
+      "G12",
+      "G13",
+      "G15",
+      "G16"
+    ],
+    "stderr_bytes": 0,
+    "ordinary_manifest_and_external_pin_recomputed": true,
+    "full_acceptance": false
+  },
+  {
+    "case": "swapped-result-colors",
+    "actual_exit": 1,
+    "status": "rejected",
+    "reason": "swapped result colors: result colors disagree with replayed terminal position",
+    "verified_gates": [],
+    "pending_gates": [],
+    "stderr_bytes": 0,
+    "ordinary_manifest_and_external_pin_recomputed": true,
+    "full_acceptance": false
+  },
+  {
+    "case": "undeclared-raw-artifact",
+    "actual_exit": 1,
+    "status": "rejected",
+    "reason": "G14 raw inventory is missing, extra or undeclared",
+    "verified_gates": [],
+    "pending_gates": [],
+    "stderr_bytes": 0,
+    "ordinary_manifest_and_external_pin_recomputed": true,
+    "full_acceptance": false
+  }
+]

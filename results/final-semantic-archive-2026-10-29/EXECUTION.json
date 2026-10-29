@@ -1,0 +1,18 @@
+{
+  "source_commit": "cad0e871a9f2632392da4252897b0f833c7a38a2",
+  "scope_sha256": "c1ce4cfcf2a714110c7a3af7505fdd719db68becaa984b4f10c15d361f9f5c30",
+  "owner_exit": 0,
+  "owner_elapsed_seconds": 3.3178051250288263,
+  "stderr_bytes": 0,
+  "actual_fetch_exit": 0,
+  "fetch_stderr_bytes": 0,
+  "fetch_group_absent_after_reap": true,
+  "metadata_ledger_closed": true,
+  "archive_staged_on_filesystem": false,
+  "old_controls_or_samples_rerun": 0,
+  "native_starts": 0,
+  "new_games": 0,
+  "full_G14_current_source_join": false,
+  "full_G14_final_adapter_executed": false,
+  "full_acceptance": false
+}

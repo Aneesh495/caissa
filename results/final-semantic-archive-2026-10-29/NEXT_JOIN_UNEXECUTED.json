@@ -1,0 +1,16 @@
+{
+  "status": "PRE_ADMISSION_CLOSED_PARENT_EXPIRED",
+  "scope_created": false,
+  "owner_started": false,
+  "child_started": false,
+  "verification_or_new_control_cases_run": 0,
+  "prepared_source_commit": "607fcd1",
+  "sources": {
+    "verification/final_semantic_join.py": "c0a496da7789905f990f0e82852306bce6b08fe5014aa58b55572cc0a93640c4",
+    "tools/final_semantic_join.py": "c63c7a5b3394f2e26d4cc832a54382fe28a17c5bc924acf4e632845ce21fb972"
+  },
+  "first_admission_helper_failure": "deadline guard assertion before SCOPE creation; parent expired",
+  "subsequent_launcher_failure": "SCOPE.json absent; stopped before LAUNCHED or child creation",
+  "original_parent_or_child_scopes_modified": false,
+  "allowance_renewed": false
+}
