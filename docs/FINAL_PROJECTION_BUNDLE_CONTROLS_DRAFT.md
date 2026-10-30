@@ -14,7 +14,9 @@ unexecuted. It enumerates the exact copied seed, three forged bodies, fourteen
 case records, five bounded mutable declarations and owner metadata. The helper
 joins its payload to that quota, fixes the decision-index paths and case order,
 and retains the same thirteen prepared cases with zero executions. The real
-fixture owner, directory/process guard and independent closure remain missing.
+fixture owner and directory/process guard are now prepared separately in the
+[owner draft](FINAL_FIXTURE_OWNER_DRAFT.md), with zero executions. Actual trusted
+transport, independent closure and new controls remain missing.
 
 The separate seed-builder source is now prepared and remains unexecuted. Its real
 admission and fixture/control owner are still missing. A separate unexecuted

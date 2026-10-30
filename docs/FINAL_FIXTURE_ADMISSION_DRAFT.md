@@ -9,7 +9,11 @@ unexecuted. Future requests must independently pin its exact per-file bounds.
 The constructor prepares rounded immutable credits, doubled mutable/control peak
 and extra emergency headroom before scope growth, with copied bytes checked
 against those caps. This is source only. The real owner, directory/process guard,
-finite command accounting and independent closure remain missing.
+finite command accounting and independent closure are not runtime checked. The
+separate [owner/transport source](FINAL_FIXTURE_OWNER_DRAFT.md) is now prepared and
+unexecuted; independent owner closure and new controls remain missing. Future
+requests also require explicit family CPU, pin-read and externally captured output
+ceilings, prepaid ledger/pipe peaks and current Git HEAD/ordinary branch-ref pins.
 
 `tools/final_fixture_admission.py` has no CLI and does no work on import. It
 prepares one fresh metadata fixture-owner scope for either seed building or the
