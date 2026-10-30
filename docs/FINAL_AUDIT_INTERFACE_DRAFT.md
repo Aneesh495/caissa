@@ -1,5 +1,7 @@
 # Final audit interface and policy controls
 
+Checked status, October30: all50new policy/filesystem controls are now closed:32in-memory cases and18filesystem cases passed once under fresh finite scopes and actual direct human renewal. See `results/final-policy-controls-2026-10-30` and `results/final-audit-filesystem-controls-2026-10-30`. Actual owners/tool transports exited0 with clean closed ledgers, absent groups and released lease. This is component coverage only. No actual audit, G14 join, Bundle projection or designated entry passed. Thirteen Bundle and24G14cases remain unexecuted. The original preparation notes below describe the earlier unexecuted draft.
+
 Status: prepared and unexecuted. No import, test, control, verifier, scope or
 owner was started. The continuation renewal is still pending. The accepted
 full entry and its eleven-domain result are unchanged.
