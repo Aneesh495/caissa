@@ -1,6 +1,6 @@
 # Caissa remaining work
 
-Updated: 2026-10-29T19:25:09-04:00 (America/New_York). Revision 108.
+Updated: 2026-10-29T20:11:49-04:00 (America/New_York). Revision 110.
 
 This is the maintained action list. The scheduled follow-up refreshes it with actual evidence. Runtime ownership, authorizations and limits remain authoritative in the private task and scope files.
 
@@ -8,7 +8,7 @@ This is the maintained action list. The scheduled follow-up refreshes it with ac
 
 R12: Finish semantic adapters and the complete coordinator.
 
-Review the unexecuted fixture-scope constructor and prepare the missing bounded trusted admission caller and fixture/control owner for the seed builder and13-case Bundle draft, then parent/entry/launcher controls and real audit collector/checker. Actual human-provenance review cannot be supplied by request or fixture fields. All13Bundle,50policy/filesystem and24G14cases remain unexecuted. Finalize intended source before the future G14 join freeze. Future source/input/CPU/wall/start/write/descriptor/ledger and complete19external-path reservations require fresh direct human renewal and exact finite admission. Do not import or run syntax/help/tests/verifiers/full entry or create runtime authorities/scopes/owners/tokens/fixtures while renewal is pending. Reuse every closed sample/control without reruns.
+Review the tightened unexecuted fixture-input admission join, then prepare the missing bounded trusted admission caller and fixture/control owner for the seed builder and13-case Bundle draft. Continue parent/entry/launcher controls and real audit collector/checker source afterward. Actual human-provenance review cannot come from request or fixture fields. All13Bundle,50policy/filesystem and24G14cases remain unexecuted. Finalize intended source before the future G14 join freeze. No imports, syntax/help/tests/verifiers/full entry or runtime authorities/scopes/owners/tokens/fixtures while direct human renewal is pending. Future work needs fresh exact finite source/input/CPU/wall/start/write/descriptor/ledger and complete19external-path admission; reuse every closed sample/control without reruns.
 
 1110/1200 match attempts recorded; 555 paired records. Independent acceptance is separate.
 Last recorded match stage: `play-threads-8-ms-400`.
@@ -166,7 +166,7 @@ Existing evidence: `results/performance-v4-2026-10-26`; `results/final-thread-ev
 
 ### R12: Finish semantic adapters and the complete coordinator
 
-Review the unexecuted fixture-scope constructor and prepare the missing bounded trusted admission caller and fixture/control owner for the seed builder and13-case Bundle draft, then parent/entry/launcher controls and real audit collector/checker. Actual human-provenance review cannot be supplied by request or fixture fields. All13Bundle,50policy/filesystem and24G14cases remain unexecuted. Finalize intended source before the future G14 join freeze. Future source/input/CPU/wall/start/write/descriptor/ledger and complete19external-path reservations require fresh direct human renewal and exact finite admission. Do not import or run syntax/help/tests/verifiers/full entry or create runtime authorities/scopes/owners/tokens/fixtures while renewal is pending. Reuse every closed sample/control without reruns.
+Review the tightened unexecuted fixture-input admission join, then prepare the missing bounded trusted admission caller and fixture/control owner for the seed builder and13-case Bundle draft. Continue parent/entry/launcher controls and real audit collector/checker source afterward. Actual human-provenance review cannot come from request or fixture fields. All13Bundle,50policy/filesystem and24G14cases remain unexecuted. Finalize intended source before the future G14 join freeze. No imports, syntax/help/tests/verifiers/full entry or runtime authorities/scopes/owners/tokens/fixtures while direct human renewal is pending. Future work needs fresh exact finite source/input/CPU/wall/start/write/descriptor/ledger and complete19external-path admission; reuse every closed sample/control without reruns.
 
 Completion requires: The full coordinator reads real artifacts, rejects stale/forged/mismatched inputs, preserves failed gates and cannot report full acceptance from component pass flags.
 
