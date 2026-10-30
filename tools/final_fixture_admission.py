@@ -25,6 +25,7 @@ REQUIRED_SOURCES = {
     "tools/final_fixture_admission_call.py",
     "tools/final_fixture_quota.py",
     "tools/final_fixture_owner.py", "tools/final_fixture_git.py",
+    "tools/final_fixture_launcher.py",
     "tools/final_projection_bundle_controls.py", "tools/host_lease.py",
     "tools/parallel_storage_quota.py", "tools/storage_budget.py",
     "verification/final_projection.py", "verification/final_projection_entry.py",
@@ -212,6 +213,26 @@ def owner_limits(request):
     require(type(request["outside_control_bytes"]) is int
             and request["outside_control_bytes"] >= 4000000 + 2 * (rounded + 8192),
             "bounded ledger internals and both external owner pipes must be prepaid")
+    launch = relative(request["launcher_work"])
+    require(len(launch.split("/")) == 2 and launch.startswith("work/") and launch != request["work"]
+            and type(request["maximum_launcher_starts"]) is int and request["maximum_launcher_starts"] == 1
+            and type(request["maximum_launcher_cpu_seconds"]) is int
+            and request["maximum_owner_cpu_seconds"] <= request["maximum_launcher_cpu_seconds"] <= 30
+            and type(request["maximum_launcher_family_cpu_seconds"]) is int
+            and 0 < request["maximum_launcher_family_cpu_seconds"]
+            <= request["maximum_family_cpu_seconds"] + request["maximum_launcher_cpu_seconds"]
+            and type(request["launcher_hard_deadline_unix"]) in {int, float}
+            and math.isfinite(request["launcher_hard_deadline_unix"])
+            and request["deadline_unix"] + 10 <= request["launcher_hard_deadline_unix"]
+            <= request["origin_unix"] + 150
+            and type(request["maximum_launcher_pin_read_bytes"]) is int
+            and 0 < request["maximum_launcher_pin_read_bytes"] <= 256 * 1024**2
+            and request["maximum_owner_output_bytes"] <= 512000
+            and type(request["launcher_control_bytes"]) is int
+            and 4000000 <= request["launcher_control_bytes"] <= 8000000
+            and type(request["launcher_outside_control_bytes"]) is int
+            and request["launcher_outside_control_bytes"] == 2000000,
+            "one separately prepaid finite fixture launcher required")
     require(".git/HEAD" in request["source_bindings"], "separate current HEAD source pin required")
     payload = request["payload"]
     require(payload["schema"] == ("caissa-final-projection-seed-build-v1"
@@ -270,7 +291,7 @@ def construct(request_name, expected_request_sha256, verified_human_message_sha2
                   request["origin_unix"], request["deadline_unix"]):
         require(type(value) in {int, float} and math.isfinite(value), "invalid fixed admission time")
     require(EXPIRED_PARENT < authority["received_unix"] <= request["origin_unix"] <= now
-            < request["deadline_unix"] <= authority["deadline_unix"]
+            < request["deadline_unix"] < request["launcher_hard_deadline_unix"] <= authority["deadline_unix"]
             and 0 < authority["deadline_unix"] - authority["received_unix"] <= 7200
             and 0 < request["deadline_unix"] - request["origin_unix"] <= 150,
             "expired parents or scheduled messages cannot renew fixture admission")
@@ -367,7 +388,9 @@ def construct(request_name, expected_request_sha256, verified_human_message_sha2
             and time.monotonic() - started <= 40, "bounded admission preflight exhausted")
     actual = footprint([ROOT, *external])
     check_admission(actual["charged_bytes"], shutil.disk_usage(ROOT).used, request["data_bytes"],
-                    request["control_bytes"] + request["outside_control_bytes"] + 2000000, 128000000)
+                    request["control_bytes"] + request["outside_control_bytes"]
+                    + request["launcher_control_bytes"] + request["launcher_outside_control_bytes"] + 2000000,
+                    128000000)
     require(time.time() < request["deadline_unix"] and time.monotonic() - started <= 40,
             "admission deadline exhausted before growth")
     observe_free_lease()
