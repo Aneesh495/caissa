@@ -28,7 +28,7 @@ def build_seed(scope, expected_owner_scope_sha256, quota, lease):
     This function does not infer those permissions from its configuration.
     """
     from tools.host_lease import HostLease
-    from tools.parallel_storage_quota import Quota
+    from tools.final_fixture_quota import FixtureQuota
     from verification.bundle import Bundle, digest_text, strict_json
     from verification.final_audit_bundle import DRIVER as AUDIT_DRIVER
     from verification.final_evidence_bundle import ENGINE, NETWORK
@@ -38,9 +38,10 @@ def build_seed(scope, expected_owner_scope_sha256, quota, lease):
     from verification.final_semantic_bundle import DRIVER as SEMANTIC_DRIVER
     from verification.source import PRODUCT, relative_path, require, verify_checkout
 
-    require(isinstance(quota, Quota) and quota.old is not None
+    require(type(quota) is FixtureQuota and quota.old is not None
             and isinstance(lease, HostLease) and not lease.stream.closed,
             "seed building needs the real installed quota and live host lease")
+    quota.bind_helper(scope, expected_owner_scope_sha256, "build-seed")
     require(scope["schema"] == "caissa-final-projection-seed-build-v1"
             and type(scope["maximum_seed_builds"]) is int and scope["maximum_seed_builds"] == 1
             and type(scope["maximum_projection_calls"]) is int and scope["maximum_projection_calls"] == 0

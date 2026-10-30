@@ -4,6 +4,13 @@ Prepared source only. No import, syntax/help/test/verifier call, storage sweep,
 authority record, scope, owner, seed, token or fixture was created or executed.
 Human renewal is still pending. All prepared cases remain unexecuted.
 
+The separate [fixture writer](FINAL_FIXTURE_QUOTA_DRAFT.md) is now prepared,
+unexecuted. Future requests must independently pin its exact per-file bounds.
+The constructor prepares rounded immutable credits, doubled mutable/control peak
+and extra emergency headroom before scope growth, with copied bytes checked
+against those caps. This is source only. The real owner, directory/process guard,
+finite command accounting and independent closure remain missing.
+
 `tools/final_fixture_admission.py` has no CLI and does no work on import. It
 prepares one fresh metadata fixture-owner scope for either seed building or the
 thirteen Bundle controls. It does not admit the G14 join, audit, designated entry,

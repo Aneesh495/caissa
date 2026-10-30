@@ -9,6 +9,13 @@ A future genuinely admitted metadata owner must supply the real host lease and
 installed specialized quota. The helper does not admit itself, create authority,
 write a scope or consume an entry token. Direct human renewal remains pending.
 
+The [specialized writer source](FINAL_FIXTURE_QUOTA_DRAFT.md) is now prepared and
+unexecuted. It enumerates the exact copied seed, three forged bodies, fourteen
+case records, five bounded mutable declarations and owner metadata. The helper
+joins its payload to that quota, fixes the decision-index paths and case order,
+and retains the same thirteen prepared cases with zero executions. The real
+fixture owner, directory/process guard and independent closure remain missing.
+
 The separate seed-builder source is now prepared and remains unexecuted. Its real
 admission and fixture/control owner are still missing. A separate unexecuted
 fixture-scope constructor now prepares only the scope write after real external

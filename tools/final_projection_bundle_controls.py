@@ -16,7 +16,22 @@ import time
 
 
 ROOT = Path(__file__).resolve().parents[1]
-NEGATIVE_CASES = 12
+CASE_NAMES = (
+    "G08_missing_actual_failed_independent_exit",
+    "G08_rehashed_hidden_unfinished_outcomes",
+    "G10_missing_actual_reused_comparison_stage",
+    "G10_rehashed_erased_exhausted_active_time",
+    "G15_missing_limited_attribution_report",
+    "G15_rehashed_claimed_historical_raw_reconstruction",
+    "G08_rehashed_legacy_replay_dispatch",
+    "G10_rehashed_stale_domain_source",
+    "G14_rehashed_offered_unaccepted_join",
+    "G14_rehashed_caller_gate_pass",
+    "G16_rehashed_offered_audit_without_external_root",
+    "G16_rehashed_caller_release_pass",
+)
+FORGED_CASE_NAMES = (CASE_NAMES[1], CASE_NAMES[3], CASE_NAMES[5])
+NEGATIVE_CASES = len(CASE_NAMES)
 
 
 def run_controls(seed, fixture, archive, scope, expected_owner_scope_sha256, quota, lease):
@@ -28,15 +43,16 @@ def run_controls(seed, fixture, archive, scope, expected_owner_scope_sha256, quo
     These conditions are dependencies, not authority conveyed by a caller dict.
     """
     from tools.host_lease import HostLease
-    from tools.parallel_storage_quota import Quota
+    from tools.final_fixture_quota import FixtureQuota
     from verification.bundle import Bundle, strict_json
     from verification.final_gate_decisions import ATTRIBUTION, LINEAGE, NEURAL, NEURAL_STAGE
     from verification.final_projection import CLOSED_GATES, verify
     from verification.source import relative_path, require
 
-    require(isinstance(quota, Quota) and quota.old is not None
+    require(type(quota) is FixtureQuota and quota.old is not None
             and isinstance(lease, HostLease) and not lease.stream.closed,
             "real installed fixture quota and live host lease required")
+    quota.bind_helper(scope, expected_owner_scope_sha256, "bundle-controls")
     lease.check()
     require(scope["schema"] == "caissa-final-projection-bundle-controls-v1"
             and type(scope["maximum_control_invocations"]) is int
@@ -169,9 +185,12 @@ def run_controls(seed, fixture, archive, scope, expected_owner_scope_sha256, quo
     descriptors = {}
     for gate in ("G08", "G10", "G15"):
         name = inputs["domains"][gate]["final_decision_evidence"]["path"]
+        require(name == "decisions/" + gate + "/INDEX.json",
+                "control descriptor differs from exact mutable writer inventory")
         descriptors[gate] = (name, (fixture / name).read_bytes())
 
     def reject(name, expected, change):
+        require(name == CASE_NAMES[len(controls) - 1], "new control order differs from writer inventory")
         current, changed = copy.deepcopy(inputs), {}
         original_error = None
         try:
@@ -265,6 +284,7 @@ def run_controls(seed, fixture, archive, scope, expected_owner_scope_sha256, quo
     reject("G16_rehashed_caller_release_pass", "empty audit declaration contains unverified pass fields",
            lambda x, *_: x["domains"]["G16"].update(full_acceptance=True))
     require(len(controls) == NEGATIVE_CASES + 1 and calls == NEGATIVE_CASES + 1
+            and tuple(row["case"] for row in controls[1:]) == CASE_NAMES
             and (fixture / "FULL_INPUTS.json").read_bytes() == inputs_raw,
             "new control inventory, projection count or restoration differs")
     with Bundle(fixture, min(30, scope["deadline_unix"] - time.time())) as restored:
