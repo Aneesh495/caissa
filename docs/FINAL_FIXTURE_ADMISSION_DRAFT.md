@@ -23,8 +23,10 @@ writes renewal authority or extends a parent. Its prospective finite window must
 fall wholly inside an actual new human parent of at most two hours, after both
 expired parents. One requested owner, at most 90 owner CPU seconds and a fixed
 150-second family wall ceiling are rejection bounds, not present allowances.
-The trusted caller still needs bounded admission-helper CPU, wall and output
-transport. No automatic caller or such transport is supplied here.
+The separate bounded caller source is now prepared and remains unexecuted. The
+trusted executor still must supply actual human review, bounded owned output
+transport and independent real-exit evidence. No automatic approval or transport
+is supplied by either source.
 
 Every source/input path is read through no-follow stable single-link descriptors
 and compared with independent request pins. Private request/authority/attribution

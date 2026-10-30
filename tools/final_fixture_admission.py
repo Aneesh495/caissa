@@ -22,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 EXPIRED_PARENT = 1793283600.005172
 REQUIRED_SOURCES = {
     "tools/final_fixture_admission.py", "tools/final_projection_seed.py",
+    "tools/final_fixture_admission_call.py",
     "tools/final_projection_bundle_controls.py", "tools/host_lease.py",
     "tools/parallel_storage_quota.py", "tools/storage_budget.py",
     "verification/final_projection.py", "verification/final_projection_entry.py",
