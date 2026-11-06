@@ -11,7 +11,7 @@ from pathlib import Path
 
 from tools.campaign_process import atomic
 from tools.heuristic_study import avoid_decisive_matches
-from tools.strength_v4_profile import configuration, frozen_profile, lineage, sha
+from tools.strength_v4_profile import COMPILED_SOURCE, configuration, frozen_profile, lineage, sha
 from verification.external_strength import external_options
 from verification.strength import full_actor_options
 
@@ -40,6 +40,7 @@ def main():
     if args.published_inputs or not model.exists() or not engine.exists():
         # Hosted hosts inspect the actual saved Mac actor bytes without
         # executing that foreign binary. No learning/model receipt is mocked.
+        commit = COMPILED_SOURCE
         model = output / "published-learning"
         (model / "selection").mkdir(parents=True)
         for name in ["MODEL_CAMPAIGN.json", "INDEPENDENT_LEARNING.json"]:
