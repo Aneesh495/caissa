@@ -1,0 +1,70 @@
+name: Build Caissa distribution
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  distribution:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            platform: linux-x86_64
+          - runner: macos-15
+            platform: macos-arm64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 12
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Build and test the engine
+        run: |
+          cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build -j 3
+          ctest --test-dir build --output-on-failure
+          python3 tools/check_perft.py
+      - name: Assemble the engine and offline board
+        env:
+          PLATFORM: ${{ matrix.platform }}
+        run: |
+          npm ci --ignore-scripts
+          npm run build
+          version=$(./build/caissa --version)
+          archive="caissa-${version#Caissa }-$PLATFORM"
+          root="package/$archive"
+          mkdir -p "$root"/{build,web,models}
+          cp build/caissa "$root/build/"
+          cp -r dist "$root/"
+          cp web/{index.html,style.css} "$root/web/"
+          cp package.json LICENSE "$root/"
+          cp docs/QUICKSTART.md "$root/README.md"
+          cp results/precision-v4-2026-10-25/selected-v4.cai "$root/models/experimental-v4.cai"
+          printf '%s\n' "$GITHUB_SHA" > "$root/SOURCE_COMMIT"
+          tar -czf "package/$archive.tar.gz" -C package "$archive"
+          echo "ARCHIVE=$archive" >> "$GITHUB_ENV"
+      - name: Smoke test the extracted distribution
+        run: |
+          mkdir extracted
+          tar -xzf "package/$ARCHIVE.tar.gz" -C extracted
+          cd "extracted/$ARCHIVE"
+          test "$(./build/caissa --perft 4)" = 197281
+          node dist/analysis-service/server.js > "$RUNNER_TEMP/caissa.log" 2>&1 &
+          pid=$!
+          trap 'kill "$pid" 2>/dev/null || true; cat "$RUNNER_TEMP/caissa.log"' EXIT
+          curl --fail --silent --show-error --retry 10 --retry-connrefused --retry-delay 1 http://127.0.0.1:8765/ >/dev/null
+          curl --fail --silent --show-error http://127.0.0.1:8765/app.js >/dev/null
+          node "$GITHUB_WORKSPACE/tests/service_integration.mjs"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: caissa-${{ matrix.platform }}
+          path: package/*.tar.gz
+          if-no-files-found: error
