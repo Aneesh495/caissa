@@ -1,43 +1,49 @@
 # Caissa
 
-An original C++23 chess engine with incremental neural evaluation, a paired-match laboratory and a local analysis board.
+An original C++23 UCI chess engine for standard chess and Chess960, with a local analysis board, an experimental incremental neural evaluator and a paired-match laboratory.
 
-**Development build. Full acceptance is incomplete. No absolute Elo rating or Stockfish-level strength is established.** Classical evaluation is the default because the selected neural evaluator lost its full matched comparison. See [build status](docs/BUILD_STATUS.md) and [findings](docs/FINDINGS.md).
-
-The original experiment deadline has expired. Bulk historical artifacts and the private Drive archive were retired under the maintainer's minimal-storage instruction. Source, the frozen inference inputs and saved parallel games remain local. See [current artifact availability](docs/ARTIFACT_RETENTION.md).
+[Download Caissa v0.1.0](https://github.com/Aneesh495/caissa/releases/tag/v0.1.0) for macOS arm64 or Linux x86-64. Each archive contains the offline engine, the analysis board and an optional original network. Classical evaluation is the default because it won the evaluator comparison. See the [model card](docs/MODEL_CARD.md).
 
 ![Live native-engine analysis board](docs/images/live-board.png)
 
-## Run
+## Play or analyze
 
-Native prerequisites: C++23 compiler, CMake 3.25 or newer and Ninja. The laboratory uses uv, Python 3.12 and Node 24. Apple arm64 and Ubuntu x86-64 builds run in [CI](https://github.com/Aneesh495/caissa/actions/workflows/ci.yml).
+Point a UCI-compatible chess GUI at `build/caissa` in the extracted release.
+To open the local board, run `node dist/analysis-service/server.js` with Node.js
+24 from that directory, then open [the local board](http://127.0.0.1:8765).
+Import a FEN or PGN, analyze and cancel searches, and edit and export variations.
+See the [quick start](docs/QUICKSTART.md) for command-line and neural options.
+
+## Build from source
+
+Use a C++23 compiler, CMake 3.25 or newer and Ninja. The engine needs no
+Python, network access, reference engine or downloaded weights to play.
 
 ```sh
-make bootstrap
 make test
-make lab-test
+./build/caissa --perft 4
+```
+
+Perft prints `197281`. For the board, install the pinned JavaScript build
+dependencies with Node.js 24 and start the local service.
+
+```sh
+npm ci --ignore-scripts
 make demo
 ```
 
-Open `http://127.0.0.1:8765`. Import a FEN or PGN, select a legal move, analyze, cancel, edit a variation and export the actual tree. The native engine needs no Python, network, reference engine or downloaded weights to play.
+The experiment tools use uv and Python 3.12. Run `make bootstrap` and
+`make lab-test` to exercise the local laboratory.
 
-For a bounded command-line example:
+## Playing strength
 
-```sh
-./build/caissa --perft 4
-./build/caissa --search 4
-./build/caissa
-```
-
-The first command prints `197281`. The last command starts UCI:
-
-```text
-uci
-isready
-position startpos moves e2e4 e7e5
-go nodes 10000
-quit
-```
+Caissa v0.1.0 played 192 games at 50 ms per move with both colors per opening.
+Against unrestricted Stockfish 19, it scored **15 wins, 1 draw and 80 losses**,
+for **−286 relative Elo** with a 95% interval of **[−394, −206]**. The 15 wins
+include four Stockfish time forfeits. Against Stockfish 19 at Skill Level 0, it
+scored **93 wins and 3 losses**, for **+597 relative Elo** with a 95% lower
+endpoint of **+442** and an unbounded upper endpoint. See the [match setup,
+forfeit sensitivity and replay instructions](docs/RELEASE_STRENGTH.md).
 
 ## Mechanisms
 
@@ -51,7 +57,7 @@ quit
 
 See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution walkthroughs](docs/WALKTHROUGHS.md), [technical notes](docs/notes/) and [decisions](docs/adr/README.md).
 
-## Executed checks
+## Historical research results
 
 | Check | Observed result | Scope |
 |---|---|---|
@@ -70,7 +76,10 @@ See the [architecture and editable diagrams](docs/ARCHITECTURE.md), [execution w
 | Selected v4 runtime performance | 640 timed searches, 4581 memory observations, 2000 readiness samples and 16 independent scalar/native searches | [Full performance sample passed](results/performance-v4-2026-10-26/README.md); 1/2/4/8 threads, final binding pending; no Elo inference |
 | Larger neural pilot versus classical | 4 wins, 8 draws, 84 losses | 2000 nodes/move, diagnostic data split |
 
-These checks establish specific behavior. The data-domain pass does not certify a positive learned contribution, the new deployment's strength or a release. Opponent strength settings are not a calibrated absolute rating pool.
+The original research acceptance remains incomplete. The failed neural gain,
+partial multicore sample and unavailable historical artifacts are recorded in
+the [build status](docs/BUILD_STATUS.md), [findings](docs/FINDINGS.md) and
+[retention record](docs/ARTIFACT_RETENTION.md).
 
 The [model card](docs/MODEL_CARD.md) records the completed three-seed training, validation-only selection, original failed encoding and subsequent precision experiment. It also gives the explicit ten-percent UCI setting required by the selected model.
 
