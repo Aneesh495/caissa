@@ -1,0 +1,39 @@
+{
+  "profile": "release-v0.1.0",
+  "candidate": {
+    "name": "Caissa 0.1.0 classical",
+    "command": [
+      "build/caissa"
+    ],
+    "options": {
+      "Threads": 1,
+      "Hash": 32,
+      "MultiPV": 1,
+      "Ponder": false,
+      "Use Neural": false,
+      "UCI_Chess960": false
+    }
+  },
+  "opponent": {
+    "name": "Stockfish 19 Skill 20",
+    "command": [
+      "/opt/homebrew/bin/stockfish"
+    ],
+    "options": {
+      "Threads": 1,
+      "Hash": 32,
+      "MultiPV": 1,
+      "Ponder": false,
+      "Skill Level": 20,
+      "UCI_LimitStrength": false,
+      "UCI_Chess960": false,
+      "SyzygyPath": "<empty>"
+    }
+  },
+  "openings": "config/strength-openings.json",
+  "pairs": 48,
+  "milliseconds": 50,
+  "transport_allowance_ms": 100,
+  "max_plies": 1024,
+  "warmup_nodes": 1000
+}
