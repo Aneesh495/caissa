@@ -40,6 +40,8 @@ add_executable(caissa apps/main.cpp)
 target_link_libraries(caissa PRIVATE caissa_core)
 enable_testing()
 add_test(NAME version COMMAND caissa --version)
+add_test(NAME cli_perft COMMAND "${CMAKE_COMMAND}"
+  "-DCAISSA=$<TARGET_FILE:caissa>" -P "${CMAKE_CURRENT_SOURCE_DIR}/tests/cli_perft.cmake")
 install(TARGETS caissa RUNTIME DESTINATION bin)
 
 add_executable(core_test tests/core_test.cpp)

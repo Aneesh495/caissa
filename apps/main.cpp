@@ -98,7 +98,10 @@ int main(int argc,char** argv) {
         }
         if(argc==2&&std::string_view(argv[1])=="--version") {std::cout<<version()<<'\n';return 0;}
         if(argc>=3&&(std::string_view(argv[1])=="--perft"||std::string_view(argv[1])=="--divide")) {
-            int d=parse_depth(argv[2]);auto p=Position::from_fen(argc>3?argv[3]:start_fen,argc>4&&std::string_view(argv[4])=="960");
+            if (argc > 5 || (argc == 5 && std::string_view(argv[4]) != "960"))
+                throw InputError("expected [FEN] followed by the optional Chess960 marker 960");
+            int d = parse_depth(argv[2]);
+            auto p = Position::from_fen(argc > 3 ? argv[3] : start_fen, argc == 5);
             if(std::string_view(argv[1])=="--perft") std::cout<<perft(p,d)<<'\n';
             else for(auto& [move,n]:divide(p,d)) std::cout<<move<<' '<<n<<'\n';
             return 0;
@@ -119,6 +122,6 @@ int main(int argc,char** argv) {
             }
             return 0;
         }
-        std::cerr<<"Usage: caissa --version | --perft depth [FEN] [960] | --divide depth [FEN] | --inspect\n";return 2;
+        std::cerr<<"Usage: caissa --version | --perft depth [FEN] [960] | --divide depth [FEN] [960] | --inspect\n";return 2;
     }catch(const std::exception& e){std::cerr<<e.what()<<'\n';return 1;}
 }
