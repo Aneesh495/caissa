@@ -28,7 +28,7 @@ jobs:
           assert time.time() < rule['deadline_unix']
           assert rule['deadline_unix'] - rule['origin_unix'] == 7200
           PY
-      - uses: astral-sh/setup-uv@v6
+      - uses: astral-sh/setup-uv@v7
         with:
           enable-cache: false
       - name: Pinned dependencies
