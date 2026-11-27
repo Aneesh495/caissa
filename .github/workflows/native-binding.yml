@@ -25,7 +25,7 @@ jobs:
           assert int(os.environ['GITHUB_RUN_ATTEMPT'])==1
           assert time.time()<rule['deadline_unix']<rule['parent_deadline_unix']
           PY
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - name: Existing metadata admission dependencies
