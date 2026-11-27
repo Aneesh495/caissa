@@ -66,7 +66,7 @@ jobs:
           else
             python -m tests.browser_capture --engine build-browser-capture/caissa --output runs/g12-capture-amendment
           fi
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: amended-browser-capture-${{ matrix.os }}

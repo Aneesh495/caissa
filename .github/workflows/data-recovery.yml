@@ -34,7 +34,7 @@ jobs:
       - name: Actual SQL rollback and independent original-game/split reconstruction
         timeout-minutes: 6
         run: python -m tests.data_recovery_component --output runs/g11-data-component
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: data-recovery-${{ matrix.os }}
