@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 2
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Read pinned failed metadata without local decode or new browser work
         env:
           EXPECTED_SOURCE: ${{ inputs.source_sha }}
