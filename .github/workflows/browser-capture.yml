@@ -20,7 +20,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Prospectively bounded amendment and source admission
         env:
           EXPECTED_SOURCE: ${{ inputs.source_sha }}
