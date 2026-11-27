@@ -49,7 +49,7 @@ jobs:
           else
             python -m tests.semantic_audit --engine build-g14/caissa --output runs/g14-semantic-witness
           fi
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: semantic-witness-${{ matrix.os }}

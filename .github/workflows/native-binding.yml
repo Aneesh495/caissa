@@ -34,7 +34,7 @@ jobs:
       - name: Real Git and full-entry metadata controls
         timeout-minutes: 7
         run: python -m tests.native_binding --output runs/native-binding-controls
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: native-binding-controls-${{ matrix.os }}

@@ -46,7 +46,7 @@ jobs:
       - name: Actual interrupted trainer and independent state reconstruction
         timeout-minutes: 8
         run: python -m tests.training_recovery_component --engine build/caissa --output runs/g11-training-component
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: training-recovery-${{ matrix.os }}

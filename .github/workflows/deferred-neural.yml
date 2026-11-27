@@ -41,7 +41,7 @@ jobs:
           UBSAN_OPTIONS: halt_on_error=1:print_stacktrace=1
           TSAN_OPTIONS: halt_on_error=1
         run: python -m tools.deferred_neural --expected-commit "$GITHUB_SHA" --output runs/deferred-neural-${{ github.run_id }}
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: deferred-neural-${{ matrix.os }}-${{ github.run_id }}

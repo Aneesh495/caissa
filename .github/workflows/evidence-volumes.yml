@@ -34,7 +34,7 @@ jobs:
       - name: Streamed encoding, independent reconstruction and actual CLI forgeries
         timeout-minutes: 7
         run: python -m tests.evidence_volumes --output runs/evidence-volume-controls
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         if: always()
         with:
           name: evidence-volume-controls-${{ matrix.os }}
